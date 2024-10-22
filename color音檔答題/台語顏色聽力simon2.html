@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simon色水遊戲</title>
+  <title>Simon聽力色水遊戲</title>
   <style>
     /* 調整按鈕的樣式 */
     button {
@@ -43,6 +43,21 @@
       "黑色": "black"
     };
 
+    let audioFiles = {
+      "咖啡色": "brown.mp3",
+      "橙色": "orange.mp3",
+      "灰色": "gray.mp3",
+      "白色": "white.mp3",
+      "粉紅仔色": "pink.mp3",
+      "紅色": "red.mp3",
+      "紫色": "purple.mp3",
+      "膚色": "navajowhite.mp3",
+      "藍色": "blue.mp3",
+      "青色": "cyan.mp3",
+      "黃色": "yellow.mp3",
+      "黑色": "black.mp3"
+    };
+
     let gameSequence = [];
     let playerSequence = [];
     let score = 0;
@@ -62,34 +77,31 @@
       playerSequence = [];
       let randomColor = Object.keys(colors)[Math.floor(Math.random() * Object.keys(colors).length)];
       gameSequence.push(randomColor);
-      showSequence();
+      playAudioSequence();
     }
 
-    function showSequence() {
+    function playAudioSequence() {
       let i = 0;
       let interval = setInterval(() => {
         if (i >= gameSequence.length) {
           clearInterval(interval);
           return;
         }
-        flashButton(gameSequence[i]);
+        playAudio(gameSequence[i]);
         i++;
       }, 1000);
     }
 
-    function flashButton(colorName) {
-      let button = buttons.find(btn => btn.getAttribute('data-color') === colorName);
-      button.style.backgroundColor = colors[colorName];
-      setTimeout(() => {
-        button.style.backgroundColor = ''; // 恢復為默認顏色
-      }, 500);
+    function playAudio(colorName) {
+      let audio = new Audio(audioFiles[colorName]);
+      audio.play();
     }
 
     function playerClick(colorName) {
       if (!gameActive) return;
-      
+
       playerSequence.push(colorName);
-      flashButton(colorName);
+      playAudio(colorName); // 當玩家點擊時播放音頻
 
       if (!checkPlayerMove()) {
         gameOver();
@@ -135,7 +147,7 @@
   </script>
 </head>
 <body>
-  <h1>Simon色水遊戲</h1>
+  <h1>Simon聽力色水遊戲</h1>
   <button onclick="startGame()" style="font-size: 24px; padding: 15px; margin: 20px;">開始遊戲</button><br><br>
   <div id="options"></div>
   <div id="score" style="font-size: 24px;">Score: 0</div>
