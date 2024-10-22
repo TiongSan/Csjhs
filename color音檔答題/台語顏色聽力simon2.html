@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simon色水遊戲</title>
+  <style>
+    /* 調整按鈕的樣式 */
+    button {
+      font-size: 24px;
+      padding: 20px;
+      width: 100%;
+      height: 100px;
+    }
+
+    /* 創建一個 2x2 的網格 */
+    #options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 10px;
+      width: 400px;
+      margin: 20px auto;
+    }
+
+    /* 調整整體版面樣式 */
+    body {
+      text-align: center;
+    }
+  </style>
+  <script>
+    let colors = {
+      "咖啡色": "brown",
+      "橙色": "orange",
+      "灰色": "gray",
+      "白色": "white",
+      "粉紅仔色": "pink",
+      "紅色": "red",
+      "紫色": "purple",
+      "膚色": "navajowhite",
+      "藍色": "blue",
+      "青色": "cyan",
+      "黃色": "yellow",
+      "黑色": "black"
+    };
+
+    let gameSequence = [];
+    let playerSequence = [];
+    let score = 0;
+    let gameActive = false;
+    let buttons = [];
+
+    function startGame() {
+      gameActive = true;
+      score = 0;
+      gameSequence = [];
+      playerSequence = [];
+      document.getElementById('score').innerText = 'Score: ' + score;
+      nextRound();
+    }
+
+    function nextRound() {
+      playerSequence = [];
+      let randomColor = Object.keys(colors)[Math.floor(Math.random() * Object.keys(colors).length)];
+      gameSequence.push(randomColor);
+      showSequence();
+    }
+
+    function showSequence() {
+      let i = 0;
+      let interval = setInterval(() => {
+        if (i >= gameSequence.length) {
+          clearInterval(interval);
+          return;
+        }
+        flashButton(gameSequence[i]);
+        i++;
+      }, 1000);
+    }
+
+    function flashButton(colorName) {
+      let button = buttons.find(btn => btn.getAttribute('data-color') === colorName);
+      button.style.backgroundColor = colors[colorName];
+      setTimeout(() => {
+        button.style.backgroundColor = ''; // 恢復為默認顏色
+      }, 500);
+    }
+
+    function playerClick(colorName) {
+      if (!gameActive) return;
+      
+      playerSequence.push(colorName);
+      flashButton(colorName);
+
+      if (!checkPlayerMove()) {
+        gameOver();
+        return;
+      }
+
+      if (playerSequence.length === gameSequence.length) {
+        score++;
+        document.getElementById('score').innerText = 'Score: ' + score;
+        setTimeout(nextRound, 1000);
+      }
+    }
+
+    function checkPlayerMove() {
+      for (let i = 0; i < playerSequence.length; i++) {
+        if (playerSequence[i] !== gameSequence[i]) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    function gameOver() {
+      gameActive = false;
+      alert('遊戲結束！您的分數是: ' + score);
+    }
+
+    function createButtons() {
+      const optionsDiv = document.getElementById('options');
+      Object.keys(colors).forEach(colorName => {
+        let button = document.createElement('button');
+        button.setAttribute('data-color', colorName);
+        button.innerText = colorName;
+        button.onclick = () => playerClick(colorName);
+        optionsDiv.appendChild(button);
+        buttons.push(button);
+      });
+    }
+
+    window.onload = () => {
+      createButtons();
+    };
+  </script>
+</head>
+<body>
+  <h1>Simon色水遊戲</h1>
+  <button onclick="startGame()" style="font-size: 24px; padding: 15px; margin: 20px;">開始遊戲</button><br><br>
+  <div id="options"></div>
+  <div id="score" style="font-size: 24px;">Score: 0</div>
+</body>
+</html>
