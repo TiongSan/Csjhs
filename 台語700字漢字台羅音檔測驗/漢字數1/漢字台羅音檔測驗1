@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>漢字台羅音檔測驗1</title>
+  <style>
+    button {
+      font-size: 24px;
+      padding: 20px;
+      width: 100%;
+      height: 100px;
+    }
+    #options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 10px;
+      width: 400px;
+      margin: 20px auto;
+    }
+    body {
+      text-align: center;
+    }
+    #restartButton {
+      display: none;
+      font-size: 24px;
+      padding: 15px;
+      margin-top: 20px;
+    }
+  </style>
+  <script>
+    let audioFiles = {};
+    let fileNames = [];
+    let score = 0;
+    let timeLeft = 60;
+    let timer;
+    let gameActive = false;
+
+    // 讀取 JSON 文件
+    fetch('audioFiles.json')
+      .then(response => response.json())
+      .then(data => {
+        audioFiles = data;
+        fileNames = Object.keys(audioFiles);
+        console.log('音頻檔案:', audioFiles);
+      })
+      .catch(error => console.error('無法讀取JSON文件:', error));
+
+    function playRandomAudio() {
+      if (!gameActive) return;
+      let randomIndex = Math.floor(Math.random() * fileNames.length);
+      let correctAnswer = fileNames[randomIndex];
+      let audio = new Audio(correctAnswer + '.mp3');
+      
+      audio.oncanplaythrough = () => audio.play();
+      audio.onerror = (e) => console.error('無法播放音頻文件:', e);
+
+      let correctAnswerDisplay = correctAnswer + " (" + audioFiles[correctAnswer] + ")";
+      let otherOptions = fileNames.filter(item => item !== correctAnswer);
+      otherOptions = shuffleArray(otherOptions);
+      let allOptions = [correctAnswerDisplay, ...otherOptions.slice(0, 3).map(option => option + " (" + audioFiles[option] + ")")];
+      allOptions = shuffleArray(allOptions);
+      let optionsHtml = '';
+      for (let i = 0; i < allOptions.length; i++) {
+        optionsHtml += `<button onclick="checkAnswer('${allOptions[i] === correctAnswerDisplay}')">${allOptions[i]}</button>`;
+      }
+      document.getElementById('options').innerHTML = optionsHtml;
+    }
+
+    function checkAnswer(isCorrect) {
+      if (!gameActive) return;
+      if (isCorrect === 'true') {
+        score++;
+      } else {
+        score--;
+        document.body.style.backgroundColor = 'red';
+        setTimeout(() => {
+          document.body.style.backgroundColor = 'white';
+        }, 1000);
+      }
+      document.getElementById('score').innerText = '分數: ' + score;
+      playRandomAudio();
+    }
+
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    function startGame() {
+      gameActive = true;
+      score = 0;
+      timeLeft = 60;
+      document.getElementById('score').innerText = '分數: ' + score;
+      document.getElementById('time').innerText = '剩餘時間: ' + timeLeft;
+      document.getElementById('restartButton').style.display = 'none';
+      timer = setInterval(() => {
+        timeLeft--;
+        document.getElementById('time').innerText = '剩餘時間: ' + timeLeft;
+        if (timeLeft === 0) {
+          endGame();
+        }
+      }, 1000);
+      playRandomAudio();
+    }
+
+    function endGame() {
+      gameActive = false;
+      clearInterval(timer);
+      document.getElementById('options').innerHTML = '';
+      document.getElementById('restartButton').style.display = 'inline-block';
+    }
+
+    function restartGame() {
+      startGame();
+    }
+  </script>
+</head>
+<body>
+  <h1>漢字台羅音檔測驗1</h1>
+  <br>
+  <h2>網頁編寫:陳文賓老師</h2>
+  <button onclick="startGame()" style="font-size: 24px; padding: 15px; margin: 20px;">開始遊戲</button><br><br>
+  <div id="options"></div>
+  <div id="score" style="font-size: 24px;">分數: 0</div>
+  <div id="time" style="font-size: 24px;">剩餘時間: 60</div>
+  <button id="restartButton" onclick="restartGame()">重新開始遊戲</button>
+</body>
+</html>
