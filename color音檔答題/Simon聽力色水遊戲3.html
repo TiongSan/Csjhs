@@ -3,158 +3,133 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simon聽力色水遊戲</title>
+  <title>Simon 聽覺遊戲</title>
   <style>
-    /* 調整按鈕的樣式 */
-    button {
-      font-size: 24px;
-      padding: 20px;
-      width: 100%;
-      height: 100px;
-    }
-
-    /* 創建一個 2x2 的網格 */
-    #options {
+    /* 創建一個 3x4 的網格來排列顏色方塊 */
+    #colorGrid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-gap: 10px;
-      width: 400px;
+      grid-template-columns: repeat(3, 150px); /* 三列，每列150px寬 */
+      grid-template-rows: repeat(4, 150px); /* 四行，每行150px高 */
+      gap: 10px; /* 格子之間的距離 */
+      justify-content: center;
       margin: 20px auto;
     }
 
-    /* 調整整體版面樣式 */
+    .colorBlock {
+      width: 150px;
+      height: 150px;
+      border: 2px solid #000;
+      cursor: pointer;
+    }
+
     body {
       text-align: center;
     }
-  </style>
-  <script>
-    let colors = {
-      "咖啡色": "brown",
-      "橙色": "orange",
-      "灰色": "gray",
-      "白色": "white",
-      "粉紅仔色": "pink",
-      "紅色": "red",
-      "紫色": "purple",
-      "膚色": "navajowhite",
-      "藍色": "blue",
-      "青色": "cyan",
-      "黃色": "yellow",
-      "黑色": "black"
-    };
 
-    let audioFiles = {
-      "咖啡色": "brown.mp3",
-      "橙色": "orange.mp3",
-      "灰色": "gray.mp3",
-      "白色": "white.mp3",
-      "粉紅仔色": "pink.mp3",
-      "紅色": "red.mp3",
-      "紫色": "purple.mp3",
-      "膚色": "navajowhite.mp3",
-      "藍色": "blue.mp3",
-      "青色": "cyan.mp3",
-      "黃色": "yellow.mp3",
-      "黑色": "black.mp3"
-    };
-
-    let gameSequence = [];
-    let playerSequence = [];
-    let score = 0;
-    let gameActive = false;
-    let buttons = [];
-
-    // 调用playAudio函数时记录是否有播放
-    function playAudio(colorName) {
-      let audio = new Audio(audioFiles[colorName]);
-      audio.play().then(() => {
-        console.log(colorName + " 音頻播放成功");
-      }).catch((error) => {
-        console.error("音频播放失败: ", error);
-      });
+    button {
+      font-size: 24px;
+      padding: 10px 20px;
+      margin: 20px;
     }
+  </style>
+</head>
+<body>
+  <h1>Simon 聽覺遊戲</h1>
+  <button onclick="startGame()">開始遊戲</button>
+  <div id="colorGrid">
+    <div class="colorBlock" id="brown" style="background-color: brown;" onclick="playerMove('咖啡色')"></div>
+    <div class="colorBlock" id="orange" style="background-color: orange;" onclick="playerMove('橙色')"></div>
+    <div class="colorBlock" id="gray" style="background-color: gray;" onclick="playerMove('灰色')"></div>
+    <div class="colorBlock" id="white" style="background-color: white;" onclick="playerMove('白色')"></div>
+    <div class="colorBlock" id="pink" style="background-color: pink;" onclick="playerMove('粉紅仔色')"></div>
+    <div class="colorBlock" id="red" style="background-color: red;" onclick="playerMove('紅色')"></div>
+    <div class="colorBlock" id="purple" style="background-color: purple;" onclick="playerMove('紫色')"></div>
+    <div class="colorBlock" id="navajowhite" style="background-color: navajowhite;" onclick="playerMove('膚色')"></div>
+    <div class="colorBlock" id="blue" style="background-color: blue;" onclick="playerMove('藍色')"></div>
+    <div class="colorBlock" id="cyan" style="background-color: cyan;" onclick="playerMove('青色')"></div>
+    <div class="colorBlock" id="yellow" style="background-color: yellow;" onclick="playerMove('黃色')"></div>
+    <div class="colorBlock" id="black" style="background-color: black;" onclick="playerMove('黑色')"></div>
+  </div>
 
+  <div id="status" style="font-size: 24px; margin-top: 20px;"></div>
+
+  <script>
+    let audioFiles = {
+      '咖啡色': 'brown.mp3',
+      '橙色': 'orange.mp3',
+      '灰色': 'gray.mp3',
+      '白色': 'white.mp3',
+      '粉紅仔色': 'pink.mp3',
+      '紅色': 'red.mp3',
+      '紫色': 'purple.mp3',
+      '膚色': 'navajowhite.mp3',
+      '藍色': 'blue.mp3',
+      '青色': 'cyan.mp3',
+      '黃色': 'yellow.mp3',
+      '黑色': 'black.mp3'
+    };
+
+    let sequence = [];  // 存放正確順序
+    let playerSequence = [];  // 玩家輸入的順序
+    let level = 0;  // 關卡數
+
+    // 開始遊戲
     function startGame() {
-      gameActive = true;
-      score = 0;
-      gameSequence = [];
+      sequence = [];
       playerSequence = [];
-      document.getElementById('score').innerText = 'Score: ' + score;
+      level = 0;
       nextRound();
     }
 
+    // 生成下一回合
     function nextRound() {
+      level++;
       playerSequence = [];
-      let randomColor = Object.keys(colors)[Math.floor(Math.random() * Object.keys(colors).length)];
-      gameSequence.push(randomColor);
-      playAudioSequence();
+      document.getElementById('status').innerText = `Level: ${level}`;
+      
+      // 隨機選擇一個顏色並播放對應音檔
+      let randomColor = Object.keys(audioFiles)[Math.floor(Math.random() * 12)];
+      sequence.push(randomColor);
+      
+      playSequence();
     }
 
-    function playAudioSequence() {
-      let i = 0;
+    // 播放順序中的每一個音檔
+    function playSequence() {
+      let index = 0;
       let interval = setInterval(() => {
-        if (i >= gameSequence.length) {
+        let color = sequence[index];
+        let audio = new Audio(audioFiles[color]);
+        audio.play();
+        
+        index++;
+        if (index >= sequence.length) {
           clearInterval(interval);
-          return;
         }
-        playAudio(gameSequence[i]);
-        i++;
-      }, 1000);
+      }, 1000);  // 每隔一秒播放下一個音檔
     }
 
-    function playerClick(colorName) {
-      if (!gameActive) return;
-
-      playerSequence.push(colorName);
-      playAudio(colorName); // 當玩家點擊時播放音頻
-
-      if (!checkPlayerMove()) {
-        gameOver();
+    // 玩家選擇顏色時
+    function playerMove(color) {
+      playerSequence.push(color);
+      
+      // 檢查玩家當前輸入是否正確
+      let currentStep = playerSequence.length - 1;
+      if (playerSequence[currentStep] !== sequence[currentStep]) {
+        endGame();
         return;
       }
 
-      if (playerSequence.length === gameSequence.length) {
-        score++;
-        document.getElementById('score').innerText = 'Score: ' + score;
-        setTimeout(nextRound, 1000);
+      // 如果玩家完成本輪所有輸入，進入下一輪
+      if (playerSequence.length === sequence.length) {
+        setTimeout(nextRound, 1000);  // 等一秒後進入下一關
       }
     }
 
-    function checkPlayerMove() {
-      for (let i = 0; i < playerSequence.length; i++) {
-        if (playerSequence[i] !== gameSequence[i]) {
-          return false;
-        }
-      }
-      return true;
+    // 遊戲結束
+    function endGame() {
+      document.getElementById('status').innerText = `遊戲結束！您到達了第 ${level} 關。`;
     }
-
-    function gameOver() {
-      gameActive = false;
-      alert('遊戲結束！您的分數是: ' + score);
-    }
-
-    function createButtons() {
-      const optionsDiv = document.getElementById('options');
-      Object.keys(colors).forEach(colorName => {
-        let button = document.createElement('button');
-        button.setAttribute('data-color', colorName);
-        button.innerText = colorName;
-        button.onclick = () => playerClick(colorName);
-        optionsDiv.appendChild(button);
-        buttons.push(button);
-      });
-    }
-
-    window.onload = () => {
-      createButtons();
-    };
   </script>
-</head>
-<body>
-  <h1>Simon聽力色水遊戲</h1>
-  <button onclick="startGame()" style="font-size: 24px; padding: 15px; margin: 20px;">開始遊戲</button><br><br>
-  <div id="options"></div>
-  <div id="score" style="font-size: 24px;">Score: 0</div>
 </body>
 </html>
