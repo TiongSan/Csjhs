@@ -5,12 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simon 聽覺遊戲</title>
   <style>
-    /* 創建一個 3x4 的網格來排列顏色方塊 */
     #colorGrid {
       display: grid;
-      grid-template-columns: repeat(3, 150px); /* 三列，每列150px寬 */
-      grid-template-rows: repeat(4, 150px); /* 四行，每行150px高 */
-      gap: 10px; /* 格子之間的距離 */
+      grid-template-columns: repeat(3, 150px);
+      grid-template-rows: repeat(4, 150px);
+      gap: 10px;
       justify-content: center;
       margin: 20px auto;
     }
@@ -54,7 +53,7 @@
   <div id="status" style="font-size: 24px; margin-top: 20px;"></div>
 
   <script>
-    let audioFiles = {
+let audioFiles = {
       '咖啡色': '咖啡色.mp3',
       '橙色': '橙色.mp3',
       '灰色': '灰色.mp3',
@@ -72,23 +71,31 @@
     let sequence = [];  // 存放正確順序
     let playerSequence = [];  // 玩家輸入的順序
     let level = 0;  // 關卡數
+    let availableColors = Object.keys(audioFiles);  // 所有可用顏色
 
     // 開始遊戲
     function startGame() {
       sequence = [];
       playerSequence = [];
       level = 0;
+      availableColors = Object.keys(audioFiles);  // 重置可用顏色
       nextRound();
     }
 
     // 生成下一回合
     function nextRound() {
+      if (availableColors.length === 0) {
+        endGame();
+        return;
+      }
+      
       level++;
       playerSequence = [];
       document.getElementById('status').innerText = `Level: ${level}`;
       
-      // 隨機選擇一個顏色並播放對應音檔
-      let randomColor = Object.keys(audioFiles)[Math.floor(Math.random() * 12)];
+      // 隨機選擇一個不重複的顏色並播放對應音檔
+      let randomIndex = Math.floor(Math.random() * availableColors.length);
+      let randomColor = availableColors.splice(randomIndex, 1)[0];  // 從可用顏色中移除選中的顏色
       sequence.push(randomColor);
       
       playSequence();
