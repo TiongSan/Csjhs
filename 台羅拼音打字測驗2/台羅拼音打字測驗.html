@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台羅拼音輸入測驗</title>
+    <style>
+        body { font-family: Arial, sans-serif; display: flex; flex-direction: column; align-items: center; }
+        #inputArea, #virtualKeyboard { margin-top: 20px; }
+        #inputArea textarea { width: 400px; height: 100px; font-size: 18px; }
+        .key { display: inline-block; padding: 10px; margin: 5px; background: #ccc; border-radius: 5px; cursor: pointer; font-size: 18px; }
+        .key:hover { background: #aaa; }
+        #virtualKeyboard { max-width: 420px; display: flex; flex-wrap: wrap; }
+        #question { font-size: 20px; margin: 20px; }
+    </style>
+</head>
+<body>
+    <h1>台羅拼音輸入測驗</h1>
+    <div id="question">載入中...</div>
+    
+    <div id="inputArea">
+        <textarea id="inputBox" placeholder="請點擊音調鍵以輸入台羅拼音..."></textarea>
+    </div>
+
+    <div id="virtualKeyboard">
+        <!-- 音調字符按鍵 -->
+        <div class="key" onclick="insertCharacter('á')">á</div>
+        <div class="key" onclick="insertCharacter('í')">í</div>
+        <div class="key" onclick="insertCharacter('ú')">ú</div>
+        <div class="key" onclick="insertCharacter('é')">é</div>
+        <div class="key" onclick="insertCharacter('ó')">ó</div>
+        <div class="key" onclick="insertCharacter('óo')">óo</div>
+        
+        <div class="key" onclick="insertCharacter('à')">à</div>
+        <div class="key" onclick="insertCharacter('ì')">ì</div>
+        <div class="key" onclick="insertCharacter('ù')">ù</div>
+        <div class="key" onclick="insertCharacter('è')">è</div>
+        <div class="key" onclick="insertCharacter('ò')">ò</div>
+        <div class="key" onclick="insertCharacter('òo')">òo</div>
+        
+        <div class="key" onclick="insertCharacter('â')">â</div>
+        <div class="key" onclick="insertCharacter('î')">î</div>
+        <div class="key" onclick="insertCharacter('û')">û</div>
+        <div class="key" onclick="insertCharacter('ê')">ê</div>
+        <div class="key" onclick="insertCharacter('ô')">ô</div>
+        <div class="key" onclick="insertCharacter('ôo')">ôo</div>
+        
+        <div class="key" onclick="insertCharacter('ā')">ā</div>
+        <div class="key" onclick="insertCharacter('ī')">ī</div>
+        <div class="key" onclick="insertCharacter('ū')">ū</div>
+        <div class="key" onclick="insertCharacter('ē')">ē</div>
+        <div class="key" onclick="insertCharacter('ō')">ō</div>
+        <div class="key" onclick="insertCharacter('ōo')">ōo</div>
+        
+        <div class="key" onclick="insertCharacter('--')">--</div>
+    </div>
+
+    <script>
+	
+			const questions = [
+		  { "hanzi": "我們一起聽我說。", "pinyin": "Guán ta-ke tsiânn thiànn--guá." },
+		  { "hanzi": "這是台灣的美景。", "pinyin": "Tsit sī Tâi-oân ê bí-kéng." }
+		];
+
+        // 插入字符函數
+        function insertCharacter(char) {
+            const inputBox = document.getElementById("inputBox");
+            inputBox.value += char;
+        }
+
+        // 載入JSON檔案並顯示題目
+        async function loadQuestion() {
+            try {
+				const response = await fetch('questions.json'); // 確保只有這個fetch請求，並且文件存在
+				const questions = await response.json();
+                const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
+                document.getElementById("question").textContent = `請輸入以下句子的台羅拼音：${randomQuestion.hanzi}`;
+                document.getElementById("inputBox").placeholder = randomQuestion.pinyin;
+            } catch (error) {
+                document.getElementById("question").textContent = "無法載入題目，請檢查檔案。";
+            }
+        }
+
+        // 頁面載入時呼叫 loadQuestion
+        window.onload = loadQuestion;
+    </script>
+</body>
+</html>
