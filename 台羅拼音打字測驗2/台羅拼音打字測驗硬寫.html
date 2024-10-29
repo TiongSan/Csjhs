@@ -1,110 +1,155 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>台羅拼音輸入測驗</title>
-    <style>
-        body { font-family: Arial, sans-serif; display: flex; flex-direction: column; align-items: center; }
-        #inputArea, #virtualKeyboard { margin-top: 20px; }
-        #inputArea textarea { width: 400px; height: 100px; font-size: 18px; }
-        .key { display: inline-block; padding: 10px; margin: 5px; background: #ccc; border-radius: 5px; cursor: pointer; font-size: 18px; }
-        .key:hover { background: #aaa; }
-        #virtualKeyboard { max-width: 420px; display: flex; flex-wrap: wrap; }
-        #question { font-size: 20px; margin: 20px; text-align: center; }
-        #score { margin-top: 20px; font-size: 18px; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>台羅拼音輸入標記</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #inputArea, #virtualKeyboard {
+      margin-top: 20px;
+    }
+    #inputArea textarea {
+      width: 400px;
+      height: 100px;
+      font-size: 18px;
+    }
+    .key {
+      display: inline-block;
+      padding: 10px;
+      margin: 5px;
+      background: #ccc;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    .key:hover {
+      background: #aaa;
+    }
+    #virtualKeyboard {
+      max-width: 420px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    #question {
+      font-size: 20px;
+      margin: 20px;
+      text-align: center;
+    }
+    #score {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    #balloon {
+      margin-top: 20px;
+      transition: width 0.3s ease, height 0.3s ease;
+    }
+  </style>
 </head>
 <body>
-    <h1>台羅拼音輸入測驗</h1>
-    <div id="question">載入中...</div>
-    
-    <div id="inputArea">
-        <textarea id="inputBox" placeholder="請點擊音調鍵以輸入台羅拼音..."></textarea>
-        <button onclick="submitAnswer()">送出</button>
-    </div>
+  <h1>台羅拼音輸入測驗</h1>
+  <div id="question">載入中...</div>
+  
+  <!-- 氣球圖片 -->
+  <img id="balloon" src="balloon.png" alt="氣球" style="width: 50px; height: 100px;">
 
-    <div id="virtualKeyboard">
-        <!-- 音調字符按鍵 -->
-        <div class="key" onclick="insertCharacter('á')">á</div>
-        <div class="key" onclick="insertCharacter('í')">í</div>
-        <div class="key" onclick="insertCharacter('ú')">ú</div>
-        <div class="key" onclick="insertCharacter('é')">é</div>
-        <div class="key" onclick="insertCharacter('ó')">ó</div>
-        <div class="key" onclick="insertCharacter('óo')">óo</div><br>
+  <div id="inputArea">
+    <textarea id="inputBox" placeholder="請點選音調鍵以輸入台羅拼音..."></textarea>
+    <button onclick="submitAnswer()">送出</button>
+  </div>
 
-        <div class="key" onclick="insertCharacter('à')">à</div>
-        <div class="key" onclick="insertCharacter('ì')">ì</div>
-        <div class="key" onclick="insertCharacter('ù')">ù</div>
-        <div class="key" onclick="insertCharacter('è')">è</div>
-        <div class="key" onclick="insertCharacter('ò')">ò</div>
-        <div class="key" onclick="insertCharacter('òo')">òo</div><br>
+  <div id="virtualKeyboard">
+    <!-- 音調字元按鈕 -->
+    <div class="key" onclick="insertCharacter('á')">á</div>
+    <div class="key" onclick="insertCharacter('í')">í</div>
+    <div class="key" onclick="insertCharacter('ú')">ú</div>
+    <div class="key" onclick="insertCharacter('é')">é</div>
+    <div class="key" onclick="insertCharacter('ó')">ó</div>
+    <div class="key" onclick="insertCharacter('óo')">óo</div><br>
+    <div class="key" onclick="insertCharacter('à')">à</div>
+    <div class="key" onclick="insertCharacter('ì')">ì</div>
+    <div class="key" onclick="insertCharacter('ù')">ù</div>
+    <div class="key" onclick="insertCharacter('è')">è</div>
+    <div class="key" onclick="insertCharacter('ò')">ò</div>
+    <div class="key" onclick="insertCharacter('òo')">òo</div><br>
+    <div class="key" onclick="insertCharacter('â')">â</div>
+    <div class="key" onclick="insertCharacter('î')">î</div>
+    <div class="key" onclick="insertCharacter('û')">û</div>
+    <div class="key" onclick="insertCharacter('ê')">ê</div>
+    <div class="key" onclick="insertCharacter('ô')">ô</div>
+    <div class="key" onclick="insertCharacter('ôo')">ôo</div><br>
+    <div class="key" onclick="insertCharacter('ā')">ā</div>
+    <div class="key" onclick="insertCharacter('ī')">ī</div>
+    <div class="key" onclick="insertCharacter('ū')">ū</div>
+    <div class="key" onclick="insertCharacter('ē')">ē</div>
+    <div class="key" onclick="insertCharacter('ō')">ō</div>
+    <div class="key" onclick="insertCharacter('ōo')">ōo</div><br>
+    <div class="key" onclick="insertCharacter('--')">--</div>
+  </div>
 
-        <div class="key" onclick="insertCharacter('â')">â</div>
-        <div class="key" onclick="insertCharacter('î')">î</div>
-        <div class="key" onclick="insertCharacter('û')">û</div>
-        <div class="key" onclick="insertCharacter('ê')">ê</div>
-        <div class="key" onclick="insertCharacter('ô')">ô</div>
-        <div class="key" onclick="insertCharacter('ôo')">ôo</div><br>
+  <div id="score">答對題數：0，總題數：0</div>
 
-        <div class="key" onclick="insertCharacter('ā')">ā</div>
-        <div class="key" onclick="insertCharacter('ī')">ī</div>
-        <div class="key" onclick="insertCharacter('ū')">ū</div>
-        <div class="key" onclick="insertCharacter('ē')">ē</div>
-        <div class="key" onclick="insertCharacter('ō')">ō</div>
-        <div class="key" onclick="insertCharacter('ōo')">ōo</div><br>
+  <script>
+    // 插入字元函數
+    function insertCharacter(char) {
+      const inputBox = document.getElementById("inputBox");
+      inputBox.value += char;
+    }
 
-        <div class="key" onclick="insertCharacter('--')">--</div>
-    </div>
+    // 使用硬編碼的題目資料
+    const questions = [
+      { "hanzi": "我們一起聽我說。", "pinyin": "Guán ta-ke tsiânn thiànn--guá." },
+      { "hanzi": "這是台灣的美景。", "pinyin": "Tsit sī Tâi-oân ê bí-kéng." },
+      { "hanzi": "你看我殕殕，我看你霧霧。", "pinyin": "Lí khuànn guá phú-phú, guá khuànn lí bū-bū." },
+      { "hanzi": "這種餅哪會做這形的。", "pinyin": "Tsit tsióng piánn ná ē tsò tsit hîng--ê." },
+      { "hanzi": "頭毛菜誠輕秤。", "pinyin": "Thâu-mn̂g-tshài tsiânn khin-tshìn." }
+    ];
 
-    <div id="score">答對題數：0，總題數：0</div>
+    let currentQuestion = {};
+    let correctAnswers = 0;
+    let totalQuestions = 0;
 
-    <script>
-        // 插入字符函數
-        function insertCharacter(char) {
-            const inputBox = document.getElementById("inputBox");
-            inputBox.value += char;
-        }
+    // 顯示隨機題目
+    function loadQuestion() {
+      currentQuestion = questions[Math.floor(Math.random() * questions.length)];
+      document.getElementById("question").textContent = `請輸入以下句子的台羅拼音：\n${currentQuestion.hanzi}`;
+      document.getElementById("inputBox").value = "";
+      document.getElementById("inputBox").placeholder = "請輸入台羅拼音...";
+    }
 
-        // 使用硬編碼的題目資料
-        const questions = [
-            { "hanzi": "我們一起聽我說。", "pinyin": "Guán ta-ke tsiânn thiànn--guá." },
-            { "hanzi": "這是台灣的美景。", "pinyin": "Tsit sī Tâi-oân ê bí-kéng." },
-			{ "hanzi": "你看我殕殕，我看你霧霧。", "pinyin": "Lí khuànn guá phú-phú, guá khuànn lí bū-bū." },
-			{ "hanzi": "這種餅哪會做這形的。", "pinyin": "Tsit tsióng piánn ná ē tsò tsit hîng--ê." },
-			{ "hanzi": "頭毛菜誠輕秤。", "pinyin": "Thâu-mn̂g-tshài tsiânn khin-tshìn." }
-        ];
+    // 提交答案並檢查是否正確
+    function submitAnswer() {
+      const userAnswer = document.getElementById("inputBox").value.trim();
+      if (userAnswer === currentQuestion.pinyin) {
+        correctAnswers++;
+        increaseBalloonSize();
+      }
+      totalQuestions++;
+      updateScore();
+      loadQuestion();
+    }
 
-        let currentQuestion = {};
-        let correctAnswers = 0;
-        let totalQuestions = 0;
+    // 更新分數顯示
+    function updateScore() {
+      document.getElementById("score").textContent = `答對題數：${correctAnswers}，總題數：${totalQuestions}`;
+    }
 
-        // 顯示隨機題目
-        function loadQuestion() {
-            currentQuestion = questions[Math.floor(Math.random() * questions.length)];
-            document.getElementById("question").textContent = `請輸入以下句子的台羅拼音：\n${currentQuestion.hanzi}`;
-            document.getElementById("inputBox").value = "";
-            document.getElementById("inputBox").placeholder = "請輸入台羅拼音...";
-        }
+    // 增加氣球大小
+    function increaseBalloonSize() {
+      const balloon = document.getElementById("balloon");
+      let newWidth = 50 + correctAnswers * 10;
+      let newHeight = 100 + correctAnswers * 20;
+      balloon.style.width = `${newWidth}px`;
+      balloon.style.height = `${newHeight}px`;
+    }
 
-        // 提交答案並檢查是否正確
-        function submitAnswer() {
-            const userAnswer = document.getElementById("inputBox").value.trim();
-            if (userAnswer === currentQuestion.pinyin) {
-                correctAnswers++;
-            }
-            totalQuestions++;
-            updateScore();
-            loadQuestion();
-        }
-
-        // 更新分數顯示
-        function updateScore() {
-            document.getElementById("score").textContent = `答對題數：${correctAnswers}，總題數：${totalQuestions}`;
-        }
-
-        // 頁面載入時呼叫 loadQuestion
-        window.onload = loadQuestion;
-    </script>
+    // 頁面載入時呼叫 loadQuestion
+    window.onload = loadQuestion;
+  </script>
 </body>
 </html>
