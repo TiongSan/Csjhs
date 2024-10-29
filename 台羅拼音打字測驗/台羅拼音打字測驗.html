@@ -65,7 +65,7 @@
         // 載入JSON檔案並顯示題目
         async function loadQuestion() {
             try {
-                const response = await fetch('questions.json');
+                const response = await fetch('questions.json'); // 確保只有這個fetch請求，並且文件存在
                 const questions = await response.json();
                 const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
                 document.getElementById("question").textContent = `請輸入以下句子的台羅拼音：${randomQuestion.hanzi}`;
