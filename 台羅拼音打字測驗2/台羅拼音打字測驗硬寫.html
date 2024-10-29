@@ -153,13 +153,139 @@
 
     // 使用硬編碼的題目資料
     const questions = [
-      { "hanzi": "我們一起聽我說。", "pinyin": "Guán ta-ke tsiânn thiànn--guá." },
-      { "hanzi": "這是台灣的美景。", "pinyin": "Tsit sī Tâi-oân ê bí-kéng." },
-      { "hanzi": "你看我殕殕，我看你霧霧。", "pinyin": "Lí khuànn guá phú-phú, guá khuànn lí bū-bū." },
-      { "hanzi": "這種餅哪會做這形的。", "pinyin": "Tsit tsióng piánn ná ē tsò tsit hîng--ê." },
-      { "hanzi": "頭毛菜誠輕秤。", "pinyin": "Thâu-mn̂g-tshài tsiânn khin-tshìn." },
-	      { "hanzi": "頭毛菜誠輕秤。", "pinyin": "Thâu-mn̂g-tshài tsiânn khin-tshìn." },
-    ];
+    {
+        "hanzi": "原來獅的跤去予一枝刺鑿著",
+        "pinyin": "Guân-lâi sai ê kha khì hōo tsi̍t ki tshì tsha̍k--tio̍h,"
+    },
+    {
+        "hanzi": "當咧流血",
+        "pinyin": "tng-teh lâu-hueh."
+    },
+    {
+        "hanzi": "獅看著少年家",
+        "pinyin": "Sai khuànn-tio̍h siàu-liân-ke,"
+    },
+    {
+        "hanzi": "目睭隨金起來",
+        "pinyin": "ba̍k-tsiu suî kim--khí-lâi,"
+    },
+    {
+        "hanzi": "伊勻勻仔共著傷的跤伸去少年家的面頭前。",
+        "pinyin": "i ûn-ûn-á kā tio̍h-siong ê kha tshun khì siàu-liân-ke ê bīn-thâu-tsîng."
+    },
+    {
+        "hanzi": "少年家看獅遮爾痛苦",
+        "pinyin": "Siàu-liân-ke khuànn sai tsiah-nī thòng-khóo,"
+    },
+    {
+        "hanzi": "有淡薄仔 毋甘",
+        "pinyin": "ū tām-po̍h-á m̄-kam,"
+    },
+    {
+        "hanzi": "就共彼枝刺拔起來",
+        "pinyin": "tō kā hit ki tshì pue̍h--khí-lâi,"
+    },
+    {
+        "hanzi": "閣共受傷的所在糊藥仔",
+        "pinyin": "koh kā siū-siong ê sóo-tsāi kôo io̍h-á."
+    },
+    {
+        "hanzi": "獅慢慢仔徛起來",
+        "pinyin": "Sai bān-bān-á khiā--khí-lâi,"
+    },
+    {
+        "hanzi": "共少年家頕一下頭",
+        "pinyin": "kā siàu-liân-ke tàm tsi̍t-ē thâu,"
+    },
+    {
+        "hanzi": "表示感謝",
+        "pinyin": "piáu-sī kám-siā."
+    },
+    {
+        "hanzi": "後來",
+        "pinyin": "Āu--lâi,"
+    },
+    {
+        "hanzi": "少年家去到市內",
+        "pinyin": "siàu-liân-ke khì kàu tshī-lāi,"
+    },
+    {
+        "hanzi": "真緊就揣著頭路",
+        "pinyin": "tsin kín tō tshuē-tio̍h thâu-lōo,"
+    },
+    {
+        "hanzi": "想袂到做無偌久",
+        "pinyin": "siūnn-bē-kàu tsò bô guā-kú,"
+    },
+    {
+        "hanzi": "頭家煞誣賴伊偷提錢",
+        "pinyin": "thâu-ke suah bû-luā i thau-the̍h tsînn,"
+    },
+    {
+        "hanzi": "共伊送入去監獄",
+        "pinyin": "kā i sàng-ji̍p-khì kann-ga̍k."
+    },
+    {
+        "hanzi": "法官尾仔判伊死刑",
+        "pinyin": "Huat-kuann bué--á phuànn i sí-hîng,"
+    },
+    {
+        "hanzi": "愛佮野獸關做伙",
+        "pinyin": "ài kah iá-siù kuainn tsò-hué,"
+    },
+    {
+        "hanzi": "予野獸共伊咬死",
+        "pinyin": "hōo iá-siù kā i kā--sí."
+    },
+    {
+        "hanzi": "佮少年家關做伙的是一隻獅",
+        "pinyin": "Kah siàu-liân-ke kuainn tsò-hué--ê sī tsi̍t tsiah sai,"
+    },
+    {
+        "hanzi": "這隻獅跛咧跛咧行到少年家的面頭前",
+        "pinyin": "tsit tsiah sai pái--leh pái--leh kiânn kàu siàu-liân-ke ê bīn-thâu-tsîng,"
+    },
+    {
+        "hanzi": "雄雄跪落去",
+        "pinyin": "hiông-hiông kuī--lo̍h-khì,"
+    },
+    {
+        "hanzi": "尾溜閣一直搖",
+        "pinyin": "bué-liu koh it-ti̍t iô,"
+    },
+    {
+        "hanzi": "逐家攏看甲霧嗄嗄",
+        "pinyin": "ta̍k-ke lóng khuànn kah bū-sà-sà."
+    },
+    {
+        "hanzi": "原來",
+        "pinyin": "Guân-lâi,"
+    },
+    {
+        "hanzi": "這隻獅就是過去少年家救的彼隻",
+        "pinyin": "tsit tsiah sai tō sī kuè-khì siàu-liân-ke kiù--ê hit tsiah."
+    },
+    {
+        "hanzi": "法官知影獅佮少年家的故事了後",
+        "pinyin": "Huat-kuann tsai-iánn sai kah siàu-liân-ke ê kòo-sū liáu-āu,"
+    },
+    {
+        "hanzi": "認為少年家是一个善良的人",
+        "pinyin": "jīn-uî siàu-liân-ke sī tsi̍t ê siān-liông ê lâng,"
+    },
+    {
+        "hanzi": "就改判伊無罪",
+        "pinyin": "tō kái phuànn i bô tsuē,"
+    },
+    {
+        "hanzi": "而且閣共伊佮獅攏放出去",
+        "pinyin": "jî-tshiánn koh kā i kah sai lóng pàng--tshut-khì."
+    },
+    {
+        "hanzi": "這就是人咧講的：「好心有好報」",
+        "pinyin": "Tse tō sī lâng leh kóng ê: “Hó-sim ū hó-pò.”"
+    }
+];
 
     let currentQuestion = {};
     let correctAnswers = 0;
