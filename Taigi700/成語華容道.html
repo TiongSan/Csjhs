@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台語華容道</title>
+    <!-- Styles omitted for brevity -->
+</head>
+<body>
+    <div class="sound-control">
+        <button onclick="toggleSound()" id="soundBtn">🔊 音效: 開</button>
+    </div>
+    <audio id="moveSound">
+        <source src="https://taira-komori.jpn.org/sound_os2/game01/jump12.mp3">
+    </audio>
+    <audio id="winSound">
+        <source src="https://taira-komori.jpn.org/sound_os2/game01/powerup09.mp3">
+    </audio>
+
+    <div class="container">
+        <h1>成語華容道</h1>
+        <div class="level-info">第 <span id="currentLevel">1</span> 關</div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressBar" style="width: 20%"></div>
+        </div>
+        <p>找出符合提示的成語，將四個字按順序移到最上面一排</p>
+        <div class="hint" id="hint"></div>
+        <div class="board" id="board"></div>
+        <div class="moves">移動次數: <span id="moveCount">0</span></div>
+        <button onclick="restartLevel()" id="restartBtn">重新開始本關</button>
+        <button onclick="nextLevel()" id="nextBtn" style="display: none">下一關</button>
+        <div class="feedback" id="feedback"></div>
+        <div><hr><b>設計者：</div>
+    </div>
+
+    <div class="final-message" id="finalMessage">
+        恭喜你完成了所有關卡！
+        <div class="stars">★★★★★</div>
+        <button onclick="restartGame()">重新開始遊戲</button>
+    </div>
+
+<script>
+let board = [];
+let moves = 0;
+const SIZE = 4;
+let emptyCell = { row: SIZE - 1, col: SIZE - 1 };
+let currentLevel = 1;
+let soundEnabled = true;
+let LEVELS = [];
+
+// Fetch JSON data
+fetch('idioms.json')
+    .then(response => response.json())
+    .then(data => {
+        LEVELS = data;
+        initializeLevel(1);
+        renderBoard();
+    })
+    .catch(error => console.error('Error loading JSON:', error));
+
+function toggleSound() {
+    soundEnabled = !soundEnabled;
+    document.getElementById('soundBtn').textContent =
+        `🔊 音效: ${soundEnabled ? '開' : '關'}`;
+}
+
+function playMoveSound() { /* Function omitted for brevity */ }
+function playWinSound() { /* Function omitted for brevity */ }
+
+function initializeLevel(level) {
+    const levelData = LEVELS[level - 1];
+    if (!levelData) return;
+
+    document.getElementById('hint').textContent = levelData.hint;
+    document.getElementById('currentLevel').textContent = level;
+    document.getElementById('progressBar').style.width = `${level * 20}%`;
+
+    let cells = [...levelData.idiom];
+    levelData.otherIdioms.forEach(idiom => cells.push(...idiom));
+
+    while (cells.length > SIZE * SIZE - 1) {
+        const randomIndex = Math.floor(Math.random() * cells.length);
+        if (!levelData.idiom.includes(cells[randomIndex])) {
+            cells.splice(randomIndex, 1);
+        }
+    }
+    cells.push('');
+
+    do {
+        for (let i = cells.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [cells[i], cells[j]] = [cells[j], cells[i]];
+        }
+    } while (!isSolvable(cells) || isAlreadySolved(cells, levelData.idiom));
+
+    board = [];
+    for (let i = 0; i < SIZE; i++) {
+        board[i] = cells.slice(i * SIZE, (i + 1) * SIZE);
+        const emptyIndex = board[i].indexOf('');
+        if (emptyIndex !== -1) {
+            emptyCell = { row: i, col: emptyIndex };
+        }
+    }
+}
+
+function isSolvable(cells) { /* Function omitted for brevity */ }
+function isAlreadySolved(cells, targetIdiom) { /* Function omitted for brevity */ }
+function renderBoard() { /* Function omitted for brevity */ }
+function moveCell(row, col) { /* Function omitted for brevity */ }
+function isAdjacent(row1, col1, row2, col2) { /* Function omitted for brevity */ }
+function checkWin() { /* Function omitted for brevity */ }
+function showLevelComplete() { /* Function omitted for brevity */ }
+function showFinalMessage() { /* Function omitted for brevity */ }
+function nextLevel() { /* Function omitted for brevity */ }
+function resetLevel() { /* Function omitted for brevity */ }
+function restartLevel() { /* Function omitted for brevity */ }
+function restartGame() { /* Function omitted for brevity */ }
+</script>
+</body>
+</html>
