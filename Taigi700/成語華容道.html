@@ -48,12 +48,12 @@ let currentLevel = 1;
 let soundEnabled = true;
 let LEVELS = [];
 
-// Fetch JSON data
+// Fetch JSON data and initialize the game
 fetch('idioms.json')
     .then(response => response.json())
     .then(data => {
         LEVELS = data;
-        initializeLevel(1);
+        initializeLevel(currentLevel);
         renderBoard();
     })
     .catch(error => console.error('Error loading JSON:', error));
@@ -73,25 +73,26 @@ function initializeLevel(level) {
 
     document.getElementById('hint').textContent = levelData.hint;
     document.getElementById('currentLevel').textContent = level;
-    document.getElementById('progressBar').style.width = `${level * 20}%`;
+    document.getElementById('progressBar').style.width = `${(level / LEVELS.length) * 100}%`;
 
+    // Prepare cells for the board
     let cells = [...levelData.idiom];
     levelData.otherIdioms.forEach(idiom => cells.push(...idiom));
 
+    // Remove excess cells to fit the 4x4 grid
     while (cells.length > SIZE * SIZE - 1) {
         const randomIndex = Math.floor(Math.random() * cells.length);
         if (!levelData.idiom.includes(cells[randomIndex])) {
             cells.splice(randomIndex, 1);
         }
     }
-    cells.push('');
+    cells.push('');  // Empty cell
 
-    do {
-        for (let i = cells.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [cells[i], cells[j]] = [cells[j], cells[i]];
-        }
-    } while (!isSolvable(cells) || isAlreadySolved(cells, levelData.idiom));
+    // Shuffle cells and assign to board
+    for (let i = cells.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [cells[i], cells[j]] = [cells[j], cells[i]];
+    }
 
     board = [];
     for (let i = 0; i < SIZE; i++) {
@@ -103,18 +104,100 @@ function initializeLevel(level) {
     }
 }
 
-function isSolvable(cells) { /* Function omitted for brevity */ }
-function isAlreadySolved(cells, targetIdiom) { /* Function omitted for brevity */ }
-function renderBoard() { /* Function omitted for brevity */ }
-function moveCell(row, col) { /* Function omitted for brevity */ }
-function isAdjacent(row1, col1, row2, col2) { /* Function omitted for brevity */ }
-function checkWin() { /* Function omitted for brevity */ }
-function showLevelComplete() { /* Function omitted for brevity */ }
-function showFinalMessage() { /* Function omitted for brevity */ }
-function nextLevel() { /* Function omitted for brevity */ }
-function resetLevel() { /* Function omitted for brevity */ }
-function restartLevel() { /* Function omitted for brevity */ }
-function restartGame() { /* Function omitted for brevity */ }
+function renderBoard() {
+    const boardElement = document.getElementById('board');
+    boardElement.innerHTML = '';
+
+    for (let i = 0; i < SIZE; i++) {
+        for (let j = 0; j < SIZE; j++) {
+            const cell = document.createElement('div');
+            cell.className = 'cell' + (board[i][j] === '' ? ' empty' : '');
+            cell.textContent = board[i][j];
+            cell.onclick = () => moveCell(i, j);
+            boardElement.appendChild(cell);
+        }
+    }
+}
+
+function moveCell(row, col) {
+    if (isAdjacent(row, col, emptyCell.row, emptyCell.col)) {
+        [board[row][col], board[emptyCell.row][emptyCell.col]] =
+        [board[emptyCell.row][emptyCell.col], board[row][col]];
+
+        emptyCell = { row, col };
+        moves++;
+        document.getElementById('moveCount').textContent = moves;
+
+        playMoveSound();
+        renderBoard();
+
+        if (checkWin()) {
+            playWinSound();
+            showLevelComplete();
+        }
+    }
+}
+
+function isAdjacent(row1, col1, row2, col2) {
+    return (Math.abs(row1 - row2) === 1 && col1 === col2) ||
+           (Math.abs(col1 - col2) === 1 && row1 === row2);
+}
+
+function checkWin() {
+    const targetIdiom = LEVELS[currentLevel - 1].idiom;
+    for (let j = 0; j < SIZE; j++) {
+        if (board[0][j] !== targetIdiom[j]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function showLevelComplete() {
+    const feedback = document.getElementById('feedback');
+    feedback.style.display = 'block';
+    feedback.innerHTML = LEVELS[currentLevel - 1].feedback + 
+                         `<div class="stars">★★★</div>`;
+    
+    if (currentLevel < LEVELS.length) {
+        document.getElementById('nextBtn').style.display = 'inline-block';
+    } else {
+        showFinalMessage();
+    }
+    document.getElementById('restartBtn').disabled = true;
+}
+
+function showFinalMessage() {
+    document.getElementById('finalMessage').style.display = 'block';
+}
+
+function nextLevel() {
+    if (currentLevel < LEVELS.length) {
+        currentLevel++;
+        resetLevel();
+    }
+}
+
+function resetLevel() {
+    moves = 0;
+    document.getElementById('moveCount').textContent = moves;
+    document.getElementById('feedback').style.display = 'none';
+    document.getElementById('nextBtn').style.display = 'none';
+    document.getElementById('restartBtn').disabled = false;
+    document.getElementById('finalMessage').style.display = 'none';
+    initializeLevel(currentLevel);
+    renderBoard();
+}
+
+function restartLevel() {
+    resetLevel();
+}
+
+function restartGame() {
+    currentLevel = 1;
+    resetLevel();
+}
 </script>
+
 </body>
 </html>
