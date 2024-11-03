@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台語華容道</title>
+    <style>
+        /* ... existing CSS ... */
+
+        .hint-cards {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .hint-card {
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .hint-card span {
+            font-weight: bold;
+        }
+
+        .highest-level {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>台語華容道</h1>
+        <div class="highest-level">最高關卡: <span id="highestLevel">0</span></div>
+        <div class="level-info">第 <span id="currentLevel">1</span> 關</div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressBar" style="width: 0%"></div>
+        </div>
+        <p>找出符合提示的台語，將四個字按順序移到最上面一排</p>
+
+        <div class="hint-cards">
+            <div class="hint-card" onclick="hint1()" id="hintCard1">
+                提示卡 1: <span id="hintCard1Count">1</span>
+            </div>
+            <div class="hint-card" onclick="hint2()" id="hintCard2">
+                提示卡 2: <span id="hintCard2Count">1</span>
+            </div>
+            <div class="hint-card" onclick="hint3()" id="hintCard3">
+                提示卡 3: <span id="hintCard3Count">1</span>
+            </div>
+        </div>
+
+        <div class="hint" id="hint"></div>
+        <div class="board" id="board"></div>
+        <div class="moves">移動次數: <span id="moveCount">0</span></div>
+        <button onclick="restartLevel()" id="restartBtn">重新開始本關</button>
+        <button onclick="nextLevel()" id="nextBtn" style="display: none">下一關</button>
+        <div class="feedback" id="feedback"></div>
+    </div>
+
+    <div class="final-message" id="finalMessage" style="display: none;">
+        恭喜你完成了所有關卡！
+        <div>★★★★★</div>
+        <button onclick="restartGame()">重新開始遊戲</button>
+    </div>
+
+    <script>
+        // ... existing JavaScript ...
+
+        let hintCards = [1, 1, 1]; // Hint card quantities (Hint 1, Hint 2, Hint 3)
+        let highestLevel = 0; // Highest level reached
+
+        document.getElementById('highestLevel').textContent = highestLevel;
+
+        function hint1() {
+            if (hintCards[0] > 0) {
+                hintCards[0]--;
+                document.getElementById('hintCard1Count').textContent = hintCards[0];
+
+                const idiom = randomLevels[currentLevel - 1].idiom;
+                const shuffledIdiom = idiom.split('').sort(() => 0.5 - Math.random()).join('');
+                document.getElementById('hint').textContent = `提示：${shuffledIdiom}`;
+            }
+        }
+
+        function hint2() {
+            if (hintCards[1] > 0) {
+                hintCards[1]--;
+                document.getElementById('hintCard2Count').textContent = hintCards[1];
+
+                const idiom = randomLevels[currentLevel - 1].idiom;
+                document.getElementById('hint').textContent = `提示：${idiom[0]}`;
+            }
+        }
+
+        function hint3() {
+            if (hintCards[2] > 0) {
+                hintCards[2]--;
+                document.getElementById('hintCard3Count').textContent = hintCards[2];
+
+                const idiom = randomLevels[currentLevel - 1].idiom;
+                document.getElementById('hint').textContent = `提示：${idiom}`;
+            }
+        }
+
+        function showLevelComplete() {
+            // ... existing code ...
+
+            if (moves <= 15) {
+                // Increase hint cards randomly
+                const randomIndex = Math.floor(Math.random() * 3);
+                hintCards[randomIndex]++;
+                document.getElementById(`hintCard${randomIndex + 1}Count`).textContent = hintCards[randomIndex];
+            }
+
+            // ... existing code ...
+        }
+
+        function nextLevel() {
+            if (currentLevel < randomLevels.length) {
+                currentLevel++;
+                resetLevel();
+
+                // Update highest level
+                if (currentLevel > highestLevel) {
+                    highestLevel = currentLevel;
+                    document.getElementById('highestLevel').textContent = highestLevel;
+                }
+            }
+        }
+
+        // ... rest of JavaScript code ...
+    </script>
+</body>
+</html>
