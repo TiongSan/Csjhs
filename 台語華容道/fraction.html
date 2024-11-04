@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>碎形樹生成器</title>
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+    canvas {
+        border: 1px solid black;
+    }
+    button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<canvas id="fractalTreeCanvas" width="800" height="600"></canvas>
+<button onclick="increaseLevel()">增加階層</button>
+
+<script>
+    const canvas = document.getElementById('fractalTreeCanvas');
+    const ctx = canvas.getContext('2d');
+    let level = 1;
+
+    function drawFractalTree(x, y, length, angle, depth) {
+        if (depth === 0) return;
+
+        // 計算終點
+        const xEnd = x + length * Math.cos(angle);
+        const yEnd = y - length * Math.sin(angle);
+
+        // 繪製樹幹或分支
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(xEnd, yEnd);
+        ctx.lineWidth = depth;
+        ctx.strokeStyle = `rgb(${139 - depth * 5}, 69, 19)`;  // 棕色，深度越小顏色越亮
+        ctx.stroke();
+
+        // 計算新的角度和長度，並遞迴生成分支
+        const newLength = length * 0.5;
+        const angleVariation = Math.random() * (Math.PI / 4) + Math.PI / 4; // 45 到 90 度間隨機角度
+
+        drawFractalTree(xEnd, yEnd, newLength, angle - angleVariation, depth - 1);
+        drawFractalTree(xEnd, yEnd, newLength, angle + angleVariation, depth - 1);
+    }
+
+    function increaseLevel() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        level++;
+        drawFractalTree(canvas.width / 2, canvas.height, 100, -Math.PI / 2, level);
+    }
+
+    // 初始化樹
+    drawFractalTree(canvas.width / 2, canvas.height, 100, -Math.PI / 2, level);
+</script>
+
+</body>
+</html>
