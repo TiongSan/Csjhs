@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>多顆分形樹</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        canvas {
+            border: 1px solid #ccc;
+            background-color: white;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .info {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="treeCanvas" width="800" height="600"></canvas>
+    <button onclick="increaseLevel()">增加層級</button>
+    <div class="info">當前樹數: <span id="treeCount">1</span>, 當前層級: <span id="levelDisplay">1</span></div>
+
+    <script>
+        const canvas = document.getElementById('treeCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        class Tree {
+            constructor(x, y, initialLength, colorScheme) {
+                this.x = x;
+                this.y = y;
+                this.initialLength = initialLength;
+                this.level = 1;
+                this.colorScheme = colorScheme;
+            }
+        }
+
+        let trees = [];
+        const MAX_LEVEL = 12;
+        let currentTreeIndex = 0;
+
+        // 生成隨機顏色方案
+        function generateColorScheme() {
+            const hue = Math.random() * 360;
+            return {
+                base: `hsl(${hue}, 60%, 30%)`,
+                highlight: `hsl(${hue}, 70%, 40%)`,
+                light: `hsl(${hue}, 80%, 50%)`
+            };
+        }
+
+        // 初始化第一棵樹
+        trees.push(new Tree(
+            canvas.width * 0.2, 
+            canvas.height - 50, 
+            120, 
+            generateColorScheme()
+        ));
+
+        function getRandomAngle() {
+            const degrees = 40 + Math.random() * 20;
+            return degrees * Math.PI / 180;
+        }
+
+        function drawTree(startX, startY, len, angle, depth, colorScheme) {
+            ctx.beginPath();
+            ctx.save();
+            
+            ctx.translate(startX, startY);
+            ctx.rotate(angle);
+            ctx.moveTo(0, 0);
+            ctx.lineTo(0, -len);
+            
+            // 使用樹的顏色方案
+            const depthRatio = depth / MAX_LEVEL;
+            ctx.strokeStyle = depth > MAX_LEVEL * 0.7 ? colorScheme.light :
+                            depth > MAX_LEVEL * 0.3 ? colorScheme.highlight :
+                            colorScheme.base;
+            ctx.lineWidth = Math.max(1, depth * 0.8);
+            ctx.stroke();
+
+            if (depth > 0) {
+                const rightAngle = getRandomAngle();
+                const leftAngle = getRandomAngle();
+                drawTree(0, -len, len * 0.7, rightAngle, depth - 1, colorScheme);
+                drawTree(0, -len, len * 0.7, -leftAngle, depth - 1, colorScheme);
+            }
+            
+            ctx.restore();
+        }
+
+        function drawAllTrees() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            trees.forEach(tree => {
+                drawTree(tree.x, tree.y, tree.initialLength, 0, tree.level, tree.colorScheme);
+            });
+        }
+
+        function increaseLevel() {
+            let currentTree = trees[currentTreeIndex];
+            
+            if (currentTree.level < MAX_LEVEL) {
+                currentTree.level++;
+            } else {
+                // 當前樹已達最大層級，創建新樹
+                const newX = canvas.width * ((currentTreeIndex + 2) * 0.2);
+                if (newX < canvas.width * 0.9) { // 確保新樹不會超出畫布
+                    const newLength = trees[currentTreeIndex].initialLength * 0.9;
+                    trees.push(new Tree(
+                        newX,
+                        canvas.height - 50,
+                        newLength,
+                        generateColorScheme()
+                    ));
+                    currentTreeIndex++;
+                }
+            }
+            
+            document.getElementById('levelDisplay').textContent = trees[currentTreeIndex].level;
+            document.getElementById('treeCount').textContent = trees.length;
+            drawAllTrees();
+        }
+
+        // 初始繪製
+        drawAllTrees();
+    </script>
+</body>
+</html>

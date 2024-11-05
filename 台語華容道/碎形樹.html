@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>分形樹</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        canvas {
+            border: 1px solid #ccc;
+            background-color: white;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .info {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="treeCanvas" width="600" height="600"></canvas>
+    <button onclick="increaseLevel()">增加層級</button>
+    <div class="info">當前層級: <span id="levelDisplay">1</span></div>
+
+    <script>
+        const canvas = document.getElementById('treeCanvas');
+        const ctx = canvas.getContext('2d');
+        let level = 1;
+
+        function getRandomAngle() {
+            // 生成40-60度的隨機角度，並轉換為弧度
+            const degrees = 40 + Math.random() * 20;
+            return degrees * Math.PI / 180;
+        }
+
+        function drawTree(startX, startY, len, angle, depth) {
+            ctx.beginPath();
+            ctx.save();
+            
+            ctx.translate(startX, startY);
+            ctx.rotate(angle);
+            ctx.moveTo(0, 0);
+            ctx.lineTo(0, -len);
+            
+            // 根據深度調整顏色和線條寬度
+            ctx.strokeStyle = `rgb(${70 + depth * 20}, ${40 + depth * 10}, 0)`;
+            ctx.lineWidth = Math.max(1, depth);
+            ctx.stroke();
+
+            if (depth > 0) {
+                // 為每個分支生成新的隨機角度
+                const rightAngle = getRandomAngle();
+                const leftAngle = getRandomAngle();
+                
+                // 繪製右邊分支
+                drawTree(0, -len, len * 0.7, rightAngle, depth - 1);
+                // 繪製左邊分支
+                drawTree(0, -len, len * 0.7, -leftAngle, depth - 1);
+            }
+            
+            ctx.restore();
+        }
+
+        function drawFractalTree() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // 從底部中心開始，初始角度為0（正上方）
+            drawTree(canvas.width / 2, canvas.height - 50, 120, 0, level);
+        }
+
+        function increaseLevel() {
+            if (level < 12) {
+                level++;
+                document.getElementById('levelDisplay').textContent = level;
+                drawFractalTree();
+            }
+        }
+
+        // 初始繪製
+        drawFractalTree();
+    </script>
+</body>
+</html>
