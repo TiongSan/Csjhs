@@ -45,6 +45,13 @@
     let gameActive = false;
     let level = 1;
 
+    // 初始化畫布和上下文
+    window.onload = function() {
+      const canvas = document.getElementById('treeCanvas');
+      const ctx = canvas.getContext('2d');
+      drawFractalTree(ctx, level);  // 繪製初始樹幹
+    };
+
     // 讀取 JSON 文件
     fetch('audioFiles.json')
       .then(response => response.json())
@@ -131,15 +138,12 @@
     }
 
     // 分形樹相關代碼
-    const canvas = document.getElementById('treeCanvas');
-    const ctx = canvas.getContext('2d');
-
     function getRandomAngle() {
       const degrees = 40 + Math.random() * 20;
       return degrees * Math.PI / 180;
     }
 
-    function drawTree(startX, startY, len, angle, depth) {
+    function drawTree(ctx, startX, startY, len, angle, depth) {
       ctx.beginPath();
       ctx.save();
       
@@ -156,16 +160,18 @@
         const rightAngle = getRandomAngle();
         const leftAngle = getRandomAngle();
         
-        drawTree(0, -len, len * 0.7, rightAngle, depth - 1);
-        drawTree(0, -len, len * 0.7, -leftAngle, depth - 1);
+        drawTree(ctx, 0, -len, len * 0.7, rightAngle, depth - 1);
+        drawTree(ctx, 0, -len, len * 0.7, -leftAngle, depth - 1);
       }
       
       ctx.restore();
     }
 
     function drawFractalTree() {
+      const canvas = document.getElementById('treeCanvas');
+      const ctx = canvas.getContext('2d');
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      drawTree(canvas.width / 2, canvas.height - 50, 120, 0, level);
+      drawTree(ctx, canvas.width / 2, canvas.height - 50, 120, 0, level);
     }
 
     function increaseLevel() {
@@ -175,8 +181,6 @@
         drawFractalTree();
       }
     }
-
-    window.onload = startGame;
   </script>
 </head>
 <body>
