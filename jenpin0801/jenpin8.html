@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>真平聽力B3L1L2與分形樹</title>
+  <style>
+    button {
+      font-size: 24px;
+      padding: 20px;
+      width: 100%;
+      height: 100px;
+    }
+    #options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 10px;
+      width: 400px;
+      margin: 20px auto;
+    }
+    body {
+      text-align: center;
+    }
+    #restartButton {
+      display: none;
+      font-size: 24px;
+      padding: 15px;
+      margin-top: 20px;
+    }
+    canvas {
+      border: 1px solid #ccc;
+      background-color: white;
+      margin-bottom: 20px;
+    }
+    .info {
+      margin-top: 10px;
+      font-size: 16px;
+    }
+  </style>
+  <script>
+    let audioFiles = [];
+    let score = 0;
+    let timeLeft = 60;
+    let timer;
+    let gameActive = false;
+    let level = 1;
+
+    // 初始化畫布和上下文
+    window.onload = function() {
+      const canvas = document.getElementById('treeCanvas');
+      const ctx = canvas.getContext('2d');
+      drawFractalTree(ctx, level);  // 繪製初始樹幹
+    };
+
+    // 讀取 JSON 文件
+    fetch('audioFiles.json')
+      .then(response => response.json())
+      .then(data => {
+        audioFiles = data;
+        console.log('音頻檔案:', audioFiles);
+      })
+      .catch(error => console.error('無法讀取JSON文件:', error));
+
+    function playRandomAudio() {
+      if (!gameActive) return;
+      let randomIndex = Math.floor(Math.random() * audioFiles.length);
+      let correctAnswer = audioFiles[randomIndex].name;
+      let audio = new Audio(correctAnswer + '.mp3');
+      
+      audio.oncanplaythrough = () => audio.play();
+      audio.onerror = (e) => console.error('無法播放音頻文件:', e);
+
+      let correctAnswerDisplay = correctAnswer;
+      let otherOptions = audioFiles.filter(item => item.name !== correctAnswer).map(item => item.name);
+      otherOptions = shuffleArray(otherOptions);
+      let allOptions = [correctAnswerDisplay, ...otherOptions.slice(0, 3)];
+      allOptions = shuffleArray(allOptions);
+      let optionsHtml = '';
+      for (let i = 0; i < allOptions.length; i++) {
+        optionsHtml += `<button onclick="checkAnswer('${allOptions[i] === correctAnswerDisplay}')">${allOptions[i]}</button>`;
+      }
+      document.getElementById('options').innerHTML = optionsHtml;
+    }
+
+    function checkAnswer(isCorrect) {
+      if (!gameActive) return;
+      if (isCorrect === 'true') {
+        score++;
+        increaseLevel();
+      } else {
+        score--;
+        document.body.style.backgroundColor = 'red';
+        setTimeout(() => {
+          document.body.style.backgroundColor = 'white';
+        }, 1000);
+      }
+      document.getElementById('score').innerText = '分數: ' + score;
+      playRandomAudio();
+    }
+
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    function startGame() {
+      gameActive = true;
+      score = 0;
+      timeLeft = 60;
+      level = 1;
+      document.getElementById('score').innerText = '分數: ' + score;
+      document.getElementById('time').innerText = '剩餘時間: ' + timeLeft;
+      document.getElementById('restartButton').style.display = 'none';
+      document.getElementById('levelDisplay').textContent = level;
+      timer = setInterval(() => {
+        timeLeft--;
+        document.getElementById('time').innerText = '剩餘時間: ' + timeLeft;
+        if (timeLeft === 0) {
+          endGame();
+        }
+      }, 1000);
+      drawFractalTree();
+      playRandomAudio();
+    }
+
+    function endGame() {
+      gameActive = false;
+      clearInterval(timer);
+      document.getElementById('options').innerHTML = '';
+      document.getElementById('restartButton').style.display = 'inline-block';
+    }
+
+    function restartGame() {
+      startGame();
+    }
+
+    // 分形樹相關代碼
+    function getRandomAngle() {
+      const degrees = 40 + Math.random() * 20;
+      return degrees * Math.PI / 180;
+    }
+
+    function drawTree(ctx, startX, startY, len, angle, depth) {
+      ctx.beginPath();
+      ctx.save();
+      
+      ctx.translate(startX, startY);
+      ctx.rotate(angle);
+      ctx.moveTo(0, 0);
+      ctx.lineTo(0, -len);
+      
+      ctx.strokeStyle = `rgb(${70 + depth * 20}, ${40 + depth * 10}, 0)`;
+      ctx.lineWidth = Math.max(1, depth);
+      ctx.stroke();
+
+      if (depth > 0) {
+        const rightAngle = getRandomAngle();
+        const leftAngle = getRandomAngle();
+        
+        drawTree(ctx, 0, -len, len * 0.7, rightAngle, depth - 1);
+        drawTree(ctx, 0, -len, len * 0.7, -leftAngle, depth - 1);
+      }
+      
+      ctx.restore();
+    }
+
+    function drawFractalTree() {
+      const canvas = document.getElementById('treeCanvas');
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawTree(ctx, canvas.width / 2, canvas.height - 50, 120, 0, level);
+    }
+
+    function increaseLevel() {
+      if (level < 12) {
+        level++;
+        document.getElementById('levelDisplay').textContent = level;
+        drawFractalTree();
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>真平聽力B3L1L2與分形樹</h1>
+  <br>
+  <h2>網頁編寫:陳文賓老師</h2>
+  <button onclick="startGame()" style="font-size: 24px; padding: 15px; margin: 20px;">開始遊戲</button><br><br>
+  <div id="options"></div>
+  <div id="score" style="font-size: 24px;">分數: 0</div>
+  <div id="time" style="font-size: 24px;">剩餘時間: 60</div>
+  <button id="restartButton" onclick="restartGame()">重新開始遊戲</button>
+  <canvas id="treeCanvas" width="600" height="600"></canvas>
+  <div class="info">當前層級: <span id="levelDisplay">1</span></div>
+</body>
+</html>
