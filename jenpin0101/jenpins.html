@@ -53,24 +53,30 @@
     <button onclick="startGame()">開始遊戲</button>
     <div id="options"></div>
     <div id="score" class="game-info">分數: 0</div>
-    <div id="time" class="game-info">剩餘時間: 120</div>
+    <div id="time" class="game-info">剩餘時間: 60</div>
     <button id="restartButton" onclick="restartGame()">重新開始遊戲</button>
     <canvas id="treeCanvas" width="800" height="600"></canvas>
     <div class="info">當前樹數: <span id="treeCount">1</span>, 當前層級: <span id="levelDisplay">1</span></div>
 
     <script>
         // 全局變量
-        let audioFiles = [
-            {"name": "加食寡"}, {"name": "啥物"}, {"name": "床鋪"},
-            {"name": "手套"}, {"name": "手藝"}, {"name": "捌"},
-            {"name": "毋甘"}, {"name": "番鼠"}, {"name": "紮"},
-            {"name": "腥臊"}, {"name": "袂赴市"}, {"name": "豬跤"},
-            {"name": "閉思"}, {"name": "露螺"}
-        ];
+        let audioFiles = [];  // 將從 JSON 檔案讀取
         let score = 0;
-        let timeLeft = 120;
+        let timeLeft = 60;
         let timer;
         let gameActive = false;
+
+        // 在頁面載入時讀取 JSON 檔案
+        fetch('audioFiles.json')
+            .then(response => response.json())
+            .then(data => {
+                audioFiles = data;
+                console.log('音頻檔案載入成功:', audioFiles);
+            })
+            .catch(error => {
+                console.error('無法讀取 audioFiles.json:', error);
+                alert('無法載入題目檔案，請確認 audioFiles.json 是否存在且格式正確');
+            });
 
         // 樹相關變量
         const canvas = document.getElementById('treeCanvas');
@@ -180,7 +186,8 @@
 
         // 遊戲相關函數
         function playRandomAudio() {
-            if (!gameActive) return;
+            if (!gameActive || audioFiles.length === 0) return;
+            
             let randomIndex = Math.floor(Math.random() * audioFiles.length);
             let correctAnswer = audioFiles[randomIndex].name;
             let audio = new Audio(correctAnswer + '.mp3');
@@ -226,9 +233,14 @@
         }
 
         function startGame() {
+            if (audioFiles.length === 0) {
+                alert('等待題目檔案載入中，請稍候再試...');
+                return;
+            }
+            
             gameActive = true;
             score = 0;
-            timeLeft = 120;
+            timeLeft = 60;
             initFirstTree();
             document.getElementById('score').innerText = '分數: ' + score;
             document.getElementById('time').innerText = '剩餘時間: ' + timeLeft;
