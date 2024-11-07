@@ -53,7 +53,7 @@
     <button onclick="startGame()">開始遊戲</button>
     <div id="options"></div>
     <div id="score" class="game-info">分數: 0</div>
-    <div id="time" class="game-info">剩餘時間: 60</div>
+    <div id="time" class="game-info">剩餘時間: 120</div>
     <button id="restartButton" onclick="restartGame()">重新開始遊戲</button>
     <canvas id="treeCanvas" width="800" height="600"></canvas>
     <div class="info">當前樹數: <span id="treeCount">1</span>, 當前層級: <span id="levelDisplay">1</span></div>
@@ -68,7 +68,7 @@
             {"name": "閉思"}, {"name": "露螺"}
         ];
         let score = 0;
-        let timeLeft = 60;
+        let timeLeft = 120;
         let timer;
         let gameActive = false;
 
@@ -228,7 +228,7 @@
         function startGame() {
             gameActive = true;
             score = 0;
-            timeLeft = 60;
+            timeLeft = 120;
             initFirstTree();
             document.getElementById('score').innerText = '分數: ' + score;
             document.getElementById('time').innerText = '剩餘時間: ' + timeLeft;
