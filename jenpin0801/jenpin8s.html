@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>真平聽力測驗與多棵分形樹</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        button {
+            font-size: 24px;
+            padding: 20px;
+            margin: 10px;
+        }
+        #options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 10px;
+            width: 400px;
+            margin: 20px auto;
+        }
+        #options button {
+            width: 100%;
+            height: 100px;
+        }
+        canvas {
+            border: 1px solid #ccc;
+            background-color: white;
+            margin: 20px auto;
+        }
+        .info {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        #restartButton {
+            display: none;
+            font-size: 24px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        .game-info {
+            font-size: 24px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>真平聽力測驗與多棵分形樹</h1>
+    <h2>網頁編寫:陳文賓老師</h2>
+    <button onclick="startGame()">開始遊戲</button>
+    <div id="options"></div>
+    <div id="score" class="game-info">分數: 0</div>
+    <div id="time" class="game-info">剩餘時間: 120</div>
+    <button id="restartButton" onclick="restartGame()">重新開始遊戲</button>
+    <canvas id="treeCanvas" width="800" height="1200"></canvas>
+    <div class="info">當前樹數: <span id="treeCount">1</span>, 當前層級: <span id="levelDisplay">1</span></div>
+
+    <script>
+        // 全局變量
+        let audioFiles = [];  // 將從 JSON 檔案讀取
+        let score = 0;
+        let timeLeft = 120;
+        let timer;
+        let gameActive = false;
+
+        // 在頁面載入時讀取 JSON 檔案
+        fetch('audioFiles.json')
+            .then(response => response.json())
+            .then(data => {
+                audioFiles = data;
+                console.log('音頻檔案載入成功:', audioFiles);
+            })
+            .catch(error => {
+                console.error('無法讀取 audioFiles.json:', error);
+                alert('無法載入題目檔案，請確認 audioFiles.json 是否存在且格式正確');
+            });
+
+        // 樹相關變量
+        const canvas = document.getElementById('treeCanvas');
+        const ctx = canvas.getContext('2d');
+        const MAX_LEVEL = 12;
+        let trees = [];
+        let currentTreeIndex = 0;
+
+        class Tree {
+            constructor(x, y, initialLength, colorScheme) {
+                this.x = x;
+                this.y = y;
+                this.initialLength = initialLength;
+                this.level = 1;
+                this.colorScheme = colorScheme;
+            }
+        }
+
+        // 初始化第一棵樹
+        function initFirstTree() {
+            trees = [];
+            trees.push(new Tree(
+                canvas.width * 0.2,
+                canvas.height - 50,
+                120,
+                generateColorScheme()
+            ));
+            currentTreeIndex = 0;
+            drawAllTrees();
+        }
+
+        // 生成顏色方案
+        function generateColorScheme() {
+            const hue = Math.random() * 360;
+            return {
+                base: `hsl(${hue}, 60%, 30%)`,
+                highlight: `hsl(${hue}, 70%, 40%)`,
+                light: `hsl(${hue}, 80%, 50%)`
+            };
+        }
+
+        // 獲取隨機角度
+        function getRandomAngle() {
+            const degrees = 40 + Math.random() * 20;
+            return degrees * Math.PI / 180;
+        }
+
+        // 繪製單棵樹
+        function drawTree(startX, startY, len, angle, depth, colorScheme) {
+            ctx.beginPath();
+            ctx.save();
+            
+            ctx.translate(startX, startY);
+            ctx.rotate(angle);
+            ctx.moveTo(0, 0);
+            ctx.lineTo(0, -len);
+            
+            const depthRatio = depth / MAX_LEVEL;
+            ctx.strokeStyle = depth > MAX_LEVEL * 0.7 ? colorScheme.light :
+                            depth > MAX_LEVEL * 0.3 ? colorScheme.highlight :
+                            colorScheme.base;
+            ctx.lineWidth = Math.max(1, depth * 0.8);
+            ctx.stroke();
+
+            if (depth > 0) {
+                const rightAngle = getRandomAngle();
+                const leftAngle = getRandomAngle();
+                drawTree(0, -len, len * 0.7, rightAngle, depth - 1, colorScheme);
+                drawTree(0, -len, len * 0.7, -leftAngle, depth - 1, colorScheme);
+            }
+            
+            ctx.restore();
+        }
+
+        // 繪製所有樹
+        function drawAllTrees() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            trees.forEach(tree => {
+                drawTree(tree.x, tree.y, tree.initialLength, 0, tree.level, tree.colorScheme);
+            });
+        }
+
+        // 增加層級或新增樹
+        function increaseLevel() {
+            let currentTree = trees[currentTreeIndex];
+            
+            if (currentTree.level < MAX_LEVEL) {
+                currentTree.level++;
+            } else {
+                const newX = canvas.width * ((currentTreeIndex + 2) * 0.2);
+                if (newX < canvas.width * 0.9) {
+                    const newLength = trees[currentTreeIndex].initialLength * 0.9;
+                    trees.push(new Tree(
+                        newX,
+                        canvas.height - 50,
+                        newLength,
+                        generateColorScheme()
+                    ));
+                    currentTreeIndex++;
+                }
+            }
+            
+            document.getElementById('levelDisplay').textContent = trees[currentTreeIndex].level;
+            document.getElementById('treeCount').textContent = trees.length;
+            drawAllTrees();
+        }
+
+        // 遊戲相關函數
+        function playRandomAudio() {
+            if (!gameActive || audioFiles.length === 0) return;
+            
+            let randomIndex = Math.floor(Math.random() * audioFiles.length);
+            let correctAnswer = audioFiles[randomIndex].name;
+            let audio = new Audio(correctAnswer + '.mp3');
+            
+            audio.oncanplaythrough = () => audio.play();
+            audio.onerror = (e) => console.error('無法播放音頻文件:', e);
+
+            let correctAnswerDisplay = correctAnswer;
+            let otherOptions = audioFiles.filter(item => item.name !== correctAnswer).map(item => item.name);
+            otherOptions = shuffleArray(otherOptions);
+            let allOptions = [correctAnswerDisplay, ...otherOptions.slice(0, 3)];
+            allOptions = shuffleArray(allOptions);
+            
+            let optionsHtml = '';
+            for (let i = 0; i < allOptions.length; i++) {
+                optionsHtml += `<button onclick="checkAnswer('${allOptions[i] === correctAnswerDisplay}')">${allOptions[i]}</button>`;
+            }
+            document.getElementById('options').innerHTML = optionsHtml;
+        }
+
+        function checkAnswer(isCorrect) {
+            if (!gameActive) return;
+            if (isCorrect === 'true') {
+                score++;
+                increaseLevel();
+            } else {
+                score--;
+                document.body.style.backgroundColor = 'red';
+                setTimeout(() => {
+                    document.body.style.backgroundColor = '#f0f0f0';
+                }, 1000);
+            }
+            document.getElementById('score').innerText = '分數: ' + score;
+            playRandomAudio();
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function startGame() {
+            if (audioFiles.length === 0) {
+                alert('等待題目檔案載入中，請稍候再試...');
+                return;
+            }
+            
+            gameActive = true;
+            score = 0;
+            timeLeft = 120;
+            initFirstTree();
+            document.getElementById('score').innerText = '分數: ' + score;
+            document.getElementById('time').innerText = '剩餘時間: ' + timeLeft;
+            document.getElementById('restartButton').style.display = 'none';
+            
+            timer = setInterval(() => {
+                timeLeft--;
+                document.getElementById('time').innerText = '剩餘時間: ' + timeLeft;
+                if (timeLeft === 0) {
+                    endGame();
+                }
+            }, 1000);
+            
+            playRandomAudio();
+        }
+
+        function endGame() {
+            gameActive = false;
+            clearInterval(timer);
+            document.getElementById('options').innerHTML = '';
+            document.getElementById('restartButton').style.display = 'inline-block';
+        }
+
+        function restartGame() {
+            startGame();
+        }
+    </script>
+</body>
+</html>
