@@ -35,6 +35,11 @@
       height: auto;
       padding: 15px 30px;
     }
+    #info {
+      font-size: 20px;
+      margin: 20px auto;
+      line-height: 1.6;
+    }
   </style>
   <script>
     let audioFiles = [];
@@ -64,6 +69,12 @@
 
       audio.oncanplaythrough = () => audio.play();
       audio.onerror = (e) => console.error('無法播放音頻文件:', e);
+
+      // 顯示台羅拼音和分類
+      document.getElementById('info').innerHTML = `
+        <p>台羅拼音: <strong>${question.roma}</strong></p>
+        <p>分類: <strong>${question.class}</strong></p>
+      `;
 
       let otherOptions = audioFiles
         .filter(item => item.word !== correctAnswer)
@@ -131,6 +142,7 @@
       clearInterval(timer);
       document.getElementById('options').innerHTML = '';
       document.getElementById('restartButton').style.display = 'inline-block';
+      document.getElementById('info').innerHTML = '';
     }
 
     function restartGame() {
@@ -139,6 +151,7 @@
       document.getElementById('options').innerHTML = '';
       document.getElementById('score').innerText = '分數: 0';
       document.getElementById('time').innerText = '剩餘時間: 120';
+      document.getElementById('info').innerHTML = '';
     }
   </script>
 </head>
@@ -151,6 +164,7 @@
     <button onclick="selectWordCount(3)">3個字</button>
     <button onclick="selectWordCount(4)">4個字</button>
   </div>
+  <div id="info"></div>
   <div id="options"></div>
   <div id="score" style="font-size: 24px;">分數: 0</div>
   <div id="time" style="font-size: 24px;">剩餘時間: 120</div>
