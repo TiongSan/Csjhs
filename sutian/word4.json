@@ -1,0 +1,4405 @@
+[
+    {
+        "wav": "3",
+        "word": "一刀兩斷",
+        "roma": "it-to-lióng-tuān",
+        "class": "交際應酬",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/3.wav"
+    },
+    {
+        "wav": "6",
+        "word": "一日到暗",
+        "roma": "tsi̍t-ji̍t-kàu-àm/tsi̍t-li̍t-kàu-àm",
+        "class": "時間節令",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/6.wav"
+    },
+    {
+        "wav": "9",
+        "word": "一半个仔",
+        "roma": "tsi̍t-puànn-ê-á",
+        "class": "數詞、量詞",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/9.wav"
+    },
+    {
+        "wav": "10",
+        "word": "一半日仔",
+        "roma": "tsi̍t-puànn-ji̍t-á/tsi̍t-puànn-li̍t-á",
+        "class": "時間節令",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/10.wav"
+    },
+    {
+        "wav": "16",
+        "word": "一百空一",
+        "roma": "tsi̍t-pah khòng-it",
+        "class": "數詞、量詞",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/16.wav"
+    },
+    {
+        "wav": "25",
+        "word": "一家伙仔",
+        "roma": "tsi̍t-ke-hué-á/tsi̍t-ke-hé-á",
+        "class": "宗族、家庭",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/25.wav"
+    },
+    {
+        "wav": "34",
+        "word": "一霎仔久",
+        "roma": "tsi̍t-tiap-á-kú",
+        "class": "時間節令",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/34.wav"
+    },
+    {
+        "wav": "37",
+        "word": "一觸久仔",
+        "roma": "tsi̍t-tak-kú-á",
+        "class": "時間節令",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/37.wav"
+    },
+    {
+        "wav": "64",
+        "word": "十二生相",
+        "roma": "tsa̍p-jī senn-siùnn/tsa̍p-lī sinn-siùnn",
+        "class": "神明、鬼怪、教派",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/64.wav"
+    },
+    {
+        "wav": "65",
+        "word": "十二指腸",
+        "roma": "si̍p-jī-tsí-tn̂g/si̍p-lī-tsí-tn̂g",
+        "class": "生理構造",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/65.wav"
+    },
+    {
+        "wav": "67",
+        "word": "十八骰仔",
+        "roma": "si̍p-pat-tâu-á",
+        "class": "休閒、娛樂",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/67.wav"
+    },
+    {
+        "wav": "96",
+        "word": "七早八早",
+        "roma": "tshit-tsá-peh-tsá/tshit-tsá-pueh-tsá",
+        "class": "時間節令",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/96.wav"
+    },
+    {
+        "wav": "99",
+        "word": "七老八老",
+        "roma": "tshit-lāu-peh-lāu/tshit-lāu-pueh-lāu",
+        "class": "生養老死",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/99.wav"
+    },
+    {
+        "wav": "100",
+        "word": "了尾仔囝",
+        "roma": "liáu-bué-á-kiánn/liáu-bé-á-kiánn",
+        "class": "宗族、家庭",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/100.wav"
+    },
+    {
+        "wav": "101",
+        "word": "二步七仔",
+        "roma": "--jī-pōo-tshit-á/--lī-pōo-tshit-á",
+        "class": "才智能力",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/101.wav"
+    },
+    {
+        "wav": "110",
+        "word": "十花五色",
+        "roma": "tsa̍p-hue-gōo-sik",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/110.wav"
+    },
+    {
+        "wav": "125",
+        "word": "七娘媽生",
+        "roma": "Tshit-niû-má-senn/Tshit-niû-má-sinn",
+        "class": "時間節令,生活狀況,相關器具、活動",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/125.wav"
+    },
+    {
+        "wav": "127",
+        "word": "人家厝仔",
+        "roma": "jîn-ke-tshù-á/lîn-ke-tshù-á",
+        "class": "建築物、結構",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/127.wav"
+    },
+    {
+        "wav": "136",
+        "word": "人情世事",
+        "roma": "jîn-tsîng-sè-sū/lîn-tsîng-sè-sū",
+        "class": "交際應酬",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/136.wav"
+    },
+    {
+        "wav": "234",
+        "word": "三山國王",
+        "roma": "Sam-san-kok-ông",
+        "class": "神明、鬼怪、教派",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/234.wav"
+    },
+    {
+        "wav": "235",
+        "word": "千千萬萬",
+        "roma": "tshian-tshian-bān-bān",
+        "class": "性質、程度,數詞、量詞",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/235.wav"
+    },
+    {
+        "wav": "242",
+        "word": "三不五時",
+        "roma": "sam-put-gōo-sî",
+        "class": "時間節令,性質、程度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/242.wav"
+    },
+    {
+        "wav": "245",
+        "word": "土公仔性",
+        "roma": "thóo-kong-á-sìng",
+        "class": "個性風格",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/245.wav"
+    },
+    {
+        "wav": "266",
+        "word": "三心兩意",
+        "roma": "sam-sim-lióng-ì",
+        "class": "心理狀態",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/266.wav"
+    },
+    {
+        "wav": "277",
+        "word": "大主大意",
+        "roma": "tuā-tsú-tuā-ì",
+        "class": "相關用語,待人處事",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/277.wav"
+    },
+    {
+        "wav": "285",
+        "word": "上卌袂攝",
+        "roma": "tsiūnn-siap-bē-liap/tsiūnn-siap-buē-liap",
+        "class": "生養老死",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/285.wav"
+    },
+    {
+        "wav": "316",
+        "word": "山伯英台",
+        "roma": "San-phik-Ing-tâi",
+        "class": "文學、藝術,戲劇、音樂",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/316.wav"
+    },
+    {
+        "wav": "323",
+        "word": "三更半暝",
+        "roma": "sann-kenn-puànn-mê/sann-kinn-puànn-mî",
+        "class": "時間節令",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/323.wav"
+    },
+    {
+        "wav": "347",
+        "word": "小兒麻痺",
+        "roma": "sió-jî-bâ-pì/sió-lî-bâ-pì",
+        "class": "傷疾病痛",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/347.wav"
+    },
+    {
+        "wav": "365",
+        "word": "山東白仔",
+        "roma": "suann-tang-pe̍h-á",
+        "class": "蔬果作物,食物、飲料、煙酒",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/365.wav"
+    },
+    {
+        "wav": "372",
+        "word": "三長兩短",
+        "roma": "sann-tn̂g-nn̄g-té",
+        "class": "生養老死",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/372.wav"
+    },
+    {
+        "wav": "392",
+        "word": "三界娘仔",
+        "roma": "sam-kài-niû-á",
+        "class": "魚蝦海獸,食物、飲料、煙酒",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/392.wav"
+    },
+    {
+        "wav": "393",
+        "word": "山珍海味",
+        "roma": "san-tin-hái-bī",
+        "class": "食物、飲料、煙酒",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/393.wav"
+    },
+    {
+        "wav": "425",
+        "word": "小鬼仔殼",
+        "roma": "siáu-kuí-á-khak",
+        "class": "休閒、娛樂",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/425.wav"
+    },
+    {
+        "wav": "426",
+        "word": "三除四扣",
+        "roma": "sann-tû-sì-khàu",
+        "class": "錢財資產",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/426.wav"
+    },
+    {
+        "wav": "442",
+        "word": "大富大貴",
+        "roma": "tuā-hù-tuā-kuì",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/442.wav"
+    },
+    {
+        "wav": "468",
+        "word": "山盟海誓",
+        "roma": "san-bîng-hái-sè",
+        "class": "性質、程度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/468.wav"
+    },
+    {
+        "wav": "483",
+        "word": "下跤手人",
+        "roma": "ē-kha-tshiú-lâng",
+        "class": "泛稱,相關用語",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/483.wav"
+    },
+    {
+        "wav": "597",
+        "word": "不三不四",
+        "roma": "put-sam-put-sù",
+        "class": "道德評價",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/597.wav"
+    },
+    {
+        "wav": "607",
+        "word": "勻勻仔火",
+        "roma": "ûn-ûn-á-hué/ûn-ûn-á-hé",
+        "class": "自然現象",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/607.wav"
+    },
+    {
+        "wav": "608",
+        "word": "五分仔車",
+        "roma": "gōo-hun-á-tshia",
+        "class": "交通、運輸",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/608.wav"
+    },
+    {
+        "wav": "670",
+        "word": "六法全書",
+        "roma": "Lio̍k-huat-tsuân-su",
+        "class": "法律",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/670.wav"
+    },
+    {
+        "wav": "729",
+        "word": "不答不七",
+        "roma": "put-tap-put-tshit",
+        "class": "道德評價",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/729.wav"
+    },
+    {
+        "wav": "816",
+        "word": "歹𤆬頭",
+        "roma": "pháinn-tshuā-thâu",
+        "class": "個性風格",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/816.wav"
+    },
+    {
+        "wav": "835",
+        "word": "月下老人",
+        "roma": "gua̍t-hā-nóo-jîn/gua̍t-hā-nóo-lîn",
+        "class": "神明、鬼怪、教派",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/835.wav"
+    },
+    {
+        "wav": "836",
+        "word": "戶口抄本",
+        "roma": "hōo-kháu-tshau-pún",
+        "class": "政治",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/836.wav"
+    },
+    {
+        "wav": "855",
+        "word": "文文仔笑",
+        "roma": "bûn-bûn-á-tshiò",
+        "class": "反應、表情",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/855.wav"
+    },
+    {
+        "wav": "856",
+        "word": "天反地亂",
+        "roma": "thinn-huán-tē-luān/thinn-huán-tuē-luān",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/856.wav"
+    },
+    {
+        "wav": "937",
+        "word": "心狂火著",
+        "roma": "sim-kông-hué-to̍h/sim-kông-hé-to̍h",
+        "class": "心理狀態",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/937.wav"
+    },
+    {
+        "wav": "938",
+        "word": "心肝仔囝",
+        "roma": "sim-kuann-á-kiánn",
+        "class": "宗族、家庭,性別、婚姻,稱謂輩分",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/938.wav"
+    },
+    {
+        "wav": "940",
+        "word": "心肝窟仔",
+        "roma": "sim-kuann-khut-á",
+        "class": "生理構造",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/940.wav"
+    },
+    {
+        "wav": "953",
+        "word": "反來反去",
+        "roma": "píng-lâi-píng-khì",
+        "class": "肢體動作,氣質態度,心理狀態",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/953.wav"
+    },
+    {
+        "wav": "993",
+        "word": "手指頭仔",
+        "roma": "tshiú-tsíng-thâu-á",
+        "class": "生理構造",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/993.wav"
+    },
+    {
+        "wav": "1002",
+        "word": "水紅仔色",
+        "roma": "tsuí-âng-á-sik",
+        "class": "顏色、氣味",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1002.wav"
+    },
+    {
+        "wav": "1128",
+        "word": "夭壽短命",
+        "roma": "iáu-siū-té-miā",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1128.wav"
+    },
+    {
+        "wav": "1130",
+        "word": "手摺簿仔",
+        "roma": "tshiú-tsih-phōo-á",
+        "class": "生活用品,財務單位、活動",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1130.wav"
+    },
+    {
+        "wav": "1140",
+        "word": "歹銅舊錫",
+        "roma": "pháinn-tâng-kū-siah",
+        "class": "廢棄物",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1140.wav"
+    },
+    {
+        "wav": "1210",
+        "word": "心驚膽嚇",
+        "roma": "sim-kiann-tánn-hiannh",
+        "class": "心理狀態",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1210.wav"
+    },
+    {
+        "wav": "1231",
+        "word": "牛奶喙仔",
+        "roma": "gû-ling-tshuì-á/gû-ni-tshuì-á",
+        "class": "生活用品",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1231.wav"
+    },
+    {
+        "wav": "1250",
+        "word": "牛屎鳥仔",
+        "roma": "gû-sái-tsiáu-á",
+        "class": "禽類",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1250.wav"
+    },
+    {
+        "wav": "1255",
+        "word": "王哥柳哥",
+        "roma": "Ông--ko-Liú--ko",
+        "class": "泛稱",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1255.wav"
+    },
+    {
+        "wav": "1326",
+        "word": "兄弟姊妹",
+        "roma": "hiann-tī-tsí-muē/hiann-tī-tsí-bē",
+        "class": "宗族、家庭",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1326.wav"
+    },
+    {
+        "wav": "1335",
+        "word": "仝爸各母",
+        "roma": "kāng-pē-koh-bú",
+        "class": "宗族、家庭",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1335.wav"
+    },
+    {
+        "wav": "1426",
+        "word": "央三託四",
+        "roma": "iang-sann-thok-sì",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1426.wav"
+    },
+    {
+        "wav": "1492",
+        "word": "半信半疑",
+        "roma": "puàn-sìn-puàn-gî",
+        "class": "心理狀態",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1492.wav"
+    },
+    {
+        "wav": "1534",
+        "word": "半桶師仔",
+        "roma": "puànn-tháng-sai-á",
+        "class": "泛稱,相關用語",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1534.wav"
+    },
+    {
+        "wav": "1541",
+        "word": "四通八達",
+        "roma": "sù-thong-pat-ta̍t",
+        "class": "道路、橋梁",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1541.wav"
+    },
+    {
+        "wav": "1543",
+        "word": "半陰陽仔",
+        "roma": "puànn-iam-iûnn-á",
+        "class": "泛稱",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1543.wav"
+    },
+    {
+        "wav": "1563",
+        "word": "去傷解鬱",
+        "roma": "khì-siong-kái-ut",
+        "class": "醫療保健",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1563.wav"
+    },
+    {
+        "wav": "1578",
+        "word": "四跤仔泅",
+        "roma": "sì-kha-á-siû",
+        "class": "體育、運動",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1578.wav"
+    },
+    {
+        "wav": "1579",
+        "word": "四跤杜定",
+        "roma": "sì-kha-tōo-tīng",
+        "class": "爬蟲、兩棲類",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1579.wav"
+    },
+    {
+        "wav": "1591",
+        "word": "四箍圍仔",
+        "roma": "sì-khoo-uî-á",
+        "class": "空間方位",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1591.wav"
+    },
+    {
+        "wav": "1592",
+        "word": "四箍輾轉",
+        "roma": "sì-khoo-liàn-tńg",
+        "class": "空間方位",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1592.wav"
+    },
+    {
+        "wav": "1683",
+        "word": "正月正時",
+        "roma": "tsiann-gue̍h-tsiann-sî/tsiann-ge̍h-tsiann-sî",
+        "class": "時間節令,生活狀況,相關器具、活動",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1683.wav"
+    },
+    {
+        "wav": "1755",
+        "word": "打馬膠路",
+        "roma": "tá-má-ka-lōo",
+        "class": "道路、橋梁",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1755.wav"
+    },
+    {
+        "wav": "1816",
+        "word": "布頭布尾",
+        "roma": "pòo-thâu-pòo-bué/pòo-thâu-pòo-bé",
+        "class": "生活用品,縫紉洗熨",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1816.wav"
+    },
+    {
+        "wav": "1861",
+        "word": "目𥍉仔",
+        "roma": "ba̍k-nih-á",
+        "class": "時間節令",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1861.wav"
+    },
+    {
+        "wav": "1901",
+        "word": "白汫無味",
+        "roma": "pe̍h-tsiánn-bô-bī",
+        "class": "食物、飲料、煙酒,性質、程度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1901.wav"
+    },
+    {
+        "wav": "1925",
+        "word": "玉皇大帝",
+        "roma": "Gio̍k-hông-tāi-tè",
+        "class": "神明、鬼怪、教派",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1925.wav"
+    },
+    {
+        "wav": "1932",
+        "word": "生時日月",
+        "roma": "senn-sî-ji̍t-gue̍h/sinn-sî-li̍t-ge̍h",
+        "class": "時間節令,地位、身世、背景,生養老死",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1932.wav"
+    },
+    {
+        "wav": "1988",
+        "word": "白賊七仔",
+        "roma": "pe̍h-tsha̍t-tshit--á",
+        "class": "泛稱",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1988.wav"
+    },
+    {
+        "wav": "2016",
+        "word": "白頭鵠仔",
+        "roma": "pe̍h-thâu-khok-á",
+        "class": "禽類",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2016.wav"
+    },
+    {
+        "wav": "2138",
+        "word": "回心轉意",
+        "roma": "huê-sim-tsuán-ì/hê-sim-tsuán-ì",
+        "class": "心理活動",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2138.wav"
+    },
+    {
+        "wav": "2292",
+        "word": "年久月深",
+        "roma": "nî-kú-gue̍h-tshim/nî-kú-ge̍h-tshim",
+        "class": "時間節令",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2292.wav"
+    },
+    {
+        "wav": "2303",
+        "word": "地牛翻身",
+        "roma": "tē-gû-huan-sin/tuē-gû-huan-sin",
+        "class": "自然現象,災禍",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2303.wav"
+    },
+    {
+        "wav": "2320",
+        "word": "如此如此",
+        "roma": "jû-tshú-jû-tshú/lû-tshú-lû-tshú",
+        "class": "性質、程度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2320.wav"
+    },
+    {
+        "wav": "2326",
+        "word": "年尾囡仔",
+        "roma": "nî-bué gín-á/nî-bé gín-á",
+        "class": "地位、身世、背景",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2326.wav"
+    },
+    {
+        "wav": "2333",
+        "word": "如來佛祖",
+        "roma": "Jû-lâi-pu̍t-tsóo/Lû-lâi-pu̍t-tsóo",
+        "class": "神明、鬼怪、教派",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2333.wav"
+    },
+    {
+        "wav": "2371",
+        "word": "尖喙夾仔",
+        "roma": "tsiam-tshuì-ngeh-á",
+        "class": "生活用品,生產工具",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2371.wav"
+    },
+    {
+        "wav": "2372",
+        "word": "尖喙掘仔",
+        "roma": "tsiam-tshuì-ku̍t-á",
+        "class": "生產工具",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2372.wav"
+    },
+    {
+        "wav": "2392",
+        "word": "尖跤幼手",
+        "roma": "tsiam-kha-iù-tshiú",
+        "class": "體態樣貌",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2392.wav"
+    },
+    {
+        "wav": "2446",
+        "word": "有一無兩",
+        "roma": "ū-tsi̍t-bô-nn̄g",
+        "class": "個性風格,氣質態度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2446.wav"
+    },
+    {
+        "wav": "2474",
+        "word": "死囡仔䖙",
+        "roma": "sí-gín-á-the",
+        "class": "體育、運動",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2474.wav"
+    },
+    {
+        "wav": "2475",
+        "word": "死囡仔脯",
+        "roma": "sí-gín-á-póo",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2475.wav"
+    },
+    {
+        "wav": "2480",
+        "word": "有耳無喙",
+        "roma": "ū-hīnn-bô-tshuì/ū-hī-bô-tshuì",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2480.wav"
+    },
+    {
+        "wav": "2481",
+        "word": "死坐活食",
+        "roma": "sí-tsē-ua̍h-tsia̍h",
+        "class": "氣質態度,生活狀況",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2481.wav"
+    },
+    {
+        "wav": "2494",
+        "word": "有的無的",
+        "roma": "ū--ê-bô--ê",
+        "class": "性質、程度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2494.wav"
+    },
+    {
+        "wav": "2495",
+        "word": "有空無榫",
+        "roma": "ū-khang-bô-sún",
+        "class": "境況、狀態-擬事",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2495.wav"
+    },
+    {
+        "wav": "2506",
+        "word": "早起時仔",
+        "roma": "tsá-khí-sî-á",
+        "class": "時間節令",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2506.wav"
+    },
+    {
+        "wav": "2508",
+        "word": "有時有陣",
+        "roma": "ū-sî-ū-tsūn",
+        "class": "時間節令",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2508.wav"
+    },
+    {
+        "wav": "2540",
+        "word": "有當時仔",
+        "roma": "ū-tang-sî-á",
+        "class": "時間節令",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2540.wav"
+    },
+    {
+        "wav": "2541",
+        "word": "死窟仔水",
+        "roma": "sí-khut-á-tsuí",
+        "class": "地理",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2541.wav"
+    },
+    {
+        "wav": "2545",
+        "word": "收跤洗手",
+        "roma": "siu-kha-sé-tshiú/siu-kha-sué-tshiú",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2545.wav"
+    },
+    {
+        "wav": "2562",
+        "word": "死豬仔價",
+        "roma": "sí-ti-á-kè/sí-tu-á-kè",
+        "class": "服務業及其他",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2562.wav"
+    },
+    {
+        "wav": "2572",
+        "word": "有頭有尾",
+        "roma": "ū-thâu-ū-bué/ū-thâu-ū-bé",
+        "class": "境況、狀態-擬事",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2572.wav"
+    },
+    {
+        "wav": "2657",
+        "word": "自作自受",
+        "roma": "tsū-tsok-tsū-siū",
+        "class": "待人處事",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2657.wav"
+    },
+    {
+        "wav": "2666",
+        "word": "羊角豆仔",
+        "roma": "iûnn-kak-tāu-á",
+        "class": "蔬果作物,醫療保健,食物、飲料、煙酒",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2666.wav"
+    },
+    {
+        "wav": "2683",
+        "word": "耳空鬼仔",
+        "roma": "hīnn-khang-kuí-á/hī-khang-kuí-á",
+        "class": "生理構造",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2683.wav"
+    },
+    {
+        "wav": "2691",
+        "word": "行後尾門",
+        "roma": "kiânn-āu-bué-mn̂g/kiânn-āu-bé-mn̂g",
+        "class": "相關用語,待人處事",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2691.wav"
+    },
+    {
+        "wav": "2707",
+        "word": "老神在在",
+        "roma": "lāu-sîn-tsāi-tsāi",
+        "class": "氣質態度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2707.wav"
+    },
+    {
+        "wav": "2713",
+        "word": "米酒頭仔",
+        "roma": "bí-tsiú-thâu-á",
+        "class": "食物、飲料、煙酒",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2713.wav"
+    },
+    {
+        "wav": "2731",
+        "word": "百貨公司",
+        "roma": "pah-huè kong-si/pah-hè kong-si",
+        "class": "商業,服務業及其他,建築物、結構",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2731.wav"
+    },
+    {
+        "wav": "2796",
+        "word": "米糕𣻸",
+        "roma": "bí-ko-siûnn",
+        "class": "性別、婚姻",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2796.wav"
+    },
+    {
+        "wav": "2844",
+        "word": "西秦王爺",
+        "roma": "Se-tsîn-ông-iâ",
+        "class": "戲劇、音樂",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2844.wav"
+    },
+    {
+        "wav": "2992",
+        "word": "吵家抐宅",
+        "roma": "tshá-ke-lā-the̍h",
+        "class": "宗族、家庭",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2992.wav"
+    },
+    {
+        "wav": "2993",
+        "word": "吵家抐計",
+        "roma": "tshá-ke-lā-kè",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/2/2993.wav"
+    },
+    {
+        "wav": "3012",
+        "word": "刣雞教猴",
+        "roma": "thâi-ke-kà-kâu/thâi-kue-kà-kâu",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/3/3012.wav"
+    },
+    {
+        "wav": "3032",
+        "word": "坎坎坷坷",
+        "roma": "khám-khám-khia̍t-khia̍t",
+        "class": "生活狀況,道路、橋梁",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/3/3032.wav"
+    },
+    {
+        "wav": "3152",
+        "word": "扶𡳞脬",
+        "roma": "phôo-lān-pha",
+        "class": "交際應酬,待人處事",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/3/3152.wav"
+    },
+    {
+        "wav": "3168",
+        "word": "弄狗相咬",
+        "roma": "lōng-káu-sio-kā",
+        "class": "待人處事",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/3/3168.wav"
+    },
+    {
+        "wav": "3312",
+        "word": "求神問佛",
+        "roma": "kiû-sîn-mn̄g-pu̍t",
+        "class": "相關器具、活動",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/3/3312.wav"
+    },
+    {
+        "wav": "3327",
+        "word": "沙龍巴斯",
+        "roma": "sa-long-pa-suh",
+        "class": "醫療保健",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/3/3327.wav"
+    },
+    {
+        "wav": "3359",
+        "word": "育囡仔歌",
+        "roma": "io-gín-á-kua",
+        "class": "戲劇、音樂",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/3/3359.wav"
+    },
+    {
+        "wav": "3452",
+        "word": "走袂開跤",
+        "roma": "tsáu-bē-khui-kha/tsáu-buē-khui-kha",
+        "class": "生活狀況",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/3/3452.wav"
+    },
+    {
+        "wav": "3473",
+        "word": "豆菜底的",
+        "roma": "tāu-tshài-té--ê/tāu-tshài-tué--ê",
+        "class": "地位、身世、背景",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/3/3473.wav"
+    },
+    {
+        "wav": "3474",
+        "word": "走街仔仙",
+        "roma": "tsáu-ke-á-sian/tsáu-kue-á-sian",
+        "class": "服務業及其他",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/3/3474.wav"
+    },
+    {
+        "wav": "3481",
+        "word": "赤跤仙仔",
+        "roma": "tshiah-kha-sian-á",
+        "class": "服務業及其他,醫療保健",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/3/3481.wav"
+    },
+    {
+        "wav": "3548",
+        "word": "來來去去",
+        "roma": "lâi-lâi-khì-khì",
+        "class": "交通、運輸",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/3/3548.wav"
+    },
+    {
+        "wav": "3577",
+        "word": "佯顛佯戇",
+        "roma": "tènn-tian-tènn-gōng/tìnn-tian-tìnn-gōng",
+        "class": "道德評價,氣質態度,待人處事",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/3/3577.wav"
+    },
+    {
+        "wav": "3634",
+        "word": "叔伯兄弟",
+        "roma": "tsik-peh-hiann-tī",
+        "class": "宗族、家庭,稱謂輩分",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/3/3634.wav"
+    },
+    {
+        "wav": "3635",
+        "word": "叔伯姊妹",
+        "roma": "tsik-peh-tsí-muē/tsik-peh-tsí-bē",
+        "class": "宗族、家庭,稱謂輩分",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/3/3635.wav"
+    },
+    {
+        "wav": "3670",
+        "word": "受當袂起",
+        "roma": "siū-tong-bē-khí/siū-tong-buē-khí",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/3/3670.wav"
+    },
+    {
+        "wav": "3723",
+        "word": "咖哩嗹囉",
+        "roma": "ka-lí-liân-lô",
+        "class": "戲劇、音樂",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/3/3723.wav"
+    },
+    {
+        "wav": "3769",
+        "word": "姑不而將",
+        "roma": "koo-put-jî-tsiong/koo-put-lî-tsiong",
+        "class": "副詞",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/3/3769.wav"
+    },
+    {
+        "wav": "3782",
+        "word": "姊妹仔伴",
+        "roma": "tsí-muē-á-phuānn/tsí-bē-á-phuānn",
+        "class": "組織團體",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/3/3782.wav"
+    },
+    {
+        "wav": "3824",
+        "word": "孤毛絕種",
+        "roma": "koo-moo-tse̍h-tsíng",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/3/3824.wav"
+    },
+    {
+        "wav": "4007",
+        "word": "抾字紙的",
+        "roma": "khioh-jī-tsuá--ê/khioh-lī-tsuá--ê",
+        "class": "服務業及其他",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4007.wav"
+    },
+    {
+        "wav": "4024",
+        "word": "拖身拖命",
+        "roma": "thua-sin-thua-miā",
+        "class": "傷疾病痛",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4024.wav"
+    },
+    {
+        "wav": "4058",
+        "word": "抾紅點仔",
+        "roma": "khioh-âng-tiám-á",
+        "class": "休閒、娛樂",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4058.wav"
+    },
+    {
+        "wav": "4063",
+        "word": "拆食落腹",
+        "roma": "thiah-tsia̍h-lo̍h-pak",
+        "class": "待人處事",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4063.wav"
+    },
+    {
+        "wav": "4085",
+        "word": "拉圇仔燒",
+        "roma": "lâ-lûn-á-sio",
+        "class": "境況、狀態-擬物",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4085.wav"
+    },
+    {
+        "wav": "4102",
+        "word": "拍殕仔光",
+        "roma": "phah-phú-á-kng",
+        "class": "自然現象",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4102.wav"
+    },
+    {
+        "wav": "4145",
+        "word": "抽豬母稅",
+        "roma": "thiu-ti-bó-suè/thiu-tu-bó-sè",
+        "class": "動物形體、行為,性別、婚姻",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4145.wav"
+    },
+    {
+        "wav": "4156",
+        "word": "斧頭櫼仔",
+        "roma": "póo-thâu-tsinn-á",
+        "class": "魚蝦海獸,生產工具",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4156.wav"
+    },
+    {
+        "wav": "4171",
+        "word": "拍鐵仔師",
+        "roma": "phah-thih-á-sai",
+        "class": "科技、工業",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4171.wav"
+    },
+    {
+        "wav": "4172",
+        "word": "拍鐵仔褲",
+        "roma": "phah-thih-á-khòo",
+        "class": "衣帽鞋襪",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4172.wav"
+    },
+    {
+        "wav": "4206",
+        "word": "明仔早起",
+        "roma": "bîn-á-tsá-khí",
+        "class": "時間節令",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4206.wav"
+    },
+    {
+        "wav": "4213",
+        "word": "東西南北",
+        "roma": "tang-sai-lâm-pak",
+        "class": "地理,空間方位",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4213.wav"
+    },
+    {
+        "wav": "4215",
+        "word": "林投姊仔",
+        "roma": "Nâ-tâu-tsí--á",
+        "class": "神明、鬼怪、教派",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4215.wav"
+    },
+    {
+        "wav": "4226",
+        "word": "東倒西歪",
+        "roma": "tang-tó-sai-uai",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4226.wav"
+    },
+    {
+        "wav": "4276",
+        "word": "沓沓滴滴",
+        "roma": "ta̍p-ta̍p-tih-tih",
+        "class": "境況、狀態-擬事",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4276.wav"
+    },
+    {
+        "wav": "4330",
+        "word": "狗𩸶仔",
+        "roma": "káu-gām-á",
+        "class": "魚蝦海獸",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4330.wav"
+    },
+    {
+        "wav": "4345",
+        "word": "爸老囝幼",
+        "roma": "pē-lāu-kiánn-iù",
+        "class": "生活狀況",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4345.wav"
+    },
+    {
+        "wav": "4368",
+        "word": "狗蟻碟仔",
+        "roma": "káu-hiā-ti̍h-á",
+        "class": "生活用品,飲食物具",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4368.wav"
+    },
+    {
+        "wav": "4395",
+        "word": "空喙哺舌",
+        "roma": "khang-tshuì-pōo-tsi̍h",
+        "class": "氣質態度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4395.wav"
+    },
+    {
+        "wav": "4397",
+        "word": "空殼支票",
+        "roma": "khang-khak-tsi-phiò",
+        "class": "錢財資產",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4397.wav"
+    },
+    {
+        "wav": "4404",
+        "word": "直腸直肚",
+        "roma": "ti̍t-tn̂g-ti̍t-tōo",
+        "class": "個性風格",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4404.wav"
+    },
+    {
+        "wav": "4457",
+        "word": "花袂牢枝",
+        "roma": "hue-bē-tiâu-ki/hue-buē-tiâu-ki",
+        "class": "傷疾病痛",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4457.wav"
+    },
+    {
+        "wav": "4472",
+        "word": "花巴哩貓",
+        "roma": "hue-pa-li-niau",
+        "class": "飲食行為,形貌、體積",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4472.wav"
+    },
+    {
+        "wav": "4509",
+        "word": "阿不倒仔",
+        "roma": "a-put-tó-á",
+        "class": "禽類,休閒、娛樂",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4509.wav"
+    },
+    {
+        "wav": "4517",
+        "word": "金斗甕仔",
+        "roma": "kim-táu-àng-á",
+        "class": "生養老死,婚喪喜慶",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4517.wav"
+    },
+    {
+        "wav": "4543",
+        "word": "阿沙不魯",
+        "roma": "a-sa-puh-luh",
+        "class": "氣質態度,性質、程度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4543.wav"
+    },
+    {
+        "wav": "4547",
+        "word": "阿里不達",
+        "roma": "a-lí-put-ta̍t",
+        "class": "個性風格,道德評價",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4547.wav"
+    },
+    {
+        "wav": "4577",
+        "word": "青面獠牙",
+        "roma": "tshenn-bīn-liâu-gê/tshinn-bīn-liâu-gê",
+        "class": "體態樣貌",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4577.wav"
+    },
+    {
+        "wav": "4595",
+        "word": "青草仔店",
+        "roma": "tshenn-tsháu-á-tiàm/tshinn-tsháu-á-tiàm",
+        "class": "服務業及其他",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4595.wav"
+    },
+    {
+        "wav": "4596",
+        "word": "青草仔茶",
+        "roma": "tshenn-tsháu-á-tê/tshinn-tsháu-á-tê",
+        "class": "食物、飲料、煙酒",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4596.wav"
+    },
+    {
+        "wav": "4616",
+        "word": "長短跤話",
+        "roma": "tn̂g-té-kha-uē",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4616.wav"
+    },
+    {
+        "wav": "4623",
+        "word": "迎新棄舊",
+        "roma": "ngiâ-sin-khì-kū",
+        "class": "氣質態度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4623.wav"
+    },
+    {
+        "wav": "4638",
+        "word": "近廟欺神",
+        "roma": "kīn-biō-khi-sîn/kūn-biō-khi-sîn",
+        "class": "氣質態度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4638.wav"
+    },
+    {
+        "wav": "4639",
+        "word": "青磅白磅",
+        "roma": "tshenn-pōng-pe̍h-pōng/tshinn-pōng-pe̍h-pōng",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4639.wav"
+    },
+    {
+        "wav": "4648",
+        "word": "虎頭夾仔",
+        "roma": "hóo-thâu-ngeh-á",
+        "class": "生活用品,生產工具",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4648.wav"
+    },
+    {
+        "wav": "4654",
+        "word": "阿彌陀佛",
+        "roma": "Oo-mí-tôo-hu̍t",
+        "class": "神明、鬼怪、教派",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4654.wav"
+    },
+    {
+        "wav": "4687",
+        "word": "便當篋仔",
+        "roma": "piān-tong-kheh-á",
+        "class": "生活用品,飲食物具",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4687.wav"
+    },
+    {
+        "wav": "4711",
+        "word": "保生大帝",
+        "roma": "Pó-sing-tāi-tè",
+        "class": "神明、鬼怪、教派",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4711.wav"
+    },
+    {
+        "wav": "4715",
+        "word": "前因後果",
+        "roma": "tsiân-in-hiō-kó",
+        "class": "境況、狀態-擬事",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4715.wav"
+    },
+    {
+        "wav": "4793",
+        "word": "哀爸叫母",
+        "roma": "ai-pē-kiò-bú",
+        "class": "反應、表情",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4793.wav"
+    },
+    {
+        "wav": "4807",
+        "word": "咬喙齒根",
+        "roma": "kā-tshuì-khí-kin/kā-tshuì-khí-kun",
+        "class": "反應、表情",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4807.wav"
+    },
+    {
+        "wav": "4871",
+        "word": "幽幽仔疼",
+        "roma": "iu-iu-á-thiànn",
+        "class": "傷疾病痛",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4871.wav"
+    },
+    {
+        "wav": "4893",
+        "word": "屎礐仔蟲",
+        "roma": "sái-ha̍k-á-thâng",
+        "class": "其他動物",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/4/4893.wav"
+    },
+    {
+        "wav": "5027",
+        "word": "指指揬揬",
+        "roma": "kí-kí-tu̍h-tu̍h",
+        "class": "個性風格,待人處事",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/5/5027.wav"
+    },
+    {
+        "wav": "5047",
+        "word": "指腹為婚",
+        "roma": "tsí pak uî hun",
+        "class": "性別、婚姻,婚喪喜慶",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/5/5047.wav"
+    },
+    {
+        "wav": "5055",
+        "word": "指頭拇公",
+        "roma": "tsíng-thâu-bú-kong",
+        "class": "生理構造",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/5/5055.wav"
+    },
+    {
+        "wav": "5096",
+        "word": "查某𡢃",
+        "roma": "tsa-bóo-kán",
+        "class": "泛稱,地位、身世、背景",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/5/5096.wav"
+    },
+    {
+        "wav": "5099",
+        "word": "查某囡仔",
+        "roma": "tsa-bóo gín-á",
+        "class": "泛稱",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/5/5099.wav"
+    },
+    {
+        "wav": "5108",
+        "word": "查埔囡仔",
+        "roma": "tsa-poo gín-á",
+        "class": "性別、婚姻",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/5/5108.wav"
+    },
+    {
+        "wav": "5140",
+        "word": "洗身軀間",
+        "roma": "sé-sin-khu-king/sué-sin-khu-king",
+        "class": "理容、化妝,建築物、結構",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/5/5140.wav"
+    },
+    {
+        "wav": "5159",
+        "word": "歪膏揤斜",
+        "roma": "uai-ko-tshi̍h-tshua̍h",
+        "class": "境況、狀態-擬物",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/5/5159.wav"
+    },
+    {
+        "wav": "5208",
+        "word": "流豬哥瀾",
+        "roma": "lâu-ti-ko-nuā/lâu-tu-ko-nuā",
+        "class": "道德評價,氣質態度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/5/5208.wav"
+    },
+    {
+        "wav": "5251",
+        "word": "相拍雞仔",
+        "roma": "sio-phah-ke-á/sio-phah-kue-á",
+        "class": "禽類,休閒、娛樂",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/5/5251.wav"
+    },
+    {
+        "wav": "5325",
+        "word": "砂石仔車",
+        "roma": "sua-tsio̍h-á-tshia",
+        "class": "交通、運輸",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/5/5325.wav"
+    },
+    {
+        "wav": "5424",
+        "word": "紅膏赤蠘",
+        "roma": "âng-ko-tshiah-tshi̍h",
+        "class": "醫療保健",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/5/5424.wav"
+    },
+    {
+        "wav": "5428",
+        "word": "紅蔥仔頭",
+        "roma": "âng-tshang-á-thâu",
+        "class": "食物、飲料、煙酒",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/5/5428.wav"
+    },
+    {
+        "wav": "5440",
+        "word": "胡蠅拍仔",
+        "roma": "hôo-sîn-phah-á",
+        "class": "生活用品",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/5/5440.wav"
+    },
+    {
+        "wav": "5442",
+        "word": "胡蠅屎痣",
+        "roma": "hôo-sîn-sái-kì",
+        "class": "生理構造",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/5/5442.wav"
+    },
+    {
+        "wav": "5467",
+        "word": "若有若無",
+        "roma": "ná ū ná bô",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/5/5467.wav"
+    },
+    {
+        "wav": "5525",
+        "word": "重重疊疊",
+        "roma": "tîng-tîng-tha̍h-tha̍h",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/5/5525.wav"
+    },
+    {
+        "wav": "5604",
+        "word": "食便領現",
+        "roma": "tsia̍h-piān-niá-hiān",
+        "class": "道德評價",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/5/5604.wav"
+    },
+    {
+        "wav": "5629",
+        "word": "食清領便",
+        "roma": "tsia̍h-tshing-niá-piān",
+        "class": "生活狀況",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/5/5629.wav"
+    },
+    {
+        "wav": "5632",
+        "word": "食軟驚硬",
+        "roma": "tsia̍h-nńg-kiann-ngē/tsia̍h-nńg-kiann-ngī",
+        "class": "個性風格",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/5/5632.wav"
+    },
+    {
+        "wav": "5641",
+        "word": "香菇肉糜",
+        "roma": "hiunn-koo-bah-muê/hiunn-koo-bah-bê",
+        "class": "食物、飲料、煙酒",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/5/5641.wav"
+    },
+    {
+        "wav": "5663",
+        "word": "面憂面結",
+        "roma": "bīn-iu-bīn-kat",
+        "class": "反應、表情",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/5/5663.wav"
+    },
+    {
+        "wav": "5670",
+        "word": "風調雨順",
+        "roma": "hong-tiâu-ú-sūn",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/5/5670.wav"
+    },
+    {
+        "wav": "5682",
+        "word": "風聲嗙影",
+        "roma": "hong-siann-pòng-iánn",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/5/5682.wav"
+    },
+    {
+        "wav": "5748",
+        "word": "冤家量債",
+        "roma": "uan-ke-niû-tsè",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/5/5748.wav"
+    },
+    {
+        "wav": "5822",
+        "word": "厝角鳥仔",
+        "roma": "tshù-kak-tsiáu-á",
+        "class": "禽類",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/5/5822.wav"
+    },
+    {
+        "wav": "5827",
+        "word": "哭爸哭母",
+        "roma": "khàu-pē-khàu-bú",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/5/5827.wav"
+    },
+    {
+        "wav": "5834",
+        "word": "哩哩囉囉",
+        "roma": "li-li-lo-lo",
+        "class": "副詞",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/5/5834.wav"
+    },
+    {
+        "wav": "5851",
+        "word": "厝邊頭尾",
+        "roma": "tshù-pinn-thâu-bué/tshù-pinn-thâu-bé",
+        "class": "泛稱",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/5/5851.wav"
+    },
+    {
+        "wav": "5941",
+        "word": "崁頭崁面",
+        "roma": "khàm-thâu-khàm-bīn",
+        "class": "氣質態度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/5/5941.wav"
+    },
+    {
+        "wav": "6029",
+        "word": "時時刻刻",
+        "roma": "sî-sî-khik-khik",
+        "class": "時間節令",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6029.wav"
+    },
+    {
+        "wav": "6054",
+        "word": "料想袂到",
+        "roma": "liāu-sióng-bē-kàu/liāu-sióng-buē-kàu",
+        "class": "性質、程度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6054.wav"
+    },
+    {
+        "wav": "6074",
+        "word": "捏麵尪仔",
+        "roma": "lia̍p-mī-ang-á",
+        "class": "休閒、娛樂,相關器具、活動",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6074.wav"
+    },
+    {
+        "wav": "6144",
+        "word": "柴頭尪仔",
+        "roma": "tshâ-thâu-ang-á",
+        "class": "休閒、娛樂",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6144.wav"
+    },
+    {
+        "wav": "6163",
+        "word": "海水浴場",
+        "roma": "hái-tsuí i̍k-tiûnn",
+        "class": "建築物、結構,休閒、娛樂",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6163.wav"
+    },
+    {
+        "wav": "6171",
+        "word": "氣身惱命",
+        "roma": "khì-sin-lóo-miā",
+        "class": "氣質態度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6171.wav"
+    },
+    {
+        "wav": "6193",
+        "word": "泰國菝仔",
+        "roma": "Thài-kok-pua̍t-á",
+        "class": "蔬果作物,食物、飲料、煙酒",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6193.wav"
+    },
+    {
+        "wav": "6231",
+        "word": "烏𪐞紅",
+        "roma": "oo-tòo-âng",
+        "class": "顏色、氣味",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6231.wav"
+    },
+    {
+        "wav": "6235",
+        "word": "烏仁目鏡",
+        "roma": "oo-jîn-ba̍k-kiànn/oo-lîn-ba̍k-kiànn",
+        "class": "生活用品",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6235.wav"
+    },
+    {
+        "wav": "6242",
+        "word": "烏天暗地",
+        "roma": "oo-thinn-àm-tē/oo-thinn-àm-tuē",
+        "class": "氣候溫度,自然現象",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6242.wav"
+    },
+    {
+        "wav": "6256",
+        "word": "消災解厄",
+        "roma": "siau-tsai-kái-eh",
+        "class": "災禍,相關器具、活動",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6256.wav"
+    },
+    {
+        "wav": "6261",
+        "word": "烏枋拭仔",
+        "roma": "oo-pang-tshit-á",
+        "class": "教育、學術",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6261.wav"
+    },
+    {
+        "wav": "6267",
+        "word": "烏青凝血",
+        "roma": "oo-tshenn gîng-hueh/oo-tshinn gîng-huih",
+        "class": "傷疾病痛",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6267.wav"
+    },
+    {
+        "wav": "6270",
+        "word": "烏面抐桮",
+        "roma": "oo-bīn-lā-pue",
+        "class": "禽類",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6270.wav"
+    },
+    {
+        "wav": "6278",
+        "word": "烏梅仔酒",
+        "roma": "oo-muê-á-tsiú/oo-m̂-á-tsiú",
+        "class": "食物、飲料、煙酒",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6278.wav"
+    },
+    {
+        "wav": "6279",
+        "word": "烏甜仔菜",
+        "roma": "oo-tinn-á-tshài",
+        "class": "花草樹木,醫療保健,食物、飲料、煙酒",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6279.wav"
+    },
+    {
+        "wav": "6287",
+        "word": "烏喙筆仔",
+        "roma": "oo-tshuì-pit-á",
+        "class": "禽類",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6287.wav"
+    },
+    {
+        "wav": "6312",
+        "word": "消瘦落肉",
+        "roma": "siau-sán-lo̍h-bah",
+        "class": "體態樣貌",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6312.wav"
+    },
+    {
+        "wav": "6316",
+        "word": "烏魯木齊",
+        "roma": "oo-lóo-bo̍k-tsè",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6316.wav"
+    },
+    {
+        "wav": "6321",
+        "word": "烏貓姊仔",
+        "roma": "oo-niau-tsí--á",
+        "class": "體態樣貌",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6321.wav"
+    },
+    {
+        "wav": "6322",
+        "word": "烏頭仔車",
+        "roma": "oo-thâu-á-tshia",
+        "class": "交通、運輸",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6322.wav"
+    },
+    {
+        "wav": "6402",
+        "word": "眨眨𥍉",
+        "roma": "tsha̍p-tsha̍p-nih",
+        "class": "反應、表情",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6402.wav"
+    },
+    {
+        "wav": "6411",
+        "word": "祖傳祕方",
+        "roma": "tsóo-thuân pì-hng",
+        "class": "相關器具、活動",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6411.wav"
+    },
+    {
+        "wav": "6435",
+        "word": "神主牌仔",
+        "roma": "sîn-tsú-pâi-á",
+        "class": "宗族、家庭,相關器具、活動",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6435.wav"
+    },
+    {
+        "wav": "6471",
+        "word": "笑頭笑面",
+        "roma": "tshiò-thâu-tshiò-bīn",
+        "class": "體態樣貌",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6471.wav"
+    },
+    {
+        "wav": "6560",
+        "word": "臭耳甕仔",
+        "roma": "tshàu-hīnn-àng-á/tshàu-hī-àng-á",
+        "class": "傷疾病痛",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6560.wav"
+    },
+    {
+        "wav": "6618",
+        "word": "臭頭雞仔",
+        "roma": "tshàu-thâu-ke-á/tshàu-thâu-kue-á",
+        "class": "禽類,相關用語",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6618.wav"
+    },
+    {
+        "wav": "6625",
+        "word": "臭藥丸仔",
+        "roma": "tshàu-io̍h-uân-á",
+        "class": "醫療保健",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6625.wav"
+    },
+    {
+        "wav": "6640",
+        "word": "衰尾道人",
+        "roma": "sue-bué-tō-jîn/sue-bé-tō-lîn",
+        "class": "道德評價",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6640.wav"
+    },
+    {
+        "wav": "6650",
+        "word": "袂食袂睏",
+        "roma": "bē-tsia̍h-bē-khùn/buē-tsia̍h-buē-khùn",
+        "class": "生活狀況",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6650.wav"
+    },
+    {
+        "wav": "6704",
+        "word": "豈有此理",
+        "roma": "khí-iú-tshú-lí",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6704.wav"
+    },
+    {
+        "wav": "6761",
+        "word": "起跤動手",
+        "roma": "khí-kha-tāng-tshiú",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6761.wav"
+    },
+    {
+        "wav": "6781",
+        "word": "起雞母皮",
+        "roma": "khí-ke-bó-phuê/khí-kue-bó-phê",
+        "class": "反應、表情",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6781.wav"
+    },
+    {
+        "wav": "6821",
+        "word": "馬西馬西",
+        "roma": "má-se-má-se",
+        "class": "心理狀態",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6821.wav"
+    },
+    {
+        "wav": "6834",
+        "word": "酒矸窒仔",
+        "roma": "tsiú-kan-that-á",
+        "class": "飲食物具",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6834.wav"
+    },
+    {
+        "wav": "6856",
+        "word": "馬馬虎虎",
+        "roma": "má-má-hu-hu",
+        "class": "個性風格,氣質態度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6856.wav"
+    },
+    {
+        "wav": "6888",
+        "word": "鬼頭鬼腦",
+        "roma": "kuí-thâu-kuí-náu",
+        "class": "氣質態度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6888.wav"
+    },
+    {
+        "wav": "6928",
+        "word": "偷工減料",
+        "roma": "thau-kang-kiám-liāu",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6928.wav"
+    },
+    {
+        "wav": "6938",
+        "word": "假仙假觸",
+        "roma": "ké-sian-ké-tak",
+        "class": "個性風格,氣質態度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6938.wav"
+    },
+    {
+        "wav": "6954",
+        "word": "假死假活",
+        "roma": "ké-sí-ké-ua̍h",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6954.wav"
+    },
+    {
+        "wav": "6958",
+        "word": "偷來暗去",
+        "roma": "thau-lâi-àm-khì",
+        "class": "性別、婚姻",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6958.wav"
+    },
+    {
+        "wav": "6962",
+        "word": "偷咬雞仔",
+        "roma": "thau-kā-ke-á/thau-kā-kue-á",
+        "class": "性別、婚姻",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6962.wav"
+    },
+    {
+        "wav": "6972",
+        "word": "假鬼假怪",
+        "roma": "ké-kuí-ké-kuài",
+        "class": "氣質態度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/6/6972.wav"
+    },
+    {
+        "wav": "7158",
+        "word": "寄金簿仔",
+        "roma": "kià-kim-phōo-á",
+        "class": "錢財資產",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/7/7158.wav"
+    },
+    {
+        "wav": "7265",
+        "word": "挲圓仔湯",
+        "roma": "so-înn-á-thng",
+        "class": "相關用語,交際應酬,待人處事",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/7/7265.wav"
+    },
+    {
+        "wav": "7272",
+        "word": "悽慘落魄",
+        "roma": "tshi-tshám-lo̍k-phik",
+        "class": "生活狀況",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/7/7272.wav"
+    },
+    {
+        "wav": "7355",
+        "word": "掠長補短",
+        "roma": "lia̍h-tn̂g-póo-té",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/7/7355.wav"
+    },
+    {
+        "wav": "7365",
+        "word": "掃梳笒仔",
+        "roma": "sàu-se-gím-á/sàu-sue-giám-á",
+        "class": "生活用品",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/7/7365.wav"
+    },
+    {
+        "wav": "7377",
+        "word": "掩掩揜揜",
+        "roma": "ng-ng-iap-iap",
+        "class": "個性風格",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/7/7377.wav"
+    },
+    {
+        "wav": "7386",
+        "word": "掠無頭摠",
+        "roma": "lia̍h-bô-thâu-tsáng",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/7/7386.wav"
+    },
+    {
+        "wav": "7414",
+        "word": "掠龜走鱉",
+        "roma": "lia̍h-ku-tsáu-pih",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/7/7414.wav"
+    },
+    {
+        "wav": "7416",
+        "word": "捲螺仔風",
+        "roma": "kńg-lê-á-hong",
+        "class": "自然現象,災禍",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/7/7416.wav"
+    },
+    {
+        "wav": "7417",
+        "word": "捲螺仔旋",
+        "roma": "kńg-lê-á-tsn̄g",
+        "class": "自然現象",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/7/7417.wav"
+    },
+    {
+        "wav": "7483",
+        "word": "欲死欲活",
+        "roma": "beh-sí-beh-ua̍h/bueh-sí-bueh-ua̍h",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/7/7483.wav"
+    },
+    {
+        "wav": "7655",
+        "word": "甜言蜜語",
+        "roma": "tinn-giân-bi̍t-gí/tinn-giân-bi̍t-gú",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/7/7655.wav"
+    },
+    {
+        "wav": "7749",
+        "word": "粗俗物仔",
+        "roma": "tshoo-sio̍k-mih-á",
+        "class": "商業,性質、程度,事、物泛稱",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/7/7749.wav"
+    },
+    {
+        "wav": "7764",
+        "word": "粗菜便飯",
+        "roma": "tshoo-tshài piān-pn̄g",
+        "class": "食物、飲料、煙酒",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/7/7764.wav"
+    },
+    {
+        "wav": "7823",
+        "word": "蚵仔麵線",
+        "roma": "ô-á-mī-suànn",
+        "class": "食物、飲料、煙酒",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/7/7823.wav"
+    },
+    {
+        "wav": "7858",
+        "word": "規年迵天",
+        "roma": "kui-nî-thàng-thinn",
+        "class": "時間節令",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/7/7858.wav"
+    },
+    {
+        "wav": "7937",
+        "word": "貪官汙吏",
+        "roma": "tham-kuann-ù-lī",
+        "class": "政治",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/7/7937.wav"
+    },
+    {
+        "wav": "7969",
+        "word": "軟塗深掘",
+        "roma": "nńg-thôo-tshim-ku̍t",
+        "class": "氣質態度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/7/7969.wav"
+    },
+    {
+        "wav": "8017",
+        "word": "陳三五娘",
+        "roma": "Tân-sann-Gōo-niû",
+        "class": "戲劇、音樂,相關器具、活動",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/8/8017.wav"
+    },
+    {
+        "wav": "8080",
+        "word": "野雞仔車",
+        "roma": "iá-ke-á-tshia/iá-kue-á-tshia",
+        "class": "交通、運輸",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/8/8080.wav"
+    },
+    {
+        "wav": "8124",
+        "word": "麻雀子仔",
+        "roma": "muâ-tshiok-jí-á/muâ-tshiok-lí-á",
+        "class": "休閒、娛樂",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/8/8124.wav"
+    },
+    {
+        "wav": "8130",
+        "word": "鳥鼠仔冤",
+        "roma": "niáu-tshí-á-uan/niáu-tshú-á-uan",
+        "class": "交際應酬",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/8/8130.wav"
+    },
+    {
+        "wav": "8131",
+        "word": "鳥鼠仔症",
+        "roma": "niáu-tshí-á-tsìng/niáu-tshú-á-tsìng",
+        "class": "傷疾病痛",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/8/8131.wav"
+    },
+    {
+        "wav": "8133",
+        "word": "鳥鼠擗仔",
+        "roma": "niáu-tshí-phia̍k-á/niáu-tshú-phia̍k-á",
+        "class": "生活用品",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/8/8133.wav"
+    },
+    {
+        "wav": "8134",
+        "word": "鳥鼠觸仔",
+        "roma": "niáu-tshí-tak-á/niáu-tshú-tak-á",
+        "class": "生活用品",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/8/8134.wav"
+    },
+    {
+        "wav": "8195",
+        "word": "善男信女",
+        "roma": "siān-lâm-sìn-lí/siān-lâm-sìn-lú",
+        "class": "神職、神巫、信徒",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/8/8195.wav"
+    },
+    {
+        "wav": "8222",
+        "word": "啼啼哭哭",
+        "roma": "thî-thî-khàu-khàu",
+        "class": "氣質態度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/8/8222.wav"
+    },
+    {
+        "wav": "8237",
+        "word": "割稻仔尾",
+        "roma": "kuah-tiū-á-bué/kuah-tiū-á-bé",
+        "class": "個性風格,道德評價",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/8/8237.wav"
+    },
+    {
+        "wav": "8388",
+        "word": "插喙插舌",
+        "roma": "tshap-tshuì-tshap-tsi̍h",
+        "class": "一般動詞-行為動詞",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/8/8388.wav"
+    },
+    {
+        "wav": "8553",
+        "word": "湯匙仔菜",
+        "roma": "thng-sî-á-tshài",
+        "class": "蔬果作物,食物、飲料、煙酒",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/8/8553.wav"
+    },
+    {
+        "wav": "8578",
+        "word": "無大無細",
+        "roma": "bô-tuā-bô-sè/bô-tuā-bô-suè",
+        "class": "道德評價,氣質態度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/8/8578.wav"
+    },
+    {
+        "wav": "8588",
+        "word": "無代無誌",
+        "roma": "bô-tāi-bô-tsì",
+        "class": "境況、狀態-擬事",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/8/8588.wav"
+    },
+    {
+        "wav": "8592",
+        "word": "無可奈何",
+        "roma": "bû-khó-nāi-hô",
+        "class": "境況、狀態-擬事",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/8/8592.wav"
+    },
+    {
+        "wav": "8604",
+        "word": "無依無倚",
+        "roma": "bô-i-bô-uá",
+        "class": "生活狀況",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/8/8604.wav"
+    },
+    {
+        "wav": "8613",
+        "word": "無法無天",
+        "roma": "bû-huat-bû-thian",
+        "class": "道德評價,氣質態度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/8/8613.wav"
+    },
+    {
+        "wav": "8618",
+        "word": "無某無猴",
+        "roma": "bô-bóo-bô-kâu",
+        "class": "生活狀況",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/8/8618.wav"
+    },
+    {
+        "wav": "8622",
+        "word": "無要無緊",
+        "roma": "bô-iàu-bô-kín",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/8/8622.wav"
+    },
+    {
+        "wav": "8625",
+        "word": "煮食裙仔",
+        "roma": "tsú-tsia̍h-kûn-á",
+        "class": "生活用品,衣帽鞋襪",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/8/8625.wav"
+    },
+    {
+        "wav": "8652",
+        "word": "無意無思",
+        "roma": "bô-ì-bô-sù",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/8/8652.wav"
+    },
+    {
+        "wav": "8658",
+        "word": "無暝無日",
+        "roma": "bô-mê-bô-ji̍t/bô-mî-bô-li̍t",
+        "class": "生活狀況,生活勞動",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/8/8658.wav"
+    },
+    {
+        "wav": "8667",
+        "word": "無影無跡",
+        "roma": "bô-iánn-bô-tsiah",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/8/8667.wav"
+    },
+    {
+        "wav": "8678",
+        "word": "無聲無說",
+        "roma": "bô-siann-bô-sueh/bô-siann-bô-seh",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/8/8678.wav"
+    },
+    {
+        "wav": "8679",
+        "word": "無講無呾",
+        "roma": "bô-kóng-bô-tànn",
+        "class": "個性風格",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/8/8679.wav"
+    },
+    {
+        "wav": "8685",
+        "word": "無鹹無纖",
+        "roma": "bô-kiâm-bô-siam",
+        "class": "顏色、氣味",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/8/8685.wav"
+    },
+    {
+        "wav": "8686",
+        "word": "無攬無拈",
+        "roma": "bô-lám-bô-ne",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/8/8686.wav"
+    },
+    {
+        "wav": "8753",
+        "word": "畫糖尪仔",
+        "roma": "uē-thn̂g-ang-á",
+        "class": "相關器具、活動",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/8/8753.wav"
+    },
+    {
+        "wav": "8843",
+        "word": "筒仔米糕",
+        "roma": "tâng-á-bí-ko",
+        "class": "食物、飲料、煙酒",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/8/8843.wav"
+    },
+    {
+        "wav": "8950",
+        "word": "菜店查某",
+        "roma": "tshài-tiàm-tsa-bóo",
+        "class": "服務業及其他",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/8/8950.wav"
+    },
+    {
+        "wav": "9012",
+        "word": "著寒熱仔",
+        "roma": "tio̍h kuânn-jia̍t-á/tio̍h kuânn-lia̍t-á",
+        "class": "傷疾病痛",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/9/9012.wav"
+    },
+    {
+        "wav": "9055",
+        "word": "註生娘娘",
+        "roma": "Tsù-senn-niû-niû/Tsù-sinn-niû-niû",
+        "class": "神明、鬼怪、教派",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/9/9055.wav"
+    },
+    {
+        "wav": "9073",
+        "word": "趁食查某",
+        "roma": "thàn-tsia̍h-tsa-bóo",
+        "class": "服務業及其他",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/9/9073.wav"
+    },
+    {
+        "wav": "9077",
+        "word": "費氣費觸",
+        "roma": "huì-khì-huì-tak",
+        "class": "性質、程度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/9/9077.wav"
+    },
+    {
+        "wav": "9246",
+        "word": "黃昏市仔",
+        "roma": "hông-hun-tshī-á",
+        "class": "商業,建築物、結構",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/9/9246.wav"
+    },
+    {
+        "wav": "9307",
+        "word": "傷天害理",
+        "roma": "siong-thian-hāi-lí",
+        "class": "道德評價",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/9/9307.wav"
+    },
+    {
+        "wav": "9325",
+        "word": "傷風敗俗",
+        "roma": "siong-hong-pāi-sio̍k",
+        "class": "道德評價,性質、程度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/9/9325.wav"
+    },
+    {
+        "wav": "9396",
+        "word": "嗤舞嗤呲",
+        "roma": "tshi-bú-tshi̍h-tshū",
+        "class": "氣質態度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/9/9396.wav"
+    },
+    {
+        "wav": "9401",
+        "word": "塑膠袋仔",
+        "roma": "sok-ka-tē-á",
+        "class": "生活用品",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/9/9401.wav"
+    },
+    {
+        "wav": "9411",
+        "word": "嫁查某囝",
+        "roma": "kè tsa-bóo-kiánn",
+        "class": "性別、婚姻,婚喪喜慶",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/9/9411.wav"
+    },
+    {
+        "wav": "9442",
+        "word": "想東想西",
+        "roma": "siūnn-tang-siūnn-sai",
+        "class": "心理活動",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/9/9442.wav"
+    },
+    {
+        "wav": "9443",
+        "word": "想空想縫",
+        "roma": "siūnn-khang-siūnn-phāng",
+        "class": "心理活動",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/9/9443.wav"
+    },
+    {
+        "wav": "9458",
+        "word": "愛睏藥仔",
+        "roma": "ài-khùn-io̍h-á",
+        "class": "醫療保健",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/9/9458.wav"
+    },
+    {
+        "wav": "9514",
+        "word": "搦屎搦尿",
+        "roma": "la̍k-sái-la̍k-jiō/la̍k-sái-la̍k-liō",
+        "class": "生養老死",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/9/9514.wav"
+    },
+    {
+        "wav": "9541",
+        "word": "搝搝搦搦",
+        "roma": "khiú-khiú-la̍k-la̍k",
+        "class": "肢體動作",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/9/9541.wav"
+    },
+    {
+        "wav": "9678",
+        "word": "歁頭歁面",
+        "roma": "khám-thâu-khám-bīn",
+        "class": "氣質態度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/9/9678.wav"
+    },
+    {
+        "wav": "9724",
+        "word": "照呼照行",
+        "roma": "tsiàu-hoo-tsiàu-kiânn",
+        "class": "待人處事",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/9/9724.wav"
+    },
+    {
+        "wav": "9766",
+        "word": "當頭白日",
+        "roma": "tng-thâu-pe̍h-ji̍t/tng-thâu-pe̍h-li̍t",
+        "class": "時間節令",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/9/9766.wav"
+    },
+    {
+        "wav": "9767",
+        "word": "當頭對面",
+        "roma": "tng-thâu-tuì-bīn",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/9/9767.wav"
+    },
+    {
+        "wav": "9840",
+        "word": "經跤經手",
+        "roma": "kenn-kha-kenn-tshiú/kinn-kha-kinn-tshiú",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/9/9840.wav"
+    },
+    {
+        "wav": "9870",
+        "word": "落人的喙",
+        "roma": "lo̍h-lâng-ê-tshuì",
+        "class": "一般動詞-行為動詞",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/9/9870.wav"
+    },
+    {
+        "wav": "9880",
+        "word": "萬不得已",
+        "roma": "bān-put-tik-í",
+        "class": "境況、狀態-擬事",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/9/9880.wav"
+    },
+    {
+        "wav": "9888",
+        "word": "腸仔𣻸",
+        "roma": "tn̂g-á-siûnn",
+        "class": "生理構造",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/9/9888.wav"
+    },
+    {
+        "wav": "9890",
+        "word": "舅仔探房",
+        "roma": "kū-á-thàm-pâng",
+        "class": "性別、婚姻,婚喪喜慶",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/9/9890.wav"
+    },
+    {
+        "wav": "9949",
+        "word": "萬無一失",
+        "roma": "bān-bû-it-sit",
+        "class": "境況、狀態-擬事",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/9/9949.wav"
+    },
+    {
+        "wav": "10074",
+        "word": "跤尖手幼",
+        "roma": "kha-tsiam-tshiú-iù",
+        "class": "體態樣貌",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10074.wav"
+    },
+    {
+        "wav": "10083",
+        "word": "跤來手來",
+        "roma": "kha-lâi-tshiú-lâi",
+        "class": "個性風格,氣質態度,待人處事",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10083.wav"
+    },
+    {
+        "wav": "10087",
+        "word": "畫虎𡳞",
+        "roma": "uē-hóo-lān",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10087.wav"
+    },
+    {
+        "wav": "10092",
+        "word": "跤指頭仔",
+        "roma": "kha-tsíng-thâu-á",
+        "class": "生理構造",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10092.wav"
+    },
+    {
+        "wav": "10105",
+        "word": "跤梢間仔",
+        "roma": "kha-sau-king-á",
+        "class": "服務業及其他",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10105.wav"
+    },
+    {
+        "wav": "10115",
+        "word": "趒跤頓蹄",
+        "roma": "tiô-kha-tǹg-tê",
+        "class": "反應、表情",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10115.wav"
+    },
+    {
+        "wav": "10123",
+        "word": "跤模手印",
+        "roma": "kha-bôo-tshiú-ìn",
+        "class": "法律,語言、文字、符號",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10123.wav"
+    },
+    {
+        "wav": "10245",
+        "word": "路邊擔仔",
+        "roma": "lōo-pinn-tànn-á",
+        "class": "服務業及其他,財務單位、活動",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10245.wav"
+    },
+    {
+        "wav": "10274",
+        "word": "鉛筆絞仔",
+        "roma": "iân-pit-ká-á",
+        "class": "生活用品",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10274.wav"
+    },
+    {
+        "wav": "10299",
+        "word": "電火泡仔",
+        "roma": "tiān-hué-pho̍k-á/tiān-hé-pho̍k-á",
+        "class": "生活用品",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10299.wav"
+    },
+    {
+        "wav": "10301",
+        "word": "電火球仔",
+        "roma": "tiān-hué-kiû-á/tiān-hé-kiû-á",
+        "class": "生活用品",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10301.wav"
+    },
+    {
+        "wav": "10324",
+        "word": "頓椅頓桌",
+        "roma": "tǹg-í-tǹg-toh",
+        "class": "肢體動作",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10324.wav"
+    },
+    {
+        "wav": "10337",
+        "word": "電影戲園",
+        "roma": "tiān-iánn-hì-hn̂g",
+        "class": "建築物、結構,休閒、娛樂",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10337.wav"
+    },
+    {
+        "wav": "10343",
+        "word": "電頭鬃店",
+        "roma": "tiān-thâu-tsang-tiàm",
+        "class": "理容、化妝",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10343.wav"
+    },
+    {
+        "wav": "10493",
+        "word": "對襟仔衫",
+        "roma": "tuì-khim-á-sann",
+        "class": "衣帽鞋襪",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10493.wav"
+    },
+    {
+        "wav": "10520",
+        "word": "慢慢仔是",
+        "roma": "bān-bān-á-sī",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10520.wav"
+    },
+    {
+        "wav": "10650",
+        "word": "疑神疑鬼",
+        "roma": "gî-sîn-gî-kuí",
+        "class": "心理狀態",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10650.wav"
+    },
+    {
+        "wav": "10759",
+        "word": "綿死綿爛",
+        "roma": "mî-sí-mî-nuā",
+        "class": "心理狀態",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10759.wav"
+    },
+    {
+        "wav": "10762",
+        "word": "緊事寬辦",
+        "roma": "kín-sū-khuann-pān",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10762.wav"
+    },
+    {
+        "wav": "10765",
+        "word": "綴前綴後",
+        "roma": "tuè-tsîng-tuè-āu/tè-tsîng-tè-āu",
+        "class": "一般動詞-行為動詞",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10765.wav"
+    },
+    {
+        "wav": "10776",
+        "word": "綾羅綢緞",
+        "roma": "lîng-lô-tiû-tuān",
+        "class": "衣帽鞋襪,縫紉洗熨",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10776.wav"
+    },
+    {
+        "wav": "10777",
+        "word": "綴轎後的",
+        "roma": "tuè-kiō-āu--ê/tè-kiō-āu--ê",
+        "class": "性別、婚姻",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10777.wav"
+    },
+    {
+        "wav": "10827",
+        "word": "誓不兩立",
+        "roma": "sè-put-lióng-li̍p",
+        "class": "交際應酬",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10827.wav"
+    },
+    {
+        "wav": "10899",
+        "word": "輕聲細說",
+        "roma": "khin-siann-sè-sueh/khin-siann-suè-seh",
+        "class": "氣質態度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10899.wav"
+    },
+    {
+        "wav": "10968",
+        "word": "儉腸凹肚",
+        "roma": "khiām-tn̂g-neh-tōo",
+        "class": "生活狀況",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10968.wav"
+    },
+    {
+        "wav": "10969",
+        "word": "儉儉仔用",
+        "roma": "khiām-khiām-á īng",
+        "class": "財務單位、活動",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10969.wav"
+    },
+    {
+        "wav": "10997",
+        "word": "嘻嘻嘩嘩",
+        "roma": "hi-hi-huā-huā",
+        "class": "休閒、娛樂",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10997.wav"
+    },
+    {
+        "wav": "11046",
+        "word": "寬寬仔是",
+        "roma": "khuann-khuann-á-sī",
+        "class": "副詞",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/11/11046.wav"
+    },
+    {
+        "wav": "11091",
+        "word": "憂頭苦面",
+        "roma": "iu-thâu-khóo-bīn",
+        "class": "反應、表情",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/11/11091.wav"
+    },
+    {
+        "wav": "11092",
+        "word": "憂頭結面",
+        "roma": "iu-thâu-kat-bīn",
+        "class": "反應、表情",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/11/11092.wav"
+    },
+    {
+        "wav": "11200",
+        "word": "澎湖菜瓜",
+        "roma": "Phênn-ôo tshài-kue/Phînn-ôo tshài-kue",
+        "class": "蔬果作物,食物、飲料、煙酒",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/11/11200.wav"
+    },
+    {
+        "wav": "11201",
+        "word": "潤餅𩛩",
+        "roma": "jūn-piánn-kauh/lūn-piánn-kauh",
+        "class": "食物、飲料、煙酒,相關器具、活動",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/11/11201.wav"
+    },
+    {
+        "wav": "11339",
+        "word": "蝦蛄擗仔",
+        "roma": "hê-koo-phia̍k-á",
+        "class": "魚蝦海獸,食物、飲料、煙酒",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/11/11339.wav"
+    },
+    {
+        "wav": "11407",
+        "word": "豬母奶仔",
+        "roma": "ti-bó-ling-á/tu-bó-ni-á",
+        "class": "花草樹木",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/11/11407.wav"
+    },
+    {
+        "wav": "11428",
+        "word": "豬油粕仔",
+        "roma": "ti-iû-phoh-á/tu-iû-phoh-á",
+        "class": "廢棄物,食物、飲料、煙酒",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/11/11428.wav"
+    },
+    {
+        "wav": "11430",
+        "word": "豬狗精牲",
+        "roma": "ti-káu-tsing-senn/tu-káu-tsing-sinn",
+        "class": "泛稱",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/11/11430.wav"
+    },
+    {
+        "wav": "11460",
+        "word": "豬跤麵線",
+        "roma": "ti-kha-mī-suànn/tu-kha-mī-suànn",
+        "class": "食物、飲料、煙酒,婚喪喜慶",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/11/11460.wav"
+    },
+    {
+        "wav": "11603",
+        "word": "儑頭儑面",
+        "roma": "gām-thâu-gām-bīn",
+        "class": "氣質態度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/11/11603.wav"
+    },
+    {
+        "wav": "11767",
+        "word": "歕雞胿仔",
+        "roma": "pûn ke-kui-á/pûn kue-kui-á",
+        "class": "休閒、娛樂",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/11/11767.wav"
+    },
+    {
+        "wav": "11814",
+        "word": "瞞天過海",
+        "roma": "muâ-thinn-kuè-hái/muâ-thinn-kè-hái",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/11/11814.wav"
+    },
+    {
+        "wav": "11841",
+        "word": "糖甘蜜甜",
+        "roma": "thn̂g-kam-bi̍t-tinn",
+        "class": "性別、婚姻",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/11/11841.wav"
+    },
+    {
+        "wav": "11854",
+        "word": "窸窸窣窣",
+        "roma": "si-si-su̍t-su̍t",
+        "class": "擬聲、擬態",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/11/11854.wav"
+    },
+    {
+        "wav": "11865",
+        "word": "膨肚短命",
+        "roma": "phòng-tōo-té-miā",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/11/11865.wav"
+    },
+    {
+        "wav": "11898",
+        "word": "褪褲𡳞",
+        "roma": "thǹg-khòo-lān",
+        "class": "衣帽鞋襪",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/11/11898.wav"
+    },
+    {
+        "wav": "11930",
+        "word": "謀財害命",
+        "roma": "bôo-tsâi-hāi-bīng",
+        "class": "災禍",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/11/11930.wav"
+    },
+    {
+        "wav": "11936",
+        "word": "親情五十",
+        "roma": "tshin-tsiânn-gōo-tsa̍p",
+        "class": "宗族、家庭",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/11/11936.wav"
+    },
+    {
+        "wav": "11944",
+        "word": "貓霧仔光",
+        "roma": "bâ-bū-á-kng",
+        "class": "自然現象",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/11/11944.wav"
+    },
+    {
+        "wav": "11958",
+        "word": "扮公伙仔",
+        "roma": "pān-kong-hué-á/pān-kong-hé-á",
+        "class": "體育、運動",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/11/11958.wav"
+    },
+    {
+        "wav": "12023",
+        "word": "隨機應變",
+        "roma": "suî-ki-ìng-piàn",
+        "class": "才智能力",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/12/12023.wav"
+    },
+    {
+        "wav": "12045",
+        "word": "頭毛鋏仔",
+        "roma": "thâu-mn̂g-giap-á",
+        "class": "珠寶飾品,理容、化妝",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/12/12045.wav"
+    },
+    {
+        "wav": "12065",
+        "word": "頭眩目暗",
+        "roma": "thâu-hîn-ba̍k-àm",
+        "class": "傷疾病痛",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/12/12065.wav"
+    },
+    {
+        "wav": "12072",
+        "word": "頭殼額仔",
+        "roma": "thâu-khak-hia̍h-á",
+        "class": "生理構造",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/12/12072.wav"
+    },
+    {
+        "wav": "12088",
+        "word": "頭鬃箍仔",
+        "roma": "thâu-tsang-khoo-á",
+        "class": "珠寶飾品,理容、化妝",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/12/12088.wav"
+    },
+    {
+        "wav": "12146",
+        "word": "擠𤶃仔",
+        "roma": "tsik thiāu-á",
+        "class": "理容、化妝",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/12/12146.wav"
+    },
+    {
+        "wav": "12167",
+        "word": "應喙應舌",
+        "roma": "ìn-tshuì-ìn-tsi̍h",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/12/12167.wav"
+    },
+    {
+        "wav": "12267",
+        "word": "糞埽市場",
+        "roma": "pùn-sò-tshī-tiûnn",
+        "class": "商業,建築物、結構",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/12/12267.wav"
+    },
+    {
+        "wav": "12283",
+        "word": "糜糜卯卯",
+        "roma": "mi-mi-mauh-mauh",
+        "class": "形貌、體積",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/12/12283.wav"
+    },
+    {
+        "wav": "12314",
+        "word": "艱苦罪過",
+        "roma": "kan-khóo-tsē-kuà",
+        "class": "心理狀態",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/12/12314.wav"
+    },
+    {
+        "wav": "12335",
+        "word": "臨機應變",
+        "roma": "lîm-ki-ìng-piàn",
+        "class": "心理活動",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/12/12335.wav"
+    },
+    {
+        "wav": "12343",
+        "word": "聲聲句句",
+        "roma": "siann-siann-kù-kù",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/12/12343.wav"
+    },
+    {
+        "wav": "12372",
+        "word": "講大聲話",
+        "roma": "kóng tuā-siann-uē",
+        "class": "個性風格,道德評價",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/12/12372.wav"
+    },
+    {
+        "wav": "12401",
+        "word": "講嘐潲話",
+        "roma": "kóng hau-siâu-uē",
+        "class": "個性風格,氣質態度,待人處事",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/12/12401.wav"
+    },
+    {
+        "wav": "12631",
+        "word": "軁狗空仔",
+        "roma": "nǹg-káu-khang-á",
+        "class": "交通、運輸,休閒、娛樂",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/12/12631.wav"
+    },
+    {
+        "wav": "12647",
+        "word": "轉彎踅角",
+        "roma": "tńg-uan-se̍h-kak",
+        "class": "個性風格",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/12/12647.wav"
+    },
+    {
+        "wav": "12685",
+        "word": "雞鵤仔車",
+        "roma": "ke-kak-á-tshia/kue-kak-á-tshia",
+        "class": "休閒、娛樂",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/12/12685.wav"
+    },
+    {
+        "wav": "12693",
+        "word": "雙面刀鬼",
+        "roma": "siang-bīn-to-kuí",
+        "class": "道德評價",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/12/12693.wav"
+    },
+    {
+        "wav": "12694",
+        "word": "雜差仔工",
+        "roma": "tsa̍p-tshe-á-kang",
+        "class": "服務業及其他",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/12/12694.wav"
+    },
+    {
+        "wav": "12721",
+        "word": "雜種仔囝",
+        "roma": "tsa̍p-tsíng-á-kiánn",
+        "class": "泛稱,宗族、家庭",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/12/12721.wav"
+    },
+    {
+        "wav": "12733",
+        "word": "離離落落",
+        "roma": "li-li-lak-lak",
+        "class": "境況、狀態-擬物",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/12/12733.wav"
+    },
+    {
+        "wav": "12768",
+        "word": "嚨喉蒂仔",
+        "roma": "nâ-âu-tì-á",
+        "class": "生理構造",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/12/12768.wav"
+    },
+    {
+        "wav": "12828",
+        "word": "羅漢跤仔",
+        "roma": "lô-hàn-kha-á",
+        "class": "泛稱",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/12/12828.wav"
+    },
+    {
+        "wav": "12962",
+        "word": "孽譎仔話",
+        "roma": "gia̍t-khiat-á-uē",
+        "class": "文學、藝術,休閒、娛樂",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/12/12962.wav"
+    },
+    {
+        "wav": "13093",
+        "word": "癩𰣻鬼",
+        "roma": "thái-ko-kuí",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13093.wav"
+    },
+    {
+        "wav": "13125",
+        "word": "纏跤絆手",
+        "roma": "tînn-kha-puànn-tshiú",
+        "class": "一般動詞-行為動詞",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13125.wav"
+    },
+    {
+        "wav": "13150",
+        "word": "鐵骨仔生",
+        "roma": "thih-kut-á-senn/thih-kut-á-sinn",
+        "class": "體態樣貌",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13150.wav"
+    },
+    {
+        "wav": "13200",
+        "word": "彎來斡去",
+        "roma": "uan-lâi-uat-khì",
+        "class": "個性風格,道路、橋梁",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13200.wav"
+    },
+    {
+        "wav": "13208",
+        "word": "歡頭喜面",
+        "roma": "huann-thâu-hí-bīn",
+        "class": "反應、表情",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13208.wav"
+    },
+    {
+        "wav": "13209",
+        "word": "歡歡喜喜",
+        "roma": "huann-huann-hí-hí",
+        "class": "心理狀態",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13209.wav"
+    },
+    {
+        "wav": "13210",
+        "word": "彎彎斡斡",
+        "roma": "uan-uan-uat-uat",
+        "class": "個性風格,道路、橋梁",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13210.wav"
+    },
+    {
+        "wav": "13307",
+        "word": "變鬼變怪",
+        "roma": "pìnn-kuí-pìnn-kuài",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13307.wav"
+    },
+    {
+        "wav": "13357",
+        "word": "鱟𣁳仔",
+        "roma": "hāu-khat-á",
+        "class": "生活用品,飲食物具",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13357.wav"
+    },
+    {
+        "wav": "13391",
+        "word": "觀前顧後",
+        "roma": "kuan-tsîng-kòo-āu",
+        "class": "氣質態度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13391.wav"
+    },
+    {
+        "wav": "13428",
+        "word": "戇頭戇面",
+        "roma": "gōng-thâu-gōng-bīn",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13428.wav"
+    },
+    {
+        "wav": "13441",
+        "word": "硓𥑮石",
+        "roma": "lóo-kóo-tsio̍h",
+        "class": "資源礦物",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13441.wav"
+    },
+    {
+        "wav": "13457",
+        "word": "𠯗一下",
+        "roma": "tsi̍p--tsi̍t-ē",
+        "class": "飲食行為",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13457.wav"
+    },
+    {
+        "wav": "13468",
+        "word": "𢯾壁鬼",
+        "roma": "mooh-piah-kuí",
+        "class": "泛稱",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13468.wav"
+    },
+    {
+        "wav": "13474",
+        "word": "𠢕吮食",
+        "roma": "gâu-tshńg-tsia̍h",
+        "class": "待人處事",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13474.wav"
+    },
+    {
+        "wav": "13483",
+        "word": "𣮈頭山",
+        "roma": "khu̍t-thâu-suann",
+        "class": "地理",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13483.wav"
+    },
+    {
+        "wav": "13486",
+        "word": "𡳞𦉎",
+        "roma": "lān-sui",
+        "class": "生理構造",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13486.wav"
+    },
+    {
+        "wav": "13507",
+        "word": "𥴊仔店",
+        "roma": "kám-á-tiàm",
+        "class": "商業,建築物、結構",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13507.wav"
+    },
+    {
+        "wav": "13513",
+        "word": "𤆬路雞",
+        "roma": "tshuā-lōo-ke/tshuā-lōo-kue",
+        "class": "禽類,相關器具、活動",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13513.wav"
+    },
+    {
+        "wav": "13523",
+        "word": "𨑨迌人",
+        "roma": "tshit-thô-lâng",
+        "class": "泛稱",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13523.wav"
+    },
+    {
+        "wav": "13525",
+        "word": "𨑨迌物",
+        "roma": "tshit-thô-mi̍h/tshit-thô-mn̍gh",
+        "class": "生活用品,休閒、娛樂",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13525.wav"
+    },
+    {
+        "wav": "13552",
+        "word": "𩚨嗲嗲",
+        "roma": "khiū-teh-teh",
+        "class": "性質、程度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13552.wav"
+    },
+    {
+        "wav": "13559",
+        "word": "𧌄蜅蠐",
+        "roma": "am-poo-tsê",
+        "class": "昆蟲類",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13559.wav"
+    },
+    {
+        "wav": "13569",
+        "word": "𠕇硞硞",
+        "roma": "tīng-khok-khok",
+        "class": "性質、程度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13569.wav"
+    },
+    {
+        "wav": "13597",
+        "word": "𬦰樓梯",
+        "roma": "peh lâu-thui",
+        "class": "肢體動作",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13597.wav"
+    },
+    {
+        "wav": "13599",
+        "word": "黃梔仔花",
+        "roma": "n̂g-ki-á-hue",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13599.wav"
+    },
+    {
+        "wav": "13624",
+        "word": "內山斗底",
+        "roma": "lāi-suann-táu-té/lāi-suann-táu-tué",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13624.wav"
+    },
+    {
+        "wav": "13627",
+        "word": "勼跤勼手",
+        "roma": "kiu-kha-kiu-tshiú",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13627.wav"
+    },
+    {
+        "wav": "13628",
+        "word": "反起反倒",
+        "roma": "huán-khí-huán-tó",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13628.wav"
+    },
+    {
+        "wav": "13632",
+        "word": "手梳攑懸",
+        "roma": "tshiú-se-gia̍h-kuân",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13632.wav"
+    },
+    {
+        "wav": "13654",
+        "word": "竹管仔飯",
+        "roma": "tik-kóng-á-pn̄g",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13654.wav"
+    },
+    {
+        "wav": "13658",
+        "word": "含血霧天",
+        "roma": "kâm-hueh-bū-thinn/kâm-huih-bū-thinn",
+        "class": "待人處事",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13658.wav"
+    },
+    {
+        "wav": "13665",
+        "word": "事事項項",
+        "roma": "sū-sū-hāng-hāng",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13665.wav"
+    },
+    {
+        "wav": "13668",
+        "word": "孤查某囝",
+        "roma": "koo-tsa-bóo-kiánn",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13668.wav"
+    },
+    {
+        "wav": "13683",
+        "word": "怨天怨地",
+        "roma": "uàn-thinn-uàn-tē/uàn-thinn-uàn-tuē",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13683.wav"
+    },
+    {
+        "wav": "13698",
+        "word": "厝邊隔壁",
+        "roma": "tshù-pinn-keh-piah",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13698.wav"
+    },
+    {
+        "wav": "13727",
+        "word": "深山林內",
+        "roma": "tshim-suann-nâ-lāi",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13727.wav"
+    },
+    {
+        "wav": "13734",
+        "word": "喝起喝倒",
+        "roma": "huah-khí-huah-tó",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13734.wav"
+    },
+    {
+        "wav": "13748",
+        "word": "發財仔車",
+        "roma": "huat-tsâi-á-tshia",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13748.wav"
+    },
+    {
+        "wav": "13753",
+        "word": "短褲節仔",
+        "roma": "té-khòo-tsat-á",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13753.wav"
+    },
+    {
+        "wav": "13771",
+        "word": "新正年頭",
+        "roma": "sin-tsiann-nî-thâu",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13771.wav"
+    },
+    {
+        "wav": "13775",
+        "word": "煞尾仔囝",
+        "roma": "suah-bué-á-kiánn/suah-bé-á-kiánn",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13775.wav"
+    },
+    {
+        "wav": "13785",
+        "word": "跤麻手痺",
+        "roma": "kha-bâ-tshiú-pì",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13785.wav"
+    },
+    {
+        "wav": "13804",
+        "word": "漢學仔先",
+        "roma": "hàn-o̍h-á-sian",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13804.wav"
+    },
+    {
+        "wav": "13813",
+        "word": "銅管仔車",
+        "roma": "tâng-kóng-á-tshia",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13813.wav"
+    },
+    {
+        "wav": "13819",
+        "word": "箭竹仔筍",
+        "roma": "tsìnn-tik-á-sún",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13819.wav"
+    },
+    {
+        "wav": "13836",
+        "word": "糞埽市仔",
+        "roma": "pùn-sò-tshī-á",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13836.wav"
+    },
+    {
+        "wav": "13837",
+        "word": "總講一句",
+        "roma": "tsóng-kóng--tsi̍t-kù",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13837.wav"
+    },
+    {
+        "wav": "13841",
+        "word": "舊漚舊臭",
+        "roma": "kū-àu-kū-tshàu",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13841.wav"
+    },
+    {
+        "wav": "13859",
+        "word": "罐頭開仔",
+        "roma": "kuàn-thâu-khui-á",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13859.wav"
+    },
+    {
+        "wav": "13870",
+        "word": "一必一中",
+        "roma": "it-pit-it-tiòng",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13870.wav"
+    },
+    {
+        "wav": "13872",
+        "word": "七晏八晏",
+        "roma": "tshit-uànn-peh-uànn/tshit-uànn-pueh-uànn",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13872.wav"
+    },
+    {
+        "wav": "13874",
+        "word": "人懸漢大",
+        "roma": "lâng-kuân-hàn-tuā",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13874.wav"
+    },
+    {
+        "wav": "13878",
+        "word": "三角六肩",
+        "roma": "sann-kak-la̍k-king",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13878.wav"
+    },
+    {
+        "wav": "13884",
+        "word": "大人大種",
+        "roma": "tuā-lâng-tuā-tsíng",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13884.wav"
+    },
+    {
+        "wav": "13891",
+        "word": "大身大命",
+        "roma": "tuā-sin-tuā-miā",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13891.wav"
+    },
+    {
+        "wav": "13898",
+        "word": "大嚨喉空",
+        "roma": "tuā-nâ-âu-khang",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13898.wav"
+    },
+    {
+        "wav": "13909",
+        "word": "天公地道",
+        "roma": "thinn-kong-tē-tō/thinn-kong-tuē-tō",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13909.wav"
+    },
+    {
+        "wav": "13910",
+        "word": "天公伯仔",
+        "roma": "Thinn-kong-peh--á",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13910.wav"
+    },
+    {
+        "wav": "13912",
+        "word": "天狗食日",
+        "roma": "thian-káu-tsia̍h-ji̍t/thian-káu-tsia̍h-li̍t",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13912.wav"
+    },
+    {
+        "wav": "13916",
+        "word": "心狂火熱",
+        "roma": "sim-kông-hué-jia̍t/sim-kông-hé-lia̍t",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13916.wav"
+    },
+    {
+        "wav": "13922",
+        "word": "手面趁食",
+        "roma": "tshiú-bīn-thàn-tsia̍h",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13922.wav"
+    },
+    {
+        "wav": "13932",
+        "word": "歹面相看",
+        "roma": "pháinn-bīn-sio-khuànn/phái-bīn-sio-khuànn",
+        "class": "交際應酬",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13932.wav"
+    },
+    {
+        "wav": "13935",
+        "word": "毋成囡仔",
+        "roma": "m̄-tsiânn-gín-á",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13935.wav"
+    },
+    {
+        "wav": "13952",
+        "word": "牛聲馬喉",
+        "roma": "gû-siann-bé-âu",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13952.wav"
+    },
+    {
+        "wav": "13978",
+        "word": "生頭凊面",
+        "roma": "tshenn-thâu-tshìn-bīn/tshinn-thâu-tshìn-bīn",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13978.wav"
+    },
+    {
+        "wav": "13988",
+        "word": "石磨仔心",
+        "roma": "tsio̍h-bō-á-sim",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13988.wav"
+    },
+    {
+        "wav": "13995",
+        "word": "囡仔頭王",
+        "roma": "gín-á-thâu-ông",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/13/13995.wav"
+    },
+    {
+        "wav": "14004",
+        "word": "好死毋死",
+        "roma": "hó-sí-m̄-sí",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14004.wav"
+    },
+    {
+        "wav": "14011",
+        "word": "有路無厝",
+        "roma": "ū-lōo-bô-tshù",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14011.wav"
+    },
+    {
+        "wav": "14021",
+        "word": "竹雞仔車",
+        "roma": "tik-ke-á-tshia/tik-kue-á-tshia",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14021.wav"
+    },
+    {
+        "wav": "14022",
+        "word": "老孤𣮈",
+        "roma": "lāu-koo-khu̍t",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14022.wav"
+    },
+    {
+        "wav": "14027",
+        "word": "自作自專",
+        "roma": "tsū-tsok-tsū-tsuan",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14027.wav"
+    },
+    {
+        "wav": "14028",
+        "word": "自家用的",
+        "roma": "tsū-ka-iōng--ê",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14028.wav"
+    },
+    {
+        "wav": "14031",
+        "word": "行袂開跤",
+        "roma": "kiânn-bē-khui-kha/kiânn-buē-khui-kha",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14031.wav"
+    },
+    {
+        "wav": "14052",
+        "word": "忘恩背義",
+        "roma": "bōng-un-puē-gī",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14052.wav"
+    },
+    {
+        "wav": "14069",
+        "word": "辛苦病疼",
+        "roma": "sin-khóo-pēnn-thiànn/sin-khóo-pīnn-thiànn",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14069.wav"
+    },
+    {
+        "wav": "14076",
+        "word": "卸世卸眾",
+        "roma": "sià-sì-sià-tsìng",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14076.wav"
+    },
+    {
+        "wav": "14089",
+        "word": "抾肉幼仔",
+        "roma": "khioh-bah-iù-á",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14089.wav"
+    },
+    {
+        "wav": "14106",
+        "word": "空思夢想",
+        "roma": "khong-su-bōng-sióng",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14106.wav"
+    },
+    {
+        "wav": "14124",
+        "word": "侵門踏戶",
+        "roma": "tshim-mn̂g-ta̍h-hōo",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14124.wav"
+    },
+    {
+        "wav": "14127",
+        "word": "南北二路",
+        "roma": "lâm-pak-jī-lōo/lâm-pak-lī-lōo",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14127.wav"
+    },
+    {
+        "wav": "14134",
+        "word": "巷仔內的",
+        "roma": "hāng-á-lāi--ê",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14134.wav"
+    },
+    {
+        "wav": "14140",
+        "word": "挑花刺繡",
+        "roma": "thio-hue-tshiah-siù",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14140.wav"
+    },
+    {
+        "wav": "14142",
+        "word": "枵飢失頓",
+        "roma": "iau-ki-sit-tǹg",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14142.wav"
+    },
+    {
+        "wav": "14146",
+        "word": "查某囝日",
+        "roma": "tsa-bóo-kiánn-ji̍t/tsa-bóo-kiánn-li̍t",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14146.wav"
+    },
+    {
+        "wav": "14148",
+        "word": "流汗流洘",
+        "roma": "lâu-kuānn-lâu-khó",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14148.wav"
+    },
+    {
+        "wav": "14149",
+        "word": "為非糝做",
+        "roma": "uî-hui-sám-tsò",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14149.wav"
+    },
+    {
+        "wav": "14154",
+        "word": "看破跤手",
+        "roma": "khuànn-phuà-kha-tshiú",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14154.wav"
+    },
+    {
+        "wav": "14155",
+        "word": "看袂上目",
+        "roma": "khuànn-bē-tsiūnn-ba̍k/khuànn-buē-tsiūnn-ba̍k",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14155.wav"
+    },
+    {
+        "wav": "14159",
+        "word": "美國仙丹",
+        "roma": "Bí-kok-sian-tan",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14159.wav"
+    },
+    {
+        "wav": "14160",
+        "word": "美國時間",
+        "roma": "Bí-kok-sî-kan",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14160.wav"
+    },
+    {
+        "wav": "14161",
+        "word": "美國塗豆",
+        "roma": "Bí-kok-thôo-tāu",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14161.wav"
+    },
+    {
+        "wav": "14171",
+        "word": "面漚面臭",
+        "roma": "bīn-àu-bīn-tshàu",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14171.wav"
+    },
+    {
+        "wav": "14174",
+        "word": "食人夠夠",
+        "roma": "tsia̍h-lâng-kàu-kàu",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14174.wav"
+    },
+    {
+        "wav": "14175",
+        "word": "食老出癖",
+        "roma": "tsia̍h-lāu-tshut-phia̍h",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14175.wav"
+    },
+    {
+        "wav": "14181",
+        "word": "食銅食鐵",
+        "roma": "tsia̍h-tâng-tsia̍h-thih",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14181.wav"
+    },
+    {
+        "wav": "14201",
+        "word": "挽瓜揫藤",
+        "roma": "bán-kue-tshiû-tîn",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14201.wav"
+    },
+    {
+        "wav": "14208",
+        "word": "梳妝打扮",
+        "roma": "se-tsng-tánn-pān/sue-tsng-tánn-pān",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14208.wav"
+    },
+    {
+        "wav": "14212",
+        "word": "烏子仔菜",
+        "roma": "oo-tsí-á-tshài",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14212.wav"
+    },
+    {
+        "wav": "14224",
+        "word": "祖公仔產",
+        "roma": "tsóo-kong-á-sán",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14224.wav"
+    },
+    {
+        "wav": "14230",
+        "word": "茫茫渺渺",
+        "roma": "bông-bông-biáu-biáu",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14230.wav"
+    },
+    {
+        "wav": "14241",
+        "word": "袂博假博",
+        "roma": "bē-phok-ké-phok/buē-phok-ké-phok",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14241.wav"
+    },
+    {
+        "wav": "14252",
+        "word": "酒矸仔嫂",
+        "roma": "tsiú-kan-á-só",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14252.wav"
+    },
+    {
+        "wav": "14262",
+        "word": "剪絨仔花",
+        "roma": "tsián-jiông-á-hue/tsián-liông-á-hue",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14262.wav"
+    },
+    {
+        "wav": "14274",
+        "word": "惜花連盆",
+        "roma": "sioh hue liân phûn",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14274.wav"
+    },
+    {
+        "wav": "14287",
+        "word": "牽龜落湳",
+        "roma": "khan-ku-lo̍h-làm",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14287.wav"
+    },
+    {
+        "wav": "14289",
+        "word": "笨跤笨手",
+        "roma": "pūn-kha-pūn-tshiú",
+        "class": "才智能力",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14289.wav"
+    },
+    {
+        "wav": "14293",
+        "word": "規家伙仔",
+        "roma": "kui-ke-hué-á/kui-ke-hé-á",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14293.wav"
+    },
+    {
+        "wav": "14295",
+        "word": "規嚾規黨",
+        "roma": "kui-uang-kui-tóng",
+        "class": "組織團體",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14295.wav"
+    },
+    {
+        "wav": "14305",
+        "word": "鳥鼠仔色",
+        "roma": "niáu-tshí-á-sik/niáu-tshú-á-sik",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14305.wav"
+    },
+    {
+        "wav": "14306",
+        "word": "鳥鼠仔糖",
+        "roma": "niáu-tshí-á-thn̂g/niáu-tshú-á-thn̂g",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14306.wav"
+    },
+    {
+        "wav": "14311",
+        "word": "喙笑目笑",
+        "roma": "tshuì-tshiò-ba̍k-tshiò",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14311.wav"
+    },
+    {
+        "wav": "14317",
+        "word": "惡人無膽",
+        "roma": "ok-lâng bô-tánn",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14317.wav"
+    },
+    {
+        "wav": "14326",
+        "word": "欺貧重富",
+        "roma": "khi-pîn-tiōng-hù",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14326.wav"
+    },
+    {
+        "wav": "14333",
+        "word": "番薯仔囝",
+        "roma": "han-tsî-á-kiánn/han-tsû-á-kiánn",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14333.wav"
+    },
+    {
+        "wav": "14347",
+        "word": "菜市仔名",
+        "roma": "tshài-tshī-á-miâ",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14347.wav"
+    },
+    {
+        "wav": "14386",
+        "word": "歇睏時仔",
+        "roma": "hioh-khùn-sî-á",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14386.wav"
+    },
+    {
+        "wav": "14392",
+        "word": "矮仔冬瓜",
+        "roma": "é-á-tang-kue/ué-á-tang-kue",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14392.wav"
+    },
+    {
+        "wav": "14397",
+        "word": "腰痠背疼",
+        "roma": "io-sng-puē-thiànn",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14397.wav"
+    },
+    {
+        "wav": "14399",
+        "word": "萬丈深坑",
+        "roma": "bān-tn̄g-tshim-khenn/bān-tn̄g-tshim-khinn",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14399.wav"
+    },
+    {
+        "wav": "14406",
+        "word": "倚山食山",
+        "roma": "uá-suann-tsia̍h-suann",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14406.wav"
+    },
+    {
+        "wav": "14409",
+        "word": "挨挨陣陣",
+        "roma": "e-e-tīn-tīn/ue-ue-tīn-tīn",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14409.wav"
+    },
+    {
+        "wav": "14420",
+        "word": "過鹹水的",
+        "roma": "kuè-kiâm-tsuí--ê/kè-kiâm-tsuí--ê",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14420.wav"
+    },
+    {
+        "wav": "14424",
+        "word": "電頭毛店",
+        "roma": "tiān-thâu-mn̂g-tiàm",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14424.wav"
+    },
+    {
+        "wav": "14443",
+        "word": "漚戲拖棚",
+        "roma": "àu-hì-thua-pênn/àu-hì-thua-pînn",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14443.wav"
+    },
+    {
+        "wav": "14452",
+        "word": "趖跤趖手",
+        "roma": "sô-kha-sô-tshiú",
+        "class": "才智能力",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14452.wav"
+    },
+    {
+        "wav": "14477",
+        "word": "樹奶束仔",
+        "roma": "tshiū-ling-sok-á/tshiū-ni-sok-á",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14477.wav"
+    },
+    {
+        "wav": "14487",
+        "word": "縛跤縛手",
+        "roma": "pa̍k-kha-pa̍k-tshiú",
+        "class": "一般動詞-行為動詞",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14487.wav"
+    },
+    {
+        "wav": "14497",
+        "word": "霎霎仔雨",
+        "roma": "sap-sap-á-hōo",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14497.wav"
+    },
+    {
+        "wav": "14499",
+        "word": "頭較大身",
+        "roma": "thâu-khah-tuā-sin",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14499.wav"
+    },
+    {
+        "wav": "14503",
+        "word": "鴨雄仔聲",
+        "roma": "ah-hîng-á-siann",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14503.wav"
+    },
+    {
+        "wav": "14504",
+        "word": "龜龜鱉鱉",
+        "roma": "ku-ku-pih-pih",
+        "class": "個性風格",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14504.wav"
+    },
+    {
+        "wav": "14511",
+        "word": "臨時臨曜",
+        "roma": "lîm-sî-lîm-iāu",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14511.wav"
+    },
+    {
+        "wav": "14525",
+        "word": "雜貨仔店",
+        "roma": "tsa̍p-huè-á-tiàm/tsa̍p-hè-á-tiàm",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14525.wav"
+    },
+    {
+        "wav": "14530",
+        "word": "鏨頭短命",
+        "roma": "tsām-thâu-té-miā",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14530.wav"
+    },
+    {
+        "wav": "14534",
+        "word": "鹹酸苦汫",
+        "roma": "kiâm-sng-khóo-tsiánn",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14534.wav"
+    },
+    {
+        "wav": "14535",
+        "word": "攑香綴拜",
+        "roma": "gia̍h-hiunn-tuè-pài/gia̍h-hiunn-tè-pài",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14535.wav"
+    },
+    {
+        "wav": "14536",
+        "word": "攑旗軍仔",
+        "roma": "gia̍h-kî-kun-á",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14536.wav"
+    },
+    {
+        "wav": "14538",
+        "word": "爛𤶃仔",
+        "roma": "nuā-thiāu-á",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14538.wav"
+    },
+    {
+        "wav": "14539",
+        "word": "癩𰣻病",
+        "roma": "thái-ko-pēnn/thái-ko-pīnn",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14539.wav"
+    },
+    {
+        "wav": "14563",
+        "word": "𣻸塌塌",
+        "roma": "siûnn-lap-lap",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14563.wav"
+    },
+    {
+        "wav": "14565",
+        "word": "金言玉語",
+        "roma": "kim-giân-gio̍k-gí/kim-giân-gio̍k-gú",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14565.wav"
+    },
+    {
+        "wav": "14576",
+        "word": "天公仔囝",
+        "roma": "thinn-kong-á-kiánn",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14576.wav"
+    },
+    {
+        "wav": "14596",
+        "word": "相𤆬走",
+        "roma": "sio-tshuā-tsáu",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/14/14596.wav"
+    },
+    {
+        "wav": "18748",
+        "word": "家私頭仔",
+        "roma": "ke-si-thâu-á",
+        "class": "生產工具",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/18/18748.wav"
+    },
+    {
+        "wav": "19137",
+        "word": "猴死囡仔",
+        "roma": "kâu-sí-gín-á",
+        "class": "詈語",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/19/19137.wav"
+    },
+    {
+        "wav": "19253",
+        "word": "塗牛翻身",
+        "roma": "thôo-gû-huan-sin",
+        "class": "自然現象",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/19/19253.wav"
+    },
+    {
+        "wav": "20081",
+        "word": "祖公仔屎",
+        "roma": "tsóo-kong-á-sái",
+        "class": "錢財資產",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/20/20081.wav"
+    },
+    {
+        "wav": "20140",
+        "word": "結嚾結黨",
+        "roma": "kiat-uang-kiat-tóng",
+        "class": "組織團體",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/20/20140.wav"
+    },
+    {
+        "wav": "20635",
+        "word": "西部幹線",
+        "roma": "Se-pōo-kàn-suànn",
+        "class": "西部幹線——山線,西部幹線——海線,西部幹線——屏東線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/20/20635.wav"
+    },
+    {
+        "wav": "20744",
+        "word": "東部幹線",
+        "roma": "Tang-pōo-kàn-suànn",
+        "class": "東部幹線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/20/20744.wav"
+    },
+    {
+        "wav": "20747",
+        "word": "林榮新光",
+        "roma": "Lîm-îng Sin-kong",
+        "class": "東部幹線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/20/20747.wav"
+    },
+    {
+        "wav": "20776",
+        "word": "蘇澳新站",
+        "roma": "Soo-ò-sin-tsām",
+        "class": "東部幹線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/20/20776.wav"
+    },
+    {
+        "wav": "20819",
+        "word": "南迴鐵路",
+        "roma": "Lâm-huê-thih-lōo",
+        "class": "南迴線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/20/20819.wav"
+    },
+    {
+        "wav": "21273",
+        "word": "中山國中",
+        "roma": "Tiong-san Kok-tiong",
+        "class": "臺北捷運文湖線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21273.wav"
+    },
+    {
+        "wav": "21274",
+        "word": "南京復興",
+        "roma": "Lâm-kiann Ho̍k-hing",
+        "class": "臺北捷運文湖線,臺北捷運松山新店線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21274.wav"
+    },
+    {
+        "wav": "21275",
+        "word": "忠孝復興",
+        "roma": "Tiong-hàu Ho̍k-hing",
+        "class": "臺北捷運文湖線,臺北捷運板南線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21275.wav"
+    },
+    {
+        "wav": "21277",
+        "word": "科技大樓",
+        "roma": "Kho-ki Tuā-lâu",
+        "class": "臺北捷運文湖線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21277.wav"
+    },
+    {
+        "wav": "21281",
+        "word": "萬芳醫院",
+        "roma": "Bān-hong Pēnn-īnn/Bān-hong Pīnn-īnn",
+        "class": "臺北捷運文湖線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21281.wav"
+    },
+    {
+        "wav": "21282",
+        "word": "萬芳社區",
+        "roma": "Bān-hong Siā-khu",
+        "class": "臺北捷運文湖線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21282.wav"
+    },
+    {
+        "wav": "21299",
+        "word": "民權西路",
+        "roma": "Bîn-kuân-se-lōo",
+        "class": "臺北捷運淡水信義線,臺北捷運中和新蘆線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21299.wav"
+    },
+    {
+        "wav": "21302",
+        "word": "臺北車站",
+        "roma": "Tâi-pak Tshia-tsām",
+        "class": "臺北捷運淡水信義線,臺北捷運板南線,桃園機場捷運",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21302.wav"
+    },
+    {
+        "wav": "21303",
+        "word": "臺大醫院",
+        "roma": "Tâi-tāi Pēnn-īnn/Tâi-tāi Pīnn-īnn",
+        "class": "臺北捷運淡水信義線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21303.wav"
+    },
+    {
+        "wav": "21306",
+        "word": "臺電大樓",
+        "roma": "Tâi-tiān Tuā-lâu",
+        "class": "臺北捷運松山新店線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21306.wav"
+    },
+    {
+        "wav": "21315",
+        "word": "永安市場",
+        "roma": "Íng-an Tshī-tiûnn",
+        "class": "臺北捷運中和新蘆線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21315.wav"
+    },
+    {
+        "wav": "21323",
+        "word": "忠孝敦化",
+        "roma": "Tiong-hàu Tun-huà",
+        "class": "臺北捷運板南線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21323.wav"
+    },
+    {
+        "wav": "21334",
+        "word": "亞東醫院",
+        "roma": "A-tang Pēnn-īnn/A-tang Pīnn-īnn",
+        "class": "臺北捷運板南線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21334.wav"
+    },
+    {
+        "wav": "21344",
+        "word": "信義國小",
+        "roma": "Sìn-gī Kok-sió",
+        "class": "高雄捷運橘線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21344.wav"
+    },
+    {
+        "wav": "21345",
+        "word": "文化中心",
+        "roma": "Bûn-huà Tiong-sim",
+        "class": "高雄捷運橘線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21345.wav"
+    },
+    {
+        "wav": "21349",
+        "word": "鳳山西站",
+        "roma": "Hōng-suann-sai-tsām",
+        "class": "高雄捷運橘線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21349.wav"
+    },
+    {
+        "wav": "21352",
+        "word": "鳳山國中",
+        "roma": "Hōng-suann Kok-tiong",
+        "class": "高雄捷運橘線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21352.wav"
+    },
+    {
+        "wav": "21357",
+        "word": "前鎮高中",
+        "roma": "Tsiân-tìn Ko-tiong",
+        "class": "高雄捷運紅線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21357.wav"
+    },
+    {
+        "wav": "21360",
+        "word": "三多商圈",
+        "roma": "Sam-to Siong-khuan",
+        "class": "高雄捷運紅線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21360.wav"
+    },
+    {
+        "wav": "21361",
+        "word": "中央公園",
+        "roma": "Tiong-iong Kong-hn̂g",
+        "class": "高雄捷運紅線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21361.wav"
+    },
+    {
+        "wav": "21363",
+        "word": "高雄車站",
+        "roma": "Ko-hiông Tshia-tsām",
+        "class": "高雄捷運紅線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21363.wav"
+    },
+    {
+        "wav": "21367",
+        "word": "生態園區",
+        "roma": "Sing-thài Hn̂g-khu",
+        "class": "高雄捷運紅線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21367.wav"
+    },
+    {
+        "wav": "21370",
+        "word": "油廠國小",
+        "roma": "Iû-tshiúnn Kok-sió",
+        "class": "高雄捷運紅線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21370.wav"
+    },
+    {
+        "wav": "21373",
+        "word": "都會公園",
+        "roma": "Too-huē Kong-hn̂g",
+        "class": "高雄捷運紅線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21373.wav"
+    },
+    {
+        "wav": "21375",
+        "word": "橋頭糖廠",
+        "roma": "Kiô-thâu Thn̂g-tshiúnn",
+        "class": "高雄捷運紅線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21375.wav"
+    },
+    {
+        "wav": "21377",
+        "word": "岡山高醫",
+        "roma": "Kong-san Ko-i",
+        "class": "高雄捷運紅線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21377.wav"
+    },
+    {
+        "wav": "21384",
+        "word": "大湖公園",
+        "roma": "Tuā-ôo Kong-hn̂g",
+        "class": "臺北捷運文湖線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21384.wav"
+    },
+    {
+        "wav": "21391",
+        "word": "松山機場",
+        "roma": "Siông-san Ki-tiûnn",
+        "class": "臺北捷運文湖線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21391.wav"
+    },
+    {
+        "wav": "21401",
+        "word": "中山國小",
+        "roma": "Tiong-san Kok-sió",
+        "class": "臺北捷運中和新蘆線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21401.wav"
+    },
+    {
+        "wav": "21403",
+        "word": "松江南京",
+        "roma": "Siông-kang Lâm-kiann",
+        "class": "臺北捷運松山新店線,臺北捷運中和新蘆線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21403.wav"
+    },
+    {
+        "wav": "21404",
+        "word": "忠孝新生",
+        "roma": "Tiong-hàu Sin-sing",
+        "class": "臺北捷運中和新蘆線,臺北捷運板南線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21404.wav"
+    },
+    {
+        "wav": "21407",
+        "word": "三民高中",
+        "roma": "Sam-bîn Ko-tiong",
+        "class": "臺北捷運中和新蘆線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21407.wav"
+    },
+    {
+        "wav": "21408",
+        "word": "徐匯中學",
+        "roma": "Tshî-huē Tiong-ha̍k",
+        "class": "臺北捷運中和新蘆線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21408.wav"
+    },
+    {
+        "wav": "21409",
+        "word": "三和國中",
+        "roma": "Sam-hô Kok-tiong",
+        "class": "臺北捷運中和新蘆線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21409.wav"
+    },
+    {
+        "wav": "21410",
+        "word": "三重國小",
+        "roma": "Sam-tiông Kok-sió",
+        "class": "臺北捷運中和新蘆線",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/21/21410.wav"
+    },
+    {
+        "wav": "22289",
+        "word": "網際網路",
+        "roma": "bāng-tsè-bāng-lōo",
+        "class": "郵電、網路",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/22/22289.wav"
+    },
+    {
+        "wav": "23554",
+        "word": "不可思議",
+        "roma": "put-khó-su-gī",
+        "class": "性質、程度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/23/23554.wav"
+    },
+    {
+        "wav": "23715",
+        "word": "百分之百",
+        "roma": "pah-hun-tsi-pah",
+        "class": "性質、程度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/23/23715.wav"
+    },
+    {
+        "wav": "23754",
+        "word": "家家戶戶",
+        "roma": "ke-ke-hōo-hōo",
+        "class": "國家、社會、民眾",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/23/23754.wav"
+    },
+    {
+        "wav": "23799",
+        "word": "傳藝中心",
+        "roma": "Thuân-gē Tiong-sim",
+        "class": "建築物、結構",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/23/23799.wav"
+    },
+    {
+        "wav": "23847",
+        "word": "不知不覺",
+        "roma": "put-ti-put-kak",
+        "class": "反應、表情",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/23/23847.wav"
+    },
+    {
+        "wav": "24105",
+        "word": "理所當然",
+        "roma": "lí-sóo-tong-jiân/lí-sóo-tong-liân",
+        "class": "性質、程度,副詞",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/24/24105.wav"
+    },
+    {
+        "wav": "24108",
+        "word": "莫名其妙",
+        "roma": "bo̍k-bîng-kî-miāu",
+        "class": "副詞",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/24/24108.wav"
+    },
+    {
+        "wav": "24537",
+        "word": "家扶中心",
+        "roma": "Ka-hû Tiong-sim",
+        "class": "組織團體",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/24/24537.wav"
+    },
+    {
+        "wav": "24597",
+        "word": "新陳代謝",
+        "roma": "sin-tîn-tāi-siā",
+        "class": "醫療保健",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/24/24597.wav"
+    },
+    {
+        "wav": "24641",
+        "word": "獨一無二",
+        "roma": "to̍k-it-bû-jī/to̍k-it-bû-lī",
+        "class": "性質、程度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/24/24641.wav"
+    },
+    {
+        "wav": "24717",
+        "word": "各行各業",
+        "roma": "kok-hâng-kok-gia̍p",
+        "class": "相關用語",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/24/24717.wav"
+    },
+    {
+        "wav": "24724",
+        "word": "有史以來",
+        "roma": "iú-sú í-lâi",
+        "class": "時間節令",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/24/24724.wav"
+    },
+    {
+        "wav": "24915",
+        "word": "輕輕鬆鬆",
+        "roma": "khin-khin-sang-sang",
+        "class": "氣質態度,心理狀態,性質、程度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/24/24915.wav"
+    },
+    {
+        "wav": "24973",
+        "word": "一模一樣",
+        "roma": "it-bôo-it-iūnn",
+        "class": "性質、程度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/24/24973.wav"
+    },
+    {
+        "wav": "25318",
+        "word": "滿漢全席",
+        "roma": "buán-hàn-tsuân-si̍k",
+        "class": "食物、飲料、煙酒",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/25/25318.wav"
+    },
+    {
+        "wav": "25387",
+        "word": "點點滴滴",
+        "roma": "tiám-tiám-tih-tih",
+        "class": "0",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/25/25387.wav"
+    },
+    {
+        "wav": "25429",
+        "word": "千辛萬苦",
+        "roma": "tshian-sin-bān-khóo",
+        "class": "性質、程度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/25/25429.wav"
+    },
+    {
+        "wav": "25633",
+        "word": "花花公子",
+        "roma": "hua-hua-kong-tsú",
+        "class": "相關用語",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/25/25633.wav"
+    },
+    {
+        "wav": "25818",
+        "word": "亂七八糟",
+        "roma": "luān-tshi-pa-tsau",
+        "class": "生活狀況,形貌、體積",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/25/25818.wav"
+    },
+    {
+        "wav": "25973",
+        "word": "一心一意",
+        "roma": "it-sim-it-ì",
+        "class": "心理狀態",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/25/25973.wav"
+    },
+    {
+        "wav": "25978",
+        "word": "二氧化碳",
+        "roma": "jī-ióng-huà-thuànn",
+        "class": "資源礦物",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/25/25978.wav"
+    },
+    {
+        "wav": "26266",
+        "word": "紅十字會",
+        "roma": "Âng-si̍p-jī-huē/Âng-si̍p-lī-huē",
+        "class": "組織團體",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/26/26266.wav"
+    },
+    {
+        "wav": "26290",
+        "word": "風風雨雨",
+        "roma": "hong-hong-ú-ú",
+        "class": "事、物泛稱",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/26/26290.wav"
+    },
+    {
+        "wav": "27290",
+        "word": "大姊頭仔",
+        "roma": "tuā-tsí-thâu-á",
+        "class": "地位、身世、背景",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/27/27290.wav"
+    },
+    {
+        "wav": "27329",
+        "word": "傍官靠勢",
+        "roma": "pn̄g-kuann-khò-sè/pn̄g-kuann-khò-sì",
+        "class": "道德評價,一般動詞-行為動詞",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/27/27329.wav"
+    },
+    {
+        "wav": "27330",
+        "word": "掩來扯去",
+        "roma": "am-lâi-tshé-khì",
+        "class": "一般動詞-行為動詞",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/27/27330.wav"
+    },
+    {
+        "wav": "27332",
+        "word": "捲螺仔水",
+        "roma": "kńg-lê-á-tsuí",
+        "class": "自然現象",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/27/27332.wav"
+    },
+    {
+        "wav": "27340",
+        "word": "塑膠橐仔",
+        "roma": "sok-ka-lok-á",
+        "class": "生活用品",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/27/27340.wav"
+    },
+    {
+        "wav": "27382",
+        "word": "絞螺仔風",
+        "roma": "ká-lê-á-hong",
+        "class": "自然現象",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/27/27382.wav"
+    },
+    {
+        "wav": "27418",
+        "word": "尻川後話",
+        "roma": "kha-tshng-āu-uē",
+        "class": "語言、文字、符號",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/27/27418.wav"
+    },
+    {
+        "wav": "27448",
+        "word": "花仔和尚",
+        "roma": "hue-á-huê-siūnn",
+        "class": "禽類",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/27/27448.wav"
+    },
+    {
+        "wav": "27451",
+        "word": "喙焦喉渴",
+        "roma": "tshuì-ta-âu-khuah",
+        "class": "反應、表情",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/27/27451.wav"
+    },
+    {
+        "wav": "27461",
+        "word": "心肝穎仔",
+        "roma": "sim-kuann-ínn-á",
+        "class": "心理狀態",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/27/27461.wav"
+    },
+    {
+        "wav": "27470",
+        "word": "七爺八爺",
+        "roma": "Tshit-iâ Peh-iâ/Tshit-iâ Pueh-iâ",
+        "class": "神明、鬼怪、教派",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/27/27470.wav"
+    },
+    {
+        "wav": "27491",
+        "word": "三時有陣",
+        "roma": "sam-sî-iú-tsūn",
+        "class": "時間節令",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/27/27491.wav"
+    },
+    {
+        "wav": "27512",
+        "word": "百歲年老",
+        "roma": "pah-huè-nî-lāu/pah-hè-nî-lāu",
+        "class": "一般動詞-靜態動詞",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/27/27512.wav"
+    },
+    {
+        "wav": "27566",
+        "word": "盤山過嶺",
+        "roma": "puânn-suann-kuè-niá/puânn-suann-kè-niá",
+        "class": "一般動詞-行為動詞",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/27/27566.wav"
+    },
+    {
+        "wav": "27576",
+        "word": "臭腥龜仔",
+        "roma": "tshàu-tshènn-ku-á/tshàu-tshìnn-ku-á",
+        "class": "昆蟲類",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/27/27576.wav"
+    },
+    {
+        "wav": "27597",
+        "word": "奸臣仔笑",
+        "roma": "kan-sîn-á-tshiò",
+        "class": "反應、表情",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/27/27597.wav"
+    },
+    {
+        "wav": "27636",
+        "word": "萬年久遠",
+        "roma": "bān-nî-kiú-uán",
+        "class": "性質、程度",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/27/27636.wav"
+    },
+    {
+        "wav": "27638",
+        "word": "海水倒激",
+        "roma": "hái-tsuí tò-kik",
+        "class": "自然現象",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/subak/27/27638.wav"
+    }
+]
