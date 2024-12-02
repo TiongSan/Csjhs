@@ -27,6 +27,19 @@
       padding: 15px;
       margin-top: 20px;
     }
+    .hidden {
+      display: none;
+    }
+    #selectWordCount button {
+      width: auto;
+      height: auto;
+      padding: 15px 30px;
+    }
+    #info {
+      font-size: 20px;
+      margin: 20px auto;
+      line-height: 1.6;
+    }
   </style>
   <script>
     let audioFiles = [];
@@ -36,14 +49,16 @@
     let gameActive = false;
     let correctAnswer = '';
 
-    // 讀取 JSON 文件
-    fetch('audioFiles1.json')
-      .then(response => response.json())
-      .then(data => {
-        audioFiles = data;
-        console.log('音頻檔案:', audioFiles);
-      })
-      .catch(error => console.error('無法讀取JSON文件:', error));
+    function loadJSONFile(fileName) {
+      fetch(fileName)
+        .then(response => response.json())
+        .then(data => {
+          audioFiles = data;
+          console.log('已載入音頻檔案:', audioFiles);
+          startGame();
+        })
+        .catch(error => console.error('無法讀取JSON文件:', error));
+    }
 
     function playRandomAudio() {
       if (!gameActive) return;
@@ -54,6 +69,12 @@
 
       audio.oncanplaythrough = () => audio.play();
       audio.onerror = (e) => console.error('無法播放音頻文件:', e);
+
+      // 顯示台羅拼音和分類
+      document.getElementById('info').innerHTML = `
+        <p>台羅拼音: <strong>${question.roma}</strong></p>
+        <p>分類: <strong>${question.class}</strong></p>
+      `;
 
       let otherOptions = audioFiles
         .filter(item => item.word !== correctAnswer)
@@ -68,9 +89,6 @@
       }
 
       document.getElementById('options').innerHTML = optionsHtml;
-      document.getElementById('question').innerText = `題目：${question.word}`;
-      document.getElementById('roma').innerText = `台羅拼音：${question.roma}`;
-      document.getElementById('class').innerText = `分類：${question.class}`;
     }
 
     function checkAnswer(selectedAnswer) {
@@ -96,6 +114,11 @@
       return array;
     }
 
+    function selectWordCount(count) {
+      const fileName = `audioFiles${count}.json`;
+      loadJSONFile(fileName);
+    }
+
     function startGame() {
       gameActive = true;
       score = 0;
@@ -103,6 +126,7 @@
       document.getElementById('score').innerText = '分數: ' + score;
       document.getElementById('time').innerText = '剩餘時間: ' + timeLeft;
       document.getElementById('restartButton').style.display = 'none';
+      document.getElementById('selectWordCount').classList.add('hidden');
       timer = setInterval(() => {
         timeLeft--;
         document.getElementById('time').innerText = '剩餘時間: ' + timeLeft;
@@ -118,21 +142,29 @@
       clearInterval(timer);
       document.getElementById('options').innerHTML = '';
       document.getElementById('restartButton').style.display = 'inline-block';
+      document.getElementById('info').innerHTML = '';
     }
 
     function restartGame() {
-      startGame();
+      document.getElementById('selectWordCount').classList.remove('hidden');
+      document.getElementById('restartButton').style.display = 'none';
+      document.getElementById('options').innerHTML = '';
+      document.getElementById('score').innerText = '分數: 0';
+      document.getElementById('time').innerText = '剩餘時間: 120';
+      document.getElementById('info').innerHTML = '';
     }
   </script>
 </head>
 <body>
   <h1>台語聽力測驗</h1>
-  <br>
-  <h2>網頁編寫:陳文賓老師</h2>
-  <button onclick="startGame()" style="font-size: 24px; padding: 15px; margin: 20px;">開始遊戲</button><br><br>
-  <div id="question" style="font-size: 24px; margin: 10px;"></div>
-  <div id="roma" style="font-size: 20px; margin: 10px;"></div>
-  <div id="class" style="font-size: 20px; margin: 10px;"></div>
+  <div id="selectWordCount">
+    <h2>請選擇測驗字數：</h2>
+    <button onclick="selectWordCount(1)">1個字</button>
+    <button onclick="selectWordCount(2)">2個字</button>
+    <button onclick="selectWordCount(3)">3個字</button>
+    <button onclick="selectWordCount(4)">4個字</button>
+  </div>
+  <div id="info"></div>
   <div id="options"></div>
   <div id="score" style="font-size: 24px;">分數: 0</div>
   <div id="time" style="font-size: 24px;">剩餘時間: 120</div>
