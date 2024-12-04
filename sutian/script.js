@@ -1,31 +1,22 @@
-async function loadFlashcards() {
+const slides = document.querySelectorAll('.slide');
+let currentSlide = 0;
 
-const response = await fetch('audioFiles.json');
-
-const flashcards = await response.json();
-
-return flashcards;
-
+function showSlide(index) {
+    slides.forEach((slide, idx) => {
+        if (idx === index) {
+            slide.classList.add('active');
+        } else {
+            slide.classList.remove('active');
+        }
+    });
 }
 
-async function startFlashcard() {
-
-const flashcards = await loadFlashcards();
-
-setInterval(() => {
-
-const randomIndex = Math.floor(Math.random() * flashcards.length);
-
-const card = flashcards[randomIndex];
-
-const displayWord = Math.random() < 0.5;
-
-const displayText = displayWord ? card.word : card.roma;
-
-document.getElementById('flashcard').textContent = displayText;
-
-}, 1000);
-
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
 }
 
-startFlashcard();
+setInterval(nextSlide, 3000); // 每3秒切换一次
+
+// 初始化显示第一张幻灯片
+showSlide(0);
