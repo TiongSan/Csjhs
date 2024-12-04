@@ -1,10 +1,7 @@
 @font-face {
-
-    font-family: 'TaigiIansui';
-    
-    src: url('fonts_TaigiIansui/TaigiIansui-TL-R.ttf') format('truetype');
-    
-    }
+       font-family: 'TaiwanKai';
+       src: url('../fonts/taiwan-kai.ttf') format('truetype');
+   }
     
     body {
     
