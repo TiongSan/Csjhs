@@ -1,27 +1,60 @@
 <!DOCTYPE html>
-
 <html lang="zh-Hant">
-
 <head>
-
-<meta charset="UTF-8">
-
-<title>台語快閃卡</title>
-
-<link rel="stylesheet" href="styles.css">
-
+  <meta charset="UTF-8">
+  <title>台語快閃卡</title>
+  <style>
+    @font-face {
+      font-family: 'TaiwanKai';
+      src: url('../fonts/taiwan-kai.ttf') format('truetype');
+    }
+    #flashcard {
+      text-align: center;
+      margin-top: 50px;
+    }
+    #word {
+      font-family: 'TaiwanKai', sans-serif;
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+    #roma {
+      font-family: Arial, sans-serif;
+      font-size: 24px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
 </head>
-
 <body>
+  <div id="flashcard">
+    <div id="word"></div>
+    <div id="roma"></div>
+  </div>
+  <button id="randomButton">Random</button>
+  <script>
+    async function loadJSON() {
+      const response = await fetch('audioFiles.json');
+      const data = await response.json();
+      return data;
+    }
 
-<div class="carousel">
-        <div class="slide active">Slide 1</div>
-        <div class="slide">Slide 2</div>
-        <div class="slide">Slide 3</div>
-    </div>
+    function updateFlashcard(data) {
+      const randomIndex = Math.floor(Math.random() * data.length);
+      const item = data[randomIndex];
+      document.getElementById('word').textContent = item.word;
+      document.getElementById('roma').textContent = item.roma;
+    }
 
-<script src="script.js"></script>
-
+    window.onload = async function() {
+      const data = await loadJSON();
+      updateFlashcard(data);
+      setInterval(function() { updateFlashcard(data); }, 10000);
+      document.getElementById('randomButton').addEventListener('click', function() {
+        updateFlashcard(data);
+      });
+    };
+  </script>
 </body>
-
 </html>
