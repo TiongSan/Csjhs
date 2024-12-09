@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>台語單字卡</title>
+    <style>
+        @font-face {
+            font-family: 'TaiwanKai';
+            src: url('../fonts/taiwan-kai.ttf') format('truetype');
+        }
+
+        body {
+            font-family: 'TaiwanKai', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+        .card {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin: 20px;
+            text-align: center;
+        }
+        .word {
+            font-family: 'TaiwanKai', Arial, sans-serif;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .roma {
+            font-family: 'TaiwanKai', Arial, sans-serif;
+            font-size: 24px;
+            color: #666;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #wordStats {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="word" id="word"></div>
+        <div class="roma" id="roma"></div>
+        <button onclick="playAudio()" id="playButton">播放音檔</button>
+        <button onclick="changeWord()">換下一個</button>
+    </div>
+    <div id="wordStats"></div>
+
+    <script>
+        let audioFiles;
+        let wordStats = {};
+        let currentAudioUrl = '';
+        
+        // 載入 JSON 檔案
+        fetch('audioFiles.json')
+            .then(response => response.json())
+            .then(data => {
+                audioFiles = data;
+                changeWord();
+            });
+
+        function changeWord() {
+            if (!audioFiles) return;
+            
+            const randomIndex = Math.floor(Math.random() * audioFiles.length);
+            const wordData = audioFiles[randomIndex];
+            
+            document.getElementById('word').textContent = wordData.word;
+            document.getElementById('roma').textContent = wordData.roma;
+            currentAudioUrl = wordData.addr;
+
+            // 更新統計資料
+            wordStats[wordData.word] = (wordStats[wordData.word] || 0) + 1;
+            updateWordStats();
+        }
+
+        function playAudio() {
+            if (currentAudioUrl) {
+                new Audio(currentAudioUrl).play();
+            }
+        }
+
+        function updateWordStats() {
+            const statsDiv = document.getElementById('wordStats');
+            statsDiv.innerHTML = '<h3>單字出現次數：</h3>';
+            
+            Object.entries(wordStats)
+                .sort((a, b) => b[1] - a[1])
+                .forEach(([word, count]) => {
+                    statsDiv.innerHTML += `<div>${word}: ${count} 次</div>`;
+                });
+        }
+
+        // 每10秒自動換字
+        setInterval(changeWord, 10000);
+    </script>
+</body>
+</html>
