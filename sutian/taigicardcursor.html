@@ -4,13 +4,8 @@
     <meta charset="UTF-8">
     <title>台語單字卡</title>
     <style>
-        @font-face {
-            font-family: 'TaiwanKai';
-            src: url('../fonts/taiwan-kai.ttf') format('truetype');
-        }
-
         body {
-            font-family: 'TaiwanKai', Arial, sans-serif;
+            font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -25,12 +20,10 @@
             text-align: center;
         }
         .word {
-            font-family: 'TaiwanKai', Arial, sans-serif;
             font-size: 48px;
             margin-bottom: 20px;
         }
         .roma {
-            font-family: 'TaiwanKai', Arial, sans-serif;
             font-size: 24px;
             color: #666;
         }
@@ -102,13 +95,8 @@
 
         function updateWordStats() {
             const statsDiv = document.getElementById('wordStats');
-            statsDiv.innerHTML = '<h3>單字出現次數：</h3>';
-            
-            Object.entries(wordStats)
-                .sort((a, b) => b[1] - a[1])
-                .forEach(([word, count]) => {
-                    statsDiv.innerHTML += `<div>${word}: ${count} 次</div>`;
-                });
+            const totalCount = Object.values(wordStats).reduce((sum, count) => sum + count, 0);
+            statsDiv.innerHTML = `<h3>總共出現 ${totalCount} 次單字</h3>`;
         }
 
         // 每10秒自動換字
