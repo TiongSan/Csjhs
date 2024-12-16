@@ -267,7 +267,10 @@
     }
 
     window.onload = function() {
+      console.log('Window loaded');
       initCanvas();
+      console.log('Canvas:', canvas);
+      console.log('Context:', ctx);
       loadJSONFile();
     };
 
