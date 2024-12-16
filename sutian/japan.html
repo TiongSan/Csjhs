@@ -41,38 +41,21 @@
     let gameActive = false;
     let correctAnswer = '';
 
-    function createBeepSound() {
-      // 創建音頻上下文
-      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-      const oscillator = audioContext.createOscillator();
-      const gainNode = audioContext.createGain();
-      
-      // 設置音量為0（靜音）
-      gainNode.gain.value = 0;
-      
-      // 連接節點
-      oscillator.connect(gainNode);
-      gainNode.connect(audioContext.destination);
-      
-      // 播放0.1秒後停止
-      oscillator.start();
-      setTimeout(() => oscillator.stop(), 100);
-    }
-
     function loadJSONFile() {
-      fetch('japan.json')
+      // 先播放本地的靜音檔
+      const silentAudio = new Audio('silent.wav');
+      silentAudio.play()
+        .then(() => {
+          // 靜音檔播放成功後，再載入題目
+          return fetch('japan.json');
+        })
         .then(response => response.json())
         .then(data => {
           audioFiles = data;
           console.log('已載入題目資料');
-          // 先播放靜音的beep聲
-          createBeepSound();
-          // 延遲一下再開始遊戲
-          setTimeout(() => {
-            startGame();
-          }, 200);
+          startGame();
         })
-        .catch(error => console.error('無法讀取JSON文件:', error));
+        .catch(error => console.error('載入失敗:', error));
     }
 
     function playRandomAudio() {
