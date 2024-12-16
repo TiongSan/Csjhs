@@ -207,17 +207,20 @@
 
     function checkAnswer(selectedAnswer) {
       if (!gameActive) return;
+      
       if (selectedAnswer === correctAnswer) {
         score++;
-        increaseLevel(); // 答對時增加樹的層級
+        document.getElementById('score').innerText = '分數: ' + score;
+        increaseLevel();
       } else {
         score--;
+        document.getElementById('score').innerText = '分數: ' + score;
         document.body.style.backgroundColor = 'red';
         setTimeout(() => {
           document.body.style.backgroundColor = 'white';
         }, 1000);
       }
-      document.getElementById('score').innerText = '分數: ' + score;
+      
       playRandomAudio();
     }
 
@@ -290,6 +293,7 @@
     <div id="score" style="font-size: 24px;">分數: 0</div>
     <div id="time" style="font-size: 24px;">剩餘時間: 120</div>
     <button id="restartButton" onclick="restartGame()">重新開始遊戲</button>
+    <div class="info">當前樹數: <span id="treeCount">1</span>, 當前層級: <span id="levelDisplay">1</span></div>
   </div>
 </body>
 </html>
