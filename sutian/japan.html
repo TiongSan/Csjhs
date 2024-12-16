@@ -59,7 +59,12 @@
       correctAnswer = question.word;
       let audio = new Audio(question.addr);
 
-      audio.oncanplaythrough = () => audio.play();
+      audio.load();
+      
+      audio.addEventListener('canplaythrough', function() {
+        audio.play().catch(e => console.error('播放失敗:', e));
+      }, { once: true });
+      
       audio.onerror = (e) => console.error('無法播放音頻文件:', e);
 
       document.getElementById('info').innerHTML = `
