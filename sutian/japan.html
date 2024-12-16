@@ -41,13 +41,36 @@
     let gameActive = false;
     let correctAnswer = '';
 
+    function createBeepSound() {
+      // 創建音頻上下文
+      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+      
+      // 設置音量為0（靜音）
+      gainNode.gain.value = 0;
+      
+      // 連接節點
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      
+      // 播放0.1秒後停止
+      oscillator.start();
+      setTimeout(() => oscillator.stop(), 100);
+    }
+
     function loadJSONFile() {
       fetch('japan.json')
         .then(response => response.json())
         .then(data => {
           audioFiles = data;
           console.log('已載入題目資料');
-          startGame();
+          // 先播放靜音的beep聲
+          createBeepSound();
+          // 延遲一下再開始遊戲
+          setTimeout(() => {
+            startGame();
+          }, 200);
         })
         .catch(error => console.error('無法讀取JSON文件:', error));
     }
@@ -59,14 +82,7 @@
       correctAnswer = question.word;
 
       const audio = new Audio(question.addr);
-      
-      audio.addEventListener('canplaythrough', () => {
-        audio.play().catch(e => console.error('播放失敗:', e));
-      }, { once: true });
-
-      audio.onerror = () => {
-        console.error('音頻載入失敗:', question.addr);
-      };
+      audio.play().catch(e => console.error('播放失敗:', e));
 
       document.getElementById('info').innerHTML = `
         <p>日文: <strong>${question.japan}</strong></p>
