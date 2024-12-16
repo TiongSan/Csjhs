@@ -62,6 +62,9 @@
     let currentTreeIndex = 0;
     let canvas, ctx;
 
+    let streak = 0;
+    let maxStreak = 0;
+
     class Tree {
       constructor(x, y, initialLength, colorScheme) {
         this.x = x;
@@ -266,11 +269,22 @@
       return array;
     }
 
+    function updateStreak(correct) {
+      if (correct) {
+        streak++;
+        if (streak > maxStreak) {
+          maxStreak = streak;
+        }
+      } else {
+        streak = 0;
+      }
+      
+      document.getElementById('streak').textContent = 
+        `連擊: ${streak} | 最高連擊: ${maxStreak}`;
+    }
+
     window.onload = function() {
-      console.log('Window loaded');
       initCanvas();
-      console.log('Canvas:', canvas);
-      console.log('Context:', ctx);
       loadJSONFile();
     };
 
@@ -294,6 +308,7 @@
     <div id="time" style="font-size: 24px;">剩餘時間: 120</div>
     <button id="restartButton" onclick="restartGame()">重新開始遊戲</button>
     <div class="info">當前樹數: <span id="treeCount">1</span>, 當前層級: <span id="levelDisplay">1</span></div>
+    <div id="streak" style="font-size: 24px;">連擊: 0 | 最高連擊: 0</div>
   </div>
 </body>
 </html>
