@@ -40,6 +40,7 @@
     let timer;
     let gameActive = false;
     let correctAnswer = '';
+    let audioCache = {};
 
     function loadJSONFile() {
       fetch('japan.json')
@@ -47,6 +48,24 @@
         .then(data => {
           audioFiles = data;
           console.log('已載入音頻檔案:', audioFiles);
+          return Promise.all(audioFiles.map(file => {
+            return new Promise((resolve) => {
+              const audio = new Audio();
+              audio.src = file.addr;
+              audio.preload = 'auto';
+              audio.addEventListener('canplaythrough', () => {
+                audioCache[file.addr] = audio;
+                resolve();
+              }, { once: true });
+              audio.addEventListener('error', () => {
+                console.error('音頻載入失敗:', file.addr);
+                resolve();
+              });
+            });
+          }));
+        })
+        .then(() => {
+          console.log('所有音頻預載入完成');
           startGame();
         })
         .catch(error => console.error('無法讀取JSON文件:', error));
@@ -57,15 +76,12 @@
       let randomIndex = Math.floor(Math.random() * audioFiles.length);
       let question = audioFiles[randomIndex];
       correctAnswer = question.word;
-      let audio = new Audio(question.addr);
 
-      audio.load();
-      
-      audio.addEventListener('canplaythrough', function() {
+      const audio = audioCache[question.addr];
+      if (audio) {
+        audio.currentTime = 0;
         audio.play().catch(e => console.error('播放失敗:', e));
-      }, { once: true });
-      
-      audio.onerror = (e) => console.error('無法播放音頻文件:', e);
+      }
 
       document.getElementById('info').innerHTML = `
         <p>日文: <strong>${question.japan}</strong></p>
