@@ -42,18 +42,12 @@
     let correctAnswer = '';
 
     function loadJSONFile() {
-      // 先播放本地的靜音檔
-      const silentAudio = new Audio('silent.wav');
-      silentAudio.play()
-        .then(() => {
-          // 靜音檔播放成功後，再載入題目
-          return fetch('japan.json');
-        })
+      fetch('japan.json')
         .then(response => response.json())
         .then(data => {
           audioFiles = data;
           console.log('已載入題目資料');
-          startGame();
+          document.getElementById('startButton').style.display = 'block';
         })
         .catch(error => console.error('載入失敗:', error));
     }
@@ -63,9 +57,10 @@
       let randomIndex = Math.floor(Math.random() * audioFiles.length);
       let question = audioFiles[randomIndex];
       correctAnswer = question.word;
+      let audio = new Audio(question.addr);
 
-      const audio = new Audio(question.addr);
-      audio.play().catch(e => console.error('播放失敗:', e));
+      audio.oncanplaythrough = () => audio.play();
+      audio.onerror = (e) => console.error('無法播放音頻文件:', e);
 
       document.getElementById('info').innerHTML = `
         <p>日文: <strong>${question.japan}</strong></p>
@@ -149,6 +144,9 @@
 </head>
 <body>
   <h1>台語聽力測驗</h1>
+  <button id="startButton" onclick="startGame()" style="display: none; font-size: 24px; padding: 20px; margin: 20px;">
+    點擊開始遊戲
+  </button>
   <div id="info"></div>
   <div id="options"></div>
   <div id="score" style="font-size: 24px;">分數: 0</div>
