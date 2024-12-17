@@ -223,7 +223,7 @@
     </div>
 
     <div class="footer">
-        設計者：陳老���
+        設計者：陳老師
     </div>
 
 <script>
@@ -514,12 +514,18 @@ async function loadWords() {
 			}
 		}
 
-		function startNewGame() {
+		async function startNewGame() {
+			// 確保 TILES_CONFIG 中有數據
+			if (TILES_CONFIG.words.symbols.length === 0) {
+				await loadWords();
+			}
+			
 			initializeBoard();
 			selectedTiles = [];
 			score = 0;
 			
 			const board = document.getElementById('gameBoard');
+			
 			board.innerHTML = '';
 			
 			const tiles = generateTiles();
@@ -554,7 +560,9 @@ async function loadWords() {
 			document.getElementById('remainingCount').textContent = remainingTiles;
 		}
 
-		startNewGame();
+		document.addEventListener('DOMContentLoaded', () => {
+			startNewGame();
+		});
 </script>
 </body>
 </html>	
