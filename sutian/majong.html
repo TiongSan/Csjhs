@@ -207,7 +207,7 @@
     <audio id="clickSound" src="https://taira-komori.jpn.org/sound_os2/game01/select01.mp3"></audio>
     <audio id="matchSound" src="https://taira-komori.jpn.org/sound_os2/game01/powerup10.mp3"></audio>
     <audio id="failSound" src="https://taira-komori.jpn.org/sound_os2/game01/blip01.mp3"></audio>
-	<center><h1><font color="white">四川麻將台語版</font></h1></center>
+	<center><h1><font color="white">四川麻將成語版</font></h1></center>
     <div class="game-container">
         <div class="info-panel">
             <div>分數: <span id="score">0</span></div>
@@ -223,7 +223,7 @@
     </div>
 
     <div class="footer">
-        設計者：陳老師
+        設計者：陳老���
     </div>
 
 <script>
@@ -243,22 +243,87 @@ const TILES_CONFIG = {
     }
 };
 
-// 新增載入 JSON 數據的函數
+// 首先定義一些基本的測試數據，確保即使 JSON 載入失敗也能顯示一些內容
+const DEFAULT_TILES = [
+    { text: "你", meaning: "あなた", class: "attitude" },
+    { text: "好", meaning: "こんにちは", class: "attitude" },
+    { text: "早", meaning: "おはよう", class: "method" },
+    { text: "安", meaning: "こんばんは", class: "result" }
+];
+
+// 修改 generateTiles 函數
+function generateTiles() {
+    let tiles = [];
+    // 使用預設數據或已載入的數據
+    const symbols = TILES_CONFIG.words.symbols.length > 0 ? 
+                   TILES_CONFIG.words.symbols : DEFAULT_TILES;
+    
+    // 每個符號生成 4 張牌
+    symbols.forEach(symbol => {
+        for (let i = 0; i < 4; i++) {
+            tiles.push({
+                text: symbol.text,
+                meaning: symbol.meaning,
+                class: symbol.class
+            });
+        }
+    });
+    
+    return shuffleArray(tiles);
+}
+
+// 修改 startNewGame 函數
+async function startNewGame() {
+    try {
+        // 如果還沒有載入數據，先嘗試載入
+        if (TILES_CONFIG.words.symbols.length === 0) {
+            await loadWords();
+        }
+    } catch (error) {
+        console.error('載入文字失敗，使用預設數據：', error);
+    }
+    
+    initializeBoard();
+    selectedTiles = [];
+    score = 0;
+    
+    const board = document.getElementById('gameBoard');
+    board.innerHTML = '';
+    
+    const tiles = generateTiles();
+    
+    for (let i = 0; i < tiles.length; i++) {
+        const row = Math.floor(i / BOARD_SIZE.cols);
+        const col = i % BOARD_SIZE.cols;
+        
+        if (row < BOARD_SIZE.rows) {
+            const tile = createTile(tiles[i], row, col);
+            gameBoard[row][col] = tile;
+            board.appendChild(tile);
+        }
+    }
+    
+    updateUI();
+}
+
+// 修改 loadWords 函數
 async function loadWords() {
     try {
         const response = await fetch('japan.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const data = await response.json();
-        console.log('載入的數據：', data); // 檢查載入的數據
+        console.log('成功載入數據：', data);
         
         TILES_CONFIG.words.symbols = data.map(item => ({
             text: item.word,
             meaning: item.japan,
-            pair: item.word,
-            class: item.pre
+            class: item.pre || 'attitude' // 提供預設值
         }));
-        console.log('處理後的符號：', TILES_CONFIG.words.symbols); // 檢查處理後的數據
     } catch (error) {
         console.error('載入文字時發生錯誤：', error);
+        TILES_CONFIG.words.symbols = DEFAULT_TILES; // 使用預設數據
     }
 }
 
@@ -277,22 +342,6 @@ async function loadWords() {
 				document.body.removeChild(popup);
 			});
 		}, 2000);
-	}
-
-	function generateTiles() {
-		let tiles = [];
-		Object.values(TILES_CONFIG).forEach(type => {
-			type.symbols.forEach(symbol => {
-				for (let i = 0; i < 4; i++) {
-					tiles.push({
-						symbol: symbol.text,
-						meaning: symbol.meaning,
-						class: type.class
-					});
-				}
-			});
-		});
-		return shuffleArray(tiles);
 	}
 
 	function shuffleArray(array) {
@@ -510,30 +559,6 @@ async function loadWords() {
 			}
 		}
 
-		function startNewGame() {
-			initializeBoard();
-			selectedTiles = [];
-			score = 0;
-			
-			const board = document.getElementById('gameBoard');
-			board.innerHTML = '';
-			
-			const tiles = generateTiles();
-			
-			for (let i = 0; i < tiles.length; i++) {
-				const row = Math.floor(i / BOARD_SIZE.cols);
-				const col = i % BOARD_SIZE.cols;
-				
-				if (row < BOARD_SIZE.rows) {
-					const tile = createTile(tiles[i], row, col);
-					gameBoard[row][col] = tile;
-					board.appendChild(tile);
-				}
-			}
-			
-			updateUI();
-		}
-
 		function checkGameEnd() {
 			const visibleTiles = document.querySelectorAll('.tile:not([style*="visibility: hidden"])');
 			if (visibleTiles.length === 0) {
@@ -550,7 +575,10 @@ async function loadWords() {
 			document.getElementById('remainingCount').textContent = remainingTiles;
 		}
 
-		startNewGame();
+		// 確保在頁面載入完成後初始化遊戲
+		document.addEventListener('DOMContentLoaded', () => {
+			startNewGame();
+		});
 </script>
 </body>
 </html>	
