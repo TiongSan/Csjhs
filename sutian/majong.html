@@ -248,21 +248,17 @@ async function loadWords() {
     try {
         const response = await fetch('japan.json');
         const data = await response.json();
+        console.log('載入的數據：', data); // 檢查載入的數據
         
-        // 處理 JSON 數據
         TILES_CONFIG.words.symbols = data.map(item => ({
-            text: item.word, // 台語發音
-            meaning: item.japan, // 日文
-            pair: item.word, // 用於配對識別
-            class: item.pre // 用於顏色分類
-        })).concat(data.map(item => ({
-            text: item.japan, // 日文
-            meaning: item.word, // 台語發音
-            pair: item.word, // 用於配對識別
-            class: item.pre // 用於顏色分類
-        })));
+            text: item.word,
+            meaning: item.japan,
+            pair: item.word,
+            class: item.pre
+        }));
+        console.log('處理後的符號：', TILES_CONFIG.words.symbols); // 檢查處理後的數據
     } catch (error) {
-        console.error('Error loading words:', error);
+        console.error('載入文字時發生錯誤：', error);
     }
 }
 
@@ -514,18 +510,12 @@ async function loadWords() {
 			}
 		}
 
-		async function startNewGame() {
-			// 確保 TILES_CONFIG 中有數據
-			if (TILES_CONFIG.words.symbols.length === 0) {
-				await loadWords();
-			}
-			
+		function startNewGame() {
 			initializeBoard();
 			selectedTiles = [];
 			score = 0;
 			
 			const board = document.getElementById('gameBoard');
-			
 			board.innerHTML = '';
 			
 			const tiles = generateTiles();
@@ -560,9 +550,7 @@ async function loadWords() {
 			document.getElementById('remainingCount').textContent = remainingTiles;
 		}
 
-		document.addEventListener('DOMContentLoaded', () => {
-			startNewGame();
-		});
+		startNewGame();
 </script>
 </body>
 </html>	
