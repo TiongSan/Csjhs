@@ -32,6 +32,13 @@
       margin: 20px auto;
       line-height: 1.6;
     }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      background-color: white;
+    }
     .game-content {
       position: relative;
       z-index: 1;
@@ -40,25 +47,38 @@
       margin-top: 10px;
       font-size: 16px;
     }
+    .reference-section {
+      margin: 30px 0;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+    }
+
+    .reference-title {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 20px;
+      color: #333;
+    }
+
     .reference-table {
       width: 90%;
-      max-width: 800px;
+      max-width: 1000px;
       margin: 20px auto;
       border-collapse: collapse;
     }
-    
-    .reference-table th, .reference-table td {
+
+    .reference-table th,
+    .reference-table td {
       border: 1px solid #ddd;
       padding: 8px;
       text-align: center;
+      font-size: 16px;
     }
-    
+
     .reference-table th {
       background-color: #f2f2f2;
-    }
-    
-    .reference-table tr:nth-child(even) {
-      background-color: #f9f9f9;
+      font-weight: bold;
     }
   </style>
   <script>
@@ -68,6 +88,106 @@
     let timer;
     let gameActive = false;
     let correctAnswer = '';
+
+    // 樹相關變量
+    const MAX_LEVEL = 12;
+    let trees = [];
+    let currentTreeIndex = 0;
+    let canvas, ctx;
+
+    class Tree {
+      constructor(x, y, initialLength, colorScheme) {
+        this.x = x;
+        this.y = y;
+        this.initialLength = initialLength;
+        this.level = 1;
+        this.colorScheme = colorScheme;
+      }
+    }
+
+    function initCanvas() {
+      canvas = document.getElementById('treeCanvas');
+      ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      initFirstTree();
+    }
+
+    function initFirstTree() {
+      trees = [];
+      trees.push(new Tree(
+        canvas.width * 0.2,
+        canvas.height - 50,
+        120,
+        generateColorScheme()
+      ));
+      currentTreeIndex = 0;
+      drawAllTrees();
+    }
+
+    function generateColorScheme() {
+      const hue = Math.random() * 360;
+      return {
+        base: `hsl(${hue}, 60%, 30%)`,
+        highlight: `hsl(${hue}, 70%, 40%)`,
+        light: `hsl(${hue}, 80%, 50%)`
+      };
+    }
+
+    function drawTree(startX, startY, len, angle, depth, colorScheme) {
+      ctx.beginPath();
+      ctx.save();
+      
+      ctx.translate(startX, startY);
+      ctx.rotate(angle);
+      ctx.moveTo(0, 0);
+      ctx.lineTo(0, -len);
+      
+      ctx.strokeStyle = depth > MAX_LEVEL * 0.7 ? colorScheme.light :
+                       depth > MAX_LEVEL * 0.3 ? colorScheme.highlight :
+                       colorScheme.base;
+      ctx.lineWidth = Math.max(1, depth * 0.8);
+      ctx.stroke();
+
+      if (depth > 0) {
+        drawTree(0, -len, len * 0.7, getRandomAngle(), depth - 1, colorScheme);
+        drawTree(0, -len, len * 0.7, -getRandomAngle(), depth - 1, colorScheme);
+      }
+      
+      ctx.restore();
+    }
+
+    function getRandomAngle() {
+      return (40 + Math.random() * 20) * Math.PI / 180;
+    }
+
+    function drawAllTrees() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      trees.forEach(tree => {
+        drawTree(tree.x, tree.y, tree.initialLength, 0, tree.level, tree.colorScheme);
+      });
+    }
+
+    function increaseLevel() {
+      let currentTree = trees[currentTreeIndex];
+      if (currentTree.level < MAX_LEVEL) {
+        currentTree.level++;
+      } else {
+        const newX = canvas.width * ((currentTreeIndex + 2) * 0.2);
+        if (newX < canvas.width * 0.9) {
+          trees.push(new Tree(
+            newX,
+            canvas.height - 50,
+            trees[currentTreeIndex].initialLength * 0.9,
+            generateColorScheme()
+          ));
+          currentTreeIndex++;
+        }
+      }
+      document.getElementById('levelDisplay').textContent = trees[currentTreeIndex].level;
+      document.getElementById('treeCount').textContent = trees.length;
+      drawAllTrees();
+    }
 
     function loadJSONFile() {
       fetch('japan.json')
@@ -124,6 +244,7 @@
       if (selectedAnswer === correctAnswer) {
         score++;
         document.getElementById('score').innerText = '分數: ' + score;
+        increaseLevel();
       } else {
         score--;
         document.getElementById('score').innerText = '分數: ' + score;
@@ -144,6 +265,7 @@
       document.getElementById('time').innerText = '剩餘時間: ' + timeLeft;
       document.getElementById('startButton').style.display = 'none';
       document.getElementById('restartButton').style.display = 'none';
+      initFirstTree();
       timer = setInterval(() => {
         timeLeft--;
         document.getElementById('time').innerText = '剩餘時間: ' + timeLeft;
@@ -181,42 +303,270 @@
     }
 
     window.onload = function() {
+      initCanvas();
       loadJSONFile();
+    };
+
+    window.onresize = function() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      drawAllTrees();
     };
   </script>
 </head>
 <body>
+  <canvas id="treeCanvas"></canvas>
   <div class="game-content">
     <h1>台語聽力測驗</h1>
-    <button id="startButton" onclick="startGame()" style="display: none;">點擊開始遊戲</button>
+    <button id="startButton" onclick="startGame()" style="display: none; font-size: 24px; padding: 20px; margin: 20px;">
+      點擊開始遊戲
+    </button>
     <div id="info"></div>
     <div id="options"></div>
-    <div id="score">分數: 0</div>
-    <div id="time">剩餘時間: 120</div>
+    <div id="score" style="font-size: 24px;">分數: 0</div>
+    <div id="time" style="font-size: 24px;">剩餘時間: 120</div>
     <button id="restartButton" onclick="restartGame()">重新開始遊戲</button>
+    <div class="info">當前樹數: <span id="treeCount">1</span>, 當前層級: <span id="levelDisplay">1</span></div>
+    <div class="reference-section">
+      <h2 class="reference-title">日語台語對照表</h2>
+      <table class="reference-table">
+        <!-- あ行 -->
+        <tr>
+          <th>日語五十音</th>
+          <th>あ (a)</th>
+          <th>い (i)</th>
+          <th>う (u)</th>
+          <th>え (e)</th>
+          <th>お (o)</th>
+        </tr>
+        <tr>
+          <td>台羅拼音</td>
+          <td>a</td>
+          <td>i</td>
+          <td>u</td>
+          <td>e</td>
+          <td>o</td>
+        </tr>
+        <tr>
+          <td>備註</td>
+          <td colspan="5">發音相同</td>
+        </tr>
+        <tr><td colspan="6" style="height: 20px;"></td></tr>
 
-    <table class="reference-table">
-      <tr>
-        <th>日語五十音</th>
-        <th>あ (a)</th>
-        <th>い (i)</th>
-        <th>う (u)</th>
-        <th>え (e)</th>
-        <th>お (o)</th>
-      </tr>
-      <tr>
-        <td>台羅拼音</td>
-        <td>a</td>
-        <td>i</td>
-        <td>u</td>
-        <td>e</td>
-        <td>o</td>
-      </tr>
-      <tr>
-        <td>備註</td>
-        <td colspan="5">發音相同</td>
-      </tr>
-    </table>
+        <!-- か行 -->
+        <tr>
+          <th>日語五十音</th>
+          <th>か (ka)</th>
+          <th>き (ki)</th>
+          <th>く (ku)</th>
+          <th>け (ke)</th>
+          <th>こ (ko)</th>
+        </tr>
+        <tr>
+          <td>台羅拼音</td>
+          <td>ka</td>
+          <td>ki</td>
+          <td>ku</td>
+          <td>ke</td>
+          <td>ko</td>
+        </tr>
+        <tr>
+          <td>備註</td>
+          <td colspan="5">發音相似</td>
+        </tr>
+        <tr><td colspan="6" style="height: 20px;"></td></tr>
+
+        <!-- さ行 -->
+        <tr>
+          <th>日語五十音</th>
+          <th>さ (sa)</th>
+          <th>し (shi)</th>
+          <th>す (su)</th>
+          <th>せ (se)</th>
+          <th>そ (so)</th>
+        </tr>
+        <tr>
+          <td>台羅拼音</td>
+          <td>sa</td>
+          <td>si</td>
+          <td>su</td>
+          <td>se</td>
+          <td>so</td>
+        </tr>
+        <tr>
+          <td>備註</td>
+          <td>發音相似</td>
+          <td>日語更靠近「si」音</td>
+          <td>發音相同</td>
+          <td>發音相同</td>
+          <td>發音相同</td>
+        </tr>
+        <tr><td colspan="6" style="height: 20px;"></td></tr>
+
+        <!-- た行 -->
+        <tr>
+          <th>日語五十音</th>
+          <th>た (ta)</th>
+          <th>ち (chi)</th>
+          <th>つ (tsu)</th>
+          <th>て (te)</th>
+          <th>と (to)</th>
+        </tr>
+        <tr>
+          <td>台羅拼音</td>
+          <td>ta</td>
+          <td>tsi</td>
+          <td>tsu</td>
+          <td>te</td>
+          <td>to</td>
+        </tr>
+        <tr>
+          <td>備註</td>
+          <td>發音相同</td>
+          <td>日語發音更靠近「tsi」</td>
+          <td>發音相似</td>
+          <td>發音相同</td>
+          <td>發音相同</td>
+        </tr>
+        <tr><td colspan="6" style="height: 20px;"></td></tr>
+
+        <!-- な行 -->
+        <tr>
+          <th>日語五十音</th>
+          <th>な (na)</th>
+          <th>に (ni)</th>
+          <th>ぬ (nu)</th>
+          <th>ね (ne)</th>
+          <th>の (no)</th>
+        </tr>
+        <tr>
+          <td>台羅拼音</td>
+          <td>na</td>
+          <td>ni</td>
+          <td>nu</td>
+          <td>ne</td>
+          <td>no</td>
+        </tr>
+        <tr>
+          <td>備註</td>
+          <td colspan="5">發音相同</td>
+        </tr>
+        <tr><td colspan="6" style="height: 20px;"></td></tr>
+
+        <!-- は行 -->
+        <tr>
+          <th>日語五十音</th>
+          <th>は (ha)</th>
+          <th>ひ (hi)</th>
+          <th>ふ (fu)</th>
+          <th>へ (he)</th>
+          <th>ほ (ho)</th>
+        </tr>
+        <tr>
+          <td>台羅拼音</td>
+          <td>ha</td>
+          <td>hi</td>
+          <td>hu</td>
+          <td>he</td>
+          <td>ho</td>
+        </tr>
+        <tr>
+          <td>備註</td>
+          <td>發音相同</td>
+          <td>發音相同</td>
+          <td>日語為「唇音」</td>
+          <td>發音相同</td>
+          <td>發音相同</td>
+        </tr>
+        <tr><td colspan="6" style="height: 20px;"></td></tr>
+
+        <!-- ま行 -->
+        <tr>
+          <th>日語五十音</th>
+          <th>ま (ma)</th>
+          <th>み (mi)</th>
+          <th>む (mu)</th>
+          <th>め (me)</th>
+          <th>も (mo)</th>
+        </tr>
+        <tr>
+          <td>台羅拼音</td>
+          <td>ma</td>
+          <td>mi</td>
+          <td>mu</td>
+          <td>me</td>
+          <td>mo</td>
+        </tr>
+        <tr>
+          <td>備註</td>
+          <td colspan="5">發音相同</td>
+        </tr>
+        <tr><td colspan="6" style="height: 20px;"></td></tr>
+
+        <!-- や行 -->
+        <tr>
+          <th>日語五十音</th>
+          <th>や (ya)</th>
+          <th>ゆ (yu)</th>
+          <th>よ (yo)</th>
+          <th>わ (wa)</th>
+          <th>を (wo)</th>
+        </tr>
+        <tr>
+          <td>台羅拼音</td>
+          <td>ia</td>
+          <td>iu</td>
+          <td>io</td>
+          <td>ua</td>
+          <td>uo</td>
+        </tr>
+        <tr>
+          <td>備註</td>
+          <td colspan="5">台羅為雙母音</td>
+        </tr>
+        <tr><td colspan="6" style="height: 20px;"></td></tr>
+
+        <!-- ら行 -->
+        <tr>
+          <th>日語五十音</th>
+          <th>ら (ra)</th>
+          <th>り (ri)</th>
+          <th>る (ru)</th>
+          <th>れ (re)</th>
+          <th>ろ (ro)</th>
+        </tr>
+        <tr>
+          <td>台羅拼音</td>
+          <td>la</td>
+          <td>li</td>
+          <td>lu</td>
+          <td>le</td>
+          <td>lo</td>
+        </tr>
+        <tr>
+          <td>備註</td>
+          <td colspan="5">台羅為「l」音</td>
+        </tr>
+        <tr><td colspan="6" style="height: 20px;"></td></tr>
+
+        <!-- ん -->
+        <tr>
+          <th>日語五十音</th>
+          <th>ん (n)</th>
+          <th colspan="4"></th>
+        </tr>
+        <tr>
+          <td>台羅拼音</td>
+          <td>n</td>
+          <td colspan="4"></td>
+        </tr>
+        <tr>
+          <td>備註</td>
+          <td>發音相同</td>
+          <td colspan="4"></td>
+        </tr>
+      </table>
+    </div>
   </div>
 </body>
 </html>
