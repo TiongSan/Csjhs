@@ -80,6 +80,25 @@
       background-color: #f2f2f2;
       font-weight: bold;
     }
+
+    @keyframes lightning {
+      0% { opacity: 0; }
+      50% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    #lightning {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('lightning.png') no-repeat center center;
+      background-size: cover;
+      animation: lightning 0.5s ease-in-out;
+      z-index: 1000;
+    }
   </style>
   <script>
     let audioFiles = [];
@@ -252,6 +271,7 @@
         setTimeout(() => {
           document.body.style.backgroundColor = 'white';
         }, 1000);
+        showLightning();
       }
       
       playRandomAudio();
@@ -300,6 +320,14 @@
         [array[i], array[j]] = [array[j], array[i]];
       }
       return array;
+    }
+
+    function showLightning() {
+      const lightning = document.getElementById('lightning');
+      lightning.style.display = 'block';
+      setTimeout(() => {
+        lightning.style.display = 'none';
+      }, 500); // 閃電效果持續0.5秒
     }
 
     window.onload = function() {
@@ -568,5 +596,6 @@
       </table>
     </div>
   </div>
+  <div id="lightning"></div>
 </body>
 </html>
