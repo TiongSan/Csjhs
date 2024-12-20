@@ -1,0 +1,1490 @@
+<html lang="zh-TW"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>貓狗大戰遊戲</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ffcc00, #ff99cc, #66ccff);
+            background-size: 400% 400%;
+            animation: gradientBackground 15s ease infinite;
+        }
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        canvas {
+            border: 1px solid black;
+            display: block;
+            margin: 0 auto;
+            background-color: #f0f0f0;
+        }
+        #health-bars {
+            display: flex;
+            justify-content: space-between;
+            width: 900px;
+            margin: 10px auto;
+            position: relative;
+        }
+        .health-bar-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 45%;
+            position: relative;
+        }
+        .health-bar {
+            height: 40px;
+            position: absolute;
+            border-radius: 5px;
+            background: linear-gradient(145deg, #ff4d4d, #b30000);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            border: 2px solid black;
+        }
+        .health-bar-background {
+            width: 100%;
+            height: 40px;
+            background: linear-gradient(145deg, #f0f0f0, #d9d9d9);
+            position: relative;
+            border-radius: 5px;
+            box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        #cat-health {
+            right: 0;
+            background: linear-gradient(145deg, #b30000, #ff4d4d);
+        }
+        #dog-health {
+            left: 0;
+        }
+        #game-over {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            z-index: 1000;
+        }
+        #game-over h2 {
+            font-size: 100px;
+            color: red;
+            font-weight: bold;
+        }
+        #game-over button {
+            padding: 10px 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+        #game-over button:hover {
+            background-color: #45a049;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+        }
+        #game-title {
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 24px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px 0;
+        }
+        #generator-screen {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 900px; /* 與遊戲區寬度相同 */
+            background-color: rgba(255, 255, 255, 0.95);
+            border: 2px solid black;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            z-index: 2000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #generator-screen h1 {
+            margin-bottom: 20px;
+        }
+        #generator-input {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        #generator-submit, #start-game, #download-game {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        #generator-submit:hover, #start-game:hover, #download-game:hover {
+            background-color: #45a049;
+        }
+        #output-table {
+            margin-top: 20px;
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            max-height: 300px; /* 限制高度以支持捲動 */
+            overflow-y: auto; /* 垂直捲動 */
+            display: block;
+        }
+        #output-table thead {
+            position: sticky;
+            top: 0;
+            background-color: #f1f1f1;
+        }
+        #output-table th, #output-table td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+        #start-game {
+            display: none;
+            margin-top: 20px;
+        }
+        #question-layer {
+            display: none;
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 900px;
+            height: 420px; /* 調整高度 */
+            background-color: #e6ffe6; /* 淡綠色背景 */
+            border: 2px solid black;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            z-index: 1500;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #question-layer h2 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+            text-shadow: 1px 1px 2px #ffffff;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .option-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .option-buttons button {
+            padding: 10px;
+            font-size: 19px; /* 加大3PX */
+            color: white;
+            font-weight: bold; /* 設置為粗體 */
+            margin-bottom: 10px;
+            width: calc(100% - 20px);
+            height: 65px; /* 增加5PX高度 */
+            background: #1abc9c;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .option-buttons button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.15);
+            transition: all 0.75s ease-in-out;
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+        }
+        .option-buttons button:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .option-buttons button:hover {
+            background: #16a085;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .option-buttons button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .option-buttons button:hover::after {
+            opacity: 1;
+        }
+        .left {
+            float: left;
+            width: 45%;
+        }
+        .right {
+            float: right;
+            width: 45%;
+        }
+        /* 新增的透明點擊區 */
+        #secret-trigger {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            background-color: transparent;
+            z-index: 9999;
+        }
+        /* 新增的右下角文字區域 */
+        #footer-text {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-size: 14px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="health-bars">
+        <div class="health-bar-background">
+            <span class="health-bar" id="cat-health" style="width: 60%;">貓的血量: 60</span>
+            <span>貓的血量</span>
+        </div>
+        <div class="health-bar-background">
+            <span class="health-bar" id="dog-health" style="width: 80%;">狗的血量: 80</span>
+            <span>狗的血量</span>
+        </div>
+    </div>
+    <canvas id="gameCanvas" width="900" height="650"></canvas>
+    <div id="game-over"></div>
+    <div id="game-title">貓狗大戰遊戲</div>
+    <div id="toggle-generator"></div>
+    <div id="generator-screen" style="display: block;">
+        <h1>貓狗大戰遊戲生成器</h1>
+        <textarea id="generator-input" placeholder="輸入題目，請用逗號或制表符分隔各列...">倩	3	tsian	tshik	tshiànn	hia
+䆀	4	lín	tsian	ân	bái
+都	4	tshìng	seh̍	that	to
+兜	1	tau	phú	kia̍h	guá
+冊	3	tsàm	hiat	tsheh	khiú
+通	1	thang	suànn	tsuànn	îng
+我	2	tō	guá	khok	tshòng
+仝	4	suà	khang	phoo	kāng
+膨	1	phòng	mê	khau	tang
+細	4	tiô	nā	tīnn	sè
+尾	2	ua̍t	bué	hiam	tsiah
+索	2	sian	soh	kiann	guē
+墘	1	kînn	tíng	giap	phôo
+刣	3	tńg	jú	thâi	seh̍
+現	2	liū	hiān	hian	khiau
+拄	3	mā	tio̍h	tú	kam
+粿	3	puânn	khû	kué	àu
+反	1	píng	ling	sûn	kia̍h
+愣	2	lap	gāng	lòng	khiû
+崁	1	khàm	peh	hit	lóng
+佇	1	tī	phoh	bâng	luí
+毋	1	m̄	bué	hu	pîng
+峇	3	tsū	tân	bā	tsām
+僫	4	ùn	phah	tsànn	oh
+屐	2	kê	kia̍h	pué	phôo
+斟	2	bú	thîn	lián	kóng
+櫼	4	tshū	khǹg	sûn	tsinn
+箍	2	kái	khoo	tshiâu	poo
+下	1	hē	pué	tuà	at
+人	2	khip̍	lâng	bē	kám
+跤	4	ta̍k	thua	lán	kha
+份	4	phah	ân	siunn	hūn
+吮	4	tshuân	sńg	pûn	tshńg
+澹	3	ē	khuán	tâm	tō
+挾	4	soh	tàn	jip̍	gia̍p
+睏	2	khiáu	khùn	muê	lim
+觳	3	tshuah	tuè	khok	kāng
+輾	2	sán	liàn	tsuā	tsing
+媠	3	hip	kho̍k	suí	tn̄g
+蠓	1	báng	kái	lâng	tshū
+到	3	lún	he	kàu	tshik
+某	4	thîn	tsai	nn̄g	bóo
+煎	3	kóng	tàu	tsuann	lún
+揣	1	tshuē	khah	thóng	khoo
+拊	4	jı̍t	tshiànn	tsìnn	hú
+沓	2	kang	tau̍h	tsàu	ńg
+鋪	4	hiam	áu	poo	phoo
+坉	2	muê	thūn	theh̍	mā
+閒	3	lāi	khı̍t	îng	jua̍h
+搜	1	tshiau	giâ	siáu	phue
+嗽	1	sàu	suà	jiàu	sann
+今	4	gōng	āinn	tshih̍	tann
+予	4	píng	lù	khı̍t	hōo
+埕	3	tshuann	tīn	tiânn	làu
+攕	3	phôo	suí	tshiám	uat
+掣	3	khiàng	sap	tshuah	senn
+鼎	4	tsai	gāng	giâ	tiánn
+扱	4	ak	liōng	tu̍h	khip̍
+㧒	2	ám	hiat	khuán	ài
+撏	4	lòng	khiàng	tshuê	jîm
+欶	4	giâ	sông	póo	suh
+忝	4	iā	suî	ngeh̍	thiám
+喝	2	gia̍h	huah	a̍h	tú
+炕	1	khòng	thè	liú	sa̍h
+晏	2	a	uànn	nuá	oh
+臆	4	tsa̍h	kang	thang	ioh
+薟	3	hūn	khiáu	hiam	gāng
+提	2	ngeh	theh̍	tai	jua̍h
+勥	1	khiàng	ua̍t	thàng	suànn
+譀	4	seh̍	kiáu	huah	hàm
+扭	4	bán	neh	jiáu	láu
+焦	2	phue	ta	khè	lāng
+寒	3	līng	tà	kuânn	sì
+彼	4	tīnn	sa̍h	má	hit
+杙	4	tshuē	khip̍	tàu	khı̍t
+煎	2	pûn	tsian	khînn	bâng
+欉	2	té	tsâng	phuì	kiânn
+葩	2	kíng	pha	kóo	kah
+烏	2	nā	oo	kiáu	tai
+攏	3	làu	háu	lóng	khǹg
+駐	1	tū	thâi	sô	mê
+生	3	tīn	ba̍t	senn	thâi
+牢	3	lo̍h	iáu	tiâu	tsuann
+咱	3	tsî	tshih̍	lán	bî
+磕	4	ńg	khok	soh	kha̍p
+若	1	nā	gîng	tiânn	ku
+糜	2	ân	muê	siū	phuì
+車	1	tshia	thang	ngeh̍	kha
+埔	1	poo	tshū	tōng	kín
+媽	1	má	ô	tsìnn	hioh
+娶	2	pha	tshuā	bú	lâng
+遮	2	oo	tsiah	pù	tshu
+拈	1	ni	tshù	phīnn	kueh̍
+誠	1	tsiânn	liàn	kiann	kho̍k
+熱	3	kenn	ngeh̍	jua̍h	thàng
+散	4	sàu	a	phiann	suànn
+塗	3	thīn	ta	thôo	juê
+改	4	ê	tī	ling	kái
+曲	1	khiau	hun	kuânn	suî
+遮	4	siânn	ni	lāng	jia
+遐	1	hiah	kik	lóng	gia̍h
+燃	2	sa	hiânn	kiânn	kam
+仔	2	pang	á	lim	koh
+舂	1	tsing	kué	bué	bī
+滇	2	suān	tīnn	bái	lap
+啥	3	mài	uat	siánn	phāinn
+拗	3	tshia	kînn	áu	siōng
+趒	3	tshù	tsàm	tiô	khang
+濟	1	tsē	tsah	khó	tshiau
+耍	4	i	tshiau	jio̍k	sńg
+漚	2	lim	àu	tshuann	kenn
+罔	4	hōo	óo	khong	bóng
+䘼	1	ńg	suá	piak	tīn
+愛	4	tsing	siōng	pōng	ài
+苴	4	tsia̍h	a̍h	ioh	tsū
+落	2	tsànn	lo̍h	tàn	thîn
+巧	4	tshiànn	tshit	iau	khiáu
+數	4	phoh	guā	hiânn	siàu
+灶	1	tsàu	tsham	to	tâm
+糾	1	kiù	suān	thí	tuà
+捧	2	siánn	phóng	ui	tshue
+退	2	khuán	thè	ba̍k	kiu
+翁	3	pháinn	bóng	ang	sap
+這	4	ī	tshuah	mài	tse
+貯	1	té	hiânn	khû	tshù
+激	2	bín	kik	ē	lóo
+款	4	tsiah	hian	puânn	khuán
+咧	2	theh̍	leh	gīm	theh̍
+甘	1	kam	to	suí	tsah
+面	3	khiau	tháu	bīn	tsai
+洘	4	jiáu	hiah	phâng	khó
+拭	1	tshit	bú	ioh	pē
+閣	3	tháu	phòng	koh	kā
+轉	2	tsuā	tńg	jı̍t	khòng
+鬥	1	tàu	khioh	he	tshìng
+富	4	kha̍p	tann	khám	pù
+注	1	tù	ē	khǹg	háu
+偝	1	āinn	sô	tiàm	bā
+鈕	4	phòng	ùn	hònn	liú
+枝	4	tshiau	hiān	beh	ki
+著	4	iau	siàu	thóng	to̍h
+敲	1	khà	kàu	uànn	kôo
+拑	3	kiânn	gia̍h	khînn	báng
+拖	2	tsinn	thua	kê	sè
+攑	1	gia̍h	eh̍	khòng	bông
+舐	2	kik	tsīnn	ang	phòo
+抓	4	phiann	siunn	lù	jiàu
+巡	3	tú	sak	sûn	eh̍
+仙	1	sián	bóo	kah	kap
+橐	3	tù	lu	lok	ám
+撆	2	phâng	pih	khioh	kui
+拚	3	kàu	ngeh	piànn	ba̍t
+參	1	tsham	hàm	kā	nuā
+奶	2	khiû	ling	tsīnn	thí
+奕	1	ī	tsām	khiā	kiù
+歹	4	tuè	jı̍t	khòng	pháinn
+雺	1	bông	tiô	pē	tau
+頂	3	gāng	gia̍p	tíng	jú
+薰	1	hun	sîn	hàm	siáu
+走	2	tâm	tsáu	lok	tīnn
+戇	1	gōng	jiáu	ang	pih
+內	4	tshue	tse	tsūn	lāi
+糊	4	hiânn	leh	lo̍h	kôo
+綴	2	kho̍k	tuè	tiâu	tu̍h
+箠	3	siàu	tńg	tshuê	lí
+嘛	2	ka̍k	mā	tshue	hia
+歕	1	pûn	gīm	tshuê	ka̍k
+茈	2	tàn	tsínn	so	khó
+鑢	4	tsham	kuà	jîm	lù
+外	1	guē	lí	lu	tǹg
+捅	2	tsiânn	thóng	tsîng	bē
+挵	1	lòng	siū	ài	kiu
+夾	1	ngeh	sì	pih	he
+這	3	lián	puânn	tsit	khiā
+漩	1	suān	khînn	liōng	hàm
+愈	2	tsheh	jú	tsat	tsit
+徛	2	to̍h	khiā	i	juā
+霎	1	sap	tsîng	nǹg	kuà
+乾	4	sîn	thóng	thîn	kuann
+搵	4	tsuann	ngiau	siânn	ùn
+吼	2	khám	háu	tà	tshiám
+懸	2	bat	kuân	nā	phāinn
+剁	3	thuh	huah	tok	siàu
+無	3	kiáu	kôo	bô	kang
+趨	3	tshiâu	tsat	tshu	tsiah
+掔	1	khian	tsinn	kînn	su
+挼	4	tà	kuann	tsiânn	juê
+拍	2	thâi	phah	nǹg	tshun
+唌	1	siânn	tshìng	kuann	lín
+就	2	gīm	tō	bín	tâm
+捋	3	kuân	ta̍k	lua̍h	sio̍h
+衫	4	hē	hú	hūn	sann
+痟	4	juê	tshīng	tū	siáu
+脯	3	ka	hē	póo	hun
+斡	1	uat	thǹg	nuā	līng
+冗	4	khi	tiâu	suá	līng
+爿	4	tshu	tù	tshun	pîng
+掰	4	khiú	liū	gîng	pué
+伨	4	lù	lua̍h	thīn	thīn
+沬	4	bih	kha̍h	phú	bī
+佮	1	kah	tsió	kiù	oo
+倒	3	khah	láu	tò	ta
+揻	1	ui	tsínn	ui	tân
+捔	1	ka̍k	tsheh	guā	pân
+搙	2	tsáu	jio̍k	té	thóo
+跍	4	tshih̍	tiânn	bīn	khû
+欲	4	hioh	iau	tsa̍t	beh
+密	4	khè	thīn	tshenn	ba̍t
+呆	1	tai	giap	khı̍t	tsiánn
+茫	1	bâng	kiann	kueh̍	uá
+忍	1	lún	tshenn	tai	uànn
+隨	1	suî	tsuann	phāinn	siánn
+踅	2	nuá	seh̍	khó	bán
+閘	4	póo	nuā	bué	tsa̍h
+鈷	2	phànn	kóo	tshuì	guá
+磅	1	pōng	bín	jip̍	tiàm
+褪	2	ô	thǹg	tiânn	liú
+橛	2	tsió	kueh̍	leh	ka
+翕	2	jua̍h	hip	mā	nuá
+頭	3	khoo	khiā	thâu	thūn
+悾	3	phoo	soh	khong	to̍h
+土	2	tshenn	thóo	khàm	suah
+覕	1	bih	pha	bî	tshuân
+卡	1	kha̍h	lián	phuì	ńg
+絚	2	pi	ân	tī	at
+筊	1	kiáu	tsuā	neh	guán
+刺	3	thàn	sián	tshiah	ê
+得	1	tit	tshiah	íng	tsheh
+落	4	bô	khè	au	lak
+逐	2	tìm	ta̍k	kuann	hit
+越	4	siunn	kap	lak	ua̍t
+世	3	thâu	phun	sì	kenn
+瘦	4	tshinn	kín	bô	sán
+捒	4	eh̍	pân	neh	sak
+冗	2	āinn	liōng	koh	iā
+工	3	oh	līng	kang	sàu
+行	1	kiânn	îng	tn̄g	kóng
+冇	4	senn	pang	tsia̍h	phànn
+潘	2	tân	phun	tshòng	phóng
+硩	3	beh	uànn	teh	tshia
+扦	2	tsiū	tshuann	phun	tōng
+食	4	óo	tshuê	tsáu	tsia̍h
+液	2	khùn	sio̍h	tsa̍h	luí
+創	3	sap	pûn	tshòng	ùn
+羹	1	kenn	siánn	hiān	jiû
+糍	2	leh	tsî	liú	phiann
+舖	4	hia	khàm	lóo	phòo
+緊	1	kín	ka̍k	thôo	suà
+上	2	hú	siōng	piak	khoo
+遏	3	siōng	bat	at	ua̍t
+規	4	hònn	kha	tsî	kui
+軀	4	má	jiàu	sô	su
+掠	1	lia̍h	suh	kha̍h	kik
+擘	2	suî	peh	khah	bīn
+也	2	bī	iā	ke	tò
+母	4	pù	hiam	phànn	bú
+撋	4	tsah	lòng	lua̍h	nuá
+膎	4	tiánn	íng	lu	kê
+虯	3	ta	piak	khiû	āinn
+屜	2	tse	thuah	tsim	beh
+知	2	tshit	tsai	ngeh	té
+揬	4	tok	lóng	bâng	tu̍h
+搝	4	thè	i	sian	khiú
+沃	4	jú	bô	áu	ak
+蚵	1	ô	lán	lok	hē
+攢	4	iáu	ku	sè	tshuân
+撞	1	tōng	kueh̍	kiu	ha̍h
+抾	4	kuà	tshuân	thí	khioh
+煠	1	sa̍h	tū	tàu	láu
+鼻	3	jîm	kha̍p	phīnn	tsū
+迵	1	thàng	kóo	tshuā	kha̍h
+講	4	lán	thuah	khian	kóng
+著	4	lí	ha̍h	thóo	tio̍h
+搪	1	tn̄g	bī	bóng	tsing
+鉎	1	sian	jio̍k	tū	suh
+徙	2	tshiah	suá	ngiau	kā
+敢	2	tsām	kám	thôo	tit
+撨	3	tsit	lún	tshiâu	tíng
+倚	3	kám	thâu	uá	tńg
+敆	3	tsiú	tsīnn	kap	thua
+紲	1	suà	ioh	láu	iā
+爸	3	m̄	bā	pa	tsiū
+揀	2	bái	kíng	kuân	khám
+挾	3	tsē	jiû	ngeh̍	pháinn
+煏	4	at	kāng	lâng	piak
+乍	1	tsànn	tshuann	suànn	pha
+泔	1	ám	so	bông	liàn
+敧	1	khi	kíng	hian	guē
+合	1	ha̍h	hu	tshńg	sa
+跔	2	kôo	ku	sán	tsiânn
+下	2	tsâng	ē	kám	tuà
+彼	2	ling	he	giap	bái
+枵	1	iau	thūn	phun	bih
+硞	1	kho̍k	ki	khong	thàn
+阿	1	a	tìm	ba̍t	peh
+甌	1	au	khùn	thiám	khiàng
+輪	1	lián	m̄	sè	tok
+日	1	jı̍t	sio̍h	pîng	phòng
+勼	3	kóo	tshuā	kiu	sńg
+扲	4	tsîng	oo	piànn	gīm
+較	3	àu	muê	khah	hâ
+揹	3	sông	thàng	phāinn	hit
+暝	1	mê	tau	kui	a
+袂	3	tshòng	hònn	bē	pang
+少	2	sì	tsió	phang	tn̄g
+站	4	kam	kia̍h	phah	tsām
+扶	1	phôo	siânn	khian	liū
+落	4	piànn	khong	kàu	làu
+往	1	íng	teh	lóo	lāi
+汫	1	tsiánn	píng	sann	bóng
+炸	2	guē	tsuànn	tú	ê
+疼	4	tsim	phue	tsuànn	thiànn
+承	1	sîn	lāi	lia̍h	píng
+塌	4	tshun	gōng	kái	lap
+紮	2	suh	tsah	sông	tok
+弄	2	tsīnn	lāng	tsian	thiànn
+虼	3	so	hip	ka	suah
+空	4	poo	sûn	tshuā	khang
+蕊	1	luí	thôo	lua̍h	tsē
+芳	1	phang	thiám	au	tù
+傷	1	siunn	ba̍k	nn̄g	hiat
+凝	3	thūn	phang	gîng	óo
+掀	3	suá	tsâng	hian	juā
+觱	1	pi	làu	khang	tōng
+莫	2	a̍h	mài	á	mài
+捎	1	sa	phīnn	guán	gōng
+目	4	uá	sann	kíng	ba̍k
+你	3	thang	bî	lí	guā
+共	4	khàm	póo	kué	kā
+穿	2	bóo	tshīng	teh	tsūn
+節	2	tshik	tsat	kînn	àu
+鋏	2	jia	giap	tsiú	tǹg
+爪	4	îng	tsiánn	pa	jiáu
+遐	4	háu	to̍h	tiô	hia
+蹛	4	gia̍p	pháinn	khau	tuà
+卵	4	khioh	pih	tshu	nn̄g
+罩	3	phang	tau̍h	tà	tuè
+剾	4	á	bih	tann	khau
+喙	3	sńg	lia̍h	tshuì	khùn
+擲	2	jio̍k	tàn	hōo	jip̍
+揉	1	jiû	ke	tu̍h	tsham
+殕	2	peh	phú	to	siáu
+入	1	jip̍	tsa̍t	bīn	phóng
+抿	4	tau̍h	that	jiàu	bín
+个	2	ba̍k	ê	phoh	hioh
+守	1	tsiú	ang	lāng	sak
+敨	2	tsàu	tháu	tshiànn	tiánn
+趁	1	thàn	guán	siū	pi
+偌	2	bā	juā	tháu	khian
+惱	2	lak	lóo	tìm	juê
+岫	2	khînn	siū	tshinn	hōo
+啉	3	sián	pù	lim	tsàm
+夯	2	tò	giâ	khiáu	bông
+倯	2	pōng	sông	tshiah	tsáu
+窒	1	that	tsî	hiah	tau̍h
+阮	1	guán	tsuànn	thóo	lia̍h
+鮮	1	tshinn	khiú	báng	suān
+爸	2	mê	pē	phīnn	tshiâu
+呸	1	phuì	tsū	ku	khip̍
+唚	3	khok	su	tsim	íng
+軁	2	kín	nǹg	thâu	kê
+攄	4	tau	tsim	tiánn	lu
+微	2	tíng	bî	ak	phâng
+挲	2	luí	so	thiànn	lo̍h
+坎	3	pa	thàn	khám	tsâng
+從	2	bē	tsîng	lap	jia
+加	2	phú	ke	tsió	pōng
+霆	4	áu	tsē	hú	tân
+驚	3	pân	kuânn	kiann	sîn
+瓶	1	pân	pē	liàn	oh
+抨	2	juā	phiann	tsínn	pi
+遮	2	kāng	tsia	hiān	ī
+餾	2	thiànn	liū	bán	hâ
+外	1	guā	tsiū	tshīng	thuh
+瀾	2	huah	nuā	khi	khau
+陣	1	tsūn	má	ni	suí
+歇	1	hioh	pîng	sa̍h	tio̍h
+實	1	tsa̍t	á	phóng	kha̍p
+冬	2	ke	tang	tsinn	pa
+蓋	2	kha	kuà	tshīng	uá
+撫	4	koh	tshuì	tshuah	hu
+好	3	uat	tsia̍h	hònn	tshuē
+頓	2	ki	tǹg	khà	piànn
+恁	3	sak	khi	lín	ki
+伊	4	phòo	sa	ô	i
+就	3	khà	sian	tsiū	tsit
+糋	4	teh	kiù	thǹg	tsìnn
+捀	4	thua	sán	tò	phâng
+曷	3	kué	tō	a̍h	thuah
+賰	4	sio̍h	tsia	tse	tshun
+捌	2	kap	bat	bóo	khà
+粟	4	tsiánn	báng	tshiám	tshik
+青	3	tsínn	lak	tshenn	jia
+趖	3	thuah	tsa̍h	sô	iáu
+跙	4	tǹg	tang	thè	tshū
+猶	3	guá	ám	iáu	hu
+炊	1	tshue	lok	tsūn	sián
+擽	2	tang	ngiau	gia̍p	phànn
+厝	3	hâ	nn̄g	tshù	liōng
+陣	3	that	tsàu	tīn	phòo
+挖	1	óo	tshńg	tiâu	tit
+踮	3	tshiám	tsànn	tiàm	hiah
+逝	2	su	tsuā	hip	nǹg
+齧	1	khè	senn	gîng	khiû
+抌	3	ngiau	thuh	tìm	bat
+躡	2	tshuì	neh	khû	tshia
+粕	2	thǹg	phoh	kui	ui
+挽	2	suah	bán	tsia	tsìnn
+批	2	tann	phue	ka	tshinn
+盤	4	jiû	phoo	thiám	puânn
+擤	4	hiat	au	m̄	tshìng
+揤	1	tshih̍	tshuē	tsat	kah
+狹	1	eh̍	sàu	pué	tshit
+囥	4	tit	kuân	khiau	khǹg
+黜	4	tsa̍t	tiàm	ài	thuh
+枋	2	tī	pang	kuânn	tsiú
+褫	1	thí	jîm	ha̍h	ī
+煞	2	hun	suah	ta̍k	hūn
+蹔	2	tsia	tsàm	ni	lín
+縖	2	tio̍h	hâ	tshńg	ak</textarea><br>
+        <button id="generator-submit">送出</button>
+        <button id="start-game" style="display: inline-block;">開始遊玩</button>
+        <button id="download-game">下載完整遊戲</button>
+        <table id="output-table">
+            <thead>
+                <tr>
+                    <th>題目</th>
+                    <th>答案</th>
+                    <th>選項1</th>
+                    <th>選項2</th>
+                    <th>選項3</th>
+                    <th>選項4</th>
+                </tr>
+            </thead>
+            <tbody><tr><td>倩</td><td>3</td><td>tsian</td><td>tshik</td><td>tshiànn</td><td>hia</td></tr><tr><td>䆀</td><td>4</td><td>lín</td><td>tsian</td><td>ân</td><td>bái</td></tr><tr><td>都</td><td>4</td><td>tshìng</td><td>seh̍</td><td>that</td><td>to</td></tr><tr><td>兜</td><td>1</td><td>tau</td><td>phú</td><td>kia̍h</td><td>guá</td></tr><tr><td>冊</td><td>3</td><td>tsàm</td><td>hiat</td><td>tsheh</td><td>khiú</td></tr><tr><td>通</td><td>1</td><td>thang</td><td>suànn</td><td>tsuànn</td><td>îng</td></tr><tr><td>我</td><td>2</td><td>tō</td><td>guá</td><td>khok</td><td>tshòng</td></tr><tr><td>仝</td><td>4</td><td>suà</td><td>khang</td><td>phoo</td><td>kāng</td></tr><tr><td>膨</td><td>1</td><td>phòng</td><td>mê</td><td>khau</td><td>tang</td></tr><tr><td>細</td><td>4</td><td>tiô</td><td>nā</td><td>tīnn</td><td>sè</td></tr><tr><td>尾</td><td>2</td><td>ua̍t</td><td>bué</td><td>hiam</td><td>tsiah</td></tr><tr><td>索</td><td>2</td><td>sian</td><td>soh</td><td>kiann</td><td>guē</td></tr><tr><td>墘</td><td>1</td><td>kînn</td><td>tíng</td><td>giap</td><td>phôo</td></tr><tr><td>刣</td><td>3</td><td>tńg</td><td>jú</td><td>thâi</td><td>seh̍</td></tr><tr><td>現</td><td>2</td><td>liū</td><td>hiān</td><td>hian</td><td>khiau</td></tr><tr><td>拄</td><td>3</td><td>mā</td><td>tio̍h</td><td>tú</td><td>kam</td></tr><tr><td>粿</td><td>3</td><td>puânn</td><td>khû</td><td>kué</td><td>àu</td></tr><tr><td>反</td><td>1</td><td>píng</td><td>ling</td><td>sûn</td><td>kia̍h</td></tr><tr><td>愣</td><td>2</td><td>lap</td><td>gāng</td><td>lòng</td><td>khiû</td></tr><tr><td>崁</td><td>1</td><td>khàm</td><td>peh</td><td>hit</td><td>lóng</td></tr><tr><td>佇</td><td>1</td><td>tī</td><td>phoh</td><td>bâng</td><td>luí</td></tr><tr><td>毋</td><td>1</td><td>m̄</td><td>bué</td><td>hu</td><td>pîng</td></tr><tr><td>峇</td><td>3</td><td>tsū</td><td>tân</td><td>bā</td><td>tsām</td></tr><tr><td>僫</td><td>4</td><td>ùn</td><td>phah</td><td>tsànn</td><td>oh</td></tr><tr><td>屐</td><td>2</td><td>kê</td><td>kia̍h</td><td>pué</td><td>phôo</td></tr><tr><td>斟</td><td>2</td><td>bú</td><td>thîn</td><td>lián</td><td>kóng</td></tr><tr><td>櫼</td><td>4</td><td>tshū</td><td>khǹg</td><td>sûn</td><td>tsinn</td></tr><tr><td>箍</td><td>2</td><td>kái</td><td>khoo</td><td>tshiâu</td><td>poo</td></tr><tr><td>下</td><td>1</td><td>hē</td><td>pué</td><td>tuà</td><td>at</td></tr><tr><td>人</td><td>2</td><td>khip̍</td><td>lâng</td><td>bē</td><td>kám</td></tr><tr><td>跤</td><td>4</td><td>ta̍k</td><td>thua</td><td>lán</td><td>kha</td></tr><tr><td>份</td><td>4</td><td>phah</td><td>ân</td><td>siunn</td><td>hūn</td></tr><tr><td>吮</td><td>4</td><td>tshuân</td><td>sńg</td><td>pûn</td><td>tshńg</td></tr><tr><td>澹</td><td>3</td><td>ē</td><td>khuán</td><td>tâm</td><td>tō</td></tr><tr><td>挾</td><td>4</td><td>soh</td><td>tàn</td><td>jip̍</td><td>gia̍p</td></tr><tr><td>睏</td><td>2</td><td>khiáu</td><td>khùn</td><td>muê</td><td>lim</td></tr><tr><td>觳</td><td>3</td><td>tshuah</td><td>tuè</td><td>khok</td><td>kāng</td></tr><tr><td>輾</td><td>2</td><td>sán</td><td>liàn</td><td>tsuā</td><td>tsing</td></tr><tr><td>媠</td><td>3</td><td>hip</td><td>kho̍k</td><td>suí</td><td>tn̄g</td></tr><tr><td>蠓</td><td>1</td><td>báng</td><td>kái</td><td>lâng</td><td>tshū</td></tr><tr><td>到</td><td>3</td><td>lún</td><td>he</td><td>kàu</td><td>tshik</td></tr><tr><td>某</td><td>4</td><td>thîn</td><td>tsai</td><td>nn̄g</td><td>bóo</td></tr><tr><td>煎</td><td>3</td><td>kóng</td><td>tàu</td><td>tsuann</td><td>lún</td></tr><tr><td>揣</td><td>1</td><td>tshuē</td><td>khah</td><td>thóng</td><td>khoo</td></tr><tr><td>拊</td><td>4</td><td>jı̍t</td><td>tshiànn</td><td>tsìnn</td><td>hú</td></tr><tr><td>沓</td><td>2</td><td>kang</td><td>tau̍h</td><td>tsàu</td><td>ńg</td></tr><tr><td>鋪</td><td>4</td><td>hiam</td><td>áu</td><td>poo</td><td>phoo</td></tr><tr><td>坉</td><td>2</td><td>muê</td><td>thūn</td><td>theh̍</td><td>mā</td></tr><tr><td>閒</td><td>3</td><td>lāi</td><td>khı̍t</td><td>îng</td><td>jua̍h</td></tr><tr><td>搜</td><td>1</td><td>tshiau</td><td>giâ</td><td>siáu</td><td>phue</td></tr><tr><td>嗽</td><td>1</td><td>sàu</td><td>suà</td><td>jiàu</td><td>sann</td></tr><tr><td>今</td><td>4</td><td>gōng</td><td>āinn</td><td>tshih̍</td><td>tann</td></tr><tr><td>予</td><td>4</td><td>píng</td><td>lù</td><td>khı̍t</td><td>hōo</td></tr><tr><td>埕</td><td>3</td><td>tshuann</td><td>tīn</td><td>tiânn</td><td>làu</td></tr><tr><td>攕</td><td>3</td><td>phôo</td><td>suí</td><td>tshiám</td><td>uat</td></tr><tr><td>掣</td><td>3</td><td>khiàng</td><td>sap</td><td>tshuah</td><td>senn</td></tr><tr><td>鼎</td><td>4</td><td>tsai</td><td>gāng</td><td>giâ</td><td>tiánn</td></tr><tr><td>扱</td><td>4</td><td>ak</td><td>liōng</td><td>tu̍h</td><td>khip̍</td></tr><tr><td>㧒</td><td>2</td><td>ám</td><td>hiat</td><td>khuán</td><td>ài</td></tr><tr><td>撏</td><td>4</td><td>lòng</td><td>khiàng</td><td>tshuê</td><td>jîm</td></tr><tr><td>欶</td><td>4</td><td>giâ</td><td>sông</td><td>póo</td><td>suh</td></tr><tr><td>忝</td><td>4</td><td>iā</td><td>suî</td><td>ngeh̍</td><td>thiám</td></tr><tr><td>喝</td><td>2</td><td>gia̍h</td><td>huah</td><td>a̍h</td><td>tú</td></tr><tr><td>炕</td><td>1</td><td>khòng</td><td>thè</td><td>liú</td><td>sa̍h</td></tr><tr><td>晏</td><td>2</td><td>a</td><td>uànn</td><td>nuá</td><td>oh</td></tr><tr><td>臆</td><td>4</td><td>tsa̍h</td><td>kang</td><td>thang</td><td>ioh</td></tr><tr><td>薟</td><td>3</td><td>hūn</td><td>khiáu</td><td>hiam</td><td>gāng</td></tr><tr><td>提</td><td>2</td><td>ngeh</td><td>theh̍</td><td>tai</td><td>jua̍h</td></tr><tr><td>勥</td><td>1</td><td>khiàng</td><td>ua̍t</td><td>thàng</td><td>suànn</td></tr><tr><td>譀</td><td>4</td><td>seh̍</td><td>kiáu</td><td>huah</td><td>hàm</td></tr><tr><td>扭</td><td>4</td><td>bán</td><td>neh</td><td>jiáu</td><td>láu</td></tr><tr><td>焦</td><td>2</td><td>phue</td><td>ta</td><td>khè</td><td>lāng</td></tr><tr><td>寒</td><td>3</td><td>līng</td><td>tà</td><td>kuânn</td><td>sì</td></tr><tr><td>彼</td><td>4</td><td>tīnn</td><td>sa̍h</td><td>má</td><td>hit</td></tr><tr><td>杙</td><td>4</td><td>tshuē</td><td>khip̍</td><td>tàu</td><td>khı̍t</td></tr><tr><td>煎</td><td>2</td><td>pûn</td><td>tsian</td><td>khînn</td><td>bâng</td></tr><tr><td>欉</td><td>2</td><td>té</td><td>tsâng</td><td>phuì</td><td>kiânn</td></tr><tr><td>葩</td><td>2</td><td>kíng</td><td>pha</td><td>kóo</td><td>kah</td></tr><tr><td>烏</td><td>2</td><td>nā</td><td>oo</td><td>kiáu</td><td>tai</td></tr><tr><td>攏</td><td>3</td><td>làu</td><td>háu</td><td>lóng</td><td>khǹg</td></tr><tr><td>駐</td><td>1</td><td>tū</td><td>thâi</td><td>sô</td><td>mê</td></tr><tr><td>生</td><td>3</td><td>tīn</td><td>ba̍t</td><td>senn</td><td>thâi</td></tr><tr><td>牢</td><td>3</td><td>lo̍h</td><td>iáu</td><td>tiâu</td><td>tsuann</td></tr><tr><td>咱</td><td>3</td><td>tsî</td><td>tshih̍</td><td>lán</td><td>bî</td></tr><tr><td>磕</td><td>4</td><td>ńg</td><td>khok</td><td>soh</td><td>kha̍p</td></tr><tr><td>若</td><td>1</td><td>nā</td><td>gîng</td><td>tiânn</td><td>ku</td></tr><tr><td>糜</td><td>2</td><td>ân</td><td>muê</td><td>siū</td><td>phuì</td></tr><tr><td>車</td><td>1</td><td>tshia</td><td>thang</td><td>ngeh̍</td><td>kha</td></tr><tr><td>埔</td><td>1</td><td>poo</td><td>tshū</td><td>tōng</td><td>kín</td></tr><tr><td>媽</td><td>1</td><td>má</td><td>ô</td><td>tsìnn</td><td>hioh</td></tr><tr><td>娶</td><td>2</td><td>pha</td><td>tshuā</td><td>bú</td><td>lâng</td></tr><tr><td>遮</td><td>2</td><td>oo</td><td>tsiah</td><td>pù</td><td>tshu</td></tr><tr><td>拈</td><td>1</td><td>ni</td><td>tshù</td><td>phīnn</td><td>kueh̍</td></tr><tr><td>誠</td><td>1</td><td>tsiânn</td><td>liàn</td><td>kiann</td><td>kho̍k</td></tr><tr><td>熱</td><td>3</td><td>kenn</td><td>ngeh̍</td><td>jua̍h</td><td>thàng</td></tr><tr><td>散</td><td>4</td><td>sàu</td><td>a</td><td>phiann</td><td>suànn</td></tr><tr><td>塗</td><td>3</td><td>thīn</td><td>ta</td><td>thôo</td><td>juê</td></tr><tr><td>改</td><td>4</td><td>ê</td><td>tī</td><td>ling</td><td>kái</td></tr><tr><td>曲</td><td>1</td><td>khiau</td><td>hun</td><td>kuânn</td><td>suî</td></tr><tr><td>遮</td><td>4</td><td>siânn</td><td>ni</td><td>lāng</td><td>jia</td></tr><tr><td>遐</td><td>1</td><td>hiah</td><td>kik</td><td>lóng</td><td>gia̍h</td></tr><tr><td>燃</td><td>2</td><td>sa</td><td>hiânn</td><td>kiânn</td><td>kam</td></tr><tr><td>仔</td><td>2</td><td>pang</td><td>á</td><td>lim</td><td>koh</td></tr><tr><td>舂</td><td>1</td><td>tsing</td><td>kué</td><td>bué</td><td>bī</td></tr><tr><td>滇</td><td>2</td><td>suān</td><td>tīnn</td><td>bái</td><td>lap</td></tr><tr><td>啥</td><td>3</td><td>mài</td><td>uat</td><td>siánn</td><td>phāinn</td></tr><tr><td>拗</td><td>3</td><td>tshia</td><td>kînn</td><td>áu</td><td>siōng</td></tr><tr><td>趒</td><td>3</td><td>tshù</td><td>tsàm</td><td>tiô</td><td>khang</td></tr><tr><td>濟</td><td>1</td><td>tsē</td><td>tsah</td><td>khó</td><td>tshiau</td></tr><tr><td>耍</td><td>4</td><td>i</td><td>tshiau</td><td>jio̍k</td><td>sńg</td></tr><tr><td>漚</td><td>2</td><td>lim</td><td>àu</td><td>tshuann</td><td>kenn</td></tr><tr><td>罔</td><td>4</td><td>hōo</td><td>óo</td><td>khong</td><td>bóng</td></tr><tr><td>䘼</td><td>1</td><td>ńg</td><td>suá</td><td>piak</td><td>tīn</td></tr><tr><td>愛</td><td>4</td><td>tsing</td><td>siōng</td><td>pōng</td><td>ài</td></tr><tr><td>苴</td><td>4</td><td>tsia̍h</td><td>a̍h</td><td>ioh</td><td>tsū</td></tr><tr><td>落</td><td>2</td><td>tsànn</td><td>lo̍h</td><td>tàn</td><td>thîn</td></tr><tr><td>巧</td><td>4</td><td>tshiànn</td><td>tshit</td><td>iau</td><td>khiáu</td></tr><tr><td>數</td><td>4</td><td>phoh</td><td>guā</td><td>hiânn</td><td>siàu</td></tr><tr><td>灶</td><td>1</td><td>tsàu</td><td>tsham</td><td>to</td><td>tâm</td></tr><tr><td>糾</td><td>1</td><td>kiù</td><td>suān</td><td>thí</td><td>tuà</td></tr><tr><td>捧</td><td>2</td><td>siánn</td><td>phóng</td><td>ui</td><td>tshue</td></tr><tr><td>退</td><td>2</td><td>khuán</td><td>thè</td><td>ba̍k</td><td>kiu</td></tr><tr><td>翁</td><td>3</td><td>pháinn</td><td>bóng</td><td>ang</td><td>sap</td></tr><tr><td>這</td><td>4</td><td>ī</td><td>tshuah</td><td>mài</td><td>tse</td></tr><tr><td>貯</td><td>1</td><td>té</td><td>hiânn</td><td>khû</td><td>tshù</td></tr><tr><td>激</td><td>2</td><td>bín</td><td>kik</td><td>ē</td><td>lóo</td></tr><tr><td>款</td><td>4</td><td>tsiah</td><td>hian</td><td>puânn</td><td>khuán</td></tr><tr><td>咧</td><td>2</td><td>theh̍</td><td>leh</td><td>gīm</td><td>theh̍</td></tr><tr><td>甘</td><td>1</td><td>kam</td><td>to</td><td>suí</td><td>tsah</td></tr><tr><td>面</td><td>3</td><td>khiau</td><td>tháu</td><td>bīn</td><td>tsai</td></tr><tr><td>洘</td><td>4</td><td>jiáu</td><td>hiah</td><td>phâng</td><td>khó</td></tr><tr><td>拭</td><td>1</td><td>tshit</td><td>bú</td><td>ioh</td><td>pē</td></tr><tr><td>閣</td><td>3</td><td>tháu</td><td>phòng</td><td>koh</td><td>kā</td></tr><tr><td>轉</td><td>2</td><td>tsuā</td><td>tńg</td><td>jı̍t</td><td>khòng</td></tr><tr><td>鬥</td><td>1</td><td>tàu</td><td>khioh</td><td>he</td><td>tshìng</td></tr><tr><td>富</td><td>4</td><td>kha̍p</td><td>tann</td><td>khám</td><td>pù</td></tr><tr><td>注</td><td>1</td><td>tù</td><td>ē</td><td>khǹg</td><td>háu</td></tr><tr><td>偝</td><td>1</td><td>āinn</td><td>sô</td><td>tiàm</td><td>bā</td></tr><tr><td>鈕</td><td>4</td><td>phòng</td><td>ùn</td><td>hònn</td><td>liú</td></tr><tr><td>枝</td><td>4</td><td>tshiau</td><td>hiān</td><td>beh</td><td>ki</td></tr><tr><td>著</td><td>4</td><td>iau</td><td>siàu</td><td>thóng</td><td>to̍h</td></tr><tr><td>敲</td><td>1</td><td>khà</td><td>kàu</td><td>uànn</td><td>kôo</td></tr><tr><td>拑</td><td>3</td><td>kiânn</td><td>gia̍h</td><td>khînn</td><td>báng</td></tr><tr><td>拖</td><td>2</td><td>tsinn</td><td>thua</td><td>kê</td><td>sè</td></tr><tr><td>攑</td><td>1</td><td>gia̍h</td><td>eh̍</td><td>khòng</td><td>bông</td></tr><tr><td>舐</td><td>2</td><td>kik</td><td>tsīnn</td><td>ang</td><td>phòo</td></tr><tr><td>抓</td><td>4</td><td>phiann</td><td>siunn</td><td>lù</td><td>jiàu</td></tr><tr><td>巡</td><td>3</td><td>tú</td><td>sak</td><td>sûn</td><td>eh̍</td></tr><tr><td>仙</td><td>1</td><td>sián</td><td>bóo</td><td>kah</td><td>kap</td></tr><tr><td>橐</td><td>3</td><td>tù</td><td>lu</td><td>lok</td><td>ám</td></tr><tr><td>撆</td><td>2</td><td>phâng</td><td>pih</td><td>khioh</td><td>kui</td></tr><tr><td>拚</td><td>3</td><td>kàu</td><td>ngeh</td><td>piànn</td><td>ba̍t</td></tr><tr><td>參</td><td>1</td><td>tsham</td><td>hàm</td><td>kā</td><td>nuā</td></tr><tr><td>奶</td><td>2</td><td>khiû</td><td>ling</td><td>tsīnn</td><td>thí</td></tr><tr><td>奕</td><td>1</td><td>ī</td><td>tsām</td><td>khiā</td><td>kiù</td></tr><tr><td>歹</td><td>4</td><td>tuè</td><td>jı̍t</td><td>khòng</td><td>pháinn</td></tr><tr><td>雺</td><td>1</td><td>bông</td><td>tiô</td><td>pē</td><td>tau</td></tr><tr><td>頂</td><td>3</td><td>gāng</td><td>gia̍p</td><td>tíng</td><td>jú</td></tr><tr><td>薰</td><td>1</td><td>hun</td><td>sîn</td><td>hàm</td><td>siáu</td></tr><tr><td>走</td><td>2</td><td>tâm</td><td>tsáu</td><td>lok</td><td>tīnn</td></tr><tr><td>戇</td><td>1</td><td>gōng</td><td>jiáu</td><td>ang</td><td>pih</td></tr><tr><td>內</td><td>4</td><td>tshue</td><td>tse</td><td>tsūn</td><td>lāi</td></tr><tr><td>糊</td><td>4</td><td>hiânn</td><td>leh</td><td>lo̍h</td><td>kôo</td></tr><tr><td>綴</td><td>2</td><td>kho̍k</td><td>tuè</td><td>tiâu</td><td>tu̍h</td></tr><tr><td>箠</td><td>3</td><td>siàu</td><td>tńg</td><td>tshuê</td><td>lí</td></tr><tr><td>嘛</td><td>2</td><td>ka̍k</td><td>mā</td><td>tshue</td><td>hia</td></tr><tr><td>歕</td><td>1</td><td>pûn</td><td>gīm</td><td>tshuê</td><td>ka̍k</td></tr><tr><td>茈</td><td>2</td><td>tàn</td><td>tsínn</td><td>so</td><td>khó</td></tr><tr><td>鑢</td><td>4</td><td>tsham</td><td>kuà</td><td>jîm</td><td>lù</td></tr><tr><td>外</td><td>1</td><td>guē</td><td>lí</td><td>lu</td><td>tǹg</td></tr><tr><td>捅</td><td>2</td><td>tsiânn</td><td>thóng</td><td>tsîng</td><td>bē</td></tr><tr><td>挵</td><td>1</td><td>lòng</td><td>siū</td><td>ài</td><td>kiu</td></tr><tr><td>夾</td><td>1</td><td>ngeh</td><td>sì</td><td>pih</td><td>he</td></tr><tr><td>這</td><td>3</td><td>lián</td><td>puânn</td><td>tsit</td><td>khiā</td></tr><tr><td>漩</td><td>1</td><td>suān</td><td>khînn</td><td>liōng</td><td>hàm</td></tr><tr><td>愈</td><td>2</td><td>tsheh</td><td>jú</td><td>tsat</td><td>tsit</td></tr><tr><td>徛</td><td>2</td><td>to̍h</td><td>khiā</td><td>i</td><td>juā</td></tr><tr><td>霎</td><td>1</td><td>sap</td><td>tsîng</td><td>nǹg</td><td>kuà</td></tr><tr><td>乾</td><td>4</td><td>sîn</td><td>thóng</td><td>thîn</td><td>kuann</td></tr><tr><td>搵</td><td>4</td><td>tsuann</td><td>ngiau</td><td>siânn</td><td>ùn</td></tr><tr><td>吼</td><td>2</td><td>khám</td><td>háu</td><td>tà</td><td>tshiám</td></tr><tr><td>懸</td><td>2</td><td>bat</td><td>kuân</td><td>nā</td><td>phāinn</td></tr><tr><td>剁</td><td>3</td><td>thuh</td><td>huah</td><td>tok</td><td>siàu</td></tr><tr><td>無</td><td>3</td><td>kiáu</td><td>kôo</td><td>bô</td><td>kang</td></tr><tr><td>趨</td><td>3</td><td>tshiâu</td><td>tsat</td><td>tshu</td><td>tsiah</td></tr><tr><td>掔</td><td>1</td><td>khian</td><td>tsinn</td><td>kînn</td><td>su</td></tr><tr><td>挼</td><td>4</td><td>tà</td><td>kuann</td><td>tsiânn</td><td>juê</td></tr><tr><td>拍</td><td>2</td><td>thâi</td><td>phah</td><td>nǹg</td><td>tshun</td></tr><tr><td>唌</td><td>1</td><td>siânn</td><td>tshìng</td><td>kuann</td><td>lín</td></tr><tr><td>就</td><td>2</td><td>gīm</td><td>tō</td><td>bín</td><td>tâm</td></tr><tr><td>捋</td><td>3</td><td>kuân</td><td>ta̍k</td><td>lua̍h</td><td>sio̍h</td></tr><tr><td>衫</td><td>4</td><td>hē</td><td>hú</td><td>hūn</td><td>sann</td></tr><tr><td>痟</td><td>4</td><td>juê</td><td>tshīng</td><td>tū</td><td>siáu</td></tr><tr><td>脯</td><td>3</td><td>ka</td><td>hē</td><td>póo</td><td>hun</td></tr><tr><td>斡</td><td>1</td><td>uat</td><td>thǹg</td><td>nuā</td><td>līng</td></tr><tr><td>冗</td><td>4</td><td>khi</td><td>tiâu</td><td>suá</td><td>līng</td></tr><tr><td>爿</td><td>4</td><td>tshu</td><td>tù</td><td>tshun</td><td>pîng</td></tr><tr><td>掰</td><td>4</td><td>khiú</td><td>liū</td><td>gîng</td><td>pué</td></tr><tr><td>伨</td><td>4</td><td>lù</td><td>lua̍h</td><td>thīn</td><td>thīn</td></tr><tr><td>沬</td><td>4</td><td>bih</td><td>kha̍h</td><td>phú</td><td>bī</td></tr><tr><td>佮</td><td>1</td><td>kah</td><td>tsió</td><td>kiù</td><td>oo</td></tr><tr><td>倒</td><td>3</td><td>khah</td><td>láu</td><td>tò</td><td>ta</td></tr><tr><td>揻</td><td>1</td><td>ui</td><td>tsínn</td><td>ui</td><td>tân</td></tr><tr><td>捔</td><td>1</td><td>ka̍k</td><td>tsheh</td><td>guā</td><td>pân</td></tr><tr><td>搙</td><td>2</td><td>tsáu</td><td>jio̍k</td><td>té</td><td>thóo</td></tr><tr><td>跍</td><td>4</td><td>tshih̍</td><td>tiânn</td><td>bīn</td><td>khû</td></tr><tr><td>欲</td><td>4</td><td>hioh</td><td>iau</td><td>tsa̍t</td><td>beh</td></tr><tr><td>密</td><td>4</td><td>khè</td><td>thīn</td><td>tshenn</td><td>ba̍t</td></tr><tr><td>呆</td><td>1</td><td>tai</td><td>giap</td><td>khı̍t</td><td>tsiánn</td></tr><tr><td>茫</td><td>1</td><td>bâng</td><td>kiann</td><td>kueh̍</td><td>uá</td></tr><tr><td>忍</td><td>1</td><td>lún</td><td>tshenn</td><td>tai</td><td>uànn</td></tr><tr><td>隨</td><td>1</td><td>suî</td><td>tsuann</td><td>phāinn</td><td>siánn</td></tr><tr><td>踅</td><td>2</td><td>nuá</td><td>seh̍</td><td>khó</td><td>bán</td></tr><tr><td>閘</td><td>4</td><td>póo</td><td>nuā</td><td>bué</td><td>tsa̍h</td></tr><tr><td>鈷</td><td>2</td><td>phànn</td><td>kóo</td><td>tshuì</td><td>guá</td></tr><tr><td>磅</td><td>1</td><td>pōng</td><td>bín</td><td>jip̍</td><td>tiàm</td></tr><tr><td>褪</td><td>2</td><td>ô</td><td>thǹg</td><td>tiânn</td><td>liú</td></tr><tr><td>橛</td><td>2</td><td>tsió</td><td>kueh̍</td><td>leh</td><td>ka</td></tr><tr><td>翕</td><td>2</td><td>jua̍h</td><td>hip</td><td>mā</td><td>nuá</td></tr><tr><td>頭</td><td>3</td><td>khoo</td><td>khiā</td><td>thâu</td><td>thūn</td></tr><tr><td>悾</td><td>3</td><td>phoo</td><td>soh</td><td>khong</td><td>to̍h</td></tr><tr><td>土</td><td>2</td><td>tshenn</td><td>thóo</td><td>khàm</td><td>suah</td></tr><tr><td>覕</td><td>1</td><td>bih</td><td>pha</td><td>bî</td><td>tshuân</td></tr><tr><td>卡</td><td>1</td><td>kha̍h</td><td>lián</td><td>phuì</td><td>ńg</td></tr><tr><td>絚</td><td>2</td><td>pi</td><td>ân</td><td>tī</td><td>at</td></tr><tr><td>筊</td><td>1</td><td>kiáu</td><td>tsuā</td><td>neh</td><td>guán</td></tr><tr><td>刺</td><td>3</td><td>thàn</td><td>sián</td><td>tshiah</td><td>ê</td></tr><tr><td>得</td><td>1</td><td>tit</td><td>tshiah</td><td>íng</td><td>tsheh</td></tr><tr><td>落</td><td>4</td><td>bô</td><td>khè</td><td>au</td><td>lak</td></tr><tr><td>逐</td><td>2</td><td>tìm</td><td>ta̍k</td><td>kuann</td><td>hit</td></tr><tr><td>越</td><td>4</td><td>siunn</td><td>kap</td><td>lak</td><td>ua̍t</td></tr><tr><td>世</td><td>3</td><td>thâu</td><td>phun</td><td>sì</td><td>kenn</td></tr><tr><td>瘦</td><td>4</td><td>tshinn</td><td>kín</td><td>bô</td><td>sán</td></tr><tr><td>捒</td><td>4</td><td>eh̍</td><td>pân</td><td>neh</td><td>sak</td></tr><tr><td>冗</td><td>2</td><td>āinn</td><td>liōng</td><td>koh</td><td>iā</td></tr><tr><td>工</td><td>3</td><td>oh</td><td>līng</td><td>kang</td><td>sàu</td></tr><tr><td>行</td><td>1</td><td>kiânn</td><td>îng</td><td>tn̄g</td><td>kóng</td></tr><tr><td>冇</td><td>4</td><td>senn</td><td>pang</td><td>tsia̍h</td><td>phànn</td></tr><tr><td>潘</td><td>2</td><td>tân</td><td>phun</td><td>tshòng</td><td>phóng</td></tr><tr><td>硩</td><td>3</td><td>beh</td><td>uànn</td><td>teh</td><td>tshia</td></tr><tr><td>扦</td><td>2</td><td>tsiū</td><td>tshuann</td><td>phun</td><td>tōng</td></tr><tr><td>食</td><td>4</td><td>óo</td><td>tshuê</td><td>tsáu</td><td>tsia̍h</td></tr><tr><td>液</td><td>2</td><td>khùn</td><td>sio̍h</td><td>tsa̍h</td><td>luí</td></tr><tr><td>創</td><td>3</td><td>sap</td><td>pûn</td><td>tshòng</td><td>ùn</td></tr><tr><td>羹</td><td>1</td><td>kenn</td><td>siánn</td><td>hiān</td><td>jiû</td></tr><tr><td>糍</td><td>2</td><td>leh</td><td>tsî</td><td>liú</td><td>phiann</td></tr><tr><td>舖</td><td>4</td><td>hia</td><td>khàm</td><td>lóo</td><td>phòo</td></tr><tr><td>緊</td><td>1</td><td>kín</td><td>ka̍k</td><td>thôo</td><td>suà</td></tr><tr><td>上</td><td>2</td><td>hú</td><td>siōng</td><td>piak</td><td>khoo</td></tr><tr><td>遏</td><td>3</td><td>siōng</td><td>bat</td><td>at</td><td>ua̍t</td></tr><tr><td>規</td><td>4</td><td>hònn</td><td>kha</td><td>tsî</td><td>kui</td></tr><tr><td>軀</td><td>4</td><td>má</td><td>jiàu</td><td>sô</td><td>su</td></tr><tr><td>掠</td><td>1</td><td>lia̍h</td><td>suh</td><td>kha̍h</td><td>kik</td></tr><tr><td>擘</td><td>2</td><td>suî</td><td>peh</td><td>khah</td><td>bīn</td></tr><tr><td>也</td><td>2</td><td>bī</td><td>iā</td><td>ke</td><td>tò</td></tr><tr><td>母</td><td>4</td><td>pù</td><td>hiam</td><td>phànn</td><td>bú</td></tr><tr><td>撋</td><td>4</td><td>tsah</td><td>lòng</td><td>lua̍h</td><td>nuá</td></tr><tr><td>膎</td><td>4</td><td>tiánn</td><td>íng</td><td>lu</td><td>kê</td></tr><tr><td>虯</td><td>3</td><td>ta</td><td>piak</td><td>khiû</td><td>āinn</td></tr><tr><td>屜</td><td>2</td><td>tse</td><td>thuah</td><td>tsim</td><td>beh</td></tr><tr><td>知</td><td>2</td><td>tshit</td><td>tsai</td><td>ngeh</td><td>té</td></tr><tr><td>揬</td><td>4</td><td>tok</td><td>lóng</td><td>bâng</td><td>tu̍h</td></tr><tr><td>搝</td><td>4</td><td>thè</td><td>i</td><td>sian</td><td>khiú</td></tr><tr><td>沃</td><td>4</td><td>jú</td><td>bô</td><td>áu</td><td>ak</td></tr><tr><td>蚵</td><td>1</td><td>ô</td><td>lán</td><td>lok</td><td>hē</td></tr><tr><td>攢</td><td>4</td><td>iáu</td><td>ku</td><td>sè</td><td>tshuân</td></tr><tr><td>撞</td><td>1</td><td>tōng</td><td>kueh̍</td><td>kiu</td><td>ha̍h</td></tr><tr><td>抾</td><td>4</td><td>kuà</td><td>tshuân</td><td>thí</td><td>khioh</td></tr><tr><td>煠</td><td>1</td><td>sa̍h</td><td>tū</td><td>tàu</td><td>láu</td></tr><tr><td>鼻</td><td>3</td><td>jîm</td><td>kha̍p</td><td>phīnn</td><td>tsū</td></tr><tr><td>迵</td><td>1</td><td>thàng</td><td>kóo</td><td>tshuā</td><td>kha̍h</td></tr><tr><td>講</td><td>4</td><td>lán</td><td>thuah</td><td>khian</td><td>kóng</td></tr><tr><td>著</td><td>4</td><td>lí</td><td>ha̍h</td><td>thóo</td><td>tio̍h</td></tr><tr><td>搪</td><td>1</td><td>tn̄g</td><td>bī</td><td>bóng</td><td>tsing</td></tr><tr><td>鉎</td><td>1</td><td>sian</td><td>jio̍k</td><td>tū</td><td>suh</td></tr><tr><td>徙</td><td>2</td><td>tshiah</td><td>suá</td><td>ngiau</td><td>kā</td></tr><tr><td>敢</td><td>2</td><td>tsām</td><td>kám</td><td>thôo</td><td>tit</td></tr><tr><td>撨</td><td>3</td><td>tsit</td><td>lún</td><td>tshiâu</td><td>tíng</td></tr><tr><td>倚</td><td>3</td><td>kám</td><td>thâu</td><td>uá</td><td>tńg</td></tr><tr><td>敆</td><td>3</td><td>tsiú</td><td>tsīnn</td><td>kap</td><td>thua</td></tr><tr><td>紲</td><td>1</td><td>suà</td><td>ioh</td><td>láu</td><td>iā</td></tr><tr><td>爸</td><td>3</td><td>m̄</td><td>bā</td><td>pa</td><td>tsiū</td></tr><tr><td>揀</td><td>2</td><td>bái</td><td>kíng</td><td>kuân</td><td>khám</td></tr><tr><td>挾</td><td>3</td><td>tsē</td><td>jiû</td><td>ngeh̍</td><td>pháinn</td></tr><tr><td>煏</td><td>4</td><td>at</td><td>kāng</td><td>lâng</td><td>piak</td></tr><tr><td>乍</td><td>1</td><td>tsànn</td><td>tshuann</td><td>suànn</td><td>pha</td></tr><tr><td>泔</td><td>1</td><td>ám</td><td>so</td><td>bông</td><td>liàn</td></tr><tr><td>敧</td><td>1</td><td>khi</td><td>kíng</td><td>hian</td><td>guē</td></tr><tr><td>合</td><td>1</td><td>ha̍h</td><td>hu</td><td>tshńg</td><td>sa</td></tr><tr><td>跔</td><td>2</td><td>kôo</td><td>ku</td><td>sán</td><td>tsiânn</td></tr><tr><td>下</td><td>2</td><td>tsâng</td><td>ē</td><td>kám</td><td>tuà</td></tr><tr><td>彼</td><td>2</td><td>ling</td><td>he</td><td>giap</td><td>bái</td></tr><tr><td>枵</td><td>1</td><td>iau</td><td>thūn</td><td>phun</td><td>bih</td></tr><tr><td>硞</td><td>1</td><td>kho̍k</td><td>ki</td><td>khong</td><td>thàn</td></tr><tr><td>阿</td><td>1</td><td>a</td><td>tìm</td><td>ba̍t</td><td>peh</td></tr><tr><td>甌</td><td>1</td><td>au</td><td>khùn</td><td>thiám</td><td>khiàng</td></tr><tr><td>輪</td><td>1</td><td>lián</td><td>m̄</td><td>sè</td><td>tok</td></tr><tr><td>日</td><td>1</td><td>jı̍t</td><td>sio̍h</td><td>pîng</td><td>phòng</td></tr><tr><td>勼</td><td>3</td><td>kóo</td><td>tshuā</td><td>kiu</td><td>sńg</td></tr><tr><td>扲</td><td>4</td><td>tsîng</td><td>oo</td><td>piànn</td><td>gīm</td></tr><tr><td>較</td><td>3</td><td>àu</td><td>muê</td><td>khah</td><td>hâ</td></tr><tr><td>揹</td><td>3</td><td>sông</td><td>thàng</td><td>phāinn</td><td>hit</td></tr><tr><td>暝</td><td>1</td><td>mê</td><td>tau</td><td>kui</td><td>a</td></tr><tr><td>袂</td><td>3</td><td>tshòng</td><td>hònn</td><td>bē</td><td>pang</td></tr><tr><td>少</td><td>2</td><td>sì</td><td>tsió</td><td>phang</td><td>tn̄g</td></tr><tr><td>站</td><td>4</td><td>kam</td><td>kia̍h</td><td>phah</td><td>tsām</td></tr><tr><td>扶</td><td>1</td><td>phôo</td><td>siânn</td><td>khian</td><td>liū</td></tr><tr><td>落</td><td>4</td><td>piànn</td><td>khong</td><td>kàu</td><td>làu</td></tr><tr><td>往</td><td>1</td><td>íng</td><td>teh</td><td>lóo</td><td>lāi</td></tr><tr><td>汫</td><td>1</td><td>tsiánn</td><td>píng</td><td>sann</td><td>bóng</td></tr><tr><td>炸</td><td>2</td><td>guē</td><td>tsuànn</td><td>tú</td><td>ê</td></tr><tr><td>疼</td><td>4</td><td>tsim</td><td>phue</td><td>tsuànn</td><td>thiànn</td></tr><tr><td>承</td><td>1</td><td>sîn</td><td>lāi</td><td>lia̍h</td><td>píng</td></tr><tr><td>塌</td><td>4</td><td>tshun</td><td>gōng</td><td>kái</td><td>lap</td></tr><tr><td>紮</td><td>2</td><td>suh</td><td>tsah</td><td>sông</td><td>tok</td></tr><tr><td>弄</td><td>2</td><td>tsīnn</td><td>lāng</td><td>tsian</td><td>thiànn</td></tr><tr><td>虼</td><td>3</td><td>so</td><td>hip</td><td>ka</td><td>suah</td></tr><tr><td>空</td><td>4</td><td>poo</td><td>sûn</td><td>tshuā</td><td>khang</td></tr><tr><td>蕊</td><td>1</td><td>luí</td><td>thôo</td><td>lua̍h</td><td>tsē</td></tr><tr><td>芳</td><td>1</td><td>phang</td><td>thiám</td><td>au</td><td>tù</td></tr><tr><td>傷</td><td>1</td><td>siunn</td><td>ba̍k</td><td>nn̄g</td><td>hiat</td></tr><tr><td>凝</td><td>3</td><td>thūn</td><td>phang</td><td>gîng</td><td>óo</td></tr><tr><td>掀</td><td>3</td><td>suá</td><td>tsâng</td><td>hian</td><td>juā</td></tr><tr><td>觱</td><td>1</td><td>pi</td><td>làu</td><td>khang</td><td>tōng</td></tr><tr><td>莫</td><td>2</td><td>a̍h</td><td>mài</td><td>á</td><td>mài</td></tr><tr><td>捎</td><td>1</td><td>sa</td><td>phīnn</td><td>guán</td><td>gōng</td></tr><tr><td>目</td><td>4</td><td>uá</td><td>sann</td><td>kíng</td><td>ba̍k</td></tr><tr><td>你</td><td>3</td><td>thang</td><td>bî</td><td>lí</td><td>guā</td></tr><tr><td>共</td><td>4</td><td>khàm</td><td>póo</td><td>kué</td><td>kā</td></tr><tr><td>穿</td><td>2</td><td>bóo</td><td>tshīng</td><td>teh</td><td>tsūn</td></tr><tr><td>節</td><td>2</td><td>tshik</td><td>tsat</td><td>kînn</td><td>àu</td></tr><tr><td>鋏</td><td>2</td><td>jia</td><td>giap</td><td>tsiú</td><td>tǹg</td></tr><tr><td>爪</td><td>4</td><td>îng</td><td>tsiánn</td><td>pa</td><td>jiáu</td></tr><tr><td>遐</td><td>4</td><td>háu</td><td>to̍h</td><td>tiô</td><td>hia</td></tr><tr><td>蹛</td><td>4</td><td>gia̍p</td><td>pháinn</td><td>khau</td><td>tuà</td></tr><tr><td>卵</td><td>4</td><td>khioh</td><td>pih</td><td>tshu</td><td>nn̄g</td></tr><tr><td>罩</td><td>3</td><td>phang</td><td>tau̍h</td><td>tà</td><td>tuè</td></tr><tr><td>剾</td><td>4</td><td>á</td><td>bih</td><td>tann</td><td>khau</td></tr><tr><td>喙</td><td>3</td><td>sńg</td><td>lia̍h</td><td>tshuì</td><td>khùn</td></tr><tr><td>擲</td><td>2</td><td>jio̍k</td><td>tàn</td><td>hōo</td><td>jip̍</td></tr><tr><td>揉</td><td>1</td><td>jiû</td><td>ke</td><td>tu̍h</td><td>tsham</td></tr><tr><td>殕</td><td>2</td><td>peh</td><td>phú</td><td>to</td><td>siáu</td></tr><tr><td>入</td><td>1</td><td>jip̍</td><td>tsa̍t</td><td>bīn</td><td>phóng</td></tr><tr><td>抿</td><td>4</td><td>tau̍h</td><td>that</td><td>jiàu</td><td>bín</td></tr><tr><td>个</td><td>2</td><td>ba̍k</td><td>ê</td><td>phoh</td><td>hioh</td></tr><tr><td>守</td><td>1</td><td>tsiú</td><td>ang</td><td>lāng</td><td>sak</td></tr><tr><td>敨</td><td>2</td><td>tsàu</td><td>tháu</td><td>tshiànn</td><td>tiánn</td></tr><tr><td>趁</td><td>1</td><td>thàn</td><td>guán</td><td>siū</td><td>pi</td></tr><tr><td>偌</td><td>2</td><td>bā</td><td>juā</td><td>tháu</td><td>khian</td></tr><tr><td>惱</td><td>2</td><td>lak</td><td>lóo</td><td>tìm</td><td>juê</td></tr><tr><td>岫</td><td>2</td><td>khînn</td><td>siū</td><td>tshinn</td><td>hōo</td></tr><tr><td>啉</td><td>3</td><td>sián</td><td>pù</td><td>lim</td><td>tsàm</td></tr><tr><td>夯</td><td>2</td><td>tò</td><td>giâ</td><td>khiáu</td><td>bông</td></tr><tr><td>倯</td><td>2</td><td>pōng</td><td>sông</td><td>tshiah</td><td>tsáu</td></tr><tr><td>窒</td><td>1</td><td>that</td><td>tsî</td><td>hiah</td><td>tau̍h</td></tr><tr><td>阮</td><td>1</td><td>guán</td><td>tsuànn</td><td>thóo</td><td>lia̍h</td></tr><tr><td>鮮</td><td>1</td><td>tshinn</td><td>khiú</td><td>báng</td><td>suān</td></tr><tr><td>爸</td><td>2</td><td>mê</td><td>pē</td><td>phīnn</td><td>tshiâu</td></tr><tr><td>呸</td><td>1</td><td>phuì</td><td>tsū</td><td>ku</td><td>khip̍</td></tr><tr><td>唚</td><td>3</td><td>khok</td><td>su</td><td>tsim</td><td>íng</td></tr><tr><td>軁</td><td>2</td><td>kín</td><td>nǹg</td><td>thâu</td><td>kê</td></tr><tr><td>攄</td><td>4</td><td>tau</td><td>tsim</td><td>tiánn</td><td>lu</td></tr><tr><td>微</td><td>2</td><td>tíng</td><td>bî</td><td>ak</td><td>phâng</td></tr><tr><td>挲</td><td>2</td><td>luí</td><td>so</td><td>thiànn</td><td>lo̍h</td></tr><tr><td>坎</td><td>3</td><td>pa</td><td>thàn</td><td>khám</td><td>tsâng</td></tr><tr><td>從</td><td>2</td><td>bē</td><td>tsîng</td><td>lap</td><td>jia</td></tr><tr><td>加</td><td>2</td><td>phú</td><td>ke</td><td>tsió</td><td>pōng</td></tr><tr><td>霆</td><td>4</td><td>áu</td><td>tsē</td><td>hú</td><td>tân</td></tr><tr><td>驚</td><td>3</td><td>pân</td><td>kuânn</td><td>kiann</td><td>sîn</td></tr><tr><td>瓶</td><td>1</td><td>pân</td><td>pē</td><td>liàn</td><td>oh</td></tr><tr><td>抨</td><td>2</td><td>juā</td><td>phiann</td><td>tsínn</td><td>pi</td></tr><tr><td>遮</td><td>2</td><td>kāng</td><td>tsia</td><td>hiān</td><td>ī</td></tr><tr><td>餾</td><td>2</td><td>thiànn</td><td>liū</td><td>bán</td><td>hâ</td></tr><tr><td>外</td><td>1</td><td>guā</td><td>tsiū</td><td>tshīng</td><td>thuh</td></tr><tr><td>瀾</td><td>2</td><td>huah</td><td>nuā</td><td>khi</td><td>khau</td></tr><tr><td>陣</td><td>1</td><td>tsūn</td><td>má</td><td>ni</td><td>suí</td></tr><tr><td>歇</td><td>1</td><td>hioh</td><td>pîng</td><td>sa̍h</td><td>tio̍h</td></tr><tr><td>實</td><td>1</td><td>tsa̍t</td><td>á</td><td>phóng</td><td>kha̍p</td></tr><tr><td>冬</td><td>2</td><td>ke</td><td>tang</td><td>tsinn</td><td>pa</td></tr><tr><td>蓋</td><td>2</td><td>kha</td><td>kuà</td><td>tshīng</td><td>uá</td></tr><tr><td>撫</td><td>4</td><td>koh</td><td>tshuì</td><td>tshuah</td><td>hu</td></tr><tr><td>好</td><td>3</td><td>uat</td><td>tsia̍h</td><td>hònn</td><td>tshuē</td></tr><tr><td>頓</td><td>2</td><td>ki</td><td>tǹg</td><td>khà</td><td>piànn</td></tr><tr><td>恁</td><td>3</td><td>sak</td><td>khi</td><td>lín</td><td>ki</td></tr><tr><td>伊</td><td>4</td><td>phòo</td><td>sa</td><td>ô</td><td>i</td></tr><tr><td>就</td><td>3</td><td>khà</td><td>sian</td><td>tsiū</td><td>tsit</td></tr><tr><td>糋</td><td>4</td><td>teh</td><td>kiù</td><td>thǹg</td><td>tsìnn</td></tr><tr><td>捀</td><td>4</td><td>thua</td><td>sán</td><td>tò</td><td>phâng</td></tr><tr><td>曷</td><td>3</td><td>kué</td><td>tō</td><td>a̍h</td><td>thuah</td></tr><tr><td>賰</td><td>4</td><td>sio̍h</td><td>tsia</td><td>tse</td><td>tshun</td></tr><tr><td>捌</td><td>2</td><td>kap</td><td>bat</td><td>bóo</td><td>khà</td></tr><tr><td>粟</td><td>4</td><td>tsiánn</td><td>báng</td><td>tshiám</td><td>tshik</td></tr><tr><td>青</td><td>3</td><td>tsínn</td><td>lak</td><td>tshenn</td><td>jia</td></tr><tr><td>趖</td><td>3</td><td>thuah</td><td>tsa̍h</td><td>sô</td><td>iáu</td></tr><tr><td>跙</td><td>4</td><td>tǹg</td><td>tang</td><td>thè</td><td>tshū</td></tr><tr><td>猶</td><td>3</td><td>guá</td><td>ám</td><td>iáu</td><td>hu</td></tr><tr><td>炊</td><td>1</td><td>tshue</td><td>lok</td><td>tsūn</td><td>sián</td></tr><tr><td>擽</td><td>2</td><td>tang</td><td>ngiau</td><td>gia̍p</td><td>phànn</td></tr><tr><td>厝</td><td>3</td><td>hâ</td><td>nn̄g</td><td>tshù</td><td>liōng</td></tr><tr><td>陣</td><td>3</td><td>that</td><td>tsàu</td><td>tīn</td><td>phòo</td></tr><tr><td>挖</td><td>1</td><td>óo</td><td>tshńg</td><td>tiâu</td><td>tit</td></tr><tr><td>踮</td><td>3</td><td>tshiám</td><td>tsànn</td><td>tiàm</td><td>hiah</td></tr><tr><td>逝</td><td>2</td><td>su</td><td>tsuā</td><td>hip</td><td>nǹg</td></tr><tr><td>齧</td><td>1</td><td>khè</td><td>senn</td><td>gîng</td><td>khiû</td></tr><tr><td>抌</td><td>3</td><td>ngiau</td><td>thuh</td><td>tìm</td><td>bat</td></tr><tr><td>躡</td><td>2</td><td>tshuì</td><td>neh</td><td>khû</td><td>tshia</td></tr><tr><td>粕</td><td>2</td><td>thǹg</td><td>phoh</td><td>kui</td><td>ui</td></tr><tr><td>挽</td><td>2</td><td>suah</td><td>bán</td><td>tsia</td><td>tsìnn</td></tr><tr><td>批</td><td>2</td><td>tann</td><td>phue</td><td>ka</td><td>tshinn</td></tr><tr><td>盤</td><td>4</td><td>jiû</td><td>phoo</td><td>thiám</td><td>puânn</td></tr><tr><td>擤</td><td>4</td><td>hiat</td><td>au</td><td>m̄</td><td>tshìng</td></tr><tr><td>揤</td><td>1</td><td>tshih̍</td><td>tshuē</td><td>tsat</td><td>kah</td></tr><tr><td>狹</td><td>1</td><td>eh̍</td><td>sàu</td><td>pué</td><td>tshit</td></tr><tr><td>囥</td><td>4</td><td>tit</td><td>kuân</td><td>khiau</td><td>khǹg</td></tr><tr><td>黜</td><td>4</td><td>tsa̍t</td><td>tiàm</td><td>ài</td><td>thuh</td></tr><tr><td>枋</td><td>2</td><td>tī</td><td>pang</td><td>kuânn</td><td>tsiú</td></tr><tr><td>褫</td><td>1</td><td>thí</td><td>jîm</td><td>ha̍h</td><td>ī</td></tr><tr><td>煞</td><td>2</td><td>hun</td><td>suah</td><td>ta̍k</td><td>hūn</td></tr><tr><td>蹔</td><td>2</td><td>tsia</td><td>tsàm</td><td>ni</td><td>lín</td></tr><tr><td>縖</td><td>2</td><td>tio̍h</td><td>hâ</td><td>tshńg</td><td>ak</td></tr></tbody>
+        </table>
+    </div>
+    <div id="question-layer" style="display: block;">
+        <h2 id="question-text">扲</h2>
+        <div class="option-buttons left" id="cat-options"><button style="background-color: red;">oo</button><button style="background-color: green;">piànn</button><button style="background-color: blue;">gīm</button><button style="background-color: purple;">tsîng</button></div>
+        <div class="option-buttons right" id="dog-options"><button style="background-color: red;">piànn</button><button style="background-color: green;">oo</button><button style="background-color: blue;">tsîng</button><button style="background-color: purple;">gīm</button></div>
+    </div>
+
+    <!-- 新增的透明點擊區 -->
+    <div id="secret-trigger"></div>
+
+    <!-- 新增的右下角文字區域 -->
+    <div id="footer-text">
+        Made by <a href="https://kentxchang.blogspot.tw" target="_blank" style="color: white;">阿剛老師</a>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const gameOverDiv = document.getElementById('game-over');
+        const generatorScreen = document.getElementById('generator-screen');
+        const toggleGenerator = document.getElementById('toggle-generator');
+        const generatorSubmit = document.getElementById('generator-submit');
+        const startGameButton = document.getElementById('start-game');
+        const downloadGameButton = document.getElementById('download-game');
+        const questionLayer = document.getElementById('question-layer');
+        const questionText = document.getElementById('question-text');
+        const catOptions = document.getElementById('cat-options');
+        const dogOptions = document.getElementById('dog-options');
+        const outputTableBody = document.querySelector('#output-table tbody');
+        const secretTrigger = document.getElementById('secret-trigger');
+
+        let gamePaused = false;
+        let questionData = [];
+        let usedQuestions = [];
+        let currentQuestionIndex = -1;
+        let catCanThrow = false;
+        let dogCanThrow = false;
+
+        const cat = { x: 60, y: canvas.height - 50, health: 100, size: 100, hitboxRadius: 55, power: 5, angle: 0, rotation: 0, targetRotation: 0 };
+        const dog = { x: canvas.width - 60 - 100, y: canvas.height - 50, health: 100, size: 100, hitboxRadius: 55, power: 5, angle: 0, rotation: 0, targetRotation: 0 };
+        const gravity = 0.5;
+        const projectileWidth = 45;
+        const projectileHeight = 15;
+        const projectileColors = ['red', 'green', 'blue', 'purple'];
+        const bounceFactor = 0.7;
+        let projectiles = [];
+        let flowers = [];
+        let flyingTexts = [];
+        let currentCharacter = null;
+        let currentCharacterType = null;
+        let powerInterval = null;
+        let angleInterval = null;
+        let isSettingPower = false;
+        let isSettingAngle = false;
+        let gameEnded = false;
+
+        function drawBackground() {
+            ctx.fillStyle = '#87CEEB';
+            ctx.fillRect(0, 0, canvas.width, canvas.height / 2);
+
+            ctx.fillStyle = '#32CD32';
+            ctx.fillRect(0, canvas.height / 2, canvas.width, canvas.height / 2);
+
+            drawSunset(canvas.width - 100, 100);
+
+            ctx.fillStyle = '#B22222';
+            ctx.fillRect(100, canvas.height / 2 - 150, 200, 150);
+
+            ctx.fillStyle = '#8B4513';
+            ctx.beginPath();
+            ctx.moveTo(100, canvas.height / 2 - 150);
+            ctx.lineTo(200, canvas.height / 2 - 250);
+            ctx.lineTo(300, canvas.height / 2 - 150);
+            ctx.closePath();
+            ctx.fill();
+
+            ctx.fillStyle = '#654321';
+            ctx.fillRect(180, canvas.height / 2 - 80, 40, 80);
+
+            ctx.fillStyle = '#ADD8E6';
+            ctx.fillRect(120, canvas.height / 2 - 130, 30, 30);
+            ctx.fillRect(250, canvas.height / 2 - 130, 30, 30);
+
+            drawBigTree(650, canvas.height / 2);
+
+            drawTree(450, canvas.height / 2);
+            drawTree(750, canvas.height / 2);
+
+            drawCloud(200, 100);
+            drawCloud(700, 130);
+
+            drawBird(400, 150);
+            drawBird(500, 180);
+
+            drawFlowers();
+
+            drawFence();
+
+            ctx.font = '30px Arial';
+            ctx.fillStyle = 'white';
+            ctx.fillText('', 300, 50);
+        }
+
+        function drawTree(x, y) {
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(x, y - 50, 20, 50);
+
+            ctx.fillStyle = '#228B22';
+            ctx.beginPath();
+            ctx.arc(x + 10, y - 60, 30, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        function drawBigTree(x, y) {
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(x - 20, y - 100, 40, 100);
+
+            ctx.fillStyle = '#228B22';
+            ctx.beginPath();
+            ctx.arc(x, y - 130, 60, 0, Math.PI * 2);
+            ctx.arc(x - 50, y - 100, 40, 0, Math.PI * 2);
+            ctx.arc(x + 50, y - 100, 40, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        function drawCloud(x, y) {
+            ctx.fillStyle = 'white';
+            ctx.beginPath();
+            ctx.arc(x, y, 20, 0, Math.PI * 2);
+            ctx.arc(x + 30, y, 25, 0, Math.PI * 2);
+            ctx.arc(x + 60, y, 20, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        function drawBird(x, y) {
+            ctx.fillStyle = 'black';
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(x + 10, y + 5);
+            ctx.lineTo(x, y + 10);
+            ctx.lineTo(x - 10, y + 5);
+            ctx.closePath();
+            ctx.fill();
+        }
+
+        function drawSunset(x, y) {
+            ctx.fillStyle = '#FFA500';
+            ctx.beginPath();
+            ctx.arc(x, y, 50, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.strokeStyle = '#FFD700';
+            ctx.lineWidth = 2;
+            for (let i = 0; i < 12; i++) {
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+                ctx.lineTo(x + 100 * Math.cos(Math.PI * i / 6), y + 100 * Math.sin(Math.PI * i / 6));
+                ctx.stroke();
+            }
+
+            ctx.fillStyle = 'rgba(255, 223, 0, 0.3)';
+            ctx.beginPath();
+            ctx.moveTo(x - 50, y);
+            ctx.lineTo(0, canvas.height);
+            ctx.lineTo(canvas.width, canvas.height);
+            ctx.lineTo(x + 50, y);
+            ctx.closePath();
+            ctx.fill();
+        }
+
+        function generateRandomFlowers() {
+            const flowerColors = ['red', 'yellow', 'blue', 'purple', 'pink', 'orange', 'white'];
+            for (let i = 0; i < 10; i++) {
+                const x = Math.random() * canvas.width;
+                const y = canvas.height / 2 + Math.random() * (canvas.height / 2 - 30);
+                const color = flowerColors[Math.floor(Math.random() * flowerColors.length)];
+                flowers.push({ x, y, color });
+            }
+        }
+
+        function drawFlowers() {
+            for (const flower of flowers) {
+                drawFlower(flower.x, flower.y, flower.color);
+            }
+        }
+
+        function drawFlower(x, y, color) {
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            ctx.arc(x, y, 15, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = 'yellow';
+            ctx.beginPath();
+            ctx.arc(x, y, 6, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        function drawFence() {
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(canvas.width / 2 - 10, canvas.height - 240, 20, 240);
+
+            ctx.fillStyle = '#654321';
+            for (let i = 0; i < 8; i++) {
+                ctx.fillRect(canvas.width / 2 - 20, canvas.height - 240 + i * 30, 40, 5);
+            }
+        }
+
+        function drawCharacters() {
+            ctx.save();
+            ctx.translate(cat.x + 50, cat.y - 50);
+            ctx.rotate(cat.rotation * Math.PI / 180);
+            ctx.translate(-(cat.x + 50), -(cat.y - 50));
+            ctx.font = "100px Arial";
+            ctx.fillText("😺", cat.x, cat.y);
+            ctx.restore();
+
+            ctx.save();
+            ctx.translate(dog.x + 50, dog.y - 50);
+            ctx.rotate(dog.rotation * Math.PI / 180);
+            ctx.translate(-(dog.x + 50), -(dog.y - 50));
+            ctx.font = "100px Arial";
+            ctx.fillText("🐶", dog.x, dog.y);
+            ctx.restore();
+
+            if (currentCharacter) {
+                ctx.font = "18px Arial";
+                if (isSettingPower) {
+                    // 修改力量直條圖的樣式
+                    ctx.fillStyle = 'lightgray';
+                    ctx.fillRect(currentCharacter.x - 20, currentCharacter.y - 280, 20, 132);
+                    if (currentCharacter.power > 15) {
+                        ctx.fillStyle = 'red';
+                    } else {
+                        ctx.fillStyle = 'green';
+                    }
+                    ctx.fillRect(currentCharacter.x - 20, currentCharacter.y - 280 + (132 - (currentCharacter.power - 5) / 20 * 132), 20, (currentCharacter.power - 5) / 20 * 132);
+                    ctx.strokeStyle = 'black';
+                    ctx.strokeRect(currentCharacter.x - 20, currentCharacter.y - 280, 20, 132);
+
+                    // 畫一條紅線表示力量15的位置
+                    const powerThresholdY = currentCharacter.y - 280 + (132 - (15 - 5) / 20 * 132);
+                    ctx.strokeStyle = 'red';
+                    ctx.beginPath();
+                    ctx.moveTo(currentCharacter.x - 25, powerThresholdY);
+                    ctx.lineTo(currentCharacter.x + 5, powerThresholdY);
+                    ctx.stroke();
+
+                    // 力量直條圖的即時文字
+                    ctx.fillStyle = 'red';
+                    ctx.fillText(`力量: ${currentCharacter.power}`, currentCharacter.x, currentCharacter.y - 300);
+                } else if (isSettingAngle) {
+                    ctx.font = "18px Arial"; // 修改角度扇形圖的即時文字
+                    const centerX = currentCharacter.x + 50;
+                    const centerY = currentCharacter.y - 140;
+                    const radius = 100;
+
+                    if (currentCharacterType === 'cat') {
+                        // 修改角度扇形圖的樣式
+                        const angleCenterX = cat.x + 50 + 50;
+                        const angleCenterY = cat.y - 40 - 50;
+                        ctx.fillStyle = 'red';
+                        ctx.beginPath();
+                        ctx.moveTo(angleCenterX, angleCenterY);
+                        ctx.arc(angleCenterX, angleCenterY, radius, 0, -currentCharacter.angle * Math.PI / 180, true);
+                        ctx.lineTo(angleCenterX, angleCenterY);
+                        ctx.fill();
+                        ctx.strokeStyle = 'black';
+                        ctx.beginPath();
+                        ctx.arc(angleCenterX, angleCenterY, radius, 0, -currentCharacter.angle * Math.PI / 180, true);
+                        ctx.stroke();
+
+                        // 角度扇形圖的即時文字
+                        ctx.fillStyle = 'red';
+                        ctx.fillText(`角度: ${currentCharacter.angle}`, angleCenterX + 70, angleCenterY - 70);
+                    } else {
+                        const angleCenterX = dog.x + 50 - 50;
+                        const angleCenterY = dog.y - 40 - 50;
+                        ctx.fillStyle = 'red';
+                        ctx.beginPath();
+                        ctx.moveTo(angleCenterX, angleCenterY);
+                        ctx.arc(angleCenterX, angleCenterY, radius, Math.PI, Math.PI + currentCharacter.angle * Math.PI / 180, false);
+                        ctx.lineTo(angleCenterX, angleCenterY);
+                        ctx.fill();
+                        ctx.strokeStyle = 'black';
+                        ctx.beginPath();
+                        ctx.arc(angleCenterX, angleCenterY, radius, Math.PI, Math.PI + currentCharacter.angle * Math.PI / 180, false);
+                        ctx.stroke();
+
+                        // 角度扇形圖的即時文字
+                        ctx.fillStyle = 'red';
+                        ctx.fillText(`角度: ${currentCharacter.angle}`, angleCenterX - 130, angleCenterY - 70);
+                    }
+                }
+            }
+
+            ctx.fillStyle = catCanThrow ? 'rgba(255, 255, 255, 0.2)' : 'rgba(255, 255, 255, 0.1)';
+            ctx.beginPath();
+            ctx.arc(cat.x + 50, cat.y - 40, cat.hitboxRadius, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.fillStyle = dogCanThrow ? 'rgba(255, 255, 255, 0.2)' : 'rgba(255, 255, 255, 0.1)';
+            ctx.beginPath();
+            ctx.arc(dog.x + 50, dog.y - 40, dog.hitboxRadius, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        function updateHealthBars() {
+            const catHealthBar = document.getElementById('cat-health');
+            const dogHealthBar = document.getElementById('dog-health');
+            catHealthBar.style.width = cat.health + '%';
+            catHealthBar.innerText = `貓的血量: ${cat.health}`;
+            dogHealthBar.style.width = dog.health + '%';
+            dogHealthBar.innerText = `狗的血量: ${dog.health}`;
+        }
+
+        function throwObject(character) {
+            const radians = character.angle * (Math.PI / 180);
+            const vx = character.power * Math.cos(radians);
+            const vy = -character.power * Math.sin(radians);
+            const color = projectileColors[Math.floor(Math.random() * projectileColors.length)];
+            const rotationSpeed = character === cat ? 5 : -5;
+            if (character === cat) {
+                projectiles.push({ x: cat.x + cat.size, y: cat.y - cat.size, vx: vx, vy: vy, color: color, from: 'cat', rotation: 0, rotationSpeed: rotationSpeed, width: projectileWidth, height: projectileHeight });
+            } else {
+                projectiles.push({ x: dog.x, y: dog.y - dog.size, vx: -vx, vy: vy, color: color, from: 'dog', rotation: 0, rotationSpeed: rotationSpeed, width: projectileWidth, height: projectileHeight });
+            }
+            catCanThrow = false;
+            dogCanThrow = false;
+            setTimeout(() => {
+                if (!gameEnded) showQuestion();
+            }, 2000);
+        }
+
+        function updateProjectiles() {
+            for (let i = 0; i < projectiles.length; i++) {
+                let p = projectiles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                p.vy += gravity;
+                p.rotation += p.rotationSpeed;
+
+                if (p.x >= canvas.width / 2 - 10 && p.x <= canvas.width / 2 + 10 && p.y >= canvas.height - 240) {
+                    p.vx = -p.vx * bounceFactor;
+                    p.vy = p.vy * bounceFactor;
+                    p.x += p.vx;
+                }
+
+                for (let j = 0; j < flyingTexts.length; j++) {
+                    let t = flyingTexts[j];
+                    if (p.x >= t.x && p.x <= t.x + t.width && p.y >= t.y - t.height && p.y <= t.y) {
+                        p.vy = p.vy * bounceFactor;
+                        p.vx = -p.vx * bounceFactor;
+                        break;
+                    }
+                }
+
+                if (p.from === 'cat' && Math.hypot(p.x - (dog.x + 50), p.y - (dog.y - 40)) <= dog.hitboxRadius) {
+                    dog.health -= 20;
+                    rotateCharacter(dog, 10);
+                    projectiles.splice(i, 1);
+                    i--;
+                } else if (p.from === 'dog' && Math.hypot(p.x - (cat.x + 50), p.y - (cat.y - 40)) <= cat.hitboxRadius) {
+                    cat.health -= 20;
+                    rotateCharacter(cat, -10);
+                    projectiles.splice(i, 1);
+                    i--;
+                } else if (p.y > canvas.height) {
+                    projectiles.splice(i, 1);
+                    i--;
+                }
+            }
+        }
+
+        function rotateCharacter(character, angle) {
+            character.targetRotation = character.rotation + angle;
+            const rotationStep = angle / 10;
+
+            const rotationInterval = setInterval(() => {
+                character.rotation += rotationStep;
+                if ((angle > 0 && character.rotation >= character.targetRotation) || (angle < 0 && character.rotation <= character.targetRotation)) {
+                    clearInterval(rotationInterval);
+                    setTimeout(() => {
+                        character.targetRotation = character.rotation - angle;
+                        const returnInterval = setInterval(() => {
+                            character.rotation -= rotationStep;
+                            if ((angle > 0 && character.rotation <= character.targetRotation) || (angle < 0 && character.rotation >= character.targetRotation)) {
+                                clearInterval(returnInterval);
+                            }
+                        }, 10);
+                    }, 100);
+                }
+            }, 10);
+        }
+
+        function drawProjectiles() {
+            for (let p of projectiles) {
+                ctx.save();
+                ctx.translate(p.x + p.width / 2, p.y + p.height / 2);
+                ctx.rotate(p.rotation * Math.PI / 180);
+                ctx.fillStyle = p.color;
+                ctx.fillRect(-p.width / 2, -p.height / 2, p.width, p.height);
+                ctx.restore();
+            }
+        }
+
+        function checkGameOver() {
+            if (cat.health <= 0 && dog.health > 0) {
+                gameEnded = true;
+                gameOver('dog');
+            } else if (dog.health <= 0 && cat.health > 0) {
+                gameEnded = true;
+                gameOver('cat');
+            }
+        }
+
+        function gameOver(winner) {
+            const winnerEmoji = winner === 'cat' ? '😺' : '🐶';
+            const winnerText = `${winnerEmoji} 贏了!`;
+            gameOverDiv.innerHTML = `<h2>${winnerText}</h2><button onclick="restartGame()">重新開始</button>`;
+            gameOverDiv.style.display = 'block';
+        }
+
+        function restartGame() {
+            cat.health = 100;
+            dog.health = 100;
+            projectiles = [];
+            flowers = [];
+            flyingTexts = [];
+            generateRandomFlowers();
+            gameEnded = false;
+            gameOverDiv.style.display = 'none';
+            showQuestion(); // 在重新開始遊戲後顯示題目
+            gameLoop();
+        }
+
+        function gameLoop() {
+            if (gameEnded || gamePaused) return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawBackground();
+            drawCharacters();
+            updateProjectiles();
+            drawProjectiles();
+            drawFlyingTexts();
+            updateFlyingTexts();
+            updateHealthBars();
+            checkGameOver();
+            requestAnimationFrame(gameLoop);
+        }
+
+        function startPowerSetting(character) {
+            if (powerInterval) {
+                clearInterval(powerInterval); // 清除之前的計時器
+            }
+            character.power = 5; // 設定力量的初始值
+            let increasing = true;
+            const minPower = 5; // 設定最小力量
+            const maxPower = 25; // 設定最大力量
+            const intervalSpeed = 66; // 設定變化速度 (毫秒)
+            
+            powerInterval = setInterval(() => {
+                if (increasing) {
+                    character.power += 1;
+                    if (character.power >= maxPower) {
+                        increasing = false;
+                    }
+                } else {
+                    character.power -= 1;
+                    if (character.power <= minPower) {
+                        increasing = true;
+                    }
+                }
+            }, intervalSpeed);
+        }
+
+        function startAngleSetting(character) {
+            if (angleInterval) {
+                clearInterval(angleInterval); // 清除之前的計時器
+            }
+            character.angle = 0;
+            let increasing = true;
+            const minAngle = 0;
+            const maxAngle = 90;
+            const intervalSpeed = 33;
+            
+            angleInterval = setInterval(() => {
+                if (increasing) {
+                    character.angle += 1;
+                    if (character.angle >= maxAngle) {
+                        increasing = false;
+                    }
+                } else {
+                    character.angle -= 1;
+                    if (character.angle <= minAngle) {
+                        increasing = true;
+                    }
+                }
+            }, intervalSpeed);
+        }
+
+        function drawFlyingTexts() {
+            for (let t of flyingTexts) {
+                ctx.font = '30px Arial bold';
+                ctx.fillStyle = 'white';
+                ctx.fillRect(t.x, t.y - t.height, t.width, t.height);
+                ctx.fillStyle = 'red';
+                ctx.fillText(t.text, t.x, t.y);
+            }
+        }
+
+        function updateFlyingTexts() {
+            for (let t of flyingTexts) {
+                t.x += t.speed;
+                if (t.x > canvas.width || t.x + t.width < 0) {
+                    flyingTexts.splice(flyingTexts.indexOf(t), 1);
+                }
+            }
+        }
+
+        function generateFlyingText() {
+            const texts = ['UFO', '飛機'];
+            const text = texts[Math.floor(Math.random() * texts.length)];
+            const x = Math.random() < 0.5 ? -50 : canvas.width;
+            const y = Math.random() * (canvas.height / 2);
+            const speed = (Math.random() * 3 + 1) * (x < 0 ? 1 : -1);
+            ctx.font = '30px Arial bold';
+            const width = ctx.measureText(text).width;
+            const height = 30;
+            flyingTexts.push({ text, x, y, speed, width, height });
+            setTimeout(generateFlyingText, Math.random() * 20000);
+        }
+
+        canvas.addEventListener('click', (event) => {
+            if (gameEnded || gamePaused) return;
+            const rect = canvas.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+
+            if (!isSettingPower && !isSettingAngle) {
+                if (catCanThrow && x >= cat.x && x <= cat.x + cat.size && y >= cat.y - cat.size && y <= cat.y) {
+                    currentCharacter = cat;
+                    currentCharacterType = 'cat';
+                    isSettingPower = true;
+                    startPowerSetting(cat);
+                } else if (dogCanThrow && x >= dog.x && x <= dog.x + dog.size && y >= dog.y - dog.size && y <= dog.y) {
+                    currentCharacter = dog;
+                    currentCharacterType = 'dog';
+                    isSettingPower = true;
+                    startPowerSetting(dog);
+                }
+            } else if (isSettingPower && currentCharacterType === currentCharacterType) {
+                clearInterval(powerInterval);
+                powerInterval = null;
+                isSettingPower = false;
+                isSettingAngle = true;
+                setTimeout(() => {
+                    startAngleSetting(currentCharacter);
+                }, 1200);
+            } else if (isSettingAngle && currentCharacterType === currentCharacterType) {
+                clearInterval(angleInterval);
+                angleInterval = null;
+                isSettingAngle = false;
+                throwObject(currentCharacter);
+                currentCharacter = null;
+                currentCharacterType = null;
+                resetGraphics();
+            }
+        });
+
+        generatorSubmit.addEventListener('click', () => {
+            const input = document.getElementById('generator-input').value;
+            questionData = parseInput(input);
+            usedQuestions = [];
+            displayOutput(questionData);
+            startGameButton.style.display = 'inline-block';
+        });
+
+        startGameButton.addEventListener('click', () => {
+            generatorScreen.style.display = 'none';
+            gamePaused = false;
+            showQuestion();
+            gameLoop();
+        });
+
+        secretTrigger.addEventListener('click', () => {
+            generatorScreen.style.display = 'block';
+            gamePaused = true;
+        });
+
+        downloadGameButton.addEventListener('click', () => {
+            const currentHtml = document.documentElement.outerHTML;
+            const textareaContent = document.getElementById('generator-input').value;
+            const updatedHtml = currentHtml.replace(
+                /<textarea id="generator-input"[^>]*>[^<]*<\/textarea>/,
+                `<textarea id="generator-input" placeholder="輸入題目，請用逗號或制表符分隔各列...">${textareaContent}</textarea>`
+            );
+
+            const blob = new Blob([updatedHtml], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = '貓狗大戰遊戲.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+
+        generateRandomFlowers();
+        generateFlyingText();
+        gameLoop();
+
+        function parseInput(input) {
+            const rows = input.split('\n');
+            const data = rows.map(row => {
+                const cols = row.split(/,|\t/);
+                const [question, answer, option1, option2, option3, option4] = cols;
+                if (!question.trim() && !answer.trim() && !option1.trim() && !option2.trim() && !option3.trim() && !option4.trim()) {
+                    return null;
+                }
+                return { question, answer, option1, option2, option3, option4 };
+            }).filter(row => row !== null);
+            return data;
+        }
+
+        function displayOutput(data) {
+            outputTableBody.innerHTML = '';
+            data.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td>${row.question}</td><td>${row.answer}</td><td>${row.option1}</td><td>${row.option2}</td><td>${row.option3}</td><td>${row.option4}</td>`;
+                outputTableBody.appendChild(tr);
+            });
+        }
+
+        function showQuestion() {
+            if (gameEnded) return;
+
+            if (usedQuestions.length === questionData.length) {
+                usedQuestions = [];
+            }
+
+            let unusedQuestions = questionData.filter(q => !usedQuestions.includes(q));
+            let randomIndex = Math.floor(Math.random() * unusedQuestions.length);
+            let currentQuestion = unusedQuestions[randomIndex];
+            usedQuestions.push(currentQuestion);
+
+            const options = [currentQuestion.option1, currentQuestion.option2, currentQuestion.option3, currentQuestion.option4];
+            const shuffledOptionsCat = [...options].sort(() => Math.random() - 0.5);
+            const shuffledOptionsDog = [...options].sort(() => Math.random() - 0.5);
+
+            questionText.textContent = currentQuestion.question;
+            catOptions.innerHTML = '';
+            dogOptions.innerHTML = '';
+
+            shuffledOptionsCat.forEach((option, index) => {
+                const catButton = document.createElement('button');
+                catButton.textContent = option;
+                catButton.style.backgroundColor = ['red', 'green', 'blue', 'purple'][index];
+                catButton.addEventListener('click', () => handleAnswer('cat', option));
+                catOptions.appendChild(catButton);
+            });
+
+            shuffledOptionsDog.forEach((option, index) => {
+                const dogButton = document.createElement('button');
+                dogButton.textContent = option;
+                dogButton.style.backgroundColor = ['red', 'green', 'blue', 'purple'][index];
+                dogButton.addEventListener('click', () => handleAnswer('dog', option));
+                dogOptions.appendChild(dogButton);
+            });
+
+            questionLayer.style.display = 'block';
+        }
+
+        function handleAnswer(character, selectedOption) {
+            const currentQuestion = usedQuestions[usedQuestions.length - 1];
+            const isCorrect = (currentQuestion.answer === '1' && selectedOption === currentQuestion.option1) ||
+                              (currentQuestion.answer === '2' && selectedOption === currentQuestion.option2) ||
+                              (currentQuestion.answer === '3' && selectedOption === currentQuestion.option3) ||
+                              (currentQuestion.answer === '4' && selectedOption === currentQuestion.option4) ||
+                              (currentQuestion.answer === 'A' && selectedOption === currentQuestion.option1) ||
+                              (currentQuestion.answer === 'B' && selectedOption === currentQuestion.option2) ||
+                              (currentQuestion.answer === 'C' && selectedOption === currentQuestion.option3) ||
+                              (currentQuestion.answer === 'D' && selectedOption === currentQuestion.option4);
+
+            if (isCorrect) {
+                questionLayer.style.display = 'none';
+                if (character === 'cat') {
+                    catCanThrow = true;
+                } else {
+                    dogCanThrow = true;
+                }
+                currentCharacter = character === 'cat' ? cat : dog;
+                currentCharacterType = character;
+                startPowerSetting(currentCharacter);
+            } else {
+                const buttons = character === 'cat' ? catOptions.children : dogOptions.children;
+                for (let button of buttons) {
+                    if (button.textContent === selectedOption) {
+                        button.style.textDecoration = 'line-through';
+                    }
+                }
+            }
+        }
+
+        function resetGraphics() {
+            if (currentCharacter) {
+                currentCharacter.power = 5;
+                currentCharacter.angle = 0;
+                clearInterval(powerInterval);
+                clearInterval(angleInterval);
+                powerInterval = null;
+                angleInterval = null;
+            }
+        }
+
+        toggleGenerator.addEventListener('click', toggleGeneratorScreen);
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'r') {
+                toggleGeneratorScreen();
+            }
+        });
+
+        function toggleGeneratorScreen() {
+            if (generatorScreen.style.display === 'none') {
+                generatorScreen.style.display = 'block';
+                gamePaused = true;
+            } else {
+                generatorScreen.style.display = 'none';
+                gamePaused = false;
+                gameLoop();
+            }
+        }
+
+        // 在頁面加載時檢查是否有預填的內容
+        window.addEventListener('load', () => {
+            const input = document.getElementById('generator-input');
+            if (input.value.trim() !== "") {
+                generatorSubmit.click();
+                startGameButton.click();
+            }
+        });
+
+        // 開啟滑鼠右鍵選單功能
+        document.addEventListener('contextmenu', (event) => {
+            return true;
+        });
+    </script>
+
+
+</body></html>
