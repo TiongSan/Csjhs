@@ -1069,6 +1069,37 @@
         document.addEventListener('contextmenu', (event) => {
             return true;
         });
+
+        // 狗的移動（玩家控制）
+        if (keys[37]) dog.x -= 5;
+        if (keys[39]) dog.x += 5;
+        if (keys[38]) dog.y -= 5;
+        if (keys[40]) dog.y += 5;
+
+        // 限制狗的移動範圍
+        if (dog.x < 0) dog.x = 0;
+        if (dog.x > canvas.width - 50) dog.x = canvas.width - 50;
+        if (dog.y < 0) dog.y = 0;
+        if (dog.y > canvas.height - 50) dog.y = canvas.height - 50;
+
+        // 貓的 AI 控制（隨機發射）
+        if (Math.random() < 0.02) { // 2% 的機率發射
+            let angle = Math.random() * Math.PI * 2; // 隨機角度
+            cat.vx = Math.cos(angle) * 5;
+            cat.vy = Math.sin(angle) * 5;
+        }
+
+        // 更新貓的位置
+        cat.x += cat.vx;
+        cat.y += cat.vy;
+
+        // 貓碰到邊界時反彈
+        if (cat.x < 0 || cat.x > canvas.width - 50) {
+            cat.vx = -cat.vx;
+        }
+        if (cat.y < 0 || cat.y > canvas.height - 50) {
+            cat.vy = -cat.vy;
+        }
     </script>
 
 
