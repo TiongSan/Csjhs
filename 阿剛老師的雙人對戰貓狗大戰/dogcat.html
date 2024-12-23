@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>貓狗大戰</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+            display: block;
+            margin: 0 auto;
+        }
+        .game-container {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        #score {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>貓狗大戰</h1>
+        <div id="score">分數：0</div>
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+        <p>使用方向鍵控制藍色方塊（狗）躲避紅色方塊（貓）</p>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const scoreElement = document.getElementById('score');
+
+        let score = 0;
+        let gameOver = false;
+
+        const dog = {
+            x: 400,
+            y: 300,
+            size: 30,
+            speed: 5
+        };
+
+        const cat = {
+            x: 100,
+            y: 100,
+            size: 30,
+            speed: 3
+        };
+
+        const keys = {};
+
+        // 監聽鍵盤事件
+        window.addEventListener('keydown', (e) => {
+            keys[e.key] = true;
+        });
+
+        window.addEventListener('keyup', (e) => {
+            keys[e.key] = false;
+        });
+
+        function updateGame() {
+            if (gameOver) return;
+
+            // 更新狗的位置
+            if (keys['ArrowLeft'] && dog.x > 0) dog.x -= dog.speed;
+            if (keys['ArrowRight'] && dog.x < canvas.width - dog.size) dog.x += dog.speed;
+            if (keys['ArrowUp'] && dog.y > 0) dog.y -= dog.speed;
+            if (keys['ArrowDown'] && dog.y < canvas.height - dog.size) dog.y += dog.speed;
+
+            // 更新貓的位置（AI）
+            const dx = dog.x - cat.x;
+            const dy = dog.y - cat.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance > 0) {
+                cat.x += (dx / distance) * cat.speed;
+                cat.y += (dy / distance) * cat.speed;
+            }
+
+            // 檢查碰撞
+            if (checkCollision(dog, cat)) {
+                gameOver = true;
+                alert(`遊戲結束！最終分數：${score}`);
+                resetGame();
+            }
+
+            // 更新分數
+            score++;
+            scoreElement.textContent = `分數：${score}`;
+        }
+
+        function drawGame() {
+            // 清空畫布
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // 畫狗
+            ctx.fillStyle = 'blue';
+            ctx.fillRect(dog.x, dog.y, dog.size, dog.size);
+
+            // 畫貓
+            ctx.fillStyle = 'red';
+            ctx.fillRect(cat.x, cat.y, cat.size, cat.size);
+        }
+
+        function checkCollision(obj1, obj2) {
+            return obj1.x < obj2.x + obj2.size &&
+                   obj1.x + obj1.size > obj2.x &&
+                   obj1.y < obj2.y + obj2.size &&
+                   obj1.y + obj1.size > obj2.y;
+        }
+
+        function resetGame() {
+            dog.x = 400;
+            dog.y = 300;
+            cat.x = 100;
+            cat.y = 100;
+            score = 0;
+            gameOver = false;
+        }
+
+        function gameLoop() {
+            updateGame();
+            drawGame();
+            requestAnimationFrame(gameLoop);
+        }
+
+        // 開始遊戲
+        gameLoop();
+    </script>
+</body>
+</html>
