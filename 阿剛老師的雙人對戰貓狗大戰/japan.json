@@ -1,0 +1,1206 @@
+[
+    {
+        "word": "a-lú-mih",
+        "class": "鋁、輕銀。",
+        "japan": "アルミ🪣",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/VJ/ke/203641.wav",
+        "pre": "a"
+    },
+    {
+        "word": "a-móo-ní-á",
+        "class": "阿摩尼亞。",
+        "japan": "アンモニア🧪",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/1Y/v8/203651.wav",
+        "pre": "a"
+    },
+    {
+        "word": "a-ní-khih",
+        "class": "老兄。",
+        "japan": "あにき👨‍👦",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/dA/rN/203661.wav",
+        "pre": "a"
+    },
+    {
+        "word": "a-sír-phí-lín",
+        "class": "阿斯匹林。",
+        "japan": "アスピリン💊",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/Ij/y5/203671.wav",
+        "pre": "a"
+    },
+    {
+        "word": "á-geh",
+        "class": "阿給、油豆腐。",
+        "japan": "あげ🎁",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/LW/BC/203681.wav",
+        "pre": "a"
+    },
+    {
+        "word": "a̋i-sat-tsuh",
+        "class": "打招呼、問候。",
+        "japan": "あいさつ👋",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/SS/oV/203691.wav",
+        "pre": "a"
+    },
+    {
+        "word": "a̋i-sīr-khu-lìn-mù",
+        "class": "冰淇淋。",
+        "japan": "アイスクリーム🍦",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/XM/z9/203701.wav",
+        "pre": "a"
+    },
+    {
+        "word": "àn-nāi",
+        "class": "招待、引導。",
+        "japan": "あんない🗺️",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/gY/Ej/203711.wav",
+        "pre": "a"
+    },
+    {
+        "word": "a̍t-sá-lih",
+        "class": "乾脆、阿莎力。",
+        "japan": "あっさり🍽️",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/lk/8E/203721.wav",
+        "pre": "a"
+    },
+    {
+        "word": "àu-tsuh",
+        "class": "出局。",
+        "japan": "アウト🚪",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/in/4W/203731.wav",
+        "pre": "a"
+    },
+    {
+        "word": "bá-luh",
+        "class": "拔釘子的器具。",
+        "japan": "バール🔨",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/qC/H1/203741.wav",
+        "pre": "b"
+    },
+    {
+        "word": "bá-suh",
+        "class": "巴士、公共汽車。",
+        "japan": "バス🚌",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/VQ/5f/203751.wav",
+        "pre": "b"
+    },
+    {
+        "word": "bá-tah",
+        "class": "奶油。",
+        "japan": "バター🧈",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/0j/nj/203761.wav",
+        "pre": "b"
+    },
+    {
+        "word": "bai-óo-lín",
+        "class": "小提琴。",
+        "japan": "バイオリン🎻",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/xd/op/203771.wav",
+        "pre": "b"
+    },
+    {
+        "word": "ba̋i-khín",
+        "class": "黴菌、細菌。",
+        "japan": "ばいきん🦠",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/Lc/ea/203781.wav",
+        "pre": "b"
+    },
+    {
+        "word": "bak-kuh",
+        "class": "倒車。",
+        "japan": "バック🎒",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/61/BF/203791.wav",
+        "pre": "b"
+    },
+    {
+        "word": "bàn-bà",
+        "class": "保險桿。",
+        "japan": "バンバー/バンパー🚗",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/MO/dM/203801.wav",
+        "pre": "b"
+    },
+    {
+        "word": "bàng-gà",
+        "class": "漫畫、動畫片、卡通。",
+        "japan": "まんが📚",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/xQ/rA/203811.wav",
+        "pre": "b"
+    },
+    {
+        "word": "ba̍t-té-lih",
+        "class": "蓄電池。",
+        "japan": "バッテリー🔋",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/9n/Lo/203821.wav",
+        "pre": "b"
+    },
+    {
+        "word": "bat-tah",
+        "class": "球棒。",
+        "japan": "バッター⚾️",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/SL/mo/203831.wav",
+        "pre": "b"
+    },
+    {
+        "word": "bi-tá-bín",
+        "class": "維他命、維生素。",
+        "japan": "ビタミン💊",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/Ma/ru/203841.wav",
+        "pre": "b"
+    },
+    {
+        "word": "bì-lù",
+        "class": "啤酒。",
+        "japan": "ビール🍺",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/uB/Zb/203851.wav",
+        "pre": "b"
+    },
+    {
+        "word": "biat-tooh",
+        "class": "彈簧床。",
+        "japan": "ベット🛏️",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/Ke/jN/203861.wav",
+        "pre": "b"
+    },
+    {
+        "word": "bo̍k-sìn-gù",
+        "class": "拳擊。",
+        "japan": "ボクシング🥊",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/8R/xw/203871.wav",
+        "pre": "b"
+    },
+    {
+        "word": "bòo-lù",
+        "class": "壞球。",
+        "japan": "ボール⚽️",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/kZ/X3/203881.wav",
+        "pre": "b"
+    },
+    {
+        "word": "bòo-tòo",
+        "class": "小船。",
+        "japan": "ボート⛵️",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/re/H9/203891.wav",
+        "pre": "b"
+    },
+    {
+        "word": "bu-là-jià",
+        "class": "胸罩。",
+        "japan": "ブラジャー👙",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/Tb/QD/203901.wav",
+        "pre": "b"
+    },
+    {
+        "word": "e-pú-lóng",
+        "class": "圍裙。",
+        "japan": "エプロン👩‍🍳",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/6l/ce/203911.wav",
+        "pre": "e"
+    },
+    {
+        "word": "ga-sóo-lín",
+        "class": "汽油。",
+        "japan": "ガソリン⛽️",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/TN/NQ/203921.wav",
+        "pre": "g"
+    },
+    {
+        "word": "gá-lah",
+        "class": "焦炭。",
+        "japan": "がら🎭",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/DB/fS/203931.wav",
+        "pre": "g"
+    },
+    {
+        "word": "gá-suh",
+        "class": "瓦斯。",
+        "japan": "ガス🔥",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/nC/zT/203941.wav",
+        "pre": "g"
+    },
+    {
+        "word": "gì-tà",
+        "class": "吉他。",
+        "japan": "ギター🎸",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/CR/Yv/203951.wav",
+        "pre": "g"
+    },
+    {
+        "word": "giāng",
+        "class": "猜拳。",
+        "japan": "じゃんけん✌️",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/M1/NG/203961.wav",
+        "pre": "g"
+    },
+    {
+        "word": "gōo-bōo",
+        "class": "牛蒡。",
+        "japan": "ごぼう🥕",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/bu/ug/203971.wav",
+        "pre": "g"
+    },
+    {
+        "word": "goo-lú-huh",
+        "class": "高爾夫球。",
+        "japan": "ゴルフ⛳️",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/cw/w9/203981.wav",
+        "pre": "g"
+    },
+    {
+        "word": "ha-móo-ní-khah",
+        "class": "口琴。",
+        "japan": "ハーモニカ🎷",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/NC/s2/203991.wav",
+        "pre": "h"
+    },
+    {
+        "word": "há-muh",
+        "class": "洋火腿。",
+        "japan": "ハム🍖",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/Ze/ty/204001.wav",
+        "pre": "h"
+    },
+    {
+        "word": "ha̋i-khé-khá-kuh",
+        "class": "肺結核。",
+        "japan": "はいけっかく🤒",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/2z/CD/204011.wav",
+        "pre": "h"
+    },
+    {
+        "word": "hài-ià",
+        "class": "包租汽車、高級轎車。",
+        "japan": "ハイヤ🚕",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/T1/8a/204021.wav",
+        "pre": "h"
+    },
+    {
+        "word": "hái-kat-lá",
+        "class": "西裝頭。",
+        "japan": "ハイカラ/ハイーカラ🎩",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/XI/bg/204031.wav",
+        "pre": "h"
+    },
+    {
+        "word": "ha̋n-tóo-luh",
+        "class": "方向盤。",
+        "japan": "ハンドル🚗🔧",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/RJ/iu/204041.wav",
+        "pre": "h"
+    },
+    {
+        "word": "ha̋ng-góo",
+        "class": "飯盒。",
+        "japan": "はんごう🔢",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/Hk/53/204051.wav",
+        "pre": "h"
+    },
+    {
+        "word": "hi-nóo-khih",
+        "class": "檜木。",
+        "japan": "ひのき🌲",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/WY/aB/204061.wav",
+        "pre": "h"
+    },
+    {
+        "word": "hoo-lú-bóng",
+        "class": "荷爾蒙。",
+        "japan": "ホルモン🍖🍳",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/Re/Wt/204071.wav",
+        "pre": "h"
+    },
+    {
+        "word": "hoo-té-luh",
+        "class": "飯店、旅社。",
+        "japan": "ホテル🏨",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/Nk/Pf/204081.wav",
+        "pre": "h"
+    },
+    {
+        "word": "hú-looh",
+        "class": "浴桶、風呂、洗澡。",
+        "japan": "ふろ🛁",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/Ko/Wi/204091.wav",
+        "pre": "h"
+    },
+    {
+        "word": "iá-mih",
+        "class": "黑市。",
+        "japan": "やみ🌑",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/uC/ER/204101.wav",
+        "pre": "i"
+    },
+    {
+        "word": "ia̋n-jín",
+        "class": "引擎。",
+        "japan": "エンジン🔧",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/KM/j7/204111.wav",
+        "pre": "i"
+    },
+    {
+        "word": "iő-káng",
+        "class": "羊羹。",
+        "japan": "ようかん🍬",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/dZ/KH/204121.wav",
+        "pre": "i"
+    },
+    {
+        "word": "ió-bih",
+        "class": "預備。",
+        "japan": "よび📞",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/my/Nn/204131.wav",
+        "pre": "i"
+    },
+    {
+        "word": "iú-lih",
+        "class": "百合花。",
+        "japan": "ゆり🌸",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/wW/R8/204141.wav",
+        "pre": "i"
+    },
+    {
+        "word": "ji-lú-bah",
+        "class": "吉魯巴。",
+        "japan": "ジルバ💃",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/Lz/cT/204151.wav",
+        "pre": "j"
+    },
+    {
+        "word": "jiak-kuh",
+        "class": "拉鍊。",
+        "japan": "チャック🔒",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/0f/hy/204161.wav",
+        "pre": "j"
+    },
+    {
+        "word": "jiàn-bà",
+        "class": "夾克。",
+        "japan": "ジャンパー🧥",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/1B/ig/204171.wav",
+        "pre": "j"
+    },
+    {
+        "word": "jió-toh",
+        "class": "上等、高級。",
+        "japan": "じょうとう🎓",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/DJ/1Z/204181.wav",
+        "pre": "j"
+    },
+    {
+        "word": "kha-báng",
+        "class": "皮包、文件箱、手提包。",
+        "japan": "かばん🎒",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/8y/Ep/204191.wav",
+        "pre": "k"
+    },
+    {
+        "word": "kha-lá-óo-khe",
+        "class": "卡拉OK。",
+        "japan": "カラオケ🎤",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/qf/2Y/204201.wav",
+        "pre": "k"
+    },
+    {
+        "word": "kha-mé-lah",
+        "class": "照相機、開麥拉。",
+        "japan": "カメラ📷",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/cS/Ot/204211.wav",
+        "pre": "k"
+    },
+    {
+        "word": "kha-tá-lok-guh",
+        "class": "目錄。",
+        "japan": "カタログ📖",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/Wn/sl/204221.wav",
+        "pre": "k"
+    },
+    {
+        "word": "kha-tián",
+        "class": "窗簾。",
+        "japan": "カーテン🚪",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/05/ON/204231.wav",
+        "pre": "k"
+    },
+    {
+        "word": "khà-sàng",
+        "class": "母親。",
+        "japan": "かあさん👩‍👧‍👦",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/bR/M2/204241.wav",
+        "pre": "k"
+    },
+    {
+        "word": "khà-tsiàng",
+        "class": "母親。",
+        "japan": "かあちゃん👩‍👧‍👦",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/LZ/IT/204251.wav",
+        "pre": "k"
+    },
+    {
+        "word": "kha̋n-jióo",
+        "class": "付款、算帳、結帳。",
+        "japan": "かんじょう😭",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/nu/Pk/204261.wav",
+        "pre": "k"
+    },
+    {
+        "word": "kha̋ng-páng",
+        "class": "看板、招牌。",
+        "japan": "かんばん📋",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/4y/3k/204271.wav",
+        "pre": "k"
+    },
+    {
+        "word": "khe-tsiap-puh",
+        "class": "番茄醬。",
+        "japan": "ケチャップ🍅",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/0L/Eg/204281.wav",
+        "pre": "k"
+    },
+    {
+        "word": "khi-móo-tsih",
+        "class": "情緒、奇檬子、心情。",
+        "japan": "きもち😊",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/SC/L7/204291.wav",
+        "pre": "k"
+    },
+    {
+        "word": "khí-looh",
+        "class": "公里。",
+        "japan": "キロ⚖️",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/wa/mS/204301.wav",
+        "pre": "k"
+    },
+    {
+        "word": "khiā-hang",
+        "class": "綁腿。",
+        "japan": "きゃはん😄",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/5M/R2/204311.wav",
+        "pre": "k"
+    },
+    {
+        "word": "khit-teh",
+        "class": "郵票。",
+        "japan": "きって✂️",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/4i/0A/204321.wav",
+        "pre": "k"
+    },
+    {
+        "word": "khiű-khé",
+        "class": "休息、色情幽會、休憩。",
+        "japan": "きゅうけい☕️",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/h4/uh/204331.wav",
+        "pre": "k"
+    },
+    {
+        "word": "khok-puh",
+        "class": "杯子。",
+        "japan": "コップ☕️",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/b0/vx/204341.wav",
+        "pre": "k"
+    },
+    {
+        "word": "khōng-ku-lí",
+        "class": "控固力、混凝土。",
+        "japan": "コンクリート🏗️",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/cC/iU/204351.wav",
+        "pre": "k"
+    },
+    {
+        "word": "khòng-buh",
+        "class": "海帶、昆布。",
+        "japan": "こんぶ🍜",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/qO/Dy/204361.wav",
+        "pre": "k"
+    },
+    {
+        "word": "khoo-lé-lah",
+        "class": "霍亂。",
+        "japan": "コレラ🤒",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/IR/4U/204371.wav",
+        "pre": "k"
+    },
+    {
+        "word": "khoo-mí-sióng",
+        "class": "賄賂、回扣。",
+        "japan": "コミッション📜",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/cS/hS/204381.wav",
+        "pre": "k"
+    },
+    {
+        "word": "khòo-tòo",
+        "class": "大衣。",
+        "japan": "コート🧥",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/i4/5n/204391.wav",
+        "pre": "k"
+    },
+    {
+        "word": "khu-lá-tsih",
+        "class": "離合器、變速器。",
+        "japan": "クラッチ🚗🔧",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/7X/UW/204401.wav",
+        "pre": "k"
+    },
+    {
+        "word": "khu-lì-mù",
+        "class": "面霜、克林姆、奶油。",
+        "japan": "クリーム🍦",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/0u/tZ/204411.wav",
+        "pre": "k"
+    },
+    {
+        "word": "la-jí-ooh",
+        "class": "收音機。",
+        "japan": "ラジオ📻",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/To/sl/204421.wav",
+        "pre": "l"
+    },
+    {
+        "word": "la-kiat-tooh",
+        "class": "球拍。",
+        "japan": "ラケット🎾",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/11/Mn/204431.wav",
+        "pre": "l"
+    },
+    {
+        "word": "la-mú-neh",
+        "class": "彈珠汽水。",
+        "japan": "ラムネ🍬",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/H5/uS/204441.wav",
+        "pre": "l"
+    },
+    {
+        "word": "la̋i-jiòo-bù",
+        "class": "安全、放心、沒問題。",
+        "japan": "だいじょうぶ👍",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/WA/S0/204451.wav",
+        "pre": "l"
+    },
+    {
+        "word": "la̋i-lìn-gù",
+        "class": "無袖背心。",
+        "japan": "ランニング🏃‍♂️",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/RM/ul/204461.wav",
+        "pre": "l"
+    },
+    {
+        "word": "lài-tah",
+        "class": "打火機。",
+        "japan": "ライター🖊️",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/Y6/4C/gl84.wav",
+        "pre": "l"
+    },
+    {
+        "word": "lê-bóng",
+        "class": "檸檬。",
+        "japan": "レモン🍋",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/V5/sH/204481.wav",
+        "pre": "l"
+    },
+    {
+        "word": "lè-sìr",
+        "class": "蕾絲花邊。",
+        "japan": "レース🏁",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/Ko/8g/204491.wav",
+        "pre": "l"
+    },
+    {
+        "word": "li-á-khah",
+        "class": "自行車後面的兩輪拖車、台車、臺車。",
+        "japan": "リヤカー🚲",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/Ds/PW/204501.wav",
+        "pre": "l"
+    },
+    {
+        "word": "lia̋n-táng",
+        "class": "煤球。",
+        "japan": "れんたん🔥",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/WD/D7/204511.wav",
+        "pre": "l"
+    },
+    {
+        "word": "li̋n-jín",
+        "class": "紅蘿蔔。",
+        "japan": "にんじん🥕",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/kx/iQ/204521.wav",
+        "pre": "l"
+    },
+    {
+        "word": "lìn-gòo",
+        "class": "蘋果。",
+        "japan": "りんご🍎",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/lM/hm/204531.wav",
+        "pre": "l"
+    },
+    {
+        "word": "loo-lài-bà",
+        "class": "螺絲起子。",
+        "japan": "ドライバー🔧",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/9c/PU/204541.wav",
+        "pre": "l"
+    },
+    {
+        "word": "lòo-suh",
+        "class": "里脊肉。",
+        "japan": "ロース🍖",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/TL/0K/204551.wav",
+        "pre": "l"
+    },
+    {
+        "word": "lóo-lí-á",
+        "class": "橡膠拖鞋。",
+        "japan": "ぞうり🥿",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/9K/wT/204561.wav",
+        "pre": "l"
+    },
+    {
+        "word": "ma-lá-lí-á",
+        "class": "瘧疾。",
+        "japan": "マラリヤ🦠",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/Z9/JE/204571.wav",
+        "pre": "m"
+    },
+    {
+        "word": "ma-lá-sóng",
+        "class": "馬拉松。",
+        "japan": "マラソン🏃‍♀️",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/C3/0Y/204581.wav",
+        "pre": "m"
+    },
+    {
+        "word": "ma-sà-tsì",
+        "class": "馬殺雞、按摩、色情按摩。",
+        "japan": "マッサージ💆‍♂️",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/vu/L4/204591.wav",
+        "pre": "m"
+    },
+    {
+        "word": "mài-kù",
+        "class": "麥克風。",
+        "japan": "マイク🎤",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/27/aZ/204601.wav",
+        "pre": "m"
+    },
+    {
+        "word": "me-lí-á",
+        "class": "三夾板。",
+        "japan": "ベニヤ🪵",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/Ex/45/204611.wav",
+        "pre": "m"
+    },
+    {
+        "word": "me-lóng",
+        "class": "香瓜。",
+        "japan": "メロン🍈",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/qc/5Q/204621.wav",
+        "pre": "m"
+    },
+    {
+        "word": "mè-sì",
+        "class": "名片。",
+        "japan": "めいし🆔",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/1r/rm/204631.wav",
+        "pre": "m"
+    },
+    {
+        "word": "mi-sín",
+        "class": "縫紉機、裁縫車。",
+        "japan": "ミシン🧵",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/dr/01/204641.wav",
+        "pre": "m"
+    },
+    {
+        "word": "mí-sooh",
+        "class": "味噌。",
+        "japan": "みそ🍜",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/FB/52/204651.wav",
+        "pre": "m"
+    },
+    {
+        "word": "mòo-tà",
+        "class": "馬達。",
+        "japan": "モーター🚗",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/NL/pq/204661.wav",
+        "pre": "m"
+    },
+    {
+        "word": "na̋i-lóng",
+        "class": "耐龍、尼龍。",
+        "japan": "ナイロン🧶",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/Qj/h9/204671.wav",
+        "pre": "n"
+    },
+    {
+        "word": "ne-kut-tái",
+        "class": "領帶。",
+        "japan": "ネクタイ👔",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/HR/EQ/204681.wav",
+        "pre": "n"
+    },
+    {
+        "word": "nè-tsiàng",
+        "class": "女中、飯店或旅館的女服務員。",
+        "japan": "ねえちゃん👧",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/rN/CC/204691.wav",
+        "pre": "n"
+    },
+    {
+        "word": "nőo-sín",
+        "class": "腦筋不正常。",
+        "japan": "のうしんとう🌾",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/Nt/Sp/204701.wav",
+        "pre": "n"
+    },
+    {
+        "word": "nóo-lih",
+        "class": "海苔。",
+        "japan": "のり🍙",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/b8/1b/204711.wav",
+        "pre": "n"
+    },
+    {
+        "word": "oo-bá-sáng",
+        "class": "對不特定年長女性的稱呼、歐巴桑。",
+        "japan": "おばさん👩‍🦳",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/hI/Jn/204721.wav",
+        "pre": "o"
+    },
+    {
+        "word": "oo-jí-sáng",
+        "class": "歐吉桑、對不特定年長男性的稱呼。",
+        "japan": "おじさん👨‍🦳",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/jR/dv/204731.wav",
+        "pre": "o"
+    },
+    {
+        "word": "oo-lián",
+        "class": "黑輪。",
+        "japan": "おでん🍲",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/IL/vn/204741.wav",
+        "pre": "o"
+    },
+    {
+        "word": "oo-lín-gióo",
+        "class": "洋娃娃、人偶。",
+        "japan": "おにんぎょう🎎",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/xH/FF/204751.wav",
+        "pre": "o"
+    },
+    {
+        "word": "oo-nè-sàng",
+        "class": "大姐。",
+        "japan": "おねえさん👩‍🦰",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/qY/Hx/204761.wav",
+        "pre": "o"
+    },
+    {
+        "word": "oo-tóo-bái",
+        "class": "摩托車、機車。",
+        "japan": "オートバイ🏍️",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/KZ/SG/204771.wav",
+        "pre": "o"
+    },
+    {
+        "word": "òo-bà",
+        "class": "長大衣、長外套。",
+        "japan": "オーバーコート/オーバー🧥",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/MI/qq/204781.wav",
+        "pre": "o"
+    },
+    {
+        "word": "pha-tsìn-kòo",
+        "class": "柏青哥。",
+        "japan": "パチンコ🎰",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/v1/zA/204791.wav",
+        "pre": "p"
+    },
+    {
+        "word": "pha̋-siàn-tòo",
+        "class": "百分率、百分比。",
+        "japan": "パーセント%",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/BW/vp/204801.wav",
+        "pre": "p"
+    },
+    {
+        "word": "pháng",
+        "class": "麵包。",
+        "japan": "パン🍞",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/OY/1s/204811.wav",
+        "pre": "p"
+    },
+    {
+        "word": "phàng-kù",
+        "class": "爆胎。",
+        "japan": "パンク🚲🔧",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/gn/9N/204821.wav",
+        "pre": "p"
+    },
+    {
+        "word": "phi-á-nooh",
+        "class": "鋼琴。",
+        "japan": "ピアノ🎹",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/Cu/XX/204831.wav",
+        "pre": "p"
+    },
+    {
+        "word": "phiàn-tsih",
+        "class": "鐵鉗。",
+        "japan": "ペンチ🔧",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/PS/wI/204841.wav",
+        "pre": "p"
+    },
+    {
+        "word": "phi̋n-phóng",
+        "class": "桌球、乒乓球。",
+        "japan": "ピンポン🏓",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/zp/SA/204851.wav",
+        "pre": "p"
+    },
+    {
+        "word": "phòng-phù",
+        "class": "幫浦、手動抽水機。",
+        "japan": "ポンプ⛽️",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/UA/on/204861.wav",
+        "pre": "p"
+    },
+    {
+        "word": "phu-lóo-phé-lá",
+        "class": "螺旋槳。",
+        "japan": "プロペラ✈️",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/xC/6x/204871.wav",
+        "pre": "p"
+    },
+    {
+        "word": "pu-lù-sù",
+        "class": "布魯司。",
+        "japan": "ブルース🎶",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/vu/d9/204881.wav",
+        "pre": "p"
+    },
+    {
+        "word": "sa-khá-lí-bah",
+        "class": "鬧市、沙卡哩巴。",
+        "japan": "さかりば🌳",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/mB/3c/204891.wav",
+        "pre": "s"
+    },
+    {
+        "word": "sa-khú-lah",
+        "class": "櫻花。",
+        "japan": "さくら🌸",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/g5/yW/204901.wav",
+        "pre": "s"
+    },
+    {
+        "word": "sa-sí-mih",
+        "class": "生魚片。",
+        "japan": "さしみ🍣",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/uk/j0/204911.wav",
+        "pre": "s"
+    },
+    {
+        "word": "sa̋-bì-sù",
+        "class": "優惠、額外優待。",
+        "japan": "サービス🛎️",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/ny/Hr/204921.wav",
+        "pre": "s"
+    },
+    {
+        "word": "sài-sù",
+        "class": "尺寸。",
+        "japan": "サイズ📏",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/tn/Ug/204931.wav",
+        "pre": "s"
+    },
+    {
+        "word": "sak-khuh",
+        "class": "保險套。",
+        "japan": "サック🎒",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/3T/Ct/204941.wav",
+        "pre": "s"
+    },
+    {
+        "word": "sa̋m-phú-luh",
+        "class": "樣本、樣品。",
+        "japan": "サンプル📦",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/G1/Th/204951.wav",
+        "pre": "s"
+    },
+    {
+        "word": "sàn-bah",
+        "class": "秋刀魚。",
+        "japan": "さんま🐟",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/wU/cz/204961.wav",
+        "pre": "s"
+    },
+    {
+        "word": "se-bí-looh",
+        "class": "西裝。",
+        "japan": "せびろ👔",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/xc/Dz/204971.wav",
+        "pre": "s"
+    },
+    {
+        "word": "sè-hù",
+        "class": "安全。",
+        "japan": "セーフ🔒",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/87/xk/204981.wav",
+        "pre": "s"
+    },
+    {
+        "word": "si-á-geh",
+        "class": "潤飾、修飾。",
+        "japan": "しあげ🎨",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/EJ/fy/204991.wav",
+        "pre": "s"
+    },
+    {
+        "word": "sia-sín",
+        "class": "照片。",
+        "japan": "しゃしん📸",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/l7/CQ/205001.wav",
+        "pre": "s"
+    },
+    {
+        "word": "siat-tooh",
+        "class": "做頭髮、造型。",
+        "japan": "セット🎁",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/KC/nH/205011.wav",
+        "pre": "s"
+    },
+    {
+        "word": "siat-tsuh",
+        "class": "襯衫。",
+        "japan": "シャツ👕",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/x9/6I/205021.wav",
+        "pre": "s"
+    },
+    {
+        "word": "sio̍k-pháng",
+        "class": "吐司、白麵包。",
+        "japan": "しょくパン🍞",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/2v/I5/205031.wav",
+        "pre": "s"
+    },
+    {
+        "word": "si̍p-pán-ná",
+        "class": "板手。",
+        "japan": "スパナ🔧",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/E3/qu/205041.wav",
+        "pre": "s"
+    },
+    {
+        "word": "sir-bé-lí-lái",
+        "class": "溜滑梯。",
+        "japan": "すベりだい🛝",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/jH/tQ/205051.wav",
+        "pre": "s"
+    },
+    {
+        "word": "sir-tián-lè-sù",
+        "class": "不鏽鋼。",
+        "japan": "ステンレス🥄",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/jE/nr/205061.wav",
+        "pre": "s"
+    },
+    {
+        "word": "sòo-sù",
+        "class": "烏醋、醬料。",
+        "japan": "ソース🍶",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/C3/ez/205071.wav",
+        "pre": "s"
+    },
+    {
+        "word": "su-khù-tà",
+        "class": "速可達、50cc輕型機車。",
+        "japan": "スクーター🛴",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/Dv/14/205081.wav",
+        "pre": "s"
+    },
+    {
+        "word": "su-lit-pah",
+        "class": "拖鞋。",
+        "japan": "スリッパ🥿",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/gp/UX/205091.wav",
+        "pre": "s"
+    },
+    {
+        "word": "su-tó-lip-puh",
+        "class": "脫衣舞。",
+        "japan": "ストリップ🎭",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/Wl/vl/205101.wav",
+        "pre": "s"
+    },
+    {
+        "word": "sú-sih",
+        "class": "壽司。",
+        "japan": "すし🍣",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/yh/dQ/205111.wav",
+        "pre": "s"
+    },
+    {
+        "word": "tha-khú-áng",
+        "class": "黃蘿蔔、黃色的醃漬蘿蔔。",
+        "japan": "たくあん🍠",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/P3/JS/205121.wav",
+        "pre": "t"
+    },
+    {
+        "word": "tha-khú-sih",
+        "class": "計程車。",
+        "japan": "タクシー🚖",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/6c/ze/205131.wav",
+        "pre": "t"
+    },
+    {
+        "word": "tha-thá-mih",
+        "class": "疊蓆、塌塌米。",
+        "japan": "たたみ🛏️",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/xw/eC/205141.wav",
+        "pre": "t"
+    },
+    {
+        "word": "thài-ià",
+        "class": "輪胎。",
+        "japan": "タイヤ🚗🔧",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/HV/1h/205151.wav",
+        "pre": "t"
+    },
+    {
+        "word": "thài-lù",
+        "class": "瓷磚。",
+        "japan": "タイル🟫",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/l2/yt/205161.wav",
+        "pre": "t"
+    },
+    {
+        "word": "thak-khooh",
+        "class": "章魚。",
+        "japan": "たこ🐙",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/yr/Wh/205171.wav",
+        "pre": "t"
+    },
+    {
+        "word": "thàn-gòo",
+        "class": "探戈。",
+        "japan": "タンゴ💃",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/J1/L7/205181.wav",
+        "pre": "t"
+    },
+    {
+        "word": "thàng-sù",
+        "class": "衣櫥。",
+        "japan": "たんす🗄️",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/Ku/10/205191.wav",
+        "pre": "t"
+    },
+    {
+        "word": "that-bí",
+        "class": "一種工作鞋。",
+        "japan": "たび🌍",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/jk/KW/205201.wav",
+        "pre": "t"
+    },
+    {
+        "word": "the-ní-suh",
+        "class": "網球。",
+        "japan": "テニス🎾",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/MX/lh/205211.wav",
+        "pre": "t"
+    },
+    {
+        "word": "thia̋n-pú-lah",
+        "class": "甜不辣。",
+        "japan": "テンプラ🍤",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/CG/wC/205221.wav",
+        "pre": "t"
+    },
+    {
+        "word": "thoo-lá-khuh",
+        "class": "卡車。",
+        "japan": "トラック🚚",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/SA/dg/205231.wav",
+        "pre": "t"
+    },
+    {
+        "word": "thoo-má-tooh",
+        "class": "番茄、西紅柿。",
+        "japan": "トマト🍅",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/YK/Bk/205241.wav",
+        "pre": "t"
+    },
+    {
+        "word": "tòo-sàng",
+        "class": "多桑、父親。",
+        "japan": "とうさん👨‍👧",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/Zt/MP/205251.wav",
+        "pre": "t"
+    },
+    {
+        "word": "tshia̋n-pá-lah",
+        "class": "兒童模擬武打戲的、日本古裝武打戲。",
+        "japan": "ちゃんばら⚔️",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/wI/Nj/205261.wav",
+        "pre": "t"
+    },
+    {
+        "word": "tsiok-kih",
+        "class": "剪刀。",
+        "japan": "チョッキ👕",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/hw/g9/205271.wav",
+        "pre": "t"
+    },
+    {
+        "word": "tsioo-kóo-lè-tòo",
+        "class": "巧克力。",
+        "japan": "チョコレート🍫",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/Pv/zQ/205281.wav",
+        "pre": "t"
+    },
+    {
+        "word": "tsit-puh",
+        "class": "小費。",
+        "japan": "チップ💳",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/HB/FC/205291.wav",
+        "pre": "t"
+    },
+    {
+        "word": "u-lóng",
+        "class": "烏龍麵。",
+        "japan": "うどん🍜",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/hY/Yl/205301.wav",
+        "pre": "u"
+    },
+    {
+        "word": "ua-khá-móo-tooh",
+        "class": "一種保健藥品。",
+        "japan": "わかもと🍃",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/kX/tQ/205311.wav",
+        "pre": "u"
+    },
+    {
+        "word": "ua-lù-tsuh",
+        "class": "華爾茲。",
+        "japan": "ワルツ💃",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/Np/i9/205321.wav",
+        "pre": "u"
+    },
+    {
+        "word": "ua-sá-bih",
+        "class": "芥末、山葵醬。",
+        "japan": "わさび🌶️",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/Wr/7m/205331.wav",
+        "pre": "u"
+    },
+    {
+        "word": "ua̋i-siat-tsuh",
+        "class": "白襯衫。",
+        "japan": "ワイシャツ👔",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/1z/gL/205341.wav",
+        "pre": "u"
+    },
+    {
+        "word": "ùn-tsiàng",
+        "class": "司機、運將。",
+        "japan": "うんちゃん🚜",
+        "addr": "https://sutian.moe.edu.tw/media/imtong/oo/mh/205351.wav",
+        "pre": "u"
+    }
+]
