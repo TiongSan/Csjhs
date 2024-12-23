@@ -768,6 +768,63 @@
         let isSettingAngle = false;
         let gameEnded = false;
 
+let questionData = [];
+
+fetch('japan.json')
+    .then(response => response.json())
+    .then(data => {
+        questionData = data;
+        startGame();
+    })
+    .catch(error => console.error('Error loading japan.json:', error));
+        
+        	function generateQuestion() {
+    if (questionData.length === 0) return;
+
+    const questionIndex = Math.floor(Math.random() * questionData.length);
+    const question = questionData[questionIndex];
+    const correctAnswer = question.word;
+    const incorrectAnswers = questionData
+        .filter((_, index) => index !== questionIndex)
+        .map(item => item.word)
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 3);
+
+    const options = [correctAnswer, ...incorrectAnswers].sort(() => Math.random() - 0.5);
+
+    questionText.innerHTML = question.japan;
+    catOptions.innerHTML = '';
+    dogOptions.innerHTML = '';
+
+    options.forEach(option => {
+        const button = document.createElement('button');
+        button.textContent = option;
+        button.onclick = () => checkAnswer(option, correctAnswer);
+        catOptions.appendChild(button);
+        dogOptions.appendChild(button.cloneNode(true));
+    });
+}
+        function checkAnswer(selectedAnswer, correctAnswer) {
+    if (selectedAnswer === correctAnswer) {
+        console.log('Correct! Human controls dog to attack.');
+        playerAttack();
+    } else {
+        console.log('Incorrect! Computer controls cat to attack.');
+        computerAttack();
+    }
+    nextQuestion();
+}
+
+function playerAttack() {
+    // 添加玩家控制狗攻擊的邏輯
+}
+
+function computerAttack() {
+    const power = Math.random() * 20 + 5; // 隨機力道
+    const angle = Math.random() * 90; // 隨機角度
+    // 添加電腦控制貓隨機攻擊的邏輯
+}
+
         function drawBackground() {
             ctx.fillStyle = '#87CEEB';
             ctx.fillRect(0, 0, canvas.width, canvas.height / 2);
