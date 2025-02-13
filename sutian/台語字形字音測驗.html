@@ -3,7 +3,7 @@
 <html lang="zh-TW"><div id="scroll_div" style="width: 100px; height: 100px; overflow: scroll; position: absolute; top: -9999px;"></div><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>台語聽力測驗</title>
+  <title>台語字形字音測驗</title>
   <style>
     button {
       font-size: 24px;
@@ -177,7 +177,7 @@
       audio.play().catch(e => console.error('播放失敗:', e));
 
       document.getElementById('info').innerHTML = `
-        <p>日文: <strong>${question.japan}</strong></p>
+        <p>台語: <strong>${question.japan}</strong></p>
         <p>分類: <strong>${question.class}</strong></p>
       `;
 
@@ -673,7 +673,7 @@
 <body>
   <canvas id="treeCanvas" width="1920" height="827"></canvas>
   <div class="game-content">
-    <h1>台語聽力測驗_陳文賓老師設計</h1>
+    <h1>台語字形字音_陳文賓老師設計</h1>
     <button id="startButton" onclick="startGame()" style="display: block; font-size: 24px; padding: 20px; margin: 20px;">
       點擊開始遊戲
     </button>
