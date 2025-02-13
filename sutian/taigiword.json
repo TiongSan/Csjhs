@@ -1,0 +1,9557 @@
+[
+    {
+        "word": "á",
+        "class": "3",
+        "japan": "仔、啞",
+        "pre": "á",
+        "addr": ""
+    },
+    {
+        "word": "a̍h",
+        "class": "3",
+        "japan": "曷、盒",
+        "pre": "a",
+        "addr": ""
+    },
+    {
+        "word": "aih",
+        "class": "3",
+        "japan": "哎、噯",
+        "pre": "a",
+        "addr": ""
+    },
+    {
+        "word": "ám",
+        "class": "3",
+        "japan": "泔、黯",
+        "pre": "á",
+        "addr": ""
+    },
+    {
+        "word": "an",
+        "class": "3",
+        "japan": "安、鞍",
+        "pre": "a",
+        "addr": ""
+    },
+    {
+        "word": "án",
+        "class": "3",
+        "japan": "俺、按",
+        "pre": "á",
+        "addr": ""
+    },
+    {
+        "word": "ang",
+        "class": "3",
+        "japan": "尪、翁",
+        "pre": "a",
+        "addr": ""
+    },
+    {
+        "word": "àng",
+        "class": "3",
+        "japan": "甕、齆",
+        "pre": "à",
+        "addr": ""
+    },
+    {
+        "word": "âng",
+        "class": "3",
+        "japan": "洪、紅",
+        "pre": "â",
+        "addr": ""
+    },
+    {
+        "word": "a̍p",
+        "class": "3",
+        "japan": "狎、盒",
+        "pre": "a",
+        "addr": ""
+    },
+    {
+        "word": "at",
+        "class": "3",
+        "japan": "楬、遏",
+        "pre": "a",
+        "addr": ""
+    },
+    {
+        "word": "àu",
+        "class": "3",
+        "japan": "懊、漚",
+        "pre": "à",
+        "addr": ""
+    },
+    {
+        "word": "āu",
+        "class": "3",
+        "japan": "后、後",
+        "pre": "ā",
+        "addr": ""
+    },
+    {
+        "word": "bán",
+        "class": "3",
+        "japan": "挽、饅",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bāu",
+        "class": "3",
+        "japan": "㴘、貿",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bê",
+        "class": "3",
+        "japan": "糜、迷",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bí",
+        "class": "3",
+        "japan": "米、美",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "biān",
+        "class": "3",
+        "japan": "面、麵",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bīn",
+        "class": "3",
+        "japan": "蝒、面",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bīng",
+        "class": "3",
+        "japan": "命、孟",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bió",
+        "class": "3",
+        "japan": "母、秒",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "biū",
+        "class": "3",
+        "japan": "繆、謬",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bō",
+        "class": "3",
+        "japan": "帽、磨",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bòng",
+        "class": "3",
+        "japan": "懵、甍",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bū",
+        "class": "3",
+        "japan": "務、霧",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bua̍h",
+        "class": "3",
+        "japan": "末、茉",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bua̍t",
+        "class": "3",
+        "japan": "末、襪",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bué",
+        "class": "3",
+        "japan": "尾、買",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bui",
+        "class": "3",
+        "japan": "微、蝛",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bùn",
+        "class": "3",
+        "japan": "濆、鼢",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "but",
+        "class": "3",
+        "japan": "粅、魩",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "é",
+        "class": "3",
+        "japan": "啞、矮",
+        "pre": "é",
+        "addr": ""
+    },
+    {
+        "word": "enn",
+        "class": "3",
+        "japan": "嬰、纓",
+        "pre": "e",
+        "addr": ""
+    },
+    {
+        "word": "gâ",
+        "class": "3",
+        "japan": "牙、芽",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "gâi",
+        "class": "3",
+        "japan": "崖、涯",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "gâm",
+        "class": "3",
+        "japan": "岩、癌",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "gàn",
+        "class": "3",
+        "japan": "\ud86d、\udf4f",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "gân",
+        "class": "3",
+        "japan": "寒、顏",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "gâu",
+        "class": "3",
+        "japan": "\ud842、\udc95",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "gia̍h",
+        "class": "3",
+        "japan": "攑、額",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "gián",
+        "class": "3",
+        "japan": "妍、研",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "giān",
+        "class": "3",
+        "japan": "彥、殗",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "giang",
+        "class": "3",
+        "japan": "婸、鈃",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "gia̍p",
+        "class": "3",
+        "japan": "挾、業",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "giâu",
+        "class": "3",
+        "japan": "堯、憢",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "gím",
+        "class": "3",
+        "japan": "笒、錦",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "gîm",
+        "class": "3",
+        "japan": "吟、砛",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "gîn",
+        "class": "3",
+        "japan": "睨、銀",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "gíng",
+        "class": "3",
+        "japan": "眼、研",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "giô",
+        "class": "3",
+        "japan": "蕘、蟯",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "gio̍h",
+        "class": "3",
+        "japan": "虐、謔",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "gio̍k",
+        "class": "3",
+        "japan": "玉、虐",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "go̍k",
+        "class": "3",
+        "japan": "嘓、愕",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "gông",
+        "class": "3",
+        "japan": "昂、楞",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "gôo",
+        "class": "3",
+        "japan": "娛、蜈",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "guā",
+        "class": "3",
+        "japan": "偌、外",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "guán",
+        "class": "3",
+        "japan": "玩、阮",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "guī",
+        "class": "3",
+        "japan": "偽、魏",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "hai",
+        "class": "3",
+        "japan": "咍、奒",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "ha̍k",
+        "class": "3",
+        "japan": "學、礐",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hán",
+        "class": "3",
+        "japan": "喊、罕",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hang",
+        "class": "3",
+        "japan": "烘、魴",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hàng",
+        "class": "3",
+        "japan": "肨、胮",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hāng",
+        "class": "3",
+        "japan": "巷、項",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hannh",
+        "class": "3",
+        "japan": "唅、熁",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "ha̍p",
+        "class": "3",
+        "japan": "合、闔",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hat",
+        "class": "3",
+        "japan": "喝、轄",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "ha̍t",
+        "class": "3",
+        "japan": "乏、核",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "he",
+        "class": "3",
+        "japan": "彼、痚",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hè",
+        "class": "3",
+        "japan": "歲、貨",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "heh",
+        "class": "3",
+        "japan": "嘿、嚇",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hí",
+        "class": "3",
+        "japan": "喜、許",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hî",
+        "class": "3",
+        "japan": "漁、魚",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hiā",
+        "class": "3",
+        "japan": "瓦、蟻",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hian",
+        "class": "3",
+        "japan": "掀、軒",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hián",
+        "class": "3",
+        "japan": "搟、顯",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hiān",
+        "class": "3",
+        "japan": "炫、現",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hiânn",
+        "class": "3",
+        "japan": "惶、燃",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hiannh",
+        "class": "3",
+        "japan": "嚇、挔",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hiat",
+        "class": "3",
+        "japan": "㧒、血",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hik",
+        "class": "3",
+        "japan": "嚇、黑",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hīnn",
+        "class": "3",
+        "japan": "硯、耳",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hiō",
+        "class": "3",
+        "japan": "后、後",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hioh",
+        "class": "3",
+        "japan": "歇、諾",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hio̍h",
+        "class": "3",
+        "japan": "葉、鴞",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hiok",
+        "class": "3",
+        "japan": "旭、郁",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hióng",
+        "class": "3",
+        "japan": "享、響",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hiông",
+        "class": "3",
+        "japan": "融、雄",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hiu",
+        "class": "3",
+        "japan": "休、咻",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hiù",
+        "class": "3",
+        "japan": "\ud86d、\udf7a",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hiunn",
+        "class": "3",
+        "japan": "鄉、香",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hm̂",
+        "class": "3",
+        "japan": "媒、茅",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "honn",
+        "class": "3",
+        "japan": "呼、齁",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hónn",
+        "class": "3",
+        "japan": "否、火",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hònn",
+        "class": "3",
+        "japan": "好、貨",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "huà",
+        "class": "3",
+        "japan": "化、華",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "huâ",
+        "class": "3",
+        "japan": "樺、華",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "huah",
+        "class": "3",
+        "japan": "喝、砉",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "huâinn",
+        "class": "3",
+        "japan": "橫、莖",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "huán",
+        "class": "3",
+        "japan": "反、返",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "huánn",
+        "class": "3",
+        "japan": "恍、晃",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "huè",
+        "class": "3",
+        "japan": "歲、貨",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "huî",
+        "class": "3",
+        "japan": "瓷、肥",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hún",
+        "class": "3",
+        "japan": "忿、粉",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hu̍t",
+        "class": "3",
+        "japan": "佛、核",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "iá",
+        "class": "3",
+        "japan": "冶、野",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "iah",
+        "class": "3",
+        "japan": "搤、益",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "iam",
+        "class": "3",
+        "japan": "閹、陰",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "iang",
+        "class": "3",
+        "japan": "央、秧",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "iāng",
+        "class": "3",
+        "japan": "偝、煬",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "iânn",
+        "class": "3",
+        "japan": "營、贏",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "iānn",
+        "class": "3",
+        "japan": "焱、颺",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "ìm",
+        "class": "3",
+        "japan": "廕、蔭",
+        "pre": "ì",
+        "addr": ""
+    },
+    {
+        "word": "ìn",
+        "class": "3",
+        "japan": "印、應",
+        "pre": "ì",
+        "addr": ""
+    },
+    {
+        "word": "īn",
+        "class": "3",
+        "japan": "孕、運",
+        "pre": "ī",
+        "addr": ""
+    },
+    {
+        "word": "înn",
+        "class": "3",
+        "japan": "員、圓",
+        "pre": "î",
+        "addr": ""
+    },
+    {
+        "word": "ioh",
+        "class": "3",
+        "japan": "唷、臆",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "io̍h",
+        "class": "3",
+        "japan": "藥、鑰",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "iōng",
+        "class": "3",
+        "japan": "樣、用",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "ip",
+        "class": "3",
+        "japan": "挹、邑",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "it",
+        "class": "3",
+        "japan": "一、乙",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "iúnn",
+        "class": "3",
+        "japan": "舀、養",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "jiân",
+        "class": "3",
+        "japan": "然、燃",
+        "pre": "j",
+        "addr": ""
+    },
+    {
+        "word": "jiáu",
+        "class": "3",
+        "japan": "擾、爪",
+        "pre": "j",
+        "addr": ""
+    },
+    {
+        "word": "jîn",
+        "class": "3",
+        "japan": "人、仁",
+        "pre": "j",
+        "addr": ""
+    },
+    {
+        "word": "jiōng",
+        "class": "3",
+        "japan": "讓、釀",
+        "pre": "j",
+        "addr": ""
+    },
+    {
+        "word": "juē",
+        "class": "3",
+        "japan": "叡、銳",
+        "pre": "j",
+        "addr": ""
+    },
+    {
+        "word": "kā",
+        "class": "3",
+        "japan": "共、咬",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kāng",
+        "class": "3",
+        "japan": "仝、共",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kann",
+        "class": "3",
+        "japan": "橄、監",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kāu",
+        "class": "3",
+        "japan": "厚、詬",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kê",
+        "class": "3",
+        "japan": "枷、膎",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kha̍h",
+        "class": "3",
+        "japan": "卡、闔",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khái",
+        "class": "3",
+        "japan": "凱、楷",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khài",
+        "class": "3",
+        "japan": "慨、概",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khàm",
+        "class": "3",
+        "japan": "勘、崁",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khan",
+        "class": "3",
+        "japan": "刊、牽",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khang",
+        "class": "3",
+        "japan": "工、空",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khàng",
+        "class": "3",
+        "japan": "控、空",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kháu",
+        "class": "3",
+        "japan": "口、巧",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khe",
+        "class": "3",
+        "japan": "刮、溪",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khê",
+        "class": "3",
+        "japan": "㧎、瘸",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khī",
+        "class": "3",
+        "japan": "忌、柿",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khia",
+        "class": "3",
+        "japan": "奇、迦",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khiam",
+        "class": "3",
+        "japan": "歉、謙",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khiàn",
+        "class": "3",
+        "japan": "芡、譴",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khiân",
+        "class": "3",
+        "japan": "乾、虔",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khiap",
+        "class": "3",
+        "japan": "㾀、怯",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khiau",
+        "class": "3",
+        "japan": "曲、蹺",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khiàu",
+        "class": "3",
+        "japan": "竅、翹",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khîn",
+        "class": "3",
+        "japan": "勤、芹",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khíng",
+        "class": "3",
+        "japan": "肯、頃",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khînn",
+        "class": "3",
+        "japan": "拑、鉗",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khiok",
+        "class": "3",
+        "japan": "卻、曲",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khip",
+        "class": "3",
+        "japan": "吸、泣",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khi̍t",
+        "class": "3",
+        "japan": "杙、煡",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khiu",
+        "class": "3",
+        "japan": "丘、鳩",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khiū",
+        "class": "3",
+        "japan": "\ud865、\udea8",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khiunn",
+        "class": "3",
+        "japan": "姜、腔",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khng",
+        "class": "3",
+        "japan": "康、糠",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khǹg",
+        "class": "3",
+        "japan": "勸、囥",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khōng",
+        "class": "3",
+        "japan": "吭、鞏",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khû",
+        "class": "3",
+        "japan": "瞿、跍",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khuà",
+        "class": "3",
+        "japan": "掛、靠",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khuah",
+        "class": "3",
+        "japan": "渴、闊",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khuan",
+        "class": "3",
+        "japan": "圈、寬",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khuân",
+        "class": "3",
+        "japan": "權、環",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khuat",
+        "class": "3",
+        "japan": "缺、闕",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khuê",
+        "class": "3",
+        "japan": "瘸、葵",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khuí",
+        "class": "3",
+        "japan": "傀、詭",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khùn",
+        "class": "3",
+        "japan": "困、睏",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khut",
+        "class": "3",
+        "japan": "屈、窟",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kián",
+        "class": "3",
+        "japan": "筧、繭",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kiann",
+        "class": "3",
+        "japan": "京、驚",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kiânn",
+        "class": "3",
+        "japan": "檠、行",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kiānn",
+        "class": "3",
+        "japan": "件、健",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "ki̍k",
+        "class": "3",
+        "japan": "劇、極",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kim",
+        "class": "3",
+        "japan": "今、金",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kín",
+        "class": "3",
+        "japan": "緊、謹",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kìn",
+        "class": "3",
+        "japan": "絹、靳",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kìnn",
+        "class": "3",
+        "japan": "桱、見",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kiô",
+        "class": "3",
+        "japan": "橋、茄",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kiông",
+        "class": "3",
+        "japan": "強、窮",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kiōng",
+        "class": "3",
+        "japan": "共、強",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kiú",
+        "class": "3",
+        "japan": "久、九",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kô",
+        "class": "3",
+        "japan": "笱、膏",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kō",
+        "class": "3",
+        "japan": "滒、翱",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kong",
+        "class": "3",
+        "japan": "胱、鋼",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kông",
+        "class": "3",
+        "japan": "栱、狂",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kuai",
+        "class": "3",
+        "japan": "乖、胿",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kuái",
+        "class": "3",
+        "japan": "拐、枴",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kuainn",
+        "class": "3",
+        "japan": "杆、關",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kuán",
+        "class": "3",
+        "japan": "管、館",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kuân",
+        "class": "3",
+        "japan": "懸、拳",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kuān",
+        "class": "3",
+        "japan": "倦、縣",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kūn",
+        "class": "3",
+        "japan": "近、郡",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "lá",
+        "class": "3",
+        "japan": "喇、拉",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lah",
+        "class": "3",
+        "japan": "啦、垃",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lán",
+        "class": "3",
+        "japan": "咱、懶",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "la̍t",
+        "class": "3",
+        "japan": "力、栗",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "le̍h",
+        "class": "3",
+        "japan": "剺、笠",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "li",
+        "class": "3",
+        "japan": "哩、離",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lí",
+        "class": "3",
+        "japan": "里、鯉",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "liah",
+        "class": "3",
+        "japan": "裂、跡",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "liam",
+        "class": "3",
+        "japan": "拈、跕",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "liâng",
+        "class": "3",
+        "japan": "涼、粱",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lím",
+        "class": "3",
+        "japan": "忍、臨",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lin",
+        "class": "3",
+        "japan": "玲、輪",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "li̍t",
+        "class": "3",
+        "japan": "日、暱",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "liu",
+        "class": "3",
+        "japan": "溜、鰡",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lok",
+        "class": "3",
+        "japan": "橐、漉",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lòng",
+        "class": "3",
+        "japan": "挵、閬",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lōng",
+        "class": "3",
+        "japan": "弄、浪",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "luā",
+        "class": "3",
+        "japan": "瀨、賴",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "luān",
+        "class": "3",
+        "japan": "亂、戀",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lué",
+        "class": "3",
+        "japan": "詈、餒",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lu̍t",
+        "class": "3",
+        "japan": "律、率",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "m̂",
+        "class": "3",
+        "japan": "梅、莓",
+        "pre": "m",
+        "addr": ""
+    },
+    {
+        "word": "ma",
+        "class": "3",
+        "japan": "媽、馬",
+        "pre": "m",
+        "addr": ""
+    },
+    {
+        "word": "mā",
+        "class": "3",
+        "japan": "嘛、罵",
+        "pre": "m",
+        "addr": ""
+    },
+    {
+        "word": "mah",
+        "class": "3",
+        "japan": "嘛、媽",
+        "pre": "m",
+        "addr": ""
+    },
+    {
+        "word": "mâu",
+        "class": "3",
+        "japan": "矛、茅",
+        "pre": "m",
+        "addr": ""
+    },
+    {
+        "word": "meh",
+        "class": "3",
+        "japan": "咩、蜢",
+        "pre": "m",
+        "addr": ""
+    },
+    {
+        "word": "mí",
+        "class": "3",
+        "japan": "乜、彌",
+        "pre": "m",
+        "addr": ""
+    },
+    {
+        "word": "mn̂g",
+        "class": "3",
+        "japan": "毛、門",
+        "pre": "m",
+        "addr": ""
+    },
+    {
+        "word": "moo",
+        "class": "3",
+        "japan": "摸、毛",
+        "pre": "m",
+        "addr": ""
+    },
+    {
+        "word": "mo̍oh",
+        "class": "3",
+        "japan": "瘼、膜",
+        "pre": "m",
+        "addr": ""
+    },
+    {
+        "word": "nah",
+        "class": "3",
+        "japan": "凹、爁",
+        "pre": "n",
+        "addr": ""
+    },
+    {
+        "word": "náu",
+        "class": "3",
+        "japan": "惱、腦",
+        "pre": "n",
+        "addr": ""
+    },
+    {
+        "word": "ǹg",
+        "class": "3",
+        "japan": "向、怏",
+        "pre": "ǹ",
+        "addr": ""
+    },
+    {
+        "word": "n̂g",
+        "class": "3",
+        "japan": "圇、黃",
+        "pre": "n",
+        "addr": ""
+    },
+    {
+        "word": "ngâu",
+        "class": "3",
+        "japan": "爻、肴",
+        "pre": "n",
+        "addr": ""
+    },
+    {
+        "word": "ngāu",
+        "class": "3",
+        "japan": "樂、藕",
+        "pre": "n",
+        "addr": ""
+    },
+    {
+        "word": "ngeh",
+        "class": "3",
+        "japan": "夾、莢",
+        "pre": "n",
+        "addr": ""
+    },
+    {
+        "word": "ni",
+        "class": "3",
+        "japan": "奶、拈",
+        "pre": "n",
+        "addr": ""
+    },
+    {
+        "word": "ní",
+        "class": "3",
+        "japan": "染、耳",
+        "pre": "n",
+        "addr": ""
+    },
+    {
+        "word": "nī",
+        "class": "3",
+        "japan": "爾、莉",
+        "pre": "n",
+        "addr": ""
+    },
+    {
+        "word": "niá",
+        "class": "3",
+        "japan": "嶺、領",
+        "pre": "n",
+        "addr": ""
+    },
+    {
+        "word": "niā",
+        "class": "3",
+        "japan": "爾、陵",
+        "pre": "n",
+        "addr": ""
+    },
+    {
+        "word": "niáu",
+        "class": "3",
+        "japan": "爪、鳥",
+        "pre": "n",
+        "addr": ""
+    },
+    {
+        "word": "niú",
+        "class": "3",
+        "japan": "兩、扭",
+        "pre": "n",
+        "addr": ""
+    },
+    {
+        "word": "niū",
+        "class": "3",
+        "japan": "讓、量",
+        "pre": "n",
+        "addr": ""
+    },
+    {
+        "word": "nn̄g",
+        "class": "3",
+        "japan": "兩、卵",
+        "pre": "n",
+        "addr": ""
+    },
+    {
+        "word": "nōo",
+        "class": "3",
+        "japan": "怒、懦",
+        "pre": "n",
+        "addr": ""
+    },
+    {
+        "word": "nuâ",
+        "class": "3",
+        "japan": "攔、欄",
+        "pre": "n",
+        "addr": ""
+    },
+    {
+        "word": "ong",
+        "class": "3",
+        "japan": "汪、翁",
+        "pre": "o",
+        "addr": ""
+    },
+    {
+        "word": "óng",
+        "class": "3",
+        "japan": "往、枉",
+        "pre": "ó",
+        "addr": ""
+    },
+    {
+        "word": "onn",
+        "class": "3",
+        "japan": "唔、嗚",
+        "pre": "o",
+        "addr": ""
+    },
+    {
+        "word": "ònn",
+        "class": "3",
+        "japan": "噁、惡",
+        "pre": "ò",
+        "addr": ""
+    },
+    {
+        "word": "óo",
+        "class": "3",
+        "japan": "嘔、挖",
+        "pre": "ó",
+        "addr": ""
+    },
+    {
+        "word": "pá",
+        "class": "3",
+        "japan": "把、飽",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pâ",
+        "class": "3",
+        "japan": "爸、琶",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pái",
+        "class": "3",
+        "japan": "擺、跛",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pa̍k",
+        "class": "3",
+        "japan": "縛、贌",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pân",
+        "class": "3",
+        "japan": "便、瓶",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pāng",
+        "class": "3",
+        "japan": "棒、蚌",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pa̍t",
+        "class": "3",
+        "japan": "別、菝",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pé",
+        "class": "3",
+        "japan": "把、靶",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pe̍h",
+        "class": "3",
+        "japan": "帛、白",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phài",
+        "class": "3",
+        "japan": "沛、派",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phak",
+        "class": "3",
+        "japan": "仆、覆",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phàn",
+        "class": "3",
+        "japan": "盼、襻",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phang",
+        "class": "3",
+        "japan": "芳、蜂",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pháng",
+        "class": "3",
+        "japan": "紡、麭",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phâu",
+        "class": "3",
+        "japan": "袍、跑",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phe",
+        "class": "3",
+        "japan": "坯、胚",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phē",
+        "class": "3",
+        "japan": "稗、被",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phênn",
+        "class": "3",
+        "japan": "彭、澎",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phiah",
+        "class": "3",
+        "japan": "僻、癖",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phia̍h",
+        "class": "3",
+        "japan": "甓、癖",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phiann",
+        "class": "3",
+        "japan": "抨、骿",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phiàu",
+        "class": "3",
+        "japan": "漂、票",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phinn",
+        "class": "3",
+        "japan": "偏、篇",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phiò",
+        "class": "3",
+        "japan": "漂、票",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phiô",
+        "class": "3",
+        "japan": "瓢、薸",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phò",
+        "class": "3",
+        "japan": "泡、破",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phō",
+        "class": "3",
+        "japan": "抱、部",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phông",
+        "class": "3",
+        "japan": "膀、蘋",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phōng",
+        "class": "3",
+        "japan": "滂、蓬",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phoo",
+        "class": "3",
+        "japan": "鋪、麩",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phôo",
+        "class": "3",
+        "japan": "扶、菩",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phōo",
+        "class": "3",
+        "japan": "廍、簿",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phuan",
+        "class": "3",
+        "japan": "潘、藩",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phuân",
+        "class": "3",
+        "japan": "盤、磐",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phuànn",
+        "class": "3",
+        "japan": "判、販",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phuē",
+        "class": "3",
+        "japan": "稗、被",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phuì",
+        "class": "3",
+        "japan": "呸、屁",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phun",
+        "class": "3",
+        "japan": "奔、潘",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phûn",
+        "class": "3",
+        "japan": "墳、盆",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phut",
+        "class": "3",
+        "japan": "刜、怫",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "piah",
+        "class": "3",
+        "japan": "壁、弊",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "piàn",
+        "class": "3",
+        "japan": "變、遍",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "piánn",
+        "class": "3",
+        "japan": "丙、餅",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "piànn",
+        "class": "3",
+        "japan": "拚、摒",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pìn",
+        "class": "3",
+        "japan": "篦、鬢",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pìng",
+        "class": "3",
+        "japan": "併、柄",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pīng",
+        "class": "3",
+        "japan": "並、病",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pìnn",
+        "class": "3",
+        "japan": "柄、變",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pīnn",
+        "class": "3",
+        "japan": "病、辮",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pio",
+        "class": "3",
+        "japan": "標、鏢",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pió",
+        "class": "3",
+        "japan": "表、錶",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pńg",
+        "class": "3",
+        "japan": "本、榜",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pn̄g",
+        "class": "3",
+        "japan": "傍、飯",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pō",
+        "class": "3",
+        "japan": "抱、暴",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "poh",
+        "class": "3",
+        "japan": "卜、駁",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "po̍h",
+        "class": "3",
+        "japan": "箔、薄",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pòng",
+        "class": "3",
+        "japan": "嗙、謗",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pū",
+        "class": "3",
+        "japan": "婦、孵",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "puah",
+        "class": "3",
+        "japan": "撥、缽",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "puàn",
+        "class": "3",
+        "japan": "半、絆",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "puān",
+        "class": "3",
+        "japan": "叛、畔",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "puann",
+        "class": "3",
+        "japan": "搬、般",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "puànn",
+        "class": "3",
+        "japan": "半、絆",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "puânn",
+        "class": "3",
+        "japan": "盤、磐",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "puat",
+        "class": "3",
+        "japan": "撥、缽",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pún",
+        "class": "3",
+        "japan": "扁、本",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pùn",
+        "class": "3",
+        "japan": "畚、糞",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pūn",
+        "class": "3",
+        "japan": "畚、笨",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pu̍t",
+        "class": "3",
+        "japan": "佛、勃",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "sàn",
+        "class": "3",
+        "japan": "傘、散",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sáng",
+        "class": "3",
+        "japan": "桑、聳",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sannh",
+        "class": "3",
+        "japan": "喢、煞",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sé",
+        "class": "3",
+        "japan": "洗、黍",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "senn",
+        "class": "3",
+        "japan": "牲、生",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sènn",
+        "class": "3",
+        "japan": "姓、性",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "siá",
+        "class": "3",
+        "japan": "寫、捨",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "siak",
+        "class": "3",
+        "japan": "摔、鑠",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "siam",
+        "class": "3",
+        "japan": "䀐、纖",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "siám",
+        "class": "3",
+        "japan": "閃、陝",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "siâm",
+        "class": "3",
+        "japan": "尋、蟾",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sia̍p",
+        "class": "3",
+        "japan": "洩、涉",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "siāu",
+        "class": "3",
+        "japan": "篠、紹",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "si̍h",
+        "class": "3",
+        "japan": "窸、蝕",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sīm",
+        "class": "3",
+        "japan": "愖、甚",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "síng",
+        "class": "3",
+        "japan": "省、醒",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sinn",
+        "class": "3",
+        "japan": "牲、生",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "siòng",
+        "class": "3",
+        "japan": "相、象",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "siúnn",
+        "class": "3",
+        "japan": "賞、鯗",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sǹg",
+        "class": "3",
+        "japan": "算、繏",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sóng",
+        "class": "3",
+        "japan": "松、爽",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sóo",
+        "class": "3",
+        "japan": "所、瘦",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sū",
+        "class": "3",
+        "japan": "署、豎",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "suah",
+        "class": "3",
+        "japan": "撒、煞",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "suàn",
+        "class": "3",
+        "japan": "算、蒜",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "suân",
+        "class": "3",
+        "japan": "旋、璿",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sue",
+        "class": "3",
+        "japan": "梳、衰",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sué",
+        "class": "3",
+        "japan": "洗、黍",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "suh",
+        "class": "3",
+        "japan": "斯、欶",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "suí",
+        "class": "3",
+        "japan": "媠、水",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sūn",
+        "class": "3",
+        "japan": "循、順",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "tái",
+        "class": "3",
+        "japan": "歹、滓",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tam",
+        "class": "3",
+        "japan": "啖、擔",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tām",
+        "class": "3",
+        "japan": "啖、淡",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "táng",
+        "class": "3",
+        "japan": "懂、董",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tāng",
+        "class": "3",
+        "japan": "動、重",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tann",
+        "class": "3",
+        "japan": "今、擔",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tánn",
+        "class": "3",
+        "japan": "打、膽",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tànn",
+        "class": "3",
+        "japan": "呾、擔",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tap",
+        "class": "3",
+        "japan": "搭、答",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "ta̍p",
+        "class": "3",
+        "japan": "沓、踏",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tau",
+        "class": "3",
+        "japan": "兜、掜",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "táu",
+        "class": "3",
+        "japan": "斗、篤",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tâu",
+        "class": "3",
+        "japan": "投、骰",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tènn",
+        "class": "3",
+        "japan": "佯、瞪",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tēnn",
+        "class": "3",
+        "japan": "捏、鄭",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thah",
+        "class": "3",
+        "japan": "塔、榻",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thái",
+        "class": "3",
+        "japan": "癩、體",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thāi",
+        "class": "3",
+        "japan": "待、態",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tham",
+        "class": "3",
+        "japan": "探、貪",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thàng",
+        "class": "3",
+        "japan": "痛、迵",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thánn",
+        "class": "3",
+        "japan": "坦、挺",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thap",
+        "class": "3",
+        "japan": "塌、榻",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thè",
+        "class": "3",
+        "japan": "替、退",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thê",
+        "class": "3",
+        "japan": "堤、提",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "the̍h",
+        "class": "3",
+        "japan": "宅、提",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thi",
+        "class": "3",
+        "japan": "麶、黐",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thí",
+        "class": "3",
+        "japan": "恥、褫",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thî",
+        "class": "3",
+        "japan": "啼、苔",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thian",
+        "class": "3",
+        "japan": "天、顛",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thiann",
+        "class": "3",
+        "japan": "廳、聽",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thiap",
+        "class": "3",
+        "japan": "帖、貼",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thiáu",
+        "class": "3",
+        "japan": "挑、窕",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thiàu",
+        "class": "3",
+        "japan": "糶、跳",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thing",
+        "class": "3",
+        "japan": "廳、聽",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thinn",
+        "class": "3",
+        "japan": "天、添",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thiok",
+        "class": "3",
+        "japan": "畜、蓄",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thióng",
+        "class": "3",
+        "japan": "塚、寵",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thiu",
+        "class": "3",
+        "japan": "抽、紬",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thǹg",
+        "class": "3",
+        "japan": "燙、褪",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thn̂g",
+        "class": "3",
+        "japan": "傳、糖",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thô",
+        "class": "3",
+        "japan": "桃、迌",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thóng",
+        "class": "3",
+        "japan": "捅、統",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thōng",
+        "class": "3",
+        "japan": "宕、緟",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thóo",
+        "class": "3",
+        "japan": "吐、土",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thòo",
+        "class": "3",
+        "japan": "兔、吐",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thuā",
+        "class": "3",
+        "japan": "汰、豸",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thuân",
+        "class": "3",
+        "japan": "傳、團",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thuann",
+        "class": "3",
+        "japan": "攤、灘",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thui",
+        "class": "3",
+        "japan": "推、梯",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thuî",
+        "class": "3",
+        "japan": "槌、錘",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thûn",
+        "class": "3",
+        "japan": "豚、黗",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tí",
+        "class": "3",
+        "japan": "抵、邸",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tiàm",
+        "class": "3",
+        "japan": "店、踮",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tiām",
+        "class": "3",
+        "japan": "墊、恬",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tian",
+        "class": "3",
+        "japan": "滇、顛",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tiân",
+        "class": "3",
+        "japan": "田、纏",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tiânn",
+        "class": "3",
+        "japan": "埕、庭",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "ti̍h",
+        "class": "3",
+        "japan": "挃、碟",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tìm",
+        "class": "3",
+        "japan": "抌、掂",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tīm",
+        "class": "3",
+        "japan": "朕、燖",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tìnn",
+        "class": "3",
+        "japan": "佯、瞪",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tiō",
+        "class": "3",
+        "japan": "癜、趙",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tiok",
+        "class": "3",
+        "japan": "竹、竺",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tng",
+        "class": "3",
+        "japan": "張、當",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tǹg",
+        "class": "3",
+        "japan": "當、頓",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tò",
+        "class": "3",
+        "japan": "倒、到",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "to̍h",
+        "class": "3",
+        "japan": "擇、著",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsah",
+        "class": "3",
+        "japan": "扎、紮",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsa̍h",
+        "class": "3",
+        "japan": "鍘、閘",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsám",
+        "class": "3",
+        "japan": "嶄、斬",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsām",
+        "class": "3",
+        "japan": "站、鏨",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsán",
+        "class": "3",
+        "japan": "盞、讚",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsân",
+        "class": "3",
+        "japan": "層、殘",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsáng",
+        "class": "3",
+        "japan": "摠、總",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsa̍t",
+        "class": "3",
+        "japan": "實、賊",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsáu",
+        "class": "3",
+        "japan": "蚤、走",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsàu",
+        "class": "3",
+        "japan": "奏、灶",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsâu",
+        "class": "3",
+        "japan": "剿、巢",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshá",
+        "class": "3",
+        "japan": "吵、炒",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshâ",
+        "class": "3",
+        "japan": "查、柴",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshâi",
+        "class": "3",
+        "japan": "才、裁",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsham",
+        "class": "3",
+        "japan": "參、摻",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshang",
+        "class": "3",
+        "japan": "娼、蔥",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshàng",
+        "class": "3",
+        "japan": "聳、藏",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsha̍p",
+        "class": "3",
+        "japan": "㴙、眨",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsháu",
+        "class": "3",
+        "japan": "吵、草",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshé",
+        "class": "3",
+        "japan": "扯、髓",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshē",
+        "class": "3",
+        "japan": "坐、揣",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshī",
+        "class": "3",
+        "japan": "市、飼",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshián",
+        "class": "3",
+        "japan": "淺、闡",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshiánn",
+        "class": "3",
+        "japan": "且、請",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshiânn",
+        "class": "3",
+        "japan": "成、晟",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshiap",
+        "class": "3",
+        "japan": "妾、竊",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshiau",
+        "class": "3",
+        "japan": "搜、超",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshiàu",
+        "class": "3",
+        "japan": "俏、笑",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshi̍h",
+        "class": "3",
+        "japan": "揤、蠘",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshi̍k",
+        "class": "3",
+        "japan": "摵、踔",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshim",
+        "class": "3",
+        "japan": "侵、深",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshìn",
+        "class": "3",
+        "japan": "凊、秤",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshîng",
+        "class": "3",
+        "japan": "松、榕",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshioh",
+        "class": "3",
+        "japan": "尺、沢",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshióng",
+        "class": "3",
+        "japan": "搶、縱",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tship",
+        "class": "3",
+        "japan": "緝、輯",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshiû",
+        "class": "3",
+        "japan": "愁、揫",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshiúnn",
+        "class": "3",
+        "japan": "廠、搶",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshiùnn",
+        "class": "3",
+        "japan": "唱、啾",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshó",
+        "class": "3",
+        "japan": "楚、草",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshoo",
+        "class": "3",
+        "japan": "初、粗",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshóo",
+        "class": "3",
+        "japan": "楚、礎",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshòo",
+        "class": "3",
+        "japan": "措、醋",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshuè",
+        "class": "3",
+        "japan": "摖、粞",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshuê",
+        "class": "3",
+        "japan": "棰、箠",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshuh",
+        "class": "3",
+        "japan": "焠、眵",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshùn",
+        "class": "3",
+        "japan": "吋、寸",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshut",
+        "class": "3",
+        "japan": "出、齣",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsiá",
+        "class": "3",
+        "japan": "姐、者",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsia̍h",
+        "class": "3",
+        "japan": "炸、食",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsiām",
+        "class": "3",
+        "japan": "暫、漸",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsian",
+        "class": "3",
+        "japan": "煎、箋",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsiân",
+        "class": "3",
+        "japan": "前、錢",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsiān",
+        "class": "3",
+        "japan": "賤、踐",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsiann",
+        "class": "3",
+        "japan": "正、精",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsiap",
+        "class": "3",
+        "japan": "接、汁",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsia̍t",
+        "class": "3",
+        "japan": "截、捷",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsih",
+        "class": "3",
+        "japan": "接、摺",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsi̍h",
+        "class": "3",
+        "japan": "折、舌",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsím",
+        "class": "3",
+        "japan": "嬸、枕",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsîn",
+        "class": "3",
+        "japan": "秦、繩",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsínn",
+        "class": "3",
+        "japan": "井、茈",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsînn",
+        "class": "3",
+        "japan": "簷、錢",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsiò",
+        "class": "3",
+        "japan": "照、醮",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsi̍t",
+        "class": "3",
+        "japan": "一、疾",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsiú",
+        "class": "3",
+        "japan": "守、酒",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsiù",
+        "class": "3",
+        "japan": "咒、蛀",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsiūnn",
+        "class": "3",
+        "japan": "上、癢",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tso",
+        "class": "3",
+        "japan": "慒、遭",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tso̍k",
+        "class": "3",
+        "japan": "族、鏃",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsoo",
+        "class": "3",
+        "japan": "租、組",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsuā",
+        "class": "3",
+        "japan": "誓、逝",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsuan",
+        "class": "3",
+        "japan": "專、磚",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsuán",
+        "class": "3",
+        "japan": "賺、轉",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsuân",
+        "class": "3",
+        "japan": "全、泉",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsuān",
+        "class": "3",
+        "japan": "撰、轉",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsuánn",
+        "class": "3",
+        "japan": "怎、盞",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsuânn",
+        "class": "3",
+        "japan": "殘、泉",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsūn",
+        "class": "3",
+        "japan": "捘、陣",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tuà",
+        "class": "3",
+        "japan": "帶、蹛",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tuā",
+        "class": "3",
+        "japan": "大、舵",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tuàn",
+        "class": "3",
+        "japan": "斷、鍛",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tué",
+        "class": "3",
+        "japan": "底、貯",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tui",
+        "class": "3",
+        "japan": "堆、追",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tuì",
+        "class": "3",
+        "japan": "對、碓",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tún",
+        "class": "3",
+        "japan": "囤、盾",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tùn",
+        "class": "3",
+        "japan": "鈍、頓",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tûn",
+        "class": "3",
+        "japan": "唇、脣",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "ua",
+        "class": "3",
+        "japan": "娃、蛙",
+        "pre": "u",
+        "addr": ""
+    },
+    {
+        "word": "uá",
+        "class": "3",
+        "japan": "倚、瓦",
+        "pre": "u",
+        "addr": ""
+    },
+    {
+        "word": "uān",
+        "class": "3",
+        "japan": "援、緩",
+        "pre": "u",
+        "addr": ""
+    },
+    {
+        "word": "uann",
+        "class": "3",
+        "japan": "安、鞍",
+        "pre": "u",
+        "addr": ""
+    },
+    {
+        "word": "uánn",
+        "class": "3",
+        "japan": "碗、腕",
+        "pre": "u",
+        "addr": ""
+    },
+    {
+        "word": "uànn",
+        "class": "3",
+        "japan": "晏、案",
+        "pre": "u",
+        "addr": ""
+    },
+    {
+        "word": "uānn",
+        "class": "3",
+        "japan": "換、旱",
+        "pre": "u",
+        "addr": ""
+    },
+    {
+        "word": "ué",
+        "class": "3",
+        "japan": "挖、矮",
+        "pre": "u",
+        "addr": ""
+    },
+    {
+        "word": "uê",
+        "class": "3",
+        "japan": "喂、鞋",
+        "pre": "u",
+        "addr": ""
+    },
+    {
+        "word": "ue̍h",
+        "class": "3",
+        "japan": "劃、狹",
+        "pre": "u",
+        "addr": ""
+    },
+    {
+        "word": "ut",
+        "class": "3",
+        "japan": "熨、鬱",
+        "pre": "u",
+        "addr": ""
+    },
+    {
+        "word": "u̍t",
+        "class": "3",
+        "japan": "聿、遹",
+        "pre": "u",
+        "addr": ""
+    },
+    {
+        "word": "ak",
+        "class": "5",
+        "japan": "握、沃、齷",
+        "pre": "a",
+        "addr": ""
+    },
+    {
+        "word": "àn",
+        "class": "5",
+        "japan": "按、晏、案",
+        "pre": "à",
+        "addr": ""
+    },
+    {
+        "word": "ap",
+        "class": "5",
+        "japan": "壓、押、握",
+        "pre": "a",
+        "addr": ""
+    },
+    {
+        "word": "au",
+        "class": "5",
+        "japan": "歐、漚、甌",
+        "pre": "a",
+        "addr": ""
+    },
+    {
+        "word": "áu",
+        "class": "5",
+        "japan": "嘔、拗、漚",
+        "pre": "á",
+        "addr": ""
+    },
+    {
+        "word": "bâi",
+        "class": "5",
+        "japan": "埋、楣、眉",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bân",
+        "class": "5",
+        "japan": "蠻、閩、饅",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "báng",
+        "class": "5",
+        "japan": "蟒、蠓、魍",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bâng",
+        "class": "5",
+        "japan": "忙、芒、茫",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bāng",
+        "class": "5",
+        "japan": "夢、望、網",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "biân",
+        "class": "5",
+        "japan": "棉、眠、綿",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bia̍t",
+        "class": "5",
+        "japan": "滅、篾、蔑",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "biáu",
+        "class": "5",
+        "japan": "渺、秒、藐",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "biâu",
+        "class": "5",
+        "japan": "描、苗、錨",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bîn",
+        "class": "5",
+        "japan": "明、民、眠",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bi̍t",
+        "class": "5",
+        "japan": "密、沕、蜜",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bóo",
+        "class": "5",
+        "japan": "某、牡、畝",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bû",
+        "class": "5",
+        "japan": "巫、無、誣",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "buán",
+        "class": "5",
+        "japan": "晚、滿、輓",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "buē",
+        "class": "5",
+        "japan": "未、袂、賣",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "būn",
+        "class": "5",
+        "japan": "問、悶、燜",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "è",
+        "class": "5",
+        "japan": "穢、翳、裔",
+        "pre": "è",
+        "addr": ""
+    },
+    {
+        "word": "ê",
+        "class": "5",
+        "japan": "个、的、鞋",
+        "pre": "ê",
+        "addr": ""
+    },
+    {
+        "word": "ē",
+        "class": "5",
+        "japan": "下、會、禍",
+        "pre": "ē",
+        "addr": ""
+    },
+    {
+        "word": "gē",
+        "class": "5",
+        "japan": "毅、藝、詣",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "gí",
+        "class": "5",
+        "japan": "擬、蟻、語",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "giâm",
+        "class": "5",
+        "japan": "嚴、岩、閻",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "gîng",
+        "class": "5",
+        "japan": "凝、迎、龍",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "gōo",
+        "class": "5",
+        "japan": "五、午、誤",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "hā",
+        "class": "5",
+        "japan": "下、夏、暇",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "ha̍h",
+        "class": "5",
+        "japan": "協、合、箬",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hâm",
+        "class": "5",
+        "japan": "函、含、涵",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hām",
+        "class": "5",
+        "japan": "和、憾、陷",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hé",
+        "class": "5",
+        "japan": "伙、夥、火",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hì",
+        "class": "5",
+        "japan": "唏、戲、肺",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hia",
+        "class": "5",
+        "japan": "桸、遐、靴",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hiáng",
+        "class": "5",
+        "japan": "享、響、饗",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "him",
+        "class": "5",
+        "japan": "欣、歆、鑫",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hiòng",
+        "class": "5",
+        "japan": "向、嚮、餉",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hōng",
+        "class": "5",
+        "japan": "俸、奉、鳳",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hóo",
+        "class": "5",
+        "japan": "唬、滸、虎",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hua",
+        "class": "5",
+        "japan": "化、花、華",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "huā",
+        "class": "5",
+        "japan": "嘩、樺、譁",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "huat",
+        "class": "5",
+        "japan": "法、發、髮",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "huì",
+        "class": "5",
+        "japan": "廢、沸、費",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "iâ",
+        "class": "5",
+        "japan": "椰、爺、耶",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "iā",
+        "class": "5",
+        "japan": "也、夜、掖",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "ián",
+        "class": "5",
+        "japan": "偃、演、衍",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "iàn",
+        "class": "5",
+        "japan": "厭、宴、燕",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "ia̍t",
+        "class": "5",
+        "japan": "悅、擛、閱",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "iáu",
+        "class": "5",
+        "japan": "夭、猶、窈",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "im",
+        "class": "5",
+        "japan": "淹、陰、音",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "ín",
+        "class": "5",
+        "japan": "允、引、癮",
+        "pre": "í",
+        "addr": ""
+    },
+    {
+        "word": "inn",
+        "class": "5",
+        "japan": "嚶、嬰、纓",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "ìnn",
+        "class": "5",
+        "japan": "喑、嬰、燕",
+        "pre": "ì",
+        "addr": ""
+    },
+    {
+        "word": "iô",
+        "class": "5",
+        "japan": "姚、搖、窯",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "jî",
+        "class": "5",
+        "japan": "兒、猊、而",
+        "pre": "j",
+        "addr": ""
+    },
+    {
+        "word": "jîm",
+        "class": "5",
+        "japan": "任、壬、撏",
+        "pre": "j",
+        "addr": ""
+    },
+    {
+        "word": "jiông",
+        "class": "5",
+        "japan": "瓤、絨、茸",
+        "pre": "j",
+        "addr": ""
+    },
+    {
+        "word": "jú",
+        "class": "5",
+        "japan": "乳、庾、愈",
+        "pre": "j",
+        "addr": ""
+    },
+    {
+        "word": "jū",
+        "class": "5",
+        "japan": "喻、裕、諭",
+        "pre": "j",
+        "addr": ""
+    },
+    {
+        "word": "jūn",
+        "class": "5",
+        "japan": "潤、閏、韌",
+        "pre": "j",
+        "addr": ""
+    },
+    {
+        "word": "ká",
+        "class": "5",
+        "japan": "假、絞、賈",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kái",
+        "class": "5",
+        "japan": "改、解、骱",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kàm",
+        "class": "5",
+        "japan": "監、艦、鑑",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kàn",
+        "class": "5",
+        "japan": "姦、幹、間",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kauh",
+        "class": "5",
+        "japan": "軋、\ud865、\udee9",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kénn",
+        "class": "5",
+        "japan": "哽、梗、耞",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khak",
+        "class": "5",
+        "japan": "殼、確、麴",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kham",
+        "class": "5",
+        "japan": "勘、堪、龕",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khám",
+        "class": "5",
+        "japan": "坎、歁、砍",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khat",
+        "class": "5",
+        "japan": "渴、\ud84c、\udc73",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khè",
+        "class": "5",
+        "japan": "契、架、齧",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khi",
+        "class": "5",
+        "japan": "敧、欺、蹊",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khî",
+        "class": "5",
+        "japan": "疧、蜞、騎",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khiàm",
+        "class": "5",
+        "japan": "欠、歉、芡",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khian",
+        "class": "5",
+        "japan": "圈、掔、牽",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khián",
+        "class": "5",
+        "japan": "犬、譴、遣",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khim",
+        "class": "5",
+        "japan": "欽、矜、襟",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khîm",
+        "class": "5",
+        "japan": "擒、琴、禽",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khîng",
+        "class": "5",
+        "japan": "擎、瓊、窮",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kho",
+        "class": "5",
+        "japan": "柯、科、苛",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khó",
+        "class": "5",
+        "japan": "可、洘、考",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khò",
+        "class": "5",
+        "japan": "犒、課、靠",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kho̍k",
+        "class": "5",
+        "japan": "柝、硞、鱷",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khóng",
+        "class": "5",
+        "japan": "孔、慷、紺",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khoo",
+        "class": "5",
+        "japan": "可、呼、箍",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khóo",
+        "class": "5",
+        "japan": "可、苦、許",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khū",
+        "class": "5",
+        "japan": "俱、具、臼",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khui",
+        "class": "5",
+        "japan": "窺、虧、開",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khuì",
+        "class": "5",
+        "japan": "愧、氣、潰",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khun",
+        "class": "5",
+        "japan": "坤、昆、髡",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kiám",
+        "class": "5",
+        "japan": "檢、減、鹼",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kian",
+        "class": "5",
+        "japan": "堅、慳、肩",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kia̍t",
+        "class": "5",
+        "japan": "傑、杰、桀",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kiâu",
+        "class": "5",
+        "japan": "僑、喬、橋",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kiāu",
+        "class": "5",
+        "japan": "撟、撬、轎",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "king",
+        "class": "5",
+        "japan": "莖、間、驚",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kīng",
+        "class": "5",
+        "japan": "勁、楗、競",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kiok",
+        "class": "5",
+        "japan": "腳、菊、鞠",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kio̍k",
+        "class": "5",
+        "japan": "侷、劇、局",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kióng",
+        "class": "5",
+        "japan": "強、拱、鞏",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kip",
+        "class": "5",
+        "japan": "急、級、給",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kiù",
+        "class": "5",
+        "japan": "救、究、糾",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kiunn",
+        "class": "5",
+        "japan": "姜、羌、薑",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kng",
+        "class": "5",
+        "japan": "光、扛、缸",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kó",
+        "class": "5",
+        "japan": "果、稿、裹",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "ko̍k",
+        "class": "5",
+        "japan": "咯、嘓、焗",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kòng",
+        "class": "5",
+        "japan": "摃、絳、貢",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kua",
+        "class": "5",
+        "japan": "柯、歌、瓜",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kuah",
+        "class": "5",
+        "japan": "割、括、葛",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kuáinn",
+        "class": "5",
+        "japan": "枴、桿、稈",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kuānn",
+        "class": "5",
+        "japan": "捾、汗、綰",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kue",
+        "class": "5",
+        "japan": "瓜、街、雞",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kué",
+        "class": "5",
+        "japan": "果、粿、跂",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kún",
+        "class": "5",
+        "japan": "滾、蚓、頸",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "ku̍t",
+        "class": "5",
+        "japan": "掘、滑、猾",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "lâi",
+        "class": "5",
+        "japan": "來、梨、萊",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lāi",
+        "class": "5",
+        "japan": "內、利、鴟",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "làm",
+        "class": "5",
+        "japan": "湳、\ud860、\udcbe",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lām",
+        "class": "5",
+        "japan": "濫、纜、艦",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lang",
+        "class": "5",
+        "japan": "櫳、籠、郎",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lāng",
+        "class": "5",
+        "japan": "俍、弄、籠",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "la̍p",
+        "class": "5",
+        "japan": "納、蠟、衲",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lāu",
+        "class": "5",
+        "japan": "漏、老、鬧",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "liáu",
+        "class": "5",
+        "japan": "了、擾、瞭",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "liāu",
+        "class": "5",
+        "japan": "廖、料、繚",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "līn",
+        "class": "5",
+        "japan": "吝、藺、認",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "liô",
+        "class": "5",
+        "japan": "撩、\ud841、\udfad",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "li̍p",
+        "class": "5",
+        "japan": "入、立、笠",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lo",
+        "class": "5",
+        "japan": "叨、嘮、囉",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lo̍h",
+        "class": "5",
+        "japan": "絡、落、駱",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lo̍k",
+        "class": "5",
+        "japan": "露、駱、鹿",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "long",
+        "class": "5",
+        "japan": "囊、瑯、龍",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "luân",
+        "class": "5",
+        "japan": "戀、鑾、鸞",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lún",
+        "class": "5",
+        "japan": "忍、懍、碖",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "mi",
+        "class": "5",
+        "japan": "搣、糜、鞭",
+        "pre": "m",
+        "addr": ""
+    },
+    {
+        "word": "miâ",
+        "class": "5",
+        "japan": "名、明、樠",
+        "pre": "m",
+        "addr": ""
+    },
+    {
+        "word": "muê",
+        "class": "5",
+        "japan": "媒、梅、煤",
+        "pre": "m",
+        "addr": ""
+    },
+    {
+        "word": "nā",
+        "class": "5",
+        "japan": "但、吶、若",
+        "pre": "n",
+        "addr": ""
+    },
+    {
+        "word": "ne",
+        "class": "5",
+        "japan": "呢、奶、拈",
+        "pre": "n",
+        "addr": ""
+    },
+    {
+        "word": "neh",
+        "class": "5",
+        "japan": "凹、呢、躡",
+        "pre": "n",
+        "addr": ""
+    },
+    {
+        "word": "ng",
+        "class": "5",
+        "japan": "央、掩、秧",
+        "pre": "n",
+        "addr": ""
+    },
+    {
+        "word": "ngōo",
+        "class": "5",
+        "japan": "傲、悟、臥",
+        "pre": "n",
+        "addr": ""
+    },
+    {
+        "word": "nn̂g",
+        "class": "5",
+        "japan": "榔、瓤、郎",
+        "pre": "n",
+        "addr": ""
+    },
+    {
+        "word": "ò",
+        "class": "5",
+        "japan": "奧、澳、薁",
+        "pre": "ò",
+        "addr": ""
+    },
+    {
+        "word": "ok",
+        "class": "5",
+        "japan": "屋、惡、握",
+        "pre": "o",
+        "addr": ""
+    },
+    {
+        "word": "pah",
+        "class": "5",
+        "japan": "叭、爸、百",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pān",
+        "class": "5",
+        "japan": "扮、範、辦",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pe",
+        "class": "5",
+        "japan": "扒、菠、飛",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pênn",
+        "class": "5",
+        "japan": "坪、平、棚",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pha",
+        "class": "5",
+        "japan": "拋、脬、葩",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phâng",
+        "class": "5",
+        "japan": "帆、捀、篷",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phàu",
+        "class": "5",
+        "japan": "泡、炮、砲",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phè",
+        "class": "5",
+        "japan": "帕、杮、配",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phi",
+        "class": "5",
+        "japan": "批、披、砒",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phî",
+        "class": "5",
+        "japan": "疲、皮、脾",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phian",
+        "class": "5",
+        "japan": "偏、篇、翩",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phiàn",
+        "class": "5",
+        "japan": "片、遍、騙",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phing",
+        "class": "5",
+        "japan": "娉、拼、烹",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pho",
+        "class": "5",
+        "japan": "坡、泡、波",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phoh",
+        "class": "5",
+        "japan": "朴、樸、粕",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phòng",
+        "class": "5",
+        "japan": "椪、碰、膨",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phue",
+        "class": "5",
+        "japan": "坯、批、胚",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phuè",
+        "class": "5",
+        "japan": "佩、杮、配",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pí",
+        "class": "5",
+        "japan": "妣、彼、比",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "piān",
+        "class": "5",
+        "japan": "便、辨、辯",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "piáu",
+        "class": "5",
+        "japan": "婊、表、裱",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pi̍k",
+        "class": "5",
+        "japan": "帛、白、闢",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pín",
+        "class": "5",
+        "japan": "稟、箅、鉼",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "ping",
+        "class": "5",
+        "japan": "兵、冰、崩",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pînn",
+        "class": "5",
+        "japan": "坪、平、棚",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "png",
+        "class": "5",
+        "japan": "幫、方、楓",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "po",
+        "class": "5",
+        "japan": "玻、菠、褒",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pó",
+        "class": "5",
+        "japan": "保、堡、寶",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pông",
+        "class": "5",
+        "japan": "房、旁、篷",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pû",
+        "class": "5",
+        "japan": "匏、垺、炰",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pua̍h",
+        "class": "5",
+        "japan": "拔、跋、鈸",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "puh",
+        "class": "5",
+        "japan": "不、普、發",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "put",
+        "class": "5",
+        "japan": "不、抔、柫",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "sam",
+        "class": "5",
+        "japan": "三、杉、舢",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sán",
+        "class": "5",
+        "japan": "散、產、瘦",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sann",
+        "class": "5",
+        "japan": "三、相、衫",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sàu",
+        "class": "5",
+        "japan": "哨、嗽、掃",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "seh",
+        "class": "5",
+        "japan": "楔、說、雪",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sí",
+        "class": "5",
+        "japan": "始、死、矢",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sî",
+        "class": "5",
+        "japan": "匙、時、辭",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "siah",
+        "class": "5",
+        "japan": "削、嗇、錫",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sia̍h",
+        "class": "5",
+        "japan": "夕、杓、石",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sián",
+        "class": "5",
+        "japan": "仙、癬、鮮",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "siàn",
+        "class": "5",
+        "japan": "扇、搧、煽",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "siân",
+        "class": "5",
+        "japan": "涎、禪、蟬",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "siânn",
+        "class": "5",
+        "japan": "唌、城、成",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "siap",
+        "class": "5",
+        "japan": "卌、屧、澀",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "siat",
+        "class": "5",
+        "japan": "削、泄、設",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sih",
+        "class": "5",
+        "japan": "爍、薛、蟋",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sim",
+        "class": "5",
+        "japan": "參、心、森",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sím",
+        "class": "5",
+        "japan": "嬸、審、沈",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sīn",
+        "class": "5",
+        "japan": "剩、慎、腎",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sìnn",
+        "class": "5",
+        "japan": "姓、性、扇",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sio",
+        "class": "5",
+        "japan": "燒、相、蕭",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "siu",
+        "class": "5",
+        "japan": "修、收、羞",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "siú",
+        "class": "5",
+        "japan": "守、手、首",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "siūnn",
+        "class": "5",
+        "japan": "尚、想、象",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sńg",
+        "class": "5",
+        "japan": "損、爽、耍",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "só",
+        "class": "5",
+        "japan": "嫂、瑣、鎖",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sò",
+        "class": "5",
+        "japan": "埽、掃、燥",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sòng",
+        "class": "5",
+        "japan": "喪、宋、送",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "suān",
+        "class": "5",
+        "japan": "漩、璇、訕",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "suànn",
+        "class": "5",
+        "japan": "傘、散、線",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sùn",
+        "class": "5",
+        "japan": "瞬、舜、遜",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "su̍t",
+        "class": "5",
+        "japan": "窣、術、述",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "tah",
+        "class": "5",
+        "japan": "搭、答、貼",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tai",
+        "class": "5",
+        "japan": "呆、秮、鮘",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tài",
+        "class": "5",
+        "japan": "代、帶、戴",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tâm",
+        "class": "5",
+        "japan": "澹、談、譚",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tan",
+        "class": "5",
+        "japan": "丹、單、癉",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "ta̍t",
+        "class": "5",
+        "japan": "值、笛、達",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "te",
+        "class": "5",
+        "japan": "嗲、炱、秪",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tê",
+        "class": "5",
+        "japan": "茶、蹄、題",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "teh",
+        "class": "5",
+        "japan": "咧、嗲、硩",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "than",
+        "class": "5",
+        "japan": "攤、灘、蟶",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thang",
+        "class": "5",
+        "japan": "熥、窗、通",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "that",
+        "class": "5",
+        "japan": "窒、踢、躂",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thiau",
+        "class": "5",
+        "japan": "刁、挑、超",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thn̄g",
+        "class": "5",
+        "japan": "杖、熥、碭",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thong",
+        "class": "5",
+        "japan": "湯、蓪、通",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thôo",
+        "class": "5",
+        "japan": "塗、涂、頭",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thuànn",
+        "class": "5",
+        "japan": "湠、炭、碳",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thuh",
+        "class": "5",
+        "japan": "托、禿、黜",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thut",
+        "class": "5",
+        "japan": "禿、脫、黜",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tián",
+        "class": "5",
+        "japan": "典、展、輾",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tiānn",
+        "class": "5",
+        "japan": "定、碇、錠",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tin",
+        "class": "5",
+        "japan": "徵、津、珍",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tìng",
+        "class": "5",
+        "japan": "中、叮、釘",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tīnn",
+        "class": "5",
+        "japan": "捏、滇、鄭",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tio̍k",
+        "class": "5",
+        "japan": "築、著、逐",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tiong",
+        "class": "5",
+        "japan": "中、張、忠",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tiông",
+        "class": "5",
+        "japan": "腸、重、長",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tiū",
+        "class": "5",
+        "japan": "宙、稻、紂",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tiùnn",
+        "class": "5",
+        "japan": "帳、漲、脹",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "to",
+        "class": "5",
+        "japan": "刀、多、都",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "toh",
+        "class": "5",
+        "japan": "佗、卓、桌",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tong",
+        "class": "5",
+        "japan": "冬、東、當",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsa",
+        "class": "5",
+        "japan": "昨、查、臢",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsài",
+        "class": "5",
+        "japan": "再、哉、載",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsan",
+        "class": "5",
+        "japan": "曾、罾、齻",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsâng",
+        "class": "5",
+        "japan": "叢、欉、灇",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsa̍p",
+        "class": "5",
+        "japan": "十、咂、雜",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsat",
+        "class": "5",
+        "japan": "札、節、紮",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsê",
+        "class": "5",
+        "japan": "臍、蠐、齊",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tseh",
+        "class": "5",
+        "japan": "仄、節、績",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshai",
+        "class": "5",
+        "japan": "差、猜、釵",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshàm",
+        "class": "5",
+        "japan": "懺、摻、讖",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshan",
+        "class": "5",
+        "japan": "呻、潺、餐",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshân",
+        "class": "5",
+        "japan": "殘、田、蠶",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshê",
+        "class": "5",
+        "japan": "䠡、棰、箠",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsheh",
+        "class": "5",
+        "japan": "冊、嘖、慼",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshî",
+        "class": "5",
+        "japan": "徐、持、溡",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshia",
+        "class": "5",
+        "japan": "奢、捙、車",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshiah",
+        "class": "5",
+        "japan": "刺、赤、鍤",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshiam",
+        "class": "5",
+        "japan": "攕、簽、籤",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshiân",
+        "class": "5",
+        "japan": "延、腸、錢",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshiat",
+        "class": "5",
+        "japan": "切、掣、竊",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshíng",
+        "class": "5",
+        "japan": "惝、筅、請",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshiòng",
+        "class": "5",
+        "japan": "倡、唱、縱",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshiú",
+        "class": "5",
+        "japan": "帚、手、醜",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshiunn",
+        "class": "5",
+        "japan": "槍、腔、鯧",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshok",
+        "class": "5",
+        "japan": "撮、簇、錯",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshū",
+        "class": "5",
+        "japan": "呲、澍、跙",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshuah",
+        "class": "5",
+        "japan": "掣、疶、礤",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshuàn",
+        "class": "5",
+        "japan": "串、竄、篡",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshue",
+        "class": "5",
+        "japan": "初、吹、炊",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsiàm",
+        "class": "5",
+        "japan": "佔、僭、占",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsiânn",
+        "class": "5",
+        "japan": "情、成、誠",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsiat",
+        "class": "5",
+        "japan": "折、浙、節",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsiàu",
+        "class": "5",
+        "japan": "照、詔、醮",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsiâu",
+        "class": "5",
+        "japan": "憔、樵、齊",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsim",
+        "class": "5",
+        "japan": "唚、斟、箴",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsìn",
+        "class": "5",
+        "japan": "晉、進、震",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsīn",
+        "class": "5",
+        "japan": "儘、盡、贐",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsio",
+        "class": "5",
+        "japan": "招、椒、蕉",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsioh",
+        "class": "5",
+        "japan": "借、藉、襀",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsiúnn",
+        "class": "5",
+        "japan": "掌、槳、蔣",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsn̄g",
+        "class": "5",
+        "japan": "旋、狀、臟",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsó",
+        "class": "5",
+        "japan": "左、棗、澡",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsô",
+        "class": "5",
+        "japan": "曹、槽、艚",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsòng",
+        "class": "5",
+        "japan": "壯、綜、葬",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsōng",
+        "class": "5",
+        "japan": "狀、臟、藏",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsóo",
+        "class": "5",
+        "japan": "祖、走、阻",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsua̍h",
+        "class": "5",
+        "japan": "差、縒、蚻",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsuat",
+        "class": "5",
+        "japan": "拙、撮、泏",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsuè",
+        "class": "5",
+        "japan": "做、最、贅",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsuē",
+        "class": "5",
+        "japan": "濟、睡、罪",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsui",
+        "class": "5",
+        "japan": "脽、錐、鵻",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsun",
+        "class": "5",
+        "japan": "尊、蹲、遵",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsún",
+        "class": "5",
+        "japan": "准、撙、準",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsûn",
+        "class": "5",
+        "japan": "前、存、船",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tù",
+        "class": "5",
+        "japan": "注、滯、著",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tū",
+        "class": "5",
+        "japan": "嘟、箸、駐",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tuann",
+        "class": "5",
+        "japan": "單、端、蛋",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tuânn",
+        "class": "5",
+        "japan": "壇、彈、檀",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tuānn",
+        "class": "5",
+        "japan": "彈、惰、段",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tuê",
+        "class": "5",
+        "japan": "蹄、頹、題",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "ù",
+        "class": "5",
+        "japan": "汙、澳、焐",
+        "pre": "ù",
+        "addr": ""
+    },
+    {
+        "word": "uē",
+        "class": "5",
+        "japan": "畫、衛、話",
+        "pre": "u",
+        "addr": ""
+    },
+    {
+        "word": "ūn",
+        "class": "5",
+        "japan": "暈、運、韻",
+        "pre": "ū",
+        "addr": ""
+    },
+    {
+        "word": "a",
+        "class": "7",
+        "japan": "亞、腌、阿、鴉",
+        "pre": "a",
+        "addr": ""
+    },
+    {
+        "word": "ai",
+        "class": "7",
+        "japan": "哀、哎、埃、挨",
+        "pre": "a",
+        "addr": ""
+    },
+    {
+        "word": "ài",
+        "class": "7",
+        "japan": "噯、愛、曖、隘",
+        "pre": "à",
+        "addr": ""
+    },
+    {
+        "word": "bā",
+        "class": "7",
+        "japan": "峇、擸、覓、鴟",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "ba̍k",
+        "class": "7",
+        "japan": "墨、木、目、茉",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bē",
+        "class": "7",
+        "japan": "妹、未、袂、賣",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bín",
+        "class": "7",
+        "japan": "憫、抿、敏、閔",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bôo",
+        "class": "7",
+        "japan": "摹、模、牟、謀",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "eh",
+        "class": "7",
+        "japan": "厄、呃、喂、欸",
+        "pre": "e",
+        "addr": ""
+    },
+    {
+        "word": "ga̍k",
+        "class": "7",
+        "japan": "岳、嶽、樂、獄",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "gān",
+        "class": "7",
+        "japan": "岸、彥、諺、雁",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "gî",
+        "class": "7",
+        "japan": "儀、宜、疑、誼",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "gī",
+        "class": "7",
+        "japan": "毅、義、誼、議",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "giâ",
+        "class": "7",
+        "japan": "夯、蜈、迎、鵝",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "gô",
+        "class": "7",
+        "japan": "俄、熬、遨、鵝",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "gū",
+        "class": "7",
+        "japan": "寓、御、禦、遇",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "guân",
+        "class": "7",
+        "japan": "元、原、源、頑",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "hâ",
+        "class": "7",
+        "japan": "瑕、縖、荷、霞",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hāi",
+        "class": "7",
+        "japan": "亥、害、械、蟹",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hâng",
+        "class": "7",
+        "japan": "杭、航、行、降",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hia̍p",
+        "class": "7",
+        "japan": "協、拹、狹、脅",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hiau",
+        "class": "7",
+        "japan": "僥、囂、梟、驍",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hng",
+        "class": "7",
+        "japan": "坊、方、昏、荒",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "huâi",
+        "class": "7",
+        "japan": "懷、槐、淮、頦",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "huānn",
+        "class": "7",
+        "japan": "岸、扞、旱、銲",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hue",
+        "class": "7",
+        "japan": "恢、灰、花、飛",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "huī",
+        "class": "7",
+        "japan": "吠、彗、惠、慧",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hut",
+        "class": "7",
+        "japan": "囫、彿、忽、拂",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "ī",
+        "class": "7",
+        "japan": "奕、易、異、預",
+        "pre": "ī",
+        "addr": ""
+    },
+    {
+        "word": "iām",
+        "class": "7",
+        "japan": "炎、焰、燄、豔",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "iâu",
+        "class": "7",
+        "japan": "姚、搖、謠、遙",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "ìng",
+        "class": "7",
+        "japan": "壅、應、映、蕹",
+        "pre": "ì",
+        "addr": ""
+    },
+    {
+        "word": "iú",
+        "class": "7",
+        "japan": "友、有、誘、酉",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "jiâu",
+        "class": "7",
+        "japan": "皺、蟯、饒、鱙",
+        "pre": "j",
+        "addr": ""
+    },
+    {
+        "word": "jiû",
+        "class": "7",
+        "japan": "揉、柔、榆、鰇",
+        "pre": "j",
+        "addr": ""
+    },
+    {
+        "word": "kai",
+        "class": "7",
+        "japan": "偕、皆、該、階",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "káng",
+        "class": "7",
+        "japan": "港、犅、講、購",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kat",
+        "class": "7",
+        "japan": "割、墼、結、葛",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khah",
+        "class": "7",
+        "japan": "卡、盍、籗、較",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khàu",
+        "class": "7",
+        "japan": "叩、哭、扣、銬",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khí",
+        "class": "7",
+        "japan": "綺、豈、起、齒",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khiò",
+        "class": "7",
+        "japan": "叩、徼、竅、筧",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khiong",
+        "class": "7",
+        "japan": "僵、姜、殭、腔",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khòo",
+        "class": "7",
+        "japan": "寇、庫、怐、褲",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khuè",
+        "class": "7",
+        "japan": "契、架、課、齧",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khún",
+        "class": "7",
+        "japan": "墾、懇、捆、窘",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khûn",
+        "class": "7",
+        "japan": "勤、囷、芹、蜷",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kiàn",
+        "class": "7",
+        "japan": "建、毽、腱、見",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kiān",
+        "class": "7",
+        "japan": "健、胘、腱、鍵",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kiap",
+        "class": "7",
+        "japan": "俠、劫、峽、裌",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kiau",
+        "class": "7",
+        "japan": "交、嬌、轎、驕",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kiû",
+        "class": "7",
+        "japan": "仇、毬、求、球",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kiū",
+        "class": "7",
+        "japan": "咎、柩、舅、舊",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kńg",
+        "class": "7",
+        "japan": "卷、廣、捲、管",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kò",
+        "class": "7",
+        "japan": "個、划、告、過",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kóng",
+        "class": "7",
+        "japan": "廣、栱、管、講",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kú",
+        "class": "7",
+        "japan": "久、矩、舉、韭",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kù",
+        "class": "7",
+        "japan": "句、據、灸、鋸",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kueh",
+        "class": "7",
+        "japan": "刮、蕨、郭、鍥",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kuī",
+        "class": "7",
+        "japan": "櫃、膭、跪、饋",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "lak",
+        "class": "7",
+        "japan": "戮、橐、落、轆",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "láng",
+        "class": "7",
+        "japan": "儱、攏、朗、籠",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "liám",
+        "class": "7",
+        "japan": "斂、染、膁、臉",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "liām",
+        "class": "7",
+        "japan": "唸、念、捻、殮",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "liān",
+        "class": "7",
+        "japan": "楝、煉、練、鍊",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lia̍t",
+        "class": "7",
+        "japan": "列、烈、熱、裂",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "liâu",
+        "class": "7",
+        "japan": "遼、鐐、饒、鱙",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "líng",
+        "class": "7",
+        "japan": "伶、冷、嶺、領",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lióng",
+        "class": "7",
+        "japan": "倆、兩、嚷、輛",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lō",
+        "class": "7",
+        "japan": "勞、囉、烙、號",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lóng",
+        "class": "7",
+        "japan": "壟、攏、朗、籠",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lua̍h",
+        "class": "7",
+        "japan": "埒、捋、熱、辣",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "luán",
+        "class": "7",
+        "japan": "卵、暖、耎、軟",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "luî",
+        "class": "7",
+        "japan": "擂、癗、鐳、雷",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "luī",
+        "class": "7",
+        "japan": "淚、累、縋、類",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "má",
+        "class": "7",
+        "japan": "媽、瑪、碼、馬",
+        "pre": "m",
+        "addr": ""
+    },
+    {
+        "word": "māi",
+        "class": "7",
+        "japan": "昧、覓、賣、邁",
+        "pre": "m",
+        "addr": ""
+    },
+    {
+        "word": "mê",
+        "class": "7",
+        "japan": "明、暝、盲、鋩",
+        "pre": "m",
+        "addr": ""
+    },
+    {
+        "word": "mî",
+        "class": "7",
+        "japan": "暝、棉、盲、綿",
+        "pre": "m",
+        "addr": ""
+    },
+    {
+        "word": "muâ",
+        "class": "7",
+        "japan": "痲、瞞、鰻、麻",
+        "pre": "m",
+        "addr": ""
+    },
+    {
+        "word": "muî",
+        "class": "7",
+        "japan": "媒、梅、玫、莓",
+        "pre": "m",
+        "addr": ""
+    },
+    {
+        "word": "nāi",
+        "class": "7",
+        "japan": "奈、耐、荔、賴",
+        "pre": "n",
+        "addr": ""
+    },
+    {
+        "word": "nuā",
+        "class": "7",
+        "japan": "僆、懶、瀾、爛",
+        "pre": "n",
+        "addr": ""
+    },
+    {
+        "word": "pà",
+        "class": "7",
+        "japan": "壩、把、豹、霸",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pak",
+        "class": "7",
+        "japan": "剝、北、幅、腹",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pan",
+        "class": "7",
+        "japan": "斑、班、般、頒",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pán",
+        "class": "7",
+        "japan": "板、版、舨、闆",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pâng",
+        "class": "7",
+        "japan": "房、縫、馮、龐",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pau",
+        "class": "7",
+        "japan": "包、胞、苞、鮑",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pē",
+        "class": "7",
+        "japan": "敝、斃、爸、耙",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phí",
+        "class": "7",
+        "japan": "否、疕、痞、鄙",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phiau",
+        "class": "7",
+        "japan": "標、漂、飄、飆",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pho̍k",
+        "class": "7",
+        "japan": "噗、曝、泡、簿",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phû",
+        "class": "7",
+        "japan": "浮、烰、芙、葡",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pî",
+        "class": "7",
+        "japan": "枇、琵、皮、脾",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pī",
+        "class": "7",
+        "japan": "備、婢、被、避",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pian",
+        "class": "7",
+        "japan": "扳、編、邊、鞭",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pián",
+        "class": "7",
+        "japan": "匾、扁、諞、貶",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pih",
+        "class": "7",
+        "japan": "撆、湢、馝、鱉",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pîn",
+        "class": "7",
+        "japan": "屏、憑、貧、頻",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "píng",
+        "class": "7",
+        "japan": "丙、反、炳、秉",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pinn",
+        "class": "7",
+        "japan": "編、繃、邊、鞭",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pit",
+        "class": "7",
+        "japan": "伯、必、畢、筆",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pōng",
+        "class": "7",
+        "japan": "傍、碰、磅、蓬",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "poo",
+        "class": "7",
+        "japan": "埔、埠、晡、蜅",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "póo",
+        "class": "7",
+        "japan": "捕、斧、脯、補",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pōo",
+        "class": "7",
+        "japan": "哺、埠、步、部",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pua̍t",
+        "class": "7",
+        "japan": "拔、菝、跋、鈸",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pue",
+        "class": "7",
+        "japan": "杯、桮、菠、飛",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "puê",
+        "class": "7",
+        "japan": "培、裴、賠、陪",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "sái",
+        "class": "7",
+        "japan": "使、史、屎、駛",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sài",
+        "class": "7",
+        "japan": "使、塞、婿、賽",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sāi",
+        "class": "7",
+        "japan": "似、侍、姒、祀",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sàm",
+        "class": "7",
+        "japan": "三、搧、毿、鬖",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "san",
+        "class": "7",
+        "japan": "刪、山、星、芟",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sap",
+        "class": "7",
+        "japan": "圾、屑、雪、霎",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sì",
+        "class": "7",
+        "japan": "世、勢、四、施",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sià",
+        "class": "7",
+        "japan": "卸、瀉、舍、赦",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "siâ",
+        "class": "7",
+        "japan": "佘、斜、蛇、邪",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "siā",
+        "class": "7",
+        "japan": "射、社、謝、麝",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "siáu",
+        "class": "7",
+        "japan": "小、少、痟、篠",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sìn",
+        "class": "7",
+        "japan": "信、囟、訊、迅",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sìng",
+        "class": "7",
+        "japan": "勝、姓、性、聖",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "si̍p",
+        "class": "7",
+        "japan": "十、拾、習、襲",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "siunn",
+        "class": "7",
+        "japan": "傷、廂、相、箱",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sua",
+        "class": "7",
+        "japan": "沙、痧、砂、鯊",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "suat",
+        "class": "7",
+        "japan": "刷、說、雪、鱈",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "suî",
+        "class": "7",
+        "japan": "垂、箠、誰、隨",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sún",
+        "class": "7",
+        "japan": "恂、損、榫、筍",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "ta",
+        "class": "7",
+        "japan": "大、奈、焦、礁",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "ta̍k",
+        "class": "7",
+        "japan": "濁、獨、碡、逐",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tàn",
+        "class": "7",
+        "japan": "擲、旦、蛋、誕",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tān",
+        "class": "7",
+        "japan": "但、彈、憚、誕",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tàng",
+        "class": "7",
+        "japan": "㨂、凍、棟、當",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tàu",
+        "class": "7",
+        "japan": "到、晝、罩、鬥",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tāu",
+        "class": "7",
+        "japan": "痘、脰、讀、豆",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "té",
+        "class": "7",
+        "japan": "底、抵、短、貯",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thai",
+        "class": "7",
+        "japan": "篩、胎、苔、颱",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thán",
+        "class": "7",
+        "japan": "坦、妲、毯、疸",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thàn",
+        "class": "7",
+        "japan": "嘆、探、歎、趁",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thiat",
+        "class": "7",
+        "japan": "徹、撤、澈、鐵",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thik",
+        "class": "7",
+        "japan": "剔、斥、畜、踢",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thíng",
+        "class": "7",
+        "japan": "寵、挺、艇、逞",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thò",
+        "class": "7",
+        "japan": "唾、套、妥、透",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thok",
+        "class": "7",
+        "japan": "戳、托、拓、託",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thú",
+        "class": "7",
+        "japan": "杵、苧、褚、貯",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thuah",
+        "class": "7",
+        "japan": "屜、挩、獺、脫",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "ti",
+        "class": "7",
+        "japan": "呧、知、蜘、豬",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tiān",
+        "class": "7",
+        "japan": "佃、奠、殿、電",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tiāu",
+        "class": "7",
+        "japan": "兆、掉、肇、調",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tîn",
+        "class": "7",
+        "japan": "塵、籐、藤、陳",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tíng",
+        "class": "7",
+        "japan": "戥、等、頂、鼎",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tiòng",
+        "class": "7",
+        "japan": "中、帳、漲、脹",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tiû",
+        "class": "7",
+        "japan": "稠、籌、綢、躊",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tó",
+        "class": "7",
+        "japan": "佗、倒、島、禱",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tóng",
+        "class": "7",
+        "japan": "懂、檔、董、黨",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsà",
+        "class": "7",
+        "japan": "榨、炸、祚、詐",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsâi",
+        "class": "7",
+        "japan": "才、材、臍、財",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsáinn",
+        "class": "7",
+        "japan": "宰、指、滓、載",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsàn",
+        "class": "7",
+        "japan": "層、棧、讚、贊",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsang",
+        "class": "7",
+        "japan": "㨑、棕、鬃、鯮",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsau",
+        "class": "7",
+        "japan": "㷮、糟、蹧、鄒",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsē",
+        "class": "7",
+        "japan": "坐、寨、濟、罪",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshat",
+        "class": "7",
+        "japan": "察、擦、檫、漆",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshau",
+        "class": "7",
+        "japan": "抄、操、臊、鈔",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshì",
+        "class": "7",
+        "japan": "刺、翅、莿、試",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshian",
+        "class": "7",
+        "japan": "仟、千、遷、韆",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshing",
+        "class": "7",
+        "japan": "千、清、稱、青",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshiûnn",
+        "class": "7",
+        "japan": "楊、牆、薔、颺",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshiūnn",
+        "class": "7",
+        "japan": "上、像、匠、象",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsho",
+        "class": "7",
+        "japan": "操、磋、臊、蹉",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshú",
+        "class": "7",
+        "japan": "取、此、處、鼠",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshù",
+        "class": "7",
+        "japan": "厝、次、處、趣",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshuan",
+        "class": "7",
+        "japan": "川、穿、詮、釧",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsià",
+        "class": "7",
+        "japan": "借、炙、蔗、鷓",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsik",
+        "class": "7",
+        "japan": "責、跡、蹟、隻",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsi̍k",
+        "class": "7",
+        "japan": "寂、疾、籍、賊",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsing",
+        "class": "7",
+        "japan": "蒸、貞、鍾、鐘",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsīng",
+        "class": "7",
+        "japan": "淨、贈、靖、靜",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsìnn",
+        "class": "7",
+        "japan": "搢、箭、糋、諍",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsióng",
+        "class": "7",
+        "japan": "掌、獎、種、長",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsiòng",
+        "class": "7",
+        "japan": "將、眾、種、障",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsiunn",
+        "class": "7",
+        "japan": "樟、漿、章、螿",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsò",
+        "class": "7",
+        "japan": "佐、做、灶、縐",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsông",
+        "class": "7",
+        "japan": "傱、叢、崇、藏",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsú",
+        "class": "7",
+        "japan": "主、仔、子、煮",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsû",
+        "class": "7",
+        "japan": "喌、慈、磁、薯",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tu",
+        "class": "7",
+        "japan": "㧣、株、蛛、豬",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tuān",
+        "class": "7",
+        "japan": "傳、斷、段、緞",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tuē",
+        "class": "7",
+        "japan": "兌、地、第、苧",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tuī",
+        "class": "7",
+        "japan": "兌、墜、墮、隊",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tun",
+        "class": "7",
+        "japan": "墩、敦、鈍、鶉",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "u",
+        "class": "7",
+        "japan": "汙、污、烏、趺",
+        "pre": "u",
+        "addr": ""
+    },
+    {
+        "word": "uan",
+        "class": "7",
+        "japan": "冤、彎、灣、鴛",
+        "pre": "u",
+        "addr": ""
+    },
+    {
+        "word": "ua̍t",
+        "class": "7",
+        "japan": "悅、曰、越、閱",
+        "pre": "u",
+        "addr": ""
+    },
+    {
+        "word": "ue",
+        "class": "7",
+        "japan": "椏、煨、萵、鍋",
+        "pre": "u",
+        "addr": ""
+    },
+    {
+        "word": "ui",
+        "class": "7",
+        "japan": "威、揻、萎、衣",
+        "pre": "u",
+        "addr": ""
+    },
+    {
+        "word": "uí",
+        "class": "7",
+        "japan": "偉、委、瑋、萎",
+        "pre": "u",
+        "addr": ""
+    },
+    {
+        "word": "ún",
+        "class": "7",
+        "japan": "允、尹、穩、隱",
+        "pre": "ú",
+        "addr": ""
+    },
+    {
+        "word": "ùn",
+        "class": "7",
+        "japan": "塭、慍、搵、蘊",
+        "pre": "ù",
+        "addr": ""
+    },
+    {
+        "word": "bé",
+        "class": "7",
+        "japan": "尾、瑪、碼、買",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bî",
+        "class": "9",
+        "japan": "咪、微、眉、眯、薇",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bián",
+        "class": "9",
+        "japan": "免、勉、娩、愍、鮸",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bi̍k",
+        "class": "9",
+        "japan": "墨、脈、覓、陌、默",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bōng",
+        "class": "9",
+        "japan": "墓、夢、妄、忘、望",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "e",
+        "class": "9",
+        "japan": "下、倭、挨、萵、鍋",
+        "pre": "e",
+        "addr": ""
+    },
+    {
+        "word": "gê",
+        "class": "9",
+        "japan": "㤉、倪、牙、芽、衙",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "gi̍k",
+        "class": "9",
+        "japan": "獄、玉、虐、逆、額",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "hâi",
+        "class": "9",
+        "japan": "孩、諧、鞋、頦、骸",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hān",
+        "class": "9",
+        "japan": "旱、汗、瀚、翰、限",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hāu",
+        "class": "9",
+        "japan": "候、後、效、校、鱟",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hê",
+        "class": "9",
+        "japan": "回、奚、攜、蝦、霞",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hiàn",
+        "class": "9",
+        "japan": "憲、獻、現、絢、羶",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hing",
+        "class": "9",
+        "japan": "亨、兄、胸、興、馨",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hong",
+        "class": "9",
+        "japan": "豐、轟、酆、鋒、風",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "huàn",
+        "class": "9",
+        "japan": "喚、幻、泛、煥、販",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hua̍t",
+        "class": "9",
+        "japan": "乏、伐、活、發、罰",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hué",
+        "class": "9",
+        "japan": "伙、夥、悔、火、賄",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "huē",
+        "class": "9",
+        "japan": "匯、慧、會、繪、薈",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hùn",
+        "class": "9",
+        "japan": "奮、憤、楦、糞、訓",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hūn",
+        "class": "9",
+        "japan": "份、分、恨、昏、混",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "i",
+        "class": "9",
+        "japan": "伊、依、衣、遺、醫",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "í",
+        "class": "9",
+        "japan": "以、倚、已、椅、與",
+        "pre": "í",
+        "addr": ""
+    },
+    {
+        "word": "ì",
+        "class": "9",
+        "japan": "意、懿、翳、薏、裔",
+        "pre": "ì",
+        "addr": ""
+    },
+    {
+        "word": "iau",
+        "class": "9",
+        "japan": "妖、枵、腰、要、邀",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "ik",
+        "class": "9",
+        "japan": "億、憶、溢、益、臆",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "íng",
+        "class": "9",
+        "japan": "影、往、永、泳、湧",
+        "pre": "í",
+        "addr": ""
+    },
+    {
+        "word": "io",
+        "class": "9",
+        "japan": "么、歐、育、腰、邀",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "iong",
+        "class": "9",
+        "japan": "央、殃、泱、秧、鴦",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "jī",
+        "class": "9",
+        "japan": "二、字、膩、貳、餌",
+        "pre": "j",
+        "addr": ""
+    },
+    {
+        "word": "ka",
+        "class": "9",
+        "japan": "虼、袈、鉸、鮫、鵁",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kam",
+        "class": "9",
+        "japan": "柑、甘、疳、監、魽",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kàu",
+        "class": "9",
+        "japan": "到、夠、教、校、較",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "ke",
+        "class": "9",
+        "japan": "加、基、家、街、雞",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "ké",
+        "class": "9",
+        "japan": "假、果、粿、解、跂",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kenn",
+        "class": "9",
+        "japan": "庚、更、經、羹、驚",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kha",
+        "class": "9",
+        "japan": "咳、尻、枷、茭、跤",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khau",
+        "class": "9",
+        "japan": "剾、扣、敲、薅、鬮",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khiat",
+        "class": "9",
+        "japan": "戛、揭、詰、譎、頡",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khik",
+        "class": "9",
+        "japan": "克、刻、剋、客、曲",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khue",
+        "class": "9",
+        "japan": "恢、溪、盔、詼、魁",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kī",
+        "class": "9",
+        "japan": "巨、己、忌、拒、距",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kiáu",
+        "class": "9",
+        "japan": "攪、矯、筊、繳、餃",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kinn",
+        "class": "9",
+        "japan": "庚、更、經、羹、鹼",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kǹg",
+        "class": "9",
+        "japan": "券、卷、槓、貫、鋼",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "koh",
+        "class": "9",
+        "japan": "各、哥、胳、過、閣",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kuat",
+        "class": "9",
+        "japan": "刮、抉、括、決、訣",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kuí",
+        "class": "9",
+        "japan": "幾、癸、詭、軌、鬼",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "lâ",
+        "class": "9",
+        "japan": "垃、膋、蜊、蟧、鯪",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "la̍h",
+        "class": "9",
+        "japan": "曆、獵、臘、蠟、鱲",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "la̍k",
+        "class": "9",
+        "japan": "六、慄、搦、磟、陸",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lâng",
+        "class": "9",
+        "japan": "人、礱、籠、聾、膿",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "láu",
+        "class": "9",
+        "japan": "佬、扭、粩、老、荖",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lâu",
+        "class": "9",
+        "japan": "劉、樓、流、留、鐃",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lé",
+        "class": "9",
+        "japan": "儡、嬭、禮、詈、醴",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "liú",
+        "class": "9",
+        "japan": "扭、柳、紐、綹、鈕",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "luē",
+        "class": "9",
+        "japan": "內、叡、篱、銳、鑢",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "luí",
+        "class": "9",
+        "japan": "壘、磊、累、蕊、蕾",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lûn",
+        "class": "9",
+        "japan": "倫、圇、淪、綸、輪",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lūn",
+        "class": "9",
+        "japan": "崙、潤、論、閏、韌",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "nâ",
+        "class": "9",
+        "japan": "嚨、林、籃、藍、鐃",
+        "pre": "n",
+        "addr": ""
+    },
+    {
+        "word": "ńg",
+        "class": "9",
+        "japan": "䘼、捥、蔭、鈗、阮",
+        "pre": "ń",
+        "addr": ""
+    },
+    {
+        "word": "o",
+        "class": "9",
+        "japan": "呵、媧、窩、蒿、阿",
+        "pre": "o",
+        "addr": ""
+    },
+    {
+        "word": "ôo",
+        "class": "9",
+        "japan": "壺、湖、瑚、胡、蝴",
+        "pre": "ô",
+        "addr": ""
+    },
+    {
+        "word": "pâi",
+        "class": "9",
+        "japan": "俳、徘、排、棑、牌",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pang",
+        "class": "9",
+        "japan": "封、崩、幫、枋、邦",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phóo",
+        "class": "9",
+        "japan": "剖、普、浦、譜、輔",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "po̍k",
+        "class": "9",
+        "japan": "僕、暴、泊、爆、薄",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pòo",
+        "class": "9",
+        "japan": "佈、傅、布、怖、播",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pôo",
+        "class": "9",
+        "japan": "捗、痡、蒲、裒、酺",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "puè",
+        "class": "9",
+        "japan": "珮、背、褙、貝、輩",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "sa",
+        "class": "9",
+        "japan": "捎、柵、沙、紗、莎",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sian",
+        "class": "9",
+        "japan": "仙、先、身、鉎、鮮",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sīng",
+        "class": "9",
+        "japan": "乘、倖、剩、晟、盛",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "si̍t",
+        "class": "9",
+        "japan": "實、植、殖、翼、食",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "siû",
+        "class": "9",
+        "japan": "仇、囚、泅、酋、酬",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "siū",
+        "class": "9",
+        "japan": "受、售、壽、岫、授",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "song",
+        "class": "9",
+        "japan": "喪、孀、桑、霜、鬆",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sòo",
+        "class": "9",
+        "japan": "數、溯、疏、素、訴",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sû",
+        "class": "9",
+        "japan": "嗣、殊、祠、詞、辭",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "suan",
+        "class": "9",
+        "japan": "喧、宣、旋、珊、酸",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "suī",
+        "class": "9",
+        "japan": "瑞、睡、穗、遂、隧",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sut",
+        "class": "9",
+        "japan": "屑、戌、捽、率、蟀",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "tân",
+        "class": "9",
+        "japan": "壇、彈、檀、陳、霆",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tang",
+        "class": "9",
+        "japan": "冬、噹、東、當、苳",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thài",
+        "class": "9",
+        "japan": "呔、太、態、汰、泰",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thâm",
+        "class": "9",
+        "japan": "潭、痰、罈、蠶、譚",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "thîng",
+        "class": "9",
+        "japan": "停、呈、程、謄、騰",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tia̍p",
+        "class": "9",
+        "japan": "揲、牒、碟、蝶、諜",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tia̍t",
+        "class": "9",
+        "japan": "帙、秩、跌、轍、迭",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tiōng",
+        "class": "9",
+        "japan": "丈、仗、仲、杖、重",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "ti̍t",
+        "class": "9",
+        "japan": "值、姪、植、直、蟄",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tn̂g",
+        "class": "9",
+        "japan": "唐、堂、塘、腸、長",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tn̄g",
+        "class": "9",
+        "japan": "丈、搪、斷、盪、蕩",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tōng",
+        "class": "9",
+        "japan": "動、撞、洞、盪、蕩",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsai",
+        "class": "9",
+        "japan": "哉、栽、災、知、齋",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tse",
+        "class": "9",
+        "japan": "劑、渣、災、這、齋",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshái",
+        "class": "9",
+        "japan": "彩、採、綵、踩、采",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshiâng",
+        "class": "9",
+        "japan": "場、常、沖、腸、長",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshìng",
+        "class": "9",
+        "japan": "凊、擤、熗、衝、銃",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshiok",
+        "class": "9",
+        "japan": "促、捉、綽、觸、雀",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshiu",
+        "class": "9",
+        "japan": "秋、羞、鞦、鬚、鶖",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshu",
+        "class": "9",
+        "japan": "嵯、樞、舒、蛆、趨",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshui",
+        "class": "9",
+        "japan": "催、吹、崔、推、摧",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshuì",
+        "class": "9",
+        "japan": "喙、碎、粹、翠、脆",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshun",
+        "class": "9",
+        "japan": "伸、春、村、賰、鶉",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsì",
+        "class": "9",
+        "japan": "志、摯、至、薦、誌",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsî",
+        "class": "9",
+        "japan": "糍、薯、薺、蜍、鶿",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsiàn",
+        "class": "9",
+        "japan": "戰、箭、荐、薦、餞",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsíng",
+        "class": "9",
+        "japan": "井、指、整、種、腫",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsîng",
+        "class": "9",
+        "japan": "前、從、情、晴、曾",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsinn",
+        "class": "9",
+        "japan": "晶、櫼、氈、爭、精",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsō",
+        "class": "9",
+        "japan": "嘈、坐、座、皂、造",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsù",
+        "class": "9",
+        "japan": "注、蛀、註、鑄、駐",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsū",
+        "class": "9",
+        "japan": "住、柱、聚、自、苴",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsùn",
+        "class": "9",
+        "japan": "俊、圳、峻、顫、駿",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tūn",
+        "class": "9",
+        "japan": "屯、沌、燉、遁、鈍",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "û",
+        "class": "9",
+        "japan": "余、圍、渝、瑜、餘",
+        "pre": "û",
+        "addr": ""
+    },
+    {
+        "word": "ū",
+        "class": "9",
+        "japan": "有、芋、譽、豫、預",
+        "pre": "ū",
+        "addr": ""
+    },
+    {
+        "word": "uì",
+        "class": "9",
+        "japan": "對、慰、畏、蔚、飫",
+        "pre": "u",
+        "addr": ""
+    },
+    {
+        "word": "uī",
+        "class": "9",
+        "japan": "位、為、緯、胃、謂",
+        "pre": "u",
+        "addr": ""
+    },
+    {
+        "word": "ûn",
+        "class": "9",
+        "japan": "云、勻、殷、筠、耘",
+        "pre": "û",
+        "addr": ""
+    },
+    {
+        "word": "ah",
+        "class": "11",
+        "japan": "仔、啊、壓、押、矣、鴨",
+        "pre": "a",
+        "addr": ""
+    },
+    {
+        "word": "bâ",
+        "class": "11",
+        "japan": "媌、峇、猫、貓、錨、麻",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bú",
+        "class": "11",
+        "japan": "侮、拇、撫、武、母、舞",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bûn",
+        "class": "11",
+        "japan": "文、紋、聞、蚊、門、雯",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "gû",
+        "class": "11",
+        "japan": "娛、愚、漁、牛、虞、魚",
+        "pre": "g",
+        "addr": ""
+    },
+    {
+        "word": "hē",
+        "class": "11",
+        "japan": "下、係、夏、系、繫、蟹",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hiân",
+        "class": "11",
+        "japan": "弦、懸、玄、絃、舷、賢",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hi̍k",
+        "class": "11",
+        "japan": "域、惑、或、核、穫、肉",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hiong",
+        "class": "11",
+        "japan": "兇、凶、胸、鄉、香、馨",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hông",
+        "class": "11",
+        "japan": "蓬、逢、防、隍、鴻、黃",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hū",
+        "class": "11",
+        "japan": "傅、婦、父、腐、負、附",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hûn",
+        "class": "11",
+        "japan": "墳、渾、焚、痕、雲、魂",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "iu",
+        "class": "11",
+        "japan": "優、幽、悠、憂、猶、釉",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "iū",
+        "class": "11",
+        "japan": "佑、又、右、宥、柚、祐",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "jio̍k",
+        "class": "11",
+        "japan": "弱、搙、肉、若、褥、辱",
+        "pre": "j",
+        "addr": ""
+    },
+    {
+        "word": "kak",
+        "class": "11",
+        "japan": "埆、桷、菊、覺、角、鵤",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kang",
+        "class": "11",
+        "japan": "公、功、崗、工、江、蚣",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "káu",
+        "class": "11",
+        "japan": "九、口、垢、狗、狡、絞",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khì",
+        "class": "11",
+        "japan": "企、去、器、棄、氣、汽",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "ki",
+        "class": "11",
+        "japan": "肌、肢、裾、譏、車、飢",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kik",
+        "class": "11",
+        "japan": "戟、擊、格、激、隔、革",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kìng",
+        "class": "11",
+        "japan": "供、勁、徑、敬、更、竟",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kok",
+        "class": "11",
+        "japan": "各、國、穀、谷、郭、顎",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kuà",
+        "class": "11",
+        "japan": "卦、掛、芥、蓋、褂、過",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kuì",
+        "class": "11",
+        "japan": "劌、季、挂、桂、瑰、貴",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "lám",
+        "class": "11",
+        "japan": "攬、欖、纜、腩、荏、覽",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lián",
+        "class": "11",
+        "japan": "撚、碾、臉、蓮、輦、輪",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lia̍p",
+        "class": "11",
+        "japan": "廿、捏、獵、粒、聶、臘",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lú",
+        "class": "11",
+        "japan": "乳、女、庾、愈、旅、鋁",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "niû",
+        "class": "11",
+        "japan": "娘、梁、樑、涼、糧、量",
+        "pre": "n",
+        "addr": ""
+    },
+    {
+        "word": "pê",
+        "class": "11",
+        "japan": "扒、杷、爬、琶、耙、賠",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phîng",
+        "class": "11",
+        "japan": "坪、彭、硼、萍、評、鵬",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pik",
+        "class": "11",
+        "japan": "伯、壁、柏、百、迫、逼",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pin",
+        "class": "11",
+        "japan": "彬、斌、檳、殯、濱、賓",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pok",
+        "class": "11",
+        "japan": "剝、北、卜、噗、暴、駁",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "siàu",
+        "class": "11",
+        "japan": "哨、嘯、少、數、笑、肖",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sîn",
+        "class": "11",
+        "japan": "承、晨、神、臣、蠅、辰",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sîng",
+        "class": "11",
+        "japan": "乘、城、成、承、繩、誠",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "siong",
+        "class": "11",
+        "japan": "傷、商、湘、相、箱、襄",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sióng",
+        "class": "11",
+        "japan": "上、償、尚、想、象、賞",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sng",
+        "class": "11",
+        "japan": "喪、栓、桑、痠、酸、霜",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "so",
+        "class": "11",
+        "japan": "唆、嗦、挲、梭、莎、騷",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sok",
+        "class": "11",
+        "japan": "塑、宿、朔、束、縮、速",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "suè",
+        "class": "11",
+        "japan": "帥、歲、涗、稅、細、說",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "tâng",
+        "class": "11",
+        "japan": "同、桐、童、筒、胴、銅",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "the",
+        "class": "11",
+        "japan": "䖙、推、撐、梯、胎、釵",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tì",
+        "class": "11",
+        "japan": "戴、智、緻、置、致、蒂",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tiàu",
+        "class": "11",
+        "japan": "召、吊、弔、窵、調、釣",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tiâu",
+        "class": "11",
+        "japan": "晁、朝、條、潮、牢、調",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "to̍k",
+        "class": "11",
+        "japan": "度、毒、濁、牘、犢、獨",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tòng",
+        "class": "11",
+        "japan": "侗、凍、噸、擋、棟、當",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tóo",
+        "class": "11",
+        "japan": "堵、島、斗、睹、肚、賭",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshenn",
+        "class": "11",
+        "japan": "星、生、腥、菁、親、青",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshng",
+        "class": "11",
+        "japan": "倉、川、栓、瘡、穿、艙",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshò",
+        "class": "11",
+        "japan": "剉、噪、挫、操、糙、錯",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsi",
+        "class": "11",
+        "japan": "之、支、枝、脂、膣、芝",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsiau",
+        "class": "11",
+        "japan": "招、昭、椒、焦、礁、蕉",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsin",
+        "class": "11",
+        "japan": "升、榛、津、珍、甄、真",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsín",
+        "class": "11",
+        "japan": "儘、拯、振、疹、診、賑",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsiu",
+        "class": "11",
+        "japan": "周、州、洲、睭、舟、週",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tû",
+        "class": "11",
+        "japan": "儲、廚、櫥、躇、鋤、除",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "ú",
+        "class": "11",
+        "japan": "宇、寓、禹、羽、與、雨",
+        "pre": "ú",
+        "addr": ""
+    },
+    {
+        "word": "uán",
+        "class": "11",
+        "japan": "婉、宛、玩、腕、苑、遠",
+        "pre": "u",
+        "addr": ""
+    },
+    {
+        "word": "un",
+        "class": "11",
+        "japan": "恩、殷、溫、瘟、蝹、鰮",
+        "pre": "u",
+        "addr": ""
+    },
+    {
+        "word": "bān",
+        "class": "13",
+        "japan": "慢、曼、漫、瓣、萬、蔓、顢",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bī",
+        "class": "13",
+        "japan": "味、媚、寐、未、沬、謎、魅",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bîng",
+        "class": "13",
+        "japan": "冥、名、明、盟、螟、銘、鳴",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bóng",
+        "class": "13",
+        "japan": "惘、懵、檬、網、罔、莽、蟒",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "hi",
+        "class": "13",
+        "japan": "嘻、墟、嬉、希、犧、稀、虛",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hīng",
+        "class": "13",
+        "japan": "倖、幸、杏、荇、莧、行、貺",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hō",
+        "class": "13",
+        "japan": "和、昊、浩、皓、禍、號、賀",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hok",
+        "class": "13",
+        "japan": "幅、福、腹、覆、輻、郝、霍",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "ho̍k",
+        "class": "13",
+        "japan": "伏、復、服、茯、袱、複、鶴",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hóng",
+        "class": "13",
+        "japan": "仿、彷、恍、況、紡、訪、謊",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hû",
+        "class": "13",
+        "japan": "扶、浮、漁、符、芙、苻、魚",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "huan",
+        "class": "13",
+        "japan": "吩、幡、歡、番、翻、蕃、藩",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "huí",
+        "class": "13",
+        "japan": "匪、悔、斐、毀、翡、菲、誹",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "iân",
+        "class": "13",
+        "japan": "延、沿、筵、緣、芫、蝝、鉛",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "iû",
+        "class": "13",
+        "japan": "尤、油、游、猶、由、遊、郵",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "iûnn",
+        "class": "13",
+        "japan": "楊、洋、溶、熔、羊、鎔、陽",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "kap",
+        "class": "13",
+        "japan": "佮、合、敆、甲、蓋、蛤、鴿",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kau",
+        "class": "13",
+        "japan": "交、勾、溝、蛟、郊、鉤、高",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "keh",
+        "class": "13",
+        "japan": "嗝、挌、格、膈、郭、鍥、隔",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khok",
+        "class": "13",
+        "japan": "擴、殼、涸、硞、觳、酷、鵠",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khong",
+        "class": "13",
+        "japan": "匡、康、悾、框、空、筐、糠",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khòng",
+        "class": "13",
+        "japan": "壙、抗、控、曠、炕、礦、空",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khu",
+        "class": "13",
+        "japan": "丘、區、坵、拘、軀、邱、驅",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kí",
+        "class": "13",
+        "japan": "己、幾、指、杞、矩、紀、舉",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kiat",
+        "class": "13",
+        "japan": "吉、揭、搩、桔、潔、結、羯",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kin",
+        "class": "13",
+        "japan": "今、均、巾、斤、根、筋、跟",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kòo",
+        "class": "13",
+        "japan": "固、故、構、購、過、雇、顧",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kū",
+        "class": "13",
+        "japan": "具、巨、懼、拒、舅、舊、距",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kui",
+        "class": "13",
+        "japan": "䲅、圭、機、歸、胿、規、龜",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "lîn",
+        "class": "13",
+        "japan": "人、仁、憐、遴、鄰、鱗、麟",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "līng",
+        "class": "13",
+        "japan": "令、冗、另、楝、稜、翎、鴒",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "liōng",
+        "class": "13",
+        "japan": "亮、冗、諒、讓、輛、釀、量",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lóo",
+        "class": "13",
+        "japan": "努、勞、惱、櫓、滷、硓、魯",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lū",
+        "class": "13",
+        "japan": "呂、喻、慮、瀘、裕、諭、鋁",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "môo",
+        "class": "13",
+        "japan": "摩、毛、盲、矛、磨、蘑、魔",
+        "pre": "m",
+        "addr": ""
+    },
+    {
+        "word": "ná",
+        "class": "13",
+        "japan": "哪、娜、拿、林、欖、若、那",
+        "pre": "n",
+        "addr": ""
+    },
+    {
+        "word": "pè",
+        "class": "13",
+        "japan": "壩、幣、弊、敝、蔽、褙、陛",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "phok",
+        "class": "13",
+        "japan": "博、噗、扑、搏、樸、璞、粕",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pì",
+        "class": "13",
+        "japan": "庇、泌、痹、痺、祕、秘、閉",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "puē",
+        "class": "13",
+        "japan": "佩、倍、培、悖、焙、狽、背",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "sai",
+        "class": "13",
+        "japan": "司、師、揌、犀、獅、私、西",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sat",
+        "class": "13",
+        "japan": "塞、撒、殺、煞、薩、虱、蝨",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sī",
+        "class": "13",
+        "japan": "寺、序、是、氏、示、窸、視",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sik",
+        "class": "13",
+        "japan": "色、蟋、識、適、釋、錫、飾",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "si̍k",
+        "class": "13",
+        "japan": "夕、席、殖、熟、石、碩、蝕",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "siok",
+        "class": "13",
+        "japan": "叔、宿、寂、淑、粟、縮、肅",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sio̍k",
+        "class": "13",
+        "japan": "俗、塾、屬、熟、續、蜀、贖",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "siù",
+        "class": "13",
+        "japan": "宿、獸、秀、繡、袖、鏽、鞘",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "soo",
+        "class": "13",
+        "japan": "搜、疏、穌、舒、蔬、蘇、酥",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sù",
+        "class": "13",
+        "japan": "使、四、思、恕、絮、肆、賜",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "tē",
+        "class": "13",
+        "japan": "代、地、弟、第、苧、袋、遞",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tî",
+        "class": "13",
+        "japan": "持、池、苔、遲、鋤、除、馳",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tik",
+        "class": "13",
+        "japan": "嫡、得、德、摘、滴、的、竹",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tok",
+        "class": "13",
+        "japan": "㧻、剁、卓、啄、琢、督、篤",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshè",
+        "class": "13",
+        "japan": "切、廁、摖、粞、脆、\ud853、\ude85",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsiah",
+        "class": "13",
+        "japan": "才、睫、脊、藉、跡、遮、隻",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsiam",
+        "class": "13",
+        "japan": "占、尖、瞻、簪、詹、針、鍼",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsìng",
+        "class": "13",
+        "japan": "政、正、症、眾、種、諍、證",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsit",
+        "class": "13",
+        "japan": "姪、織、職、脊、質、這、鯽",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsng",
+        "class": "13",
+        "japan": "妝、庄、磚、粧、莊、裝、贓",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "hù",
+        "class": "15",
+        "japan": "付、副、咐、富、訃、賦、赴、附",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hui",
+        "class": "15",
+        "japan": "妃、揮、斐、暉、菲、輝、非、飛",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "ia̍h",
+        "class": "15",
+        "japan": "役、抑、易、疫、蛾、蝶、頁、驛",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "ian",
+        "class": "15",
+        "japan": "咽、嫣、淵、煙、燕、胭、軒、鵪",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "îng",
+        "class": "15",
+        "japan": "楹、榮、營、瑩、盈、螢、贏、閒",
+        "pre": "î",
+        "addr": ""
+    },
+    {
+        "word": "jû",
+        "class": "15",
+        "japan": "俞、儒、如、愉、挐、渝、瑜、蠕",
+        "pre": "j",
+        "addr": ""
+    },
+    {
+        "word": "kà",
+        "class": "15",
+        "japan": "假、價、嫁、教、架、漖、較、駕",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "khing",
+        "class": "15",
+        "japan": "傾、卿、坑、框、筐、輕、銎、頃",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "ku",
+        "class": "15",
+        "japan": "呴、居、痀、苦、裾、跔、車、龜",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kuann",
+        "class": "15",
+        "japan": "乾、倌、官、杆、棺、竿、肝、菅",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kuè",
+        "class": "15",
+        "japan": "怪、會、檜、界、疥、過、髻、鱖",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "lâm",
+        "class": "15",
+        "japan": "南、嵐、楠、淋、男、籃、藍、襤",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lân",
+        "class": "15",
+        "japan": "㔂、攔、欄、瀾、蘭、難、零、鱗",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lē",
+        "class": "15",
+        "japan": "例、勵、厲、戾、篱、鑢、鱺、麗",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "liâm",
+        "class": "15",
+        "japan": "廉、簷、簾、臁、苒、連、鯰、黏",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lîm",
+        "class": "15",
+        "japan": "任、壬、撏、林、淋、琳、臨、霖",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "ló",
+        "class": "15",
+        "japan": "佬、咾、惱、潦、瑙、老、腦、荖",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lôo",
+        "class": "15",
+        "japan": "奴、婁、爐、盧、蘆、螺、鱸、鸕",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "oo",
+        "class": "15",
+        "japan": "區、嗚、槔、烏、謳、鄔、阿、鷗",
+        "pre": "o",
+        "addr": ""
+    },
+    {
+        "word": "phik",
+        "class": "15",
+        "japan": "伯、劈、拍、泊、碧、辟、霹、魄",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pi",
+        "class": "15",
+        "japan": "卑、啡、埤、悲、碑、螕、觱、豍",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "pîng",
+        "class": "15",
+        "japan": "屏、平、憑、朋、棚、爿、秤、鵬",
+        "pre": "p",
+        "addr": ""
+    },
+    {
+        "word": "siông",
+        "class": "15",
+        "japan": "償、嘗、嫦、常、松、祥、翔、詳",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "siōng",
+        "class": "15",
+        "japan": "上、像、剩、尚、訟、誦、象、頌",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sit",
+        "class": "15",
+        "japan": "失、式、息、熄、瑟、穡、膝、蝕",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sú",
+        "class": "15",
+        "japan": "使、史、始、屎、暑、死、署、駛",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "tè",
+        "class": "15",
+        "japan": "地、塊、帝、戴、渧、綴、締、諦",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tiau",
+        "class": "15",
+        "japan": "凋、刁、朝、潮、調、貂、雕、鵰",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "ting",
+        "class": "15",
+        "japan": "丁、叮、徵、燈、町、疔、登、釘",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsè",
+        "class": "15",
+        "japan": "債、制、劑、晬、濟、祭、製、際",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshi",
+        "class": "15",
+        "japan": "嗤、悽、痴、癡、腮、蛆、鰓、鴟",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshinn",
+        "class": "15",
+        "japan": "星、清、生、腥、菁、親、青、鮮",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsiok",
+        "class": "15",
+        "japan": "囑、屬、燭、爵、祝、芍、足、酌",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsiong",
+        "class": "15",
+        "japan": "將、彰、樟、漿、章、終、鍾、障",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "uân",
+        "class": "15",
+        "japan": "丸、員、園、圓、垣、完、灣、袁",
+        "pre": "u",
+        "addr": ""
+    },
+    {
+        "word": "bo̍k",
+        "class": "17",
+        "japan": "寞、木、沐、漠、牧、目、睦、穆、莫",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bông",
+        "class": "17",
+        "japan": "亡、忙、盲、矇、肓、芒、茫、蒙、雺",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "bōo",
+        "class": "17",
+        "japan": "募、墓、幕、慕、戊、摹、暮、茂、貿",
+        "pre": "b",
+        "addr": ""
+    },
+    {
+        "word": "hô",
+        "class": "17",
+        "japan": "何、和、壕、毫、河、禾、荷、豪、貉",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "huân",
+        "class": "17",
+        "japan": "凡、圜、帆、樊、煩、環、礬、繁、還",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hun",
+        "class": "17",
+        "japan": "分、勳、吩、婚、昏、熏、紛、芬、薰",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "î",
+        "class": "17",
+        "japan": "夷、姨、怡、惟、於、移、維、胰、餘",
+        "pre": "î",
+        "addr": ""
+    },
+    {
+        "word": "io̍k",
+        "class": "17",
+        "japan": "慾、昱、欲、浴、籲、育、藥、躍、鑰",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "ióng",
+        "class": "17",
+        "japan": "仰、勇、擁、氧、湧、癢、踴、鞅、養",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "kah",
+        "class": "17",
+        "japan": "䘥、佮、合、柙、甲、胛、蓋、較、鴿",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kài",
+        "class": "17",
+        "japan": "介、屆、戒、概、溉、界、芥、蓋、誡",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kì",
+        "class": "17",
+        "japan": "寄、據、既、暨、痣、紀、計、記、鋸",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kuan",
+        "class": "17",
+        "japan": "冠、娟、官、捐、棺、綸、觀、關、鵑",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kuàn",
+        "class": "17",
+        "japan": "券、卷、慣、灌、眷、罐、觀、貫、顴",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kun",
+        "class": "17",
+        "japan": "君、均、巾、斤、根、筋、跟、軍、鈞",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "lê",
+        "class": "17",
+        "japan": "挼、梨、檸、犁、璃、腡、螺、麗、黎",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "liông",
+        "class": "17",
+        "japan": "娘、樑、瓤、絨、良、茸、量、隆、龍",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lô",
+        "class": "17",
+        "japan": "勞、囉、濁、牢、癆、籮、羅、邏、鑼",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lû",
+        "class": "17",
+        "japan": "俞、儒、如、愉、挐、渝、瑜、蠕、驢",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "ngôo",
+        "class": "17",
+        "japan": "俄、吳、吾、娛、娥、梧、蜈、遨、鵝",
+        "pre": "n",
+        "addr": ""
+    },
+    {
+        "word": "nî",
+        "class": "17",
+        "japan": "呢、哖、妮、尼、年、彌、泥、簾、連",
+        "pre": "n",
+        "addr": ""
+    },
+    {
+        "word": "se",
+        "class": "17",
+        "japan": "梳、沙、犀、疏、砂、紗、蔬、裟、西",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sè",
+        "class": "17",
+        "japan": "世、勢、婿、洒、涗、稅、細、誓、賽",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "siau",
+        "class": "17",
+        "japan": "宵、消、瀟、痟、硝、簫、蕭、逍、銷",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sin",
+        "class": "17",
+        "japan": "伸、先、呻、新、申、紳、薪、身、辛",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "tô",
+        "class": "17",
+        "japan": "桃、淘、濤、萄、逃、鉈、陶、駝、鴕",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tō",
+        "class": "17",
+        "japan": "導、就、悼、惰、盜、稻、舵、蹈、道",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tôo",
+        "class": "17",
+        "japan": "圖、塗、屠、廚、徒、涂、濤、途、陀",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tōo",
+        "class": "17",
+        "japan": "度、杜、渡、痘、竇、肚、荳、讀、鍍",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshe",
+        "class": "17",
+        "japan": "初、叉、吹、妻、尺、差、棲、淒、炊",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshong",
+        "class": "17",
+        "japan": "倉、創、匆、滄、瘡、窗、聰、艙、蒼",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tsong",
+        "class": "17",
+        "japan": "妝、宗、粧、綜、臧、莊、裝、贓、蹤",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "hîng",
+        "class": "19",
+        "japan": "刑、型、形、恆、橫、螢、行、衡、還、雄",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hu",
+        "class": "19",
+        "japan": "俘、夫、孵、撫、敷、烌、膚、虎、虛、麩",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "hú",
+        "class": "19",
+        "japan": "俯、府、拊、撫、斧、甫、腐、腑、許、輔",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "huān",
+        "class": "19",
+        "japan": "凡、宦、患、梵、泛、犯、範、范、還、飯",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "kan",
+        "class": "19",
+        "japan": "乾、奸、姦、干、杆、橄、矸、肝、艱、間",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "kiong",
+        "class": "19",
+        "japan": "供、姜、宮、弓、恭、疆、穹、羌、芎、躬",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "tī",
+        "class": "19",
+        "japan": "佇、地、底、弟、治、滯、痔、稚、箸、緻",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tîng",
+        "class": "19",
+        "japan": "亭、婷、庭、廷、懲、澄、程、藤、重、霆",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "hōo",
+        "class": "21",
+        "japan": "予、互、厚、后、後、戶、扈、滬、皓、護、雨",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "ing",
+        "class": "21",
+        "japan": "坱、嬰、應、櫻、瑛、癰、纓、英、鶯、鷹、鸚",
+        "pre": "i",
+        "addr": ""
+    },
+    {
+        "word": "kíng",
+        "class": "21",
+        "japan": "境、揀、景、梗、筧、繭、耿、襇、警、頸、龔",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "koo",
+        "class": "21",
+        "japan": "姑、孤、枯、溝、罟、膏、菇、蛄、辜、鮕、鴣",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "si",
+        "class": "21",
+        "japan": "司、噓、屍、思、施、私、窸、絲、西、詩、鷥",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "sûn",
+        "class": "21",
+        "japan": "唇、巡、循、旬、殉、純、絢、荀、詢、醇、馴",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "ti̍k",
+        "class": "21",
+        "japan": "擇、敵、澤、特、狄、的、笛、糴、翟、軸、迪",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tông",
+        "class": "21",
+        "japan": "佟、同、唐、堂、塘、幢、桐、棠、瞳、童、筒",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "tshiong",
+        "class": "21",
+        "japan": "倡、充、娼、從、昌、沖、猖、縱、菖、衝、鏘",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "uî",
+        "class": "21",
+        "japan": "危、唯、圍、帷、惟、桅、為、維、違、遺、韋",
+        "pre": "u",
+        "addr": ""
+    },
+    {
+        "word": "hôo",
+        "class": "23",
+        "japan": "侯、壺、弧、撈、毫、狐、糊、胡、葫、蝴、鬍、鰗",
+        "pre": "h",
+        "addr": ""
+    },
+    {
+        "word": "kè",
+        "class": "23",
+        "japan": "假、價、嫁、架、界、疥、繼、芥、計、過、髻、鱖",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "liû",
+        "class": "23",
+        "japan": "㨨、揉、柔、榆、榴、流、琉、留、瘤、硫、餾、鰇",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lông",
+        "class": "23",
+        "japan": "嚨、囊、廊、榔、櫳、濃、狼、籠、聾、膿、農、郎",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "su",
+        "class": "23",
+        "japan": "司、師、思、斯、書、私、舒、軀、輸、需、須、鬚",
+        "pre": "s",
+        "addr": ""
+    },
+    {
+        "word": "tsu",
+        "class": "23",
+        "japan": "姿、孜、書、朱、株、滋、珠、硃、茱、諮、諸、資",
+        "pre": "t",
+        "addr": ""
+    },
+    {
+        "word": "kî",
+        "class": "25",
+        "japan": "其、奇、旗、期、棋、歧、淇、琦、琪、祈、祺、耆、麒",
+        "pre": "k",
+        "addr": ""
+    },
+    {
+        "word": "lî",
+        "class": "25",
+        "japan": "兒、厘、尼、狸、猊、璃、簾、籬、縭、而、釐、離、驢",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "lio̍k",
+        "class": "25",
+        "japan": "六、弱、戮、掠、搙、略、綠、肉、若、褥、辱、錄、陸",
+        "pre": "l",
+        "addr": ""
+    },
+    {
+        "word": "tsí",
+        "class": "25",
+        "japan": "只、咫、址、姊、子、指、旨、止、祉、紫、芷、趾、黹",
+        "pre": "t",
+        "addr": ""
+    }
+]
