@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             display: flex;
@@ -23,6 +24,7 @@
             padding: 10px;
             min-height: 60px;
             background: #f9f9f9;
+            touch-action: none; /* 改善觸控裝置的拖放 */
         }
 
         #duty-cards {
@@ -40,6 +42,7 @@
             border: 1px solid #ddd;
             cursor: move;
             user-select: none;
+            touch-action: none; /* 改善觸控裝置的拖放 */
         }
 
         .duty-count {
@@ -53,6 +56,8 @@
             background: #e3f2fd;
             border-radius: 3px;
             font-size: 0.9em;
+            cursor: move;
+            touch-action: none; /* 改善觸控裝置的拖放 */
         }
     </style>
 </head>
@@ -71,15 +76,16 @@
         const dutyCount = {};
         dutyList.forEach(name => dutyCount[name] = 0);
 
-        // 生成日期
+        let draggedElement = null;
+
         function generateDates() {
-            const startDate = new Date(2025, 3, 21); // 4月21日
-            const endDate = new Date(2025, 4, 16);   // 5月16日
+            const startDate = new Date(2025, 3, 21);
+            const endDate = new Date(2025, 4, 16);
             const dates = [];
             let currentDate = new Date(startDate);
 
             while (currentDate <= endDate) {
-                if (currentDate.getDay() !== 0 && currentDate.getDay() !== 6) { // 排除週六日
+                if (currentDate.getDay() !== 0 && currentDate.getDay() !== 6) {
                     dates.push(new Date(currentDate));
                 }
                 currentDate.setDate(currentDate.getDate() + 1);
@@ -87,7 +93,6 @@
             return dates;
         }
 
-        // 創建行事曆
         function createCalendar() {
             const calendar = document.getElementById('calendar');
             const dates = generateDates();
@@ -96,47 +101,143 @@
                 const cell = document.createElement('div');
                 cell.className = 'date-cell';
                 cell.innerHTML = `${date.getMonth() + 1}/${date.getDate()}(${['日','一','二','三','四','五','六'][date.getDay()]})`;
-                cell.addEventListener('dragover', e => e.preventDefault());
+                
+                // 添加拖放相關事件
+                cell.addEventListener('dragover', handleDragOver);
                 cell.addEventListener('drop', handleDrop);
+                
+                // 添加觸控事件
+                cell.addEventListener('touchstart', handleTouchStart, false);
+                cell.addEventListener('touchmove', handleTouchMove, false);
+                cell.addEventListener('touchend', handleTouchEnd, false);
+                
                 calendar.appendChild(cell);
             });
         }
 
-        // 創建值班卡片
         function createDutyCards() {
             const container = document.getElementById('duty-cards');
             dutyList.forEach(name => {
-                const card = document.createElement('div');
-                card.className = 'duty-card';
-                card.draggable = true;
-                card.innerHTML = `${name}<span class="duty-count">(${dutyCount[name]})</span>`;
-                card.dataset.name = name;
-                
-                card.addEventListener('dragstart', e => {
-                    e.dataTransfer.setData('text/plain', name);
-                });
-
+                const card = createDraggableCard(name);
                 container.appendChild(card);
             });
         }
 
-        // 處理拖放
-        function handleDrop(e) {
-            e.preventDefault();
-            const name = e.dataTransfer.getData('text/plain');
-            
-            // 建立已放置的卡片
-            const droppedCard = document.createElement('div');
-            droppedCard.className = 'dropped-card';
-            droppedCard.textContent = name;
-            e.target.appendChild(droppedCard);
+        function createDraggableCard(name, isDropped = false) {
+            const card = document.createElement('div');
+            card.className = isDropped ? 'dropped-card' : 'duty-card';
+            card.draggable = true;
+            card.innerHTML = isDropped ? name : `${name}<span class="duty-count">(${dutyCount[name]})</span>`;
+            card.dataset.name = name;
 
-            // 更新計數
-            dutyCount[name]++;
-            updateDutyCards();
+            // 添加拖放相關事件
+            card.addEventListener('dragstart', handleDragStart);
+            card.addEventListener('dragend', handleDragEnd);
+
+            // 添加觸控事件
+            card.addEventListener('touchstart', handleTouchStart, false);
+            card.addEventListener('touchmove', handleTouchMove, false);
+            card.addEventListener('touchend', handleTouchEnd, false);
+
+            return card;
         }
 
-        // 更新值班卡片計數
+        function handleDragStart(e) {
+            draggedElement = e.target;
+            e.dataTransfer.setData('text/plain', e.target.dataset.name);
+        }
+
+        function handleDragEnd() {
+            draggedElement = null;
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            const targetCell = e.target.classList.contains('date-cell') ? e.target : e.target.closest('.date-cell');
+            
+            // 檢查目標格子是否已有值班人員
+            if (targetCell && !targetCell.querySelector('.dropped-card')) {
+                const name = draggedElement ? draggedElement.dataset.name : e.dataTransfer.getData('text/plain');
+
+                // 如果是從另一個格子拖來的，移除原來的卡片
+                if (draggedElement && draggedElement.classList.contains('dropped-card')) {
+                    draggedElement.remove();
+                } else {
+                    // 如果是從右側拖來的，增加計數
+                    dutyCount[name]++;
+                    updateDutyCards();
+                }
+
+                const droppedCard = createDraggableCard(name, true);
+                targetCell.appendChild(droppedCard);
+            }
+        }
+
+        // 觸控事件處理
+        let touchStartX, touchStartY;
+        let touchElement = null;
+
+        function handleTouchStart(e) {
+            const touch = e.touches[0];
+            touchStartX = touch.clientX;
+            touchStartY = touch.clientY;
+            touchElement = e.target.classList.contains('dropped-card') || e.target.classList.contains('duty-card') 
+                ? e.target 
+                : e.target.closest('.dropped-card, .duty-card');
+
+            if (touchElement) {
+                touchElement.style.opacity = '0.5';
+            }
+        }
+
+        function handleTouchMove(e) {
+            if (!touchElement) return;
+            e.preventDefault();
+
+            const touch = e.touches[0];
+            const newX = touch.clientX;
+            const newY = touch.clientY;
+
+            // 移動元素
+            touchElement.style.position = 'fixed';
+            touchElement.style.left = newX - touchElement.offsetWidth / 2 + 'px';
+            touchElement.style.top = newY - touchElement.offsetHeight / 2 + 'px';
+        }
+
+        function handleTouchEnd(e) {
+            if (!touchElement) return;
+
+            touchElement.style.opacity = '1';
+            touchElement.style.position = '';
+            touchElement.style.left = '';
+            touchElement.style.top = '';
+
+            // 獲取放下位置的元素
+            const touch = e.changedTouches[0];
+            const dropTarget = document.elementFromPoint(touch.clientX, touch.clientY);
+            const targetCell = dropTarget.classList.contains('date-cell') ? dropTarget : dropTarget.closest('.date-cell');
+
+            if (targetCell && !targetCell.querySelector('.dropped-card')) {
+                const name = touchElement.dataset.name;
+
+                if (touchElement.classList.contains('dropped-card')) {
+                    touchElement.remove();
+                } else {
+                    dutyCount[name]++;
+                    updateDutyCards();
+                }
+
+                const droppedCard = createDraggableCard(name, true);
+                targetCell.appendChild(droppedCard);
+            }
+
+            touchElement = null;
+        }
+
         function updateDutyCards() {
             const cards = document.querySelectorAll('.duty-card');
             cards.forEach(card => {
