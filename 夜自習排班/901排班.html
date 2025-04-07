@@ -24,7 +24,7 @@
             padding: 10px;
             min-height: 60px;
             background: #f9f9f9;
-            touch-action: none; /* 改善觸控裝置的拖放 */
+            touch-action: none;
         }
 
         #duty-cards {
@@ -42,7 +42,7 @@
             border: 1px solid #ddd;
             cursor: move;
             user-select: none;
-            touch-action: none; /* 改善觸控裝置的拖放 */
+            touch-action: none;
         }
 
         .duty-count {
@@ -57,13 +57,35 @@
             border-radius: 3px;
             font-size: 0.9em;
             cursor: move;
-            touch-action: none; /* 改善觸控裝置的拖放 */
+            touch-action: none;
+        }
+
+        .delete-zone {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 15px 30px;
+            background: #ff4444;
+            color: white;
+            border-radius: 8px;
+            display: none;
+            z-index: 1000;
+        }
+
+        .delete-zone.active {
+            display: block;
+        }
+
+        .delete-zone.highlight {
+            background: #cc0000;
         }
     </style>
 </head>
 <body>
     <div id="calendar"></div>
     <div id="duty-cards"></div>
+    <div id="delete-zone" class="delete-zone">拖曳至此處刪除</div>
 
     <script>
         const dutyList = [
@@ -77,6 +99,7 @@
         dutyList.forEach(name => dutyCount[name] = 0);
 
         let draggedElement = null;
+        const deleteZone = document.getElementById('delete-zone');
 
         function generateDates() {
             const startDate = new Date(2025, 3, 21);
@@ -102,11 +125,8 @@
                 cell.className = 'date-cell';
                 cell.innerHTML = `${date.getMonth() + 1}/${date.getDate()}(${['日','一','二','三','四','五','六'][date.getDay()]})`;
                 
-                // 添加拖放相關事件
                 cell.addEventListener('dragover', handleDragOver);
                 cell.addEventListener('drop', handleDrop);
-                
-                // 添加觸控事件
                 cell.addEventListener('touchstart', handleTouchStart, false);
                 cell.addEventListener('touchmove', handleTouchMove, false);
                 cell.addEventListener('touchend', handleTouchEnd, false);
@@ -130,11 +150,8 @@
             card.innerHTML = isDropped ? name : `${name}<span class="duty-count">(${dutyCount[name]})</span>`;
             card.dataset.name = name;
 
-            // 添加拖放相關事件
             card.addEventListener('dragstart', handleDragStart);
             card.addEventListener('dragend', handleDragEnd);
-
-            // 添加觸控事件
             card.addEventListener('touchstart', handleTouchStart, false);
             card.addEventListener('touchmove', handleTouchMove, false);
             card.addEventListener('touchend', handleTouchEnd, false);
@@ -145,29 +162,62 @@
         function handleDragStart(e) {
             draggedElement = e.target;
             e.dataTransfer.setData('text/plain', e.target.dataset.name);
+            
+            if (draggedElement.classList.contains('dropped-card')) {
+                deleteZone.classList.add('active');
+            }
         }
 
-        function handleDragEnd() {
+        function handleDragEnd(e) {
+            deleteZone.classList.remove('active');
+            deleteZone.classList.remove('highlight');
+            
+            // 檢查是否在刪除區域內
+            const deleteZoneRect = deleteZone.getBoundingClientRect();
+            const x = e.clientX;
+            const y = e.clientY;
+            
+            if (draggedElement.classList.contains('dropped-card') &&
+                x >= deleteZoneRect.left && x <= deleteZoneRect.right &&
+                y >= deleteZoneRect.top && y <= deleteZoneRect.bottom) {
+                    
+                const name = draggedElement.dataset.name;
+                dutyCount[name]--;
+                updateDutyCards();
+                draggedElement.remove();
+            }
+            
             draggedElement = null;
         }
 
         function handleDragOver(e) {
             e.preventDefault();
+            
+            // 更新刪除區域的狀態
+            if (draggedElement && draggedElement.classList.contains('dropped-card')) {
+                const deleteZoneRect = deleteZone.getBoundingClientRect();
+                const x = e.clientX;
+                const y = e.clientY;
+                
+                if (x >= deleteZoneRect.left && x <= deleteZoneRect.right &&
+                    y >= deleteZoneRect.top && y <= deleteZoneRect.bottom) {
+                    deleteZone.classList.add('highlight');
+                } else {
+                    deleteZone.classList.remove('highlight');
+                }
+            }
         }
 
         function handleDrop(e) {
             e.preventDefault();
             const targetCell = e.target.classList.contains('date-cell') ? e.target : e.target.closest('.date-cell');
             
-            // 檢查目標格子是否已有值班人員
             if (targetCell && !targetCell.querySelector('.dropped-card')) {
                 const name = draggedElement ? draggedElement.dataset.name : e.dataTransfer.getData('text/plain');
 
-                // 如果是從另一個格子拖來的，移除原來的卡片
                 if (draggedElement && draggedElement.classList.contains('dropped-card')) {
                     draggedElement.remove();
                 } else {
-                    // 如果是從右側拖來的，增加計數
                     dutyCount[name]++;
                     updateDutyCards();
                 }
@@ -177,7 +227,6 @@
             }
         }
 
-        // 觸控事件處理
         let touchStartX, touchStartY;
         let touchElement = null;
 
@@ -191,6 +240,9 @@
 
             if (touchElement) {
                 touchElement.style.opacity = '0.5';
+                if (touchElement.classList.contains('dropped-card')) {
+                    deleteZone.classList.add('active');
+                }
             }
         }
 
@@ -202,39 +254,63 @@
             const newX = touch.clientX;
             const newY = touch.clientY;
 
-            // 移動元素
             touchElement.style.position = 'fixed';
             touchElement.style.left = newX - touchElement.offsetWidth / 2 + 'px';
             touchElement.style.top = newY - touchElement.offsetHeight / 2 + 'px';
+
+            // 檢查是否在刪除區域上方
+            if (touchElement.classList.contains('dropped-card')) {
+                const deleteZoneRect = deleteZone.getBoundingClientRect();
+                if (newX >= deleteZoneRect.left && newX <= deleteZoneRect.right &&
+                    newY >= deleteZoneRect.top && newY <= deleteZoneRect.bottom) {
+                    deleteZone.classList.add('highlight');
+                } else {
+                    deleteZone.classList.remove('highlight');
+                }
+            }
         }
 
         function handleTouchEnd(e) {
             if (!touchElement) return;
 
+            deleteZone.classList.remove('active');
+            deleteZone.classList.remove('highlight');
+
+            const touch = e.changedTouches[0];
+            const deleteZoneRect = deleteZone.getBoundingClientRect();
+
+            // 檢查是否在刪除區域放開
+            if (touchElement.classList.contains('dropped-card') &&
+                touch.clientX >= deleteZoneRect.left && touch.clientX <= deleteZoneRect.right &&
+                touch.clientY >= deleteZoneRect.top && touch.clientY <= deleteZoneRect.bottom) {
+                
+                const name = touchElement.dataset.name;
+                dutyCount[name]--;
+                updateDutyCards();
+                touchElement.remove();
+            } else {
+                const dropTarget = document.elementFromPoint(touch.clientX, touch.clientY);
+                const targetCell = dropTarget.classList.contains('date-cell') ? dropTarget : dropTarget.closest('.date-cell');
+
+                if (targetCell && !targetCell.querySelector('.dropped-card')) {
+                    const name = touchElement.dataset.name;
+
+                    if (touchElement.classList.contains('dropped-card')) {
+                        touchElement.remove();
+                    } else {
+                        dutyCount[name]++;
+                        updateDutyCards();
+                    }
+
+                    const droppedCard = createDraggableCard(name, true);
+                    targetCell.appendChild(droppedCard);
+                }
+            }
+
             touchElement.style.opacity = '1';
             touchElement.style.position = '';
             touchElement.style.left = '';
             touchElement.style.top = '';
-
-            // 獲取放下位置的元素
-            const touch = e.changedTouches[0];
-            const dropTarget = document.elementFromPoint(touch.clientX, touch.clientY);
-            const targetCell = dropTarget.classList.contains('date-cell') ? dropTarget : dropTarget.closest('.date-cell');
-
-            if (targetCell && !targetCell.querySelector('.dropped-card')) {
-                const name = touchElement.dataset.name;
-
-                if (touchElement.classList.contains('dropped-card')) {
-                    touchElement.remove();
-                } else {
-                    dutyCount[name]++;
-                    updateDutyCards();
-                }
-
-                const droppedCard = createDraggableCard(name, true);
-                targetCell.appendChild(droppedCard);
-            }
-
             touchElement = null;
         }
 
@@ -247,7 +323,6 @@
             });
         }
 
-        // 初始化
         createCalendar();
         createDutyCards();
     </script>
