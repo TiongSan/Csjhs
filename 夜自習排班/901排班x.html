@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        #calendar {
+            flex: 2;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 5px;
+            margin-right: 20px;
+        }
+
+        .date-cell {
+            border: 1px solid #ccc;
+            padding: 10px;
+            min-height: 60px;
+            background: #f9f9f9;
+            touch-action: none;
+        }
+
+        #duty-cards {
+            flex: 1;
+            padding: 10px;
+            background: #f0f0f0;
+            overflow-y: auto;
+            max-height: 100vh;
+        }
+
+        .duty-card {
+            padding: 10px;
+            margin: 5px;
+            background: white;
+            border: 1px solid #ddd;
+            cursor: move;
+            user-select: none;
+            touch-action: none;
+        }
+
+        .duty-count {
+            margin-left: 10px;
+            color: #666;
+        }
+
+        .dropped-card {
+            margin: 2px;
+            padding: 5px;
+            background: #e3f2fd;
+            border-radius: 3px;
+            font-size: 0.9em;
+            cursor: move;
+            touch-action: none;
+        }
+
+        #delete-zone {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 60px;
+            background: #ff4444;
+            color: white;
+            border-radius: 8px;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        #delete-zone.show {
+            display: flex;
+        }
+
+        #delete-zone.highlight {
+            background: #cc0000;
+        }
+
+        .dragging {
+            opacity: 0.5;
+            position: fixed;
+            pointer-events: none;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div id="calendar"></div>
+    <div id="duty-cards"></div>
+    <div id="delete-zone">拖曳至此處刪除</div>
+
+    <script>
+        const dutyList = [
+            "01巧瑄", "02亞潔", "03景妡", "04葦庭", "05又靖", "06醴瀅", "07宇萱", "08恩瑄",
+            "10予捷", "11芃晴", "12潔如", "13姿甯", "14芸菫", "21筠澔", "22筠翰", "24孝承",
+            "25秉謙", "26峟樂", "27浚溥", "28子又", "29威丞", "30俞之", "31品安", "32思佑",
+            "33加恩", "34善惟", "35子博", "36宇淳"
+        ];
+
+        const dutyCount = {};
+        dutyList.forEach(name => dutyCount[name] = 0);
+
+        let draggedElement = null;
+        let draggedClone = null;
+        const deleteZone = document.getElementById('delete-zone');
+
+        function generateDates() {
+            const startDate = new Date(2025, 3, 21);
+            const endDate = new Date(2025, 4, 16);
+            const dates = [];
+            let currentDate = new Date(startDate);
+
+            while (currentDate <= endDate) {
+                if (currentDate.getDay() !== 0 && currentDate.getDay() !== 6) {
+                    dates.push(new Date(currentDate));
+                }
+                currentDate.setDate(currentDate.getDate() + 1);
+            }
+            return dates;
+        }
+
+        function createCalendar() {
+            const calendar = document.getElementById('calendar');
+            const dates = generateDates();
+
+            dates.forEach(date => {
+                const cell = document.createElement('div');
+                cell.className = 'date-cell';
+                cell.innerHTML = `${date.getMonth() + 1}/${date.getDate()}(${['日','一','二','三','四','五','六'][date.getDay()]})`;
+                calendar.appendChild(cell);
+            });
+        }
+
+        function createDutyCards() {
+            const container = document.getElementById('duty-cards');
+            dutyList.forEach(name => {
+                const card = createDraggableCard(name);
+                container.appendChild(card);
+            });
+        }
+
+        function createDraggableCard(name, isDropped = false) {
+            const card = document.createElement('div');
+            card.className = isDropped ? 'dropped-card' : 'duty-card';
+            card.innerHTML = isDropped ? name : `${name}<span class="duty-count">(${dutyCount[name]})</span>`;
+            card.dataset.name = name;
+            return card;
+        }
+
+        function updateDutyCards() {
+            const cards = document.querySelectorAll('.duty-card');
+            cards.forEach(card => {
+                const name = card.dataset.name;
+                const countSpan = card.querySelector('.duty-count');
+                countSpan.textContent = `(${dutyCount[name]})`;
+            });
+        }
+
+        // 觸控事件處理
+        document.addEventListener('touchstart', handleTouchStart, {passive: false});
+        document.addEventListener('touchmove', handleTouchMove, {passive: false});
+        document.addEventListener('touchend', handleTouchEnd, {passive: false});
+
+        let touchStartX = 0;
+        let touchStartY = 0;
+
+        function handleTouchStart(e) {
+            const touch = e.touches[0];
+            touchStartX = touch.clientX;
+            touchStartY = touch.clientY;
+
+            const target = document.elementFromPoint(touch.clientX, touch.clientY);
+            if (target.classList.contains('duty-card') || target.classList.contains('dropped-card')) {
+                e.preventDefault();
+                draggedElement = target;
+                
+                // 創建拖曳時的克隆元素
+                draggedClone = target.cloneNode(true);
+                draggedClone.classList.add('dragging');
+                document.body.appendChild(draggedClone);
+                
+                // 如果是已放置的卡片，顯示刪除區域
+                if (target.classList.contains('dropped-card')) {
+                    deleteZone.classList.add('show');
+                }
+            }
+        }
+
+        function handleTouchMove(e) {
+            if (!draggedElement || !draggedClone) return;
+            e.preventDefault();
+
+            const touch = e.touches[0];
+            
+            // 更新克隆元素的位置
+            draggedClone.style.left = (touch.clientX - draggedClone.offsetWidth / 2) + 'px';
+            draggedClone.style.top = (touch.clientY - draggedClone.offsetHeight / 2) + 'px';
+
+            // 檢查是否在刪除區域上
+            if (draggedElement.classList.contains('dropped-card')) {
+                const deleteRect = deleteZone.getBoundingClientRect();
+                if (touch.clientY >= deleteRect.top && touch.clientY <= deleteRect.bottom &&
+                    touch.clientX >= deleteRect.left && touch.clientX <= deleteRect.right) {
+                    deleteZone.classList.add('highlight');
+                } else {
+                    deleteZone.classList.remove('highlight');
+                }
+            }
+        }
+
+        function handleTouchEnd(e) {
+            if (!draggedElement || !draggedClone) return;
+            e.preventDefault();
+
+            const touch = e.changedTouches[0];
+            const target = document.elementFromPoint(touch.clientX, touch.clientY);
+            
+            // 檢查是否在刪除區域放開
+            if (draggedElement.classList.contains('dropped-card')) {
+                const deleteRect = deleteZone.getBoundingClientRect();
+                if (touch.clientY >= deleteRect.top && touch.clientY <= deleteRect.bottom &&
+                    touch.clientX >= deleteRect.left && touch.clientX <= deleteRect.right) {
+                    // 刪除卡片並更新計數
+                    const name = draggedElement.dataset.name;
+                    dutyCount[name]--;
+                    updateDutyCards();
+                    draggedElement.remove();
+                }
+            }
+            // 檢查是否放在日期格子中
+            else if (target.classList.contains('date-cell') || target.closest('.date-cell')) {
+                const cell = target.classList.contains('date-cell') ? target : target.closest('.date-cell');
+                
+                if (!cell.querySelector('.dropped-card')) {
+                    const name = draggedElement.dataset.name;
+                    const droppedCard = createDraggableCard(name, true);
+                    cell.appendChild(droppedCard);
+                    
+                    if (!draggedElement.classList.contains('dropped-card')) {
+                        dutyCount[name]++;
+                        updateDutyCards();
+                    }
+                }
+            }
+
+            // 清理
+            draggedClone.remove();
+            deleteZone.classList.remove('show', 'highlight');
+            draggedElement = null;
+            draggedClone = null;
+        }
+
+        // 滑鼠拖曳事件
+        document.addEventListener('dragstart', (e) => {
+            const target = e.target;
+            if (target.classList.contains('duty-card') || target.classList.contains('dropped-card')) {
+                draggedElement = target;
+                if (target.classList.contains('dropped-card')) {
+                    deleteZone.classList.add('show');
+                }
+                e.dataTransfer.setData('text/plain', '');
+            }
+        });
+
+        document.addEventListener('dragend', () => {
+            deleteZone.classList.remove('show', 'highlight');
+            draggedElement = null;
+        });
+
+        document.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            if (draggedElement && draggedElement.classList.contains('dropped-card')) {
+                const deleteRect = deleteZone.getBoundingClientRect();
+                if (e.clientY >= deleteRect.top && e.clientY <= deleteRect.bottom &&
+                    e.clientX >= deleteRect.left && e.clientX <= deleteRect.right) {
+                    deleteZone.classList.add('highlight');
+                } else {
+                    deleteZone.classList.remove('highlight');
+                }
+            }
+        });
+
+        document.addEventListener('drop', (e) => {
+            e.preventDefault();
+            if (!draggedElement) return;
+
+            // 檢查是否在刪除區域放開
+            if (draggedElement.classList.contains('dropped-card')) {
+                const deleteRect = deleteZone.getBoundingClientRect();
+                if (e.clientY >= deleteRect.top && e.clientY <= deleteRect.bottom &&
+                    e.clientX >= deleteRect.left && e.clientX <= deleteRect.right) {
+                    const name = draggedElement.dataset.name;
+                    dutyCount[name]--;
+                    updateDutyCards();
+                    draggedElement.remove();
+                    return;
+                }
+            }
+
+            // 檢查是否放在日期格子中
+            const target = e.target;
+            if (target.classList.contains('date-cell') || target.closest('.date-cell')) {
+                const cell = target.classList.contains('date-cell') ? target : target.closest('.date-cell');
+                
+                if (!cell.querySelector('.dropped-card')) {
+                    const name = draggedElement.dataset.name;
+                    const droppedCard = createDraggableCard(name, true);
+                    cell.appendChild(droppedCard);
+                    
+                    if (!draggedElement.classList.contains('dropped-card')) {
+                        dutyCount[name]++;
+                        updateDutyCards();
+                    }
+                }
+            }
+        });
+
+        createCalendar();
+        createDutyCards();
+    </script>
+</body>
+</html>
