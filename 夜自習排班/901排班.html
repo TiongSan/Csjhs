@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            display: flex;
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        #calendar {
+            flex: 2;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 5px;
+            margin-right: 20px;
+        }
+
+        .date-cell {
+            border: 1px solid #ccc;
+            padding: 10px;
+            min-height: 60px;
+            background: #f9f9f9;
+        }
+
+        #duty-cards {
+            flex: 1;
+            padding: 10px;
+            background: #f0f0f0;
+            overflow-y: auto;
+            max-height: 100vh;
+        }
+
+        .duty-card {
+            padding: 10px;
+            margin: 5px;
+            background: white;
+            border: 1px solid #ddd;
+            cursor: move;
+            user-select: none;
+        }
+
+        .duty-count {
+            margin-left: 10px;
+            color: #666;
+        }
+
+        .dropped-card {
+            margin: 2px;
+            padding: 5px;
+            background: #e3f2fd;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div id="calendar"></div>
+    <div id="duty-cards"></div>
+
+    <script>
+        const dutyList = [
+            "01巧瑄", "02亞潔", "03景妡", "04葦庭", "05又靖", "06醴瀅", "07宇萱", "08恩瑄",
+            "10予捷", "11芃晴", "12潔如", "13姿甯", "14芸菫", "21筠澔", "22筠翰", "24孝承",
+            "25秉謙", "26峟樂", "27浚溥", "28子又", "29威丞", "30俞之", "31品安", "32思佑",
+            "33加恩", "34善惟", "35子博", "36宇淳"
+        ];
+
+        const dutyCount = {};
+        dutyList.forEach(name => dutyCount[name] = 0);
+
+        // 生成日期
+        function generateDates() {
+            const startDate = new Date(2025, 3, 21); // 4月21日
+            const endDate = new Date(2025, 4, 16);   // 5月16日
+            const dates = [];
+            let currentDate = new Date(startDate);
+
+            while (currentDate <= endDate) {
+                if (currentDate.getDay() !== 0 && currentDate.getDay() !== 6) { // 排除週六日
+                    dates.push(new Date(currentDate));
+                }
+                currentDate.setDate(currentDate.getDate() + 1);
+            }
+            return dates;
+        }
+
+        // 創建行事曆
+        function createCalendar() {
+            const calendar = document.getElementById('calendar');
+            const dates = generateDates();
+
+            dates.forEach(date => {
+                const cell = document.createElement('div');
+                cell.className = 'date-cell';
+                cell.innerHTML = `${date.getMonth() + 1}/${date.getDate()}(${['日','一','二','三','四','五','六'][date.getDay()]})`;
+                cell.addEventListener('dragover', e => e.preventDefault());
+                cell.addEventListener('drop', handleDrop);
+                calendar.appendChild(cell);
+            });
+        }
+
+        // 創建值班卡片
+        function createDutyCards() {
+            const container = document.getElementById('duty-cards');
+            dutyList.forEach(name => {
+                const card = document.createElement('div');
+                card.className = 'duty-card';
+                card.draggable = true;
+                card.innerHTML = `${name}<span class="duty-count">(${dutyCount[name]})</span>`;
+                card.dataset.name = name;
+                
+                card.addEventListener('dragstart', e => {
+                    e.dataTransfer.setData('text/plain', name);
+                });
+
+                container.appendChild(card);
+            });
+        }
+
+        // 處理拖放
+        function handleDrop(e) {
+            e.preventDefault();
+            const name = e.dataTransfer.getData('text/plain');
+            
+            // 建立已放置的卡片
+            const droppedCard = document.createElement('div');
+            droppedCard.className = 'dropped-card';
+            droppedCard.textContent = name;
+            e.target.appendChild(droppedCard);
+
+            // 更新計數
+            dutyCount[name]++;
+            updateDutyCards();
+        }
+
+        // 更新值班卡片計數
+        function updateDutyCards() {
+            const cards = document.querySelectorAll('.duty-card');
+            cards.forEach(card => {
+                const name = card.dataset.name;
+                const countSpan = card.querySelector('.duty-count');
+                countSpan.textContent = `(${dutyCount[name]})`;
+            });
+        }
+
+        // 初始化
+        createCalendar();
+        createDutyCards();
+    </script>
+</body>
+</html>
