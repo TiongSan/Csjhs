@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>互動式座位表</title>
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 自定義樣式 */
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+            touch-action: none; /* 禁用頁面滾動等觸控操作，以優化拖曳體驗 */
+        }
+
+        .student-card {
+            cursor: grab;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            user-select: none; /* 防止拖曳時選取文字 */
+        }
+
+        .student-card:active {
+            cursor: grabbing;
+        }
+        
+        /* 正在被拖曳的卡片樣式 */
+        .dragging {
+            opacity: 0.5;
+            transform: scale(1.08);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 座位區域，用於置中卡片 */
+        .seat, #card-desk {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 當卡片被拖曳到可放置區域上方的樣式 */
+        .drag-over {
+            background-color: #a7f3d0; /* 淡綠色 */
+            border-style: solid;
+        }
+        
+        /* 為了觸控拖曳，我們需要一個絕對定位的複製體 */
+        .touch-clone {
+            position: absolute;
+            pointer-events: none; /* 讓複製體不影響滑鼠事件 */
+            z-index: 1000;
+        }
+
+        /* --- 視角切換樣式 --- */
+        #classroom-container {
+            transition: transform 0.6s ease-in-out;
+        }
+        #classroom-container.reversed {
+            transform: rotate(180deg);
+        }
+        
+        /* 保持正向的元素 (講桌、門口、學生卡牌) */
+        .upright {
+             transition: transform 0.6s ease-in-out;
+        }
+
+        #classroom-container.reversed .upright,
+        #classroom-container.reversed .student-card {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <div id="app" class="flex flex-col lg:flex-row h-screen w-screen overflow-hidden">
+
+        <!-- 左側卡牌區 -->
+        <div class="lg:w-1/4 bg-white shadow-lg p-4 flex flex-col">
+            <h2 class="text-2xl font-bold mb-4 text-center border-b pb-2">學生名單</h2>
+            <div id="card-desk" class="flex-grow overflow-y-auto flex flex-row lg:flex-col flex-wrap gap-3 p-2 bg-gray-50 rounded-lg">
+                <!-- 學生卡牌將由 JavaScript 動態生成於此 -->
+            </div>
+        </div>
+
+        <!-- 右側教室座位區 -->
+        <main class="flex-grow p-4 md:p-6 lg:p-8 flex items-center justify-center">
+            <div id="classroom-container" class="w-full max-w-5xl aspect-[4/3] bg-white rounded-xl shadow-2xl p-6 relative flex flex-col">
+                <!-- 教室標示物件 -->
+                <div class="absolute top-2 left-1/2 -translate-x-1/2 bg-gray-700 text-white px-6 py-2 rounded-lg text-lg font-semibold upright">講桌</div>
+                <div class="absolute top-4 right-6 text-gray-500 font-medium text-lg upright">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block mr-1"><path d="M18 20V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14"/><path d="M2 20h20"/><path d="M14 12v.01"/></svg>
+                    門口
+                </div>
+                 <div class="absolute bottom-4 right-6 text-gray-500 font-medium text-lg upright">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block mr-1"><path d="M18 20V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14"/><path d="M2 20h20"/><path d="M14 12v.01"/></svg>
+                    門口
+                </div>
+                
+                <!-- 切換視角按鈕 -->
+                <button id="switch-view-btn" class="absolute bottom-4 left-6 bg-indigo-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-indigo-600 transition-colors upright flex items-center gap-2">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v6h6"/><path d="M21 12A9 9 0 0 0 6 5.3L3 8"/><path d="M21 22v-6h-6"/><path d="M3 12a9 9 0 0 0 15 6.7l3-2.7"/></svg>
+                    切換視角
+                </button>
+
+
+                <!-- 座位表網格 -->
+                <div id="seating-grid" class="flex-grow grid grid-cols-6 grid-rows-5 gap-3 md:gap-4 mt-16">
+                    <!-- 座位將由 JavaScript 動態生成於此 -->
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <script>
+        const studentData = [
+  {
+    "座號": "1",
+    "姓名": "王佳喻",
+    "幹部": "風紀幹事"
+  },
+  {
+    "座號": "2",
+    "姓名": "江怡霈",
+    "幹部": "衛生股長/地理"
+  },
+  {
+    "座號": "3",
+    "姓名": "江昕霓",
+    "幹部": "公民/美術"
+  },
+  {
+    "座號": "4",
+    "姓名": "吳敏瑄",
+    "幹部": "公民"
+  },
+  {
+    "座號": "5",
+    "姓名": "陸湘紜",
+    "幹部": ""
+  },
+  {
+    "座號": "6",
+    "姓名": "黃康予",
+    "幹部": "班長/國文"
+  },
+  {
+    "座號": "7",
+    "姓名": "曾婕熙",
+    "幹部": ""
+  },
+  {
+    "座號": "8",
+    "姓名": "詹依潔",
+    "幹部": "風紀股長"
+  },
+  {
+    "座號": "9",
+    "姓名": "鄭詠丹",
+    "幹部": "地理"
+  },
+  {
+    "座號": "10",
+    "姓名": "鄭琳靜",
+    "幹部": ""
+  },
+  {
+    "座號": "11",
+    "姓名": "謝育螢",
+    "幹部": "健康股長"
+  },
+  {
+    "座號": "12",
+    "姓名": "顏瑜彤",
+    "幹部": "圖書股長"
+  },
+  {
+    "座號": "21",
+    "姓名": "王綨褘",
+    "幹部": "學藝股長/音樂"
+  },
+  {
+    "座號": "22",
+    "姓名": "尤方翔",
+    "幹部": ""
+  },
+  {
+    "座號": "23",
+    "姓名": "史幼維",
+    "幹部": "事務股長"
+  },
+  {
+    "座號": "24",
+    "姓名": "朱洛潁",
+    "幹部": "資訊股長/歷史"
+  },
+  {
+    "座號": "25",
+    "姓名": "李子力",
+    "幹部": "健康幹事"
+  },
+  {
+    "座號": "26",
+    "姓名": "馬翊恩",
+    "幹部": "輔導股長/數學"
+  },
+  {
+    "座號": "27",
+    "姓名": "張元愷",
+    "幹部": "學藝幹事/英語"
+  },
+  {
+    "座號": "28",
+    "姓名": "莊永晞",
+    "幹部": "事務幹事/生物"
+  },
+  {
+    "座號": "29",
+    "姓名": "黃煜翔",
+    "幹部": ""
+  },
+  {
+    "座號": "30",
+    "姓名": "劉心宇",
+    "幹部": "副班長"
+  },
+  {
+    "座號": "31",
+    "姓名": "劉俊廷",
+    "幹部": "環保股長"
+  },
+  {
+    "座號": "32",
+    "姓名": "蔡宸墉",
+    "幹部": "衛生幹事"
+  },
+  {
+    "座號": "33",
+    "姓名": "藍傳智",
+    "幹部": "生物"
+  },
+  {
+    "座號": "34",
+    "姓名": "鐘傳凱",
+    "幹部": "午餐股長/國文"
+  }
+];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const cardDesk = document.getElementById('card-desk');
+            const seatingGrid = document.getElementById('seating-grid');
+            const switchViewBtn = document.getElementById('switch-view-btn');
+            const classroomContainer = document.getElementById('classroom-container');
+
+            const totalRows = 5;
+            const totalCols = 6;
+
+            // --- 初始化函式 ---
+
+            // 1. 創建學生卡牌
+            function createStudentCards() {
+                studentData.forEach(student => {
+                    const card = document.createElement('div');
+                    const seatNumber = parseInt(student.座號);
+
+                    const isLowNumber = seatNumber < 20;
+                    const bgColor = isLowNumber ? 'bg-pink-100' : 'bg-blue-100';
+                    const borderColor = isLowNumber ? 'border-pink-300' : 'border-blue-300';
+                    const textColorPrimary = isLowNumber ? 'text-pink-800' : 'text-blue-800';
+                    const textColorSecondary = isLowNumber ? 'text-pink-900' : 'text-blue-900';
+                    const textColorTertiary = isLowNumber ? 'text-pink-700' : 'text-blue-700';
+                    
+                    card.className = `student-card ${bgColor} border-2 ${borderColor} rounded-lg p-2 text-center shadow-md w-32 h-28 flex flex-col justify-between`;
+                    card.draggable = true;
+                    card.id = `card-${student.座號}`;
+                    card.dataset.studentId = student.座號;
+
+                    card.innerHTML = `
+                        <div class="text-sm font-bold ${textColorPrimary}">${student.座號}</div>
+                        <div class="text-lg font-semibold ${textColorSecondary}">${student.姓名}</div>
+                        <div class="text-xs ${textColorTertiary} truncate">${student.幹部 || '&nbsp;'}</div>
+                    `;
+                    cardDesk.appendChild(card);
+                });
+            }
+
+            // 2. 創建座位格
+            function createSeatingGrid() {
+                for (let i = 0; i < totalRows * totalCols; i++) {
+                    const seat = document.createElement('div');
+                    seat.className = 'seat bg-gray-200 border-2 border-dashed border-gray-400 rounded-lg transition-colors';
+                    seat.dataset.seatId = `seat-${i}`;
+                    seatingGrid.appendChild(seat);
+                }
+            }
+
+            // 3. 添加所有拖放事件監聽器
+            function addDragDropListeners() {
+                const cards = document.querySelectorAll('.student-card');
+                const dropZones = document.querySelectorAll('.seat, #card-desk');
+                
+                // 為卡牌添加拖曳事件
+                cards.forEach(card => {
+                    // 滑鼠拖曳
+                    card.addEventListener('dragstart', handleDragStart);
+                    card.addEventListener('dragend', handleDragEnd);
+
+                    // 觸控拖曳
+                    card.addEventListener('touchstart', handleTouchStart, { passive: false });
+                });
+
+                // 為可放置區域添加事件
+                dropZones.forEach(zone => {
+                    zone.addEventListener('dragover', handleDragOver);
+                    zone.addEventListener('dragleave', handleDragLeave);
+                    zone.addEventListener('drop', handleDrop);
+                });
+            }
+
+            // --- 事件處理函式 (滑鼠) ---
+
+            let draggedCard = null;
+
+            function handleDragStart(e) {
+                draggedCard = this;
+                // 使用 setTimeout 讓瀏覽器有時間渲染 "dragging" 樣式
+                setTimeout(() => this.classList.add('dragging'), 0);
+                e.dataTransfer.setData('text/plain', this.id);
+            }
+
+            function handleDragEnd() {
+                draggedCard.classList.remove('dragging');
+                draggedCard = null;
+            }
+
+            function handleDragOver(e) {
+                e.preventDefault();
+                const targetZone = getValidDropZone(this);
+                if (canDrop(targetZone, draggedCard)) {
+                    targetZone.classList.add('drag-over');
+                }
+            }
+            
+            function handleDragLeave() {
+                const targetZone = getValidDropZone(this);
+                targetZone.classList.remove('drag-over');
+            }
+
+            function handleDrop(e) {
+                e.preventDefault();
+                const targetZone = getValidDropZone(this);
+                targetZone.classList.remove('drag-over');
+
+                const id = e.dataTransfer.getData('text/plain');
+                const card = document.getElementById(id);
+                
+                if (card && canDrop(targetZone, card)) {
+                    targetZone.appendChild(card);
+                }
+            }
+
+            // --- 事件處理函式 (觸控) ---
+            let touchDraggedCard = null;
+            let touchClone = null;
+            let startX, startY, offsetX, offsetY;
+            
+            function handleTouchStart(e) {
+                e.preventDefault(); // 防止滾動
+                touchDraggedCard = this;
+
+                const rect = touchDraggedCard.getBoundingClientRect();
+                const touch = e.touches[0];
+                
+                startX = touch.clientX;
+                startY = touch.clientY;
+                offsetX = startX - rect.left;
+                offsetY = startY - rect.top;
+
+                // 創建一個視覺上的複製體來拖曳
+                touchClone = touchDraggedCard.cloneNode(true);
+                touchClone.classList.add('touch-clone');
+                document.body.appendChild(touchClone);
+                
+                // 定位複製體
+                touchClone.style.left = `${rect.left}px`;
+                touchClone.style.top = `${rect.top}px`;
+                touchClone.style.width = `${rect.width}px`;
+                touchClone.style.height = `${rect.height}px`;
+
+                // 隱藏原始卡片
+                touchDraggedCard.style.opacity = '0.3';
+                
+                document.addEventListener('touchmove', handleTouchMove, { passive: false });
+                document.addEventListener('touchend', handleTouchEnd);
+            }
+
+            let lastOverZone = null;
+            function handleTouchMove(e) {
+                e.preventDefault();
+                if (!touchClone) return;
+
+                const touch = e.touches[0];
+                const newX = touch.clientX - offsetX;
+                const newY = touch.clientY - offsetY;
+
+                touchClone.style.left = `${newX}px`;
+                touchClone.style.top = `${newY}px`;
+                
+                // 找出手指下方的元素
+                touchClone.style.display = 'none'; // 暫時隱藏複製體，才能偵測到下方的元素
+                const elementUnder = document.elementFromPoint(touch.clientX, touch.clientY);
+                touchClone.style.display = ''; // 恢復顯示
+
+                const dropZone = getValidDropZone(elementUnder);
+                
+                if (lastOverZone && lastOverZone !== dropZone) {
+                    lastOverZone.classList.remove('drag-over');
+                }
+
+                if (dropZone && canDrop(dropZone, touchDraggedCard)) {
+                    dropZone.classList.add('drag-over');
+                    lastOverZone = dropZone;
+                } else {
+                    lastOverZone = null;
+                }
+            }
+
+            function handleTouchEnd(e) {
+                document.removeEventListener('touchmove', handleTouchMove);
+                document.removeEventListener('touchend', handleTouchEnd);
+                
+                if(lastOverZone) {
+                    lastOverZone.classList.remove('drag-over');
+                }
+
+                if (touchClone) {
+                    const touch = e.changedTouches[0];
+                    touchClone.style.display = 'none';
+                    const elementUnder = document.elementFromPoint(touch.clientX, touch.clientY);
+                    touchClone.style.display = '';
+
+                    const dropZone = getValidDropZone(elementUnder);
+
+                    if (dropZone && canDrop(dropZone, touchDraggedCard)) {
+                        dropZone.appendChild(touchDraggedCard);
+                    }
+                }
+                
+                if(touchDraggedCard) {
+                    touchDraggedCard.style.opacity = '1';
+                }
+
+                if (touchClone) {
+                    touchClone.remove();
+                }
+
+                touchDraggedCard = null;
+                touchClone = null;
+                lastOverZone = null;
+            }
+
+
+            // --- 輔助函式 ---
+
+            // 確保我們總是得到有效的放置區 (座位或卡牌桌)
+            function getValidDropZone(element) {
+                if (!element) return null;
+                if (element.classList.contains('seat') || element.id === 'card-desk') {
+                    return element;
+                }
+                // 如果拖到卡片上，我們實際目標是卡片所在的容器
+                return element.closest('.seat, #card-desk');
+            }
+
+            // 檢查是否可以放置卡片
+            function canDrop(zone, card) {
+                if (!zone || !card) return false;
+                // 如果是卡牌桌，永遠可以放
+                if (zone.id === 'card-desk') return true;
+                // 如果是座位，必須是空的，或是拖曳的卡片原本就在這個位置
+                if (zone.classList.contains('seat')) {
+                    return zone.children.length === 0 || zone.contains(card);
+                }
+                return false;
+            }
+            
+            // --- 視角切換功能 ---
+            switchViewBtn.addEventListener('click', () => {
+                classroomContainer.classList.toggle('reversed');
+            });
+
+
+            // --- 啟動 ---
+            createStudentCards();
+            createSeatingGrid();
+            addDragDropListeners();
+        });
+    </script>
+
+</body>
+</html>
+
