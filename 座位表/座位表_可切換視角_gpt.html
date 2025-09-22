@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>互動式座位表</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body{
+      font-family:'Inter','Noto Sans TC',sans-serif;
+      touch-action:none;
+    }
+    .student-card{
+      cursor:grab;
+      transition:transform .2s ease-in-out, box-shadow .2s ease-in-out;
+      user-select:none;
+    }
+    .student-card:active{ cursor:grabbing; }
+    .dragging{
+      opacity:.5;
+      transform:scale(1.08);
+      box-shadow:0 10px 15px -3px rgba(0,0,0,.2), 0 4px 6px -2px rgba(0,0,0,.1);
+    }
+    .seat,#card-desk{
+      display:flex; justify-content:center; align-items:center;
+    }
+    .drag-over{
+      background-color:#a7f3d0; border-style:solid;
+    }
+    .touch-clone{
+      position:absolute; pointer-events:none; z-index:1000;
+    }
+
+    /* --- 視角切換 --- */
+    #classroom-container{ transition:transform .6s ease-in-out; }
+    #classroom-container.reversed{ transform:rotate(180deg); }
+    .upright{ transition:transform .6s ease-in-out; }
+    #classroom-container.reversed .upright,
+    #classroom-container.reversed .student-card{ transform:rotate(180deg); }
+
+    /* --- 尺寸切換：在卡牌桌時縮成 1/4 大小（寬高各 1/2）--- */
+    .student-card.compact{
+      width:2rem;         /* 原 w-32 = 8rem -> 1/4 面積 ≒ 1/2 寬度 -> 4rem，但再收更極致：2rem更好佈局 */
+      height:1.75rem;     /* 原 h-28 = 7rem -> 1/2 高度 ≒ 3.5rem，為避免擠壓改為 1.75rem */
+      padding:.25rem;
+    }
+    .student-card .role{ display:block; }
+    .student-card.compact .role{ display:none; }      /* 卡牌桌不顯示幹部 */
+    .student-card .name{ font-size:1.125rem; }        /* text-lg */
+    .student-card.compact .name{ font-size:.65rem; }  /* 卡牌桌縮小字級 */
+    .student-card .no{ font-size:.875rem; }           /* text-sm */
+    .student-card.compact .no{ font-size:.625rem; }   /* 卡牌桌縮小字級 */
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <div id="app" class="flex flex-col lg:flex-row h-screen w-screen overflow-hidden">
+    <!-- 左側卡牌區 -->
+    <div class="lg:w-1/4 bg-white shadow-lg p-4 flex flex-col">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-2xl font-bold text-center flex-1">學生名單</h2>
+      </div>
+
+      <!-- 匯入/匯出 -->
+      <div class="flex items-center gap-2 mb-3">
+        <button id="export-btn" class="bg-emerald-500 hover:bg-emerald-600 text-white text-sm px-3 py-1.5 rounded">
+          匯出 JSON
+        </button>
+        <label class="bg-indigo-500 hover:bg-indigo-600 text-white text-sm px-3 py-1.5 rounded cursor-pointer">
+          匯入 JSON
+          <input id="import-input" type="file" accept="application/json" class="hidden"/>
+        </label>
+        <button id="reset-btn" class="ml-auto bg-gray-200 hover:bg-gray-300 text-gray-800 text-sm px-2 py-1.5 rounded">
+          全部收回
+        </button>
+      </div>
+
+      <div id="card-desk" class="flex-grow overflow-y-auto flex flex-row lg:flex-col flex-wrap gap-3 p-2 bg-gray-50 rounded-lg">
+        <!-- 學生卡牌由 JS 生成 -->
+      </div>
+    </div>
+
+    <!-- 右側教室座位區 -->
+    <main class="flex-grow p-4 md:p-6 lg:p-8 flex items-center justify-center">
+      <div id="classroom-container" class="w-full max-w-5xl aspect-[4/3] bg-white rounded-xl shadow-2xl p-6 relative flex flex-col">
+        <!-- 教室標示 -->
+        <div class="absolute top-2 left-1/2 -translate-x-1/2 bg-gray-700 text-white px-6 py-2 rounded-lg text-lg font-semibold upright">講桌</div>
+        <div class="absolute top-4 right-6 text-gray-500 font-medium text-lg upright">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block mr-1"><path d="M18 20V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14"/><path d="M2 20h20"/><path d="M14 12v.01"/></svg>
+          門口
+        </div>
+        <div class="absolute bottom-4 right-6 text-gray-500 font-medium text-lg upright">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block mr-1"><path d="M18 20V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14"/><path d="M2 20h20"/><path d="M14 12v.01"/></svg>
+          門口
+        </div>
+
+        <!-- 切換視角 -->
+        <button id="switch-view-btn" class="absolute bottom-4 left-6 bg-indigo-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-indigo-600 transition-colors upright flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v6h6"/><path d="M21 12A9 9 0 0 0 6 5.3L3 8"/><path d="M21 22v-6h-6"/><path d="M3 12a9 9 0 0 0 15 6.7l3-2.7"/></svg>
+          切換視角
+        </button>
+
+        <!-- 座位表 -->
+        <div id="seating-grid" class="flex-grow grid grid-cols-6 grid-rows-5 gap-3 md:gap-4 mt-16">
+          <!-- 座位由 JS 生成 -->
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const studentData = [
+      {"座號":"1","姓名":"王佳喻","幹部":"風紀幹事"},
+      {"座號":"2","姓名":"江怡霈","幹部":"衛生股長/地理"},
+      {"座號":"3","姓名":"江昕霓","幹部":"公民/美術"},
+      {"座號":"4","姓名":"吳敏瑄","幹部":"公民"},
+      {"座號":"5","姓名":"陸湘紜","幹部":""},
+      {"座號":"6","姓名":"黃康予","幹部":"班長/國文"},
+      {"座號":"7","姓名":"曾婕熙","幹部":""},
+      {"座號":"8","姓名":"詹依潔","幹部":"風紀股長"},
+      {"座號":"9","姓名":"鄭詠丹","幹部":"地理"},
+      {"座號":"10","姓名":"鄭琳靜","幹部":""},
+      {"座號":"11","姓名":"謝育螢","幹部":"健康股長"},
+      {"座號":"12","姓名":"顏瑜彤","幹部":"圖書股長"},
+      {"座號":"21","姓名":"王綨褘","幹部":"學藝股長/音樂"},
+      {"座號":"22","姓名":"尤方翔","幹部":""},
+      {"座號":"23","姓名":"史幼維","幹部":"事務股長"},
+      {"座號":"24","姓名":"朱洛潁","幹部":"資訊股長/歷史"},
+      {"座號":"25","姓名":"李子力","幹部":"健康幹事"},
+      {"座號":"26","姓名":"馬翊恩","幹部":"輔導股長/數學"},
+      {"座號":"27","姓名":"張元愷","幹部":"學藝幹事/英語"},
+      {"座號":"28","姓名":"莊永晞","幹部":"事務幹事/生物"},
+      {"座號":"29","姓名":"黃煜翔","幹部":""},
+      {"座號":"30","姓名":"劉心宇","幹部":"副班長"},
+      {"座號":"31","姓名":"劉俊廷","幹部":"環保股長"},
+      {"座號":"32","姓名":"蔡宸墉","幹部":"衛生幹事"},
+      {"座號":"33","姓名":"藍傳智","幹部":"生物"},
+      {"座號":"34","姓名":"鐘傳凱","幹部":"午餐股長/國文"}
+    ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const cardDesk = document.getElementById('card-desk');
+      const seatingGrid = document.getElementById('seating-grid');
+      const switchViewBtn = document.getElementById('switch-view-btn');
+      const classroomContainer = document.getElementById('classroom-container');
+      const exportBtn = document.getElementById('export-btn');
+      const importInput = document.getElementById('import-input');
+      const resetBtn = document.getElementById('reset-btn');
+
+      const totalRows = 5;
+      const totalCols = 6;
+
+      // --- 初始化 ---
+      createStudentCards();
+      createSeatingGrid();
+      addDragDropListeners();
+      // 初始化：全數卡牌先在卡牌桌 → 小尺寸、無幹部
+      Array.from(cardDesk.children).forEach(card => applyPresentation(card, cardDesk));
+
+      // --- 建卡牌 ---
+      function createStudentCards(){
+        studentData.forEach(student=>{
+          const card = document.createElement('div');
+          const seatNumber = parseInt(student.座號,10);
+          const isLowNumber = seatNumber < 20;
+          const bgColor = isLowNumber ? 'bg-pink-100' : 'bg-blue-100';
+          const borderColor = isLowNumber ? 'border-pink-300' : 'border-blue-300';
+          const textColorPrimary = isLowNumber ? 'text-pink-800' : 'text-blue-800';
+          const textColorSecondary = isLowNumber ? 'text-pink-900' : 'text-blue-900';
+          const textColorTertiary = isLowNumber ? 'text-pink-700' : 'text-blue-700';
+
+          card.className = `student-card ${bgColor} border-2 ${borderColor} rounded-lg p-2 text-center shadow-md w-32 h-28 flex flex-col justify-between`;
+          card.draggable = true;
+          card.id = `card-${student.座號}`;
+          card.dataset.studentId = student.座號;
+
+          card.innerHTML = `
+            <div class="no font-bold ${textColorPrimary}">${student.座號}</div>
+            <div class="name font-semibold ${textColorSecondary} truncate">${student.姓名}</div>
+            <div class="role text-xs ${textColorTertiary} truncate">${student.幹部 || '&nbsp;'}</div>
+          `;
+          cardDesk.appendChild(card);
+        });
+      }
+
+      // --- 建座位 ---
+      function createSeatingGrid(){
+        for(let i=0;i<totalRows*totalCols;i++){
+          const seat=document.createElement('div');
+          seat.className='seat bg-gray-200 border-2 border-dashed border-gray-400 rounded-lg transition-colors';
+          seat.dataset.seatId=`seat-${i}`;
+          seatingGrid.appendChild(seat);
+        }
+      }
+
+      // --- 拖放監聽 ---
+      function addDragDropListeners(){
+        const cards=document.querySelectorAll('.student-card');
+        const dropZones=document.querySelectorAll('.seat, #card-desk');
+
+        cards.forEach(card=>{
+          card.addEventListener('dragstart', handleDragStart);
+          card.addEventListener('dragend', handleDragEnd);
+          card.addEventListener('touchstart', handleTouchStart, {passive:false});
+        });
+
+        dropZones.forEach(zone=>{
+          zone.addEventListener('dragover', handleDragOver);
+          zone.addEventListener('dragleave', handleDragLeave);
+          zone.addEventListener('drop', handleDrop);
+        });
+      }
+
+      // --- 滑鼠拖放 ---
+      let draggedCard=null;
+      function handleDragStart(e){
+        draggedCard=this;
+        setTimeout(()=>this.classList.add('dragging'),0);
+        e.dataTransfer.setData('text/plain', this.id);
+      }
+      function handleDragEnd(){
+        draggedCard.classList.remove('dragging');
+        draggedCard=null;
+      }
+      function handleDragOver(e){
+        e.preventDefault();
+        const targetZone=getValidDropZone(this);
+        if(canDrop(targetZone, draggedCard)){ targetZone.classList.add('drag-over'); }
+      }
+      function handleDragLeave(){
+        const targetZone=getValidDropZone(this);
+        targetZone.classList.remove('drag-over');
+      }
+      function handleDrop(e){
+        e.preventDefault();
+        const targetZone=getValidDropZone(this);
+        targetZone.classList.remove('drag-over');
+
+        const id=e.dataTransfer.getData('text/plain');
+        const card=document.getElementById(id);
+        if(card && canDrop(targetZone, card)){
+          targetZone.appendChild(card);
+          applyPresentation(card, targetZone);
+        }
+      }
+
+      // --- 觸控拖放 ---
+      let touchDraggedCard=null, touchClone=null, startX, startY, offsetX, offsetY, lastOverZone=null;
+
+      function handleTouchStart(e){
+        e.preventDefault();
+        touchDraggedCard=this;
+
+        const rect=touchDraggedCard.getBoundingClientRect();
+        const touch=e.touches[0];
+        startX=touch.clientX; startY=touch.clientY;
+        offsetX=startX-rect.left; offsetY=startY-rect.top;
+
+        touchClone=touchDraggedCard.cloneNode(true);
+        touchClone.classList.add('touch-clone');
+        document.body.appendChild(touchClone);
+        touchClone.style.left=`${rect.left}px`;
+        touchClone.style.top=`${rect.top}px`;
+        touchClone.style.width=`${rect.width}px`;
+        touchClone.style.height=`${rect.height}px`;
+
+        touchDraggedCard.style.opacity='0.3';
+        document.addEventListener('touchmove', handleTouchMove, {passive:false});
+        document.addEventListener('touchend', handleTouchEnd);
+      }
+
+      function handleTouchMove(e){
+        e.preventDefault();
+        if(!touchClone) return;
+
+        const touch=e.touches[0];
+        const newX=touch.clientX-offsetX;
+        const newY=touch.clientY-offsetY;
+        touchClone.style.left=`${newX}px`;
+        touchClone.style.top=`${newY}px`;
+
+        touchClone.style.display='none';
+        const elementUnder=document.elementFromPoint(touch.clientX, touch.clientY);
+        touchClone.style.display='';
+
+        const dropZone=getValidDropZone(elementUnder);
+        if(lastOverZone && lastOverZone!==dropZone){ lastOverZone.classList.remove('drag-over'); }
+        if(dropZone && canDrop(dropZone, touchDraggedCard)){
+          dropZone.classList.add('drag-over'); lastOverZone=dropZone;
+        }else{ lastOverZone=null; }
+      }
+
+      function handleTouchEnd(e){
+        document.removeEventListener('touchmove', handleTouchMove);
+        document.removeEventListener('touchend', handleTouchEnd);
+        if(lastOverZone){ lastOverZone.classList.remove('drag-over'); }
+
+        if(touchClone){
+          const touch=e.changedTouches[0];
+          touchClone.style.display='none';
+          const elementUnder=document.elementFromPoint(touch.clientX, touch.clientY);
+          touchClone.style.display='';
+          const dropZone=getValidDropZone(elementUnder);
+
+          if(dropZone && canDrop(dropZone, touchDraggedCard)){
+            dropZone.appendChild(touchDraggedCard);
+            applyPresentation(touchDraggedCard, dropZone);
+          }
+        }
+
+        if(touchDraggedCard){ touchDraggedCard.style.opacity='1'; }
+        if(touchClone){ touchClone.remove(); }
+        touchDraggedCard=null; touchClone=null; lastOverZone=null;
+      }
+
+      // --- 輔助 ---
+      function getValidDropZone(element){
+        if(!element) return null;
+        if(element.classList?.contains('seat') || element.id==='card-desk') return element;
+        return element.closest?.('.seat, #card-desk') || null;
+      }
+
+      function canDrop(zone, card){
+        if(!zone || !card) return false;
+        if(zone.id==='card-desk') return true;
+        if(zone.classList.contains('seat')){
+          return zone.children.length===0 || zone.contains(card);
+        }
+        return false;
+      }
+
+      // 根據所在區域調整卡牌呈現（大小 / 是否顯示幹部）
+      function applyPresentation(card, zoneEl){
+        if(zoneEl.id==='card-desk'){
+          card.classList.add('compact');
+        }else{
+          card.classList.remove('compact');
+        }
+      }
+
+      // --- 視角切換 ---
+      switchViewBtn.addEventListener('click', ()=>{
+        classroomContainer.classList.toggle('reversed');
+      });
+
+      // --- 匯出 / 匯入 / 重置 ---
+      exportBtn.addEventListener('click', ()=>{
+        const data = serializeLayout();
+        const blob = new Blob([JSON.stringify(data,null,2)], {type:'application/json'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        const now = new Date();
+        const y = String(now.getFullYear());
+        const m = String(now.getMonth()+1).padStart(2,'0');
+        const d = String(now.getDate()).padStart(2,'0');
+        a.download = `seating-${y}${m}${d}.json`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+      });
+
+      importInput.addEventListener('change', async (e)=>{
+        const file = e.target.files?.[0];
+        if(!file) return;
+        try{
+          const text = await file.text();
+          const data = JSON.parse(text);
+          restoreLayout(data);
+        }catch(err){
+          alert('匯入失敗：JSON 格式不正確');
+          console.error(err);
+        }finally{
+          importInput.value = '';
+        }
+      });
+
+      resetBtn.addEventListener('click', ()=>{
+        // 全部收回卡牌
+        const seats = document.querySelectorAll('.seat');
+        seats.forEach(seat=>{
+          if(seat.firstElementChild){
+            cardDesk.appendChild(seat.firstElementChild);
+          }
+        });
+        Array.from(cardDesk.children).forEach(card => applyPresentation(card, cardDesk));
+      });
+
+      // 將目前排法轉成 JSON
+      function serializeLayout(){
+        const seats = Array.from(document.querySelectorAll('.seat'));
+        const seatMap = {};
+        seats.forEach(seat=>{
+          const sid = seat.dataset.seatId;
+          const card = seat.firstElementChild;
+          if(card){
+            seatMap[sid] = card.dataset.studentId; // 學生座號
+          }
+        });
+
+        const deskOrder = Array.from(cardDesk.children).map(c=>c.dataset.studentId);
+
+        return {
+          schema: 'v1',
+          seats: seatMap,       // 例：{ "seat-0": "8", "seat-1": "30" }
+          desk: deskOrder       // 卡牌桌上尚未入座的座號順序
+        };
+      }
+
+      // 根據 JSON 還原排法
+      function restoreLayout(data){
+        if(!data || data.schema!=='v1'){ throw new Error('不支援的資料格式'); }
+
+        // 全部先收回卡牌
+        const allCards = document.querySelectorAll('.student-card');
+        allCards.forEach(card=> cardDesk.appendChild(card));
+
+        // 清空每個座位
+        const seats = document.querySelectorAll('.seat');
+        seats.forEach(seat=> seat.innerHTML='');
+
+        // 依 seats 配置
+        Object.entries(data.seats || {}).forEach(([seatId, studentId])=>{
+          const seat = document.querySelector(`.seat[data-seat-id="${seatId}"]`);
+          const card = document.getElementById(`card-${studentId}`);
+          if(seat && card){
+            if(seat.children.length===0){
+              seat.appendChild(card);
+            }else{
+              // 若 seat 已被佔，用回卡牌桌
+              cardDesk.appendChild(card);
+            }
+          }
+        });
+
+        // 卡牌桌順序（若 JSON 提供）
+        if(Array.isArray(data.desk)){
+          data.desk.forEach(studentId=>{
+            const card = document.getElementById(`card-${studentId}`);
+            if(card && card.parentElement!==cardDesk){
+              // 已在座位就略過
+            }else if(card){
+              cardDesk.appendChild(card);
+            }
+          });
+          // 可能有未列入 desk 的（例如 seats 中沒放到且也沒列在 desk），一併補上
+          const notListed = Array.from(document.querySelectorAll('.student-card'))
+            .filter(c=> !c.closest('.seat') && !data.desk.includes(c.dataset.studentId));
+          notListed.forEach(c=> cardDesk.appendChild(c));
+        }
+
+        // 套用呈現狀態
+        Array.from(cardDesk.children).forEach(card=> applyPresentation(card, cardDesk));
+        seats.forEach(seat=>{
+          if(seat.firstElementChild){ applyPresentation(seat.firstElementChild, seat); }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
