@@ -2,15 +2,15 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>元素週期表滑塊拼圖 (最終挑戰版)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>元素週期表滑塊拼圖 (最終穩定版)</title>
 <style>
   body {
     font-family: "Microsoft JhengHei", "Segoe UI", sans-serif;
     background: #f5f7fa;
     text-align: center;
     color: #1f2937;
-    /* 新增：防止觸控滑動時頁面背景滾動 */
-    touch-action: none;
+    touch-action: none; /* 防止觸控滑動時頁面背景滾動 */
   }
   h1 { margin-top: 20px; font-size: 1.5em; }
   #level-selection { margin: 15px 0; }
@@ -52,93 +52,353 @@
   <div id="table"></div>
 
   <script>
-    const allElements = [ {cn:"氫", en:"H", row:1, col:1, type:"nonmetal"}, {cn:"氦", en:"He", row:1, col:18, type:"noble"}, {cn:"鋰", en:"Li", row:2, col:1, type:"metal"}, {cn:"鈹", en:"Be", row:2, col:2, type:"metal"}, {cn:"硼", en:"B", row:2, col:13, type:"nonmetal"}, {cn:"碳", en:"C", row:2, col:14, type:"nonmetal"}, {cn:"氮", en:"N", row:2, col:15, type:"nonmetal"}, {cn:"氧", en:"O", row:2, col:16, type:"nonmetal"}, {cn:"氟", en:"F", row:2, col:17, type:"nonmetal"}, {cn:"氖", en:"Ne", row:2, col:18, type:"noble"}, {cn:"鈉", en:"Na", row:3, col:1, type:"metal"}, {cn:"鎂", en:"Mg", row:3, col:2, type:"metal"}, {cn:"鋁", en:"Al", row:3, col:13, type:"metal"}, {cn:"矽", en:"Si", row:3, col:14, type:"nonmetal"}, {cn:"磷", en:"P", row:3, col:15, type:"nonmetal"}, {cn:"硫", en:"S", row:3, col:16, type:"nonmetal"}, {cn:"氯", en:"Cl", row:3, col:17, type:"nonmetal"}, {cn:"氬", en:"Ar", row:3, col:18, type:"noble"}, {cn:"鉀", en:"K", row:4, col:1, type:"metal"}, {cn:"鈣", en:"Ca", row:4, col:2, type:"metal"}, {cn:"鈧", en:"Sc", row:4, col:3, type:"transition"}, {cn:"鈦", en:"Ti", row:4, col:4, type:"transition"}, {cn:"釩", en:"V", row:4, col:5, type:"transition"}, {cn:"鉻", en:"Cr", row:4, col:6, type:"transition"}, {cn:"錳", en:"Mn", row:4, col:7, type:"transition"}, {cn:"鐵", en:"Fe", row:4, col:8, type:"transition"}, {cn:"鈷", en:"Co", row:4, col:9, type:"transition"}, {cn:"鎳", en:"Ni", row:4, col:10, type:"transition"}, {cn:"銅", en:"Cu", row:4, col:11, type:"transition"}, {cn:"鋅", en:"Zn", row:4, col:12, type:"transition"}, {cn:"鎵", en:"Ga", row:4, col:13, type:"metal"}, {cn:"鍺", en:"Ge", row:4, col:14, type:"nonmetal"}, {cn:"砷", en:"As", row:4, col:15, type:"nonmetal"}, {cn:"硒", en:"Se", row:4, col:16, type:"nonmetal"}, {cn:"溴", en:"Br", row:4, col:17, type:"nonmetal"}, {cn:"氪", en:"Kr", row:4, col:18, type:"noble"}, ];
-    const levels = { 1: { title: "關卡一：元素新星", filter: el => el.row <= 2 }, 2: { title: "關卡二：主族精通", filter: el => el.row <= 3 }, 3: { title: "關卡三：過渡金屬", filter: el => el.row === 4 }, 4: { title: "關卡四：終極挑戰", filter: el => true } };
+    const allElements = [
+      {cn:"氫", en:"H", row:1, col:1, type:"nonmetal"}, {cn:"氦", en:"He", row:1, col:18, type:"noble"},
+      {cn:"鋰", en:"Li", row:2, col:1, type:"metal"}, {cn:"鈹", en:"Be", row:2, col:2, type:"metal"},
+      {cn:"硼", en:"B", row:2, col:13, type:"nonmetal"}, {cn:"碳", en:"C", row:2, col:14, type:"nonmetal"},
+      {cn:"氮", en:"N", row:2, col:15, type:"nonmetal"}, {cn:"氧", en:"O", row:2, col:16, type:"nonmetal"},
+      {cn:"氟", en:"F", row:2, col:17, type:"nonmetal"}, {cn:"氖", en:"Ne", row:2, col:18, type:"noble"},
+      {cn:"鈉", en:"Na", row:3, col:1, type:"metal"}, {cn:"鎂", en:"Mg", row:3, col:2, type:"metal"},
+      {cn:"鋁", en:"Al", row:3, col:13, type:"metal"}, {cn:"矽", en:"Si", row:3, col:14, type:"nonmetal"},
+      {cn:"磷", en:"P", row:3, col:15, type:"nonmetal"}, {cn:"硫", en:"S", row:3, col:16, type:"nonmetal"},
+      {cn:"氯", en:"Cl", row:3, col:17, type:"nonmetal"}, {cn:"氬", en:"Ar", row:3, col:18, type:"noble"},
+      {cn:"鉀", en:"K", row:4, col:1, type:"metal"}, {cn:"鈣", en:"Ca", row:4, col:2, type:"metal"},
+      {cn:"鈧", en:"Sc", row:4, col:3, type:"transition"}, {cn:"鈦", en:"Ti", row:4, col:4, type:"transition"},
+      {cn:"釩", en:"V", row:4, col:5, type:"transition"}, {cn:"鉻", en:"Cr", row:4, col:6, type:"transition"},
+      {cn:"錳", en:"Mn", row:4, col:7, type:"transition"}, {cn:"鐵", en:"Fe", row:4, col:8, type:"transition"},
+      {cn:"鈷", en:"Co", row:4, col:9, type:"transition"}, {cn:"鎳", en:"Ni", row:4, col:10, type:"transition"},
+      {cn:"銅", en:"Cu", row:4, col:11, type:"transition"}, {cn:"鋅", en:"Zn", row:4, col:12, type:"transition"},
+      {cn:"鎵", en:"Ga", row:4, col:13, type:"metal"}, {cn:"鍺", en:"Ge", row:4, col:14, type:"nonmetal"},
+      {cn:"砷", en:"As", row:4, col:15, type:"nonmetal"}, {cn:"硒", en:"Se", row:4, col:16, type:"nonmetal"},
+      {cn:"溴", en:"Br", row:4, col:17, type:"nonmetal"}, {cn:"氪", en:"Kr", row:4, col:18, type:"noble"},
+    ];
+
+    const levels = {
+        1: { title: "關卡一：元素新星", filter: el => el.row <= 2 },
+        2: { title: "關卡二：主族精通", filter: el => el.row <= 3 },
+        3: { title: "關卡三：過渡金屬", filter: el => el.row === 4 },
+        4: { title: "關卡四：終極挑戰", filter: el => true }
+    };
+
     const totalRows = 4, totalCols = 18;
     const table = document.getElementById("table");
     const holdingBay = document.getElementById("holding-bay");
-    let currentLang = "cn", moves = 0, seconds = 0, timerInterval = null, isGameActive = false;
-    let currentLevelElements = [], holdingBayElement = null;
-    let draggedElement = null, lastOverElement = null; // **新增：用於觸控事件**
+    
+    let currentLang = "cn", moves = 0, seconds = 0;
+    let timerInterval = null, isGameActive = false;
+    let currentLevelElements = [];
+    let holdingBayElement = null; // 追蹤暫存區的元素資料
 
-    function isAdjacent(fromIndex, toIndex) { /* ... 此函數不變 ... */ const fromRow = Math.floor(fromIndex / totalCols), fromCol = fromIndex % totalCols; const toRow = Math.floor(toIndex / totalCols), toCol = toIndex % totalCols; if (Math.abs(fromRow - toRow) + Math.abs(fromCol - toCol) === 1) return true; if (fromRow === toRow) { if (fromRow === 0 && ((fromCol === 0 && toCol === 17) || (fromCol === 17 && toCol === 0))) return true; if ((fromRow === 1 || fromRow === 2) && ((fromCol === 1 && toCol === 12) || (fromCol === 12 && toCol === 1))) return true; } return false; }
-    function renderCell(cell, elementData) { /* ... 此函數不變 ... */ cell.className = `cell ${elementData.type}`; cell.textContent = (currentLang === "cn") ? elementData.cn : elementData.en; cell.dataset.symbol = elementData.en; cell.dataset.cn = elementData.cn; cell.draggable = true; }
-    function clearCell(cell) { /* ... 此函數不變 ... */ cell.className = 'cell empty'; cell.textContent = ''; cell.dataset.symbol = ''; cell.dataset.cn = ''; cell.draggable = false; }
+    let draggedElement = null; // **用於觸控事件：記錄當前被拖曳的 DOM 元素**
+    let lastOverElement = null; // **用於觸控事件：記錄上次手指懸停的 DOM 元素**
 
+    // 判斷是否相鄰 (包含跨越規則)
+    function isAdjacent(fromIndex, toIndex) {
+        const fromRow = Math.floor(fromIndex / totalCols), fromCol = fromIndex % totalCols;
+        const toRow = Math.floor(toIndex / totalCols), toCol = toIndex % totalCols;
+
+        // 規則1: 上下左右相鄰
+        if (Math.abs(fromRow - toRow) + Math.abs(fromCol - toCol) === 1) {
+            return true;
+        }
+        // 規則2: 跨越鴻溝 (同橫列)
+        if (fromRow === toRow) {
+            if (fromRow === 0 && ((fromCol === 0 && toCol === 17) || (fromCol === 17 && toCol === 0))) { // H <-> He
+                return true;
+            }
+            if ((fromRow === 1 || fromRow === 2) && ((fromCol === 1 && toCol === 12) || (fromCol === 12 && toCol === 1))) { // Be <-> B, Mg <-> Al
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // 渲染或更新一個格子
+    function renderCell(cell, elementData) {
+        cell.className = `cell ${elementData.type}`;
+        cell.textContent = (currentLang === "cn") ? elementData.cn : elementData.en;
+        cell.dataset.symbol = elementData.en;
+        cell.dataset.cn = elementData.cn;
+        cell.draggable = true;
+    }
+
+    // 清空一個格子
+    function clearCell(cell) {
+        cell.className = 'cell empty';
+        cell.textContent = '';
+        cell.dataset.symbol = '';
+        cell.dataset.cn = '';
+        cell.draggable = false;
+    }
+
+    // 處理實際的元素移動邏輯
+    function handleMove(sourceElement, targetElement) {
+        const sourceIsBay = sourceElement.id === 'holding-bay';
+        const targetIsBay = targetElement.id === 'holding-bay';
+
+        // 必須目標是空的才能移動
+        if (!targetElement.classList.contains('empty')) return;
+
+        // 情況1: 從盤面移動到暫存區
+        if (!sourceIsBay && targetIsBay) {
+            if (holdingBayElement) return; // 暫存區必須是空的
+
+            holdingBayElement = { 
+                cn: sourceElement.dataset.cn, 
+                en: sourceElement.dataset.symbol, 
+                type: sourceElement.className.split(' ')[1] 
+            };
+            renderCell(holdingBay, holdingBayElement); // 暫存區顯示元素
+            clearCell(sourceElement); // 盤面來源清空
+            updateMoves();
+        }
+        // 情況2: 從暫存區移動到盤面
+        else if (sourceIsBay && !targetIsBay) {
+            if (!holdingBayElement) return; // 暫存區必須有元素
+
+            renderCell(targetElement, holdingBayElement); // 盤面目標顯示元素
+            clearCell(holdingBay); // 暫存區清空
+            holdingBayElement = null;
+            updateMoves();
+            checkWin(); // 每次盤面填滿都有機會獲勝
+        }
+        // 情況3: 從盤面移動到盤面 (滑動)
+        else if (!sourceIsBay && !targetIsBay) {
+            const fromIndex = parseInt(sourceElement.dataset.index, 10);
+            const toIndex = parseInt(targetElement.dataset.index, 10);
+
+            if (isAdjacent(fromIndex, toIndex)) { // 檢查是否相鄰 (包含跨越)
+                const fromData = { 
+                    cn: sourceElement.dataset.cn, 
+                    en: sourceElement.dataset.symbol, 
+                    type: sourceElement.className.split(' ')[1] 
+                };
+                renderCell(targetElement, fromData); // 目標顯示元素
+                clearCell(sourceElement); // 來源清空
+                updateMoves();
+                checkWin();
+            }
+        }
+    }
+
+    // 為單個格子設置所有事件監聽器 (滑鼠拖放 + 觸控拖放)
     function setEvents(tile) {
+        // --- 通用拖曳開始邏輯 ---
+        const commonDragStart = (e) => {
+            if (!isGameActive || tile.classList.contains("empty") || tile.classList.contains("disabled")) {
+                e.preventDefault(); // 阻止無效的拖曳
+                return false;
+            }
+            return true; // 允許拖曳
+        };
+
         // --- 滑鼠拖放事件 (電腦版) ---
         tile.addEventListener("dragstart", e => {
-            if (!isGameActive || tile.classList.contains("empty") || tile.classList.contains("disabled")) { e.preventDefault(); return; }
-            const sourceId = tile.id === 'holding-bay' ? 'holding-bay' : tile.dataset.index;
-            e.dataTransfer.setData("text/plain", sourceId);
+            if (commonDragStart(e)) {
+                const sourceId = tile.id === 'holding-bay' ? 'holding-bay' : tile.dataset.index;
+                e.dataTransfer.setData("text/plain", sourceId);
+            }
         });
         tile.addEventListener("dragover", e => {
             e.preventDefault();
             if (e.target.classList.contains("empty")) e.target.classList.add("drag-over");
         });
-        tile.addEventListener("dragleave", e => e.target.classList.remove("drag-over"));
+        tile.addEventListener("dragleave", e => {
+            e.target.classList.remove("drag-over");
+        });
         tile.addEventListener("drop", e => {
             e.preventDefault();
             e.target.classList.remove("drag-over");
-            if (!e.target.classList.contains('empty')) return;
-            const sourceId = e.dataTransfer.getData("text/plain");
-            handleMove(sourceId, e.target);
+            const sourceIndex = e.dataTransfer.getData("text/plain");
+            const sourceElement = sourceIndex === 'holding-bay' ? holdingBay : document.querySelector(`[data-index='${sourceIndex}']`);
+            
+            if (sourceElement) {
+                handleMove(sourceElement, e.target);
+            }
         });
 
         // --- 手機觸控事件 ---
         tile.addEventListener("touchstart", e => {
-            if (!isGameActive || tile.classList.contains("empty") || tile.classList.contains("disabled")) return;
+            if (!commonDragStart(e)) return;
             draggedElement = tile; // 記錄被拖曳的元素
-        });
+            // 可以選擇在此處給 draggedElement 一個視覺上的反饋，例如加個 class
+            // draggedElement.classList.add('is-dragging');
+        }, { passive: false }); // { passive: false } 允許阻止預設行為 (如頁面滾動)
 
         tile.addEventListener("touchmove", e => {
-            e.preventDefault();
+            e.preventDefault(); // 阻止頁面滾動
             if (!draggedElement) return;
 
-            const touch = e.targetTouches[0];
-            // 透過手指座標找到下方的元素
+            const touch = e.touches[0];
             const overElement = document.elementFromPoint(touch.clientX, touch.clientY);
 
             if (lastOverElement && lastOverElement !== overElement) {
                 lastOverElement.classList.remove("drag-over");
             }
-            if (overElement && overElement.classList.contains("empty")) {
+            if (overElement && overElement.classList.contains("empty") && overElement !== draggedElement) {
                 overElement.classList.add("drag-over");
                 lastOverElement = overElement;
+            } else if (overElement && !overElement.classList.contains("empty")) {
+                // 如果手指移到了非空的格子，也要清除 drag-over 效果
+                if(lastOverElement) lastOverElement.classList.remove("drag-over");
+                lastOverElement = null; // 重置
             }
-        });
+        }, { passive: false });
 
         tile.addEventListener("touchend", e => {
-            if (!draggedElement || !lastOverElement) {
-                if(lastOverElement) lastOverElement.classList.remove("drag-over");
-                draggedElement = null;
-                lastOverElement = null;
-                return;
-            };
+            if (!draggedElement) return;
 
-            if (lastOverElement.classList.contains("empty")) {
-                const sourceId = draggedElement.id === 'holding-bay' ? 'holding-bay' : draggedElement.dataset.index;
-                handleMove(sourceId, lastOverElement);
+            if (lastOverElement && lastOverElement.classList.contains("empty")) {
+                handleMove(draggedElement, lastOverElement);
             }
             
-            lastOverElement.classList.remove("drag-over");
+            if (lastOverElement) lastOverElement.classList.remove("drag-over");
+            // if (draggedElement) draggedElement.classList.remove('is-dragging');
             draggedElement = null;
             lastOverElement = null;
         });
     }
 
-    function handleMove(sourceId, target) { /* ... 此函數不變 ... */ const sourceIsBay = sourceId === 'holding-bay'; const targetIsBay = target.id === 'holding-bay'; if (!sourceIsBay && targetIsBay) { if (holdingBayElement) return; const fromTile = document.querySelector(`[data-index='${sourceId}']`); holdingBayElement = { cn: fromTile.dataset.cn, en: fromTile.dataset.symbol, type: fromTile.className.split(' ')[1] }; renderCell(holdingBay, holdingBayElement); clearCell(fromTile); updateMoves(); } else if (sourceIsBay && !targetIsBay) { if (!holdingBayElement) return; renderCell(target, holdingBayElement); clearCell(holdingBay); holdingBayElement = null; updateMoves(); checkWin(); } else if (!sourceIsBay && !targetIsBay) { const fromIndex = parseInt(sourceId, 10); const toIndex = parseInt(target.dataset.index, 10); if (isAdjacent(fromIndex, toIndex)) { const fromTile = document.querySelector(`[data-index='${fromIndex}']`); const fromData = { cn: fromTile.dataset.cn, en: fromTile.dataset.symbol, type: fromTile.className.split(' ')[1] }; renderCell(target, fromData); clearCell(fromTile); updateMoves(); checkWin(); } } }
-    function createTable(elementOrder, levelConfig) { /* ... 此函數不變 ... */ table.innerHTML = ""; const levelPositions = new Set(levelConfig.map(el => (el.row - 1) * totalCols + (el.col - 1))); const grid = Array(totalRows * totalCols).fill(null); elementOrder.forEach(el => { grid[(el.row - 1) * totalCols + (el.col - 1)] = el; }); for (let i = 0; i < grid.length; i++) { const div = document.createElement("div"); div.classList.add("cell"); div.dataset.index = i; if (!levelPositions.has(i)) { div.classList.add("disabled"); } else { const el = grid[i]; if (el) { renderCell(div, el); } else { div.classList.add("empty"); div.draggable = false; } setEvents(div); } table.appendChild(div); } }
-    function startLevel(levelNum) { /* ... 此函數不變 ... */ document.querySelectorAll('.level-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.level == levelNum)); document.getElementById("game-title").textContent = levels[levelNum].title; currentLevelElements = allElements.filter(levels[levelNum].filter); const shuffledElements = [...currentLevelElements].sort(() => Math.random() - 0.5); let boardState = []; const originalPositions = currentLevelElements.map(e => ({row: e.row, col: e.col})); for (let i = 0; i < originalPositions.length; i++) { boardState.push({ ...shuffledElements[i], ...originalPositions[i] }); } createTable(boardState, currentLevelElements); startTimerAndCounter(); }
-    function checkWin() { /* ... 此函數不變 ... */ if (holdingBayElement) return; const cells = [...table.querySelectorAll(".cell:not(.empty):not(.disabled)")]; if (cells.length !== currentLevelElements.length) return; const isCorrect = cells.every(cell => { const el = allElements.find(e => e.en === cell.dataset.symbol); const idx = parseInt(cell.dataset.index, 10); const row = Math.floor(idx / totalCols) + 1, col = idx % totalCols + 1; return el && el.row === row && el.col === col; }); if (isCorrect) { stopGame(); cells.forEach(cell => cell.classList.add('win-flash')); setTimeout(() => { alert(`🎯 恭喜完成！\n\n${document.getElementById("game-title").textContent}\n花費時間: ${document.getElementById("time").textContent.split(': ')[1]}\n移動步數: ${moves-1}`); init(); }, 500); } }
-    function init() { /* ... 此函數不變 ... */ stopGame(); isGameActive = false; holdingBayElement = null; document.getElementById("game-title").textContent = '🧩 元素週期表滑塊拼圖'; document.getElementById("moves").textContent = '移動步數: 0'; document.getElementById("time").textContent = '花費時間: 00:00'; document.querySelectorAll('.level-btn').forEach(btn => btn.classList.remove('active')); clearCell(holdingBay); createTable([], allElements); }
-    function startTimerAndCounter() { /* ... 此函數不變 ... */ isGameActive = true; moves = 0; seconds = 0; updateMoves(); clearInterval(timerInterval); timerInterval = setInterval(() => { seconds++; updateTime(); }, 1000); updateTime(); }
-    function stopGame() { /* ... 此函數不變 ... */ isGameActive = false; clearInterval(timerInterval); }
-    function updateMoves() { /* ... 此函數不變 ... */ document.getElementById("moves").textContent = `移動步數: ${moves++}`; }
-    function updateTime() { /* ... 此函數不變 ... */ const mins = Math.floor(seconds / 60).toString().padStart(2, '0'); const secs = (seconds % 60).toString().padStart(2, '0'); document.getElementById("time").textContent = `花費時間: ${mins}:${secs}`; }
-    document.getElementById("toggleLangBtn").addEventListener("click", () => { /* ... 此函數不變 ... */ currentLang = (currentLang === "cn") ? "en" : "cn"; document.querySelectorAll(".cell, #holding-bay").forEach(cell => { if (!cell.classList.contains("empty") && !cell.classList.contains("disabled") && cell.dataset.cn) { cell.textContent = (currentLang === "cn") ? cell.dataset.cn : cell.dataset.symbol; } }); });
-    document.querySelectorAll('.level-btn').forEach(button => button.addEventListener("click", () => startLevel(button.dataset.level)));
+    // 創建或更新遊戲盤面
+    function createTable(elementOrder, levelConfig) {
+        table.innerHTML = "";
+        const levelPositions = new Set(levelConfig.map(el => (el.row - 1) * totalCols + (el.col - 1)));
+        
+        // 使用一個陣列來表示盤面的當前狀態
+        const gridState = Array(totalRows * totalCols).fill(null);
+        elementOrder.forEach(el => {
+            const index = (el.row - 1) * totalCols + (el.col - 1);
+            gridState[index] = el;
+        });
+
+        for (let i = 0; i < gridState.length; i++) {
+            const div = document.createElement("div");
+            div.classList.add("cell");
+            div.dataset.index = i;
+
+            if (!levelPositions.has(i)) { // 不屬於當前關卡的格子
+                div.classList.add("disabled");
+            } else {
+                const el = gridState[i];
+                if (el) { // 如果有元素
+                    renderCell(div, el);
+                } else { // 如果是空格 (這在初始狀態應該不會發生，只有暫存區取出後才會有)
+                    clearCell(div);
+                }
+                setEvents(div); // 為每個可互動的格子設置事件
+            }
+            table.appendChild(div);
+        }
+    }
+    
+    // 遊戲開始時的初始化，打亂元素
+    function startLevel(levelNum) {
+        // 更新關卡按鈕樣式和標題
+        document.querySelectorAll('.level-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.level == levelNum);
+        });
+        document.getElementById("game-title").textContent = levels[levelNum].title;
+        
+        // 篩選出當前關卡的元素
+        currentLevelElements = allElements.filter(levels[levelNum].filter);
+
+        // 打亂元素並創建初始盤面
+        // 這裡的邏輯是直接將當前關卡的所有元素打亂，然後按照它們在週期表中的正確位置重新分配
+        // 這樣就不會有「缺少元素」的問題，除非玩家把元素拖到暫存區
+        let shuffledElements = [...currentLevelElements].sort(() => Math.random() - 0.5);
+        let boardSetup = [];
+        
+        // 將打亂後的元素，按照它們在當前關卡中的"正確"位置放回去
+        // (此時位置是被打亂的，但確保每個位置都有一個元素)
+        const elementMap = new Map(); // 用來將打亂後的元素與其原始位置對應
+        currentLevelElements.forEach((el, index) => {
+            elementMap.set((el.row - 1) * totalCols + (el.col - 1), shuffledElements[index]);
+        });
+
+        // 構造一個表示盤面最終狀態的陣列，每個元素都帶有其打亂後的位置
+        currentLevelElements.forEach(el => {
+            const originalIndex = (el.row - 1) * totalCols + (el.col - 1);
+            const shuffledEl = elementMap.get(originalIndex);
+            boardSetup.push({ ...shuffledEl, row: el.row, col: el.col });
+        });
+
+        // 清空暫存區並創建盤面
+        clearCell(holdingBay);
+        holdingBayElement = null;
+        createTable(boardSetup, currentLevelElements);
+        
+        startTimerAndCounter();
+    }
+    
+    // 檢查遊戲是否勝利
+    function checkWin() {
+        if (holdingBayElement) return; // 暫存區必須是空的才算勝利
+
+        const cells = [...table.querySelectorAll(".cell:not(.empty):not(.disabled)")];
+        if (cells.length !== currentLevelElements.length) return; // 盤面元素數量必須等於關卡總數
+
+        const isCorrect = cells.every(cell => {
+            const el = allElements.find(e => e.en === cell.dataset.symbol); // 找到該格子的正確元素資料
+            const idx = parseInt(cell.dataset.index, 10);
+            const row = Math.floor(idx / totalCols) + 1;
+            const col = (idx % totalCols) + 1;
+            return el && el.row === row && el.col === col; // 檢查元素是否在正確位置
+        });
+
+        if (isCorrect) {
+            stopGame();
+            // 勝利動畫效果
+            cells.forEach(cell => cell.classList.add('win-flash'));
+            setTimeout(() => {
+                alert(`🎯 恭喜完成！\n\n${document.getElementById("game-title").textContent}\n花費時間: ${document.getElementById("time").textContent.split(': ')[1]}\n移動步數: ${moves-1}`);
+                init();
+            }, 500); // 延遲顯示訊息，讓動畫有時間播放
+        }
+    }
+    
+    // 遊戲初始化/重置
+    function init() {
+        stopGame();
+        isGameActive = false;
+        holdingBayElement = null;
+        document.getElementById("game-title").textContent = '🧩 元素週期表滑塊拼圖';
+        document.getElementById("moves").textContent = '移動步數: 0';
+        document.getElementById("time").textContent = '花費時間: 00:00';
+        document.querySelectorAll('.level-btn').forEach(btn => btn.classList.remove('active'));
+        clearCell(holdingBay);
+        createTable([], allElements); // 顯示一個全鎖定的空盤面
+    }
+
+    // --- 其他輔助函數 ---
+    function startTimerAndCounter() {
+        isGameActive = true; moves = 0; seconds = 0;
+        updateMoves();
+        clearInterval(timerInterval);
+        timerInterval = setInterval(() => { seconds++; updateTime(); }, 1000);
+        updateTime();
+    }
+    function stopGame() { isGameActive = false; clearInterval(timerInterval); }
+    function updateMoves() { document.getElementById("moves").textContent = `移動步數: ${moves++}`; }
+    function updateTime() {
+        const mins = Math.floor(seconds / 60).toString().padStart(2, '0');
+        const secs = (seconds % 60).toString().padStart(2, '0');
+        document.getElementById("time").textContent = `花費時間: ${mins}:${secs}`;
+    }
+    document.getElementById("toggleLangBtn").addEventListener("click", () => {
+      currentLang = (currentLang === "cn") ? "en" : "cn";
+      document.querySelectorAll(".cell, #holding-bay").forEach(cell => {
+        if (!cell.classList.contains("empty") && !cell.classList.contains("disabled") && cell.dataset.cn) {
+          cell.textContent = (currentLang === "cn") ? cell.dataset.cn : cell.dataset.symbol;
+        }
+      });
+    });
+    document.querySelectorAll('.level-btn').forEach(button => {
+        button.addEventListener("click", () => startLevel(button.dataset.level));
+    });
+
+    // 為暫存區設置事件
     setEvents(holdingBay);
+    // 初始化遊戲
     init();
   </script>
 </body>
