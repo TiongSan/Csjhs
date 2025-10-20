@@ -2,261 +2,259 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<title>元素週期表滑塊拼圖 (最終挑戰版)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>元素週期表滑塊拼圖 (迷霧模式)</title>
 <style>
   body {
     font-family: "Microsoft JhengHei", "Segoe UI", sans-serif;
     background: #f5f7fa;
     text-align: center;
     color: #1f2937;
+    touch-action: none;
   }
-  h1 { margin-top: 20px; }
-  #level-selection {
-    margin: 15px 0;
-  }
-  .level-btn {
-    padding: 10px 16px;
-    font-size: 16px;
-    cursor: pointer;
-    border: 2px solid transparent;
-    background-color: #6d28d9;
-    color: white;
-    border-radius: 6px;
-    margin: 0 5px;
-    transition: all 0.2s;
-  }
+  h1 { margin-top: 20px; font-size: 1.5em; }
+  #level-selection { margin: 15px 0; }
+  .level-btn { padding: 10px 16px; font-size: 1em; cursor: pointer; border: 2px solid transparent; background-color: #6d28d9; color: white; border-radius: 6px; margin: 0 5px; transition: all 0.2s; }
   .level-btn:hover { background-color: #5b21b6; }
-  .level-btn.active {
-    background-color: #f5f7fa;
-    color: #6d28d9;
-    border-color: #6d28d9;
-    font-weight: bold;
-  }
-  #stats {
-    margin: 15px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #374151;
-  }
-  #stats span { margin: 0 15px; min-width: 100px; display: inline-block; }
+  .level-btn.active { background-color: #f5f7fa; color: #6d28d9; border-color: #6d28d9; font-weight: bold; }
+  #stats { margin: 15px; font-size: 1.1em; font-weight: bold; color: #374151; }
+  #stats span { margin: 0 10px; min-width: 100px; display: inline-block; }
   #controls { margin-top: 10px; }
-  #toggleLangBtn { padding: 8px 14px; font-size: 16px; cursor: pointer; border: none; background-color: #4f46e5; color: white; border-radius: 6px; }
-  #holding-bay-container { margin: 15px auto; padding: 10px; background: #e5e7eb; border-radius: 8px; display: flex; align-items: center; justify-content: center; width: 200px; }
+  #toggleLangBtn { padding: 8px 14px; font-size: 1em; cursor: pointer; border: none; background-color: #4f46e5; color: white; border-radius: 6px; }
+  #holding-bay-container { margin: 15px auto; padding: 10px; background: #e5e7eb; border-radius: 8px; display: flex; align-items: center; justify-content: center; width: 280px; }
   #holding-bay-container span { font-weight: bold; margin-right: 10px; }
-  #holding-bay { width: 50px; height: 50px; border: 2px dashed #9ca3af; }
-  #table { display: grid; grid-template-columns: repeat(18, 50px); grid-template-rows: repeat(4, 50px); gap: 3px; justify-content: center; margin-top: 10px; border: 2px solid #d1d5db; padding: 5px; border-radius: 8px; background-color: #e5e7eb; }
+  .holding-bay { width: 50px; height: 50px; border: 2px dashed #9ca3af; margin: 0 5px; }
+  #table { display: grid; grid-template-columns: repeat(18, 48px); grid-template-rows: repeat(4, 48px); gap: 2px; justify-content: center; margin: 10px auto; padding: 5px; border: 2px solid #d1d5db; border-radius: 8px; background-color: #e5e7eb; max-width: 95vw; overflow-x: auto; }
   .cell { display: flex; align-items: center; justify-content: center; border-radius: 6px; font-weight: bold; user-select: none; transition: all 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
   .cell[draggable="true"]:hover { transform: scale(1.05); cursor: pointer; }
   .empty { background: #e2e8f0; box-shadow: inset 0 2px 4px rgba(0,0,0,0.06); }
   .disabled { background-color: #cbd5e1; cursor: not-allowed; box-shadow: none; }
-  .metal { background: #c7f9cc; }
-  .nonmetal { background: #fef08a; }
-  .noble { background: #a5f3fc; }
-  .transition { background: #fca5a5; }
-  .drag-over { outline: 2px dashed #6366f1; }
-  .win-flash { animation: flash 0.5s ease-in-out; }
+  
+  /* --- 迷霧模式樣式 --- */
+  .covered {
+    font-size: 1.8em; /* 讓問號變大 */
+    color: #4b5563; /* 問號的顏色 */
+  }
+  
+  .metal { background: #c7f9cc; } .nonmetal { background: #fef08a; } .noble { background: #a5f3fc; } .transition { background: #fca5a5; }
+  .drag-over { outline: 2px dashed #6366f1; transform: scale(1.05); }
+  
+  /* --- 動畫樣式 --- */
+  .win-flash, .correct-place-flash {
+    animation: flash 0.5s ease-in-out;
+  }
   @keyframes flash { 0% { box-shadow: 0 0 15px #fef08a; transform: scale(1.05); } 100% { box-shadow: 0 1px 3px rgba(0,0,0,0.1); transform: scale(1); } }
 </style>
 </head>
 <body>
   <h1 id="game-title">🧩 元素週期表滑塊拼圖</h1>
   <div id="level-selection">
-    <button class="level-btn" data-level="1">關卡一：元素新星</button>
-    <button class="level-btn" data-level="2">關卡二：主族精通</button>
-    <button class="level-btn" data-level="3">關卡三：過渡金屬</button>
-    <button class="level-btn" data-level="4">關卡四：終極挑戰</button>
+    <button class="level-btn" data-level="1">關卡一</button>
+    <button class="level-btn" data-level="2">關卡二</button>
+    <button class="level-btn" data-level="3">關卡三</button>
+    <button class="level-btn" data-level="4">關卡四</button>
   </div>
   <div id="stats">
     <span id="moves">移動步數: 0</span>
     <span id="time">花費時間: 00:00</span>
   </div>
   <div id="controls"><button id="toggleLangBtn">🌐 切換語言</button></div>
-  <div id="holding-bay-container"><span>暫存區:</span><div id="holding-bay" class="cell empty"></div></div>
+  <div id="holding-bay-container">
+    <span>暫存區:</span>
+    <div id="holding-bay-1" class="cell empty holding-bay"></div>
+    <div id="holding-bay-2" class="cell empty holding-bay"></div>
+  </div>
   <div id="table"></div>
 
   <script>
     const allElements = [ {cn:"氫", en:"H", row:1, col:1, type:"nonmetal"}, {cn:"氦", en:"He", row:1, col:18, type:"noble"}, {cn:"鋰", en:"Li", row:2, col:1, type:"metal"}, {cn:"鈹", en:"Be", row:2, col:2, type:"metal"}, {cn:"硼", en:"B", row:2, col:13, type:"nonmetal"}, {cn:"碳", en:"C", row:2, col:14, type:"nonmetal"}, {cn:"氮", en:"N", row:2, col:15, type:"nonmetal"}, {cn:"氧", en:"O", row:2, col:16, type:"nonmetal"}, {cn:"氟", en:"F", row:2, col:17, type:"nonmetal"}, {cn:"氖", en:"Ne", row:2, col:18, type:"noble"}, {cn:"鈉", en:"Na", row:3, col:1, type:"metal"}, {cn:"鎂", en:"Mg", row:3, col:2, type:"metal"}, {cn:"鋁", en:"Al", row:3, col:13, type:"metal"}, {cn:"矽", en:"Si", row:3, col:14, type:"nonmetal"}, {cn:"磷", en:"P", row:3, col:15, type:"nonmetal"}, {cn:"硫", en:"S", row:3, col:16, type:"nonmetal"}, {cn:"氯", en:"Cl", row:3, col:17, type:"nonmetal"}, {cn:"氬", en:"Ar", row:3, col:18, type:"noble"}, {cn:"鉀", en:"K", row:4, col:1, type:"metal"}, {cn:"鈣", en:"Ca", row:4, col:2, type:"metal"}, {cn:"鈧", en:"Sc", row:4, col:3, type:"transition"}, {cn:"鈦", en:"Ti", row:4, col:4, type:"transition"}, {cn:"釩", en:"V", row:4, col:5, type:"transition"}, {cn:"鉻", en:"Cr", row:4, col:6, type:"transition"}, {cn:"錳", en:"Mn", row:4, col:7, type:"transition"}, {cn:"鐵", en:"Fe", row:4, col:8, type:"transition"}, {cn:"鈷", en:"Co", row:4, col:9, type:"transition"}, {cn:"鎳", en:"Ni", row:4, col:10, type:"transition"}, {cn:"銅", en:"Cu", row:4, col:11, type:"transition"}, {cn:"鋅", en:"Zn", row:4, col:12, type:"transition"}, {cn:"鎵", en:"Ga", row:4, col:13, type:"metal"}, {cn:"鍺", en:"Ge", row:4, col:14, type:"nonmetal"}, {cn:"砷", en:"As", row:4, col:15, type:"nonmetal"}, {cn:"硒", en:"Se", row:4, col:16, type:"nonmetal"}, {cn:"溴", en:"Br", row:4, col:17, type:"nonmetal"}, {cn:"氪", en:"Kr", row:4, col:18, type:"noble"}, ];
     const levels = { 1: { title: "關卡一：元素新星", filter: el => el.row <= 2 }, 2: { title: "關卡二：主族精通", filter: el => el.row <= 3 }, 3: { title: "關卡三：過渡金屬", filter: el => el.row === 4 }, 4: { title: "關卡四：終極挑戰", filter: el => true } };
+    
     const totalRows = 4, totalCols = 18;
     const table = document.getElementById("table");
-    const holdingBay = document.getElementById("holding-bay");
-    let currentLang = "cn", moves = 0, seconds = 0, timerInterval = null, isGameActive = false;
-    let currentLevelElements = [], holdingBayElement = null;
-
-    function isAdjacent(fromIndex, toIndex) {
-        const fromRow = Math.floor(fromIndex / totalCols), fromCol = fromIndex % totalCols;
-        const toRow = Math.floor(toIndex / totalCols), toCol = toIndex % totalCols;
-        if (Math.abs(fromRow - toRow) + Math.abs(fromCol - toCol) === 1) return true;
-        if (fromRow === toRow) {
-            if (fromRow === 0 && ((fromCol === 0 && toCol === 17) || (fromCol === 17 && toCol === 0))) return true;
-            if ((fromRow === 1 || fromRow === 2) && ((fromCol === 1 && toCol === 12) || (fromCol === 12 && toCol === 1))) return true;
-        }
-        return false;
-    }
+    const holdingBay1 = document.getElementById("holding-bay-1");
+    const holdingBay2 = document.getElementById("holding-bay-2");
     
+    let currentLang = "cn", moves = 0, seconds = 0, timerInterval = null, isGameActive = false;
+    let currentLevelElements = [];
+    let holdingBayElements = { 'holding-bay-1': null, 'holding-bay-2': null };
+    let draggedElement = null, lastOverElement = null;
+
+    // 判斷是否相鄰 (包含跨越規則)
+    function isAdjacent(fromIndex, toIndex) { /* ... 此函數不變 ... */ const fromRow = Math.floor(fromIndex / totalCols), fromCol = fromIndex % totalCols; const toRow = Math.floor(toIndex / totalCols), toCol = toIndex % totalCols; if (Math.abs(fromRow - toRow) + Math.abs(fromCol - toCol) === 1) return true; if (fromRow === toRow) { if (fromRow === 0 && ((fromCol === 0 && toCol === 17) || (fromCol === 17 && toCol === 0))) return true; if ((fromRow === 1 || fromRow === 2) && ((fromCol === 1 && toCol === 12) || (fromCol === 12 && toCol === 1))) return true; } return false; }
+
+    // 渲染或更新一個格子 (此函數會解除覆蓋)
     function renderCell(cell, elementData) {
-        cell.className = `cell ${elementData.type}`;
+        cell.className = `cell ${elementData.type} ${cell.classList.contains('holding-bay') ? 'holding-bay' : ''}`.trim();
+        cell.classList.remove('covered'); // 關鍵：渲染時解除覆蓋
         cell.textContent = (currentLang === "cn") ? elementData.cn : elementData.en;
-        cell.dataset.symbol = elementData.en; cell.dataset.cn = elementData.cn;
+        cell.dataset.symbol = elementData.en;
+        cell.dataset.cn = elementData.cn;
         cell.draggable = true;
     }
 
+    // 清空一個格子 (也會解除覆蓋)
     function clearCell(cell) {
-        cell.className = 'cell empty'; cell.textContent = '';
-        cell.dataset.symbol = ''; cell.dataset.cn = ''; cell.draggable = false;
+        cell.className = `cell empty ${cell.classList.contains('holding-bay') ? 'holding-bay' : ''}`.trim();
+        cell.classList.remove('covered');
+        cell.textContent = '';
+        cell.dataset.symbol = '';
+        cell.dataset.cn = '';
+        cell.draggable = false;
     }
 
-    function setEvents(tile) {
-        tile.addEventListener("dragstart", e => {
-            if (!isGameActive || tile.classList.contains("empty") || tile.classList.contains("disabled")) {
-                e.preventDefault(); return;
-            }
-            const sourceId = tile.id === 'holding-bay' ? 'holding-bay' : tile.dataset.index;
-            e.dataTransfer.setData("text/plain", sourceId);
-        });
-        tile.addEventListener("dragover", e => {
-            e.preventDefault();
-            if (e.target.classList.contains("empty")) e.target.classList.add("drag-over");
-        });
-        tile.addEventListener("dragleave", e => e.target.classList.remove("drag-over"));
-        tile.addEventListener("drop", e => {
-            e.preventDefault();
-            e.target.classList.remove("drag-over");
-            if (!e.target.classList.contains('empty')) return;
+    // 新增：覆蓋一個格子
+    function coverCell(cell) {
+        cell.classList.add('covered');
+        cell.textContent = '❓';
+    }
+
+    // 新增：檢查一個格子是否在其正確位置
+    function isCorrectPosition(cell, elementData) {
+        if (!cell || !elementData) return false;
+        
+        const correctElement = allElements.find(el => el.en === elementData.en);
+        if (!correctElement) return false;
+        
+        const idx = parseInt(cell.dataset.index, 10);
+        const row = Math.floor(idx / totalCols) + 1;
+        const col = (idx % totalCols) + 1;
+        
+        return correctElement.row === row && correctElement.col === col;
+    }
+
+    // 處理實際的元素移動邏輯 (已更新為支持迷霧模式)
+    function handleMove(sourceElement, targetElement) {
+        if (!targetElement.classList.contains('empty')) return;
+
+        const sourceIsBay = sourceElement.classList.contains('holding-bay');
+        const targetIsBay = targetElement.classList.contains('holding-bay');
+        
+        // 獲取來源資料
+        const sourceData = sourceIsBay 
+            ? holdingBayElements[sourceElement.id] 
+            : { cn: sourceElement.dataset.cn, en: sourceElement.dataset.symbol, type: sourceElement.className.split(' ')[1] };
+        
+        if (!sourceData) return;
+
+        // 情況1 & 2: 移動到暫存區 (盤面 -> 暫存區, 暫存區 -> 暫存區)
+        if (targetIsBay) {
+            if (holdingBayElements[targetElement.id]) return; // 目標暫存區必須是空的
             
-            const sourceId = e.dataTransfer.getData("text/plain");
-            const target = e.target;
-            handleMove(sourceId, target);
-        });
-    }
-
-    function handleMove(sourceId, target) {
-        const sourceIsBay = sourceId === 'holding-bay';
-        const targetIsBay = target.id === 'holding-bay';
-
-        // 從盤面 -> 暫存區
-        if (!sourceIsBay && targetIsBay) {
-            if (holdingBayElement) return; // 暫存區必須是空的
-            const fromTile = document.querySelector(`[data-index='${sourceId}']`);
-            holdingBayElement = { cn: fromTile.dataset.cn, en: fromTile.dataset.symbol, type: fromTile.className.split(' ')[1] };
-            renderCell(holdingBay, holdingBayElement);
-            clearCell(fromTile);
+            holdingBayElements[targetElement.id] = { ...sourceData };
+            renderCell(targetElement, sourceData); // 在暫存區總是顯示
+            
+            if (sourceIsBay) { // 來源也是暫存區
+                holdingBayElements[sourceElement.id] = null;
+            }
+            clearCell(sourceElement); // 清空來源
             updateMoves();
         }
-        // 從暫存區 -> 盤面
-        else if (sourceIsBay && !targetIsBay) {
-            if (!holdingBayElement) return;
-            renderCell(target, holdingBayElement);
-            clearCell(holdingBay);
-            holdingBayElement = null;
+        // 情況3: 從暫存區 -> 盤面
+        else if (sourceIsBay) {
+            renderCell(targetElement, sourceData); // 先渲染出來
+            holdingBayElements[sourceElement.id] = null;
+            clearCell(sourceElement); // 清空來源
+            
+            // 檢查是否正確
+            if (!isCorrectPosition(targetElement, sourceData)) {
+                coverCell(targetElement); // 不正確，蓋起來
+            } else {
+                targetElement.classList.add('correct-place-flash'); // 正確，給予反饋
+                setTimeout(() => targetElement.classList.remove('correct-place-flash'), 500);
+            }
             updateMoves();
             checkWin();
         }
-        // 從盤面 -> 盤面 (滑動)
-        else if (!sourceIsBay && !targetIsBay) {
-            const fromIndex = parseInt(sourceId, 10);
-            const toIndex = parseInt(target.dataset.index, 10);
-            if (isAdjacent(fromIndex, toIndex)) {
-                const fromTile = document.querySelector(`[data-index='${fromIndex}']`);
-                const fromData = { cn: fromTile.dataset.cn, en: fromTile.dataset.symbol, type: fromTile.className.split(' ')[1] };
-                renderCell(target, fromData);
-                clearCell(fromTile);
+        // 情況4: 從盤面 -> 盤面 (滑動)
+        else {
+            const fromIndex = parseInt(sourceElement.dataset.index, 10);
+            const toIndex = parseInt(targetElement.dataset.index, 10);
+            if (isAdjacent(fromIndex, toIndex)) { // 檢查是否相鄰
+                renderCell(targetElement, sourceData); // 先渲染出來
+                clearCell(sourceElement); // 清空來源
+                
+                // 檢查是否正確
+                if (!isCorrectPosition(targetElement, sourceData)) {
+                    coverCell(targetElement); // 不正確，蓋起來
+                } else {
+                    targetElement.classList.add('correct-place-flash'); // 正確，給予反饋
+                    setTimeout(() => targetElement.classList.remove('correct-place-flash'), 500);
+                }
                 updateMoves();
                 checkWin();
             }
         }
     }
 
-    function createTable(elementOrder, levelConfig) {
-        table.innerHTML = "";
-        const levelPositions = new Set(levelConfig.map(el => (el.row - 1) * totalCols + (el.col - 1)));
-        const grid = Array(totalRows * totalCols).fill(null);
-        elementOrder.forEach(el => { grid[(el.row - 1) * totalCols + (el.col - 1)] = el; });
-        for (let i = 0; i < grid.length; i++) {
-            const div = document.createElement("div");
-            div.classList.add("cell"); div.dataset.index = i;
-            if (!levelPositions.has(i)) {
-                div.classList.add("disabled");
-            } else {
-                const el = grid[i];
-                if (el) { renderCell(div, el); } 
-                else { div.classList.add("empty"); div.draggable = false; }
-                setEvents(div);
-            }
-            table.appendChild(div);
-        }
-    }
+    // 為單個格子設置所有事件監聽器 (滑鼠拖放 + 觸控拖放)
+    function setEvents(tile) { /* ... 此函數不變 ... */ const commonDragStart = (e) => { if (!isGameActive || tile.classList.contains("empty") || tile.classList.contains("disabled")) { e.preventDefault(); return false; } return true; }; tile.addEventListener("dragstart", e => { if (commonDragStart(e)) { e.dataTransfer.setData("text/plain", tile.id || tile.dataset.index); } }); tile.addEventListener("dragover", e => { e.preventDefault(); if (e.target.classList.contains("empty")) e.target.classList.add("drag-over"); }); tile.addEventListener("dragleave", e => { e.target.classList.remove("drag-over"); }); tile.addEventListener("drop", e => { e.preventDefault(); e.target.classList.remove("drag-over"); const sourceId = e.dataTransfer.getData("text/plain"); const sourceElement = document.getElementById(sourceId) || document.querySelector(`[data-index='${sourceId}']`); if (sourceElement) { handleMove(sourceElement, e.target); } }); tile.addEventListener("touchstart", e => { if (!commonDragStart(e)) return; draggedElement = tile; }, { passive: false }); tile.addEventListener("touchmove", e => { e.preventDefault(); if (!draggedElement) return; const touch = e.touches[0]; const overElement = document.elementFromPoint(touch.clientX, touch.clientY); if (lastOverElement && lastOverElement !== overElement) { lastOverElement.classList.remove("drag-over"); } if (overElement && overElement.classList.contains("empty") && overElement !== draggedElement) { overElement.classList.add("drag-over"); lastOverElement = overElement; } else if (overElement && !overElement.classList.contains("empty")) { if(lastOverElement) lastOverElement.classList.remove("drag-over"); lastOverElement = null; } }, { passive: false }); tile.addEventListener("touchend", e => { if (!draggedElement) return; if (lastOverElement && lastOverElement.classList.contains("empty")) { handleMove(draggedElement, lastOverElement); } if (lastOverElement) lastOverElement.classList.remove("drag-over"); draggedElement = null; lastOverElement = null; }); }
+
+    // 創建或更新遊戲盤面
+    function createTable(elementOrder, levelConfig) { /* ... 此函數不變 ... */ table.innerHTML = ""; const levelPositions = new Set(levelConfig.map(el => (el.row - 1) * totalCols + (el.col - 1))); const gridState = Array(totalRows * totalCols).fill(null); elementOrder.forEach(el => { gridState[(el.row - 1) * totalCols + (el.col - 1)] = el; }); for (let i = 0; i < gridState.length; i++) { const div = document.createElement("div"); div.classList.add("cell"); div.dataset.index = i; if (!levelPositions.has(i)) { div.classList.add("disabled"); } else { const el = gridState[i]; if (el) { renderCell(div, el); } else { clearCell(div); } setEvents(div); } table.appendChild(div); } }
     
+    // 遊戲開始時的初始化 (已更新為支持迷霧模式)
     function startLevel(levelNum) {
         document.querySelectorAll('.level-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.level == levelNum));
         document.getElementById("game-title").textContent = levels[levelNum].title;
         currentLevelElements = allElements.filter(levels[levelNum].filter);
-        const shuffledElements = [...currentLevelElements].sort(() => Math.random() - 0.5);
-        let boardState = [];
-        const originalPositions = currentLevelElements.map(e => ({row: e.row, col: e.col}));
-        for (let i = 0; i < originalPositions.length; i++) {
-            boardState.push({ ...shuffledElements[i], ...originalPositions[i] });
-        }
-        createTable(boardState, currentLevelElements);
+        let shuffledElements = [...currentLevelElements].sort(() => Math.random() - 0.5);
+        const elementMap = new Map();
+        currentLevelElements.forEach((el, index) => {
+            elementMap.set((el.row - 1) * totalCols + (el.col - 1), shuffledElements[index]);
+        });
+        let boardSetup = [];
+        currentLevelElements.forEach(el => {
+            const originalIndex = (el.row - 1) * totalCols + (el.col - 1);
+            boardSetup.push({ ...elementMap.get(originalIndex), row: el.row, col: el.col });
+        });
+        
+        clearCell(holdingBay1);
+        clearCell(holdingBay2);
+        holdingBayElements = { 'holding-bay-1': null, 'holding-bay-2': null };
+        
+        createTable(boardSetup, currentLevelElements); // 先創建盤面
+        
+        // --- 迷霧模式核心邏輯：覆蓋錯誤的格子 ---
+        const cells = table.querySelectorAll(".cell:not(.disabled):not(.empty)");
+        cells.forEach(cell => {
+            const cellData = { en: cell.dataset.symbol };
+            if (!isCorrectPosition(cell, cellData)) {
+                coverCell(cell); // 如果位置不對，就蓋起來
+            }
+        });
+        // ------------------------------------
+        
         startTimerAndCounter();
     }
     
-    function checkWin() {
-        if (holdingBayElement) return; // 暫存區必須是空的
-        const cells = [...table.querySelectorAll(".cell:not(.empty):not(.disabled)")];
-        if (cells.length !== currentLevelElements.length) return;
-        const isCorrect = cells.every(cell => {
-            const el = allElements.find(e => e.en === cell.dataset.symbol);
-            const idx = parseInt(cell.dataset.index, 10);
-            const row = Math.floor(idx / totalCols) + 1, col = idx % totalCols + 1;
-            return el && el.row === row && el.col === col;
-        });
-        if (isCorrect) {
-            stopGame();
-            cells.forEach(cell => cell.classList.add('win-flash'));
-            setTimeout(() => {
-                alert(`🎯 恭喜完成！\n\n${document.getElementById("game-title").textContent}\n花費時間: ${document.getElementById("time").textContent.split(': ')[1]}\n移動步數: ${moves-1}`);
-                init();
-            }, 500);
-        }
-    }
+    // 檢查遊戲是否勝利
+    function checkWin() { /* ... 此函數不變 ... */ if (holdingBayElements['holding-bay-1'] || holdingBayElements['holding-bay-2']) return; const cells = [...table.querySelectorAll(".cell:not(.empty):not(.disabled)")]; if (cells.length !== currentLevelElements.length) return; const isCorrect = cells.every(cell => { const el = allElements.find(e => e.en === cell.dataset.symbol); const idx = parseInt(cell.dataset.index, 10); const row = Math.floor(idx / totalCols) + 1, col = idx % totalCols + 1; return el && el.row === row && el.col === col; }); if (isCorrect) { stopGame(); cells.forEach(cell => cell.classList.add('win-flash')); setTimeout(() => { alert(`🎯 恭喜完成！\n\n${document.getElementById("game-title").textContent}\n花費時間: ${document.getElementById("time").textContent.split(': ')[1]}\n移動步數: ${moves-1}`); init(); }, 500); } }
     
-    function init() {
-        stopGame();
-        isGameActive = false;
-        holdingBayElement = null;
-        document.getElementById("game-title").textContent = '🧩 元素週期表滑塊拼圖';
-        document.getElementById("moves").textContent = '移動步數: 0';
-        document.getElementById("time").textContent = '花費時間: 00:00';
-        document.querySelectorAll('.level-btn').forEach(btn => btn.classList.remove('active'));
-        clearCell(holdingBay);
-        createTable([], allElements); 
-    }
+    // 遊戲初始化/重置
+    function init() { /* ... 此函數不變 ... */ stopGame(); isGameActive = false; holdingBayElements = { 'holding-bay-1': null, 'holding-bay-2': null }; clearCell(holdingBay1); clearCell(holdingBay2); document.getElementById("game-title").textContent = '🧩 元素週期表滑塊拼圖'; document.getElementById("moves").textContent = '移動步數: 0'; document.getElementById("time").textContent = '花費時間: 00:00'; document.querySelectorAll('.level-btn').forEach(btn => btn.classList.remove('active')); createTable([], allElements); }
 
-    function startTimerAndCounter() {
-        isGameActive = true; moves = 0; seconds = 0;
-        updateMoves();
-        clearInterval(timerInterval);
-        timerInterval = setInterval(() => { seconds++; updateTime(); }, 1000);
-        updateTime();
-    }
-    function stopGame() { isGameActive = false; clearInterval(timerInterval); }
-    function updateMoves() { document.getElementById("moves").textContent = `移動步數: ${moves++}`; }
-    function updateTime() {
-        const mins = Math.floor(seconds / 60).toString().padStart(2, '0');
-        const secs = (seconds % 60).toString().padStart(2, '0');
-        document.getElementById("time").textContent = `花費時間: ${mins}:${secs}`;
-    }
+    // --- 其他輔助函數 ---
+    function startTimerAndCounter() { /* ... 此函數不變 ... */ isGameActive = true; moves = 0; seconds = 0; updateMoves(); clearInterval(timerInterval); timerInterval = setInterval(() => { seconds++; updateTime(); }, 1000); updateTime(); }
+    function stopGame() { /* ... 此函數不變 ... */ isGameActive = false; clearInterval(timerInterval); }
+    function updateMoves() { /* ... 此函數不變 ... */ document.getElementById("moves").textContent = `移動步數: ${moves++}`; }
+    function updateTime() { /* ... 此函數不變 ... */ const mins = Math.floor(seconds / 60).toString().padStart(2, '0'); const secs = (seconds % 60).toString().padStart(2, '0'); document.getElementById("time").textContent = `花費時間: ${mins}:${secs}`; }
+    
+    // 切換語言 (已更新為支持迷霧模式)
     document.getElementById("toggleLangBtn").addEventListener("click", () => {
       currentLang = (currentLang === "cn") ? "en" : "cn";
-      document.querySelectorAll(".cell, #holding-bay").forEach(cell => {
-        if (!cell.classList.contains("empty") && !cell.classList.contains("disabled") && cell.dataset.cn) {
+      // 只更新未被覆蓋的格子
+      document.querySelectorAll(".cell, .holding-bay").forEach(cell => {
+        if (!cell.classList.contains("empty") && !cell.classList.contains("disabled") && cell.dataset.cn && !cell.classList.contains("covered")) {
           cell.textContent = (currentLang === "cn") ? cell.dataset.cn : cell.dataset.symbol;
         }
       });
     });
+    
     document.querySelectorAll('.level-btn').forEach(button => button.addEventListener("click", () => startLevel(button.dataset.level)));
-    setEvents(holdingBay);
+
+    setEvents(holdingBay1);
+    setEvents(holdingBay2);
     init();
   </script>
 </body>
