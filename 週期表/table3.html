@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>元素週期表滑塊拼圖（手機 + 迷霧）</title>
+  <style>
+    :root{
+      --cell-size: 48px;
+      --gap: 2px;
+    }
+    body{
+      font-family: "Microsoft JhengHei", "Segoe UI", sans-serif;
+      background: #f5f7fa;
+      text-align: center;
+      color: #1f2937;
+      /* 允許原生滾動（避免阻止手機滑動頁面） */
+      touch-action: auto;
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+    h1{ margin-top: 18px; font-size: 1.25rem; }
+    #level-selection{ margin: 12px 0; }
+    .level-btn{ padding:8px 12px; margin:0 6px; border-radius:6px; background:#6d28d9; color:#fff; border:2px solid transparent; cursor:pointer; }
+    .level-btn.active{ background:#f5f7fa; color:#6d28d9; border-color:#6d28d9; font-weight:600; }
+    #stats{ margin: 10px; font-weight:600; color:#374151; }
+    #controls{ margin:8px 0; }
+    #toggleLangBtn{ padding:6px 10px; border-radius:6px; background:#4f46e5; color:#fff; border:none; cursor:pointer; }
+    #holding-bay-container{ margin:12px auto; padding:8px; background:#e5e7eb; border-radius:8px; display:flex; align-items:center; justify-content:center; width:220px; }
+    #holding-bay-container span{ margin-right:10px; font-weight:700; }
+    #holding-bay{ width:var(--cell-size); height:var(--cell-size); border:2px dashed #9ca3af; display:flex; align-items:center; justify-content:center; border-radius:6px; user-select:none; background:transparent; }
+    #table{ display:grid; grid-template-columns: repeat(18, var(--cell-size)); grid-template-rows: repeat(4, var(--cell-size)); gap:var(--gap); justify-content:center; margin:10px auto; padding:6px; border:2px solid #d1d5db; background:#fff; border-radius:8px; width:max-content; }
+    .cell{ display:flex; align-items:center; justify-content:center; border-radius:6px; font-weight:700; user-select:none; transition: all 160ms ease; box-shadow: 0 1px 3px rgba(0,0,0,0.06); min-width:var(--cell-size); min-height:var(--cell-size); }
+    .cell.empty{ background:#e2e8f0; box-shadow: inset 0 2px 4px rgba(0,0,0,0.04); cursor: default; }
+    .disabled{ background:#cbd5e1; cursor:not-allowed; box-shadow:none; }
+    .metal{ background:#c7f9cc; } .nonmetal{ background:#fef08a; } .noble{ background:#a5f3fc; } .transition{ background:#fca5a5; }
+    .clickable{ cursor:pointer; }
+    .drag-over{ outline:2px dashed #6366f1; transform:scale(1.03); }
+    /* 迷霧樣式：被覆蓋的格子顯示問號且有不同背景 */
+    .covered{ background:#d1d5db !important; color:#374151 !important; font-size:1.05rem; }
+    .win-flash, .correct-place-flash{ animation: flash 0.48s ease-in-out; }
+    @keyframes flash{ 0%{ box-shadow:0 0 14px #fef08a; transform:scale(1.04);} 100%{ box-shadow:0 1px 3px rgba(0,0,0,0.08); transform:scale(1);} }
+    /* small helper for touch feedback */
+    .touch-feedback{ transform: translateY(-4px); transition: transform 110ms ease; }
+  </style>
+</head>
+<body>
+  <h1 id="game-title">🧩 元素週期表滑塊拼圖（手機）</h1>
+
+  <div id="level-selection">
+    <button class="level-btn" data-level="1">關卡一</button>
+    <button class="level-btn" data-level="2">關卡二</button>
+    <button class="level-btn" data-level="3">關卡三</button>
+    <button class="level-btn" data-level="4">關卡四</button>
+  </div>
+
+  <div id="stats">
+    <span id="moves">移動步數: 0</span>
+    <span id="time" style="margin-left:12px;">花費時間: 00:00</span>
+  </div>
+
+  <div id="controls"><button id="toggleLangBtn">🌐 切換語言</button></div>
+
+  <div id="holding-bay-container">
+    <span>暫存區:</span>
+    <div id="holding-bay" class="cell empty" role="button" aria-label="暫存區"></div>
+  </div>
+
+  <div id="table"></div>
+
+  <script>
+    // ========= 資料與設定 =========
+    const allElements = [
+      {cn:"氫", en:"H", row:1, col:1, type:"nonmetal"}, {cn:"氦", en:"He", row:1, col:18, type:"noble"},
+      {cn:"鋰", en:"Li", row:2, col:1, type:"metal"}, {cn:"鈹", en:"Be", row:2, col:2, type:"metal"},
+      {cn:"硼", en:"B", row:2, col:13, type:"nonmetal"}, {cn:"碳", en:"C", row:2, col:14, type:"nonmetal"},
+      {cn:"氮", en:"N", row:2, col:15, type:"nonmetal"}, {cn:"氧", en:"O", row:2, col:16, type:"nonmetal"},
+      {cn:"氟", en:"F", row:2, col:17, type:"nonmetal"}, {cn:"氖", en:"Ne", row:2, col:18, type:"noble"},
+      {cn:"鈉", en:"Na", row:3, col:1, type:"metal"}, {cn:"鎂", en:"Mg", row:3, col:2, type:"metal"},
+      {cn:"鋁", en:"Al", row:3, col:13, type:"metal"}, {cn:"矽", en:"Si", row:3, col:14, type:"nonmetal"},
+      {cn:"磷", en:"P", row:3, col:15, type:"nonmetal"}, {cn:"硫", en:"S", row:3, col:16, type:"nonmetal"},
+      {cn:"氯", en:"Cl", row:3, col:17, type:"nonmetal"}, {cn:"氬", en:"Ar", row:3, col:18, type:"noble"},
+      {cn:"鉀", en:"K", row:4, col:1, type:"metal"}, {cn:"鈣", en:"Ca", row:4, col:2, type:"metal"},
+      {cn:"鈧", en:"Sc", row:4, col:3, type:"transition"}, {cn:"鈦", en:"Ti", row:4, col:4, type:"transition"},
+      {cn:"釩", en:"V", row:4, col:5, type:"transition"}, {cn:"鉻", en:"Cr", row:4, col:6, type:"transition"},
+      {cn:"錳", en:"Mn", row:4, col:7, type:"transition"}, {cn:"鐵", en:"Fe", row:4, col:8, type:"transition"},
+      {cn:"鈷", en:"Co", row:4, col:9, type:"transition"}, {cn:"鎳", en:"Ni", row:4, col:10, type:"transition"},
+      {cn:"銅", en:"Cu", row:4, col:11, type:"transition"}, {cn:"鋅", en:"Zn", row:4, col:12, type:"transition"},
+      {cn:"鎵", en:"Ga", row:4, col:13, type:"metal"}, {cn:"鍺", en:"Ge", row:4, col:14, type:"nonmetal"},
+      {cn:"砷", en:"As", row:4, col:15, type:"nonmetal"}, {cn:"硒", en:"Se", row:4, col:16, type:"nonmetal"},
+      {cn:"溴", en:"Br", row:4, col:17, type:"nonmetal"}, {cn:"氪", en:"Kr", row:4, col:18, type:"noble"},
+    ];
+
+    const levels = {
+      1: { title: "關卡一：元素新星", filter: el => el.row <= 2 },
+      2: { title: "關卡二：主族精通", filter: el => el.row <= 3 },
+      3: { title: "關卡三：過渡金屬", filter: el => el.row === 4 },
+      4: { title: "關卡四：終極挑戰", filter: el => true }
+    };
+
+    const totalRows = 4, totalCols = 18;
+    const tableEl = document.getElementById('table');
+    const holdingBay = document.getElementById('holding-bay');
+
+    let currentLang = 'cn';
+    let moves = 0, seconds = 0, timerInterval = null;
+    let isGameActive = false;
+    let currentLevelElements = [];
+    let holdingBayElement = null; // 暫存區儲存元素資料 (object or null)
+
+    // 觸控防重與滑動判斷
+    let lastTouchTime = 0;
+    const TOUCH_CLICK_IGNORE_MS = 500;
+
+    // ========= 格子渲染與迷霧功能 =========
+    function renderCell(cell, elementData) {
+      // 如果 cell 是 holding-bay，保持 class
+      const hb = cell === holdingBay ? 'holding-bay' : '';
+      cell.className = (`cell ${elementData.type} ${hb}`).trim();
+      cell.classList.remove('covered');
+      cell.textContent = (currentLang === 'cn') ? elementData.cn : elementData.en;
+      cell.dataset.symbol = elementData.en;
+      cell.dataset.cn = elementData.cn;
+      cell.dataset.type = elementData.type;
+      cell.draggable = true;
+    }
+
+    function clearCell(cell) {
+      const hb = cell === holdingBay ? 'holding-bay' : '';
+      cell.className = (`cell empty ${hb}`).trim();
+      cell.classList.remove('covered');
+      cell.textContent = '';
+      delete cell.dataset.symbol;
+      delete cell.dataset.cn;
+      delete cell.dataset.type;
+      cell.draggable = false;
+    }
+
+    // 覆蓋格子 (迷霧)：顯示問號並加上 covered 類別
+    function coverCell(cell) {
+      if (!cell) return;
+      cell.classList.add('covered');
+      cell.textContent = '❓';
+    }
+
+    // 判斷某格子放的元素是否在正確位置
+    function isCorrectPosition(cell, elementData) {
+      if (!cell || !elementData) return false;
+      const correct = allElements.find(e => e.en === elementData.en);
+      if (!correct) return false;
+      const idx = parseInt(cell.dataset.index, 10);
+      const row = Math.floor(idx / totalCols) + 1;
+      const col = (idx % totalCols) + 1;
+      return correct.row === row && correct.col === col;
+    }
+
+    // 找到任一空格（盤面）
+    function findAnyEmptyCell() {
+      return tableEl.querySelector('.cell.empty:not(.disabled)');
+    }
+
+    // 找到來源 tile 的鄰近空格 (用於點擊移動)
+    function findAdjacentEmptyForCell(sourceCell) {
+      if (!sourceCell || sourceCell.classList.contains('empty')) return null;
+      const fromIndex = parseInt(sourceCell.dataset.index, 10);
+      const cells = Array.from(tableEl.querySelectorAll('.cell:not(.disabled)'));
+      for (const c of cells) {
+        const toIndex = parseInt(c.dataset.index, 10);
+        if (c.classList.contains('empty') && isAdjacent(fromIndex, toIndex)) return c;
+      }
+      return null;
+    }
+
+    // ========= 相鄰判斷（含特殊跨越規則） =========
+    function isAdjacent(fromIndex, toIndex) {
+      const fromRow = Math.floor(fromIndex / totalCols), fromCol = fromIndex % totalCols;
+      const toRow = Math.floor(toIndex / totalCols), toCol = toIndex % totalCols;
+      // 上下左右
+      if (Math.abs(fromRow - toRow) + Math.abs(fromCol - toCol) === 1) return true;
+      // 跨越鴻溝
+      if (fromRow === toRow) {
+        if (fromRow === 0 && ((fromCol === 0 && toCol === 17) || (fromCol === 17 && toCol === 0))) return true; // H <-> He
+        if ((fromRow === 1 || fromRow === 2) && ((fromCol === 1 && toCol === 12) || (fromCol === 12 && toCol === 1))) return true; // Be <-> B, Mg <-> Al
+      }
+      return false;
+    }
+
+    // ========= 移動邏輯（點擊 / 暫存區 / 迷霧） =========
+    // 把盤面格子移到暫存區
+    function moveCellToHoldingBay(srcCell) {
+      if (!holdingBay.classList.contains('empty')) return false;
+      // 來源資料
+      const data = { cn: srcCell.dataset.cn, en: srcCell.dataset.symbol, type: srcCell.dataset.type };
+      if (!data.en) return false;
+      holdingBayElement = { ...data };
+      renderCell(holdingBay, holdingBayElement); // 暫存區總是顯示真實內容
+      clearCell(srcCell);
+      incrementMoves();
+      return true;
+    }
+
+    // 把暫存區元素放回盤面目標格
+    function moveHoldingBayToCell(targetCell) {
+      if (!holdingBayElement) return false;
+      if (!targetCell.classList.contains('empty')) return false;
+      renderCell(targetCell, holdingBayElement);
+      holdingBayElement = null;
+      clearCell(holdingBay);
+      // 迷霧：若位置不正確，蓋起來
+      if (!isCorrectPosition(targetCell, { en: targetCell.dataset.symbol })) {
+        coverCell(targetCell);
+      } else {
+        targetCell.classList.add('correct-place-flash');
+        setTimeout(()=> targetCell.classList.remove('correct-place-flash'), 480);
+      }
+      incrementMoves();
+      checkWin();
+      return true;
+    }
+
+    // 盤面 -> 盤面 單步移動
+    function moveCellToCell(srcCell, targetCell) {
+      if (!targetCell.classList.contains('empty')) return false;
+      // 拷貝資料
+      const data = { cn: srcCell.dataset.cn, en: srcCell.dataset.symbol, type: srcCell.dataset.type };
+      if (!data.en) return false;
+      renderCell(targetCell, data);
+      clearCell(srcCell);
+      // 迷霧處理：若新位置不正確，蓋起來
+      if (!isCorrectPosition(targetCell, { en: data.en })) {
+        coverCell(targetCell);
+      } else {
+        targetCell.classList.add('correct-place-flash');
+        setTimeout(()=> targetCell.classList.remove('correct-place-flash'), 480);
+      }
+      incrementMoves();
+      checkWin();
+      return true;
+    }
+
+    // 點擊格子的主要處理（替代拖放）
+    function onCellClick(e) {
+      const cell = e.currentTarget;
+      if (cell.classList.contains('disabled')) return;
+      // 空格被點擊：若暫存區有元素 -> 放回
+      if (cell.classList.contains('empty')) {
+        if (holdingBayElement) moveHoldingBayToCell(cell);
+        return;
+      }
+      // 點擊有元素的格子
+      // 1) 試找相鄰空格
+      const adj = findAdjacentEmptyForCell(cell);
+      if (adj) {
+        moveCellToCell(cell, adj);
+        return;
+      }
+      // 2) 若沒有相鄰空格且盤面已滿 -> 嘗試移到暫存區
+      const anyEmpty = findAnyEmptyCell();
+      if (!anyEmpty) {
+        if (holdingBay.classList.contains('empty')) {
+          moveCellToHoldingBay(cell);
+          return;
+        } else {
+          flashCell(cell);
+          return;
+        }
+      }
+      // 3) 盤面有空格但非相鄰 -> 不允許直接跳（提示）
+      flashCell(cell);
+    }
+
+    // 暫存區點擊：把元素放回第一個空格（或提示）
+    function onHoldingBayClick(e) {
+      if (!holdingBayElement) return;
+      const target = findAnyEmptyCell();
+      if (target) moveHoldingBayToCell(target);
+      else flashCell(holdingBay);
+    }
+
+    function flashCell(cell) {
+      cell.classList.add('touch-feedback');
+      setTimeout(()=> cell.classList.remove('touch-feedback'), 140);
+    }
+
+    // ========= 事件綁定：處理 click + touch (避免滑動時誤觸發) =========
+    function setEvents(tile) {
+      if (tile.classList.contains('disabled')) return;
+
+      // click wrapper: 若剛發生 touch，忽略短時內的 click
+      function clickHandler(e) {
+        if (Date.now() - lastTouchTime < TOUCH_CLICK_IGNORE_MS) return;
+        onCellClick.call(this, e);
+      }
+      tile.addEventListener('click', clickHandler);
+
+      // touch 判斷（區分滑動 vs tap）
+      tile.addEventListener('touchstart', function(e){
+        const t = e.touches && e.touches[0];
+        if (t) {
+          this._touchStartX = t.clientX;
+          this._touchStartY = t.clientY;
+          this._touchMoved = false;
+        }
+      }, { passive: true });
+
+      tile.addEventListener('touchmove', function(e){
+        const t = e.touches && e.touches[0];
+        if (!t || this._touchStartX === undefined) return;
+        const dx = Math.abs(t.clientX - this._touchStartX), dy = Math.abs(t.clientY - this._touchStartY);
+        if (dx > 8 || dy > 8) this._touchMoved = true;
+      }, { passive: true });
+
+      tile.addEventListener('touchend', function(e){
+        if (this._touchMoved) return; // 是滑動，交給瀏覽器滾動
+        lastTouchTime = Date.now();
+        // 直接呼叫點擊行為（clickHandler 已會忽略重複）
+        onCellClick.call(this, e);
+      }, { passive: true });
+    }
+
+    // 暫存區也綁定 touch/click
+    holdingBay.addEventListener('click', function(e){
+      if (Date.now() - lastTouchTime < TOUCH_CLICK_IGNORE_MS) return;
+      onHoldingBayClick.call(this, e);
+    });
+    holdingBay.addEventListener('touchstart', function(e){
+      const t = e.touches && e.touches[0];
+      if (t) {
+        this._touchStartX = t.clientX;
+        this._touchStartY = t.clientY;
+        this._touchMoved = false;
+      }
+    }, { passive: true });
+    holdingBay.addEventListener('touchmove', function(e){
+      const t = e.touches && e.touches[0];
+      if (!t || this._touchStartX === undefined) return;
+      const dx = Math.abs(t.clientX - this._touchStartX), dy = Math.abs(t.clientY - this._touchStartY);
+      if (dx > 8 || dy > 8) this._touchMoved = true;
+    }, { passive: true });
+    holdingBay.addEventListener('touchend', function(e){
+      if (this._touchMoved) return;
+      lastTouchTime = Date.now();
+      onHoldingBayClick.call(this, e);
+    }, { passive: true });
+
+    // ========= 建立盤面與關卡流程 =========
+    function createTable(elementOrder, levelConfig) {
+      tableEl.innerHTML = '';
+      const levelPositions = new Set(levelConfig.map(el => (el.row -1)*totalCols + (el.col -1)));
+      // grid state by index
+      const gridState = Array(totalRows * totalCols).fill(null);
+      elementOrder.forEach(el => {
+        const idx = (el.row -1)*totalCols + (el.col -1);
+        gridState[idx] = el;
+      });
+      for (let i=0;i<gridState.length;i++){
+        const div = document.createElement('div');
+        div.classList.add('cell');
+        div.dataset.index = i;
+        if (!levelPositions.has(i)) {
+          div.classList.add('disabled');
+        } else {
+          const el = gridState[i];
+          if (el) renderCell(div, el);
+          else clearCell(div);
+          setEvents(div);
+        }
+        tableEl.appendChild(div);
+      }
+    }
+
+    function startLevel(levelNum) {
+      document.querySelectorAll('.level-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.level == levelNum));
+      document.getElementById('game-title').textContent = levels[levelNum].title;
+      currentLevelElements = allElements.filter(levels[levelNum].filter);
+
+      // shuffle current level elements and map back to positions
+      const shuffled = [...currentLevelElements].sort(()=> Math.random() - 0.5);
+      const map = new Map();
+      currentLevelElements.forEach((el, idx) => map.set((el.row -1)*totalCols + (el.col -1), shuffled[idx]));
+      const boardSetup = [];
+      currentLevelElements.forEach(el => {
+        const originalIndex = (el.row -1)*totalCols + (el.col -1);
+        const shuffledEl = map.get(originalIndex);
+        boardSetup.push({ ...shuffledEl, row: el.row, col: el.col });
+      });
+
+      // reset holding bay
+      clearCell(holdingBay);
+      holdingBayElement = null;
+
+      createTable(boardSetup, currentLevelElements);
+
+      // 迷霧：覆蓋所有放在錯誤位置的格子
+      const cells = tableEl.querySelectorAll('.cell:not(.disabled):not(.empty)');
+      cells.forEach(cell => {
+        const data = { en: cell.dataset.symbol, cn: cell.dataset.cn };
+        if (!isCorrectPosition(cell, data)) {
+          coverCell(cell);
+        }
+      });
+
+      startTimerAndCounter();
+    }
+
+    // ========= 勝利檢查等 =========
+    function checkWin() {
+      if (holdingBayElement) return; // 暫存區必須空
+      const placed = [...tableEl.querySelectorAll('.cell:not(.empty):not(.disabled)')];
+      if (placed.length !== currentLevelElements.length) return;
+      const ok = placed.every(cell => {
+        const el = allElements.find(e => e.en === cell.dataset.symbol);
+        const idx = parseInt(cell.dataset.index, 10);
+        const row = Math.floor(idx/totalCols) + 1;
+        const col = (idx % totalCols) + 1;
+        return el && el.row === row && el.col === col;
+      });
+      if (ok) {
+        stopGame();
+        placed.forEach(c=> c.classList.add('win-flash'));
+        setTimeout(()=> {
+          alert(`🎯 恭喜完成！\n${document.getElementById('game-title').textContent}\n花費時間: ${document.getElementById('time').textContent}\n移動步數: ${moves}`);
+          init();
+        }, 480);
+      }
+    }
+
+    // ========= 遊戲初始化 / 計時 =========
+    function init() {
+      stopGame();
+      isGameActive = false;
+      holdingBayElement = null;
+      document.getElementById('game-title').textContent = '🧩 元素週期表滑塊拼圖（手機）';
+      moves = 0; seconds = 0;
+      document.getElementById('moves').textContent = '移動步數: 0';
+      document.getElementById('time').textContent = '花費時間: 00:00';
+      document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
+      clearCell(holdingBay);
+      createTable([], allElements); // 顯示一個全鎖定的空盤面
+    }
+
+    function startTimerAndCounter() {
+      isGameActive = true;
+      moves = 0; seconds = 0;
+      document.getElementById('moves').textContent = `移動步數: ${moves}`;
+      clearInterval(timerInterval);
+      timerInterval = setInterval(()=> { seconds++; updateTime(); }, 1000);
+      updateTime();
+    }
+    function stopGame() { isGameActive = false; clearInterval(timerInterval); }
+    function incrementMoves(){ moves += 1; document.getElementById('moves').textContent = `移動步數: ${moves}`; }
+    function updateTime() {
+      const mins = Math.floor(seconds/60).toString().padStart(2,'0');
+      const secs = (seconds%60).toString().padStart(2,'0');
+      document.getElementById('time').textContent = `花費時間: ${mins}:${secs}`;
+    }
+
+    // ========= 語言切換（注意：不要變更被覆蓋的格子） =========
+    document.getElementById('toggleLangBtn').addEventListener('click', () => {
+      currentLang = (currentLang === 'cn') ? 'en' : 'cn';
+      // 更新未被覆蓋的格子與暫存區
+      document.querySelectorAll('.cell').forEach(cell => {
+        if (!cell.classList.contains('empty') && !cell.classList.contains('disabled') && cell.dataset.cn && !cell.classList.contains('covered')) {
+          cell.textContent = (currentLang === 'cn') ? cell.dataset.cn : cell.dataset.symbol;
+        }
+      });
+      if (holdingBayElement) {
+        holdingBay.textContent = (currentLang === 'cn') ? holdingBayElement.cn : holdingBayElement.en;
+      }
+    });
+
+    // 關卡按鈕
+    document.querySelectorAll('.level-btn').forEach(btn => btn.addEventListener('click', () => startLevel(btn.dataset.level)));
+
+    // 暫存區點擊事件已綁（上方），初始化
+    init();
+  </script>
+</body>
+</html>
