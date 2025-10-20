@@ -10,7 +10,11 @@
     background: #f5f7fa;
     text-align: center;
     color: #1f2937;
-    touch-action: none; /* 防止觸控滑動時頁面背景滾動 */
+    /* 允許原生滾動（避免阻止手機滑動頁面） */
+    touch-action: auto;
+    /* 支援 iOS 安全區，避免底部被 Home indicator 擋住 */
+    padding-bottom: env(safe-area-inset-bottom);
+    -webkit-padding-end: env(safe-area-inset-bottom);
   }
   h1 { margin-top: 20px; font-size: 1.5em; }
   #level-selection { margin: 15px 0; }
@@ -269,8 +273,15 @@
     // 為單個格子設置點擊事件（取代原先拖放與觸控邏輯）
     function setEvents(tile) {
         if (tile.classList.contains('disabled')) return;
-        // accessible: 點擊即可
+        // 一般滑鼠/點擊
         tile.addEventListener('click', onCellClick);
+
+        // 手機: 使用 touchend 但不要 preventDefault()（以免阻止頁面滾動）
+        tile.addEventListener('touchend', function (e) {
+            // 不阻止預設滾動行為，避免無法向下滑動整個頁面
+            e.stopPropagation(); // 防止冒泡造成重複處理，但不呼叫 preventDefault()
+            onCellClick.call(this, e);
+        }, { passive: true });
     }
 
     // 創建或更新遊戲盤面
@@ -415,6 +426,11 @@
 
     // 暫存區點擊事件（放回盤面第一個空格）
     holdingBay.addEventListener('click', onHoldingBayClick);
+    holdingBay.addEventListener('touchend', function(e){
+      // 不 preventDefault，避免阻止頁面滾動
+      e.stopPropagation();
+      onHoldingBayClick.call(this, e);
+    }, { passive: true });
 
     // 初始化遊戲
     init();
