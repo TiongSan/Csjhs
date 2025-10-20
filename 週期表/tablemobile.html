@@ -23,14 +23,14 @@
   #toggleLangBtn { padding: 8px 14px; font-size: 1em; cursor: pointer; border: none; background-color: #4f46e5; color: white; border-radius: 6px; }
   #holding-bay-container { margin: 15px auto; padding: 10px; background: #e5e7eb; border-radius: 8px; display: flex; align-items: center; justify-content: center; width: 200px; }
   #holding-bay-container span { font-weight: bold; margin-right: 10px; }
-  #holding-bay { width: 50px; height: 50px; border: 2px dashed #9ca3af; }
-  #table { display: grid; grid-template-columns: repeat(18, 48px); grid-template-rows: repeat(4, 48px); gap: 2px; justify-content: center; margin: 10px auto; padding: 5px; border: 2px solid #d1d5db; border-radius: 8px; background-color: #e5e7eb; max-width: 95vw; overflow-x: auto; }
-  .cell { display: flex; align-items: center; justify-content: center; border-radius: 6px; font-weight: bold; user-select: none; transition: all 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-  .cell[draggable="true"]:hover { transform: scale(1.05); cursor: pointer; }
-  .empty { background: #e2e8f0; box-shadow: inset 0 2px 4px rgba(0,0,0,0.06); }
+  #holding-bay { width: 50px; height: 50px; border: 2px dashed #9ca3af; display:flex; align-items:center; justify-content:center; border-radius:6px; user-select:none; }
+  #table { display: grid; grid-template-columns: repeat(18, 48px); grid-template-rows: repeat(4, 48px); gap: 2px; justify-content: center; margin: 10px auto; padding: 5px; border: 2px solid #d1d5db; background:#fff; border-radius:8px; width: max-content; }
+  .cell { display: flex; align-items: center; justify-content: center; border-radius: 6px; font-weight: bold; user-select: none; transition: all 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.1); min-width:48px; min-height:48px; }
+  .cell.empty { background: #e2e8f0; box-shadow: inset 0 2px 4px rgba(0,0,0,0.06); cursor: default; }
   .disabled { background-color: #cbd5e1; cursor: not-allowed; box-shadow: none; }
   .metal { background: #c7f9cc; } .nonmetal { background: #fef08a; } .noble { background: #a5f3fc; } .transition { background: #fca5a5; }
-  .drag-over { outline: 2px dashed #6366f1; transform: scale(1.05); }
+  .clickable { cursor: pointer; }
+  .drag-over { outline: 2px dashed #6366f1; transform: scale(1.03); }
   .win-flash { animation: flash 0.5s ease-in-out; }
   @keyframes flash { 0% { box-shadow: 0 0 15px #fef08a; transform: scale(1.05); } 100% { box-shadow: 0 1px 3px rgba(0,0,0,0.1); transform: scale(1); } }
 </style>
@@ -48,7 +48,7 @@
     <span id="time">花費時間: 00:00</span>
   </div>
   <div id="controls"><button id="toggleLangBtn">🌐 切換語言</button></div>
-  <div id="holding-bay-container"><span>暫存區:</span><div id="holding-bay" class="cell empty"></div></div>
+  <div id="holding-bay-container"><span>暫存區:</span><div id="holding-bay" class="cell empty" aria-label="暫存區" role="button"></div></div>
   <div id="table"></div>
 
   <script>
@@ -89,9 +89,6 @@
     let currentLevelElements = [];
     let holdingBayElement = null; // 追蹤暫存區的元素資料
 
-    let draggedElement = null; // **用於觸控事件：記錄當前被拖曳的 DOM 元素**
-    let lastOverElement = null; // **用於觸控事件：記錄上次手指懸停的 DOM 元素**
-
     // 判斷是否相鄰 (包含跨越規則)
     function isAdjacent(fromIndex, toIndex) {
         const fromRow = Math.floor(fromIndex / totalCols), fromCol = fromIndex % totalCols;
@@ -115,11 +112,12 @@
 
     // 渲染或更新一個格子
     function renderCell(cell, elementData) {
-        cell.className = `cell ${elementData.type}`;
+        cell.className = `cell ${elementData.type} clickable`;
         cell.textContent = (currentLang === "cn") ? elementData.cn : elementData.en;
         cell.dataset.symbol = elementData.en;
         cell.dataset.cn = elementData.cn;
-        cell.draggable = true;
+        cell.dataset.type = elementData.type;
+        cell.classList.remove('empty');
     }
 
     // 清空一個格子
@@ -128,135 +126,151 @@
         cell.textContent = '';
         cell.dataset.symbol = '';
         cell.dataset.cn = '';
-        cell.draggable = false;
+        delete cell.dataset.type;
     }
 
-    // 處理實際的元素移動邏輯
-    function handleMove(sourceElement, targetElement) {
-        const sourceIsBay = sourceElement.id === 'holding-bay';
-        const targetIsBay = targetElement.id === 'holding-bay';
-
-        // 必須目標是空的才能移動
-        if (!targetElement.classList.contains('empty')) return;
-
-        // 情況1: 從盤面移動到暫存區
-        if (!sourceIsBay && targetIsBay) {
-            if (holdingBayElement) return; // 暫存區必須是空的
-
-            holdingBayElement = { 
-                cn: sourceElement.dataset.cn, 
-                en: sourceElement.dataset.symbol, 
-                type: sourceElement.className.split(' ')[1] 
-            };
-            renderCell(holdingBay, holdingBayElement); // 暫存區顯示元素
-            clearCell(sourceElement); // 盤面來源清空
-            updateMoves();
-        }
-        // 情況2: 從暫存區移動到盤面
-        else if (sourceIsBay && !targetIsBay) {
-            if (!holdingBayElement) return; // 暫存區必須有元素
-
-            renderCell(targetElement, holdingBayElement); // 盤面目標顯示元素
-            clearCell(holdingBay); // 暫存區清空
-            holdingBayElement = null;
-            updateMoves();
-            checkWin(); // 每次盤面填滿都有機會獲勝
-        }
-        // 情況3: 從盤面移動到盤面 (滑動)
-        else if (!sourceIsBay && !targetIsBay) {
-            const fromIndex = parseInt(sourceElement.dataset.index, 10);
-            const toIndex = parseInt(targetElement.dataset.index, 10);
-
-            if (isAdjacent(fromIndex, toIndex)) { // 檢查是否相鄰 (包含跨越)
-                const fromData = { 
-                    cn: sourceElement.dataset.cn, 
-                    en: sourceElement.dataset.symbol, 
-                    type: sourceElement.className.split(' ')[1] 
-                };
-                renderCell(targetElement, fromData); // 目標顯示元素
-                clearCell(sourceElement); // 來源清空
-                updateMoves();
-                checkWin();
-            }
-        }
+    // 取得所有在當前關卡範圍內的互動格子（非 disabled）
+    function interactiveCells() {
+        return Array.from(table.querySelectorAll('.cell:not(.disabled)'));
     }
 
-    // 為單個格子設置所有事件監聽器 (滑鼠拖放 + 觸控拖放)
-    function setEvents(tile) {
-        // --- 通用拖曳開始邏輯 ---
-        const commonDragStart = (e) => {
-            if (!isGameActive || tile.classList.contains("empty") || tile.classList.contains("disabled")) {
-                e.preventDefault(); // 阻止無效的拖曳
-                return false;
-            }
-            return true; // 允許拖曳
+    // 取得指定 index 的 cell
+    function cellByIndex(index) {
+        return table.querySelector(`.cell[data-index="${index}"]`);
+    }
+
+    // 判斷 cell 是否為空
+    function isCellEmpty(cell) {
+        return cell && cell.classList.contains('empty') && !cell.classList.contains('disabled');
+    }
+
+    // 找到任一空格（回傳 DOM 或 null）
+    function findAnyEmptyCell() {
+        const empty = table.querySelector('.cell.empty:not(.disabled)');
+        return empty || null;
+    }
+
+    // 找到某個格子（來源）的鄰近空格（若有）回傳 DOM，沒有則回 null
+    function findAdjacentEmptyForCell(sourceCell) {
+        if (!sourceCell || sourceCell.classList.contains('empty')) return null;
+        const fromIndex = parseInt(sourceCell.dataset.index, 10);
+        const all = interactiveCells();
+        for (const c of all) {
+            const toIndex = parseInt(c.dataset.index, 10);
+            if (isCellEmpty(c) && isAdjacent(fromIndex, toIndex)) return c;
+        }
+        return null;
+    }
+
+    // 將一個 cell 的元素資料複製到另一個 cell（不處理暫存區）
+    function copyCellToCell(srcCell, dstCell) {
+        dstCell.dataset.symbol = srcCell.dataset.symbol;
+        dstCell.dataset.cn = srcCell.dataset.cn;
+        dstCell.dataset.type = srcCell.dataset.type;
+        dstCell.textContent = (currentLang === "cn") ? dstCell.dataset.cn : dstCell.dataset.symbol;
+        dstCell.className = `cell ${dstCell.dataset.type} clickable`;
+    }
+
+    // 處理從盤面格子移到暫存區
+    function moveCellToHoldingBay(srcCell) {
+        if (!isCellEmpty(holdingBay)) return false;
+        // 建立 holdingBayElement 資料
+        holdingBayElement = {
+            cn: srcCell.dataset.cn,
+            en: srcCell.dataset.symbol,
+            type: srcCell.dataset.type
         };
+        renderCell(holdingBay, { cn: holdingBayElement.cn, en: holdingBayElement.en, type: holdingBayElement.type });
+        // 把來源清空
+        clearCell(srcCell);
+        incrementMoves();
+        return true;
+    }
 
-        // --- 滑鼠拖放事件 (電腦版) ---
-        tile.addEventListener("dragstart", e => {
-            if (commonDragStart(e)) {
-                const sourceId = tile.id === 'holding-bay' ? 'holding-bay' : tile.dataset.index;
-                e.dataTransfer.setData("text/plain", sourceId);
+    // 處理從暫存區移回盤面（放到指定目標格）
+    function moveHoldingBayToCell(targetCell) {
+        if (!holdingBayElement) return false;
+        if (!isCellEmpty(targetCell)) return false;
+        renderCell(targetCell, { cn: holdingBayElement.cn, en: holdingBayElement.en, type: holdingBayElement.type });
+        // 清空 holding bay
+        clearCell(holdingBay);
+        holdingBayElement = null;
+        incrementMoves();
+        checkWin();
+        return true;
+    }
+
+    // 處理兩個盤面格子的移動（來源到目標）
+    function moveCellToCell(srcCell, targetCell) {
+        if (!isCellEmpty(targetCell)) return false;
+        copyCellToCell(srcCell, targetCell);
+        clearCell(srcCell);
+        incrementMoves();
+        checkWin();
+        return true;
+    }
+
+    // 點擊格子的主要處理流程（取代拖放行為）
+    function onCellClick(e) {
+        const cell = e.currentTarget;
+        // 如果點擊的是 disabled 或空格，忽略（空格點擊可用於把暫存區填回）
+        if (cell.classList.contains('disabled')) return;
+        // 如果點擊的是空格且暫存區有元素 -> 把暫存區元素放回該空格
+        if (isCellEmpty(cell)) {
+            // 若暫存區有元素，且點擊空格，則嘗試把暫存區元素放到此空格
+            if (holdingBayElement) {
+                moveHoldingBayToCell(cell);
             }
-        });
-        tile.addEventListener("dragover", e => {
-            e.preventDefault();
-            if (e.target.classList.contains("empty")) e.target.classList.add("drag-over");
-        });
-        tile.addEventListener("dragleave", e => {
-            e.target.classList.remove("drag-over");
-        });
-        tile.addEventListener("drop", e => {
-            e.preventDefault();
-            e.target.classList.remove("drag-over");
-            const sourceIndex = e.dataTransfer.getData("text/plain");
-            const sourceElement = sourceIndex === 'holding-bay' ? holdingBay : document.querySelector(`[data-index='${sourceIndex}']`);
-            
-            if (sourceElement) {
-                handleMove(sourceElement, e.target);
+            return;
+        }
+        // 點擊的是有元素的盤面格子
+        // 1) 如果有相鄰空格 -> 移動到該相鄰空格（第一個找到的）
+        const adj = findAdjacentEmptyForCell(cell);
+        if (adj) {
+            moveCellToCell(cell, adj);
+            return;
+        }
+        // 2) 如果沒有相鄰空格，且盤面完全滿（沒有空格），則把此元素移到暫存區（前提暫存區空）
+        const anyEmpty = findAnyEmptyCell();
+        if (!anyEmpty) {
+            // board is full
+            if (isCellEmpty(holdingBay)) {
+                moveCellToHoldingBay(cell);
+                return;
+            } else {
+                flashCell(cell);
+                return;
             }
-        });
+        }
+        // 3) 沒有相鄰空格但盤面有其他空格 -> 不允許直接跳到非相鄰的空格（可以做提示）
+        flashCell(cell);
+    }
 
-        // --- 手機觸控事件 ---
-        tile.addEventListener("touchstart", e => {
-            if (!commonDragStart(e)) return;
-            draggedElement = tile; // 記錄被拖曳的元素
-            // 可以選擇在此處給 draggedElement 一個視覺上的反饋，例如加個 class
-            // draggedElement.classList.add('is-dragging');
-        }, { passive: false }); // { passive: false } 允許阻止預設行為 (如頁面滾動)
+    // 點擊暫存區的處理：若暫存區有元素，嘗試放到盤面上的第一個空格（或最近的空格）
+    function onHoldingBayClick() {
+        if (!holdingBayElement) return;
+        // 找到第一個可放的空格（按 index 順序）
+        const target = findAnyEmptyCell();
+        if (target) {
+            moveHoldingBayToCell(target);
+        } else {
+            flashCell(holdingBay);
+        }
+    }
 
-        tile.addEventListener("touchmove", e => {
-            e.preventDefault(); // 阻止頁面滾動
-            if (!draggedElement) return;
+    // 簡單閃爍提示（用於無效操作）
+    function flashCell(cell) {
+        cell.style.transition = 'transform 110ms ease';
+        cell.style.transform = 'translateY(-6px)';
+        setTimeout(()=>{ cell.style.transform = ''; }, 160);
+        setTimeout(()=>{ cell.style.transition = ''; }, 260);
+    }
 
-            const touch = e.touches[0];
-            const overElement = document.elementFromPoint(touch.clientX, touch.clientY);
-
-            if (lastOverElement && lastOverElement !== overElement) {
-                lastOverElement.classList.remove("drag-over");
-            }
-            if (overElement && overElement.classList.contains("empty") && overElement !== draggedElement) {
-                overElement.classList.add("drag-over");
-                lastOverElement = overElement;
-            } else if (overElement && !overElement.classList.contains("empty")) {
-                // 如果手指移到了非空的格子，也要清除 drag-over 效果
-                if(lastOverElement) lastOverElement.classList.remove("drag-over");
-                lastOverElement = null; // 重置
-            }
-        }, { passive: false });
-
-        tile.addEventListener("touchend", e => {
-            if (!draggedElement) return;
-
-            if (lastOverElement && lastOverElement.classList.contains("empty")) {
-                handleMove(draggedElement, lastOverElement);
-            }
-            
-            if (lastOverElement) lastOverElement.classList.remove("drag-over");
-            // if (draggedElement) draggedElement.classList.remove('is-dragging');
-            draggedElement = null;
-            lastOverElement = null;
-        });
+    // 為單個格子設置點擊事件（取代原先拖放與觸控邏輯）
+    function setEvents(tile) {
+        if (tile.classList.contains('disabled')) return;
+        // accessible: 點擊即可
+        tile.addEventListener('click', onCellClick);
     }
 
     // 創建或更新遊戲盤面
@@ -282,7 +296,7 @@
                 const el = gridState[i];
                 if (el) { // 如果有元素
                     renderCell(div, el);
-                } else { // 如果是空格 (這在初始狀態應該不會發生，只有暫存區取出後才會有)
+                } else { // 空格
                     clearCell(div);
                 }
                 setEvents(div); // 為每個可互動的格子設置事件
@@ -303,19 +317,15 @@
         currentLevelElements = allElements.filter(levels[levelNum].filter);
 
         // 打亂元素並創建初始盤面
-        // 這裡的邏輯是直接將當前關卡的所有元素打亂，然後按照它們在週期表中的正確位置重新分配
-        // 這樣就不會有「缺少元素」的問題，除非玩家把元素拖到暫存區
         let shuffledElements = [...currentLevelElements].sort(() => Math.random() - 0.5);
         let boardSetup = [];
         
         // 將打亂後的元素，按照它們在當前關卡中的"正確"位置放回去
-        // (此時位置是被打亂的，但確保每個位置都有一個元素)
-        const elementMap = new Map(); // 用來將打亂後的元素與其原始位置對應
+        const elementMap = new Map();
         currentLevelElements.forEach((el, index) => {
             elementMap.set((el.row - 1) * totalCols + (el.col - 1), shuffledElements[index]);
         });
 
-        // 構造一個表示盤面最終狀態的陣列，每個元素都帶有其打亂後的位置
         currentLevelElements.forEach(el => {
             const originalIndex = (el.row - 1) * totalCols + (el.col - 1);
             const shuffledEl = elementMap.get(originalIndex);
@@ -338,11 +348,11 @@
         if (cells.length !== currentLevelElements.length) return; // 盤面元素數量必須等於關卡總數
 
         const isCorrect = cells.every(cell => {
-            const el = allElements.find(e => e.en === cell.dataset.symbol); // 找到該格子的正確元素資料
+            const el = allElements.find(e => e.en === cell.dataset.symbol);
             const idx = parseInt(cell.dataset.index, 10);
             const row = Math.floor(idx / totalCols) + 1;
             const col = (idx % totalCols) + 1;
-            return el && el.row === row && el.col === col; // 檢查元素是否在正確位置
+            return el && el.row === row && el.col === col;
         });
 
         if (isCorrect) {
@@ -350,7 +360,8 @@
             // 勝利動畫效果
             cells.forEach(cell => cell.classList.add('win-flash'));
             setTimeout(() => {
-                alert(`🎯 恭喜完成！\n\n${document.getElementById("game-title").textContent}\n花費時間: ${document.getElementById("time").textContent.split(': ')[1]}\n移動步數: ${moves-1}`);
+                const timeText = document.getElementById("time").textContent.replace('花費時間: ', '');
+                alert(`🎯 恭喜完成！\n\n${document.getElementById("game-title").textContent}\n花費時間: ${timeText}\n移動步數: ${moves}`);
                 init();
             }, 500); // 延遲顯示訊息，讓動畫有時間播放
         }
@@ -362,6 +373,7 @@
         isGameActive = false;
         holdingBayElement = null;
         document.getElementById("game-title").textContent = '🧩 元素週期表滑塊拼圖';
+        moves = 0; seconds = 0;
         document.getElementById("moves").textContent = '移動步數: 0';
         document.getElementById("time").textContent = '花費時間: 00:00';
         document.querySelectorAll('.level-btn').forEach(btn => btn.classList.remove('active'));
@@ -372,32 +384,38 @@
     // --- 其他輔助函數 ---
     function startTimerAndCounter() {
         isGameActive = true; moves = 0; seconds = 0;
-        updateMoves();
+        document.getElementById("moves").textContent = `移動步數: ${moves}`;
         clearInterval(timerInterval);
         timerInterval = setInterval(() => { seconds++; updateTime(); }, 1000);
         updateTime();
     }
     function stopGame() { isGameActive = false; clearInterval(timerInterval); }
-    function updateMoves() { document.getElementById("moves").textContent = `移動步數: ${moves++}`; }
+    function incrementMoves() { moves += 1; document.getElementById("moves").textContent = `移動步數: ${moves}`; }
     function updateTime() {
         const mins = Math.floor(seconds / 60).toString().padStart(2, '0');
         const secs = (seconds % 60).toString().padStart(2, '0');
         document.getElementById("time").textContent = `花費時間: ${mins}:${secs}`;
     }
+
+    // 語言切換
     document.getElementById("toggleLangBtn").addEventListener("click", () => {
       currentLang = (currentLang === "cn") ? "en" : "cn";
-      document.querySelectorAll(".cell, #holding-bay").forEach(cell => {
+      // 更新表格與暫存區文字
+      document.querySelectorAll(".cell").forEach(cell => {
         if (!cell.classList.contains("empty") && !cell.classList.contains("disabled") && cell.dataset.cn) {
           cell.textContent = (currentLang === "cn") ? cell.dataset.cn : cell.dataset.symbol;
         }
       });
     });
+
+    // 關卡按鈕
     document.querySelectorAll('.level-btn').forEach(button => {
         button.addEventListener("click", () => startLevel(button.dataset.level));
     });
 
-    // 為暫存區設置事件
-    setEvents(holdingBay);
+    // 暫存區點擊事件（放回盤面第一個空格）
+    holdingBay.addEventListener('click', onHoldingBayClick);
+
     // 初始化遊戲
     init();
   </script>
