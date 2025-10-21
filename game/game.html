@@ -255,8 +255,24 @@
         };
 
         // 初始化 Firebase
-        firebase.initializeApp(firebaseConfig);
-        const database = firebase.database();
+        try {
+            firebase.initializeApp(firebaseConfig);
+            const database = firebase.database();
+            console.log('Firebase 初始化成功');
+            
+            // 測試 Firebase 連接
+            database.ref('.info/connected').on('value', (snapshot) => {
+                if (snapshot.val() === true) {
+                    console.log('Firebase 連接成功');
+                } else {
+                    console.log('Firebase 連接中斷');
+                }
+            });
+            
+        } catch (error) {
+            console.error('Firebase 初始化失敗:', error);
+            alert('Firebase 初始化失敗，請檢查配置！');
+        }
 
         let gameData = {
             questions: [],
@@ -269,8 +285,13 @@
             isHost: false
         };
 
-        // 清理過期遊戲房間的函數
+        // 清理過期遊戲房間的函數（僅主持人執行）
         async function cleanupExpiredGames() {
+            // 只有主持人才執行清理，避免權限問題
+            if (!gameData.isHost) {
+                return;
+            }
+            
             try {
                 const gamesRef = database.ref('games');
                 const snapshot = await gamesRef.once('value');
@@ -279,7 +300,7 @@
                 let cleanedCount = 0;
                 
                 for (const [pin, game] of Object.entries(existingGames)) {
-                    // 清理超過1小時未活動的遊戲（縮短清理時間）
+                    // 清理超過1小時未活動的遊戲
                     const lastActivity = game.endTime || game.startTime || game.createdTime || 0;
                     if (now - lastActivity > 3600000) { // 1小時
                         await database.ref(`games/${pin}`).remove();
@@ -292,7 +313,8 @@
                     console.log(`清理完成，共清理 ${cleanedCount} 個過期房間`);
                 }
             } catch (error) {
-                console.error('清理過期遊戲失敗:', error);
+                console.warn('清理過期遊戲失敗（權限不足）:', error.message);
+                // 不顯示錯誤給用戶，因為這不影響遊戲功能
             }
         }
 
@@ -392,67 +414,43 @@
         }
 
         // 主持人功能
-        async function generatePin() {
+        function generatePin() {
             try {
-                // 檢查現有遊戲房間數量
-                const gamesRef = database.ref('games');
-                const snapshot = await gamesRef.once('value');
-                const existingGames = snapshot.val() || {};
-                
-                // 清理已結束超過1小時的遊戲
-                const now = Date.now();
-                const gamesToDelete = [];
-                
-                Object.entries(existingGames).forEach(([pin, game]) => {
-                    if (game.ended && game.startTime && (now - game.startTime > 3600000)) { // 1小時
-                        gamesToDelete.push(pin);
-                    }
-                });
-                
-                // 刪除過期遊戲
-                for (const pin of gamesToDelete) {
-                    await database.ref(`games/${pin}`).remove();
-                    delete existingGames[pin];
-                }
-                
-                // 檢查房間數量限制
-                const activeGames = Object.keys(existingGames).length;
-                if (activeGames >= 6) {
-                    alert('目前遊戲房間已滿（最多6個），請稍後再試！');
-                    return;
-                }
-                
-                // 生成新的 PIN 碼，確保不重複
-                let newPin;
-                do {
-                    newPin = Math.floor(1000 + Math.random() * 9000).toString();
-                } while (existingGames[newPin]);
-                
-                gameData.currentPin = newPin;
+                // 生成 PIN 碼
+                gameData.currentPin = Math.floor(1000 + Math.random() * 9000).toString();
                 gameData.isHost = true;
+
+                console.log('正在建立遊戲房間，PIN:', gameData.currentPin);
 
                 // 在 Firebase 建立遊戲房間
                 const gameRef = database.ref(`games/${gameData.currentPin}`);
-                await gameRef.set({
+                gameRef.set({
                     pin: gameData.currentPin,
                     started: false,
                     startTime: null,
                     players: {},
                     host: true,
                     createdTime: Date.now()
-                });
+                }).then(() => {
+                    console.log('遊戲房間建立成功');
+                    
+                    // 監聽玩家加入
+                    gameRef.child('players').on('value', (snapshot) => {
+                        gameData.players = snapshot.val() || {};
+                        updatePlayerCount();
+                        updateLeaderboard();
+                    });
 
-                // 監聽玩家加入
-                gameRef.child('players').on('value', (snapshot) => {
-                    gameData.players = snapshot.val() || {};
-                    updatePlayerCount();
-                    updateLeaderboard();
+                    document.getElementById('pinDisplay').textContent = `PIN: ${gameData.currentPin}`;
+                    document.getElementById('startBtn').disabled = false;
+                    
+                    // 建立成功後執行清理（現在有主持人權限）
+                    setTimeout(cleanupExpiredGames, 2000);
+                    
+                }).catch((error) => {
+                    console.error('Firebase 寫入失敗:', error);
+                    alert('建立遊戲房間失敗：' + error.message);
                 });
-
-                document.getElementById('pinDisplay').textContent = `PIN: ${gameData.currentPin}`;
-                document.getElementById('startBtn').disabled = false;
-                
-                console.log(`遊戲房間已建立，PIN: ${gameData.currentPin}，目前活躍房間數: ${activeGames + 1}/6`);
                 
             } catch (error) {
                 console.error('建立遊戲房間失敗:', error);
@@ -941,11 +939,8 @@
         window.onload = function () {
             loadQuestions();
             
-            // 定期清理過期遊戲（每15分鐘，更頻繁清理）
+            // 定期清理過期遊戲（每15分鐘，僅主持人執行）
             setInterval(cleanupExpiredGames, 900000);
-            
-            // 頁面載入時清理一次
-            cleanupExpiredGames();
             
             // 每10分鐘顯示使用量統計
             setInterval(() => {
