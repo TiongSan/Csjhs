@@ -188,6 +188,8 @@
             </div>
 
             <div id="resultMessage"></div>
+            <button id="nextQuestionBtn" onclick="nextQuestion()"
+                style="display: none; margin-top: 20px; background: #FF9800;">下一題</button>
         </div>
 
         <!-- 結果畫面 -->
@@ -411,7 +413,7 @@
                             displayFinalResults();
                         }
 
-                        // 更新玩家統計（但不觸發新題目）
+                        // 只更新玩家統計，不觸發新題目
                         if (gameData.currentPlayer && gameData.players[gameData.currentPlayer]) {
                             updatePlayerStats();
                         }
@@ -438,8 +440,9 @@
         function nextQuestion() {
             if (!gameData.currentPlayer || !gameData.gameStarted) return;
 
-            // 清空上一題的結果訊息
+            // 清空上一題的結果訊息和隱藏下一題按鈕
             document.getElementById('resultMessage').textContent = '';
+            document.getElementById('nextQuestionBtn').style.display = 'none';
 
             const question = gameData.questions[Math.floor(Math.random() * gameData.questions.length)];
             const correctAnswers = question.ans.split('、');
@@ -483,6 +486,10 @@
             const player = gameData.players[gameData.currentPlayer];
             const isCorrect = correctAnswers.includes(selectedAnswer);
 
+            // 禁用所有選項按鈕，防止重複點擊
+            const optionButtons = document.querySelectorAll('.option');
+            optionButtons.forEach(btn => btn.disabled = true);
+
             if (isCorrect) {
                 player.score += 1;
                 player.streak += 1;
@@ -512,9 +519,8 @@
                 skillCards: player.skillCards
             });
 
-            setTimeout(() => {
-                nextQuestion();
-            }, 2000);
+            // 顯示下一題按鈕
+            document.getElementById('nextQuestionBtn').style.display = 'inline-block';
         }
 
         function showResult(message, color) {
@@ -664,6 +670,7 @@
             document.getElementById('playerCount').textContent = '0';
             document.getElementById('pinInput').value = '';
             document.getElementById('nameInput').value = '';
+            document.getElementById('nextQuestionBtn').style.display = 'none';
         }
 
         function shuffleArray(array) {
