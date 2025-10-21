@@ -646,10 +646,29 @@
             skillCardsDiv.innerHTML = '';
 
             if (player.skillCards && player.skillCards.length > 0) {
+                // 找出分數最高的對手
+                const otherPlayers = Object.entries(gameData.players)
+                    .filter(([id]) => id !== gameData.currentPlayer)
+                    .sort(([, a], [, b]) => (b.score || 0) - (a.score || 0));
+                
+                const targetInfo = otherPlayers.length > 0 ? 
+                    `目標：${otherPlayers[0][1].name}（${otherPlayers[0][1].score || 0}分）` : 
+                    '無目標';
+
                 player.skillCards.forEach((card, index) => {
                     const cardDiv = document.createElement('div');
                     cardDiv.className = 'skill-card';
-                    cardDiv.textContent = card.name;
+                    
+                    // 計算可偷取的分數
+                    const stealPercentage = card.type === 'steal50' ? 0.5 : 0.1;
+                    const potentialSteal = otherPlayers.length > 0 ? 
+                        Math.floor((otherPlayers[0][1].score || 0) * stealPercentage) : 0;
+                    
+                    cardDiv.innerHTML = `
+                        <div style="font-weight: bold;">${card.name}</div>
+                        <div style="font-size: 12px; margin-top: 5px;">${targetInfo}</div>
+                        <div style="font-size: 12px;">可偷取：${potentialSteal}分</div>
+                    `;
                     cardDiv.onclick = () => useSkillCard(index);
                     skillCardsDiv.appendChild(cardDiv);
                 });
@@ -663,7 +682,7 @@
             // 找到分數最高的其他玩家
             const otherPlayers = Object.entries(gameData.players)
                 .filter(([id]) => id !== gameData.currentPlayer)
-                .sort(([, a], [, b]) => b.score - a.score);
+                .sort(([, a], [, b]) => (b.score || 0) - (a.score || 0));
 
             if (otherPlayers.length === 0) {
                 alert('沒有其他玩家可以偷取分數！');
@@ -672,10 +691,17 @@
 
             const [targetPlayerId, targetPlayer] = otherPlayers[0];
             const stealPercentage = card.type === 'steal50' ? 0.5 : 0.1;
-            const stolenPoints = Math.floor(targetPlayer.score * stealPercentage);
+            const stolenPoints = Math.floor((targetPlayer.score || 0) * stealPercentage);
 
-            targetPlayer.score -= stolenPoints;
-            player.score += stolenPoints;
+            // 確認偷取操作
+            const confirmMessage = `確定要對「${targetPlayer.name}」（${targetPlayer.score}分）使用「${card.name}」嗎？\n將偷取 ${stolenPoints} 分！`;
+            if (!confirm(confirmMessage)) {
+                return;
+            }
+
+            // 更新分數
+            targetPlayer.score = (targetPlayer.score || 0) - stolenPoints;
+            player.score = (player.score || 0) + stolenPoints;
 
             // 移除使用過的卡片
             player.skillCards.splice(cardIndex, 1);
@@ -690,8 +716,10 @@
                 score: targetPlayer.score
             });
 
-            showResult(`偷取了 ${stolenPoints} 分！`, 'purple');
+            showResult(`成功從「${targetPlayer.name}」偷取了 ${stolenPoints} 分！`, 'purple');
             updatePlayerStats();
+            
+            console.log(`技能卡片使用：${player.name || '玩家'} 對 ${targetPlayer.name} 使用 ${card.name}，偷取 ${stolenPoints} 分`);
         }
 
         function updateLeaderboard() {
