@@ -217,15 +217,15 @@
 
     <script>
         // Firebase 配置 - 請替換為你的配置
-  const firebaseConfig = {
-    apiKey: "AIzaSyDBc2hbeevGypp5nbAx14TpzcOSDqPaTEA",
-    authDomain: "quiz-game-1b653.firebaseapp.com",
-    databaseURL: "https://quiz-game-1b653-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "quiz-game-1b653",
-    storageBucket: "quiz-game-1b653.firebasestorage.app",
-    messagingSenderId: "173823235565",
-    appId: "1:173823235565:web:3c5f57193e64e53cc343e4"
-  };
+        const firebaseConfig = {
+            apiKey: "AIzaSyDBc2hbeevGypp5nbAx14TpzcOSDqPaTEA",
+            authDomain: "quiz-game-1b653.firebaseapp.com",
+            databaseURL: "https://quiz-game-1b653-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "quiz-game-1b653",
+            storageBucket: "quiz-game-1b653.firebasestorage.app",
+            messagingSenderId: "173823235565",
+            appId: "1:173823235565:web:3c5f57193e64e53cc343e4"
+        };
 
         // 初始化 Firebase
         firebase.initializeApp(firebaseConfig);
@@ -393,13 +393,17 @@
                 });
 
                 // 監聽遊戲狀態
+                let hasStartedGame = false;
                 gameRef.on('value', (snapshot) => {
                     const gameState = snapshot.val();
                     if (gameState) {
+                        const wasStarted = gameData.gameStarted;
                         gameData.gameStarted = gameState.started;
                         gameData.players = gameState.players || {};
 
-                        if (gameState.started && !gameState.ended) {
+                        // 只在遊戲剛開始時切換到遊戲畫面並開始第一題
+                        if (gameState.started && !gameState.ended && !wasStarted && !hasStartedGame) {
+                            hasStartedGame = true;
                             showScreen('gameScreen');
                             nextQuestion();
                         } else if (gameState.ended) {
@@ -407,11 +411,15 @@
                             displayFinalResults();
                         }
 
-                        updatePlayerStats();
+                        // 更新玩家統計（但不觸發新題目）
+                        if (gameData.currentPlayer && gameData.players[gameData.currentPlayer]) {
+                            updatePlayerStats();
+                        }
                     }
                 });
 
                 if (gameData.gameStarted) {
+                    hasStartedGame = true;
                     showScreen('gameScreen');
                     nextQuestion();
                 } else {
@@ -429,6 +437,9 @@
         // 遊戲邏輯
         function nextQuestion() {
             if (!gameData.currentPlayer || !gameData.gameStarted) return;
+
+            // 清空上一題的結果訊息
+            document.getElementById('resultMessage').textContent = '';
 
             const question = gameData.questions[Math.floor(Math.random() * gameData.questions.length)];
             const correctAnswers = question.ans.split('、');
@@ -515,15 +526,15 @@
         }
 
         function updatePlayerStats() {
-            if (!gameData.currentPlayer) return;
+            if (!gameData.currentPlayer || !gameData.players[gameData.currentPlayer]) return;
 
             const player = gameData.players[gameData.currentPlayer];
-            document.getElementById('playerScore').textContent = player.score;
-            document.getElementById('streak').textContent = player.streak;
+            document.getElementById('playerScore').textContent = player.score || 0;
+            document.getElementById('streak').textContent = player.streak || 0;
 
             // 更新排名
             const sortedPlayers = Object.entries(gameData.players)
-                .sort(([, a], [, b]) => b.score - a.score);
+                .sort(([, a], [, b]) => (b.score || 0) - (a.score || 0));
             const rank = sortedPlayers.findIndex(([id]) => id === gameData.currentPlayer) + 1;
             document.getElementById('playerRank').textContent = rank;
 
@@ -532,17 +543,21 @@
         }
 
         function updateSkillCards() {
+            if (!gameData.currentPlayer || !gameData.players[gameData.currentPlayer]) return;
+
             const player = gameData.players[gameData.currentPlayer];
             const skillCardsDiv = document.getElementById('skillCards');
             skillCardsDiv.innerHTML = '';
 
-            player.skillCards.forEach((card, index) => {
-                const cardDiv = document.createElement('div');
-                cardDiv.className = 'skill-card';
-                cardDiv.textContent = card.name;
-                cardDiv.onclick = () => useSkillCard(index);
-                skillCardsDiv.appendChild(cardDiv);
-            });
+            if (player.skillCards && player.skillCards.length > 0) {
+                player.skillCards.forEach((card, index) => {
+                    const cardDiv = document.createElement('div');
+                    cardDiv.className = 'skill-card';
+                    cardDiv.textContent = card.name;
+                    cardDiv.onclick = () => useSkillCard(index);
+                    skillCardsDiv.appendChild(cardDiv);
+                });
+            }
         }
 
         function useSkillCard(cardIndex) {
