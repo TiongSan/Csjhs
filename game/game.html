@@ -413,23 +413,34 @@
                 gameRef.on('value', (snapshot) => {
                     const gameState = snapshot.val();
                     if (gameState) {
+                        console.log('Firebase 狀態更新:', gameState);
                         const wasStarted = gameData.gameStarted;
                         gameData.gameStarted = gameState.started;
                         gameData.players = gameState.players || {};
 
                         // 只在遊戲剛開始時切換到遊戲畫面並開始第一題
                         if (gameState.started && !gameState.ended && !wasStarted && !hasStartedGame) {
+                            console.log('遊戲開始，切換到遊戲畫面');
                             hasStartedGame = true;
                             showScreen('gameScreen');
                             nextQuestion();
                         } else if (gameState.ended) {
+                            console.log('遊戲結束');
                             showScreen('resultScreen');
                             displayFinalResults();
                         }
 
-                        // 只更新玩家統計，不觸發新題目
+                        // 靜默更新玩家統計，不觸發任何 UI 變化
                         if (gameData.currentPlayer && gameData.players[gameData.currentPlayer]) {
-                            updatePlayerStats();
+                            const player = gameData.players[gameData.currentPlayer];
+                            document.getElementById('playerScore').textContent = player.score || 0;
+                            document.getElementById('streak').textContent = player.streak || 0;
+                            
+                            // 更新排名
+                            const sortedPlayers = Object.entries(gameData.players)
+                                .sort(([, a], [, b]) => (b.score || 0) - (a.score || 0));
+                            const rank = sortedPlayers.findIndex(([id]) => id === gameData.currentPlayer) + 1;
+                            document.getElementById('playerRank').textContent = rank;
                         }
                     }
                 });
@@ -452,7 +463,21 @@
 
         // 遊戲邏輯
         function nextQuestion() {
-            if (!gameData.currentPlayer || !gameData.gameStarted) return;
+            console.log('nextQuestion 被呼叫', { 
+                currentPlayer: gameData.currentPlayer, 
+                gameStarted: gameData.gameStarted,
+                questionsLength: gameData.questions.length 
+            });
+
+            if (!gameData.currentPlayer || !gameData.gameStarted) {
+                console.log('遊戲條件不符，退出 nextQuestion');
+                return;
+            }
+
+            if (gameData.questions.length === 0) {
+                console.error('沒有題目資料');
+                return;
+            }
 
             // 清空上一題的結果訊息和隱藏下一題按鈕
             document.getElementById('resultMessage').textContent = '';
@@ -465,6 +490,8 @@
             // 創建四個選項
             const allOptions = [...correctAnswers.slice(0, 1), ...wrongAnswers.slice(0, 3)];
             shuffleArray(allOptions);
+
+            console.log('題目:', question.exam, '正確答案:', correctAnswers);
 
             document.getElementById('questionText').textContent = question.exam;
 
@@ -497,6 +524,11 @@
         }
 
         function checkAnswer(selectedAnswer, correctAnswers) {
+            if (!gameData.currentPlayer || !gameData.players[gameData.currentPlayer]) {
+                console.error('玩家資料不存在');
+                return;
+            }
+
             const player = gameData.players[gameData.currentPlayer];
             const isCorrect = correctAnswers.includes(selectedAnswer);
 
@@ -504,45 +536,58 @@
             const optionButtons = document.querySelectorAll('.option');
             optionButtons.forEach(btn => btn.disabled = true);
 
+            // 計算新的分數和連續答對數
+            let newScore = (player.score || 0);
+            let newStreak = (player.streak || 0);
+            let newSkillCards = player.skillCards || [];
+
             if (isCorrect) {
-                player.score += 1;
-                player.streak += 1;
+                newScore += 1;
+                newStreak += 1;
                 showResult('答對了！+1分', 'green');
 
                 // 檢查技能卡片
-                if (player.streak === 5) {
-                    player.skillCards.push({ type: 'steal10', name: '偷取10%' });
+                if (newStreak === 5) {
+                    newSkillCards.push({ type: 'steal10', name: '偷取10%' });
                     showResult('獲得技能卡片：偷取10%！', 'gold');
-                } else if (player.streak === 10) {
+                } else if (newStreak === 10) {
                     // 移除10%卡片，添加50%卡片
-                    player.skillCards = player.skillCards.filter(card => card.type !== 'steal10');
-                    player.skillCards.push({ type: 'steal50', name: '偷取50%' });
+                    newSkillCards = newSkillCards.filter(card => card.type !== 'steal10');
+                    newSkillCards.push({ type: 'steal50', name: '偷取50%' });
                     showResult('技能卡片升級：偷取50%！', 'gold');
                 }
             } else {
-                player.score -= 1;
-                player.streak = 0;
+                newScore -= 1;
+                newStreak = 0;
                 showResult('答錯了！-1分', 'red');
             }
+
+            // 更新本地資料
+            player.score = newScore;
+            player.streak = newStreak;
+            player.skillCards = newSkillCards;
 
             // 更新 Firebase 中的玩家資料
             const playerRef = database.ref(`games/${gameData.currentPin}/players/${gameData.currentPlayer}`);
             playerRef.update({
-                score: player.score,
-                streak: player.streak,
-                skillCards: player.skillCards
+                score: newScore,
+                streak: newStreak,
+                skillCards: newSkillCards
+            }).then(() => {
+                console.log('Firebase 更新成功', { score: newScore, streak: newStreak });
+                // 顯示下一題按鈕
+                setTimeout(() => {
+                    const nextBtn = document.getElementById('nextQuestionBtn');
+                    if (nextBtn) {
+                        nextBtn.style.display = 'inline-block';
+                        console.log('下一題按鈕已顯示');
+                    } else {
+                        console.error('找不到下一題按鈕');
+                    }
+                }, 100);
+            }).catch((error) => {
+                console.error('Firebase 更新失敗:', error);
             });
-
-            // 顯示下一題按鈕
-            setTimeout(() => {
-                const nextBtn = document.getElementById('nextQuestionBtn');
-                if (nextBtn) {
-                    nextBtn.style.display = 'inline-block';
-                    console.log('下一題按鈕已顯示');
-                } else {
-                    console.error('找不到下一題按鈕');
-                }
-            }, 100);
         }
 
         function showResult(message, color) {
