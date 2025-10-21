@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .screen {
+            display: none;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            margin: 20px 0;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        input,
+        button {
+            padding: 15px 25px;
+            margin: 10px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            background: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        .option {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            background: #2196F3;
+            text-align: left;
+        }
+
+        .option:hover {
+            background: #1976D2;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            flex: 1;
+            margin: 0 10px;
+        }
+
+        .leaderboard {
+            text-align: left;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .player-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .skill-card {
+            background: gold;
+            color: black;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        .pin-display {
+            font-size: 48px;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 主選單 -->
+        <div id="mainMenu" class="screen active">
+            <h1>Quiz Game</h1>
+            <button onclick="showHostScreen()">主持遊戲</button>
+            <button onclick="showJoinScreen()">加入遊戲</button>
+        </div>
+
+        <!-- 主持人畫面 -->
+        <div id="hostScreen" class="screen">
+            <h2>主持人控制台</h2>
+            <div class="pin-display" id="pinDisplay">PIN: ----</div>
+            <button onclick="generatePin()">產生PIN碼</button>
+            <button onclick="startGame()" id="startBtn" disabled>開始遊戲</button>
+            <button onclick="endGame()" id="endBtn" disabled>結束遊戲</button>
+            <div class="stats">
+                <div class="stat-item">
+                    <h3>遊戲時間</h3>
+                    <div id="gameTime">00:00</div>
+                </div>
+                <div class="stat-item">
+                    <h3>參與者數量</h3>
+                    <div id="playerCount">0</div>
+                </div>
+            </div>
+            <div class="leaderboard">
+                <h3>即時排行榜</h3>
+                <div id="hostLeaderboard"></div>
+            </div>
+            <button onclick="showMainMenu()">返回主選單</button>
+        </div>
+
+        <!-- 加入遊戲畫面 -->
+        <div id="joinScreen" class="screen">
+            <h2>加入遊戲</h2>
+            <input type="text" id="pinInput" placeholder="輸入PIN碼" maxlength="4">
+            <input type="text" id="nameInput" placeholder="輸入你的名字">
+            <button onclick="joinGame()">加入遊戲</button>
+            <button onclick="showMainMenu()">返回主選單</button>
+        </div>
+
+        <!-- 等待畫面 -->
+        <div id="waitingScreen" class="screen">
+            <h2>等待遊戲開始...</h2>
+            <div id="waitingInfo"></div>
+        </div>
+
+        <!-- 遊戲畫面 -->
+        <div id="gameScreen" class="screen">
+            <div class="stats">
+                <div class="stat-item">
+                    <h3>分數</h3>
+                    <div id="playerScore">0</div>
+                </div>
+                <div class="stat-item">
+                    <h3>排名</h3>
+                    <div id="playerRank">-</div>
+                </div>
+                <div class="stat-item">
+                    <h3>連續答對</h3>
+                    <div id="streak">0</div>
+                </div>
+            </div>
+
+            <div id="skillCards"></div>
+
+            <div id="questionContainer">
+                <h2 id="questionText"></h2>
+                <div id="optionsContainer"></div>
+            </div>
+
+            <div id="resultMessage"></div>
+        </div>
+
+        <!-- 結果畫面 -->
+        <div id="resultScreen" class="screen">
+            <h2>遊戲結束！</h2>
+            <div class="stats">
+                <div class="stat-item">
+                    <h3>最終分數</h3>
+                    <div id="finalScore">0</div>
+                </div>
+                <div class="stat-item">
+                    <h3>最終排名</h3>
+                    <div id="finalRank">-</div>
+                </div>
+            </div>
+            <div class="leaderboard">
+                <h3>最終排行榜</h3>
+                <div id="finalLeaderboard"></div>
+            </div>
+            <button onclick="showMainMenu()">返回主選單</button>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+    <script>
+        // Firebase 配置 - 請替換為你的配置
+        const firebaseConfig = {
+            apiKey: "your-api-key",
+            authDomain: "your-project.firebaseapp.com",
+            databaseURL: "https://your-project-default-rtdb.asia-southeast1.firebasedatabase.app/",
+            projectId: "your-project-id",
+            storageBucket: "your-project.appspot.com",
+            messagingSenderId: "123456789",
+            appId: "your-app-id"
+        };
+
+        // 初始化 Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        let gameData = {
+            questions: [],
+            currentPin: null,
+            players: {},
+            gameStarted: false,
+            gameStartTime: null,
+            gameTimer: null,
+            currentPlayer: null,
+            isHost: false
+        };
+
+        // 載入題目資料
+        async function loadQuestions() {
+            try {
+                const response = await fetch('exam.json');
+                gameData.questions = await response.json();
+            } catch (error) {
+                console.error('無法載入題目:', error);
+                gameData.questions = [
+                    { "exam": "á", "ans": "仔、啞" },
+                    { "exam": "a̍h", "ans": "曷、盒" },
+                    { "exam": "aih", "ans": "哎、噯" }
+                ];
+            }
+        }
+
+        // 畫面切換函數
+        function showScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(screen => {
+                screen.classList.remove('active');
+            });
+            document.getElementById(screenId).classList.add('active');
+        }
+
+        function showMainMenu() {
+            showScreen('mainMenu');
+            resetGame();
+        }
+
+        function showHostScreen() {
+            showScreen('hostScreen');
+        }
+
+        function showJoinScreen() {
+            showScreen('joinScreen');
+        }
+
+        // 主持人功能
+        function generatePin() {
+            gameData.currentPin = Math.floor(1000 + Math.random() * 9000).toString();
+            gameData.isHost = true;
+
+            // 在 Firebase 建立遊戲房間
+            const gameRef = database.ref(`games/${gameData.currentPin}`);
+            gameRef.set({
+                pin: gameData.currentPin,
+                started: false,
+                startTime: null,
+                players: {},
+                host: true
+            });
+
+            // 監聽玩家加入
+            gameRef.child('players').on('value', (snapshot) => {
+                gameData.players = snapshot.val() || {};
+                updatePlayerCount();
+                updateLeaderboard();
+            });
+
+            document.getElementById('pinDisplay').textContent = `PIN: ${gameData.currentPin}`;
+            document.getElementById('startBtn').disabled = false;
+        }
+
+        function startGame() {
+            if (Object.keys(gameData.players).length === 0) {
+                alert('沒有參與者！');
+                return;
+            }
+
+            gameData.gameStarted = true;
+            gameData.gameStartTime = Date.now();
+            document.getElementById('startBtn').disabled = true;
+            document.getElementById('endBtn').disabled = false;
+
+            // 更新 Firebase 遊戲狀態
+            const gameRef = database.ref(`games/${gameData.currentPin}`);
+            gameRef.update({
+                started: true,
+                startTime: gameData.gameStartTime
+            });
+
+            // 開始計時
+            gameData.gameTimer = setInterval(updateGameTime, 1000);
+        }
+
+        function endGame() {
+            gameData.gameStarted = false;
+            document.getElementById('endBtn').disabled = true;
+            clearInterval(gameData.gameTimer);
+
+            // 更新 Firebase 遊戲狀態
+            if (gameData.isHost) {
+                const gameRef = database.ref(`games/${gameData.currentPin}`);
+                gameRef.update({
+                    started: false,
+                    ended: true
+                });
+            }
+
+            if (gameData.currentPlayer) {
+                showScreen('resultScreen');
+                displayFinalResults();
+            }
+        }
+
+        function updateGameTime() {
+            if (!gameData.gameStartTime) return;
+
+            const elapsed = Math.floor((Date.now() - gameData.gameStartTime) / 1000);
+            const minutes = Math.floor(elapsed / 60);
+            const seconds = elapsed % 60;
+            document.getElementById('gameTime').textContent =
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        function updatePlayerCount() {
+            document.getElementById('playerCount').textContent = Object.keys(gameData.players).length;
+        }
+
+        // 參與者功能
+        function joinGame() {
+            const pin = document.getElementById('pinInput').value;
+            const name = document.getElementById('nameInput').value.trim();
+
+            if (!pin || !name) {
+                alert('請輸入PIN碼和姓名！');
+                return;
+            }
+
+            // 檢查遊戲是否存在
+            const gameRef = database.ref(`games/${pin}`);
+            gameRef.once('value').then((snapshot) => {
+                if (!snapshot.exists()) {
+                    alert('PIN碼錯誤或遊戲不存在！');
+                    return;
+                }
+
+                const playerId = Date.now().toString();
+                gameData.currentPlayer = playerId;
+                gameData.currentPin = pin;
+
+                // 加入遊戲
+                const playerRef = gameRef.child(`players/${playerId}`);
+                playerRef.set({
+                    name: name,
+                    score: 0,
+                    streak: 0,
+                    skillCards: [],
+                    joinTime: Date.now()
+                });
+
+                // 監聽遊戲狀態
+                gameRef.on('value', (snapshot) => {
+                    const gameState = snapshot.val();
+                    if (gameState) {
+                        gameData.gameStarted = gameState.started;
+                        gameData.players = gameState.players || {};
+
+                        if (gameState.started && !gameState.ended) {
+                            showScreen('gameScreen');
+                            nextQuestion();
+                        } else if (gameState.ended) {
+                            showScreen('resultScreen');
+                            displayFinalResults();
+                        }
+
+                        updatePlayerStats();
+                    }
+                });
+
+                if (gameData.gameStarted) {
+                    showScreen('gameScreen');
+                    nextQuestion();
+                } else {
+                    showScreen('waitingScreen');
+                    document.getElementById('waitingInfo').innerHTML = `
+                        <p>玩家: ${name}</p>
+                        <p>等待主持人開始遊戲...</p>
+                    `;
+                }
+            }).catch((error) => {
+                alert('連接失敗：' + error.message);
+            });
+        }
+
+        // 遊戲邏輯
+        function nextQuestion() {
+            if (!gameData.currentPlayer || !gameData.gameStarted) return;
+
+            const question = gameData.questions[Math.floor(Math.random() * gameData.questions.length)];
+            const correctAnswers = question.ans.split('、');
+            const wrongAnswers = generateWrongAnswers(correctAnswers);
+
+            // 創建四個選項
+            const allOptions = [...correctAnswers.slice(0, 1), ...wrongAnswers.slice(0, 3)];
+            shuffleArray(allOptions);
+
+            document.getElementById('questionText').textContent = question.exam;
+
+            const optionsContainer = document.getElementById('optionsContainer');
+            optionsContainer.innerHTML = '';
+
+            allOptions.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.className = 'option';
+                button.textContent = `${String.fromCharCode(65 + index)}. ${option}`;
+                button.onclick = () => checkAnswer(option, correctAnswers);
+                optionsContainer.appendChild(button);
+            });
+
+            updatePlayerStats();
+        }
+
+        function generateWrongAnswers(correctAnswers) {
+            const allAnswers = [];
+            gameData.questions.forEach(q => {
+                q.ans.split('、').forEach(ans => {
+                    if (!correctAnswers.includes(ans)) {
+                        allAnswers.push(ans);
+                    }
+                });
+            });
+
+            shuffleArray(allAnswers);
+            return allAnswers.slice(0, 3);
+        }
+
+        function checkAnswer(selectedAnswer, correctAnswers) {
+            const player = gameData.players[gameData.currentPlayer];
+            const isCorrect = correctAnswers.includes(selectedAnswer);
+
+            if (isCorrect) {
+                player.score += 1;
+                player.streak += 1;
+                showResult('答對了！+1分', 'green');
+
+                // 檢查技能卡片
+                if (player.streak === 5) {
+                    player.skillCards.push({ type: 'steal10', name: '偷取10%' });
+                    showResult('獲得技能卡片：偷取10%！', 'gold');
+                } else if (player.streak === 10) {
+                    // 移除10%卡片，添加50%卡片
+                    player.skillCards = player.skillCards.filter(card => card.type !== 'steal10');
+                    player.skillCards.push({ type: 'steal50', name: '偷取50%' });
+                    showResult('技能卡片升級：偷取50%！', 'gold');
+                }
+            } else {
+                player.score -= 1;
+                player.streak = 0;
+                showResult('答錯了！-1分', 'red');
+            }
+
+            // 更新 Firebase 中的玩家資料
+            const playerRef = database.ref(`games/${gameData.currentPin}/players/${gameData.currentPlayer}`);
+            playerRef.update({
+                score: player.score,
+                streak: player.streak,
+                skillCards: player.skillCards
+            });
+
+            setTimeout(() => {
+                nextQuestion();
+            }, 2000);
+        }
+
+        function showResult(message, color) {
+            const resultDiv = document.getElementById('resultMessage');
+            resultDiv.textContent = message;
+            resultDiv.style.color = color;
+            resultDiv.style.fontSize = '24px';
+            resultDiv.style.fontWeight = 'bold';
+        }
+
+        function updatePlayerStats() {
+            if (!gameData.currentPlayer) return;
+
+            const player = gameData.players[gameData.currentPlayer];
+            document.getElementById('playerScore').textContent = player.score;
+            document.getElementById('streak').textContent = player.streak;
+
+            // 更新排名
+            const sortedPlayers = Object.entries(gameData.players)
+                .sort(([, a], [, b]) => b.score - a.score);
+            const rank = sortedPlayers.findIndex(([id]) => id === gameData.currentPlayer) + 1;
+            document.getElementById('playerRank').textContent = rank;
+
+            // 更新技能卡片
+            updateSkillCards();
+        }
+
+        function updateSkillCards() {
+            const player = gameData.players[gameData.currentPlayer];
+            const skillCardsDiv = document.getElementById('skillCards');
+            skillCardsDiv.innerHTML = '';
+
+            player.skillCards.forEach((card, index) => {
+                const cardDiv = document.createElement('div');
+                cardDiv.className = 'skill-card';
+                cardDiv.textContent = card.name;
+                cardDiv.onclick = () => useSkillCard(index);
+                skillCardsDiv.appendChild(cardDiv);
+            });
+        }
+
+        function useSkillCard(cardIndex) {
+            const player = gameData.players[gameData.currentPlayer];
+            const card = player.skillCards[cardIndex];
+
+            // 找到分數最高的其他玩家
+            const otherPlayers = Object.entries(gameData.players)
+                .filter(([id]) => id !== gameData.currentPlayer)
+                .sort(([, a], [, b]) => b.score - a.score);
+
+            if (otherPlayers.length === 0) {
+                alert('沒有其他玩家可以偷取分數！');
+                return;
+            }
+
+            const [targetPlayerId, targetPlayer] = otherPlayers[0];
+            const stealPercentage = card.type === 'steal50' ? 0.5 : 0.1;
+            const stolenPoints = Math.floor(targetPlayer.score * stealPercentage);
+
+            targetPlayer.score -= stolenPoints;
+            player.score += stolenPoints;
+
+            // 移除使用過的卡片
+            player.skillCards.splice(cardIndex, 1);
+
+            // 更新 Firebase 中的兩個玩家資料
+            const gameRef = database.ref(`games/${gameData.currentPin}/players`);
+            gameRef.child(gameData.currentPlayer).update({
+                score: player.score,
+                skillCards: player.skillCards
+            });
+            gameRef.child(targetPlayerId).update({
+                score: targetPlayer.score
+            });
+
+            showResult(`偷取了 ${stolenPoints} 分！`, 'purple');
+            updatePlayerStats();
+        }
+
+        function updateLeaderboard() {
+            const sortedPlayers = Object.entries(gameData.players)
+                .sort(([, a], [, b]) => b.score - a.score);
+
+            const leaderboardDiv = document.getElementById('hostLeaderboard');
+            leaderboardDiv.innerHTML = '';
+
+            sortedPlayers.forEach(([id, player], index) => {
+                const playerDiv = document.createElement('div');
+                playerDiv.className = 'player-item';
+                playerDiv.innerHTML = `
+                    <span>${index + 1}. ${player.name}</span>
+                    <span>${player.score}分</span>
+                `;
+                leaderboardDiv.appendChild(playerDiv);
+            });
+        }
+
+        function displayFinalResults() {
+            const player = gameData.players[gameData.currentPlayer];
+            document.getElementById('finalScore').textContent = player.score;
+
+            const sortedPlayers = Object.entries(gameData.players)
+                .sort(([, a], [, b]) => b.score - a.score);
+            const rank = sortedPlayers.findIndex(([id]) => id === gameData.currentPlayer) + 1;
+            document.getElementById('finalRank').textContent = rank;
+
+            const finalLeaderboardDiv = document.getElementById('finalLeaderboard');
+            finalLeaderboardDiv.innerHTML = '';
+
+            sortedPlayers.forEach(([id, player], index) => {
+                const playerDiv = document.createElement('div');
+                playerDiv.className = 'player-item';
+                playerDiv.innerHTML = `
+                    <span>${index + 1}. ${player.name}</span>
+                    <span>${player.score}分</span>
+                `;
+                finalLeaderboardDiv.appendChild(playerDiv);
+            });
+        }
+
+        function resetGame() {
+            // 清理 Firebase 監聽器
+            if (gameData.currentPin) {
+                database.ref(`games/${gameData.currentPin}`).off();
+            }
+
+            gameData.gameStarted = false;
+            gameData.currentPin = null;
+            gameData.players = {};
+            gameData.currentPlayer = null;
+            gameData.gameStartTime = null;
+            gameData.isHost = false;
+
+            if (gameData.gameTimer) {
+                clearInterval(gameData.gameTimer);
+                gameData.gameTimer = null;
+            }
+
+            document.getElementById('pinDisplay').textContent = 'PIN: ----';
+            document.getElementById('startBtn').disabled = true;
+            document.getElementById('endBtn').disabled = true;
+            document.getElementById('gameTime').textContent = '00:00';
+            document.getElementById('playerCount').textContent = '0';
+            document.getElementById('pinInput').value = '';
+            document.getElementById('nameInput').value = '';
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        // 初始化
+        window.onload = function () {
+            loadQuestions();
+        };
+    </script>
+</body>
+
+</html>

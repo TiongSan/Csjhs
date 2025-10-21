@@ -1,0 +1,34 @@
+{
+  "rules": {
+    "games": {
+      "$gamePin": {
+        ".read": true,
+        ".write": true,
+        ".validate": "newData.hasChildren(['pin'])",
+        "pin": {
+          ".validate": "newData.isString() && newData.val().length == 4"
+        },
+        "players": {
+          "$playerId": {
+            ".validate": "newData.hasChildren(['name', 'score'])",
+            "name": {
+              ".validate": "newData.isString() && newData.val().length > 0"
+            },
+            "score": {
+              ".validate": "newData.isNumber()"
+            },
+            "streak": {
+              ".validate": "newData.isNumber()"
+            }
+          }
+        },
+        "started": {
+          ".validate": "newData.isBoolean()"
+        },
+        "startTime": {
+          ".validate": "newData.isNumber() || newData.val() == null"
+        }
+      }
+    }
+  }
+}
