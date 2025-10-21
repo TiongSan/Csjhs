@@ -261,14 +261,43 @@
         // 載入題目資料
         async function loadQuestions() {
             try {
+                console.log('正在載入題目檔案...');
                 const response = await fetch('exam.json');
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
                 gameData.questions = await response.json();
+                console.log(`成功載入 ${gameData.questions.length} 道題目`);
+                
+                // 驗證題目格式
+                const validQuestions = gameData.questions.filter(q => 
+                    q.Question && q.Answer1 && q.Answer2 && q.Answer3 && q.correct
+                );
+                if (validQuestions.length !== gameData.questions.length) {
+                    console.warn(`發現 ${gameData.questions.length - validQuestions.length} 道格式錯誤的題目`);
+                    gameData.questions = validQuestions;
+                }
+                
             } catch (error) {
-                console.error('無法載入題目:', error);
+                console.error('無法載入題目檔案:', error);
+                console.log('使用預設題目');
                 gameData.questions = [
-                    { "exam": "á", "ans": "仔、啞" },
-                    { "exam": "a̍h", "ans": "曷、盒" },
-                    { "exam": "aih", "ans": "哎、噯" }
+                    {
+                        "Question": "請問「á」的漢字是啥物？",
+                        "Answer1": "仔",
+                        "Answer2": "啞", 
+                        "Answer3": "鴨",
+                        "correct": "仔"
+                    },
+                    {
+                        "Question": "請問「a̍h」的漢字是啥物？",
+                        "Answer1": "曷",
+                        "Answer2": "盒",
+                        "Answer3": "合",
+                        "correct": "曷"
+                    }
                 ];
             }
         }
@@ -484,16 +513,22 @@
             document.getElementById('nextQuestionBtn').style.display = 'none';
 
             const question = gameData.questions[Math.floor(Math.random() * gameData.questions.length)];
-            const correctAnswers = question.ans.split('、');
-            const wrongAnswers = generateWrongAnswers(correctAnswers);
-
-            // 創建四個選項
-            const allOptions = [...correctAnswers.slice(0, 1), ...wrongAnswers.slice(0, 3)];
+            const correctAnswer = question.correct;
+            
+            // 創建四個選項（包含正確答案和三個錯誤答案）
+            const allOptions = [
+                question.Answer1,
+                question.Answer2, 
+                question.Answer3,
+                question.correct
+            ];
+            
+            // 隨機排列選項順序
             shuffleArray(allOptions);
 
-            console.log('題目:', question.exam, '正確答案:', correctAnswers);
+            console.log('題目:', question.Question, '正確答案:', correctAnswer);
 
-            document.getElementById('questionText').textContent = question.exam;
+            document.getElementById('questionText').textContent = question.Question;
 
             const optionsContainer = document.getElementById('optionsContainer');
             optionsContainer.innerHTML = '';
@@ -502,35 +537,23 @@
                 const button = document.createElement('button');
                 button.className = 'option';
                 button.textContent = `${String.fromCharCode(65 + index)}. ${option}`;
-                button.onclick = () => checkAnswer(option, correctAnswers);
+                button.onclick = () => checkAnswer(option, correctAnswer);
                 optionsContainer.appendChild(button);
             });
 
             updatePlayerStats();
         }
 
-        function generateWrongAnswers(correctAnswers) {
-            const allAnswers = [];
-            gameData.questions.forEach(q => {
-                q.ans.split('、').forEach(ans => {
-                    if (!correctAnswers.includes(ans)) {
-                        allAnswers.push(ans);
-                    }
-                });
-            });
 
-            shuffleArray(allAnswers);
-            return allAnswers.slice(0, 3);
-        }
 
-        function checkAnswer(selectedAnswer, correctAnswers) {
+        function checkAnswer(selectedAnswer, correctAnswer) {
             if (!gameData.currentPlayer || !gameData.players[gameData.currentPlayer]) {
                 console.error('玩家資料不存在');
                 return;
             }
 
             const player = gameData.players[gameData.currentPlayer];
-            const isCorrect = correctAnswers.includes(selectedAnswer);
+            const isCorrect = selectedAnswer === correctAnswer;
 
             // 禁用所有選項按鈕，防止重複點擊
             const optionButtons = document.querySelectorAll('.option');
