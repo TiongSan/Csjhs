@@ -276,18 +276,35 @@
                 const snapshot = await gamesRef.once('value');
                 const existingGames = snapshot.val() || {};
                 const now = Date.now();
+                let cleanedCount = 0;
                 
                 for (const [pin, game] of Object.entries(existingGames)) {
-                    // 清理超過2小時未活動的遊戲
+                    // 清理超過1小時未活動的遊戲（縮短清理時間）
                     const lastActivity = game.endTime || game.startTime || game.createdTime || 0;
-                    if (now - lastActivity > 7200000) { // 2小時
+                    if (now - lastActivity > 3600000) { // 1小時
                         await database.ref(`games/${pin}`).remove();
+                        cleanedCount++;
                         console.log(`已清理過期遊戲房間: ${pin}`);
                     }
+                }
+                
+                if (cleanedCount > 0) {
+                    console.log(`清理完成，共清理 ${cleanedCount} 個過期房間`);
                 }
             } catch (error) {
                 console.error('清理過期遊戲失敗:', error);
             }
+        }
+
+        // 優化資料更新頻率
+        let updateThrottle = {};
+        function throttledUpdate(playerId, data) {
+            const now = Date.now();
+            if (!updateThrottle[playerId] || now - updateThrottle[playerId] > 1000) { // 限制每秒最多更新一次
+                updateThrottle[playerId] = now;
+                return true;
+            }
+            return false;
         }
 
         // 載入題目資料
@@ -470,7 +487,7 @@
             document.getElementById('endBtn').disabled = true;
             clearInterval(gameData.gameTimer);
 
-            // 更新 Firebase 遊戲狀態
+            // 更新 Firebase 遊戲狀態並設定自動清理
             if (gameData.isHost) {
                 const gameRef = database.ref(`games/${gameData.currentPin}`);
                 gameRef.update({
@@ -479,7 +496,17 @@
                     endTime: Date.now()
                 });
                 
-                console.log(`遊戲結束，PIN: ${gameData.currentPin}`);
+                // 30分鐘後自動清理這個遊戲房間
+                setTimeout(async () => {
+                    try {
+                        await database.ref(`games/${gameData.currentPin}`).remove();
+                        console.log(`遊戲房間已自動清理: ${gameData.currentPin}`);
+                    } catch (error) {
+                        console.error('自動清理失敗:', error);
+                    }
+                }, 1800000); // 30分鐘
+                
+                console.log(`遊戲結束，PIN: ${gameData.currentPin}，將在30分鐘後自動清理`);
             }
 
             if (gameData.currentPlayer) {
@@ -687,27 +714,30 @@
             player.streak = newStreak;
             player.skillCards = newSkillCards;
 
-            // 更新 Firebase 中的玩家資料
-            const playerRef = database.ref(`games/${gameData.currentPin}/players/${gameData.currentPlayer}`);
-            playerRef.update({
-                score: newScore,
-                streak: newStreak,
-                skillCards: newSkillCards
-            }).then(() => {
-                console.log('Firebase 更新成功', { score: newScore, streak: newStreak });
-                // 顯示下一題按鈕
-                setTimeout(() => {
-                    const nextBtn = document.getElementById('nextQuestionBtn');
-                    if (nextBtn) {
-                        nextBtn.style.display = 'inline-block';
-                        console.log('下一題按鈕已顯示');
-                    } else {
-                        console.error('找不到下一題按鈕');
-                    }
-                }, 100);
-            }).catch((error) => {
-                console.error('Firebase 更新失敗:', error);
-            });
+            // 優化：只在必要時更新 Firebase
+            if (throttledUpdate(gameData.currentPlayer, { score: newScore, streak: newStreak })) {
+                const playerRef = database.ref(`games/${gameData.currentPin}/players/${gameData.currentPlayer}`);
+                playerRef.update({
+                    score: newScore,
+                    streak: newStreak,
+                    skillCards: newSkillCards
+                }).then(() => {
+                    console.log('Firebase 更新成功', { score: newScore, streak: newStreak });
+                }).catch((error) => {
+                    console.error('Firebase 更新失敗:', error);
+                });
+            }
+            
+            // 顯示下一題按鈕
+            setTimeout(() => {
+                const nextBtn = document.getElementById('nextQuestionBtn');
+                if (nextBtn) {
+                    nextBtn.style.display = 'inline-block';
+                    console.log('下一題按鈕已顯示');
+                } else {
+                    console.error('找不到下一題按鈕');
+                }
+            }, 100);
         }
 
         function showResult(message, color) {
@@ -895,15 +925,32 @@
             }
         }
 
+        // 使用量統計
+        let sessionStats = {
+            dataTransferred: 0,
+            gamesCreated: 0,
+            playersJoined: 0
+        };
+
+        function logDataUsage(operation, bytes) {
+            sessionStats.dataTransferred += bytes;
+            console.log(`資料使用: ${operation} - ${bytes} bytes，本次總計: ${sessionStats.dataTransferred} bytes`);
+        }
+
         // 初始化
         window.onload = function () {
             loadQuestions();
             
-            // 定期清理過期遊戲（每30分鐘）
-            setInterval(cleanupExpiredGames, 1800000);
+            // 定期清理過期遊戲（每15分鐘，更頻繁清理）
+            setInterval(cleanupExpiredGames, 900000);
             
             // 頁面載入時清理一次
             cleanupExpiredGames();
+            
+            // 每10分鐘顯示使用量統計
+            setInterval(() => {
+                console.log('本次使用統計:', sessionStats);
+            }, 600000);
         };
     </script>
 </body>
