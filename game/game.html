@@ -112,6 +112,21 @@
             border-radius: 10px;
             margin: 20px 0;
         }
+
+        #nextQuestionBtn {
+            background: #FF9800 !important;
+            color: white !important;
+            padding: 15px 25px !important;
+            border: none !important;
+            border-radius: 8px !important;
+            font-size: 16px !important;
+            cursor: pointer !important;
+            margin-top: 20px !important;
+        }
+
+        #nextQuestionBtn:hover {
+            background: #F57C00 !important;
+        }
     </style>
 </head>
 
@@ -188,8 +203,7 @@
             </div>
 
             <div id="resultMessage"></div>
-            <button id="nextQuestionBtn" onclick="nextQuestion()"
-                style="display: none; margin-top: 20px; background: #FF9800;">下一題</button>
+            <button id="nextQuestionBtn" onclick="nextQuestion()" style="display: none; margin-top: 20px; background: #FF9800; padding: 15px 25px; border: none; border-radius: 8px; color: white; font-size: 16px; cursor: pointer;">下一題</button>
         </div>
 
         <!-- 結果畫面 -->
@@ -520,7 +534,15 @@
             });
 
             // 顯示下一題按鈕
-            document.getElementById('nextQuestionBtn').style.display = 'inline-block';
+            setTimeout(() => {
+                const nextBtn = document.getElementById('nextQuestionBtn');
+                if (nextBtn) {
+                    nextBtn.style.display = 'inline-block';
+                    console.log('下一題按鈕已顯示');
+                } else {
+                    console.error('找不到下一題按鈕');
+                }
+            }, 100);
         }
 
         function showResult(message, color) {
