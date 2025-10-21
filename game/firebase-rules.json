@@ -1,32 +1,52 @@
 {
   "rules": {
     "games": {
+      ".read": true,
+      ".validate": "root.child('games').numChildren() <= 6",
       "$gamePin": {
         ".read": true,
         ".write": true,
-        ".validate": "newData.hasChildren(['pin'])",
+        ".validate": "newData.hasChildren(['pin']) && newData.child('pin').isString() && newData.child('pin').val().length == 4",
         "pin": {
           ".validate": "newData.isString() && newData.val().length == 4"
-        },
-        "players": {
-          "$playerId": {
-            ".validate": "newData.hasChildren(['name', 'score'])",
-            "name": {
-              ".validate": "newData.isString() && newData.val().length > 0"
-            },
-            "score": {
-              ".validate": "newData.isNumber()"
-            },
-            "streak": {
-              ".validate": "newData.isNumber()"
-            }
-          }
         },
         "started": {
           ".validate": "newData.isBoolean()"
         },
+        "ended": {
+          ".validate": "newData.isBoolean()"
+        },
         "startTime": {
           ".validate": "newData.isNumber() || newData.val() == null"
+        },
+        "endTime": {
+          ".validate": "newData.isNumber() || newData.val() == null"
+        },
+        "createdTime": {
+          ".validate": "newData.isNumber()"
+        },
+        "host": {
+          ".validate": "newData.isBoolean()"
+        },
+        "players": {
+          "$playerId": {
+            ".validate": "newData.hasChildren(['name', 'score']) && newData.child('name').isString() && newData.child('name').val().length > 0",
+            "name": {
+              ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 50"
+            },
+            "score": {
+              ".validate": "newData.isNumber() && newData.val() >= -100 && newData.val() <= 1000"
+            },
+            "streak": {
+              ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 100"
+            },
+            "skillCards": {
+              ".validate": "newData.isString() || (newData.hasChildren() && newData.val() != null)"
+            },
+            "joinTime": {
+              ".validate": "newData.isNumber()"
+            }
+          }
         }
       }
     }

@@ -135,8 +135,19 @@
         <!-- 主選單 -->
         <div id="mainMenu" class="screen active">
             <h1>Quiz Game</h1>
-            <button onclick="showHostScreen()">主持遊戲</button>
-            <button onclick="showJoinScreen()">加入遊戲</button>
+            <button onclick="showJoinScreen()" style="font-size: 24px; padding: 20px 40px; margin: 20px;">加入遊戲</button>
+            
+            <!-- 主持人按鈕（隱藏在角落） -->
+            <button onclick="showHostLogin()" style="position: absolute; top: 10px; right: 10px; font-size: 12px; padding: 5px 10px; background: #666; opacity: 0.3;">主持</button>
+        </div>
+
+        <!-- 主持人登入畫面 -->
+        <div id="hostLoginScreen" class="screen">
+            <h2>主持人登入</h2>
+            <input type="password" id="hostPassword" placeholder="請輸入主持人密碼" maxlength="10">
+            <button onclick="verifyHostPassword()">登入</button>
+            <button onclick="showMainMenu()">返回</button>
+            <div id="loginError" style="color: red; margin-top: 10px;"></div>
         </div>
 
         <!-- 主持人畫面 -->
@@ -258,6 +269,27 @@
             isHost: false
         };
 
+        // 清理過期遊戲房間的函數
+        async function cleanupExpiredGames() {
+            try {
+                const gamesRef = database.ref('games');
+                const snapshot = await gamesRef.once('value');
+                const existingGames = snapshot.val() || {};
+                const now = Date.now();
+                
+                for (const [pin, game] of Object.entries(existingGames)) {
+                    // 清理超過2小時未活動的遊戲
+                    const lastActivity = game.endTime || game.startTime || game.createdTime || 0;
+                    if (now - lastActivity > 7200000) { // 2小時
+                        await database.ref(`games/${pin}`).remove();
+                        console.log(`已清理過期遊戲房間: ${pin}`);
+                    }
+                }
+            } catch (error) {
+                console.error('清理過期遊戲失敗:', error);
+            }
+        }
+
         // 載入題目資料
         async function loadQuestions() {
             try {
@@ -323,30 +355,92 @@
             showScreen('joinScreen');
         }
 
+        function showHostLogin() {
+            showScreen('hostLoginScreen');
+            document.getElementById('hostPassword').value = '';
+            document.getElementById('loginError').textContent = '';
+        }
+
+        function verifyHostPassword() {
+            const password = document.getElementById('hostPassword').value;
+            const correctPassword = 'csjhs';
+            
+            if (password === correctPassword) {
+                showScreen('hostScreen');
+                document.getElementById('loginError').textContent = '';
+            } else {
+                document.getElementById('loginError').textContent = '密碼錯誤！';
+                document.getElementById('hostPassword').value = '';
+            }
+        }
+
         // 主持人功能
-        function generatePin() {
-            gameData.currentPin = Math.floor(1000 + Math.random() * 9000).toString();
-            gameData.isHost = true;
+        async function generatePin() {
+            try {
+                // 檢查現有遊戲房間數量
+                const gamesRef = database.ref('games');
+                const snapshot = await gamesRef.once('value');
+                const existingGames = snapshot.val() || {};
+                
+                // 清理已結束超過1小時的遊戲
+                const now = Date.now();
+                const gamesToDelete = [];
+                
+                Object.entries(existingGames).forEach(([pin, game]) => {
+                    if (game.ended && game.startTime && (now - game.startTime > 3600000)) { // 1小時
+                        gamesToDelete.push(pin);
+                    }
+                });
+                
+                // 刪除過期遊戲
+                for (const pin of gamesToDelete) {
+                    await database.ref(`games/${pin}`).remove();
+                    delete existingGames[pin];
+                }
+                
+                // 檢查房間數量限制
+                const activeGames = Object.keys(existingGames).length;
+                if (activeGames >= 6) {
+                    alert('目前遊戲房間已滿（最多6個），請稍後再試！');
+                    return;
+                }
+                
+                // 生成新的 PIN 碼，確保不重複
+                let newPin;
+                do {
+                    newPin = Math.floor(1000 + Math.random() * 9000).toString();
+                } while (existingGames[newPin]);
+                
+                gameData.currentPin = newPin;
+                gameData.isHost = true;
 
-            // 在 Firebase 建立遊戲房間
-            const gameRef = database.ref(`games/${gameData.currentPin}`);
-            gameRef.set({
-                pin: gameData.currentPin,
-                started: false,
-                startTime: null,
-                players: {},
-                host: true
-            });
+                // 在 Firebase 建立遊戲房間
+                const gameRef = database.ref(`games/${gameData.currentPin}`);
+                await gameRef.set({
+                    pin: gameData.currentPin,
+                    started: false,
+                    startTime: null,
+                    players: {},
+                    host: true,
+                    createdTime: Date.now()
+                });
 
-            // 監聽玩家加入
-            gameRef.child('players').on('value', (snapshot) => {
-                gameData.players = snapshot.val() || {};
-                updatePlayerCount();
-                updateLeaderboard();
-            });
+                // 監聽玩家加入
+                gameRef.child('players').on('value', (snapshot) => {
+                    gameData.players = snapshot.val() || {};
+                    updatePlayerCount();
+                    updateLeaderboard();
+                });
 
-            document.getElementById('pinDisplay').textContent = `PIN: ${gameData.currentPin}`;
-            document.getElementById('startBtn').disabled = false;
+                document.getElementById('pinDisplay').textContent = `PIN: ${gameData.currentPin}`;
+                document.getElementById('startBtn').disabled = false;
+                
+                console.log(`遊戲房間已建立，PIN: ${gameData.currentPin}，目前活躍房間數: ${activeGames + 1}/6`);
+                
+            } catch (error) {
+                console.error('建立遊戲房間失敗:', error);
+                alert('建立遊戲房間失敗，請重試！');
+            }
         }
 
         function startGame() {
@@ -381,8 +475,11 @@
                 const gameRef = database.ref(`games/${gameData.currentPin}`);
                 gameRef.update({
                     started: false,
-                    ended: true
+                    ended: true,
+                    endTime: Date.now()
                 });
+                
+                console.log(`遊戲結束，PIN: ${gameData.currentPin}`);
             }
 
             if (gameData.currentPlayer) {
@@ -801,6 +898,12 @@
         // 初始化
         window.onload = function () {
             loadQuestions();
+            
+            // 定期清理過期遊戲（每30分鐘）
+            setInterval(cleanupExpiredGames, 1800000);
+            
+            // 頁面載入時清理一次
+            cleanupExpiredGames();
         };
     </script>
 </body>
