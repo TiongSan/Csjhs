@@ -449,7 +449,12 @@
                     
                 }).catch((error) => {
                     console.error('Firebase 寫入失敗:', error);
-                    alert('建立遊戲房間失敗：' + error.message);
+                    console.error('錯誤詳情:', {
+                        code: error.code,
+                        message: error.message,
+                        details: error
+                    });
+                    alert('建立遊戲房間失敗：' + error.message + '\n錯誤代碼：' + error.code);
                 });
                 
             } catch (error) {
