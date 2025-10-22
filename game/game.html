@@ -102,6 +102,12 @@
             border-radius: 5px;
             margin: 10px 0;
             cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
 
         .pin-display {
@@ -215,6 +221,15 @@
 
             <div id="resultMessage"></div>
             <button id="nextQuestionBtn" onclick="nextQuestion()" style="display: none; margin-top: 20px; background: #FF9800; padding: 15px 25px; border: none; border-radius: 8px; color: white; font-size: 16px; cursor: pointer;">下一題</button>
+            
+            <!-- 玩家選擇介面 -->
+            <div id="playerSelection" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000;">
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 30px; border-radius: 15px; color: black; max-width: 400px; width: 90%;">
+                    <h3 id="selectionTitle">選擇對手</h3>
+                    <div id="playerList"></div>
+                    <button onclick="closePlayerSelection()" style="margin-top: 20px; background: #666; color: white; padding: 10px 20px; border: none; border-radius: 5px;">取消</button>
+                </div>
+            </div>
         </div>
 
         <!-- 結果畫面 -->
@@ -703,11 +718,24 @@
                     newSkillCards = newSkillCards.filter(card => card.type !== 'steal10');
                     newSkillCards.push({ type: 'steal50', name: '偷取50%' });
                     showResult('技能卡片升級：偷取50%！', 'gold');
+                } else if (newStreak === 12) {
+                    // 添加交換分數技能（臨時技能）
+                    newSkillCards.push({ type: 'swap', name: '交換分數', temporary: true });
+                    showResult('獲得臨時技能：交換分數！', 'purple');
                 }
             } else {
                 newScore -= 1;
                 newStreak = 0;
-                showResult('答錯了！-1分', 'red');
+                
+                // 移除所有臨時技能
+                const tempSkillsRemoved = newSkillCards.filter(card => card.temporary).length;
+                newSkillCards = newSkillCards.filter(card => !card.temporary);
+                
+                if (tempSkillsRemoved > 0) {
+                    showResult('答錯了！-1分，臨時技能消失！', 'red');
+                } else {
+                    showResult('答錯了！-1分', 'red');
+                }
             }
 
             // 更新本地資料
@@ -774,62 +802,107 @@
             skillCardsDiv.innerHTML = '';
 
             if (player.skillCards && player.skillCards.length > 0) {
-                // 找出分數最高的對手
-                const otherPlayers = Object.entries(gameData.players)
-                    .filter(([id]) => id !== gameData.currentPlayer)
-                    .sort(([, a], [, b]) => (b.score || 0) - (a.score || 0));
-                
-                const targetInfo = otherPlayers.length > 0 ? 
-                    `目標：${otherPlayers[0][1].name}（${otherPlayers[0][1].score || 0}分）` : 
-                    '無目標';
-
                 player.skillCards.forEach((card, index) => {
                     const cardDiv = document.createElement('div');
                     cardDiv.className = 'skill-card';
                     
-                    // 計算可偷取的分數
-                    const stealPercentage = card.type === 'steal50' ? 0.5 : 0.1;
-                    const potentialSteal = otherPlayers.length > 0 ? 
-                        Math.floor((otherPlayers[0][1].score || 0) * stealPercentage) : 0;
+                    // 根據技能類型設定樣式和描述
+                    let cardStyle = '';
+                    let description = '';
+                    
+                    if (card.type === 'swap') {
+                        cardStyle = 'background: purple; border: 2px solid gold;';
+                        description = '點擊選擇對手交換分數';
+                    } else if (card.type === 'steal50') {
+                        description = '點擊選擇對手偷取50%分數';
+                    } else {
+                        description = '點擊選擇對手偷取10%分數';
+                    }
                     
                     cardDiv.innerHTML = `
                         <div style="font-weight: bold;">${card.name}</div>
-                        <div style="font-size: 12px; margin-top: 5px;">${targetInfo}</div>
-                        <div style="font-size: 12px;">可偷取：${potentialSteal}分</div>
+                        <div style="font-size: 12px; margin-top: 5px;">${description}</div>
+                        ${card.temporary ? '<div style="font-size: 10px; color: yellow;">⚡ 臨時技能</div>' : ''}
                     `;
-                    cardDiv.onclick = () => useSkillCard(index);
+                    cardDiv.style.cssText += cardStyle;
+                    cardDiv.onclick = () => showPlayerSelection(index);
                     skillCardsDiv.appendChild(cardDiv);
                 });
             }
         }
 
-        function useSkillCard(cardIndex) {
+        // 顯示玩家選擇介面
+        function showPlayerSelection(cardIndex) {
             const player = gameData.players[gameData.currentPlayer];
             const card = player.skillCards[cardIndex];
-
-            // 找到分數最高的其他玩家
+            
+            // 找出其他玩家
             const otherPlayers = Object.entries(gameData.players)
-                .filter(([id]) => id !== gameData.currentPlayer)
-                .sort(([, a], [, b]) => (b.score || 0) - (a.score || 0));
+                .filter(([id]) => id !== gameData.currentPlayer);
 
             if (otherPlayers.length === 0) {
-                alert('沒有其他玩家可以偷取分數！');
+                alert('沒有其他玩家！');
                 return;
             }
 
-            const [targetPlayerId, targetPlayer] = otherPlayers[0];
-            const stealPercentage = card.type === 'steal50' ? 0.5 : 0.1;
-            const stolenPoints = Math.floor((targetPlayer.score || 0) * stealPercentage);
+            // 設定選擇介面
+            const selectionDiv = document.getElementById('playerSelection');
+            const titleDiv = document.getElementById('selectionTitle');
+            const listDiv = document.getElementById('playerList');
+            
+            titleDiv.textContent = card.type === 'swap' ? '選擇要交換分數的對手' : '選擇要偷取分數的對手';
+            
+            listDiv.innerHTML = '';
+            otherPlayers.forEach(([playerId, playerData]) => {
+                const playerBtn = document.createElement('button');
+                playerBtn.textContent = playerData.name;
+                playerBtn.style.cssText = 'display: block; width: 100%; margin: 10px 0; padding: 15px; background: #2196F3; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;';
+                playerBtn.onclick = () => executeSkillCard(cardIndex, playerId);
+                listDiv.appendChild(playerBtn);
+            });
+            
+            selectionDiv.style.display = 'block';
+        }
 
-            // 確認偷取操作
-            const confirmMessage = `確定要對「${targetPlayer.name}」（${targetPlayer.score}分）使用「${card.name}」嗎？\n將偷取 ${stolenPoints} 分！`;
-            if (!confirm(confirmMessage)) {
+        // 關閉玩家選擇介面
+        function closePlayerSelection() {
+            document.getElementById('playerSelection').style.display = 'none';
+        }
+
+        // 執行技能卡片效果
+        function executeSkillCard(cardIndex, targetPlayerId) {
+            const player = gameData.players[gameData.currentPlayer];
+            const targetPlayer = gameData.players[targetPlayerId];
+            const card = player.skillCards[cardIndex];
+
+            if (!targetPlayer) {
+                alert('目標玩家不存在！');
+                closePlayerSelection();
                 return;
             }
 
-            // 更新分數
-            targetPlayer.score = (targetPlayer.score || 0) - stolenPoints;
-            player.score = (player.score || 0) + stolenPoints;
+            let resultMessage = '';
+            
+            if (card.type === 'swap') {
+                // 交換分數
+                const myScore = player.score || 0;
+                const targetScore = targetPlayer.score || 0;
+                
+                player.score = targetScore;
+                targetPlayer.score = myScore;
+                
+                resultMessage = `與「${targetPlayer.name}」交換分數！`;
+                
+            } else {
+                // 偷取分數
+                const stealPercentage = card.type === 'steal50' ? 0.5 : 0.1;
+                const stolenPoints = Math.floor((targetPlayer.score || 0) * stealPercentage);
+                
+                targetPlayer.score = (targetPlayer.score || 0) - stolenPoints;
+                player.score = (player.score || 0) + stolenPoints;
+                
+                resultMessage = `從「${targetPlayer.name}」偷取了 ${stolenPoints} 分！`;
+            }
 
             // 移除使用過的卡片
             player.skillCards.splice(cardIndex, 1);
@@ -844,10 +917,11 @@
                 score: targetPlayer.score
             });
 
-            showResult(`成功從「${targetPlayer.name}」偷取了 ${stolenPoints} 分！`, 'purple');
+            showResult(resultMessage, 'purple');
             updatePlayerStats();
+            closePlayerSelection();
             
-            console.log(`技能卡片使用：${player.name || '玩家'} 對 ${targetPlayer.name} 使用 ${card.name}，偷取 ${stolenPoints} 分`);
+            console.log(`技能卡片使用：${player.name || '玩家'} 對 ${targetPlayer.name} 使用 ${card.name}`);
         }
 
         function updateLeaderboard() {
