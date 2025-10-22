@@ -1040,70 +1040,71 @@
         });
 
         // 載入題目資料
-        async function loadQuestionsFromJSON() {
-            try {
-                console.log('正在載入題目檔案...');
-                const response = await fetch('exam.json');
+async function loadQuestionsFromJSON() {
+    try {
+        console.log('🔍 嘗試載入外部 exam.json...');
+        const response = await fetch('exam.json?v=' + Date.now(), {
+            cache: 'no-store'   // 🚫 不使用任何快取
+        });
 
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-
-                const jsonData = await response.json();
-                console.log(`成功載入 ${jsonData.length} 道題目`);
-
-                // 轉換 JSON 格式為遊戲需要的格式
-                questionData = jsonData.map(item => ({
-                    question: item.Question,
-                    correctAnswer: item.correct, // 儲存正確答案
-                    option1: item.Answer1,
-                    option2: item.Answer2,
-                    option3: item.Answer3,
-                    option4: item.correct // 正確答案也作為選項之一
-                }));
-
-                questionsLoaded = true;
-                console.log('題目載入完成，可以開始遊戲');
-
-            } catch (error) {
-                console.error('無法載入題目檔案:', error);
-                console.log('使用預設題目');
-
-                // 使用預設題目
-                questionData = [
-                    {
-                        question: "請問「á」的台羅拼音對應的漢字是啥物？",
-                        correctAnswer: "仔",
-                        option1: "啞",
-                        option2: "鴨",
-                        option3: "牙",
-                        option4: "仔"
-                    },
-                    {
-                        question: "請問「a̍h」的台羅拼音對應的漢字是啥物？",
-                        correctAnswer: "曷",
-                        option1: "盒",
-                        option2: "合",
-                        option3: "何",
-                        option4: "曷"
-                    }
-                ];
-                questionsLoaded = true;
-            }
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        // 初始化遊戲
-        async function initGame() {
-            await loadQuestionsFromJSON();
-            generateRandomFlowers();
-            generateFlyingText();
+        const jsonData = await response.json();
+        console.log(`✅ 成功載入外部題庫，共 ${jsonData.length} 題`);
 
-            // 等題目載入完成後才開始遊戲
-            if (questionsLoaded) {
-                showQuestion();
-                gameLoop();
+        questionData = jsonData.map(item => ({
+            question: item.Question,
+            correctAnswer: item.correct,
+            option1: item.Answer1,
+            option2: item.Answer2,
+            option3: item.Answer3,
+            option4: item.correct
+        }));
+
+        questionsLoaded = true;
+    } catch (error) {
+        console.warn('⚠️ 無法載入外部 exam.json，改用內建題庫');
+        console.warn(error);
+
+        // 🟡 內建題庫
+        questionData = [
+            {
+                question: "請問「á」的台羅拼音對應的漢字是啥物？",
+                correctAnswer: "仔",
+                option1: "啞",
+                option2: "鴨",
+                option3: "牙",
+                option4: "仔"
+            },
+            {
+                question: "請問「a̍h」的台羅拼音對應的漢字是啥物？",
+                correctAnswer: "曷",
+                option1: "盒",
+                option2: "合",
+                option3: "何",
+                option4: "曷"
             }
-        }
+        ];
+        questionsLoaded = true;
+    }
+}
+
+async function initGame() {
+    await loadQuestionsFromJSON(); // 🚨 等外部讀取真的完成
+
+    if (!questionsLoaded || !questionData.length) {
+        alert("⚠️ 題目載入失敗，請檢查 exam.json 是否存在。");
+        return;
+    }
+
+    generateRandomFlowers();
+    generateFlyingText();
+    showQuestion();
+    gameLoop();
+}
+
 
         // 啟動遊戲
         initGame();
