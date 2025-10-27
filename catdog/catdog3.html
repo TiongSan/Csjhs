@@ -801,10 +801,13 @@
         // 移動功能
         function moveCat(direction) {
             const moveDistance = 50;
-            if (direction === 'left' && cat.x > 10) {
-                cat.x -= moveDistance;
-            } else if (direction === 'right' && cat.x < canvas.width - 110) {
-                cat.x += moveDistance;
+            const leftBoundary = 10; // 左邊界
+            const rightBoundary = canvas.width / 2 - cat.size - 20; // 右邊界（中間分隔線 - 貓咪寬度 - 安全距離）
+
+            if (direction === 'left' && cat.x > leftBoundary) {
+                cat.x = Math.max(leftBoundary, cat.x - moveDistance);
+            } else if (direction === 'right' && cat.x < rightBoundary) {
+                cat.x = Math.min(rightBoundary, cat.x + moveDistance);
             }
         }
 
