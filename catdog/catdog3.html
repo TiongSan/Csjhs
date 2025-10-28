@@ -1246,7 +1246,7 @@
         async function loadQuestionsFromJSON() {
             try {
                 console.log('正在載入題目檔案...');
-                const response = await fetch('exam.json');
+                const response = await fetch('tableexam.json');
 
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
