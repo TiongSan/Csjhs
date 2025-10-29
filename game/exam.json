@@ -1,0 +1,387 @@
+[
+  {
+    "Question": "鎂",
+    "Answer1": "Li",
+    "Answer2": "K",
+    "Answer3": "Ca",
+    "correct": "Mg"
+  },
+  {
+    "Question": "鋰",
+    "Answer1": "Na",
+    "Answer2": "Hg",
+    "Answer3": "Ti",
+    "correct": "Li"
+  },
+  {
+    "Question": "鈉",
+    "Answer1": "Al",
+    "Answer2": "Ca",
+    "Answer3": "Cu",
+    "correct": "Na"
+  },
+  {
+    "Question": "鋁",
+    "Answer1": "K",
+    "Answer2": "Ti",
+    "Answer3": "Fe",
+    "correct": "Al"
+  },
+  {
+    "Question": "鉀",
+    "Answer1": "Hg",
+    "Answer2": "Cu",
+    "Answer3": "Au",
+    "correct": "K"
+  },
+  {
+    "Question": "汞",
+    "Answer1": "Ca",
+    "Answer2": "Fe",
+    "Answer3": "Pt",
+    "correct": "Hg"
+  },
+  {
+    "Question": "鈣",
+    "Answer1": "Ti",
+    "Answer2": "Au",
+    "Answer3": "W",
+    "correct": "Ca"
+  },
+  {
+    "Question": "鈦",
+    "Answer1": "Cu",
+    "Answer2": "Pt",
+    "Answer3": "Mn",
+    "correct": "Ti"
+  },
+  {
+    "Question": "銅",
+    "Answer1": "Fe",
+    "Answer2": "W",
+    "Answer3": "Ag",
+    "correct": "Cu"
+  },
+  {
+    "Question": "鐵",
+    "Answer1": "Au",
+    "Answer2": "Mn",
+    "Answer3": "Pb",
+    "correct": "Fe"
+  },
+  {
+    "Question": "金",
+    "Answer1": "Pt",
+    "Answer2": "Ag",
+    "Answer3": "C",
+    "correct": "Au"
+  },
+  {
+    "Question": "鉑",
+    "Answer1": "W",
+    "Answer2": "Pb",
+    "Answer3": "Si",
+    "correct": "Pt"
+  },
+  {
+    "Question": "鎢",
+    "Answer1": "Mn",
+    "Answer2": "C",
+    "Answer3": "S",
+    "correct": "W"
+  },
+  {
+    "Question": "錳",
+    "Answer1": "Ag",
+    "Answer2": "Si",
+    "Answer3": "I",
+    "correct": "Mn"
+  },
+  {
+    "Question": "銀",
+    "Answer1": "Pb",
+    "Answer2": "S",
+    "Answer3": "P",
+    "correct": "Ag"
+  },
+  {
+    "Question": "鉛",
+    "Answer1": "C",
+    "Answer2": "I",
+    "Answer3": "Br",
+    "correct": "Pb"
+  },
+  {
+    "Question": "碳",
+    "Answer1": "Si",
+    "Answer2": "P",
+    "Answer3": "H",
+    "correct": "C"
+  },
+  {
+    "Question": "矽",
+    "Answer1": "S",
+    "Answer2": "Br",
+    "Answer3": "N",
+    "correct": "Si"
+  },
+  {
+    "Question": "硫",
+    "Answer1": "I",
+    "Answer2": "H",
+    "Answer3": "O",
+    "correct": "S"
+  },
+  {
+    "Question": "碘",
+    "Answer1": "P",
+    "Answer2": "N",
+    "Answer3": "Cl",
+    "correct": "I"
+  },
+  {
+    "Question": "磷",
+    "Answer1": "Br",
+    "Answer2": "O",
+    "Answer3": "Ar",
+    "correct": "P"
+  },
+  {
+    "Question": "溴",
+    "Answer1": "H",
+    "Answer2": "Cl",
+    "Answer3": "He",
+    "correct": "Br"
+  },
+  {
+    "Question": "氫",
+    "Answer1": "N",
+    "Answer2": "Ar",
+    "Answer3": "Rb",
+    "correct": "H"
+  },
+  {
+    "Question": "氮",
+    "Answer1": "O",
+    "Answer2": "He",
+    "Answer3": "Cs",
+    "correct": "N"
+  },
+  {
+    "Question": "氧",
+    "Answer1": "Cl",
+    "Answer2": "Rb",
+    "Answer3": "Fr",
+    "correct": "O"
+  },
+  {
+    "Question": "氯",
+    "Answer1": "Ar",
+    "Answer2": "Cs",
+    "Answer3": "Be",
+    "correct": "Cl"
+  },
+  {
+    "Question": "氬",
+    "Answer1": "He",
+    "Answer2": "Fr",
+    "Answer3": "Sr",
+    "correct": "Ar"
+  },
+  {
+    "Question": "氦",
+    "Answer1": "Rb",
+    "Answer2": "Be",
+    "Answer3": "Ba",
+    "correct": "He"
+  },
+  {
+    "Question": "銣",
+    "Answer1": "Cs",
+    "Answer2": "Sr",
+    "Answer3": "Ra",
+    "correct": "Rb"
+  },
+  {
+    "Question": "銫",
+    "Answer1": "Fr",
+    "Answer2": "Ba",
+    "Answer3": "B",
+    "correct": "Cs"
+  },
+  {
+    "Question": "鍅",
+    "Answer1": "Be",
+    "Answer2": "Ra",
+    "Answer3": "Ga",
+    "correct": "Fr"
+  },
+  {
+    "Question": "鈹",
+    "Answer1": "Sr",
+    "Answer2": "B",
+    "Answer3": "In",
+    "correct": "Be"
+  },
+  {
+    "Question": "鍶",
+    "Answer1": "Ba",
+    "Answer2": "Ga",
+    "Answer3": "Tl",
+    "correct": "Sr"
+  },
+  {
+    "Question": "鋇",
+    "Answer1": "Ra",
+    "Answer2": "In",
+    "Answer3": "Ge",
+    "correct": "Ba"
+  },
+  {
+    "Question": "鐳",
+    "Answer1": "B",
+    "Answer2": "Tl",
+    "Answer3": "Sn",
+    "correct": "Ra"
+  },
+  {
+    "Question": "硼",
+    "Answer1": "Ga",
+    "Answer2": "Ge",
+    "Answer3": "As",
+    "correct": "B"
+  },
+  {
+    "Question": "鎵",
+    "Answer1": "In",
+    "Answer2": "Sn",
+    "Answer3": "Sb",
+    "correct": "Ga"
+  },
+  {
+    "Question": "銦",
+    "Answer1": "Tl",
+    "Answer2": "As",
+    "Answer3": "Bi",
+    "correct": "In"
+  },
+  {
+    "Question": "鉈",
+    "Answer1": "Ge",
+    "Answer2": "Sb",
+    "Answer3": "Se",
+    "correct": "Tl"
+  },
+  {
+    "Question": "鍺",
+    "Answer1": "Sn",
+    "Answer2": "Bi",
+    "Answer3": "Te",
+    "correct": "Ge"
+  },
+  {
+    "Question": "錫",
+    "Answer1": "As",
+    "Answer2": "Se",
+    "Answer3": "Po",
+    "correct": "Sn"
+  },
+  {
+    "Question": "砷",
+    "Answer1": "Sb",
+    "Answer2": "Te",
+    "Answer3": "At",
+    "correct": "As"
+  },
+  {
+    "Question": "銻",
+    "Answer1": "Bi",
+    "Answer2": "Po",
+    "Answer3": "Ne",
+    "correct": "Sb"
+  },
+  {
+    "Question": "鉍",
+    "Answer1": "Se",
+    "Answer2": "At",
+    "Answer3": "Kr",
+    "correct": "Bi"
+  },
+  {
+    "Question": "硒",
+    "Answer1": "Te",
+    "Answer2": "Ne",
+    "Answer3": "Xe",
+    "correct": "Se"
+  },
+  {
+    "Question": "碲",
+    "Answer1": "Po",
+    "Answer2": "Kr",
+    "Answer3": "Rn",
+    "correct": "Te"
+  },
+  {
+    "Question": "釙",
+    "Answer1": "At",
+    "Answer2": "Xe",
+    "Answer3": "Cd",
+    "correct": "Po"
+  },
+  {
+    "Question": "砈",
+    "Answer1": "Ne",
+    "Answer2": "Rn",
+    "Answer3": "Co",
+    "correct": "At"
+  },
+  {
+    "Question": "氖",
+    "Answer1": "Kr",
+    "Answer2": "Cd",
+    "Answer3": "Ni",
+    "correct": "Ne"
+  },
+  {
+    "Question": "氪",
+    "Answer1": "Xe",
+    "Answer2": "Co",
+    "Answer3": "Mg",
+    "correct": "Kr"
+  },
+  {
+    "Question": "氙",
+    "Answer1": "Rn",
+    "Answer2": "Ni",
+    "Answer3": "Li",
+    "correct": "Xe"
+  },
+  {
+    "Question": "氡",
+    "Answer1": "Cd",
+    "Answer2": "Mg",
+    "Answer3": "Na",
+    "correct": "Rn"
+  },
+  {
+    "Question": "鎘",
+    "Answer1": "Co",
+    "Answer2": "Li",
+    "Answer3": "Al",
+    "correct": "Cd"
+  },
+  {
+    "Question": "鈷",
+    "Answer1": "Ni",
+    "Answer2": "Na",
+    "Answer3": "K",
+    "correct": "Co"
+  },
+  {
+    "Question": "鎳",
+    "Answer1": "Mg",
+    "Answer2": "Al",
+    "Answer3": "P",
+    "correct": "Ni"
+  }
+]
