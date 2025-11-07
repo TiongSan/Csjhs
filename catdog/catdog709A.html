@@ -1,0 +1,1492 @@
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>貓狗大戰遊戲</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ffcc00, #ff99cc, #66ccff);
+            background-size: 400% 400%;
+            animation: gradientBackground 15s ease infinite;
+        }
+
+        @keyframes gradientBackground {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        canvas {
+            border: 1px solid black;
+            display: block;
+            margin: 0 auto;
+            background-color: #f0f0f0;
+        }
+
+        #health-bars {
+            display: flex;
+            justify-content: space-between;
+            width: 900px;
+            margin: 10px auto;
+            position: relative;
+        }
+
+        #score-display {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 10px;
+            margin: 10px auto;
+            width: 300px;
+        }
+
+        .health-bar-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 45%;
+            position: relative;
+        }
+
+        .health-bar {
+            height: 40px;
+            position: absolute;
+            border-radius: 5px;
+            background: linear-gradient(145deg, #ff4d4d, #b30000);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            border: 2px solid black;
+        }
+
+        .health-bar-background {
+            width: 100%;
+            height: 40px;
+            background: linear-gradient(145deg, #f0f0f0, #d9d9d9);
+            position: relative;
+            border-radius: 5px;
+            box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        #cat-health {
+            right: 0;
+            background: linear-gradient(145deg, #b30000, #ff4d4d);
+        }
+
+        #dog-health {
+            left: 0;
+        }
+
+        #game-over {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        #game-over h2 {
+            font-size: 100px;
+            color: red;
+            font-weight: bold;
+        }
+
+        #game-over button {
+            padding: 10px 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+
+        #game-over button:hover {
+            background-color: #45a049;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        #game-title {
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 24px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px 0;
+        }
+
+        #generator-screen {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 900px;
+            /* 與遊戲區寬度相同 */
+            background-color: rgba(255, 255, 255, 0.95);
+            border: 2px solid black;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            z-index: 2000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #generator-screen h1 {
+            margin-bottom: 20px;
+        }
+
+        #generator-input {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #generator-submit,
+        #start-game,
+        #download-game {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #generator-submit:hover,
+        #start-game:hover,
+        #download-game:hover {
+            background-color: #45a049;
+        }
+
+        #output-table {
+            margin-top: 20px;
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            max-height: 300px;
+            /* 限制高度以支持捲動 */
+            overflow-y: auto;
+            /* 垂直捲動 */
+            display: block;
+        }
+
+        #output-table thead {
+            position: sticky;
+            top: 0;
+            background-color: #f1f1f1;
+        }
+
+        #output-table th,
+        #output-table td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+
+        #start-game {
+            display: none;
+            margin-top: 20px;
+        }
+
+        #question-layer {
+            display: none;
+            position: fixed;
+            top: 2%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 98vw;
+            max-width: 950px;
+            height: 96vh;
+            background-color: #e6ffe6;
+            border: 2px solid black;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            z-index: 1500;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+
+        #question-layer h2 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+            text-shadow: 1px 1px 2px #ffffff;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 8px;
+            border-radius: 10px;
+            margin: 0 0 2px 0;
+        }
+
+        #question-image {
+            width: 95vw;
+            max-width: 900px;
+            height: 70vh;
+            max-height: 700px;
+            min-width: 500px;
+            min-height: 400px;
+            object-fit: contain;
+            border: 3px solid #2c3e50;
+            border-radius: 10px;
+            background-color: white;
+            margin: 2px auto;
+            display: block;
+        }
+
+        .option-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 10px;
+            padding: 0 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .option-buttons button {
+            padding: 20px;
+            font-size: 28px;
+            color: white;
+            font-weight: bold;
+            width: 100%;
+            height: 100px;
+            background: #1abc9c;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .option-buttons button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.15);
+            transition: all 0.75s ease-in-out;
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+        }
+
+        .option-buttons button:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .option-buttons button:hover {
+            background: #16a085;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .option-buttons button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .option-buttons button:hover::after {
+            opacity: 1;
+        }
+
+        /* 新增的透明點擊區 */
+        #secret-trigger {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            background-color: transparent;
+            z-index: 9999;
+        }
+
+        /* 新增的右下角文字區域 */
+        #footer-text {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-size: 14px;
+            color: white;
+        }
+
+        /* 答案提示按鈕 */
+        #hint-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(145deg, #ff6b6b, #ee5a52);
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            z-index: 2500;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            display: none;
+        }
+
+        #hint-button:hover {
+            background: linear-gradient(145deg, #ff5252, #d32f2f);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        #hint-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 閃爍動畫 */
+        @keyframes hint-blink {
+            0% {
+                background-color: inherit;
+            }
+
+            25% {
+                background-color: #ffeb3b;
+            }
+
+            50% {
+                background-color: inherit;
+            }
+
+            75% {
+                background-color: #ffeb3b;
+            }
+
+            100% {
+                background-color: inherit;
+            }
+        }
+
+        .hint-blink {
+            animation: hint-blink 1.5s ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="score-display">
+        玩家命中次數: <span id="hit-count">0</span> | 連續答對: <span id="streak-count">0</span>
+    </div>
+    <div id="health-bars">
+        <div class="health-bar-background">
+            <span class="health-bar" id="cat-health" style="width: 60%;">貓的血量: 60</span>
+            <span>貓的血量</span>
+        </div>
+        <div class="health-bar-background">
+            <span class="health-bar" id="dog-health" style="width: 80%;">狗的血量: 80</span>
+            <span>狗的血量</span>
+        </div>
+    </div>
+    <canvas id="gameCanvas" width="900" height="650"></canvas>
+    <div id="game-over"></div>
+    <div id="game-title">貓狗大戰遊戲 - 答對攻擊，答錯被攻擊！</div>
+    <div id="toggle-generator"></div>
+    <div id="generator-screen" style="display: none;">
+        <h1>貓狗大戰遊戲生成器</h1>
+        <textarea id="generator-input" placeholder="輸入題目，請用逗號或制表符分隔各列..."></textarea><br>
+        <button id="generator-submit">送出</button>
+        <button id="start-game" style="display: inline-block;">開始遊玩</button>
+        <button id="download-game">下載完整遊戲</button>
+        <table id="output-table">
+            <thead>
+                <tr>
+                    <th>題目</th>
+                    <th>答案</th>
+                    <th>選項1</th>
+                    <th>選項2</th>
+                    <th>選項3</th>
+                    <th>選項4</th>
+                </tr>
+            </thead>
+
+        </table>
+    </div>
+    <div id="question-layer" style="display: none;">
+        <h2 id="question-text">請看圖片選擇答案</h2>
+        <img id="question-image" src="pic709/中.png" alt="題目圖片">
+        <div class="option-buttons" id="player-options" style="width: 100%; margin: 0 auto;">
+            <button style="background-color: red;">中</button>
+            <button style="background-color: green;">山</button>
+            <button style="background-color: blue;">7</button>
+            <button style="background-color: purple;">0</button>
+        </div>
+    </div>
+
+    <!-- 新增的透明點擊區 -->
+    <div id="secret-trigger"></div>
+
+    <!-- 答案提示按鈕 -->
+    <button id="hint-button">💡 答案提示</button>
+
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const gameOverDiv = document.getElementById('game-over');
+        const questionLayer = document.getElementById('question-layer');
+        const questionText = document.getElementById('question-text');
+        const playerOptions = document.getElementById('player-options');
+        const hintButton = document.getElementById('hint-button');
+
+        let gamePaused = false;
+        let questionData = [];
+        let usedQuestions = [];
+        let currentQuestionIndex = -1;
+        let catCanThrow = false;
+        let dogCanThrow = false;
+        let computerAttacking = false;
+        let questionsLoaded = false;
+        let playerHitCount = 0; // 玩家命中次數
+        let correctStreak = 0; // 連續答對次數
+        let hasShield = false; // 是否有護盾
+        let bigBullet = false; // 是否有大子彈
+        let currentCorrectAnswer = null; // 當前正確答案
+
+        // 電腦角色emoji列表（不包含貓）
+        const computerCharacters = ['🐶', '🐺', '🦊', '🐻', '🐼', '🐨', '🐯', '🦁', '🐸', '🐷'];
+        let currentComputerCharacter = computerCharacters[0]; // 當前電腦角色
+
+        const cat = {
+            x: 60,
+            y: canvas.height - 50,
+            baseY: canvas.height - 50, // 地面位置
+            health: 100,
+            size: 100,
+            hitboxRadius: 55,
+            power: 5,
+            angle: 0,
+            rotation: 0,
+            targetRotation: 0,
+            isJumping: false,
+            jumpVelocity: 0
+        };
+        const dog = {
+            x: canvas.width - 60 - 100,
+            y: canvas.height - 50,
+            health: 100,
+            size: 100,
+            hitboxRadius: 55,
+            power: 5,
+            angle: 0,
+            rotation: 0,
+            targetRotation: 0
+        };
+        const gravity = 0.5;
+        const projectileWidth = 45;
+        const projectileHeight = 15;
+        const projectileColors = ['red', 'green', 'blue', 'purple'];
+        const bounceFactor = 0.7;
+        let projectiles = [];
+        let flowers = [];
+        let flyingTexts = [];
+        let currentCharacter = null;
+        let currentCharacterType = null;
+        let powerInterval = null;
+        let angleInterval = null;
+        let isSettingPower = false;
+        let isSettingAngle = false;
+        let gameEnded = false;
+
+        function drawBackground() {
+            ctx.fillStyle = '#87CEEB';
+            ctx.fillRect(0, 0, canvas.width, canvas.height / 2);
+
+            ctx.fillStyle = '#32CD32';
+            ctx.fillRect(0, canvas.height / 2, canvas.width, canvas.height / 2);
+
+            drawSunset(canvas.width - 100, 100);
+
+            ctx.fillStyle = '#B22222';
+            ctx.fillRect(100, canvas.height / 2 - 150, 200, 150);
+
+            ctx.fillStyle = '#8B4513';
+            ctx.beginPath();
+            ctx.moveTo(100, canvas.height / 2 - 150);
+            ctx.lineTo(200, canvas.height / 2 - 250);
+            ctx.lineTo(300, canvas.height / 2 - 150);
+            ctx.closePath();
+            ctx.fill();
+
+            ctx.fillStyle = '#654321';
+            ctx.fillRect(180, canvas.height / 2 - 80, 40, 80);
+
+            ctx.fillStyle = '#ADD8E6';
+            ctx.fillRect(120, canvas.height / 2 - 130, 30, 30);
+            ctx.fillRect(250, canvas.height / 2 - 130, 30, 30);
+
+            drawBigTree(650, canvas.height / 2);
+
+            drawTree(450, canvas.height / 2);
+            drawTree(750, canvas.height / 2);
+
+            drawCloud(200, 100);
+            drawCloud(700, 130);
+
+            drawBird(400, 150);
+            drawBird(500, 180);
+
+            drawFlowers();
+
+            drawFence();
+
+            ctx.font = '30px Arial';
+            ctx.fillStyle = 'white';
+            ctx.fillText('', 300, 50);
+        }
+
+        function drawTree(x, y) {
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(x, y - 50, 20, 50);
+
+            ctx.fillStyle = '#228B22';
+            ctx.beginPath();
+            ctx.arc(x + 10, y - 60, 30, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        function drawBigTree(x, y) {
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(x - 20, y - 100, 40, 100);
+
+            ctx.fillStyle = '#228B22';
+            ctx.beginPath();
+            ctx.arc(x, y - 130, 60, 0, Math.PI * 2);
+            ctx.arc(x - 50, y - 100, 40, 0, Math.PI * 2);
+            ctx.arc(x + 50, y - 100, 40, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        function drawCloud(x, y) {
+            ctx.fillStyle = 'white';
+            ctx.beginPath();
+            ctx.arc(x, y, 20, 0, Math.PI * 2);
+            ctx.arc(x + 30, y, 25, 0, Math.PI * 2);
+            ctx.arc(x + 60, y, 20, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        function drawBird(x, y) {
+            ctx.fillStyle = 'black';
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(x + 10, y + 5);
+            ctx.lineTo(x, y + 10);
+            ctx.lineTo(x - 10, y + 5);
+            ctx.closePath();
+            ctx.fill();
+        }
+
+        function drawSunset(x, y) {
+            ctx.fillStyle = '#FFA500';
+            ctx.beginPath();
+            ctx.arc(x, y, 50, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.strokeStyle = '#FFD700';
+            ctx.lineWidth = 2;
+            for (let i = 0; i < 12; i++) {
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+                ctx.lineTo(x + 100 * Math.cos(Math.PI * i / 6), y + 100 * Math.sin(Math.PI * i / 6));
+                ctx.stroke();
+            }
+
+            ctx.fillStyle = 'rgba(255, 223, 0, 0.3)';
+            ctx.beginPath();
+            ctx.moveTo(x - 50, y);
+            ctx.lineTo(0, canvas.height);
+            ctx.lineTo(canvas.width, canvas.height);
+            ctx.lineTo(x + 50, y);
+            ctx.closePath();
+            ctx.fill();
+        }
+
+        function generateRandomFlowers() {
+            const flowerColors = ['red', 'yellow', 'blue', 'purple', 'pink', 'orange', 'white'];
+            for (let i = 0; i < 10; i++) {
+                const x = Math.random() * canvas.width;
+                const y = canvas.height / 2 + Math.random() * (canvas.height / 2 - 30);
+                const color = flowerColors[Math.floor(Math.random() * flowerColors.length)];
+                flowers.push({ x, y, color });
+            }
+        }
+
+        function drawFlowers() {
+            for (const flower of flowers) {
+                drawFlower(flower.x, flower.y, flower.color);
+            }
+        }
+
+        function drawFlower(x, y, color) {
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            ctx.arc(x, y, 15, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = 'yellow';
+            ctx.beginPath();
+            ctx.arc(x, y, 6, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        function drawFence() {
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(canvas.width / 2 - 10, canvas.height - 240, 20, 240);
+
+            ctx.fillStyle = '#654321';
+            for (let i = 0; i < 8; i++) {
+                ctx.fillRect(canvas.width / 2 - 20, canvas.height - 240 + i * 30, 40, 5);
+            }
+        }
+
+        function drawCharacters() {
+            // 繪製貓咪護盾
+            if (hasShield) {
+                ctx.fillStyle = 'rgba(0, 255, 255, 0.3)';
+                ctx.beginPath();
+                ctx.arc(cat.x + 50, cat.y - 40, cat.hitboxRadius + 15, 0, Math.PI * 2);
+                ctx.fill();
+
+                // 護盾閃爍效果
+                ctx.strokeStyle = 'rgba(0, 255, 255, 0.8)';
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                ctx.arc(cat.x + 50, cat.y - 40, cat.hitboxRadius + 15, 0, Math.PI * 2);
+                ctx.stroke();
+            }
+
+            ctx.save();
+            ctx.translate(cat.x + 50, cat.y - 50);
+            ctx.rotate(cat.rotation * Math.PI / 180);
+            ctx.translate(-(cat.x + 50), -(cat.y - 50));
+            ctx.font = "100px Arial";
+            ctx.fillText("😺", cat.x, cat.y);
+            ctx.restore();
+
+            ctx.save();
+            ctx.translate(dog.x + 50, dog.y - 50);
+            ctx.rotate(dog.rotation * Math.PI / 180);
+            ctx.translate(-(dog.x + 50), -(dog.y - 50));
+            ctx.font = "100px Arial";
+            ctx.fillText(currentComputerCharacter, dog.x, dog.y);
+            ctx.restore();
+
+            if (currentCharacter) {
+                ctx.font = "18px Arial";
+                if (isSettingPower) {
+                    // 修改力量直條圖的樣式
+                    ctx.fillStyle = 'lightgray';
+                    ctx.fillRect(currentCharacter.x - 20, currentCharacter.y - 280, 20, 132);
+                    if (currentCharacter.power > 15) {
+                        ctx.fillStyle = 'red';
+                    } else {
+                        ctx.fillStyle = 'green';
+                    }
+                    ctx.fillRect(currentCharacter.x - 20, currentCharacter.y - 280 + (132 - (currentCharacter.power - 5) / 20 * 132), 20, (currentCharacter.power - 5) / 20 * 132);
+                    ctx.strokeStyle = 'black';
+                    ctx.strokeRect(currentCharacter.x - 20, currentCharacter.y - 280, 20, 132);
+
+                    // 畫一條紅線表示力量15的位置
+                    const powerThresholdY = currentCharacter.y - 280 + (132 - (15 - 5) / 20 * 132);
+                    ctx.strokeStyle = 'red';
+                    ctx.beginPath();
+                    ctx.moveTo(currentCharacter.x - 25, powerThresholdY);
+                    ctx.lineTo(currentCharacter.x + 5, powerThresholdY);
+                    ctx.stroke();
+
+                    // 力量直條圖的即時文字
+                    ctx.fillStyle = 'red';
+                    ctx.fillText(`力量: ${currentCharacter.power}`, currentCharacter.x, currentCharacter.y - 300);
+                } else if (isSettingAngle) {
+                    ctx.font = "18px Arial"; // 修改角度扇形圖的即時文字
+                    const centerX = currentCharacter.x + 50;
+                    const centerY = currentCharacter.y - 140;
+                    const radius = 100;
+
+                    if (currentCharacterType === 'cat') {
+                        // 修改角度扇形圖的樣式
+                        const angleCenterX = cat.x + 50 + 50;
+                        const angleCenterY = cat.y - 40 - 50;
+                        ctx.fillStyle = 'red';
+                        ctx.beginPath();
+                        ctx.moveTo(angleCenterX, angleCenterY);
+                        ctx.arc(angleCenterX, angleCenterY, radius, 0, -currentCharacter.angle * Math.PI / 180, true);
+                        ctx.lineTo(angleCenterX, angleCenterY);
+                        ctx.fill();
+                        ctx.strokeStyle = 'black';
+                        ctx.beginPath();
+                        ctx.arc(angleCenterX, angleCenterY, radius, 0, -currentCharacter.angle * Math.PI / 180, true);
+                        ctx.stroke();
+
+                        // 角度扇形圖的即時文字
+                        ctx.fillStyle = 'red';
+                        ctx.fillText(`角度: ${currentCharacter.angle}`, angleCenterX + 70, angleCenterY - 70);
+                    } else {
+                        const angleCenterX = dog.x + 50 - 50;
+                        const angleCenterY = dog.y - 40 - 50;
+                        ctx.fillStyle = 'red';
+                        ctx.beginPath();
+                        ctx.moveTo(angleCenterX, angleCenterY);
+                        ctx.arc(angleCenterX, angleCenterY, radius, Math.PI, Math.PI + currentCharacter.angle * Math.PI / 180, false);
+                        ctx.lineTo(angleCenterX, angleCenterY);
+                        ctx.fill();
+                        ctx.strokeStyle = 'black';
+                        ctx.beginPath();
+                        ctx.arc(angleCenterX, angleCenterY, radius, Math.PI, Math.PI + currentCharacter.angle * Math.PI / 180, false);
+                        ctx.stroke();
+
+                        // 角度扇形圖的即時文字
+                        ctx.fillStyle = 'red';
+                        ctx.fillText(`角度: ${currentCharacter.angle}`, angleCenterX - 130, angleCenterY - 70);
+                    }
+                }
+            }
+
+            ctx.fillStyle = catCanThrow ? 'rgba(255, 255, 255, 0.2)' : 'rgba(255, 255, 255, 0.1)';
+            ctx.beginPath();
+            ctx.arc(cat.x + 50, cat.y - 40, cat.hitboxRadius, 0, Math.PI * 2);
+            ctx.fill();
+
+            // 電腦攻擊時顯示紅色光圈
+            if (computerAttacking) {
+                ctx.fillStyle = 'rgba(255, 0, 0, 0.3)';
+                ctx.beginPath();
+                ctx.arc(dog.x + 50, dog.y - 40, dog.hitboxRadius + 10, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            ctx.fillStyle = dogCanThrow ? 'rgba(255, 255, 255, 0.2)' : 'rgba(255, 255, 255, 0.1)';
+            ctx.beginPath();
+            ctx.arc(dog.x + 50, dog.y - 40, dog.hitboxRadius, 0, Math.PI * 2);
+            ctx.fill();
+
+            // 繪製玩家控制界面（當玩家可以行動時）
+            if (catCanThrow && !isSettingPower && !isSettingAngle) {
+                // 左箭頭
+                ctx.fillStyle = 'rgba(0, 255, 0, 0.7)';
+                ctx.beginPath();
+                ctx.moveTo(cat.x - 30, cat.y - 40);
+                ctx.lineTo(cat.x - 10, cat.y - 50);
+                ctx.lineTo(cat.x - 10, cat.y - 30);
+                ctx.closePath();
+                ctx.fill();
+                ctx.strokeStyle = 'black';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                // 右箭頭
+                ctx.fillStyle = 'rgba(0, 255, 0, 0.7)';
+                ctx.beginPath();
+                ctx.moveTo(cat.x + 130, cat.y - 40);
+                ctx.lineTo(cat.x + 110, cat.y - 50);
+                ctx.lineTo(cat.x + 110, cat.y - 30);
+                ctx.closePath();
+                ctx.fill();
+                ctx.strokeStyle = 'black';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                // 攻擊光點（取代原本點擊貓咪的功能）
+                ctx.fillStyle = 'rgba(255, 255, 0, 0.8)';
+                ctx.beginPath();
+                ctx.arc(cat.x + 50, cat.y - 120, 15, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.strokeStyle = 'red';
+                ctx.lineWidth = 3;
+                ctx.stroke();
+
+                // 攻擊光點文字
+                ctx.fillStyle = 'red';
+                ctx.font = '14px Arial';
+                ctx.fillText('攻擊', cat.x + 35, cat.y - 135);
+            }
+        }
+
+        // 跳躍功能
+        function makeCatJump() {
+            if (!cat.isJumping) {
+                cat.isJumping = true;
+                cat.jumpVelocity = -15; // 向上的初始速度
+            }
+        }
+
+        // 移動功能
+        function moveCat(direction) {
+            const moveDistance = 50;
+            const leftBoundary = 10; // 左邊界
+            const rightBoundary = canvas.width / 2 - cat.size - 20; // 右邊界（中間分隔線 - 貓咪寬度 - 安全距離）
+
+            if (direction === 'left' && cat.x > leftBoundary) {
+                cat.x = Math.max(leftBoundary, cat.x - moveDistance);
+            } else if (direction === 'right' && cat.x < rightBoundary) {
+                cat.x = Math.min(rightBoundary, cat.x + moveDistance);
+            }
+        }
+
+        // 更新貓咪跳躍
+        function updateCatJump() {
+            if (cat.isJumping) {
+                cat.y += cat.jumpVelocity;
+                cat.jumpVelocity += gravity;
+
+                // 檢查是否回到地面
+                if (cat.y >= cat.baseY) {
+                    cat.y = cat.baseY;
+                    cat.isJumping = false;
+                    cat.jumpVelocity = 0;
+                }
+            }
+        }
+
+        // 隨機切換電腦角色
+        function changeComputerCharacter() {
+            const randomIndex = Math.floor(Math.random() * computerCharacters.length);
+            currentComputerCharacter = computerCharacters[randomIndex];
+            console.log('電腦角色切換為:', currentComputerCharacter);
+        }
+
+        function updateHealthBars() {
+            const catHealthBar = document.getElementById('cat-health');
+            const dogHealthBar = document.getElementById('dog-health');
+            catHealthBar.style.width = cat.health + '%';
+            catHealthBar.innerText = `貓的血量: ${cat.health / 10}`;
+            dogHealthBar.style.width = dog.health + '%';
+            dogHealthBar.innerText = `狗的血量: ${dog.health / 10}`;
+        }
+
+        function throwObject(character) {
+            const radians = character.angle * (Math.PI / 180);
+            const vx = character.power * Math.cos(radians);
+            const vy = -character.power * Math.sin(radians);
+            const color = projectileColors[Math.floor(Math.random() * projectileColors.length)];
+            const rotationSpeed = character === cat ? 5 : -5;
+
+            // 決定子彈大小
+            let bulletWidth = projectileWidth;
+            let bulletHeight = projectileHeight;
+            if (character === cat && bigBullet) {
+                bulletWidth = projectileWidth * 2;
+                bulletHeight = projectileHeight * 2;
+            }
+
+            if (character === cat) {
+                projectiles.push({ x: cat.x + cat.size, y: cat.y - cat.size, vx: vx, vy: vy, color: color, from: 'cat', rotation: 0, rotationSpeed: rotationSpeed, width: bulletWidth, height: bulletHeight });
+            } else {
+                projectiles.push({ x: dog.x, y: dog.y - dog.size, vx: -vx, vy: vy, color: color, from: 'dog', rotation: 0, rotationSpeed: rotationSpeed, width: bulletWidth, height: bulletHeight });
+            }
+
+            // 重置大子彈狀態
+            if (character === cat && bigBullet) {
+                bigBullet = false;
+                updateScoreDisplay();
+            }
+
+            catCanThrow = false;
+            dogCanThrow = false;
+            computerAttacking = false;
+            setTimeout(() => {
+                if (!gameEnded) showQuestion();
+            }, 2000);
+        }
+
+        // 電腦自動攻擊函數
+        // 計算最佳攻擊參數的函數
+        function calculateOptimalAttack() {
+            // 狗到貓的距離和高度差
+            const distance = Math.abs(cat.x + 50 - (dog.x + 50)); // 約680px
+            const heightDiff = 0; // 同一水平線
+            const gravity = 0.5;
+
+            // 幾個有效的攻擊組合 (角度, 力量) - 經過計算的最佳參數
+            const effectiveAttacks = [
+                { angle: 45, power: 18 },   // 經典45度角
+                { angle: 35, power: 20 },   // 較低角度，較大力量
+                { angle: 55, power: 16 },   // 較高角度，較小力量
+                { angle: 40, power: 19 },   // 平衡組合
+                { angle: 50, power: 17 },   // 另一個平衡組合
+                { angle: 30, power: 22 },   // 低角度強力攻擊
+                { angle: 60, power: 15 },   // 高角度精準攻擊
+                { angle: 42, power: 18.5 }, // 微調組合
+                { angle: 48, power: 17.5 }  // 另一個微調組合
+            ];
+
+            // 隨機選擇一個有效攻擊，並加入少量隨機性提高命中率
+            const baseAttack = effectiveAttacks[Math.floor(Math.random() * effectiveAttacks.length)];
+
+            return {
+                angle: baseAttack.angle + (Math.random() - 0.5) * 8, // ±4度的隨機性
+                power: baseAttack.power + (Math.random() - 0.5) * 3   // ±1.5力量的隨機性
+            };
+        }
+
+        function computerAttack() {
+            if (gameEnded || computerAttacking) return;
+
+            computerAttacking = true;
+
+            // 使用計算出的最佳攻擊參數，大幅提高命中率
+            const optimalAttack = calculateOptimalAttack();
+            dog.power = Math.max(5, Math.min(25, optimalAttack.power)); // 確保在5-25範圍內
+            dog.angle = Math.max(0, Math.min(90, optimalAttack.angle)); // 確保在0-90度範圍內
+
+            console.log(`電腦攻擊: 角度=${dog.angle.toFixed(1)}°, 力量=${dog.power.toFixed(1)}`);
+
+            // 顯示電腦攻擊動畫
+            setTimeout(() => {
+                throwObject(dog);
+            }, 1000);
+        }
+
+        function updateProjectiles() {
+            for (let i = 0; i < projectiles.length; i++) {
+                let p = projectiles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                p.vy += gravity;
+                p.rotation += p.rotationSpeed;
+
+                if (p.x >= canvas.width / 2 - 10 && p.x <= canvas.width / 2 + 10 && p.y >= canvas.height - 240) {
+                    p.vx = -p.vx * bounceFactor;
+                    p.vy = p.vy * bounceFactor;
+                    p.x += p.vx;
+                }
+
+                for (let j = 0; j < flyingTexts.length; j++) {
+                    let t = flyingTexts[j];
+                    if (p.x >= t.x && p.x <= t.x + t.width && p.y >= t.y - t.height && p.y <= t.y) {
+                        p.vy = p.vy * bounceFactor;
+                        p.vx = -p.vx * bounceFactor;
+                        break;
+                    }
+                }
+
+                if (p.from === 'cat' && Math.hypot(p.x - (dog.x + 50), p.y - (dog.y - 40)) <= dog.hitboxRadius) {
+                    dog.health -= 20;
+                    playerHitCount++; // 玩家命中次數+1
+                    updateScoreDisplay();
+                    rotateCharacter(dog, 10);
+                    projectiles.splice(i, 1);
+                    i--;
+                } else if (p.from === 'dog' && Math.hypot(p.x - (cat.x + 50), p.y - (cat.y - 40)) <= cat.hitboxRadius) {
+                    if (hasShield) {
+                        // 護盾擋住攻擊
+                        hasShield = false;
+                        updateScoreDisplay();
+                    } else {
+                        cat.health -= 20;
+                        rotateCharacter(cat, -10);
+                    }
+                    projectiles.splice(i, 1);
+                    i--;
+                } else if (p.y > canvas.height) {
+                    projectiles.splice(i, 1);
+                    i--;
+                }
+            }
+        }
+
+        function rotateCharacter(character, angle) {
+            character.targetRotation = character.rotation + angle;
+            const rotationStep = angle / 10;
+
+            const rotationInterval = setInterval(() => {
+                character.rotation += rotationStep;
+                if ((angle > 0 && character.rotation >= character.targetRotation) || (angle < 0 && character.rotation <= character.targetRotation)) {
+                    clearInterval(rotationInterval);
+                    setTimeout(() => {
+                        character.targetRotation = character.rotation - angle;
+                        const returnInterval = setInterval(() => {
+                            character.rotation -= rotationStep;
+                            if ((angle > 0 && character.rotation <= character.targetRotation) || (angle < 0 && character.rotation >= character.targetRotation)) {
+                                clearInterval(returnInterval);
+                            }
+                        }, 10);
+                    }, 100);
+                }
+            }, 10);
+        }
+
+        function drawProjectiles() {
+            for (let p of projectiles) {
+                ctx.save();
+                ctx.translate(p.x + p.width / 2, p.y + p.height / 2);
+                ctx.rotate(p.rotation * Math.PI / 180);
+                ctx.fillStyle = p.color;
+                ctx.fillRect(-p.width / 2, -p.height / 2, p.width, p.height);
+                ctx.restore();
+            }
+        }
+
+        function checkGameOver() {
+            if (cat.health <= 0) {
+                // 只有玩家血量歸零才會遊戲結束
+                gameEnded = true;
+                gameOver('lose');
+            } else if (dog.health <= 0) {
+                // 電腦血量歸零時自動恢復，遊戲繼續，並切換角色
+                dog.health = 100;
+                changeComputerCharacter(); // 切換電腦角色
+                updateHealthBars();
+                console.log('電腦血量恢復，角色切換，遊戲繼續！');
+            }
+        }
+
+        function gameOver(result) {
+            if (result === 'lose') {
+                gameOverDiv.innerHTML = `<h2>輸了!</h2><p>最終命中次數: ${playerHitCount}</p><p>最高連續答對: ${Math.max(...(usedQuestions.length > 0 ? [correctStreak] : [0]))}</p><button onclick="restartGame()">重新開始</button>`;
+            } else {
+                // 保留原有的勝利邏輯（雖然現在不會觸發）
+                const winnerEmoji = result === 'cat' ? '😺' : '🐶';
+                const winnerText = `${winnerEmoji} 贏了!`;
+                gameOverDiv.innerHTML = `<h2>${winnerText}</h2><button onclick="restartGame()">重新開始</button>`;
+            }
+            gameOverDiv.style.display = 'block';
+        }
+
+        function restartGame() {
+            cat.health = 100;
+            cat.x = 60; // 重置貓咪位置
+            cat.y = cat.baseY; // 重置到地面
+            cat.isJumping = false; // 重置跳躍狀態
+            cat.jumpVelocity = 0;
+            dog.health = 100;
+            changeComputerCharacter(); // 重新開始時切換電腦角色
+            projectiles = [];
+            flowers = [];
+            flyingTexts = [];
+            usedQuestions = []; // 重置已使用的題目
+            playerHitCount = 0; // 重置命中次數
+            correctStreak = 0; // 重置連續答對次數
+            hasShield = false; // 重置護盾
+            bigBullet = false; // 重置大子彈
+            generateRandomFlowers();
+            gameEnded = false;
+            gameOverDiv.style.display = 'none';
+            updateScoreDisplay();
+
+            // 確保題目已載入後才顯示題目
+            if (questionsLoaded) {
+                showQuestion();
+            }
+            gameLoop();
+        }
+
+        function gameLoop() {
+            if (gameEnded || gamePaused) return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawBackground();
+            updateCatJump(); // 更新貓咪跳躍
+            drawCharacters();
+            updateProjectiles();
+            drawProjectiles();
+            drawFlyingTexts();
+            updateFlyingTexts();
+            updateHealthBars();
+            checkGameOver();
+            requestAnimationFrame(gameLoop);
+        }
+
+        function startPowerSetting(character) {
+            if (powerInterval) {
+                clearInterval(powerInterval); // 清除之前的計時器
+            }
+            character.power = 5; // 設定力量的初始值
+            let increasing = true;
+            const minPower = 5; // 設定最小力量
+            const maxPower = 25; // 設定最大力量
+            const intervalSpeed = 66; // 設定變化速度 (毫秒)
+
+            powerInterval = setInterval(() => {
+                if (increasing) {
+                    character.power += 1;
+                    if (character.power >= maxPower) {
+                        increasing = false;
+                    }
+                } else {
+                    character.power -= 1;
+                    if (character.power <= minPower) {
+                        increasing = true;
+                    }
+                }
+            }, intervalSpeed);
+        }
+
+        function startAngleSetting(character) {
+            if (angleInterval) {
+                clearInterval(angleInterval); // 清除之前的計時器
+            }
+            character.angle = 0;
+            let increasing = true;
+            const minAngle = 0;
+            const maxAngle = 90;
+            const intervalSpeed = 33;
+
+            angleInterval = setInterval(() => {
+                if (increasing) {
+                    character.angle += 1;
+                    if (character.angle >= maxAngle) {
+                        increasing = false;
+                    }
+                } else {
+                    character.angle -= 1;
+                    if (character.angle <= minAngle) {
+                        increasing = true;
+                    }
+                }
+            }, intervalSpeed);
+        }
+
+        function drawFlyingTexts() {
+            for (let t of flyingTexts) {
+                ctx.font = '30px Arial bold';
+                ctx.fillStyle = 'white';
+                ctx.fillRect(t.x, t.y - t.height, t.width, t.height);
+                ctx.fillStyle = 'red';
+                ctx.fillText(t.text, t.x, t.y);
+            }
+        }
+
+        function updateFlyingTexts() {
+            for (let t of flyingTexts) {
+                t.x += t.speed;
+                if (t.x > canvas.width || t.x + t.width < 0) {
+                    flyingTexts.splice(flyingTexts.indexOf(t), 1);
+                }
+            }
+        }
+
+        function generateFlyingText() {
+            const texts = ['UFO', '飛機'];
+            const text = texts[Math.floor(Math.random() * texts.length)];
+            const x = Math.random() < 0.5 ? -50 : canvas.width;
+            const y = Math.random() * (canvas.height / 2);
+            const speed = (Math.random() * 3 + 1) * (x < 0 ? 1 : -1);
+            ctx.font = '30px Arial bold';
+            const width = ctx.measureText(text).width;
+            const height = 30;
+            flyingTexts.push({ text, x, y, speed, width, height });
+            setTimeout(generateFlyingText, Math.random() * 20000);
+        }
+
+        canvas.addEventListener('click', (event) => {
+            if (gameEnded || gamePaused || computerAttacking) return;
+            const rect = canvas.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+
+            if (!isSettingPower && !isSettingAngle) {
+                if (catCanThrow) {
+                    // 點擊貓咪 - 跳躍
+                    if (x >= cat.x && x <= cat.x + cat.size && y >= cat.y - cat.size && y <= cat.y) {
+                        makeCatJump();
+                    }
+                    // 點擊左箭頭 - 向左移動
+                    else if (x >= cat.x - 30 && x <= cat.x - 10 && y >= cat.y - 50 && y <= cat.y - 30) {
+                        moveCat('left');
+                    }
+                    // 點擊右箭頭 - 向右移動
+                    else if (x >= cat.x + 110 && x <= cat.x + 130 && y >= cat.y - 50 && y <= cat.y - 30) {
+                        moveCat('right');
+                    }
+                    // 點擊攻擊光點 - 開始攻擊設定
+                    else if (Math.hypot(x - (cat.x + 50), y - (cat.y - 120)) <= 15) {
+                        currentCharacter = cat;
+                        currentCharacterType = 'cat';
+                        isSettingPower = true;
+                        startPowerSetting(cat);
+                    }
+                }
+            } else if (isSettingPower && currentCharacterType === 'cat') {
+                clearInterval(powerInterval);
+                powerInterval = null;
+                isSettingPower = false;
+                isSettingAngle = true;
+                setTimeout(() => {
+                    startAngleSetting(currentCharacter);
+                }, 1200);
+            } else if (isSettingAngle && currentCharacterType === 'cat') {
+                clearInterval(angleInterval);
+                angleInterval = null;
+                isSettingAngle = false;
+                throwObject(currentCharacter);
+                currentCharacter = null;
+                currentCharacterType = null;
+                resetGraphics();
+            }
+        });
+
+        // 答案提示功能
+        hintButton.addEventListener('click', () => {
+            if (currentCorrectAnswer && questionLayer.style.display === 'block') {
+                // 找到正確答案的按鈕並讓它閃爍
+                const buttons = playerOptions.children;
+                for (let button of buttons) {
+                    if (button.textContent === currentCorrectAnswer) {
+                        button.classList.add('hint-blink');
+                        // 1.5秒後移除閃爍效果
+                        setTimeout(() => {
+                            button.classList.remove('hint-blink');
+                        }, 1500);
+                        break;
+                    }
+                }
+            }
+        });
+
+        // 內建圖片題目資料
+        function loadImageQuestions() {
+            // 定義所有可用的圖片和對應答案
+            const imageQuestions = [
+                { image: 'pic709/中.png', answer: '中' },
+                { image: 'pic709/山.png', answer: '山' },
+                { image: 'pic709/7.png', answer: '7' },
+                { image: 'pic709/0.png', answer: '0' },
+                { image: 'pic709/9.png', answer: '9' }
+            ];
+
+            // 所有可能的答案選項
+            const allAnswers = ['中', '山', '7', '0', '9'];
+
+            // 為每個圖片生成題目資料
+            questionData = imageQuestions.map(item => ({
+                image: item.image,
+                correctAnswer: item.answer,
+                allOptions: allAnswers
+            }));
+
+            questionsLoaded = true;
+            console.log(`載入了 ${questionData.length} 道圖片題目`);
+        }
+
+        // 初始化遊戲
+        function initGame() {
+            loadImageQuestions();
+            generateRandomFlowers();
+            generateFlyingText();
+
+            // 等題目載入完成後才開始遊戲
+            if (questionsLoaded) {
+                showQuestion();
+                gameLoop();
+            }
+        }
+
+        // 啟動遊戲
+        initGame();
+        updateScoreDisplay(); // 初始化分數顯示
+
+        // 移除舊的解析和顯示函數
+
+        function showQuestion() {
+            if (gameEnded || !questionsLoaded || questionData.length === 0) return;
+
+            if (usedQuestions.length === questionData.length) {
+                usedQuestions = [];
+            }
+
+            let unusedQuestions = questionData.filter(q => !usedQuestions.includes(q));
+            let randomIndex = Math.floor(Math.random() * unusedQuestions.length);
+            let currentQuestion = unusedQuestions[randomIndex];
+            usedQuestions.push(currentQuestion);
+
+            // 設定題目文字和圖片
+            questionText.textContent = "請看圖片選擇答案";
+            const questionImage = document.getElementById('question-image');
+            questionImage.src = currentQuestion.image;
+            questionImage.alt = "題目圖片";
+
+            // 生成四個不重複的選項，其中包含正確答案
+            const correctAnswer = currentQuestion.correctAnswer;
+            const allOptions = currentQuestion.allOptions.filter(option => option !== correctAnswer);
+
+            // 隨機選擇3個錯誤選項
+            const wrongOptions = [];
+            while (wrongOptions.length < 3 && allOptions.length > 0) {
+                const randomIndex = Math.floor(Math.random() * allOptions.length);
+                const option = allOptions.splice(randomIndex, 1)[0];
+                wrongOptions.push(option);
+            }
+
+            // 組合所有選項並隨機排序
+            const allChoices = [correctAnswer, ...wrongOptions];
+            const shuffledOptions = allChoices.sort(() => Math.random() - 0.5);
+
+            // 清空並重新生成選項按鈕
+            playerOptions.innerHTML = '';
+
+            shuffledOptions.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.textContent = option;
+                button.style.backgroundColor = ['red', 'green', 'blue', 'purple'][index];
+                button.addEventListener('click', () => handleAnswer(option));
+                playerOptions.appendChild(button);
+            });
+
+            questionLayer.style.display = 'block';
+            hintButton.style.display = 'block'; // 顯示提示按鈕
+            currentCorrectAnswer = correctAnswer; // 儲存當前正確答案
+        }
+
+        function handleAnswer(selectedOption) {
+            const currentQuestion = usedQuestions[usedQuestions.length - 1];
+
+            // 檢查是否選擇了正確答案
+            const isCorrect = selectedOption === currentQuestion.correctAnswer;
+
+            console.log('玩家選擇:', selectedOption);
+            console.log('正確答案:', currentQuestion.correctAnswer);
+            console.log('答題結果:', isCorrect ? '正確' : '錯誤');
+
+            if (isCorrect) {
+                // 玩家答對，增加連續答對次數
+                correctStreak++;
+
+                // 檢查特殊效果
+                if (correctStreak === 5) {
+                    hasShield = true; // 獲得護盾
+                } else if (correctStreak === 3) {
+                    bigBullet = true; // 獲得大子彈
+                }
+
+                updateScoreDisplay();
+
+                // 玩家答對，可以攻擊
+                questionLayer.style.display = 'none';
+                hintButton.style.display = 'none'; // 隱藏提示按鈕
+                catCanThrow = true;
+                currentCharacter = cat;
+                currentCharacterType = 'cat';
+                startPowerSetting(currentCharacter);
+            } else {
+                // 玩家答錯，重置連續答對次數
+                correctStreak = 0;
+                // 護盾不會因為答錯而消失，只有被攻擊時才會消失
+                bigBullet = false; // 失去大子彈
+                updateScoreDisplay();
+
+                // 標記錯誤選項並觸發電腦攻擊
+                const buttons = playerOptions.children;
+                for (let button of buttons) {
+                    if (button.textContent === selectedOption) {
+                        button.style.textDecoration = 'line-through';
+                        button.style.opacity = '0.5';
+                        button.disabled = true;
+                    }
+                }
+
+                // 延遲一下讓玩家看到錯誤，然後觸發電腦攻擊
+                setTimeout(() => {
+                    questionLayer.style.display = 'none';
+                    hintButton.style.display = 'none'; // 隱藏提示按鈕
+                    computerAttack();
+                }, 1500);
+            }
+        }
+
+        function resetGraphics() {
+            if (currentCharacter) {
+                currentCharacter.power = 5;
+                currentCharacter.angle = 0;
+                clearInterval(powerInterval);
+                clearInterval(angleInterval);
+                powerInterval = null;
+                angleInterval = null;
+            }
+        }
+
+        // 移除生成器切換功能
+
+        // 更新分數顯示
+        function updateScoreDisplay() {
+            document.getElementById('hit-count').textContent = playerHitCount;
+            document.getElementById('streak-count').textContent = correctStreak;
+
+            // 更新連續答對狀態提示
+            const streakElement = document.getElementById('streak-count');
+            if (hasShield) {
+                streakElement.style.color = 'cyan';
+                streakElement.title = '護盾啟動！';
+            } else if (bigBullet) {
+                streakElement.style.color = 'orange';
+                streakElement.title = '大子彈準備！';
+            } else if (correctStreak >= 3) {
+                streakElement.style.color = 'yellow';
+                streakElement.title = '即將獲得大子彈！';
+            } else if (correctStreak >= 4) {
+                streakElement.style.color = 'lightgreen';
+                streakElement.title = '即將獲得護盾！';
+            } else {
+                streakElement.style.color = 'white';
+                streakElement.title = '';
+            }
+        }
+
+        // 開啟滑鼠右鍵選單功能
+        document.addEventListener('contextmenu', (event) => {
+            return true;
+        });
+    </script>
+
+
+</body>
+
+</html>
