@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>台語 Spot It 遊戲</title>
+  <style>
+    @font-face {
+      font-family: 'TaiwanKai';
+      src: url('../fonts/taiwan-kai.ttf') format('truetype');
+    }
+    
+    body {
+      font-family: 'TaiwanKai', Arial, sans-serif;
+      text-align: center;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      color: white;
+      font-size: 2.5em;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .game-info {
+      background: rgba(255,255,255,0.9);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    }
+    
+    .score-time {
+      display: flex;
+      justify-content: space-around;
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #333;
+    }
+    
+    .cards-container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: 40px 0;
+      flex-wrap: wrap;
+    }
+    
+    .card {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: white;
+      border: 8px solid #4a90e2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      position: relative;
+    }
+    
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    }
+    
+    .card.playing {
+      border-color: #f39c12;
+      animation: pulse 1s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+      100% { transform: scale(1); }
+    }
+    
+    .card-symbols {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 6px;
+      width: 90%;
+      height: 90%;
+      padding: 10px;
+    }
+    
+    .symbol {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: rgba(74, 144, 226, 0.1);
+      border-radius: 8px;
+      padding: 3px;
+      font-size: 0.85em;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .symbol:hover {
+      background: rgba(74, 144, 226, 0.2);
+      transform: scale(1.1);
+    }
+    
+    .symbol.found {
+      background: rgba(46, 204, 113, 0.3);
+      border: 2px solid #2ecc71;
+    }
+    
+    .chinese-word {
+      font-size: 1.1em;
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 1px;
+    }
+    
+    .roma-text {
+      font-size: 0.75em;
+      color: #7f8c8d;
+      font-style: italic;
+    }
+    
+    .controls {
+      margin: 30px 0;
+    }
+    
+    .btn {
+      background: #4a90e2;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border-radius: 25px;
+      cursor: pointer;
+      margin: 0 10px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+    }
+    
+    .btn:hover {
+      background: #357abd;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
+    }
+    
+    .btn:disabled {
+      background: #bdc3c7;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    
+    .message {
+      background: rgba(255,255,255,0.9);
+      border-radius: 15px;
+      padding: 20px;
+      margin: 20px 0;
+      font-size: 1.3em;
+      color: #2c3e50;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .success {
+      background: rgba(46, 204, 113, 0.9);
+      color: white;
+    }
+    
+    .error {
+      background: rgba(231, 76, 60, 0.9);
+      color: white;
+    }
+    
+    .browse-controls {
+      background: rgba(255,255,255,0.9);
+      border-radius: 15px;
+      padding: 20px;
+      margin: 20px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .single-card-container {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+    
+    #cardInfo {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #2c3e50;
+      min-width: 120px;
+      text-align: center;
+    }
+    
+    .instructions {
+      background: rgba(255,255,255,0.9);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 30px;
+      text-align: left;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .instructions h3 {
+      color: #2c3e50;
+      margin-top: 0;
+    }
+    
+    .instructions ul {
+      color: #34495e;
+      line-height: 1.6;
+    }
+    
+    .hint-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #e67e22;
+      color: white;
+      border: none;
+      padding: 15px 25px;
+      font-size: 1.1em;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+      z-index: 1000;
+    }
+    
+    .hint-btn:hover {
+      background: #d35400;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(230, 126, 34, 0.4);
+    }
+    
+    .hint-btn:disabled {
+      background: #bdc3c7;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    
+    .symbol.hint {
+      background: rgba(230, 126, 34, 0.3);
+      border: 2px solid #e67e22;
+      animation: hintPulse 1s ease-in-out 3;
+    }
+    
+    @keyframes hintPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+    
+    @media (max-width: 768px) {
+      .cards-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+      
+      .card {
+        width: 250px;
+        height: 250px;
+      }
+      
+      .score-time {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button class="hint-btn" id="hintBtn" onclick="showHint()" disabled>💡 提示</button>
+    
+    <h1>台語 Spot It 遊戲</h1>
+    
+    <div class="instructions">
+      <h3>遊戲規則：</h3>
+      <ul>
+        <li>每張卡片有8個台語詞彙</li>
+        <li>任意兩張卡片之間恰好有一個相同的詞彙</li>
+        <li>點擊卡片播放所有台語音頻</li>
+        <li>找到兩張卡片的共同詞彙並點擊它</li>
+        <li>找對了會播放該詞彙的音頻確認</li>
+        <li>在時間內找到越多組合，分數越高！</li>
+      </ul>
+    </div>
+    
+    <div class="game-info">
+      <div class="score-time">
+        <div>分數: <span id="score">0</span></div>
+        <div>時間: <span id="time">120</span>秒</div>
+        <div>找到: <span id="found">0</span> 組</div>
+      </div>
+    </div>
+    
+    <div class="controls">
+      <button class="btn" id="startBtn" onclick="startGame()">開始遊戲</button>
+      <button class="btn" id="newCardsBtn" onclick="generateNewCards()" disabled>換新卡片</button>
+      <button class="btn" id="playCard1Btn" onclick="playCardAudio(0)" disabled>播放左卡音頻</button>
+      <button class="btn" id="playCard2Btn" onclick="playCardAudio(1)" disabled>播放右卡音頻</button>
+      <button class="btn" id="browseBtn" onclick="toggleBrowseMode()">瀏覽所有卡片</button>
+    </div>
+    
+    <div id="browseMode" style="display: none;">
+      <div class="browse-controls">
+        <button class="btn" onclick="previousCard()">上一張</button>
+        <span id="cardInfo">卡片 1 / 57</span>
+        <button class="btn" onclick="nextCard()">下一張</button>
+        <button class="btn" onclick="playCurrentCardAudio()">播放音頻</button>
+      </div>
+      <div class="single-card-container">
+        <div class="card" id="browseCard">
+          <div class="card-symbols" id="browse-card-symbols"></div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="message" class="message" style="display: none;"></div>
+    
+    <div class="cards-container">
+      <div class="card" id="card1">
+        <div class="card-symbols" id="card1-symbols"></div>
+      </div>
+      <div class="card" id="card2">
+        <div class="card-symbols" id="card2-symbols"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 從 audioSpotit.json 載入的57個台語符號
+    let selectedWords = [];
+
+    // 完整的57張 Spot It 卡片組合 (每張8個符號，任意兩張恰好1個共同符號)
+    // 基於有限射影平面 PG(2,7) 的數學結構：57個符號，57張卡片，每張8個符號
+    const spotItCards = [
+      [0,1,2,3,4,5,6,7], [0,8,9,10,11,12,13,14], [0,15,16,17,18,19,20,21], [0,22,23,24,25,26,27,28],
+      [0,29,30,31,32,33,34,35], [0,36,37,38,39,40,41,42], [0,43,44,45,46,47,48,49], [0,50,51,52,53,54,55,56],
+      [1,8,15,22,29,36,43,50], [1,9,16,23,30,37,44,51], [1,10,17,24,31,38,45,52], [1,11,18,25,32,39,46,53],
+      [1,12,19,26,33,40,47,54], [1,13,20,27,34,41,48,55], [1,14,21,28,35,42,49,56], [2,8,16,24,32,40,48,56],
+      [2,9,17,25,33,41,49,50], [2,10,18,26,34,42,43,51], [2,11,19,27,35,36,44,52], [2,12,20,28,29,37,45,53],
+      [2,13,21,22,30,38,46,54], [2,14,15,23,31,39,47,55], [3,8,17,26,35,37,46,55], [3,9,18,27,29,38,47,56],
+      [3,10,19,28,30,39,48,50], [3,11,20,22,31,40,49,51], [3,12,21,23,32,41,43,52], [3,13,15,24,33,42,44,53],
+      [3,14,16,25,34,36,45,54], [4,8,18,28,31,41,44,54], [4,9,19,22,32,42,45,55], [4,10,20,23,33,36,46,56],
+      [4,11,21,24,34,37,47,50], [4,12,15,25,35,38,48,51], [4,13,16,26,29,39,49,52], [4,14,17,27,30,40,43,53],
+      [5,8,19,23,34,38,49,53], [5,9,20,24,35,39,43,54], [5,10,21,25,29,40,44,55], [5,11,15,26,30,41,45,56],
+      [5,12,16,27,31,42,46,50], [5,13,17,28,32,36,47,51], [5,14,18,22,33,37,48,52], [6,8,20,25,30,42,47,52],
+      [6,9,21,26,31,36,48,53], [6,10,15,27,32,37,49,54], [6,11,16,28,33,38,43,55], [6,12,17,22,34,39,44,56],
+      [6,13,18,23,35,40,45,50], [6,14,19,24,29,41,46,51], [7,8,21,27,33,39,45,51], [7,9,15,28,34,40,46,52],
+      [7,10,16,22,35,41,47,53], [7,11,17,23,29,42,48,54], [7,12,18,24,30,36,49,55], [7,13,19,25,31,37,43,56],
+      [7,14,20,26,32,38,44,50]
+    ];
+
+    // 載入音頻資料
+    async function loadAudioData() {
+      try {
+        const response = await fetch('audioSpotit.json');
+        const data = await response.json();
+        selectedWords = data;
+        console.log('已載入57個台語符號:', selectedWords);
+        preloadAudio();
+        updateDisplay();
+        generateNewCards();
+      } catch (error) {
+        console.error('無法載入音頻資料:', error);
+        showMessage('無法載入音頻資料，請檢查 audioSpotit.json 檔案', 'error');
+      }
+    }
+
+    let gameActive = false;
+    let score = 0;
+    let timeLeft = 120;
+    let timer;
+    let currentCards = [];
+    let foundPairs = 0;
+    let selectedSymbol = null;
+    let audioCache = {};
+    let allCards = []; // 存儲所有57張卡片
+    let currentCardIndex = 0;
+
+    // 預載入音頻
+    function preloadAudio() {
+      if (selectedWords.length === 0) return;
+      
+      selectedWords.forEach(word => {
+        const audio = new Audio(word.addr);
+        audio.preload = 'auto';
+        audioCache[word.word] = audio;
+      });
+      console.log('音頻預載入完成');
+    }
+
+    // 播放音頻
+    function playAudio(word) {
+      if (audioCache[word]) {
+        audioCache[word].currentTime = 0;
+        audioCache[word].play().catch(e => console.log('音頻播放失敗:', e));
+      } else {
+        console.log('找不到音頻:', word);
+      }
+    }
+
+    // 生成新的卡片組合
+    function generateNewCards() {
+      if (selectedWords.length === 0) {
+        console.log('等待音頻資料載入...');
+        return;
+      }
+      
+      // 隨機選擇兩張不同的卡片
+      const cardIndex1 = Math.floor(Math.random() * spotItCards.length);
+      let cardIndex2 = Math.floor(Math.random() * spotItCards.length);
+      while (cardIndex2 === cardIndex1) {
+        cardIndex2 = Math.floor(Math.random() * spotItCards.length);
+      }
+      
+      currentCards = [spotItCards[cardIndex1], spotItCards[cardIndex2]];
+      renderCards();
+      clearFoundSymbols();
+      
+      // 顯示卡片資訊
+      console.log(`卡片1 (${cardIndex1}):`, currentCards[0].map(i => selectedWords[i]?.word));
+      console.log(`卡片2 (${cardIndex2}):`, currentCards[1].map(i => selectedWords[i]?.word));
+      
+      // 找出共同符號
+      const commonSymbol = findCommonSymbol(currentCards[0], currentCards[1]);
+      if (commonSymbol !== -1) {
+        console.log('共同符號:', selectedWords[commonSymbol]?.word);
+      }
+    }
+
+    // 找出兩張卡片的共同符號
+    function findCommonSymbol(card1, card2) {
+      for (let symbol1 of card1) {
+        for (let symbol2 of card2) {
+          if (symbol1 === symbol2) {
+            return symbol1;
+          }
+        }
+      }
+      return -1; // 理論上不應該發生
+    }
+
+    // 渲染卡片
+    function renderCards() {
+      currentCards.forEach((card, cardIndex) => {
+        const cardElement = document.getElementById(`card${cardIndex + 1}-symbols`);
+        cardElement.innerHTML = '';
+        
+        card.forEach(symbolIndex => {
+          const word = selectedWords[symbolIndex];
+          const symbolElement = document.createElement('div');
+          symbolElement.className = 'symbol';
+          symbolElement.innerHTML = `
+            <div class="chinese-word">${word.word}</div>
+            <div class="roma-text">${word.roma}</div>
+          `;
+          symbolElement.onclick = () => selectSymbol(symbolIndex, cardIndex, symbolElement);
+          cardElement.appendChild(symbolElement);
+        });
+      });
+    }
+
+    // 選擇符號
+    function selectSymbol(symbolIndex, cardIndex, element) {
+      if (!gameActive) return;
+      
+      const word = selectedWords[symbolIndex].word;
+      
+      if (selectedSymbol === null) {
+        selectedSymbol = {symbolIndex, cardIndex, element, word};
+        element.style.background = 'rgba(241, 196, 15, 0.3)';
+        element.style.border = '2px solid #f1c40f';
+        playAudio(word);
+      } else {
+        if (selectedSymbol.symbolIndex === symbolIndex && selectedSymbol.cardIndex !== cardIndex) {
+          // 找到匹配！
+          selectedSymbol.element.classList.add('found');
+          element.classList.add('found');
+          
+          score += 10;
+          foundPairs++;
+          updateDisplay();
+          
+          playAudio(word);
+          showMessage(`太好了！找到共同詞彙：${word}`, 'success');
+          
+          setTimeout(() => {
+            generateNewCards();
+          }, 2000);
+          
+        } else {
+          // 沒有匹配
+          selectedSymbol.element.style.background = '';
+          selectedSymbol.element.style.border = '';
+          playAudio(word);
+          showMessage(`這不是共同詞彙，再試試看！`);
+        }
+        selectedSymbol = null;
+      }
+    }
+
+    // 播放卡片所有音頻
+    function playCardAudio(cardIndex) {
+      if (!gameActive || !currentCards[cardIndex]) return;
+      
+      const card = document.getElementById(`card${cardIndex + 1}`);
+      card.classList.add('playing');
+      
+      let audioIndex = 0;
+      const playNext = () => {
+        if (audioIndex < currentCards[cardIndex].length) {
+          const word = selectedWords[currentCards[cardIndex][audioIndex]].word;
+          playAudio(word);
+          audioIndex++;
+          setTimeout(playNext, 1500); // 每個音頻間隔1.5秒
+        } else {
+          card.classList.remove('playing');
+        }
+      };
+      
+      playNext();
+    }
+
+    // 清除找到的符號標記
+    function clearFoundSymbols() {
+      document.querySelectorAll('.symbol').forEach(symbol => {
+        symbol.classList.remove('found');
+        symbol.style.background = '';
+        symbol.style.border = '';
+      });
+      selectedSymbol = null;
+    }
+
+    // 顯示訊息
+    function showMessage(text, type = '') {
+      const messageElement = document.getElementById('message');
+      messageElement.textContent = text;
+      messageElement.className = `message ${type}`;
+      messageElement.style.display = 'block';
+      
+      setTimeout(() => {
+        messageElement.style.display = 'none';
+      }, 3000);
+    }
+
+    // 更新顯示
+    function updateDisplay() {
+      document.getElementById('score').textContent = score;
+      document.getElementById('time').textContent = timeLeft;
+      document.getElementById('found').textContent = foundPairs;
+    }
+
+    // 開始遊戲
+    function startGame() {
+      gameActive = true;
+      score = 0;
+      foundPairs = 0;
+      timeLeft = 120;
+      
+      document.getElementById('startBtn').disabled = true;
+      document.getElementById('newCardsBtn').disabled = false;
+      document.getElementById('playCard1Btn').disabled = false;
+      document.getElementById('playCard2Btn').disabled = false;
+      document.getElementById('hintBtn').disabled = false;
+      
+      updateDisplay();
+      generateNewCards();
+      
+      timer = setInterval(() => {
+        timeLeft--;
+        updateDisplay();
+        
+        if (timeLeft <= 0) {
+          endGame();
+        }
+      }, 1000);
+      
+      showMessage('遊戲開始！找出兩張卡片的共同詞彙吧！', 'success');
+    }
+
+    // 結束遊戲
+    function endGame() {
+      gameActive = false;
+      clearInterval(timer);
+      
+      document.getElementById('startBtn').disabled = false;
+      document.getElementById('newCardsBtn').disabled = true;
+      document.getElementById('playCard1Btn').disabled = true;
+      document.getElementById('playCard2Btn').disabled = true;
+      document.getElementById('hintBtn').disabled = true;
+      
+      showMessage(`遊戲結束！最終分數：${score} 分，找到 ${foundPairs} 組配對！`, 'success');
+    }
+
+    // 瀏覽模式相關功能
+    let browseMode = false;
+    let currentBrowseCard = 0;
+
+    function toggleBrowseMode() {
+      browseMode = !browseMode;
+      const browseDiv = document.getElementById('browseMode');
+      const cardsContainer = document.querySelector('.cards-container');
+      const browseBtn = document.getElementById('browseBtn');
+      
+      if (browseMode) {
+        browseDiv.style.display = 'block';
+        cardsContainer.style.display = 'none';
+        browseBtn.textContent = '返回遊戲';
+        currentBrowseCard = 0;
+        renderBrowseCard();
+      } else {
+        browseDiv.style.display = 'none';
+        cardsContainer.style.display = 'flex';
+        browseBtn.textContent = '瀏覽所有卡片';
+      }
+    }
+
+    function renderBrowseCard() {
+      if (selectedWords.length === 0 || currentBrowseCard >= spotItCards.length) return;
+      
+      const card = spotItCards[currentBrowseCard];
+      const cardElement = document.getElementById('browse-card-symbols');
+      cardElement.innerHTML = '';
+      
+      card.forEach(symbolIndex => {
+        const word = selectedWords[symbolIndex];
+        if (word) {
+          const symbolElement = document.createElement('div');
+          symbolElement.className = 'symbol';
+          symbolElement.innerHTML = `
+            <div class="chinese-word">${word.word}</div>
+            <div class="roma-text">${word.roma}</div>
+          `;
+          symbolElement.onclick = () => playAudio(word.word);
+          cardElement.appendChild(symbolElement);
+        }
+      });
+      
+      document.getElementById('cardInfo').textContent = `卡片 ${currentBrowseCard + 1} / ${spotItCards.length}`;
+    }
+
+    function previousCard() {
+      if (currentBrowseCard > 0) {
+        currentBrowseCard--;
+        renderBrowseCard();
+      }
+    }
+
+    function nextCard() {
+      if (currentBrowseCard < spotItCards.length - 1) {
+        currentBrowseCard++;
+        renderBrowseCard();
+      }
+    }
+
+    function playCurrentCardAudio() {
+      if (selectedWords.length === 0 || currentBrowseCard >= spotItCards.length) return;
+      
+      const card = spotItCards[currentBrowseCard];
+      const browseCard = document.getElementById('browseCard');
+      browseCard.classList.add('playing');
+      
+      let audioIndex = 0;
+      const playNext = () => {
+        if (audioIndex < card.length) {
+          const word = selectedWords[card[audioIndex]];
+          if (word) {
+            playAudio(word.word);
+          }
+          audioIndex++;
+          setTimeout(playNext, 1500);
+        } else {
+          browseCard.classList.remove('playing');
+        }
+      };
+      
+      playNext();
+    }
+
+    // 顯示提示功能
+    function showHint() {
+      if (!gameActive || currentCards.length < 2) return;
+      
+      // 找出共同符號
+      const commonSymbol = findCommonSymbol(currentCards[0], currentCards[1]);
+      if (commonSymbol === -1) return;
+      
+      const word = selectedWords[commonSymbol].word;
+      
+      // 高亮顯示兩張卡片上的共同符號
+      document.querySelectorAll('.symbol').forEach(symbolElement => {
+        const wordText = symbolElement.querySelector('.chinese-word')?.textContent;
+        if (wordText === word) {
+          symbolElement.classList.add('hint');
+          setTimeout(() => {
+            symbolElement.classList.remove('hint');
+          }, 3000);
+        }
+      });
+      
+      // 播放音頻並顯示訊息
+      playAudio(word);
+      showMessage(`提示：共同詞彙是「${word}」(${selectedWords[commonSymbol].roma})`, 'success');
+      
+      // 扣分懲罰
+      score = Math.max(0, score - 3);
+      updateDisplay();
+    }
+    
+    // 驗證卡片組合的正確性
+    function validateSpotItCards() {
+      console.log('驗證 Spot It 卡片組合...');
+      let isValid = true;
+      
+      for (let i = 0; i < spotItCards.length; i++) {
+        for (let j = i + 1; j < spotItCards.length; j++) {
+          const commonSymbols = spotItCards[i].filter(symbol => spotItCards[j].includes(symbol));
+          if (commonSymbols.length !== 1) {
+            console.error(`卡片 ${i} 和卡片 ${j} 有 ${commonSymbols.length} 個共同符號:`, commonSymbols);
+            isValid = false;
+          }
+        }
+      }
+      
+      if (isValid) {
+        console.log('✅ 所有卡片組合都正確！每對卡片恰好有1個共同符號');
+      } else {
+        console.error('❌ 卡片組合有問題');
+      }
+      
+      return isValid;
+    }
+
+    // 初始化
+    window.onload = function() {
+      loadAudioData();
+      // 驗證卡片組合
+      setTimeout(() => {
+        if (selectedWords.length > 0) {
+          validateSpotItCards();
+        }
+      }, 1000);
+    };
+  </script>
+</body>
+</html>
