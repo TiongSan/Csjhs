@@ -1,0 +1,401 @@
+[
+  {
+    "wav": "162",
+    "word": "三",
+    "roma": "sam",
+    "class": "數詞、量詞",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/162.wav"
+  },
+  {
+    "wav": "188",
+    "word": "大",
+    "roma": "tuā",
+    "class": "形貌、體積",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/188.wav"
+  },
+  {
+    "wav": "196",
+    "word": "小",
+    "roma": "sió",
+    "class": "性質、程度",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/196.wav"
+  },
+  {
+    "wav": "197",
+    "word": "山",
+    "roma": "san",
+    "class": "地理,自然現象",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/197.wav"
+  },
+  {
+    "wav": "202",
+    "word": "巳",
+    "roma": "tsī",
+    "class": "時間節令",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/202.wav"
+  },
+  {
+    "wav": "42",
+    "word": "九",
+    "roma": "kiú",
+    "class": "性質、程度,數詞、量詞",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/42.wav"
+  },
+  {
+    "wav": "48",
+    "word": "八",
+    "roma": "pat",
+    "class": "數詞、量詞",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/48.wav"
+  },
+  {
+    "wav": "56",
+    "word": "卜",
+    "roma": "poh",
+    "class": "宗族、家庭,心理活動,相關器具、活動",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/56.wav"
+  },
+  {
+    "wav": "575",
+    "word": "內",
+    "roma": "luē",
+    "class": "空間方位",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/575.wav"
+  },
+  {
+    "wav": "585",
+    "word": "分",
+    "roma": "pun",
+    "class": "一般動詞-行為動詞",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/585.wav"
+  },
+  {
+    "wav": "588",
+    "word": "勼",
+    "roma": "kiu",
+    "class": "氣質態度,一般動詞-活動動詞",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/588.wav"
+  },
+  {
+    "wav": "772",
+    "word": "化",
+    "roma": "huà",
+    "class": "一般動詞-靜態動詞",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/772.wav"
+  },
+  {
+    "wav": "792",
+    "word": "心",
+    "roma": "sim",
+    "class": "空間方位,生理構造",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/792.wav"
+  },
+  {
+    "wav": "797",
+    "word": "斗",
+    "roma": "táu",
+    "class": "生理構造,事、物泛稱,數詞、量詞",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/797.wav"
+  },
+  {
+    "wav": "812",
+    "word": "毛",
+    "roma": "môo",
+    "class": "動物形體、行為,植物形體、狀態,宗族、家庭,事、物泛稱",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/0/812.wav"
+  },
+  {
+    "wav": "1219",
+    "word": "王",
+    "roma": "ông",
+    "class": "國家、社會、民眾,宗族、家庭,地位、身世、背景,稱謂輩分,休閒、娛樂",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1219.wav"
+  },
+  {
+    "wav": "1296",
+    "word": "丼",
+    "roma": "tôm",
+    "class": "擬聲、擬態",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1296.wav"
+  },
+  {
+    "wav": "1384",
+    "word": "包",
+    "roma": "pau",
+    "class": "生活用品,飲食物具,一般動詞-行為動詞,事、物泛稱",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1384.wav"
+  },
+  {
+    "wav": "1395",
+    "word": "去",
+    "roma": "khì",
+    "class": "生養老死,一般動詞-行為動詞,副詞",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1395.wav"
+  },
+  {
+    "wav": "1402",
+    "word": "叫",
+    "roma": "kiò",
+    "class": "一般動詞-行為動詞",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1402.wav"
+  },
+  {
+    "wav": "1406",
+    "word": "台",
+    "roma": "tâi",
+    "class": "郵電、網路,建築物、結構,數詞、量詞",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1406.wav"
+  },
+  {
+    "wav": "1634",
+    "word": "夯",
+    "roma": "giâ",
+    "class": "肢體動作,傷疾病痛,一般動詞-靜態動詞",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1634.wav"
+  },
+  {
+    "wav": "1638",
+    "word": "奶",
+    "roma": "nai",
+    "class": "個性風格",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1638.wav"
+  },
+  {
+    "wav": "1639",
+    "word": "巧",
+    "roma": "khá",
+    "class": "性質、程度",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1639.wav"
+  },
+  {
+    "wav": "1654",
+    "word": "本",
+    "roma": "pún",
+    "class": "植物形體、狀態,數詞、量詞",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1654.wav"
+  },
+  {
+    "wav": "1837",
+    "word": "瓜",
+    "roma": "kue",
+    "class": "蔬果作物,食物、飲料、煙酒",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1837.wav"
+  },
+  {
+    "wav": "1838",
+    "word": "瓦",
+    "roma": "hiā",
+    "class": "建築物、結構",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1838.wav"
+  },
+  {
+    "wav": "1843",
+    "word": "用",
+    "roma": "īng",
+    "class": "一般動詞-行為動詞,連詞、介詞",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1843.wav"
+  },
+  {
+    "wav": "1852",
+    "word": "皮",
+    "roma": "phî",
+    "class": "個性風格",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/1/1852.wav"
+  },
+  {
+    "wav": "10059",
+    "word": "跤",
+    "roma": "kha",
+    "class": "生理構造",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10059.wav"
+  },
+  {
+    "wav": "10136",
+    "word": "路",
+    "roma": "lōo",
+    "class": "道路、橋梁",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10136.wav"
+  },
+  {
+    "wav": "10143",
+    "word": "逼",
+    "roma": "pik",
+    "class": "一般動詞-行為動詞",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10143.wav"
+  },
+  {
+    "wav": "10378",
+    "word": "嗽",
+    "roma": "sàu",
+    "class": "傷疾病痛",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10378.wav"
+  },
+  {
+    "wav": "10438",
+    "word": "寡",
+    "roma": "kuá",
+    "class": "性別、婚姻,性質、程度,數詞、量詞",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10438.wav"
+  },
+  {
+    "wav": "10442",
+    "word": "對",
+    "roma": "tuì",
+    "class": "待人處事,連詞、介詞",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10442.wav"
+  },
+  {
+    "wav": "10444",
+    "word": "幔",
+    "roma": "mua",
+    "class": "衣帽鞋襪",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10444.wav"
+  },
+  {
+    "wav": "10496",
+    "word": "慒",
+    "roma": "tso",
+    "class": "傷疾病痛",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10496.wav"
+  },
+  {
+    "wav": "10532",
+    "word": "斡",
+    "roma": "uat",
+    "class": "交通、運輸,一般動詞-行為動詞,數詞、量詞",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10532.wav"
+  },
+  {
+    "wav": "10567",
+    "word": "滾",
+    "roma": "kún",
+    "class": "飲食行為",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10567.wav"
+  },
+  {
+    "wav": "10569",
+    "word": "滿",
+    "roma": "muá",
+    "class": "性質、程度",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10569.wav"
+  },
+  {
+    "wav": "10645",
+    "word": "熊",
+    "roma": "hîm",
+    "class": "獸類",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10645.wav"
+  },
+  {
+    "wav": "10661",
+    "word": "福",
+    "roma": "hok",
+    "class": "性質、程度,事、物泛稱",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10661.wav"
+  },
+  {
+    "wav": "10751",
+    "word": "緊",
+    "roma": "kín",
+    "class": "性質、程度",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10751.wav"
+  },
+  {
+    "wav": "10783",
+    "word": "蓄",
+    "roma": "hak",
+    "class": "財務單位、活動",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10783.wav"
+  },
+  {
+    "wav": "10823",
+    "word": "賒",
+    "roma": "sia",
+    "class": "財務單位、活動",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10823.wav"
+  },
+  {
+    "wav": "10857",
+    "word": "遠",
+    "roma": "uán",
+    "class": "性質、程度",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/10/10857.wav"
+  },
+  {
+    "wav": "11004",
+    "word": "審",
+    "roma": "sím",
+    "class": "法律,數詞、量詞",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/11/11004.wav"
+  },
+  {
+    "wav": "11011",
+    "word": "廟",
+    "roma": "biō",
+    "class": "建築物、結構,相關器具、活動",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/11/11011.wav"
+  },
+  {
+    "wav": "11052",
+    "word": "戮",
+    "roma": "lak",
+    "class": "生產工具",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/11/11052.wav"
+  },
+  {
+    "wav": "11055",
+    "word": "撋",
+    "roma": "nuá",
+    "class": "肢體動作",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/11/11055.wav"
+  },
+  {
+    "wav": "11100",
+    "word": "撩",
+    "roma": "liô",
+    "class": "飲食行為",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/11/11100.wav"
+  },
+  {
+    "wav": "11109",
+    "word": "槽",
+    "roma": "tsô",
+    "class": "稱謂輩分",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/11/11109.wav"
+  },
+  {
+    "wav": "11149",
+    "word": "樓",
+    "roma": "lâu",
+    "class": "建築物、結構",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/11/11149.wav"
+  },
+  {
+    "wav": "11154",
+    "word": "模",
+    "roma": "bôo",
+    "class": "稱謂輩分",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/11/11154.wav"
+  },
+  {
+    "wav": "11241",
+    "word": "稻",
+    "roma": "tiū",
+    "class": "蔬果作物",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/11/11241.wav"
+  },
+  {
+    "wav": "11352",
+    "word": "課",
+    "roma": "khò",
+    "class": "相關用語,教育、學術,數詞、量詞",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/11/11352.wav"
+  },
+  {
+    "wav": "11476",
+    "word": "輩",
+    "roma": "puè",
+    "class": "相關用語,數詞、量詞",
+    "addr": "https://sutian.moe.edu.tw/media/imtong/subak/11/11476.wav"
+  }
+]
