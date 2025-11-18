@@ -307,6 +307,7 @@
         <div>分數: <span id="score">0</span></div>
         <div>時間: <span id="time">120</span>秒</div>
         <div>找到: <span id="found">0</span> 組</div>
+        <div>連擊: <span id="combo">0</span></div>
       </div>
     </div>
     
@@ -406,6 +407,9 @@
     let audioCache = {};
     let allCards = []; // 存儲所有57張卡片
     let currentCardIndex = 0;
+    let roundStartTime = 0; // 每回合開始時間
+    let comboCount = 0; // 連擊次數
+    let hintUsed = 0; // 使用提示次數
 
     // 預載入音頻
     function preloadAudio() {
@@ -446,6 +450,9 @@
       currentCards = [spotItCards[cardIndex1], spotItCards[cardIndex2]];
       renderCards();
       clearFoundSymbols();
+      
+      // 記錄回合開始時間（用於速度獎勵）
+      roundStartTime = Date.now();
       
       // 顯示卡片資訊
       console.log(`卡片1 (${cardIndex1}):`, currentCards[0].map(i => selectedWords[i]?.word));
@@ -515,23 +522,57 @@
           selectedSymbol.element.classList.add('found');
           element.classList.add('found');
           
-          score += 10;
+          // 計算速度獎勵（5秒內完成）
+          const timeTaken = (Date.now() - roundStartTime) / 1000;
+          let baseScore = 10;
+          let speedBonus = 0;
+          
+          if (timeTaken <= 3) {
+            speedBonus = 5; // 3秒內 +5分
+          } else if (timeTaken <= 5) {
+            speedBonus = 3; // 5秒內 +3分
+          } else if (timeTaken <= 8) {
+            speedBonus = 1; // 8秒內 +1分
+          }
+          
+          // 連擊獎勵
+          comboCount++;
+          let comboBonus = 0;
+          if (comboCount >= 3) {
+            comboBonus = Math.min(comboCount - 2, 10); // 最多+10分
+          }
+          
+          const totalScore = baseScore + speedBonus + comboBonus;
+          score += totalScore;
           foundPairs++;
           updateDisplay();
           
           playAudio(word);
-          showMessage(`太好了！找到共同詞彙：${word}`, 'success');
+          
+          // 顯示詳細得分訊息
+          let message = `太好了！找到共同詞彙：${word}\n`;
+          message += `基本分數: +${baseScore}`;
+          if (speedBonus > 0) {
+            message += ` | 速度獎勵: +${speedBonus}`;
+          }
+          if (comboBonus > 0) {
+            message += ` | 連擊獎勵(${comboCount}連擊): +${comboBonus}`;
+          }
+          message += `\n總得分: +${totalScore}`;
+          
+          showMessage(message, 'success');
           
           setTimeout(() => {
             generateNewCards();
           }, 2000);
           
         } else {
-          // 沒有匹配
+          // 沒有匹配 - 重置連擊
+          comboCount = 0;
           selectedSymbol.element.style.background = '';
           selectedSymbol.element.style.border = '';
           playAudio(word);
-          showMessage(`這不是共同詞彙，再試試看！`);
+          showMessage(`這不是共同詞彙，再試試看！連擊中斷！`);
         }
         selectedSymbol = null;
       }
@@ -586,6 +627,7 @@
       document.getElementById('score').textContent = score;
       document.getElementById('time').textContent = timeLeft;
       document.getElementById('found').textContent = foundPairs;
+      document.getElementById('combo').textContent = comboCount;
     }
 
     // 開始遊戲
@@ -594,6 +636,8 @@
       score = 0;
       foundPairs = 0;
       timeLeft = 120;
+      comboCount = 0;
+      hintUsed = 0;
       
       document.getElementById('startBtn').disabled = true;
       document.getElementById('newCardsBtn').disabled = false;
@@ -613,7 +657,7 @@
         }
       }, 1000);
       
-      showMessage('遊戲開始！找出兩張卡片的共同詞彙吧！', 'success');
+      showMessage('遊戲開始！找出兩張卡片的共同詞彙吧！\n速度獎勵: 3秒內+5分, 5秒內+3分, 8秒內+1分\n連擊獎勵: 連續答對有加成！', 'success');
     }
 
     // 結束遊戲
@@ -621,13 +665,28 @@
       gameActive = false;
       clearInterval(timer);
       
+      // 完美通關獎勵（沒有使用提示）
+      let perfectBonus = 0;
+      if (hintUsed === 0 && foundPairs > 0) {
+        perfectBonus = 20;
+        score += perfectBonus;
+      }
+      
       document.getElementById('startBtn').disabled = false;
       document.getElementById('newCardsBtn').disabled = true;
       document.getElementById('playCard1Btn').disabled = true;
       document.getElementById('playCard2Btn').disabled = true;
       document.getElementById('hintBtn').disabled = true;
       
-      showMessage(`遊戲結束！最終分數：${score} 分，找到 ${foundPairs} 組配對！`, 'success');
+      let message = `遊戲結束！\n最終分數：${score} 分\n找到 ${foundPairs} 組配對`;
+      if (perfectBonus > 0) {
+        message += `\n🎉 完美通關獎勵: +${perfectBonus} 分（未使用提示）`;
+      }
+      if (hintUsed > 0) {
+        message += `\n使用了 ${hintUsed} 次提示`;
+      }
+      
+      showMessage(message, 'success');
     }
 
     // 瀏覽模式相關功能
@@ -746,10 +805,12 @@
       
       // 播放音頻並顯示訊息
       playAudio(word);
-      showMessage(`提示：共同詞彙是「${word}」(${selectedWords[commonSymbol].roma})`, 'success');
+      showMessage(`提示：共同詞彙是「${word}」(${selectedWords[commonSymbol].roma})\n扣 5 分`, 'success');
       
-      // 扣分懲罰
-      score = Math.max(0, score - 3);
+      // 扣分懲罰並重置連擊
+      score = Math.max(0, score - 5);
+      comboCount = 0;
+      hintUsed++;
       updateDisplay();
     }
     
