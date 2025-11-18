@@ -4,14 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>台語 Spot It 遊戲</title>
-  <style>
-    @font-face {
-      font-family: 'TaiwanKai';
-      src: url('../fonts/taiwan-kai.ttf') format('truetype');
-    }
-    
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Iansui&family=Noto+Sans+TC:wght@100..900&display=swap" rel="stylesheet">
+  <style></style>
     body {
-      font-family: 'TaiwanKai', Arial, sans-serif;
+      font-family: 'Iansui', 'Noto Sans TC', Arial, sans-serif;
       text-align: center;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       min-height: 100vh;
@@ -56,9 +54,9 @@
     }
     
     .card {
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
+      width: 320px;
+      height: 320px;
+      border-radius: 15px;
       background: white;
       border: 8px solid #4a90e2;
       display: flex;
@@ -91,10 +89,14 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(3, 1fr);
-      gap: 6px;
+      gap: 8px;
       width: 90%;
       height: 90%;
-      padding: 10px;
+      padding: 15px;
+    }
+    
+    .card-symbols .symbol:nth-child(5) {
+      visibility: hidden;
     }
     
     .symbol {
@@ -103,9 +105,9 @@
       justify-content: center;
       align-items: center;
       background: rgba(74, 144, 226, 0.1);
-      border-radius: 8px;
-      padding: 3px;
-      font-size: 0.85em;
+      border-radius: 10px;
+      padding: 5px;
+      font-size: 0.9em;
       cursor: pointer;
       transition: all 0.2s ease;
     }
@@ -276,8 +278,15 @@
       }
       
       .card {
-        width: 250px;
-        height: 250px;
+        width: 280px;
+        height: 280px;
+      }
+      
+      .hint-btn {
+        top: 10px;
+        right: 10px;
+        padding: 12px 20px;
+        font-size: 1em;
       }
       
       .score-time {
@@ -292,18 +301,6 @@
     <button class="hint-btn" id="hintBtn" onclick="showHint()" disabled>💡 提示</button>
     
     <h1>台語 Spot It 遊戲</h1>
-    
-    <div class="instructions">
-      <h3>遊戲規則：</h3>
-      <ul>
-        <li>每張卡片有8個台語詞彙</li>
-        <li>任意兩張卡片之間恰好有一個相同的詞彙</li>
-        <li>點擊卡片播放所有台語音頻</li>
-        <li>找到兩張卡片的共同詞彙並點擊它</li>
-        <li>找對了會播放該詞彙的音頻確認</li>
-        <li>在時間內找到越多組合，分數越高！</li>
-      </ul>
-    </div>
     
     <div class="game-info">
       <div class="score-time">
@@ -345,9 +342,21 @@
         <div class="card-symbols" id="card2-symbols"></div>
       </div>
     </div>
+    
+    <div class="instructions">
+      <h3>遊戲規則：</h3>
+      <ul>
+        <li>每張卡片有8個台語詞彙</li>
+        <li>任意兩張卡片之間恰好有一個相同的詞彙</li>
+        <li>點擊卡片播放所有台語音頻</li>
+        <li>找到兩張卡片的共同詞彙並點擊它</li>
+        <li>找對了會播放該詞彙的音頻確認</li>
+        <li>在時間內找到越多組合，分數越高！</li>
+      </ul>
+    </div>
   </div>
 
-  <script>
+  <script></script>
     // 從 audioSpotit.json 載入的57個台語符號
     let selectedWords = [];
 
@@ -467,7 +476,7 @@
         const cardElement = document.getElementById(`card${cardIndex + 1}-symbols`);
         cardElement.innerHTML = '';
         
-        card.forEach(symbolIndex => {
+        card.forEach((symbolIndex, index) => {
           const word = selectedWords[symbolIndex];
           const symbolElement = document.createElement('div');
           symbolElement.className = 'symbol';
@@ -477,6 +486,14 @@
           `;
           symbolElement.onclick = () => selectSymbol(symbolIndex, cardIndex, symbolElement);
           cardElement.appendChild(symbolElement);
+          
+          // 在第4個位置後插入空格（讓第5格是空的）
+          if (index === 3) {
+            const emptyElement = document.createElement('div');
+            emptyElement.className = 'symbol';
+            emptyElement.style.visibility = 'hidden';
+            cardElement.appendChild(emptyElement);
+          }
         });
       });
     }
@@ -643,7 +660,7 @@
       const cardElement = document.getElementById('browse-card-symbols');
       cardElement.innerHTML = '';
       
-      card.forEach(symbolIndex => {
+      card.forEach((symbolIndex, index) => {
         const word = selectedWords[symbolIndex];
         if (word) {
           const symbolElement = document.createElement('div');
@@ -654,6 +671,14 @@
           `;
           symbolElement.onclick = () => playAudio(word.word);
           cardElement.appendChild(symbolElement);
+          
+          // 在第4個位置後插入空格（讓第5格是空的）
+          if (index === 3) {
+            const emptyElement = document.createElement('div');
+            emptyElement.className = 'symbol';
+            emptyElement.style.visibility = 'hidden';
+            cardElement.appendChild(emptyElement);
+          }
         }
       });
       
