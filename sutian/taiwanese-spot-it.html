@@ -56,9 +56,9 @@
     }
     
     .card {
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
+      width: 320px;
+      height: 320px;
+      border-radius: 15px;
       background: white;
       border: 8px solid #4a90e2;
       display: flex;
@@ -91,10 +91,14 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(3, 1fr);
-      gap: 6px;
+      gap: 8px;
       width: 90%;
       height: 90%;
-      padding: 10px;
+      padding: 15px;
+    }
+    
+    .card-symbols .symbol:nth-child(5) {
+      visibility: hidden;
     }
     
     .symbol {
@@ -103,9 +107,9 @@
       justify-content: center;
       align-items: center;
       background: rgba(74, 144, 226, 0.1);
-      border-radius: 8px;
-      padding: 3px;
-      font-size: 0.85em;
+      border-radius: 10px;
+      padding: 5px;
+      font-size: 0.9em;
       cursor: pointer;
       transition: all 0.2s ease;
     }
@@ -228,6 +232,46 @@
       line-height: 1.6;
     }
     
+    .hint-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #e67e22;
+      color: white;
+      border: none;
+      padding: 15px 25px;
+      font-size: 1.1em;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+      z-index: 1000;
+    }
+    
+    .hint-btn:hover {
+      background: #d35400;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(230, 126, 34, 0.4);
+    }
+    
+    .hint-btn:disabled {
+      background: #bdc3c7;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    
+    .symbol.hint {
+      background: rgba(230, 126, 34, 0.3);
+      border: 2px solid #e67e22;
+      animation: hintPulse 1s ease-in-out 3;
+    }
+    
+    @keyframes hintPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+    
     @media (max-width: 768px) {
       .cards-container {
         flex-direction: column;
@@ -236,8 +280,15 @@
       }
       
       .card {
-        width: 250px;
-        height: 250px;
+        width: 280px;
+        height: 280px;
+      }
+      
+      .hint-btn {
+        top: 10px;
+        right: 10px;
+        padding: 12px 20px;
+        font-size: 1em;
       }
       
       .score-time {
@@ -249,6 +300,8 @@
 </head>
 <body>
   <div class="container">
+    <button class="hint-btn" id="hintBtn" onclick="showHint()" disabled>💡 提示</button>
+    
     <h1>台語 Spot It 遊戲</h1>
     
     <div class="instructions">
@@ -425,7 +478,7 @@
         const cardElement = document.getElementById(`card${cardIndex + 1}-symbols`);
         cardElement.innerHTML = '';
         
-        card.forEach(symbolIndex => {
+        card.forEach((symbolIndex, index) => {
           const word = selectedWords[symbolIndex];
           const symbolElement = document.createElement('div');
           symbolElement.className = 'symbol';
@@ -435,6 +488,14 @@
           `;
           symbolElement.onclick = () => selectSymbol(symbolIndex, cardIndex, symbolElement);
           cardElement.appendChild(symbolElement);
+          
+          // 在第4個位置後插入空格（讓第5格是空的）
+          if (index === 3) {
+            const emptyElement = document.createElement('div');
+            emptyElement.className = 'symbol';
+            emptyElement.style.visibility = 'hidden';
+            cardElement.appendChild(emptyElement);
+          }
         });
       });
     }
@@ -540,6 +601,7 @@
       document.getElementById('newCardsBtn').disabled = false;
       document.getElementById('playCard1Btn').disabled = false;
       document.getElementById('playCard2Btn').disabled = false;
+      document.getElementById('hintBtn').disabled = false;
       
       updateDisplay();
       generateNewCards();
@@ -565,6 +627,7 @@
       document.getElementById('newCardsBtn').disabled = true;
       document.getElementById('playCard1Btn').disabled = true;
       document.getElementById('playCard2Btn').disabled = true;
+      document.getElementById('hintBtn').disabled = true;
       
       showMessage(`遊戲結束！最終分數：${score} 分，找到 ${foundPairs} 組配對！`, 'success');
     }
@@ -599,7 +662,7 @@
       const cardElement = document.getElementById('browse-card-symbols');
       cardElement.innerHTML = '';
       
-      card.forEach(symbolIndex => {
+      card.forEach((symbolIndex, index) => {
         const word = selectedWords[symbolIndex];
         if (word) {
           const symbolElement = document.createElement('div');
@@ -610,6 +673,14 @@
           `;
           symbolElement.onclick = () => playAudio(word.word);
           cardElement.appendChild(symbolElement);
+          
+          // 在第4個位置後插入空格（讓第5格是空的）
+          if (index === 3) {
+            const emptyElement = document.createElement('div');
+            emptyElement.className = 'symbol';
+            emptyElement.style.visibility = 'hidden';
+            cardElement.appendChild(emptyElement);
+          }
         }
       });
       
@@ -654,6 +725,36 @@
       playNext();
     }
 
+    // 顯示提示功能
+    function showHint() {
+      if (!gameActive || currentCards.length < 2) return;
+      
+      // 找出共同符號
+      const commonSymbol = findCommonSymbol(currentCards[0], currentCards[1]);
+      if (commonSymbol === -1) return;
+      
+      const word = selectedWords[commonSymbol].word;
+      
+      // 高亮顯示兩張卡片上的共同符號
+      document.querySelectorAll('.symbol').forEach(symbolElement => {
+        const wordText = symbolElement.querySelector('.chinese-word')?.textContent;
+        if (wordText === word) {
+          symbolElement.classList.add('hint');
+          setTimeout(() => {
+            symbolElement.classList.remove('hint');
+          }, 3000);
+        }
+      });
+      
+      // 播放音頻並顯示訊息
+      playAudio(word);
+      showMessage(`提示：共同詞彙是「${word}」(${selectedWords[commonSymbol].roma})`, 'success');
+      
+      // 扣分懲罰
+      score = Math.max(0, score - 3);
+      updateDisplay();
+    }
+    
     // 驗證卡片組合的正確性
     function validateSpotItCards() {
       console.log('驗證 Spot It 卡片組合...');
