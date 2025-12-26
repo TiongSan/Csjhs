@@ -19,12 +19,11 @@ body{
 h1{margin:0;font-size:1.5rem}
 .subtitle{margin:0;color:var(--muted)}
 .top-controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:6px}
-.top-controls input[type="text"], .top-controls input[type="search"], .top-controls select{
+.top-controls select{
   padding:6px 10px;border-radius:8px;border:1px solid #e2e8f0;background:white;
 }
 .btn{padding:6px 10px;border-radius:8px;border:1px solid #cbd5e0;background:white;cursor:pointer}
 .btn.primary{background:var(--accent);color:white;border:none}
-.btn.danger{background:var(--bad);color:white;border:none}
 .toggle{display:inline-flex;gap:6px;align-items:center;padding:6px}
 .status{display:flex;gap:18px;margin-top:8px;color:var(--muted)}
 
@@ -78,11 +77,7 @@ h1{margin:0;font-size:1.5rem}
 /* Modal */
 .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(6,10,20,0.45);z-index:40}
 .modal[aria-hidden="false"]{display:flex}
-.modal-content{background:white;padding:18px;border-radius:12px;max-width:760px;width:92%;box-shadow:0 20px 60px rgba(8,18,38,0.2)}
-.lb-controls{display:flex;gap:8px;justify-content:flex-end;margin-bottom:8px}
-.leaderboard-table{width:100%;border-collapse:collapse}
-.leaderboard-table th, .leaderboard-table td{padding:8px;border-bottom:1px solid #edf2f7;text-align:left}
-.note{color:var(--muted);font-size:0.9rem;margin-top:8px}
+.modal-content{background:white;padding:18px;border-radius:12px;max-width:600px;width:92%;box-shadow:0 20px 60px rgba(8,18,38,0.2)}
 
 /* Confetti */
 #confetti{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}

@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>理化連連看 — 國中八年級第六單元</title>
-  <meta name="description" content="國中八年級第六單元理化連連看遊戲 — 配對題目與說明。含排行榜、音效與彩帶動畫，適合放到 GitHub Pages。" />
+  <meta name="description" content="國中八年級第六單元理化連連看遊戲 — 配對題目與說明。含音效與彩帶動畫，適合放到 GitHub Pages。" />
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,13 +12,10 @@
     <header class="app-header">
       <div>
         <h1>理化連連看 — 第六單元</h1>
-        <p class="subtitle">配對「標題 (definition)」與「說明 (content)」，含排行榜與音效。</p>
+        <p class="subtitle">配對「標題 (definition)」與「說明 (content)」。</p>
       </div>
 
       <div class="top-controls">
-        <label for="playerName">玩家：</label>
-        <input id="playerName" placeholder="輸入暱稱 (會記在本機)" />
-
         <label for="pairCount">配對數量：</label>
         <select id="pairCount">
           <option value="all">全部（40 對）</option>
@@ -28,8 +25,6 @@
         </select>
 
         <button id="startBtn" class="btn primary">開始 / 重新開始</button>
-
-        <button id="leaderboardBtn" class="btn">排行榜</button>
 
         <label class="toggle">
           <input type="checkbox" id="soundToggle" checked />
@@ -47,39 +42,19 @@
     <section id="board" class="board" aria-live="polite"></section>
 
     <footer class="app-footer">
-      <p>玩法：翻兩張卡片，題目與對應敘述配對成功則保留，否則翻回去。可選配對數量、檢視排行榜與開關音效。</p>
+      <p>玩法：翻兩張卡片，題目與對應敘述配對成功則保留，否則翻回去。可選配對數量與開關音效。</p>
       <p>要新增/移除題目，請編輯 <code>script.js</code> 中的 <code>pairs</code> 陣列。</p>
     </footer>
   </main>
-
-  <!-- Leaderboard Modal -->
-  <div id="leaderboardModal" class="modal" aria-hidden="true">
-    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="lbTitle">
-      <h2 id="lbTitle">排行榜（最佳紀錄）</h2>
-      <div class="lb-controls">
-        <button id="closeLbBtn" class="btn">關閉</button>
-        <button id="clearLbBtn" class="btn danger">清除全部</button>
-      </div>
-      <table class="leaderboard-table" id="leaderboardTable">
-        <thead>
-          <tr><th>#</th><th>玩家</th><th>配對數</th><th>時間</th><th>步數</th><th>日期</th></tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-      <p class="note">排行榜依「配對數（越多）→ 時間（越少）→ 步數（越少）」排序。</p>
-    </div>
-  </div>
 
   <!-- Win Modal -->
   <div id="winModal" class="modal" aria-hidden="true">
     <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="winTitle">
       <h2 id="winTitle">恭喜！完成配對</h2>
       <div id="winStats"></div>
-      <div class="win-actions">
-        <label for="saveName">暱稱：</label>
-        <input id="saveName" />
-        <button id="saveScoreBtn" class="btn primary">儲存成績</button>
-        <button id="continueBtn" class="btn">繼續玩</button>
+      <div class="win-actions" style="margin-top:12px;display:flex;gap:8px;justify-content:flex-end">
+        <button id="restartBtn" class="btn primary">再玩一次</button>
+        <button id="closeWinBtn" class="btn">關閉</button>
       </div>
     </div>
   </div>

@@ -1,13 +1,9 @@
-/* 理化連連看 — script.js
-   功能：
-   - 使用內建 pairs 資料（可直接修改）
-   - 音效（WebAudio）
-   - 排行榜 (localStorage)
-   - Confetti 效果
-   - 可設定配對數量、玩家名稱、聲音開關
+/* 理化連連看 — 精簡版（已移除排行榜與玩家名稱） 
+   - 保留：計時、步數、配對顯示、音效、confetti
+   - 要修改題庫請編輯 pairs 陣列
 */
 
-// ------------ 資料庫（來自使用者提供） ------------
+// ------------ 題庫 ------------
 const pairs = [
   { id:1, term:"水的分解實驗", def:"拉瓦節透過實驗證實水可以分解成氫氣與氧氣。" },
   { id:2, term:"氧化汞的分解", def:"卜利士力發現氧化汞經加熱後，會分解出汞與氧氣，顯示化合物可分解出更簡單的物質。" },
@@ -58,21 +54,12 @@ const pairCountSelect = document.getElementById('pairCount');
 const timerEl = document.getElementById('timer');
 const movesEl = document.getElementById('moves');
 const matchesEl = document.getElementById('matches');
-const playerNameInput = document.getElementById('playerName');
 const soundToggle = document.getElementById('soundToggle');
-
-const leaderboardBtn = document.getElementById('leaderboardBtn');
-const leaderboardModal = document.getElementById('leaderboardModal');
-const leaderboardTableBody = document.querySelector('#leaderboardTable tbody');
-const closeLbBtn = document.getElementById('closeLbBtn');
-const clearLbBtn = document.getElementById('clearLbBtn');
 
 const winModal = document.getElementById('winModal');
 const winStats = document.getElementById('winStats');
-const saveNameInput = document.getElementById('saveName');
-const saveScoreBtn = document.getElementById('saveScoreBtn');
-const continueBtn = document.getElementById('continueBtn');
-
+const restartBtn = document.getElementById('restartBtn');
+const closeWinBtn = document.getElementById('closeWinBtn');
 const confettiContainer = document.getElementById('confetti');
 
 let deck = [];
@@ -80,10 +67,6 @@ let firstCard = null, secondCard = null;
 let lockBoard = false;
 let moves = 0, matches = 0;
 let timerInterval = null, seconds = 0;
-let playerName = localStorage.getItem('ll_playerName') || '';
-playerNameInput.value = playerName;
-saveNameInput.value = playerName;
-const LB_KEY = 'll_leaderboard_v1';
 
 // ------------ 時間與計數 ------------
 function formatTime(s){
@@ -153,6 +136,7 @@ function resetState(){
   matchesEl.textContent = matches;
   timerEl.textContent = "00:00";
   stopTimer();
+  hideWinModal();
 }
 function onCardClick(cardEl){
   if(lockBoard) return;
@@ -230,45 +214,9 @@ function startGame(){
   renderBoard();
 }
 
-// ------------ Leaderboard (localStorage) ------------
-function loadLeaderboard(){
-  try{
-    const raw = localStorage.getItem(LB_KEY);
-    return raw ? JSON.parse(raw) : [];
-  }catch(e){ return []; }
-}
-function saveLeaderboard(arr){
-  localStorage.setItem(LB_KEY, JSON.stringify(arr));
-}
-function addScore(entry){
-  const arr = loadLeaderboard();
-  arr.push(entry);
-  // sort: 配對數 desc, time asc, moves asc
-  arr.sort((a,b)=>{
-    if(a.matches !== b.matches) return b.matches - a.matches;
-    if(a.time !== b.time) return a.time - b.time;
-    return a.moves - b.moves;
-  });
-  // keep only top 100
-  saveLeaderboard(arr.slice(0,100));
-}
-function renderLeaderboard(){
-  const arr = loadLeaderboard();
-  leaderboardTableBody.innerHTML = '';
-  if(arr.length === 0){
-    leaderboardTableBody.innerHTML = '<tr><td colspan="6">目前無紀錄</td></tr>'; return;
-  }
-  arr.forEach((r, i)=>{
-    const tr = document.createElement('tr');
-    tr.innerHTML = `<td>${i+1}</td><td>${escapeHtml(r.name)}</td><td>${r.matches}</td><td>${formatTime(r.time)}</td><td>${r.moves}</td><td>${new Date(r.date).toLocaleString()}</td>`;
-    leaderboardTableBody.appendChild(tr);
-  });
-}
-
 // ------------ Win Modal ------------
 function showWinModal(){
   winStats.innerHTML = `<p>時間：<strong>${formatTime(seconds)}</strong></p><p>步數：<strong>${moves}</strong></p><p>配對數：<strong>${matches}</strong></p>`;
-  saveNameInput.value = playerNameInput.value || localStorage.getItem('ll_playerName') || '';
   winModal.setAttribute('aria-hidden','false');
 }
 function hideWinModal(){ winModal.setAttribute('aria-hidden','true'); }
@@ -292,7 +240,7 @@ function showConfetti(){
   }
 }
 
-// ------------ Sound (WebAudio 產生，不需外部檔案) ------------
+// ------------ Sound (WebAudio) ------------
 const AudioCtx = window.AudioContext || window.webkitAudioContext;
 let audioCtx = null;
 function ensureAudio(){
@@ -321,45 +269,15 @@ function playSound(name){
 }
 
 // ------------ 事件綁定 ------------
-startBtn.addEventListener('click', ()=>{
-  playerName = playerNameInput.value.trim();
-  if(playerName) localStorage.setItem('ll_playerName', playerName);
-  startGame();
-});
-
-leaderboardBtn.addEventListener('click', ()=>{
-  renderLeaderboard();
-  leaderboardModal.setAttribute('aria-hidden','false');
-});
-closeLbBtn.addEventListener('click', ()=> leaderboardModal.setAttribute('aria-hidden','true'));
-clearLbBtn.addEventListener('click', ()=>{
-  if(confirm('確定要清除所有排行榜紀錄嗎？此動作無法復原。')){
-    saveLeaderboard([]); renderLeaderboard();
-  }
-});
+startBtn.addEventListener('click', ()=> startGame());
+restartBtn.addEventListener('click', ()=> startGame());
+closeWinBtn.addEventListener('click', ()=> hideWinModal());
 window.addEventListener('click', (e)=>{
-  if(e.target === leaderboardModal) leaderboardModal.setAttribute('aria-hidden','true');
   if(e.target === winModal) hideWinModal();
-});
-
-// 贏了之後儲存分數
-saveScoreBtn.addEventListener('click', ()=>{
-  const name = (saveNameInput.value || '匿名').trim();
-  const entry = { name, matches, time: seconds, moves, date: new Date().toISOString() };
-  addScore(entry);
-  localStorage.setItem('ll_playerName', name);
-  renderLeaderboard();
-  winModal.setAttribute('aria-hidden','true');
-  leaderboardModal.setAttribute('aria-hidden','false');
-});
-continueBtn.addEventListener('click', ()=>{
-  hideWinModal();
 });
 
 // 初始化：自動開始（全部）
 window.addEventListener('load', ()=>{
   pairCountSelect.value = 'all';
-  // 如果 localStorage 有排行榜，載入以便快速檢視
-  renderLeaderboard();
   startGame();
 });
