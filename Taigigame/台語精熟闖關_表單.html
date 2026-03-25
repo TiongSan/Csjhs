@@ -1,0 +1,2075 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>台語精熟闖關</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Huninn&family=Iansui&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f5f8ff;
+      --card:#ffffff;
+      --line:#dbe4f0;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --primary:#2563eb;
+      --primary-dark:#1d4ed8;
+      --success:#16a34a;
+      --warning:#d97706;
+      --danger:#dc2626;
+      --shadow:0 14px 38px rgba(0,0,0,.08);
+      --radius:22px;
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      color:var(--text);
+      background:linear-gradient(180deg,#eef4ff 0%, #f8fbff 100%);
+      font-family:
+        "Huninn",
+        "PingFang TC",
+        "Noto Sans TC",
+        "Microsoft JhengHei",
+        sans-serif;
+      min-height:100vh;
+    }
+
+    .wrap{
+      max-width:1100px;
+      margin:0 auto;
+      padding:20px 18px 52px;
+    }
+
+    .title{
+      text-align:center;
+      margin:8px 0 18px;
+    }
+
+    .title h1{
+      margin:0 0 8px;
+      font-size:38px;
+      line-height:1.2;
+      letter-spacing:1px;
+    }
+
+    .title p{
+      margin:0;
+      color:var(--muted);
+      font-size:17px;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:28px;
+    }
+
+    .screen{
+      animation:fade .24s ease;
+    }
+
+    @keyframes fade{
+      from{opacity:0;transform:translateY(8px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    .center{text-align:center}
+    .muted{color:var(--muted)}
+    .big{font-size:21px}
+
+    .row{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .row-between{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:flex-start;
+    }
+
+    .pill{
+      display:inline-block;
+      padding:8px 14px;
+      border-radius:999px;
+      background:#edf4ff;
+      color:#1d4ed8;
+      font-weight:800;
+      font-size:14px;
+      margin:3px;
+    }
+
+    .student-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:999px;
+      background:#eff6ff;
+      color:#1d4ed8;
+      font-weight:800;
+      margin-top:10px;
+    }
+
+    .progress{
+      width:100%;
+      height:16px;
+      background:#e5e7eb;
+      border-radius:999px;
+      overflow:hidden;
+      margin:14px 0 18px;
+    }
+
+    .progress-bar{
+      height:100%;
+      width:0%;
+      background:linear-gradient(90deg,#60a5fa,#2563eb);
+      transition:width .25s ease;
+    }
+
+    .meta-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+      margin-top:14px;
+    }
+
+    .meta-grid-4{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:14px;
+      margin-top:14px;
+    }
+
+    .meta-box{
+      padding:16px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:#fbfdff;
+    }
+
+    .meta-box .label{
+      font-size:14px;
+      color:var(--muted);
+      margin-bottom:6px;
+    }
+
+    .meta-box .value{
+      font-size:23px;
+      font-weight:900;
+    }
+
+    label{
+      display:block;
+      margin-bottom:8px;
+      font-weight:800;
+      font-size:18px;
+    }
+
+    select, textarea{
+      width:100%;
+      padding:16px 18px;
+      font-size:20px;
+      border-radius:16px;
+      border:1px solid #cbd5e1;
+      outline:none;
+      font-family:inherit;
+      background:#fff;
+    }
+
+    select:focus, textarea:focus{
+      border-color:#60a5fa;
+      box-shadow:0 0 0 4px rgba(96,165,250,.18);
+    }
+
+    textarea{
+      min-height:130px;
+      resize:vertical;
+      font-size:16px;
+      line-height:1.6;
+    }
+
+    button{
+      appearance:none;
+      border:none;
+      border-radius:16px;
+      padding:14px 18px;
+      font-size:18px;
+      font-weight:900;
+      cursor:pointer;
+      transition:transform .05s ease, background .2s ease, opacity .2s ease;
+      font-family:inherit;
+    }
+
+    button:active{ transform:translateY(1px); }
+    button:disabled{ opacity:.55; cursor:not-allowed; }
+
+    .btn-primary{ background:var(--primary); color:#fff; }
+    .btn-primary:hover{ background:var(--primary-dark); }
+    .btn-secondary{ background:#e5e7eb; color:#111827; }
+    .btn-success{ background:var(--success); color:#fff; }
+    .btn-warning{ background:var(--warning); color:#fff; }
+    .btn-danger{ background:var(--danger); color:#fff; }
+
+    .question-box{
+      margin:16px 0 18px;
+      padding:22px;
+      border-radius:20px;
+      border:1px solid var(--line);
+      background:#fcfdff;
+    }
+
+    .question-title{
+      margin:0;
+      font-size:31px;
+      line-height:1.55;
+      font-weight:900;
+      font-family:
+        "Iansui",
+        "Huninn",
+        "PingFang TC",
+        "Noto Sans TC",
+        "Microsoft JhengHei",
+        sans-serif;
+    }
+
+    .options{
+      display:grid;
+      gap:14px;
+      margin-top:22px;
+    }
+
+    .option-btn{
+      width:100%;
+      text-align:left;
+      background:#fff;
+      color:#111827;
+      border:2px solid #d8dee8;
+      padding:18px 18px;
+      font-size:24px;
+      border-radius:18px;
+      min-height:74px;
+      line-height:1.45;
+    }
+
+    .option-btn:hover{
+      background:#f8fbff;
+      border-color:#93c5fd;
+    }
+
+    .feedback{
+      margin-top:16px;
+      padding:14px 16px;
+      border-radius:16px;
+      font-size:20px;
+      font-weight:900;
+      display:none;
+    }
+
+    .feedback.success{
+      display:block;
+      background:#ecfdf3;
+      color:#166534;
+      border:1px solid #bbf7d0;
+    }
+
+    .feedback.error{
+      display:block;
+      background:#fef2f2;
+      color:#991b1b;
+      border:1px solid #fecaca;
+    }
+
+    .section-divider{
+      height:1px;
+      background:linear-gradient(90deg,transparent,#dbe3ef,transparent);
+      margin:28px 0;
+    }
+
+    .result-code{
+      word-break:break-all;
+      white-space:pre-wrap;
+      background:#0f172a;
+      color:#f8fafc;
+      border-radius:16px;
+      padding:16px;
+      font-size:16px;
+      line-height:1.6;
+      margin:14px 0;
+      text-align:left;
+    }
+
+    .mastery-row{
+      display:flex;
+      justify-content:center;
+      gap:8px;
+      flex-wrap:wrap;
+      margin:14px 0;
+    }
+
+    .mastery-chip{
+      min-width:58px;
+      text-align:center;
+      padding:10px 12px;
+      border-radius:999px;
+      font-weight:900;
+      border:1px solid var(--line);
+      background:#fff;
+    }
+
+    .mastery-chip.pass{
+      color:#166534;
+      background:#ecfdf3;
+      border-color:#bbf7d0;
+    }
+
+    .mastery-chip.fail{
+      color:#991b1b;
+      background:#fef2f2;
+      border-color:#fecaca;
+    }
+
+    #qrcode, #statsQrcode{
+      display:flex;
+      justify-content:center;
+      margin-top:18px;
+    }
+
+    #qrcode canvas, #statsQrcode canvas{
+      background:#fff;
+      padding:10px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+    }
+
+    .teacher-toggle{
+      position:fixed;
+      right:14px;
+      bottom:14px;
+      z-index:950;
+      border-radius:999px;
+      padding:10px 12px;
+      font-size:14px;
+      font-weight:900;
+      background:rgba(255,255,255,.94);
+      color:#334155;
+      border:1px solid #cbd5e1;
+      box-shadow:0 8px 24px rgba(0,0,0,.12);
+    }
+
+    .teacher-shell{
+      margin-top:28px;
+    }
+
+    .hidden{ display:none !important; }
+
+    .parse-panel{
+      margin-top:10px;
+      padding:18px;
+      background:#f8fbff;
+      border:1px solid var(--line);
+      border-radius:18px;
+    }
+
+    .mini-note{
+      font-size:14px;
+      color:var(--muted);
+      margin-top:8px;
+      line-height:1.7;
+    }
+
+    .scanner-box{
+      margin-top:12px;
+      padding:16px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:#fff;
+    }
+
+    .scanner-video-wrap{
+      margin-top:12px;
+      display:none;
+      text-align:center;
+    }
+
+    #qrVideo{
+      width:100%;
+      max-width:420px;
+      border-radius:16px;
+      background:#000;
+      border:1px solid var(--line);
+    }
+
+    .scanner-status{
+      margin-top:10px;
+      font-size:14px;
+      color:var(--muted);
+    }
+
+    .scan-result-preview{
+      margin-top:12px;
+      padding:12px 14px;
+      border-radius:12px;
+      background:#f8fafc;
+      border:1px solid var(--line);
+      word-break:break-all;
+      font-size:14px;
+    }
+
+    .table-wrap{
+      overflow:auto;
+      margin-top:16px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#fff;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:980px;
+    }
+
+    th, td{
+      padding:12px 10px;
+      border-bottom:1px solid #e5e7eb;
+      text-align:center;
+      font-size:15px;
+    }
+
+    th{
+      background:#f8fafc;
+      position:sticky;
+      top:0;
+      z-index:1;
+    }
+
+    .badge-pass{
+      display:inline-block;
+      padding:4px 8px;
+      border-radius:999px;
+      background:#ecfdf3;
+      color:#166534;
+      font-weight:800;
+      font-size:13px;
+    }
+
+    .badge-fail{
+      display:inline-block;
+      padding:4px 8px;
+      border-radius:999px;
+      background:#fef2f2;
+      color:#991b1b;
+      font-weight:800;
+      font-size:13px;
+    }
+
+    .rank-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:14px;
+      margin-top:16px;
+    }
+
+    .rank-card{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:18px;
+      background:#fff;
+      text-align:center;
+      box-shadow:0 4px 16px rgba(0,0,0,.04);
+    }
+
+    .summary-note{
+      margin-top:12px;
+      padding:12px 14px;
+      border:1px dashed #cbd5e1;
+      background:#fff;
+      border-radius:12px;
+      color:#475569;
+      font-size:14px;
+      line-height:1.7;
+    }
+
+    .upload-panel{
+      margin-top:16px;
+      padding:16px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:#f8fbff;
+    }
+
+    .upload-status{
+      margin-top:10px;
+      padding:12px 14px;
+      border-radius:12px;
+      font-size:14px;
+      line-height:1.7;
+      display:none;
+    }
+
+    .upload-status.show{
+      display:block;
+    }
+
+    .upload-status.info{
+      background:#eff6ff;
+      border:1px solid #bfdbfe;
+      color:#1d4ed8;
+    }
+
+    .upload-status.success{
+      background:#ecfdf3;
+      border:1px solid #bbf7d0;
+      color:#166534;
+    }
+
+    .upload-status.error{
+      background:#fef2f2;
+      border:1px solid #fecaca;
+      color:#991b1b;
+    }
+
+    .modal-overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(15,23,42,.56);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      z-index:1000;
+    }
+
+    .modal-card{
+      width:min(100%,760px);
+      max-height:90vh;
+      overflow:auto;
+      background:#fff;
+      border-radius:24px;
+      border:1px solid var(--line);
+      box-shadow:0 20px 60px rgba(0,0,0,.2);
+      padding:24px;
+    }
+
+    .fractal-box{
+      position:fixed;
+      right:84px;
+      bottom:12px;
+      width:180px;
+      height:180px;
+      border-radius:22px;
+      background:rgba(255,255,255,.32);
+      border:1px solid rgba(255,255,255,.6);
+      backdrop-filter:blur(4px);
+      box-shadow:0 10px 28px rgba(0,0,0,.08);
+      pointer-events:none;
+      z-index:120;
+      overflow:hidden;
+    }
+
+    .fractal-box canvas{
+      width:100%;
+      height:100%;
+      display:block;
+      opacity:.88;
+    }
+
+    .fractal-tag{
+      position:absolute;
+      left:10px;
+      top:8px;
+      font-size:11px;
+      color:#64748b;
+      font-weight:800;
+      letter-spacing:.5px;
+    }
+
+    @media (max-width:1024px){
+      .wrap{ max-width:980px; }
+      .question-title{ font-size:28px; }
+      .option-btn{ font-size:22px; }
+    }
+
+    @media (max-width:820px){
+      .title h1{ font-size:32px; }
+      .card{ padding:20px; }
+      .question-title{ font-size:25px; }
+      .option-btn{ font-size:20px; min-height:68px; }
+      .meta-grid, .meta-grid-4, .rank-grid{ grid-template-columns:1fr; }
+      .fractal-box{
+        width:120px;
+        height:120px;
+        right:74px;
+        bottom:10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="title">
+      <h1>台語精熟闖關</h1>
+      <p>iPad 友善版｜學生闖關＋角落碎形樹＋隱藏老師工具</p>
+    </div>
+
+    <div id="app" class="card"></div>
+  </div>
+
+  <div class="fractal-box" aria-hidden="true">
+    <div class="fractal-tag">GROW</div>
+    <canvas id="fractalCanvas" width="180" height="180"></canvas>
+  </div>
+
+  <script>
+    /***********************
+     * 題庫資料（直接修改這一段即可）
+     ***********************/
+    const DEFAULT_QUESTION_BANK = [
+      {"q":"根據課文，阿花仔是對佗位來的？","options":["臺北","高雄","動物病院","動物收容所"],"answer":4,"explain":""},
+      {"q":"請問阿爸上軟心的「軟心」臺羅拼音按怎寫？","options":["nng-sin","nńg-sin","nńg-sin","nńg-sim"],"answer":4,"explain":""},
+      {"q":"請問「䖙」這字除了「the」閣有啥物讀音？","options":["then","thenn","thé","thénn"],"answer":2,"explain":""},
+      {"q":"請問「哈唏」這个語詞是啥物意思？","options":["打呵欠","打噴嚏","打冷顫","打個盹"],"answer":1,"explain":""},
+      {"q":"請問輕輕仔的哀兩聲的「哀」是台語的第幾調？","options":["第一調","第三調","第五調","第七調"],"answer":1,"explain":""},
+      {"q":"根據課文，作者共阿花仔的手比喻做啥物？","options":["pe̍h-hûn","thia̋n-pú-lah","kòng-uân","ke/kue-nn̄g-ko"],"answer":2,"explain":""},
+      {"q":"根據課文第三段，阿花仔用上哀怨的氣口了後，阿爸有啥物款反應？","options":["繼續睏","繼續䖙","即時躘起床","繼續看手機仔"],"answer":3,"explain":""},
+      {"q":"請問「煏 piak」這个字佇台語內底有啥物發音特色？","options":["愛合唇","聲較短","音較懸","讀輕聲"],"answer":2,"explain":""},
+      {"q":"請問直直幌的「直」臺羅拼音按怎寫？","options":["ti","tī","tit","ti̍t"],"answer":4,"explain":""},
+      {"q":"根據課文，阿花仔來佇阿爸溫暖的厝有偌久矣？","options":["一冬","半冬","十個月","十年矣"],"answer":4,"explain":""},
+      {"q":"根據課文，阿花仔這陣的年紀差不多偌濟歲？","options":["三歲外","六歲半","超過十歲矣","無法度判斷"],"answer":3,"explain":""},
+      {"q":"阿誠（　　　　）佇壁邊，看起來真無爽快。","options":["徛","蝹","坐","看"],"answer":2,"explain":""},
+      {"q":"根據課文，阿花仔心情好的時耳仔會親像啥物欲起飛？","options":["鳥仔","燕仔","直升機","飛行機"],"answer":4,"explain":""},
+      {"q":"請問下面佗一个與語詞佮「貓霧仔光」相仝？","options":["拍殕仔光","略略仔光","殕色的光","暗淡的光"],"answer":1,"explain":""},
+      {"q":"「（　　　　）看貓的無點。」請問這句俗語應該添佗一个語詞才會成立？","options":["毋免","毋通","毋才","毋是"],"answer":2,"explain":""},
+      {"q":"「耳仔生兩葉，家己看袂著。」請問這句俗語應該是押啥物韻？","options":["h","t","ioh","hioh"],"answer":3,"explain":""},
+      {"q":"請問狗毋嫌主人散的「散」，讀音佮下面佗一个相仝？","options":["四「散」","「散」工","「散」會","「散」仙"],"answer":3,"explain":""},
+      {"q":"請問「無捨施」的語詞應該按怎解說較適當？","options":["誠無奈","誠無情","真可憐","真可惡"],"answer":3,"explain":""},
+      {"q":"請問下面佗一个語詞的字佮耳仔的「耳」仝款有鼻化韻？","options":["「哈」唏","「煏」開","「流」浪","「聲」嗽"],"answer":4,"explain":""},
+      {"q":"請問下面佗一个語句使用的「動詞」較無通順、無適當？","options":["阿公䖙佇咧膨椅歇睏","阿花暗時一直烏白吠","阿真透早躘去體育場","阿元無爽快蝹佇門邊"],"answer":3,"explain":""},
+      {"q":"根據課文內容，下面佗一个選項的描述無正確？","options":["阿花仔的主人足歹心","阿花仔的主人足好心","阿花仔的手袂輸 thia̋n-pú-lah","阿花仔這陣有歲仔，目睭無好"],"answer":1,"explain":""},
+      {"q":"根據俗語的介紹，下面佗一句俗語佮「先苦，而後甘」的意思較倚近？","options":["狗無嫌主人散","毋通看貓的無點","艱苦頭，快活尾","耳仔生兩葉，家己看袂著"],"answer":3,"explain":""}
+    ];
+
+
+    const GOOGLE_FORM_CONFIG = {
+      // 你之後只要改這裡：
+      // formUrl 改成你的 Google 表單填答網址即可，不需要 entry 代碼
+      formUrl: "https://docs.google.com/forms/d/e/1FAIpQLScDInn5Vn1UwxYqzeuMhcdZAFE20ErqPURU8zurg_lRsWwbUg/viewform?usp=sharing&ouid=110527421986294096004"
+    };
+
+    const LEVEL_COUNT = 4;
+    const QUESTIONS_PER_LEVEL = 5;
+    const PASS_CORRECT_COUNT = 3;
+
+    let activeQuestionBank = [];
+    let teacherParsedRows = [];
+
+    const state = {
+      classCode: "",
+      seatNo: "",
+      currentLevelIndex: 0,
+      currentQuestionIndex: 0,
+      levelCorrect: 0,
+      levelTotal: 0,
+      totalCorrect: 0,
+      totalTotal: 0,
+      masteryBits: [],
+      finished: false,
+      currentQuestionLocked: false
+    };
+
+    let qrStream = null;
+    let qrScanActive = false;
+    let qrDetector = null;
+    let qrScanRafId = null;
+
+    function $(id){ return document.getElementById(id); }
+    function pad2(n){ return String(n).padStart(2, "0"); }
+
+    function escapeHtml(str){
+      return String(str)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
+
+    function shuffleArray(arr){
+      const copy = arr.slice();
+      for(let i=copy.length-1;i>0;i--){
+        const j = Math.floor(Math.random()*(i+1));
+        [copy[i],copy[j]]=[copy[j],copy[i]];
+      }
+      return copy;
+    }
+
+    function getTimestampCode(){
+      const now = new Date();
+      const yy = String(now.getFullYear()).slice(-2);
+      const mm = pad2(now.getMonth()+1);
+      const dd = pad2(now.getDate());
+      const hh = pad2(now.getHours());
+      const mi = pad2(now.getMinutes());
+      return `${yy}${mm}${dd}${hh}${mi}`;
+    }
+
+    function parseQuestionBank(){
+      const parsed = DEFAULT_QUESTION_BANK.map((item, idx) => {
+        const q = String(item.q || "").trim();
+        const options = Array.isArray(item.options) ? item.options.map(x => String(x ?? "").trim()) : [];
+        const answerNum = Number(item.answer);
+        const explain = String(item.explain || "").trim();
+
+        if(!q) throw new Error(`第 ${idx+1} 題題目不可空白。`);
+        if(options.length !== 4 || options.some(x => !x)) throw new Error(`第 ${idx+1} 題必須有 4 個選項。`);
+        if(![1,2,3,4].includes(answerNum)) throw new Error(`第 ${idx+1} 題 answer 必須填 1~4。`);
+
+        return { q, options, answer: answerNum - 1, explain };
+      });
+
+      if(parsed.length < LEVEL_COUNT * QUESTIONS_PER_LEVEL){
+        throw new Error(`題庫至少要有 ${LEVEL_COUNT * QUESTIONS_PER_LEVEL} 題。`);
+      }
+
+      return parsed;
+    }
+
+    function buildActiveQuestionBank(flatQuestions){
+      const picked = shuffleArray(flatQuestions).slice(0, LEVEL_COUNT * QUESTIONS_PER_LEVEL);
+      const levels = [];
+
+      for(let i=0;i<LEVEL_COUNT;i++){
+        const questions = picked.slice(i*QUESTIONS_PER_LEVEL,(i+1)*QUESTIONS_PER_LEVEL).map(q=>{
+          const optionPairs = q.options.map((opt, idx) => ({ text: opt, isAnswer: idx === q.answer }));
+          const shuffledOptions = shuffleArray(optionPairs);
+          return {
+            q: q.q,
+            options: shuffledOptions.map(x=>x.text),
+            answer: shuffledOptions.findIndex(x=>x.isAnswer),
+            explain: q.explain || ""
+          };
+        });
+
+        levels.push({
+          level: i + 1,
+          title: `第 ${i+1} 關`,
+          questions
+        });
+      }
+      return levels;
+    }
+
+    function getCurrentLevel(){ return activeQuestionBank[state.currentLevelIndex]; }
+    function getCurrentQuestion(){ return getCurrentLevel().questions[state.currentQuestionIndex]; }
+
+    function calculateAccuracy(correct, total){
+      if(!total) return 0;
+      return Math.round(correct / total * 100);
+    }
+
+    function getPaddedMasteryBits(){
+      return activeQuestionBank.map((_, idx) => state.masteryBits[idx] ? "1" : "0").join("");
+    }
+
+    function getCurrentProgressTotals(){
+      return {
+        total: state.totalTotal + state.levelTotal,
+        correct: state.totalCorrect + state.levelCorrect
+      };
+    }
+
+    function buildResultObject(isFinal = state.finished){
+      const progress = getCurrentProgressTotals();
+      return {
+        classCode: state.classCode,
+        seatNo: state.seatNo,
+        total: progress.total,
+        correct: progress.correct,
+        mastery: getPaddedMasteryBits(),
+        finished: isFinal ? 1 : 0,
+        timestamp: Number(getTimestampCode())
+      };
+    }
+
+    function generateResultString(isFinal = state.finished){
+      const result = buildResultObject(isFinal);
+      const accuracy = calculateAccuracy(result.correct, result.total);
+      return [
+        "TG",
+        `G${result.classCode}`,
+        `N${result.seatNo}`,
+        `T${result.total}`,
+        `C${result.correct}`,
+        `A${accuracy}`,
+        `M${result.mastery}`,
+        `F${result.finished}`,
+        `D${result.timestamp}`
+      ].join("|");
+    }
+
+    function getStudentLabel(){
+      return state.classCode && state.seatNo ? `${state.classCode} 班 ${Number(state.seatNo)} 號` : "未設定";
+    }
+
+    function resetQuestionAttemptState(){
+      state.currentQuestionLocked = false;
+    }
+
+    function resetCurrentLevelProgress(){
+      state.currentQuestionIndex = 0;
+      state.levelCorrect = 0;
+      state.levelTotal = 0;
+      resetQuestionAttemptState();
+    }
+
+    function startGame(){
+      stopQrScanner();
+
+      const classCode = $("studentClass").value;
+      const seatNo = $("studentSeat").value;
+
+      if(!classCode || !seatNo){
+        alert("請先選擇班級與座號。");
+        return;
+      }
+
+      try{
+        const parsedQuestions = parseQuestionBank();
+        activeQuestionBank = buildActiveQuestionBank(parsedQuestions);
+      }catch(err){
+        alert(err.message);
+        return;
+      }
+
+      state.classCode = classCode;
+      state.seatNo = seatNo;
+      state.currentLevelIndex = 0;
+      state.totalCorrect = 0;
+      state.totalTotal = 0;
+      state.masteryBits = [];
+      state.finished = false;
+      resetCurrentLevelProgress();
+      fractalForest.reset();
+      showQuestion();
+    }
+
+    function showQuestion(){
+      const levelData = getCurrentLevel();
+      const q = getCurrentQuestion();
+      const levelNo = levelData.level;
+      const questionNo = state.currentQuestionIndex + 1;
+      const overallPercent = Math.round((state.currentLevelIndex / LEVEL_COUNT) * 100);
+
+      $("app").innerHTML = `
+        <div class="screen">
+          <div class="row-between">
+            <div>
+              <div class="pill">第 ${levelNo} 關</div>
+              <div class="pill">第 ${questionNo} / ${levelData.questions.length} 題</div>
+            </div>
+            <div class="row">
+              <button class="btn-secondary" type="button" onclick="showStats()">統計分數</button>
+            </div>
+          </div>
+
+          <div class="student-badge">挑戰者：${escapeHtml(getStudentLabel())}</div>
+
+          <div class="progress">
+            <div class="progress-bar" style="width:${overallPercent}%"></div>
+          </div>
+
+          <div class="meta-grid">
+            <div class="meta-box">
+              <div class="label">本關目前答對</div>
+              <div class="value">${state.levelCorrect} / ${state.levelTotal}</div>
+            </div>
+            <div class="meta-box">
+              <div class="label">目前累計總分</div>
+              <div class="value">${getCurrentProgressTotals().correct} / ${getCurrentProgressTotals().total}</div>
+            </div>
+          </div>
+
+          <div class="question-box">
+            <p class="question-title">${escapeHtml(q.q)}</p>
+            <div class="options">
+              ${q.options.map((opt, i) => `
+                <button class="option-btn" onclick="checkAnswer(${i})">
+                  ${String.fromCharCode(65 + i)}. ${escapeHtml(opt)}
+                </button>
+              `).join("")}
+            </div>
+            <div id="feedback" class="feedback"></div>
+          </div>
+
+          <div class="muted center">過關條件：本關答對至少 ${PASS_CORRECT_COUNT} 題，即可前往下一關。</div>
+        </div>
+      `;
+    }
+
+    function checkAnswer(selectedIndex){
+      if(state.currentQuestionLocked) return;
+
+      const q = getCurrentQuestion();
+      const feedback = $("feedback");
+      const isCorrect = selectedIndex === q.answer;
+
+      state.currentQuestionLocked = true;
+      fractalForest.grow();
+
+      state.levelTotal++;
+      if(isCorrect){
+        state.levelCorrect++;
+      }
+
+      document.querySelectorAll(".option-btn").forEach(btn => btn.disabled = true);
+
+      if(isCorrect){
+        feedback.className = "feedback success";
+        feedback.innerHTML = `答對了！`;
+      }else{
+        feedback.className = "feedback error";
+        feedback.innerHTML = `答錯了。`;
+      }
+
+      const actionWrap = document.createElement("div");
+      actionWrap.className = "row";
+      actionWrap.style.marginTop = "12px";
+
+      const nextBtn = document.createElement("button");
+      nextBtn.className = "btn-primary";
+      nextBtn.textContent = state.currentQuestionIndex >= getCurrentLevel().questions.length - 1 ? "看本關結果" : "下一題";
+      nextBtn.onclick = nextQuestion;
+      actionWrap.appendChild(nextBtn);
+
+      if(state.levelCorrect >= PASS_CORRECT_COUNT){
+        const skipBtn = document.createElement("button");
+        skipBtn.className = "btn-success";
+        skipBtn.textContent = state.currentQuestionIndex >= getCurrentLevel().questions.length - 1 ? "前往下一關" : "已達標，直接看本關結果";
+        skipBtn.onclick = finishLevel;
+        actionWrap.appendChild(skipBtn);
+      }
+
+      feedback.appendChild(actionWrap);
+    }
+
+    function nextQuestion(){
+      state.currentQuestionIndex++;
+      if(state.currentQuestionIndex >= getCurrentLevel().questions.length){
+        finishLevel();
+      }else{
+        resetQuestionAttemptState();
+        showQuestion();
+      }
+    }
+
+    function finishLevel(){
+      const levelData = getCurrentLevel();
+      const passed = state.levelCorrect >= PASS_CORRECT_COUNT;
+      const levelAccuracy = calculateAccuracy(state.levelCorrect, state.levelTotal);
+
+      if(passed){
+        state.masteryBits.push(1);
+        state.totalCorrect += state.levelCorrect;
+        state.totalTotal += state.levelTotal;
+
+        $("app").innerHTML = `
+          <div class="screen center">
+            <h2>第 ${levelData.level} 關過關！</h2>
+            <p class="big">本關答對 <strong>${state.levelCorrect}</strong> / ${state.levelTotal}</p>
+            <p class="big">本關正確率 <strong>${levelAccuracy}%</strong></p>
+            <p class="muted">已達過關標準（至少答對 ${PASS_CORRECT_COUNT} 題）</p>
+            <div class="row" style="justify-content:center; margin-top:18px;">
+              <button class="btn-success" onclick="goNextLevel()">前往下一關</button>
+              <button class="btn-secondary" onclick="showStats()">統計分數</button>
+            </div>
+          </div>
+        `;
+      }else{
+        $("app").innerHTML = `
+          <div class="screen center">
+            <h2>第 ${levelData.level} 關未達標</h2>
+            <p class="big">本關答對 <strong>${state.levelCorrect}</strong> / ${state.levelTotal}</p>
+            <p class="big">本關正確率 <strong>${levelAccuracy}%</strong></p>
+            <p class="muted">未達精熟標準，請重做本關。</p>
+            <div class="row" style="justify-content:center; margin-top:18px;">
+              <button class="btn-warning" onclick="retryLevel()">重做本關</button>
+              <button class="btn-secondary" onclick="showStats()">統計分數</button>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    function retryLevel(){
+      resetCurrentLevelProgress();
+      showQuestion();
+    }
+
+    function goNextLevel(){
+      state.currentLevelIndex++;
+      if(state.currentLevelIndex >= activeQuestionBank.length){
+        finishGame();
+        return;
+      }
+      resetCurrentLevelProgress();
+      showQuestion();
+    }
+
+    function finishGame(){
+      state.finished = true;
+      const accuracy = calculateAccuracy(state.totalCorrect, state.totalTotal);
+      const resultString = generateResultString();
+      const masteryHtml = state.masteryBits.map((bit, idx) => `
+        <div class="mastery-chip ${bit ? "pass" : "fail"}">L${idx+1} ${bit ? "✓" : "✗"}</div>
+      `).join("");
+
+      $("app").innerHTML = `
+        <div class="screen center">
+          <h2>闖關完成</h2>
+
+          <div class="meta-grid" style="margin-top:18px;">
+            <div class="meta-box">
+              <div class="label">總答對題數</div>
+              <div class="value">${state.totalCorrect} / ${state.totalTotal}</div>
+            </div>
+            <div class="meta-box">
+              <div class="label">總答對率</div>
+              <div class="value">${accuracy}%</div>
+            </div>
+          </div>
+
+          <h3 style="margin-top:22px;">精熟碼</h3>
+          <div class="mastery-row">${masteryHtml}</div>
+
+          <h3 style="margin-top:22px;">結果碼</h3>
+          <div class="result-code" id="resultCode">${escapeHtml(resultString)}</div>
+
+          <div class="row" style="justify-content:center; margin-top:10px;">
+            <button class="btn-primary" onclick="copyTextById('resultCode')">複製結果碼</button>
+            <button class="btn-success" onclick="showStats()">查看統計卡片</button>
+            <button class="btn-secondary" onclick="restartAll()">重新開始</button>
+          </div>
+
+          <div id="qrcode"></div>
+          <p class="muted" style="margin-top:14px;">可直接出示 QR Code 給老師掃描。</p>
+        </div>
+      `;
+
+      try{
+        renderOfflineQRCode(resultString, "qrcode");
+      }catch(err){
+        $("qrcode").innerHTML = `<div class="muted">QR 產生失敗，但仍可複製結果碼。</div>`;
+      }
+    }
+
+    function restartAll(){
+      stopQrScanner();
+      closeStatsModal();
+      state.currentLevelIndex = 0;
+      state.currentQuestionIndex = 0;
+      state.levelCorrect = 0;
+      state.levelTotal = 0;
+      state.totalCorrect = 0;
+      state.totalTotal = 0;
+      state.masteryBits = [];
+      state.finished = false;
+      resetQuestionAttemptState();
+      fractalForest.reset();
+      showStart();
+    }
+
+    function showStats(){
+      closeStatsModal();
+      const progress = getCurrentProgressTotals();
+      const accuracy = calculateAccuracy(progress.correct, progress.total);
+      const resultString = generateResultString(state.finished);
+
+      const modal = document.createElement("div");
+      modal.id = "statsModal";
+      modal.className = "modal-overlay";
+      modal.innerHTML = `
+        <div class="modal-card">
+          <div class="row-between">
+            <div>
+              <h2 style="margin:0;">統計分數</h2>
+              <div class="muted" style="margin-top:6px;">可直接出示下方 QR Code 給老師掃描，也可一鍵複製結果碼並開啟 Google 表單</div>
+            </div>
+            <button class="btn-secondary" type="button" onclick="closeStatsModal()">關閉</button>
+          </div>
+
+          <div class="student-badge">${escapeHtml(getStudentLabel())}</div>
+
+          <div class="meta-grid-4">
+            <div class="meta-box">
+              <div class="label">目前關卡</div>
+              <div class="value">第 ${state.currentLevelIndex + 1} 關</div>
+            </div>
+            <div class="meta-box">
+              <div class="label">本關答對</div>
+              <div class="value">${state.levelCorrect} / ${state.levelTotal}</div>
+            </div>
+            <div class="meta-box">
+              <div class="label">累計答對</div>
+              <div class="value">${progress.correct} / ${progress.total}</div>
+            </div>
+            <div class="meta-box">
+              <div class="label">目前正確率</div>
+              <div class="value">${accuracy}%</div>
+            </div>
+          </div>
+
+          <div class="summary-note">狀態：${state.finished ? "已完成" : "進行中"}｜精熟碼：${escapeHtml(getPaddedMasteryBits() || "0000")}</div>
+
+          <h3 style="margin-top:18px;">結果碼</h3>
+          <div class="result-code" id="statsResultCode">${escapeHtml(resultString)}</div>
+          <div id="statsQrcode"></div>
+          <div class="row" style="justify-content:center; margin-top:12px;">
+            <button class="btn-primary" type="button" onclick="copyTextById('statsResultCode')">複製統計結果碼</button>
+          </div>
+
+          <div class="upload-panel">
+            <div style="font-weight:900; font-size:18px;">開啟 Google 表單</div>
+            <div class="mini-note" style="margin-top:6px;">按下按鈕後，會先複製上方結果碼，再自動開啟 Google 表單，老師只要貼上結果碼送出即可。</div>
+            <div class="row" style="margin-top:12px;">
+              <button id="uploadResultBtn" class="btn-success" type="button" onclick="openGoogleFormWithCopiedResult(this)">複製結果碼並開啟 Google 表單</button>
+            </div>
+            <div id="googleFormUploadStatus" class="upload-status"></div>
+          </div>
+        </div>
+      `;
+
+      modal.addEventListener("click", (e)=>{
+        if(e.target === modal) closeStatsModal();
+      });
+      document.body.appendChild(modal);
+
+      try{
+        renderOfflineQRCode(resultString, "statsQrcode");
+      }catch(err){
+        const qrWrap = $("statsQrcode");
+        if(qrWrap) qrWrap.innerHTML = `<div class="muted center">QR 產生失敗，但仍可複製結果碼。</div>`;
+      }
+    }
+
+    function closeStatsModal(){
+      const modal = $("statsModal");
+      if(modal) modal.remove();
+    }
+
+    async function copyTextById(id){
+      const el = $(id);
+      if(!el) return;
+      try{
+        await navigator.clipboard.writeText(el.innerText);
+        alert("結果碼已複製。");
+      }catch(err){
+        alert("無法自動複製，請手動選取結果碼。");
+      }
+    }
+
+    function isGoogleFormConfigReady(){
+      return GOOGLE_FORM_CONFIG.formUrl
+        && /^https:\/\/docs\.google\.com\/forms\//.test(GOOGLE_FORM_CONFIG.formUrl);
+    }
+
+    function setUploadStatus(type, message){
+      const el = $("googleFormUploadStatus");
+      if(!el) return;
+      el.className = `upload-status show ${type}`;
+      el.innerHTML = message;
+    }
+
+    async function openGoogleFormWithCopiedResult(button){
+      if(!isGoogleFormConfigReady()){
+        setUploadStatus("error", "請先到程式碼最上方的 <strong>GOOGLE_FORM_CONFIG</strong>，把 <strong>formUrl</strong> 改成你的 Google 表單填答網址。");
+        return;
+      }
+
+      const resultString = generateResultString(state.finished);
+
+      if(button) button.disabled = true;
+      try{
+        await navigator.clipboard.writeText(resultString);
+        setUploadStatus("success", "結果碼已複製，正在開啟 Google 表單。若沒有自動跳出新分頁，請檢查瀏覽器是否封鎖彈出視窗。");
+      }catch(err){
+        setUploadStatus("info", "無法自動複製結果碼，仍會幫你開啟 Google 表單。請先手動複製上方結果碼再貼到表單。");
+      }
+
+      try{
+        window.open(GOOGLE_FORM_CONFIG.formUrl, "_blank", "noopener");
+      }catch(err){
+        setUploadStatus("error", "無法開啟 Google 表單，請檢查網址是否正確。");
+      }finally{
+        if(button) button.disabled = false;
+      }
+    }
+
+    function showStart(){
+      $("app").innerHTML = `
+        <div class="screen">
+          <div class="center">
+            <h2>開始挑戰</h2>
+            <p class="muted">先選擇班級與座號，再按開始闖關。</p>
+
+            <div class="meta-grid" style="max-width:680px; margin:18px auto 0;">
+              <div>
+                <label for="studentClass">班級</label>
+                <select id="studentClass">
+                  <option value="">請選擇班級</option>
+                  ${Array.from({length:9}, (_,i)=>701+i).map(cls=>`<option value="${cls}">${cls}</option>`).join("")}
+                </select>
+              </div>
+              <div>
+                <label for="studentSeat">座號</label>
+                <select id="studentSeat">
+                  <option value="">請選擇座號</option>
+                  ${Array.from({length:40}, (_,i)=>i+1).map(no=>`<option value="${pad2(no)}">${no} 號</option>`).join("")}
+                </select>
+              </div>
+            </div>
+
+            <div class="row" style="justify-content:center; margin-top:18px;">
+              <button class="btn-primary" onclick="startGame()">開始闖關</button>
+            </div>
+
+            <div style="margin-top:18px;">
+              <span class="pill">4 關</span>
+              <span class="pill">每關 5 題</span>
+              <span class="pill">答對 3 題可過關</span>
+              <span class="pill">答題中可看統計</span>
+              <span class="pill">角落碎形樹會成長</span>
+            </div>
+
+            <div class="parse-panel" style="margin-top:24px; text-align:left; max-width:880px; margin-left:auto; margin-right:auto;">
+              <label>題目放在哪裡？</label>
+              <div class="mini-note" style="font-size:15px;">
+                題目是直接寫在這份 HTML 程式碼裡。<br>
+                你之後用文字編輯器開啟 HTML，找到 <strong>const DEFAULT_QUESTION_BANK = [</strong> 這一段，就是題目區。<br>
+                修改完成後存檔，再上傳到 GitHub Pages 即可。
+              </div>
+            </div>
+          </div>
+
+          <button id="teacherToggleBtn" class="teacher-toggle" type="button" onclick="toggleTeacherPanel()">老師工具</button>
+
+          <div id="teacherPanel" class="teacher-shell hidden">
+            <div class="section-divider"></div>
+
+            <h2 class="center">老師多筆結果整理區</h2>
+            <p class="muted center">可直接開相機掃 QR，也可每行貼一筆結果碼。</p>
+
+            <div class="parse-panel">
+              <div class="scanner-box">
+                <label>老師掃描 QR</label>
+                <div class="row">
+                  <button class="btn-success" onclick="startQrScanner()">開啟相機掃描</button>
+                  <button class="btn-secondary" onclick="stopQrScanner()">停止掃描</button>
+                  <label class="btn-primary" style="display:inline-flex; align-items:center; cursor:pointer;">
+                    上傳 QR 圖片
+                    <input id="qrImageInput" type="file" accept="image/*" capture="environment" onchange="scanQrImageFile(event)" style="display:none;">
+                  </label>
+                </div>
+
+                <div id="qrVideoWrap" class="scanner-video-wrap">
+                  <video id="qrVideo" autoplay playsinline muted></video>
+                </div>
+
+                <div id="qrScannerStatus" class="scanner-status">尚未啟動掃描器。</div>
+                <div id="qrScanPreview" class="scan-result-preview hidden"></div>
+              </div>
+
+              <label for="teacherMultiInput" style="margin-top:16px;">多筆結果碼</label>
+              <textarea id="teacherMultiInput" placeholder="每行一筆&#10;TG|G701|N01|T20|C16|A80|M1111|F1|D2503240148"></textarea>
+
+              <div class="row" style="margin-top:12px;">
+                <button class="btn-success" onclick="parseMultipleCodes()">整理成績表</button>
+                <button class="btn-secondary" onclick="clearTeacherParse()">清空</button>
+                <button class="btn-primary" onclick="exportCSV()">匯出 CSV</button>
+              </div>
+
+              <div class="mini-note">每筆結果都獨立保留，不做同組去重。</div>
+              <div id="teacherParseOutput"></div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function toggleTeacherPanel(){
+      const panel = $("teacherPanel");
+      const btn = $("teacherToggleBtn");
+      if(!panel || !btn) return;
+      const willShow = panel.classList.contains("hidden");
+      panel.classList.toggle("hidden", !willShow);
+      btn.textContent = willShow ? "隱藏老師工具" : "老師工具";
+      if(!willShow) stopQrScanner();
+    }
+
+    function parseResultString(str){
+      const raw = String(str || "").trim();
+      const parts = raw.split("|");
+      if(parts.length < 9 || parts[0] !== "TG") return null;
+
+      const obj = {};
+      for(const p of parts.slice(1)){
+        const key = p.charAt(0);
+        obj[key] = p.slice(1);
+      }
+
+      if(!obj.G || !obj.N || !obj.T || !obj.C || !obj.A || !obj.M || typeof obj.F === "undefined" || !obj.D) return null;
+
+      return {
+        raw,
+        classCode: obj.G,
+        seatNo: obj.N,
+        total: Number(obj.T),
+        correct: Number(obj.C),
+        accuracy: Number(obj.A),
+        mastery: obj.M,
+        finished: obj.F === "1",
+        timestamp: obj.D
+      };
+    }
+
+    function parseMultipleCodes(){
+      const raw = $("teacherMultiInput").value.trim();
+      const output = $("teacherParseOutput");
+      teacherParsedRows = [];
+
+      if(!raw){
+        output.innerHTML = `<div style="color:#991b1b;font-weight:900;">請先輸入或掃描至少一筆結果碼。</div>`;
+        return;
+      }
+
+      const lines = raw.split(/\n+/).map(s=>s.trim()).filter(Boolean);
+      const valid = [];
+      const invalid = [];
+
+      for(const line of lines){
+        const parsed = parseResultString(line);
+        if(parsed) valid.push(parsed);
+        else invalid.push(line);
+      }
+
+      if(!valid.length){
+        output.innerHTML = `<div style="color:#991b1b;font-weight:900;">沒有可辨識的有效結果碼。</div>`;
+        return;
+      }
+
+      valid.sort((a,b)=>{
+        if(b.correct !== a.correct) return b.correct - a.correct;
+        if(b.accuracy !== a.accuracy) return b.accuracy - a.accuracy;
+        return String(a.timestamp).localeCompare(String(b.timestamp));
+      });
+
+      teacherParsedRows = valid.slice();
+
+      const rankCards = valid.slice(0,3).map((r, idx)=>`
+        <div class="rank-card">
+          <div class="pill">第 ${idx+1} 名</div>
+          <h3 style="margin:12px 0 8px;">${escapeHtml(r.classCode)} 班 ${Number(r.seatNo)} 號</h3>
+          <div class="big"><strong>${r.correct}</strong> / ${r.total}</div>
+          <div class="muted">正確率 ${r.accuracy}%</div>
+        </div>
+      `).join("");
+
+      const rowsHtml = valid.map((r, idx)=>`
+        <tr>
+          <td>${idx+1}</td>
+          <td>${escapeHtml(r.classCode)}</td>
+          <td>${Number(r.seatNo)}</td>
+          <td>${r.correct}</td>
+          <td>${r.total}</td>
+          <td>${r.accuracy}%</td>
+          <td>${escapeHtml(r.mastery)}</td>
+          <td>${r.finished ? '<span class="badge-pass">完成</span>' : '<span class="badge-fail">進行中</span>'}</td>
+          <td>${escapeHtml(r.timestamp)}</td>
+        </tr>
+      `).join("");
+
+      output.innerHTML = `
+        <div style="color:#166534;font-weight:900;">已整理 ${valid.length} 筆有效結果${invalid.length ? `，另有 ${invalid.length} 筆無法辨識。` : "。"}</div>
+        <div class="rank-grid">${rankCards || '<div class="muted">目前不足 3 筆資料。</div>'}</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>排名</th>
+                <th>班級</th>
+                <th>座號</th>
+                <th>答對</th>
+                <th>總題數</th>
+                <th>正確率</th>
+                <th>精熟碼</th>
+                <th>狀態</th>
+                <th>時間碼</th>
+              </tr>
+            </thead>
+            <tbody>${rowsHtml}</tbody>
+          </table>
+        </div>
+        ${invalid.length ? `<div class="summary-note"><strong>無效資料：</strong><br>${invalid.map(escapeHtml).join("<br>")}</div>` : ""}
+      `;
+    }
+
+    function clearTeacherParse(){
+      stopQrScanner();
+      teacherParsedRows = [];
+      if($("teacherMultiInput")) $("teacherMultiInput").value = "";
+      if($("teacherParseOutput")) $("teacherParseOutput").innerHTML = "";
+      if($("qrScanPreview")){
+        $("qrScanPreview").classList.add("hidden");
+        $("qrScanPreview").innerHTML = "";
+      }
+      if($("qrScannerStatus")) $("qrScannerStatus").textContent = "尚未啟動掃描器。";
+    }
+
+    function csvCell(val){
+      const s = String(val ?? "");
+      return /[",\n]/.test(s) ? `"${s.replaceAll('"', '""')}"` : s;
+    }
+
+    function exportCSV(){
+      if(!teacherParsedRows.length){
+        alert("請先整理成績表，再匯出 CSV。");
+        return;
+      }
+
+      const header = ["排名","班級","座號","答對","總題數","正確率","精熟碼","狀態","時間碼"];
+      const rows = teacherParsedRows.map((r, i)=>[
+        i+1,
+        r.classCode,
+        Number(r.seatNo),
+        r.correct,
+        r.total,
+        `${r.accuracy}%`,
+        r.mastery,
+        r.finished ? "完成" : "進行中",
+        r.timestamp
+      ]);
+
+      const csv = [header, ...rows].map(row => row.map(csvCell).join(",")).join("\n");
+      const blob = new Blob(["\uFEFF" + csv], { type:"text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `台語精熟闖關成績_${getTimestampCode()}.csv`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    async function startQrScanner(){
+      if(!navigator.mediaDevices?.getUserMedia){
+        alert("此裝置或瀏覽器不支援相機掃描。");
+        return;
+      }
+
+      const video = $("qrVideo");
+      const wrap = $("qrVideoWrap");
+      const status = $("qrScannerStatus");
+      const preview = $("qrScanPreview");
+      if(!video || !wrap || !status || !preview) return;
+
+      preview.classList.add("hidden");
+      preview.innerHTML = "";
+
+      try{
+        stopQrScanner();
+        qrStream = await navigator.mediaDevices.getUserMedia({ video:{ facingMode:{ ideal:"environment" }}, audio:false });
+        video.srcObject = qrStream;
+        wrap.style.display = "block";
+        status.textContent = "掃描中，請將 QR Code 對準畫面中央。";
+        qrScanActive = true;
+
+        if("BarcodeDetector" in window){
+          const formats = await window.BarcodeDetector.getSupportedFormats();
+          if(formats.includes("qr_code")){
+            qrDetector = new window.BarcodeDetector({ formats:["qr_code"] });
+          }
+        }
+        qrScanLoop();
+      }catch(err){
+        status.textContent = "無法啟動相機，請檢查權限。";
+      }
+    }
+
+    function stopQrScanner(){
+      qrScanActive = false;
+      qrDetector = null;
+      if(qrScanRafId){
+        cancelAnimationFrame(qrScanRafId);
+        qrScanRafId = null;
+      }
+      if(qrStream){
+        qrStream.getTracks().forEach(t=>t.stop());
+        qrStream = null;
+      }
+      if($("qrVideo")) $("qrVideo").srcObject = null;
+      if($("qrVideoWrap")) $("qrVideoWrap").style.display = "none";
+    }
+
+    async function qrScanLoop(){
+      if(!qrScanActive) return;
+      const video = $("qrVideo");
+      if(!video || video.readyState < 2){
+        qrScanRafId = requestAnimationFrame(qrScanLoop);
+        return;
+      }
+
+      try{
+        let foundText = "";
+        if(qrDetector){
+          const results = await qrDetector.detect(video);
+          if(results && results[0] && results[0].rawValue){
+            foundText = results[0].rawValue;
+          }
+        }
+        if(foundText){
+          handleScannedResult(foundText);
+          return;
+        }
+      }catch(err){}
+
+      qrScanRafId = requestAnimationFrame(qrScanLoop);
+    }
+
+    async function scanQrImageFile(event){
+      const file = event.target.files && event.target.files[0];
+      if(!file) return;
+
+      if(!("BarcodeDetector" in window)){
+        alert("目前瀏覽器不支援圖片 QR 辨識。");
+        event.target.value = "";
+        return;
+      }
+
+      try{
+        const bitmap = await createImageBitmap(file);
+        const formats = await window.BarcodeDetector.getSupportedFormats();
+        const detector = new window.BarcodeDetector({ formats: formats.includes("qr_code") ? ["qr_code"] : formats });
+        const results = await detector.detect(bitmap);
+        if(results && results[0] && results[0].rawValue){
+          handleScannedResult(results[0].rawValue);
+        }else{
+          alert("這張圖片沒有辨識到 QR Code。");
+        }
+      }catch(err){
+        alert("QR 圖片辨識失敗。");
+      }finally{
+        event.target.value = "";
+      }
+    }
+
+    function handleScannedResult(text){
+      const input = $("teacherMultiInput");
+      const preview = $("qrScanPreview");
+      const status = $("qrScannerStatus");
+      if(!input || !preview || !status) return;
+
+      const value = String(text || "").trim();
+      if(!value) return;
+
+      const existing = input.value.split(/\n+/).map(s=>s.trim()).filter(Boolean);
+      if(!existing.includes(value)) existing.push(value);
+      input.value = existing.join("\n");
+
+      preview.classList.remove("hidden");
+      preview.innerHTML = `<strong>最近掃到：</strong><br>${escapeHtml(value)}`;
+      status.textContent = "已掃描成功，可繼續掃下一筆。";
+      parseMultipleCodes();
+    }
+
+    const fractalForest = {
+      canvas: null,
+      ctx: null,
+      trees: [],
+      maxLevel: 11,
+      currentTreeIndex: 0,
+
+      init(){
+        this.canvas = $("fractalCanvas");
+        if(!this.canvas) return;
+        this.ctx = this.canvas.getContext("2d");
+        this.reset();
+      },
+
+      reset(){
+        if(!this.ctx) return;
+        this.trees = [];
+        this.currentTreeIndex = 0;
+        this.trees.push(this.makeTree(this.canvas.width * 0.28, this.canvas.height - 10, 44));
+        this.draw();
+      },
+
+      makeTree(x, y, length){
+        const hue = Math.random() * 360;
+        return {
+          x,
+          y,
+          initialLength: length,
+          level: 1,
+          colorScheme: {
+            base: `hsla(${hue}, 58%, 28%, .88)`,
+            highlight: `hsla(${hue}, 68%, 38%, .88)`,
+            light: `hsla(${hue}, 74%, 50%, .88)`
+          }
+        };
+      },
+
+      getRandomAngle(){
+        const degrees = 20 + Math.random() * 18;
+        return degrees * Math.PI / 180;
+      },
+
+      grow(){
+        if(!this.ctx) return;
+        const currentTree = this.trees[this.currentTreeIndex];
+        if(currentTree.level < this.maxLevel){
+          currentTree.level++;
+        }else{
+          const spacing = 42;
+          const newX = 24 + this.trees.length * spacing;
+          if(newX < this.canvas.width - 20){
+            const prevLength = this.trees[this.currentTreeIndex].initialLength;
+            this.trees.push(this.makeTree(newX, this.canvas.height - 10, Math.max(24, prevLength * 0.86)));
+            this.currentTreeIndex++;
+          }else{
+            this.reset();
+            return;
+          }
+        }
+        this.draw();
+      },
+
+      drawBranch(startX, startY, len, angle, depth, colorScheme){
+        const ctx = this.ctx;
+        ctx.beginPath();
+        ctx.save();
+
+        ctx.translate(startX, startY);
+        ctx.rotate(angle);
+        ctx.moveTo(0, 0);
+        ctx.lineTo(0, -len);
+
+        const depthRatio = depth / this.maxLevel;
+        ctx.strokeStyle =
+          depthRatio > 0.7 ? colorScheme.light :
+          depthRatio > 0.35 ? colorScheme.highlight :
+          colorScheme.base;
+
+        ctx.lineWidth = Math.max(1, depth * 0.62);
+        ctx.stroke();
+
+        if(depth > 0){
+          const rightAngle = this.getRandomAngle();
+          const leftAngle = this.getRandomAngle();
+          this.drawBranch(0, -len, len * 0.74, rightAngle, depth - 1, colorScheme);
+          this.drawBranch(0, -len, len * 0.74, -leftAngle, depth - 1, colorScheme);
+        }
+
+        ctx.restore();
+      },
+
+      draw(){
+        if(!this.ctx) return;
+        const ctx = this.ctx;
+        ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+        ctx.fillStyle = "rgba(255,255,255,.15)";
+        ctx.fillRect(0,0,this.canvas.width,this.canvas.height);
+
+        this.trees.forEach(tree=>{
+          this.drawBranch(tree.x, tree.y, tree.initialLength, 0, tree.level, tree.colorScheme);
+        });
+      }
+    };
+
+    const QR_V3_SIZE = 29;
+    const QR_DATA_CODEWORDS = 55;
+    const QR_ECC_CODEWORDS = 15;
+    const QR_FORMAT_INFO_L = {
+      0: 0b111011111000100,
+      1: 0b111001011110011,
+      2: 0b111110110101010,
+      3: 0b111100010011101,
+      4: 0b110011000101111,
+      5: 0b110001100011000,
+      6: 0b110110001000001,
+      7: 0b110100101110110
+    };
+
+    function renderOfflineQRCode(text, targetId = "qrcode"){
+      const bytes = utf8Bytes(text);
+      if(bytes.length > 53){
+        throw new Error("結果字串過長，超出目前內建 QR 容量。");
+      }
+
+      const dataCodewords = makeQRDataCodewords(bytes);
+      const ecc = reedSolomonCompute(dataCodewords, QR_ECC_CODEWORDS);
+      const allCodewords = dataCodewords.concat(ecc);
+
+      let bestMatrix = null;
+      let bestPenalty = Infinity;
+
+      for(let mask = 0; mask < 8; mask++){
+        const {modules, isFunction} = buildBaseMatrixV3();
+        placeDataBits(modules, isFunction, allCodewords);
+        applyMask(modules, isFunction, mask);
+        drawFormatInfo(modules, mask);
+        const penalty = calcPenalty(modules);
+        if(penalty < bestPenalty){
+          bestPenalty = penalty;
+          bestMatrix = modules.map(row => row.slice());
+        }
+      }
+
+      drawMatrixToCanvas(bestMatrix, 8, 4, targetId);
+    }
+
+    function utf8Bytes(str){
+      return Array.from(new TextEncoder().encode(str));
+    }
+
+    function makeQRDataCodewords(bytes){
+      const bits = [];
+      pushBits(bits, 0b0100, 4);
+      pushBits(bits, bytes.length, 8);
+
+      for(const b of bytes) pushBits(bits, b, 8);
+
+      const maxBits = QR_DATA_CODEWORDS * 8;
+      let terminator = Math.min(4, maxBits - bits.length);
+      for(let i = 0; i < terminator; i++) bits.push(0);
+      while(bits.length % 8 !== 0) bits.push(0);
+
+      const codewords = [];
+      for(let i = 0; i < bits.length; i += 8){
+        let val = 0;
+        for(let j = 0; j < 8; j++) val = (val << 1) | bits[i + j];
+        codewords.push(val);
+      }
+
+      const pads = [0xEC, 0x11];
+      let p = 0;
+      while(codewords.length < QR_DATA_CODEWORDS){
+        codewords.push(pads[p % 2]);
+        p++;
+      }
+      return codewords;
+    }
+
+    function pushBits(arr, val, count){
+      for(let i = count - 1; i >= 0; i--){
+        arr.push((val >>> i) & 1);
+      }
+    }
+
+    function buildBaseMatrixV3(){
+      const size = QR_V3_SIZE;
+      const modules = Array.from({length:size}, () => Array(size).fill(false));
+      const isFunction = Array.from({length:size}, () => Array(size).fill(false));
+
+      function set(x, y, dark, func=true){
+        if(x < 0 || y < 0 || x >= size || y >= size) return;
+        modules[y][x] = !!dark;
+        if(func) isFunction[y][x] = true;
+      }
+
+      function drawFinder(x, y){
+        for(let dy = -1; dy <= 7; dy++){
+          for(let dx = -1; dx <= 7; dx++){
+            const xx = x + dx, yy = y + dy;
+            const inRange = dx >= 0 && dx <= 6 && dy >= 0 && dy <= 6;
+            let dark = false;
+            if(inRange){
+              if(dx === 0 || dx === 6 || dy === 0 || dy === 6) dark = true;
+              else if(dx >= 2 && dx <= 4 && dy >= 2 && dy <= 4) dark = true;
+            }
+            set(xx, yy, dark, true);
+          }
+        }
+      }
+
+      function drawAlignment(cx, cy){
+        for(let dy = -2; dy <= 2; dy++){
+          for(let dx = -2; dx <= 2; dx++){
+            const dist = Math.max(Math.abs(dx), Math.abs(dy));
+            set(cx + dx, cy + dy, dist !== 1, true);
+          }
+        }
+      }
+
+      drawFinder(0, 0);
+      drawFinder(size - 7, 0);
+      drawFinder(0, size - 7);
+
+      for(let i = 8; i < size - 8; i++){
+        set(i, 6, i % 2 === 0, true);
+        set(6, i, i % 2 === 0, true);
+      }
+
+      drawAlignment(22, 22);
+      set(8, size - 8, true, true);
+
+      for(let i = 0; i < 9; i++){
+        if(i !== 6){
+          set(8, i, false, true);
+          set(i, 8, false, true);
+        }
+      }
+      for(let i = 0; i < 8; i++){
+        set(size - 1 - i, 8, false, true);
+        set(8, size - 1 - i, false, true);
+      }
+
+      return {modules, isFunction};
+    }
+
+    function placeDataBits(modules, isFunction, codewords){
+      const size = modules.length;
+      const bits = [];
+      for(const cw of codewords){
+        for(let i = 7; i >= 0; i--) bits.push((cw >>> i) & 1);
+      }
+
+      let bitIndex = 0;
+      let upward = true;
+
+      for(let right = size - 1; right >= 1; right -= 2){
+        if(right === 6) right--;
+
+        for(let vert = 0; vert < size; vert++){
+          const y = upward ? (size - 1 - vert) : vert;
+          for(let j = 0; j < 2; j++){
+            const x = right - j;
+            if(isFunction[y][x]) continue;
+            const bit = bitIndex < bits.length ? bits[bitIndex] : 0;
+            modules[y][x] = !!bit;
+            bitIndex++;
+          }
+        }
+        upward = !upward;
+      }
+    }
+
+    function maskBit(mask, x, y){
+      switch(mask){
+        case 0: return ((x + y) % 2) === 0;
+        case 1: return (y % 2) === 0;
+        case 2: return (x % 3) === 0;
+        case 3: return ((x + y) % 3) === 0;
+        case 4: return ((Math.floor(y / 2) + Math.floor(x / 3)) % 2) === 0;
+        case 5: return (((x * y) % 2) + ((x * y) % 3)) === 0;
+        case 6: return ((((x * y) % 2) + ((x * y) % 3)) % 2) === 0;
+        case 7: return ((((x + y) % 2) + ((x * y) % 3)) % 2) === 0;
+        default: return false;
+      }
+    }
+
+    function applyMask(modules, isFunction, mask){
+      const size = modules.length;
+      for(let y = 0; y < size; y++){
+        for(let x = 0; x < size; x++){
+          if(!isFunction[y][x] && maskBit(mask, x, y)){
+            modules[y][x] = !modules[y][x];
+          }
+        }
+      }
+    }
+
+    function drawFormatInfo(modules, mask){
+      const size = modules.length;
+      const data = QR_FORMAT_INFO_L[mask];
+      const getBit = i => ((data >>> i) & 1) !== 0;
+
+      for(let i = 0; i <= 5; i++) modules[8][i] = getBit(14 - i);
+      modules[8][7] = getBit(8);
+      modules[8][8] = getBit(7);
+      modules[7][8] = getBit(6);
+      for(let i = 5; i >= 0; i--) modules[i][8] = getBit(5 - i);
+
+      for(let i = 0; i < 8; i++) modules[8][size - 1 - i] = getBit(i);
+      for(let i = 0; i < 7; i++) modules[size - 7 + i][8] = getBit(14 - i);
+    }
+
+    function calcPenalty(modules){
+      const size = modules.length;
+      let penalty = 0;
+
+      for(let y = 0; y < size; y++){
+        let runColor = modules[y][0];
+        let runLen = 1;
+        for(let x = 1; x < size; x++){
+          if(modules[y][x] === runColor) runLen++;
+          else{
+            if(runLen >= 5) penalty += 3 + (runLen - 5);
+            runColor = modules[y][x];
+            runLen = 1;
+          }
+        }
+        if(runLen >= 5) penalty += 3 + (runLen - 5);
+      }
+
+      for(let x = 0; x < size; x++){
+        let runColor = modules[0][x];
+        let runLen = 1;
+        for(let y = 1; y < size; y++){
+          if(modules[y][x] === runColor) runLen++;
+          else{
+            if(runLen >= 5) penalty += 3 + (runLen - 5);
+            runColor = modules[y][x];
+            runLen = 1;
+          }
+        }
+        if(runLen >= 5) penalty += 3 + (runLen - 5);
+      }
+
+      for(let y = 0; y < size - 1; y++){
+        for(let x = 0; x < size - 1; x++){
+          const c = modules[y][x];
+          if(modules[y][x+1] === c && modules[y+1][x] === c && modules[y+1][x+1] === c){
+            penalty += 3;
+          }
+        }
+      }
+
+      const p1 = [true,false,true,true,true,false,true,false,false,false,false];
+      const p2 = [false,false,false,false,true,false,true,true,true,false,true];
+
+      function sameSeq(arr, start, pattern){
+        for(let i = 0; i < pattern.length; i++){
+          if(arr[start + i] !== pattern[i]) return false;
+        }
+        return true;
+      }
+
+      for(let y = 0; y < size; y++){
+        const row = modules[y];
+        for(let x = 0; x <= size - 11; x++){
+          if(sameSeq(row, x, p1) || sameSeq(row, x, p2)) penalty += 40;
+        }
+      }
+
+      for(let x = 0; x < size; x++){
+        const col = [];
+        for(let y = 0; y < size; y++) col.push(modules[y][x]);
+        for(let y = 0; y <= size - 11; y++){
+          if(sameSeq(col, y, p1) || sameSeq(col, y, p2)) penalty += 40;
+        }
+      }
+
+      let dark = 0;
+      for(let y = 0; y < size; y++){
+        for(let x = 0; x < size; x++){
+          if(modules[y][x]) dark++;
+        }
+      }
+
+      const percent = dark * 100 / (size * size);
+      const k = Math.floor(Math.abs(percent - 50) / 5);
+      penalty += k * 10;
+
+      return penalty;
+    }
+
+    function drawMatrixToCanvas(matrix, scale = 8, border = 4, targetId = "qrcode"){
+      const size = matrix.length;
+      const full = size + border * 2;
+      const canvas = document.createElement("canvas");
+      canvas.width = full * scale;
+      canvas.height = full * scale;
+
+      const ctx = canvas.getContext("2d");
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#000000";
+      for(let y = 0; y < size; y++){
+        for(let x = 0; x < size; x++){
+          if(matrix[y][x]){
+            ctx.fillRect((x + border) * scale, (y + border) * scale, scale, scale);
+          }
+        }
+      }
+
+      const wrap = $(targetId);
+      if(wrap){
+        wrap.innerHTML = "";
+        wrap.appendChild(canvas);
+      }
+    }
+
+    const GF_EXP = new Array(512).fill(0);
+    const GF_LOG = new Array(256).fill(0);
+
+    (function initGF(){
+      let x = 1;
+      for(let i = 0; i < 255; i++){
+        GF_EXP[i] = x;
+        GF_LOG[x] = i;
+        x <<= 1;
+        if(x & 0x100) x ^= 0x11D;
+      }
+      for(let i = 255; i < 512; i++) GF_EXP[i] = GF_EXP[i - 255];
+    })();
+
+    function gfMul(a, b){
+      if(a === 0 || b === 0) return 0;
+      return GF_EXP[GF_LOG[a] + GF_LOG[b]];
+    }
+
+    function polyMultiply(p, q){
+      const out = new Array(p.length + q.length - 1).fill(0);
+      for(let i = 0; i < p.length; i++){
+        for(let j = 0; j < q.length; j++){
+          out[i + j] ^= gfMul(p[i], q[j]);
+        }
+      }
+      return out;
+    }
+
+    function rsGeneratorPoly(degree){
+      let poly = [1];
+      for(let i = 0; i < degree; i++){
+        poly = polyMultiply(poly, [1, GF_EXP[i]]);
+      }
+      return poly;
+    }
+
+    function reedSolomonCompute(data, eccLen){
+      const gen = rsGeneratorPoly(eccLen);
+      const res = new Array(eccLen).fill(0);
+
+      for(const b of data){
+        const factor = b ^ res[0];
+        res.shift();
+        res.push(0);
+        for(let i = 0; i < eccLen; i++){
+          res[i] ^= gfMul(gen[i + 1], factor);
+        }
+      }
+      return res;
+    }
+
+    window.addEventListener("beforeunload", ()=>{ stopQrScanner(); });
+
+    fractalForest.init();
+    showStart();
+  </script>
+</body>
+</html>
+```
