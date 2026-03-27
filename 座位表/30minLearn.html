@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>30分鐘考前看片入口</title>
+  <style>
+    :root{
+      --bg:#f4f7fb;
+      --panel:#ffffff;
+      --panel-2:#eef3fb;
+      --text:#183046;
+      --muted:#5d7186;
+      --primary:#1b66d1;
+      --primary-2:#0f4fae;
+      --border:#d8e1ec;
+      --shadow:0 10px 28px rgba(16,40,72,.10);
+      --radius:20px;
+    }
+
+    *{box-sizing:border-box;}
+    html,body{
+      margin:0;
+      padding:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:"Noto Sans TC","Microsoft JhengHei",Arial,sans-serif;
+      min-height:100%;
+    }
+
+    button, a{
+      font-family:inherit;
+    }
+
+    .hidden{
+      display:none !important;
+    }
+
+    .app{
+      min-height:100vh;
+    }
+
+    /* 首頁：大按鈕模式 */
+    .home-screen{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:36px 20px;
+      background:
+        radial-gradient(circle at top left, rgba(27,102,209,.12), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(15,79,174,.10), transparent 28%),
+        var(--bg);
+    }
+
+    .home-wrap{
+      width:min(1180px, 100%);
+    }
+
+    .home-header{
+      text-align:center;
+      margin-bottom:26px;
+    }
+
+    .home-title{
+      font-size:clamp(32px, 5vw, 54px);
+      font-weight:800;
+      margin:0 0 10px;
+      letter-spacing:.04em;
+    }
+
+    .home-subtitle{
+      font-size:clamp(16px, 2vw, 22px);
+      color:var(--muted);
+      margin:0;
+      line-height:1.7;
+    }
+
+    .big-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(260px, 1fr));
+      gap:22px;
+      margin-top:28px;
+    }
+
+    .big-subject-btn{
+      border:none;
+      border-radius:28px;
+      background:linear-gradient(135deg, #ffffff 0%, #eef4ff 100%);
+      box-shadow:var(--shadow);
+      min-height:220px;
+      padding:28px 24px;
+      cursor:pointer;
+      text-align:left;
+      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      border:2px solid transparent;
+    }
+
+    .big-subject-btn:hover,
+    .big-subject-btn:focus{
+      transform:translateY(-4px);
+      box-shadow:0 16px 34px rgba(16,40,72,.16);
+      border-color:#bfd3f2;
+      outline:none;
+    }
+
+    .big-subject-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:22px;
+    }
+
+    .subject-badge{
+      width:72px;
+      height:72px;
+      border-radius:22px;
+      background:linear-gradient(135deg, #1b66d1, #4c93f3);
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:32px;
+      font-weight:800;
+      box-shadow:0 8px 18px rgba(27,102,209,.28);
+    }
+
+    .play-mark{
+      font-size:18px;
+      color:var(--primary);
+      font-weight:800;
+      white-space:nowrap;
+    }
+
+    .big-subject-name{
+      font-size:clamp(28px, 3vw, 40px);
+      font-weight:800;
+      margin:0 0 12px;
+    }
+
+    .big-subject-meta{
+      font-size:18px;
+      color:var(--muted);
+      line-height:1.8;
+      margin:0;
+    }
+
+    /* 播放頁 */
+    .player-screen{
+      min-height:100vh;
+      padding:18px;
+    }
+
+    .player-layout{
+      display:grid;
+      grid-template-columns:360px 1fr;
+      gap:18px;
+      min-height:calc(100vh - 36px);
+    }
+
+    .sidebar,
+    .main-panel{
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    .sidebar{
+      display:flex;
+      flex-direction:column;
+      overflow:hidden;
+    }
+
+    .sidebar-head{
+      padding:18px 18px 12px;
+      border-bottom:1px solid var(--border);
+      background:linear-gradient(180deg, #fbfdff 0%, #f3f7fd 100%);
+    }
+
+    .sidebar-title{
+      font-size:24px;
+      font-weight:800;
+      margin:0 0 10px;
+    }
+
+    .sidebar-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .action-btn{
+      border:none;
+      background:var(--primary);
+      color:#fff;
+      padding:12px 16px;
+      border-radius:14px;
+      cursor:pointer;
+      font-size:15px;
+      font-weight:700;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      transition:background .16s ease, transform .16s ease;
+    }
+
+    .action-btn:hover{
+      background:var(--primary-2);
+      transform:translateY(-1px);
+    }
+
+    .action-btn.secondary{
+      background:#eaf1fb;
+      color:var(--text);
+    }
+
+    .action-btn.secondary:hover{
+      background:#dfe9f8;
+    }
+
+    .subject-tabs{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:10px;
+      padding:14px 18px 10px;
+      border-bottom:1px solid var(--border);
+      background:#fcfdff;
+    }
+
+    .subject-tab{
+      border:1px solid var(--border);
+      background:#fff;
+      color:var(--text);
+      border-radius:14px;
+      padding:12px 12px;
+      font-size:16px;
+      font-weight:800;
+      cursor:pointer;
+      transition:all .16s ease;
+    }
+
+    .subject-tab.active{
+      background:var(--primary);
+      color:#fff;
+      border-color:var(--primary);
+      box-shadow:0 8px 18px rgba(27,102,209,.22);
+    }
+
+    .playlist{
+      padding:14px;
+      overflow:auto;
+      flex:1;
+      background:#fbfcfe;
+    }
+
+    .video-item{
+      border:1px solid var(--border);
+      background:#fff;
+      border-radius:18px;
+      padding:14px;
+      margin-bottom:12px;
+      transition:border-color .16s ease, transform .16s ease, box-shadow .16s ease;
+      cursor:pointer;
+    }
+
+    .video-item:hover{
+      transform:translateY(-2px);
+      box-shadow:0 8px 20px rgba(16,40,72,.08);
+      border-color:#bfd3f2;
+    }
+
+    .video-item.active{
+      border-color:var(--primary);
+      background:#f2f7ff;
+      box-shadow:0 8px 18px rgba(27,102,209,.10);
+    }
+
+    .video-time{
+      display:inline-block;
+      font-size:13px;
+      font-weight:800;
+      background:#eaf2ff;
+      color:var(--primary);
+      padding:6px 10px;
+      border-radius:999px;
+      margin-bottom:10px;
+    }
+
+    .video-title{
+      font-size:18px;
+      font-weight:800;
+      line-height:1.5;
+      margin:0 0 8px;
+    }
+
+    .video-note{
+      font-size:14px;
+      line-height:1.7;
+      color:var(--muted);
+      margin:0;
+      white-space:pre-line;
+    }
+
+    .video-links{
+      margin-top:12px;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .mini-link{
+      border:none;
+      border-radius:12px;
+      padding:9px 12px;
+      font-size:13px;
+      font-weight:800;
+      cursor:pointer;
+      background:#edf3fc;
+      color:var(--text);
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .mini-link.primary{
+      background:var(--primary);
+      color:#fff;
+    }
+
+    .mini-link:hover{
+      filter:brightness(.98);
+    }
+
+    .main-panel{
+      display:flex;
+      flex-direction:column;
+      overflow:hidden;
+    }
+
+    .main-top{
+      padding:18px 20px 14px;
+      border-bottom:1px solid var(--border);
+      background:linear-gradient(180deg, #fbfdff 0%, #f4f8ff 100%);
+    }
+
+    .now-subject{
+      font-size:16px;
+      font-weight:800;
+      color:var(--primary);
+      margin:0 0 8px;
+    }
+
+    .now-title{
+      font-size:clamp(24px, 2.8vw, 34px);
+      font-weight:800;
+      margin:0 0 8px;
+      line-height:1.45;
+    }
+
+    .now-note{
+      margin:0;
+      font-size:15px;
+      line-height:1.8;
+      color:var(--muted);
+      white-space:pre-line;
+    }
+
+    .player-box{
+      position:relative;
+      background:#0b1520;
+      width:100%;
+      aspect-ratio:16 / 9;
+    }
+
+    .player-box iframe{
+      width:100%;
+      height:100%;
+      border:none;
+      display:block;
+      background:#000;
+    }
+
+    .embed-fallback{
+      padding:22px;
+      background:#fffdf5;
+      color:#6a5300;
+      border-top:1px solid #f3e4a5;
+      line-height:1.8;
+      font-size:15px;
+    }
+
+    .footer-note{
+      padding:14px 20px 18px;
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.8;
+      background:#fff;
+    }
+
+    @media (max-width: 980px){
+      .player-layout{
+        grid-template-columns:1fr;
+      }
+      .sidebar{
+        order:2;
+      }
+      .main-panel{
+        order:1;
+      }
+    }
+
+    @media (max-width: 760px){
+      .big-grid{
+        grid-template-columns:1fr;
+      }
+      .big-subject-btn{
+        min-height:180px;
+      }
+      .subject-tabs{
+        grid-template-columns:repeat(2, 1fr);
+      }
+      .sidebar-actions{
+        flex-direction:column;
+      }
+      .action-btn{
+        width:100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <!-- 首頁：每科大按鈕模式 -->
+    <section id="homeScreen" class="home-screen">
+      <div class="home-wrap">
+        <div class="home-header">
+          <h1 class="home-title">30分鐘考前看片入口</h1>
+          <p class="home-subtitle">
+            老師進入後只要點科目，就會直接播放該科第一支影片。<br>
+            也可在後續清單中切換單支影片或開啟原始連結。
+          </p>
+        </div>
+        <div id="bigGrid" class="big-grid"></div>
+      </div>
+    </section>
+
+    <!-- 播放頁 -->
+    <section id="playerScreen" class="player-screen hidden">
+      <div class="player-layout">
+        <aside class="sidebar">
+          <div class="sidebar-head">
+            <h2 class="sidebar-title">影片清單</h2>
+            <div class="sidebar-actions">
+              <button class="action-btn secondary" onclick="goHome()">回首頁大按鈕</button>
+              <button class="action-btn secondary" onclick="playFirstOfCurrent()">播放本科第一支</button>
+            </div>
+          </div>
+
+          <div id="subjectTabs" class="subject-tabs"></div>
+          <div id="playlist" class="playlist"></div>
+        </aside>
+
+        <main class="main-panel">
+          <div class="main-top">
+            <p id="nowSubject" class="now-subject">—</p>
+            <h2 id="nowTitle" class="now-title">請先選擇影片</h2>
+            <p id="nowNote" class="now-note">老師點科目後會直接開始播放。</p>
+          </div>
+
+          <div class="player-box">
+            <iframe
+              id="videoFrame"
+              src=""
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              referrerpolicy="strict-origin-when-cross-origin"
+            ></iframe>
+          </div>
+
+          <div id="embedFallback" class="embed-fallback hidden">
+            這個平台可能不支援網頁內嵌播放。請按下方「開啟原始連結」直接播放。
+          </div>
+
+          <div class="footer-note">
+            建議：YouTube 可直接在頁面播放；部分康軒、LearnMode 或其他教學平台可能因平台限制，需另開新分頁播放。
+          </div>
+        </main>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const DATA = [
+      {
+        id: "biology",
+        name: "生物",
+        emoji: "生",
+        intro: "七下第3章：地球上的生物",
+        videos: [
+          {
+            range: "0～6 分鐘",
+            title: "生物的演化與分類【鍾傑自然】",
+            note: "先看整章總複習，快速抓主線：化石 → 分類 → 原核與原生 → 真菌。",
+            url: "https://www.youtube.com/watch?v=N3KBN38sOaQ"
+          },
+          {
+            range: "6～11 分鐘",
+            title: "108 新課綱｜七下生物｜【觀念】生物的演化－持續改變的生命",
+            note: "補強演化與化石：化石是演化證據，也可推測古代環境。",
+            url: "https://www.youtube.com/watch?v=oseLQuZbYzI"
+          },
+          {
+            range: "11～16 分鐘",
+            title: "七年級下學期～自然生物 3-2 生物的命名與分類(全)",
+            note: "重點：林奈二名法、學名寫法、界門綱目科屬種。",
+            url: "https://www.youtube.com/watch?v=dZBtaJjqXVo"
+          },
+          {
+            range: "16～21 分鐘",
+            title: "108 新課綱｜七下生物｜【觀念】原生生物界",
+            note: "快速整理原生生物界；可搭配原核生物相關影片一起看。",
+            url: "https://www.youtube.com/watch?v=mFfzvj0hdTM"
+          },
+          {
+            range: "21～25 分鐘",
+            title: "108 新課綱｜七下生物｜【觀念】菌物界",
+            note: "重點：真菌有細胞壁但無葉綠體，以分解吸收獲得養分。",
+            url: "https://www.youtube.com/watch?v=8HuFDZ3_8yo"
+          },
+          {
+            range: "25～30 分鐘",
+            title: "康軒國中影音高手｜自然｜7 下 第 3 章 地球上的生物",
+            note: "最後收尾，快速掃過整章內容，尤其植物界、動物界。",
+            url: "https://digitalmaster.knsh.com.tw/all/video/j/science_page.html?l1=7%E4%B8%8B&l2=%E7%AC%AC3%E7%AB%A0%E3%80%80%E5%9C%B0%E7%90%83%E4%B8%8A%E7%9A%84%E7%94%9F%E7%89%A9"
+          },
+          {
+            range: "備用",
+            title: "七下自然(生物) ch3～形形色色的生物（播放清單）",
+            note: "可整套連續播放。",
+            url: "https://www.youtube.com/playlist?list=PLzPYKp0tiTIo1mszOzMA39eeBp6EngLxz"
+          },
+          {
+            range: "備用",
+            title: "108 課綱自然科七年級下學期第 2 冊影音課程試讀（播放清單）",
+            note: "含命名與分類等對應內容。",
+            url: "https://www.youtube.com/playlist?list=PLYi_KoAVF9fediTEGXm_g4xIBFI_B9n0a"
+          }
+        ]
+      },
+      {
+        id: "history",
+        name: "歷史",
+        emoji: "史",
+        intro: "七下日治時期的社會與文化",
+        videos: [
+          {
+            range: "0～8 分鐘",
+            title: "【臺灣史快速複習】EP5 日治時代的社會文化",
+            note: "先抓整體架構。",
+            url: "https://www.youtube.com/watch?v=mxeItVrf5sE"
+          },
+          {
+            range: "8～15 分鐘",
+            title: "108 課綱七下歷史－日治時期的社會與文化(上)－教育",
+            note: "補教育面向與社會文化脈絡。",
+            url: "https://www.youtube.com/watch?v=JRsFkwVVDyM"
+          },
+          {
+            range: "15～22 分鐘",
+            title: "日治時期社會運動－國七歷史｜彤妤老師",
+            note: "整理社會運動主題。",
+            url: "https://www.youtube.com/watch?v=P7SYAh-sbx4"
+          },
+          {
+            range: "22～27 分鐘",
+            title: "國中_歷史_10-3-1 臺灣議會設置請願運動",
+            note: "對應常考的政治社會運動。",
+            url: "https://www.learnmode.net/flip/video/12855"
+          },
+          {
+            range: "27～30 分鐘",
+            title: "國一(下)社會→歷史科第三單元 日治時期的社會與文化【表格版】",
+            note: "最後快速掃一次表格整理。",
+            url: "https://www.youtube.com/watch?v=PoVloJ4IEuE"
+          },
+          {
+            range: "備用",
+            title: "翰林社會歷史【7 下】第 3 章 日治時期的社會與文化（播放清單）",
+            note: "第二輪複習可用。",
+            url: "https://www.youtube.com/playlist?list=PLV6PsyypDJZiuD1vDB_NaVgiVawER39x_"
+          },
+          {
+            range: "備用",
+            title: "康軒國中影音高手｜7 下 第 3 課 日治時期的社會與文化",
+            note: "平台式整課入口。",
+            url: "https://digitalmaster.knsh.com.tw/all/video/j/history_page.html?l1=7%E4%B8%8B&l2=%E7%AC%AC3%E8%AA%B2%E3%80%80%E6%97%A5%E6%B2%BB%E6%99%82%E6%9C%9F%E7%9A%84%E7%A4%BE%E6%9C%83%E8%88%87%E6%96%87%E5%8C%96"
+          }
+        ]
+      },
+      {
+        id: "geography",
+        name: "地理",
+        emoji: "地",
+        intro: "七下第3課：臺灣的第一級產業",
+        videos: [
+          {
+            range: "0～6 分鐘",
+            title: "康軒七下地理 3-1 產業活動分類與臺灣的產業結構",
+            note: "先建立第一級、第二級、第三級產業的基本架構。",
+            url: "https://www.youtube.com/watch?v=KGnsey40Gl4"
+          },
+          {
+            range: "6～14 分鐘",
+            title: "國七下學期地理－臺灣的第一級產業",
+            note: "抓農業特色與分布：平原水稻、丘陵山地茶樹、自然條件影響分布。",
+            url: "https://www.youtube.com/watch?v=I8eT_ydbnWQ"
+          },
+          {
+            range: "14～20 分鐘",
+            title: "1 下第 3 課－臺灣的第一級產業（播放清單）",
+            note: "優先挑農業問題與轉型：精緻農業、有機農業、共同運銷、開發新市場。",
+            url: "https://www.youtube.com/playlist?list=PL_Hz3_-6p-ZvGU9wOl_8J6bIQFyxWAC7U"
+          },
+          {
+            range: "20～26 分鐘",
+            title: "康軒七下地理 3-3 臺灣的漁業和畜牧業",
+            note: "重點：烏魚與中國沿岸流、黑鮪魚與黑潮、遠洋漁業、欄牧。",
+            url: "https://www.youtube.com/watch?v=7r0XQj4YdNQ"
+          },
+          {
+            range: "26～30 分鐘",
+            title: "康軒國中影音高手｜7 下 第 3 課 臺灣的第一級產業",
+            note: "最後 4 分鐘快速掃過平台課程。",
+            url: "https://digitalmaster.knsh.com.tw/all/video/j/geography_page.html?l1=7%E4%B8%8B&l2=%E7%AC%AC3%E8%AA%B2%E3%80%80%E8%87%BA%E7%81%A3%E7%9A%84%E7%AC%AC%E4%B8%80%E7%B4%9A%E7%94%A2%E6%A5%AD"
+          },
+          {
+            range: "備用",
+            title: "康軒七下地理（111 學年度）播放清單",
+            note: "整冊播放清單。",
+            url: "https://www.youtube.com/playlist?list=PLyFmfN0OxYyM1FVD1QnL0NoSMtmvcXCQC"
+          },
+          {
+            range: "備用",
+            title: "地理頻道－康軒版七年級（含十分鐘學地理）",
+            note: "第二輪複習用。",
+            url: "https://www.youtube.com/playlist?list=PLgKsT7EOfUVQq4mEp8NAXJyswtfHXp6up"
+          }
+        ]
+      },
+      {
+        id: "civics",
+        name: "公民",
+        emoji: "公",
+        intro: "七下第2課：團體參與中的志願結社",
+        videos: [
+          {
+            range: "0～6 分鐘",
+            title: "康軒國中影音高手｜7 下 第 2 課 團體參與中的志願結社",
+            note: "先看整課入口，建立章節架構。",
+            url: "https://digitalmaster.knsh.com.tw/all/video/j/cs_page.html?l1=7%E4%B8%8B&l2=%E7%AC%AC2%E8%AA%B2%E3%80%80%E5%9C%98%E9%AB%94%E5%8F%83%E8%88%87%E4%B8%AD%E7%9A%84%E5%BF%97%E9%A1%98%E7%B5%90%E7%A4%BE"
+          },
+          {
+            range: "6～12 分鐘",
+            title: "公 2-3 團體與志願結社（播放清單）",
+            note: "重點：什麼是團體、為什麼要參與、團體的意義與功能。",
+            url: "https://www.youtube.com/playlist?list=PLxm0pH-DnpwHTgO3fXAL8ABa3IQkqN5Tz"
+          },
+          {
+            range: "12～18 分鐘",
+            title: "公民叮：七下－社會中的團體（播放清單）",
+            note: "再聽一次核心概念，釐清常混淆名詞。",
+            url: "https://www.youtube.com/playlist?list=PLHHP8Zm94h7Nvy74DzajooPrj-xgNACnx"
+          },
+          {
+            range: "18～24 分鐘",
+            title: "翰林社會公民【7 下】第 3 章 團體與志願結社（播放清單）",
+            note: "整章統整，可優先挑團體定義、結社自由、志願結社特徵。",
+            url: "https://www.youtube.com/playlist?list=PLvKdXqtMgBkCChmCvZxgldNCi7yVV2AEE"
+          },
+          {
+            range: "24～30 分鐘",
+            title: "(112 學年) 康軒版─國中公民【七下】課程平台",
+            note: "最後幾分鐘快速查漏補缺。",
+            url: "https://www.learnmode.net/course/638741/content"
+          },
+          {
+            range: "備用",
+            title: "1 下第 2 課_團體參與中的志願結社（播放清單）",
+            note: "可做第二輪複習。",
+            url: "https://www.youtube.com/playlist?list=PLHxJFAz52ep6eeX50oXVmEOJ86dMBh-DF"
+          },
+          {
+            range: "備用",
+            title: "公民七下 02 團體參與中的志願結社（播放清單）",
+            note: "同主題補充片單。",
+            url: "https://www.youtube.com/playlist?list=PLrgHpNQ5r6Zf_8tllyKDx2EdJIucv8Xu-"
+          }
+        ]
+      }
+    ];
+
+    let currentSubjectIndex = 0;
+    let currentVideoIndex = 0;
+
+    const homeScreen = document.getElementById("homeScreen");
+    const playerScreen = document.getElementById("playerScreen");
+    const bigGrid = document.getElementById("bigGrid");
+    const subjectTabs = document.getElementById("subjectTabs");
+    const playlist = document.getElementById("playlist");
+    const nowSubject = document.getElementById("nowSubject");
+    const nowTitle = document.getElementById("nowTitle");
+    const nowNote = document.getElementById("nowNote");
+    const videoFrame = document.getElementById("videoFrame");
+    const embedFallback = document.getElementById("embedFallback");
+
+    function escapeHtml(str){
+      return String(str)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
+
+    function buildHome(){
+      bigGrid.innerHTML = DATA.map((subject, index) => `
+        <button class="big-subject-btn" onclick="enterSubject(${index})" aria-label="進入${escapeHtml(subject.name)}">
+          <div class="big-subject-top">
+            <div class="subject-badge">${escapeHtml(subject.emoji)}</div>
+            <div class="play-mark">▶ 直接播放</div>
+          </div>
+          <h2 class="big-subject-name">${escapeHtml(subject.name)}</h2>
+          <p class="big-subject-meta">
+            ${escapeHtml(subject.intro)}<br>
+            共 ${subject.videos.length} 個入口
+          </p>
+        </button>
+      `).join("");
+    }
+
+    function renderTabs(){
+      subjectTabs.innerHTML = DATA.map((subject, index) => `
+        <button
+          class="subject-tab ${index === currentSubjectIndex ? "active" : ""}"
+          onclick="switchSubject(${index})"
+        >
+          ${escapeHtml(subject.name)}
+        </button>
+      `).join("");
+    }
+
+    function renderPlaylist(){
+      const subject = DATA[currentSubjectIndex];
+      playlist.innerHTML = subject.videos.map((video, index) => `
+        <div class="video-item ${index === currentVideoIndex ? "active" : ""}" onclick="playVideo(${currentSubjectIndex}, ${index})">
+          <div class="video-time">${escapeHtml(video.range)}</div>
+          <h3 class="video-title">${escapeHtml(video.title)}</h3>
+          <p class="video-note">${escapeHtml(video.note)}</p>
+          <div class="video-links" onclick="event.stopPropagation()">
+            <button class="mini-link primary" onclick="playVideo(${currentSubjectIndex}, ${index})">在頁面播放</button>
+            <a class="mini-link" href="${video.url}" target="_blank" rel="noopener noreferrer">開啟原始連結</a>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function getEmbedUrl(url){
+      try{
+        const u = new URL(url);
+
+        // YouTube
+        if(
+          u.hostname.includes("youtube.com") ||
+          u.hostname.includes("youtu.be")
+        ){
+          let videoId = "";
+          let playlistId = "";
+
+          if(u.hostname.includes("youtu.be")){
+            videoId = u.pathname.replace("/", "");
+          }else{
+            videoId = u.searchParams.get("v") || "";
+            playlistId = u.searchParams.get("list") || "";
+          }
+
+          if(u.pathname === "/playlist" && u.searchParams.get("list")){
+            playlistId = u.searchParams.get("list");
+            return {
+              src: `https://www.youtube-nocookie.com/embed/videoseries?list=${encodeURIComponent(playlistId)}`,
+              embeddable: true
+            };
+          }
+
+          if(videoId && playlistId){
+            return {
+              src: `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}?list=${encodeURIComponent(playlistId)}`,
+              embeddable: true
+            };
+          }
+
+          if(videoId){
+            return {
+              src: `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}`,
+              embeddable: true
+            };
+          }
+
+          if(playlistId){
+            return {
+              src: `https://www.youtube-nocookie.com/embed/videoseries?list=${encodeURIComponent(playlistId)}`,
+              embeddable: true
+            };
+          }
+        }
+
+        // 其他網站：先嘗試直接內嵌
+        return {
+          src: url,
+          embeddable: false
+        };
+      }catch(err){
+        return {
+          src: url,
+          embeddable: false
+        };
+      }
+    }
+
+    function updatePlayer(){
+      const subject = DATA[currentSubjectIndex];
+      const video = subject.videos[currentVideoIndex];
+      const embed = getEmbedUrl(video.url);
+
+      nowSubject.textContent = `${subject.name}｜${subject.intro}｜${video.range}`;
+      nowTitle.textContent = video.title;
+      nowNote.textContent = video.note;
+
+      videoFrame.src = embed.src;
+      embedFallback.classList.toggle("hidden", embed.embeddable);
+
+      renderTabs();
+      renderPlaylist();
+    }
+
+    function enterSubject(index){
+      currentSubjectIndex = index;
+      currentVideoIndex = 0;
+      homeScreen.classList.add("hidden");
+      playerScreen.classList.remove("hidden");
+      updatePlayer();
+    }
+
+    function switchSubject(index){
+      currentSubjectIndex = index;
+      currentVideoIndex = 0;
+      updatePlayer();
+    }
+
+    function playVideo(subjectIndex, videoIndex){
+      currentSubjectIndex = subjectIndex;
+      currentVideoIndex = videoIndex;
+      updatePlayer();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function playFirstOfCurrent(){
+      currentVideoIndex = 0;
+      updatePlayer();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function goHome(){
+      homeScreen.classList.remove("hidden");
+      playerScreen.classList.add("hidden");
+      videoFrame.src = "";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    buildHome();
+  </script>
+</body>
+</html>
