@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>當日考程</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      background: linear-gradient(135deg, #eef6ff 0%, #f8fbff 100%);
+      color: #1f2937;
+    }
+    .wrap {
+      min-height: 100vh;
+      padding: 32px 20px 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .title {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      margin: 0 0 8px;
+      letter-spacing: 1px;
+    }
+    .subtitle {
+      font-size: clamp(16px, 2vw, 22px);
+      color: #4b5563;
+      margin: 0;
+    }
+    .status-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr 1fr;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+    .card {
+      background: rgba(255,255,255,0.92);
+      border: 1px solid #dbeafe;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 12px 28px rgba(59, 130, 246, 0.08);
+      backdrop-filter: blur(6px);
+    }
+    .label {
+      font-size: 14px;
+      color: #6b7280;
+      margin-bottom: 8px;
+    }
+    .value {
+      font-size: clamp(22px, 3vw, 34px);
+      font-weight: 800;
+      line-height: 1.2;
+    }
+    .subvalue {
+      margin-top: 6px;
+      color: #4b5563;
+      font-size: 15px;
+    }
+    .highlight {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      color: #fff;
+      border: none;
+    }
+    .highlight .label,
+    .highlight .subvalue { color: rgba(255,255,255,0.85); }
+    .schedule {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+    }
+    .period-card {
+      background: #ffffff;
+      border: 2px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 18px 16px;
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+    .period-card.active {
+      border-color: #2563eb;
+      box-shadow: 0 14px 28px rgba(37, 99, 235, 0.18);
+      transform: translateY(-2px);
+    }
+    .period-card.upcoming {
+      border-color: #93c5fd;
+    }
+    .period-no {
+      font-size: 14px;
+      color: #6b7280;
+      margin-bottom: 6px;
+    }
+    .subject {
+      font-size: 26px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .time {
+      font-size: 15px;
+      color: #374151;
+    }
+    .notes {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      width: min(360px, calc(100vw - 32px));
+      background: rgba(17, 24, 39, 0.92);
+      color: #fff;
+      border-radius: 18px;
+      padding: 18px 18px 14px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+      z-index: 10;
+    }
+    .notes h2 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+    .notes ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .notes li {
+      margin-bottom: 8px;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+    .time-big {
+      font-size: clamp(48px, 8vw, 78px);
+      letter-spacing: 2px;
+      line-height: 1.05;
+    }
+    .subject-code {
+      display: inline-block;
+      margin-left: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #dbeafe;
+      color: #1d4ed8;
+      font-size: 14px;
+      font-weight: 700;
+      vertical-align: middle;
+    }
+    .footer-tip {
+      margin-top: 24px;
+      text-align: center;
+      color: #6b7280;
+      font-size: 14px;
+    }
+    @media (max-width: 900px) {
+      .status-grid {
+        grid-template-columns: 1fr;
+      }
+      .time-big {
+        font-size: clamp(42px, 12vw, 72px);
+      }
+    }
+    @media (max-width: 640px) {
+      .wrap { padding-bottom: 240px; }
+      .notes { border-radius: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="header">
+      <h1 class="title">當天考程</h1>
+      <p class="subtitle" id="examDateText"></p>
+    </header>
+
+    <section class="status-grid">
+      <div class="card">
+        <div class="label">目前節次</div>
+        <div class="value" id="currentPeriod">尚未開始</div>
+        <div class="subvalue" id="currentSubject">請等待考試開始</div>
+      </div>
+
+      <div class="card highlight">
+        <div class="label">現在時間</div>
+        <div class="value time-big" id="currentTime">--:--:--</div>
+        <div class="subvalue" id="todayText">----</div>
+      </div>
+
+      <div class="card">
+        <div class="label">下一個考試</div>
+        <div class="value" id="nextExam">今日考程已結束</div>
+        <div class="subvalue" id="nextTime">--</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="schedule" id="scheduleList"></div>
+    </section>
+
+    <div class="footer-tip">僅顯示節次與科目，不顯示範圍。</div>
+  </div>
+
+  <aside class="notes">
+    <h2>考試規定／備註</h2>
+    <ul>
+      <li>電腦讀卡部分之測驗，請準備 2B 鉛筆。</li>
+      <li>非電腦讀卡部分之測驗，務必用黑色墨水的筆書寫，不得使用鉛筆，違者不予計分。</li>
+      <li>寫作測驗請務必使用黑筆書寫，未用黑筆，不予計分。</li>
+    </ul>
+  </aside>
+
+  <script>
+    const examDateLabel = '115 年 3 月 30 日（星期一）';
+    const subjectCodes = {
+      '國文': '01',
+      '英語': '02',
+      '自然': '03',
+      '數學': '04',
+      '社會': '05'
+    };
+
+    const schedule = [
+      { period: '1', subject: '國文', start: '08:20', end: '09:05' },
+      { period: '2', subject: '英語', start: '09:15', end: '10:00' },
+      { period: '3', subject: '社會', start: '10:15', end: '11:00' },
+      { period: '4', subject: '數學', start: '11:10', end: '11:55' },
+      { period: '5', subject: '自習', start: '13:15', end: '14:00' },
+      { period: '6', subject: '自然', start: '14:10', end: '14:55' },
+      { period: '7', subject: '寫作測驗', start: '15:15', end: '16:05' },
+    ];
+
+    const examDateText = document.getElementById('examDateText');
+    const currentTime = document.getElementById('currentTime');
+    const todayText = document.getElementById('todayText');
+    const currentPeriod = document.getElementById('currentPeriod');
+    const currentSubject = document.getElementById('currentSubject');
+    const nextExam = document.getElementById('nextExam');
+    const nextTime = document.getElementById('nextTime');
+    const scheduleList = document.getElementById('scheduleList');
+
+    examDateText.textContent = examDateLabel;
+
+    function toMinutes(timeStr) {
+      const [h, m] = timeStr.split(':').map(Number);
+      return h * 60 + m;
+    }
+
+    function getSubjectLabel(subject) {
+      const code = subjectCodes[subject];
+      return code ? `${subject} <span class="subject-code">${code}</span>` : subject;
+    }
+
+    function renderSchedule(activeIndex = -1, upcomingIndex = -1) {
+      scheduleList.innerHTML = schedule.map((item, index) => {
+        const cls = [
+          'period-card',
+          index === activeIndex ? 'active' : '',
+          index === upcomingIndex ? 'upcoming' : ''
+        ].filter(Boolean).join(' ');
+
+        return `
+          <article class="${cls}">
+            <div class="period-no">第 ${item.period} 節</div>
+            <div class="subject">${getSubjectLabel(item.subject)}</div>
+            <div class="time">${item.start} - ${item.end}</div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function updateClock() {
+      const now = new Date();
+      const hh = String(now.getHours()).padStart(2, '0');
+      const mm = String(now.getMinutes()).padStart(2, '0');
+      const ss = String(now.getSeconds()).padStart(2, '0');
+      currentTime.textContent = `${hh}:${mm}:${ss}`;
+
+      const weekdayNames = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+      todayText.textContent = `${now.getFullYear()} / ${String(now.getMonth() + 1).padStart(2, '0')} / ${String(now.getDate()).padStart(2, '0')} ${weekdayNames[now.getDay()]}`;
+
+      const nowMinutes = now.getHours() * 60 + now.getMinutes();
+      let activeIndex = -1;
+      let upcomingIndex = -1;
+
+      for (let i = 0; i < schedule.length; i++) {
+        const item = schedule[i];
+        const start = toMinutes(item.start);
+        const end = toMinutes(item.end);
+
+        if (nowMinutes >= start && nowMinutes <= end) {
+          activeIndex = i;
+          break;
+        }
+        if (nowMinutes < start && upcomingIndex === -1) {
+          upcomingIndex = i;
+        }
+      }
+
+      if (activeIndex >= 0) {
+        const item = schedule[activeIndex];
+        currentPeriod.textContent = `第 ${item.period} 節`;
+        currentSubject.innerHTML = `${item.subject}${subjectCodes[item.subject] ? ` <span class="subject-code">${subjectCodes[item.subject]}</span>` : ''}｜${item.start} - ${item.end}`;
+      } else if (upcomingIndex >= 0) {
+        currentPeriod.textContent = '休息時間';
+        currentSubject.innerHTML = `下一節：第 ${schedule[upcomingIndex].period} 節 ${schedule[upcomingIndex].subject}${subjectCodes[schedule[upcomingIndex].subject] ? ` <span class="subject-code">${subjectCodes[schedule[upcomingIndex].subject]}</span>` : ''}`;
+      } else {
+        currentPeriod.textContent = '今日結束';
+        currentSubject.textContent = '今天的考程已全部結束';
+      }
+
+      if (upcomingIndex >= 0) {
+        const item = schedule[upcomingIndex];
+        nextExam.innerHTML = `${item.subject}${subjectCodes[item.subject] ? ` <span class="subject-code">${subjectCodes[item.subject]}</span>` : ''}（第 ${item.period} 節）`;
+        nextTime.textContent = `${item.start} - ${item.end}`;
+      } else {
+        nextExam.textContent = '今日考程已結束';
+        nextTime.textContent = '請好好休息，準備下一次考試';
+      }
+
+      renderSchedule(activeIndex, upcomingIndex);
+    }
+
+    renderSchedule();
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
+</body>
+</html>
