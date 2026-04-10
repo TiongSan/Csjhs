@@ -504,6 +504,45 @@
       line-height:1.7;
     }
 
+    .upload-panel{
+      margin-top:16px;
+      padding:16px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:#f8fbff;
+    }
+
+    .upload-status{
+      margin-top:10px;
+      padding:12px 14px;
+      border-radius:12px;
+      font-size:14px;
+      line-height:1.7;
+      display:none;
+    }
+
+    .upload-status.show{
+      display:block;
+    }
+
+    .upload-status.info{
+      background:#eff6ff;
+      border:1px solid #bfdbfe;
+      color:#1d4ed8;
+    }
+
+    .upload-status.success{
+      background:#ecfdf3;
+      border:1px solid #bbf7d0;
+      color:#166534;
+    }
+
+    .upload-status.error{
+      background:#fef2f2;
+      border:1px solid #fecaca;
+      color:#991b1b;
+    }
+
     .modal-overlay{
       position:fixed;
       inset:0;
@@ -623,6 +662,13 @@
       {"q":"根據課文內容，下面佗一个選項的描述無正確？","options":["阿花仔的主人足歹心","阿花仔的主人足好心","阿花仔的手袂輸 thia̋n-pú-lah","阿花仔這陣有歲仔，目睭無好"],"answer":1,"explain":""},
       {"q":"根據俗語的介紹，下面佗一句俗語佮「先苦，而後甘」的意思較倚近？","options":["狗無嫌主人散","毋通看貓的無點","艱苦頭，快活尾","耳仔生兩葉，家己看袂著"],"answer":3,"explain":""}
     ];
+
+
+    const GOOGLE_FORM_CONFIG = {
+      // 你之後只要改這裡：
+      // formUrl 改成你的 Google 表單填答網址即可，不需要 entry 代碼
+      formUrl: "https://docs.google.com/forms/d/e/1FAIpQLScDInn5Vn1UwxYqzeuMhcdZAFE20ErqPURU8zurg_lRsWwbUg/viewform?usp=sharing&ouid=110527421986294096004"
+    };
 
     const LEVEL_COUNT = 4;
     const QUESTIONS_PER_LEVEL = 5;
@@ -1009,17 +1055,27 @@
           <h3 style="margin-top:22px;">精熟碼</h3>
           <div class="mastery-row">${masteryHtml}</div>
 
-          <h3 style="margin-top:22px;">結果碼</h3>
-          <div class="result-code" id="resultCode">${escapeHtml(resultString)}</div>
+<h3 style="margin-top:22px;">結果碼</h3>
+<div class="result-code" id="resultCode">${escapeHtml(resultString)}</div>
 
-          <div class="row" style="justify-content:center; margin-top:10px;">
-            <button class="btn-primary" onclick="copyTextById('resultCode')">複製結果碼</button>
-            <button class="btn-success" onclick="showStats()">查看統計卡片</button>
-            <button class="btn-secondary" onclick="restartAll()">重新開始</button>
-          </div>
+<div class="row" style="justify-content:center; margin-top:10px;">
+  <button class="btn-primary" onclick="copyTextById('resultCode')">複製結果碼</button>
+  <button class="btn-success" onclick="showStats()">查看統計卡片</button>
+  <button class="btn-secondary" onclick="restartAll()">重新開始</button>
+</div>
 
-          <div id="qrcode"></div>
-          <p class="muted" style="margin-top:14px;">可直接出示 QR Code 給老師掃描。</p>
+<div id="qrcode"></div>
+<p class="muted" style="margin-top:14px;">可直接出示 QR Code 給老師掃描。</p>
+
+<!-- 新增上傳區塊 -->
+<div class="upload-panel">
+  <div style="font-weight:900; font-size:18px;">開啟 Google 表單</div>
+  <div class="mini-note" style="margin-top:6px;">按下按鈕後，會先複製上方結果碼，再自動開啟 Google 表單，老師只要貼上結果碼送出即可。</div>
+  <div class="row" style="margin-top:12px;">
+    <button id="uploadResultBtn" class="btn-success" type="button" onclick="openGoogleFormWithCopiedResult(this)">複製結果碼並開啟 Google 表單</button>
+  </div>
+  <div id="googleFormUploadStatus" class="upload-status"></div>
+</div>
         </div>
       `;
 
@@ -1060,7 +1116,7 @@
           <div class="row-between">
             <div>
               <h2 style="margin:0;">統計分數</h2>
-              <div class="muted" style="margin-top:6px;">可直接出示下方 QR Code 給老師掃描</div>
+              <div class="muted" style="margin-top:6px;">可直接出示下方 QR Code 給老師掃描，也可一鍵複製結果碼並開啟 Google 表單</div>
             </div>
             <button class="btn-secondary" type="button" onclick="closeStatsModal()">關閉</button>
           </div>
@@ -1094,6 +1150,15 @@
           <div class="row" style="justify-content:center; margin-top:12px;">
             <button class="btn-primary" type="button" onclick="copyTextById('statsResultCode')">複製統計結果碼</button>
           </div>
+
+          <div class="upload-panel">
+            <div style="font-weight:900; font-size:18px;">開啟 Google 表單</div>
+            <div class="mini-note" style="margin-top:6px;">按下按鈕後，會先複製上方結果碼，再自動開啟 Google 表單，老師只要貼上結果碼送出即可。</div>
+            <div class="row" style="margin-top:12px;">
+              <button id="uploadResultBtn" class="btn-success" type="button" onclick="openGoogleFormWithCopiedResult(this)">複製結果碼並開啟 Google 表單</button>
+            </div>
+            <div id="googleFormUploadStatus" class="upload-status"></div>
+          </div>
         </div>
       `;
 
@@ -1115,6 +1180,83 @@
       if(modal) modal.remove();
     }
 
+    function showLoadProgressModal(){
+      const modal = document.createElement("div");
+      modal.id = "loadModal";
+      modal.className = "modal-overlay";
+      modal.innerHTML = `
+        <div class="modal-card" style="max-width:500px;">
+          <div class="row-between">
+            <h2 style="margin:0;">載入進度</h2>
+            <button class="btn-secondary" type="button" onclick="closeLoadModal()">關閉</button>
+          </div>
+          <div style="margin-top:16px;">
+            <label for="loadProgressInput">貼上結果碼</label>
+            <textarea id="loadProgressInput" placeholder="TG|G701|N01|T20|C16|A80|M1111|F1|D2503240148"></textarea>
+          </div>
+          <div class="row" style="justify-content:center; margin-top:18px;">
+            <button class="btn-primary" type="button" onclick="confirmLoadProgress()">確定載入</button>
+          </div>
+        </div>
+      `;
+      modal.addEventListener("click", (e)=>{
+        if(e.target === modal) closeLoadModal();
+      });
+      document.body.appendChild(modal);
+    }
+
+    function closeLoadModal(){
+      const modal = $("loadModal");
+      if(modal) modal.remove();
+    }
+
+    function confirmLoadProgress(){
+      const input = $("loadProgressInput");
+      if(!input) return;
+      const raw = input.value.trim();
+      if(!raw){
+        alert("請先貼上結果碼");
+        return;
+      }
+      
+      const parsed = parseResultString(raw);
+      if(!parsed){
+        alert("無效的結果碼格式");
+        return;
+      }
+      
+      try{
+        const parsedQuestions = parseQuestionBank();
+        activeQuestionBank = buildActiveQuestionBank(parsedQuestions);
+      }catch(err){
+        alert(err.message);
+        return;
+      }
+
+      state.classCode = parsed.classCode;
+      state.seatNo = parsed.seatNo;
+      state.totalTotal = parsed.total;
+      state.totalCorrect = parsed.correct;
+      state.finished = parsed.finished;
+      state.masteryBits = parsed.mastery.split('').map(Number);
+      
+      // Calculate next level based on mastery bits
+      state.currentLevelIndex = Math.min(state.masteryBits.length, LEVEL_COUNT - 1);
+      
+      if(state.finished || state.currentLevelIndex >= LEVEL_COUNT){
+          state.finished = true;
+          closeLoadModal();
+          finishGame();
+          return;
+      }
+
+      resetCurrentLevelProgress();
+      fractalForest.reset();
+      closeLoadModal();
+      showQuestion();
+      alert("載入成功！");
+    }
+
     async function copyTextById(id){
       const el = $(id);
       if(!el) return;
@@ -1123,6 +1265,43 @@
         alert("結果碼已複製。");
       }catch(err){
         alert("無法自動複製，請手動選取結果碼。");
+      }
+    }
+
+    function isGoogleFormConfigReady(){
+      return GOOGLE_FORM_CONFIG.formUrl
+        && /^https:\/\/docs\.google\.com\/forms\//.test(GOOGLE_FORM_CONFIG.formUrl);
+    }
+
+    function setUploadStatus(type, message){
+      const el = $("googleFormUploadStatus");
+      if(!el) return;
+      el.className = `upload-status show ${type}`;
+      el.innerHTML = message;
+    }
+
+    async function openGoogleFormWithCopiedResult(button){
+      if(!isGoogleFormConfigReady()){
+        setUploadStatus("error", "請先到程式碼最上方的 <strong>GOOGLE_FORM_CONFIG</strong>，把 <strong>formUrl</strong> 改成你的 Google 表單填答網址。");
+        return;
+      }
+
+      const resultString = generateResultString(state.finished);
+
+      if(button) button.disabled = true;
+      try{
+        await navigator.clipboard.writeText(resultString);
+        setUploadStatus("success", "結果碼已複製，正在開啟 Google 表單。若沒有自動跳出新分頁，請檢查瀏覽器是否封鎖彈出視窗。");
+      }catch(err){
+        setUploadStatus("info", "無法自動複製結果碼，仍會幫你開啟 Google 表單。請先手動複製上方結果碼再貼到表單。");
+      }
+
+      try{
+        window.open(GOOGLE_FORM_CONFIG.formUrl, "_blank", "noopener");
+      }catch(err){
+        setUploadStatus("error", "無法開啟 Google 表單，請檢查網址是否正確。");
+      }finally{
+        if(button) button.disabled = false;
       }
     }
 
@@ -1152,6 +1331,7 @@
 
             <div class="row" style="justify-content:center; margin-top:18px;">
               <button class="btn-primary" onclick="startGame()">開始闖關</button>
+              <button class="btn-secondary" onclick="showLoadProgressModal()">載入進度</button>
             </div>
 
             <div style="margin-top:18px;">
@@ -1172,7 +1352,7 @@
             </div>
           </div>
 
-          <button id="teacherToggleBtn" class="teacher-toggle" type="button" onclick="toggleTeacherPanel()">老師工具</button>
+          <button id="teacherToggleBtn" class="teacher-toggle" type="button" onclick="toggleTeacherPanel()"></button>
 
           <div id="teacherPanel" class="teacher-shell hidden">
             <div class="section-divider"></div>
