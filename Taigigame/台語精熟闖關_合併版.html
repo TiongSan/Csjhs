@@ -97,6 +97,100 @@
     .upload-status.show{ display:block; }
     .upload-status.success{ background:#ecfdf3; border:1px solid #bbf7d0; color:#166534; }
     .upload-status.error{ background:#fef2f2; border:1px solid #fecaca; color:#991b1b; }
+    
+    /* ===== Bonus System 樣式 ===== */
+    /* Combo 浮動文字特效 */
+    @keyframes floatUp {
+      0% { opacity: 1; transform: translateY(0) scale(1); }
+      100% { opacity: 0; transform: translateY(-60px) scale(0.8); }
+    }
+    
+    .combo-popup {
+      position: fixed;
+      pointer-events: none;
+      font-weight: 900;
+      font-size: 24px;
+      z-index: 999;
+      animation: floatUp 1.5s ease-out forwards;
+    }
+    
+    .combo-popup.good { color: #16a34a; }
+    .combo-popup.great { color: #d97706; }
+    .combo-popup.amazing { color: #dc2626; }
+    
+    /* Emoji 噴發動畫 */
+    @keyframes emojiPop {
+      0% { 
+        opacity: 1; 
+        transform: translate(0, 0) scale(1) rotate(0deg);
+      }
+      100% { 
+        opacity: 0; 
+        transform: translate(var(--tx, 0), var(--ty, 80px)) scale(0.3) rotate(360deg);
+      }
+    }
+    
+    .emoji-burst {
+      position: fixed;
+      font-size: 48px;
+      pointer-events: none;
+      z-index: 998;
+      animation: emojiPop 1.5s ease-out forwards;
+    }
+    
+    /* Perfect 過關樣式 */
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(217, 119, 6, 0.7); }
+      50% { box-shadow: 0 0 0 20px rgba(217, 119, 6, 0); }
+    }
+    
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+    
+    .perfect-badge {
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      border-radius: 16px;
+      color: #fff;
+      font-weight: 900;
+      font-size: 28px;
+      margin: 20px auto;
+      animation: pulse-glow 2s infinite;
+      box-shadow: 0 10px 25px rgba(217, 119, 6, 0.3);
+    }
+    
+    .perfect-stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    
+    .star-twinkle {
+      position: absolute;
+      font-size: 24px;
+      animation: twinkle 1.5s ease-in-out infinite;
+    }
+    
+    .bonus-info {
+      margin-top: 12px;
+      padding: 12px;
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 700;
+      color: #92400e;
+    }
+    
+    /* 普通過關視覺 */
+    .level-summary {
+      position: relative;
+    }
   </style>
 </head>
 <body>
@@ -156,7 +250,8 @@
       totalTotal: 0,
       masteryBits: [],
       finished: false,
-      rounds: 1 // 挑戰輪數
+      rounds: 1, // 挑戰輪數
+      currentCombo: 0 // Combo 連擊計數
     };
 
     let activeQuestionBank = [];
@@ -352,14 +447,34 @@
       const q = activeQuestionBank[state.currentLevelIndex].questions[state.currentQuestionIndex];
       const isCorrect = idx === q.answer;
       state.levelTotal++;
+      
+      let earnedPoints = 0;
       if(isCorrect){
         state.levelCorrect++;
-        state.points += 10;
+        state.currentCombo++;
+        // Combo 計分：10 + (combo - 1) * 2
+        earnedPoints = 10 + (state.currentCombo - 1) * 2;
+        state.points += earnedPoints;
+      } else {
+        state.currentCombo = 0;
+        earnedPoints = 0;
       }
+      
       fractalForest.grow();
       const fb = $("feedback");
       fb.className = isCorrect ? "feedback success" : "feedback error";
-      fb.innerHTML = isCorrect ? "答對了！積分 +10" : "答錯了。";
+      
+      if(isCorrect){
+        const comboText = state.currentCombo > 1 ? ` (🔥 ${state.currentCombo} 連擊)` : "";
+        fb.innerHTML = `答對了！積分 +${earnedPoints}${comboText}`;
+        
+        // 觸發 Combo 動畫特效（只在連擊時顯示）
+        if(state.currentCombo > 1){
+          createBonusEffect(state.currentCombo, earnedPoints);
+        }
+      } else {
+        fb.innerHTML = "答錯了。";
+      }
       fb.style.display = "block";
       
       document.querySelectorAll(".option-btn").forEach(b => b.disabled = true);
@@ -372,18 +487,42 @@
 
     function finishLevel(){
       const passed = state.levelCorrect >= 3;
+      const isPerfect = state.levelCorrect === 5; // Perfect 判定：5 題全對
+      
+      if(isPerfect){
+        // Perfect 過關獎勵 +30 分
+        state.points += 30;
+      }
+      
       $("app").innerHTML = `
-        <div class="screen center">
-          <h2>Level ${state.currentLevelIndex+1} 結束</h2>
+        <div class="screen center level-summary">
+          ${isPerfect ? `
+            <div class="perfect-badge">
+              💯 Level ${state.currentLevelIndex+1} 完美精熟！
+            </div>
+          ` : `
+            <h2>Level ${state.currentLevelIndex+1} 結束</h2>
+          `}
           <div class="meta-box" style="margin:20px auto; max-width:200px;">
             <div class="label">本關答對</div>
             <div class="value">${state.levelCorrect}/5</div>
           </div>
+          ${isPerfect ? `
+            <div class="bonus-info">
+              💎 完美加成：+30 積分<br>
+              <small>（5題全對的傑出表現！）</small>
+            </div>
+          ` : ''}
           <div class="row" style="justify-content:center;">
             ${passed ? `<button class="btn-success" onclick="nextLevel()">前進下一關</button>` : `<button class="btn-warning" onclick="retryLevel()">重試本關</button>`}
           </div>
         </div>
       `;
+      
+      // Perfect 時觸發視覺特效
+      if(isPerfect){
+        createPerfectEffect();
+      }
     }
 
     function nextLevel(){
@@ -394,12 +533,16 @@
       state.levelCorrect = 0;
       state.levelTotal = 0;
       state.currentQuestionIndex = 0;
+      state.currentCombo = 0; // 重置 Combo
       if(state.currentLevelIndex >= 4) finishGame();
       else showQuestion();
     }
 
     function retryLevel(){
-      state.levelCorrect = 0; state.levelTotal = 0; state.currentQuestionIndex = 0;
+      state.levelCorrect = 0; 
+      state.levelTotal = 0; 
+      state.currentQuestionIndex = 0;
+      state.currentCombo = 0; // 重置 Combo
       showQuestion();
     }
 
@@ -446,6 +589,7 @@
       state.levelTotal = 0;
       state.masteryBits = [];
       state.finished = false;
+      state.currentCombo = 0; // 重置 Combo
       activeQuestionBank = buildActiveQuestionBank(DEFAULT_QUESTION_BANK);
       fractalForest.reset();
       showQuestion();
@@ -612,6 +756,69 @@
         console.error("複製失敗：", err);
       }
       document.body.removeChild(textarea);
+    }
+
+    /***********************
+     * Bonus System 特效函式
+     ***********************/
+    function createBonusEffect(comboCount, earnedPoints){
+      // 浮動文字特效
+      const popup = document.createElement("div");
+      popup.className = "combo-popup";
+      if(comboCount <= 2) popup.classList.add("good");
+      else if(comboCount <= 4) popup.classList.add("great");
+      else popup.classList.add("amazing");
+      
+      popup.textContent = `+${earnedPoints}`;
+      popup.style.left = (window.innerWidth / 2) + "px";
+      popup.style.top = (window.innerHeight / 2) + "px";
+      document.body.appendChild(popup);
+      
+      setTimeout(() => popup.remove(), 1500);
+      
+      // Emoji 噴發特效（只在高連擊時顯示）
+      if(comboCount > 2){
+        const emojis = ["🎉", "✨", "🔥", "🚀", "🌟", "💯"];
+        const count = comboCount >= 4 ? 3 : 1;
+        
+        for(let i = 0; i < count; i++){
+          const emoji = document.createElement("div");
+          emoji.className = "emoji-burst";
+          const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+          emoji.textContent = randomEmoji;
+          
+          const centerX = window.innerWidth / 2;
+          const centerY = window.innerHeight / 2;
+          const angle = (i / count) * Math.PI * 2;
+          const distance = 80;
+          const tx = Math.cos(angle) * distance;
+          const ty = Math.sin(angle) * distance;
+          
+          emoji.style.left = centerX + "px";
+          emoji.style.top = centerY + "px";
+          emoji.style.setProperty("--tx", tx + "px");
+          emoji.style.setProperty("--ty", ty + "px");
+          
+          document.body.appendChild(emoji);
+          setTimeout(() => emoji.remove(), 1500);
+        }
+      }
+    }
+
+    function createPerfectEffect(){
+      // Perfect 時的星星動畫效果
+      const stars = ["⭐", "✨", "🌟", "💫"];
+      for(let i = 0; i < 5; i++){
+        const star = document.createElement("div");
+        star.className = "star-twinkle";
+        star.textContent = stars[Math.floor(Math.random() * stars.length)];
+        star.style.left = Math.random() * 100 + "%";
+        star.style.top = Math.random() * 100 + "%";
+        star.style.animationDelay = (i * 0.3) + "s";
+        document.body.appendChild(star);
+        
+        setTimeout(() => star.remove(), 6000);
+      }
     }
 
     function buildActiveQuestionBank(qBank){
