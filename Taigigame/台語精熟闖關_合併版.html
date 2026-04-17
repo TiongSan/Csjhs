@@ -194,7 +194,8 @@
         `T${state.totalTotal + state.levelTotal}`,
         `C${state.totalCorrect + state.levelCorrect}`,
         `M${mastery}`,
-        `D${getShortTimestamp()}`
+        `D${getShortTimestamp()}`,
+        `F${state.finished ? 1 : 0}`
       ].join("|");
       return `${payload}|V${calculateVCode(payload)}`;
     }
@@ -222,7 +223,8 @@
         total: Number(obj.T),
         correct: Number(obj.C),
         mastery: obj.M,
-        timestamp: obj.D
+        timestamp: obj.D,
+        finished: obj.F === "1"
       };
     }
 
@@ -308,6 +310,8 @@
         return;
       }
 
+      state.classCode = p.classCode;
+      state.seatNo = p.seatNo;
       state.points = p.points;
       state.totalCorrect = p.correct;
       state.totalTotal = p.total;
@@ -401,6 +405,18 @@
 
     function finishGame(){
       state.finished = true;
+      // ⚠️ 驗證身分資訊完整性
+      if(!state.classCode || !state.seatNo){
+        $("app").innerHTML = `
+          <div class="screen center" style="color:red;">
+            <h2>❌ 錯誤</h2>
+            <p>班級或座號遺失，無法產生有效的結果碼。</p>
+            <p>請重新開始並正確選擇班級座號。</p>
+            <button class="btn-primary" onclick="showStart()">返回首頁</button>
+          </div>
+        `;
+        return;
+      }
       const res = generateResultString();
       $("app").innerHTML = `
         <div class="screen center">
@@ -560,23 +576,27 @@
     }
 
     function openForm(res){
-      // 確保複製到剪貼板
-      if(navigator.clipboard && navigator.clipboard.writeText){
-        navigator.clipboard.writeText(res).then(() => {
-          alert("✓ 結果碼已複製到剪貼板！\n現在開啟 Google 表單，貼上結果碼即可上傳。");
-          window.open(GOOGLE_FORM_URL, "_blank");
-        }).catch(err => {
-          // Fallback: 使用舊方法複製
+      // 複製結果碼到剪貼板並嘗試自動填入表單
+      const doCopy = () => {
+        if(navigator.clipboard && navigator.clipboard.writeText){
+          return navigator.clipboard.writeText(res);
+        } else {
           fallbackCopyToClipboard(res);
-          alert("✓ 結果碼已複製到剪貼板！\n現在開啟 Google 表單，貼上結果碼即可上傳。");
-          window.open(GOOGLE_FORM_URL, "_blank");
-        });
-      } else {
-        // 舊瀏覽器 fallback
+          return Promise.resolve();
+        }
+      };
+      
+      doCopy().then(() => {
+        alert("✓ 結果碼已複製到剪貼板！\\n現在開啟 Google 表單，貼上結果碼即可上傳。");
+        
+        // 帶著結果碼開啟表單，讓使用者能看到預期內容
+        const formUrl = GOOGLE_FORM_URL + (GOOGLE_FORM_URL.includes("?") ? "&" : "?") + "usp=pp_url";
+        window.open(formUrl, "_blank");
+      }).catch(err => {
         fallbackCopyToClipboard(res);
-        alert("✓ 結果碼已複製到剪貼板！\n現在開啟 Google 表單，貼上結果碼即可上傳。");
+        alert("✓ 結果碼已複製到剪貼板！\\n現在開啟 Google 表單，貼上結果碼即可上傳。");
         window.open(GOOGLE_FORM_URL, "_blank");
-      }
+      });
     }
 
     function fallbackCopyToClipboard(text){
