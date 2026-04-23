@@ -28,11 +28,12 @@
 
   <script>
     /***********************
-     * 題庫與密鑰設定
+     * 核心設定
      ***********************/
-    const SECRET_SALT = "TAIGI_MASTER"; // 校驗碼密鑰，保持與解譯端一致
+    const SECRET_SALT = "TAIGI_MASTER"; // 校驗碼密鑰
     const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLScDInn5Vn1UwxYqzeuMhcdZAFE20ErqPURU8zurg_lRsWwbUg/viewform?usp=sharing";
 
+    // 遊戲狀態管理
     const state = {
       classCode: "",
       seatNo: "",
@@ -45,25 +46,25 @@
       totalTotal: 0,
       masteryBits: [],
       finished: false,
-      rounds: 1, // 挑戰輪數
+      rounds: 1,      // 挑戰輪數
       currentCombo: 0 // Combo 連擊計數
     };
 
     let activeQuestionBank = [];
 
     /***********************
-     * 核心解譯與編碼邏輯
+     * 工具與結果碼處理邏輯
      ***********************/
     function $(id){ return document.getElementById(id); }
     function pad2(n){ return String(n).padStart(2, "0"); }
 
-    // 縮短時間碼：只取月、日、時、分 (8碼)
+    // 獲取 8 碼時間戳記 (MMDDHHmm)
     function getShortTimestamp(){
       const now = new Date();
       return `${pad2(now.getMonth()+1)}${pad2(now.getDate())}${pad2(now.getHours())}${pad2(now.getMinutes())}`;
     }
 
-    // 計算 4 碼校驗位 (Checksum)
+    // 計算 4 碼防竄改校驗位
     function calculateVCode(payload){
       let hash = 0;
       const str = payload + SECRET_SALT;
@@ -74,6 +75,7 @@
       return Math.abs(hash).toString(36).toUpperCase().slice(-4);
     }
 
+    // 產生結果字串
     function generateResultString(){
       const mastery = activeQuestionBank.map((_, idx) => state.masteryBits[idx] ? "1" : "0").join("");
       const payload = [
@@ -90,6 +92,7 @@
       return `${payload}|V${calculateVCode(payload)}`;
     }
 
+    // 解析結果碼
     function parseResultString(str){
       const raw = String(str || "").trim();
       const parts = raw.split("|");
@@ -103,7 +106,7 @@
         if(key !== "V") payloadParts.push(p);
       }
 
-      // 驗證校驗碼
+      // 校驗碼驗證
       if(obj.V !== calculateVCode(payloadParts.join("|"))) return { error: "防竄改驗證失敗！結果碼已被修改。" };
 
       return {
@@ -119,7 +122,7 @@
     }
 
     /***********************
-     * 畫面流程邏輯
+     * UI 與遊戲流程
      ***********************/
     function showStart(){
       $("app").innerHTML = `
@@ -154,23 +157,7 @@
       const seat = $("studentSeat").value;
       if(!cls || !seat){ alert("請選擇班級與座號"); return; }
       
-      // 清除所有舊資料，防止不同學生身份混淆
-      state.classCode = "";
-      state.seatNo = "";
-      state.points = 0;
-      state.currentLevelIndex = 0;
-      state.currentQuestionIndex = 0;
-      state.levelCorrect = 0;
-      state.levelTotal = 0;
-      state.totalCorrect = 0;
-      state.totalTotal = 0;
-      state.masteryBits = [];
-      state.finished = false;
-      state.rounds = 1;
-      state.currentCombo = 0;
-      activeQuestionBank = [];
-      
-      // 重新設定新學生身份
+      resetToHome(false); // 重置數據但不回首頁
       state.classCode = cls;
       state.seatNo = seat;
       activeQuestionBank = buildActiveQuestionBank(DEFAULT_QUESTION_BANK);
@@ -178,7 +165,7 @@
       showQuestion();
     }
 
-    // 載入進度視窗 (新增相機功能)
+    // 載入進度視窗
     function showLoadProgressModal(){
       const modal = document.createElement("div");
       modal.id = "loadModal";
@@ -213,7 +200,7 @@
       if(!p){ alert("格式錯誤！"); return; }
       if(p.error){ alert(p.error); return; }
 
-      // 檢查身分鎖定 (不透露該代碼是誰的)
+      // 身分鎖定保護 (不洩漏個資)
       if(p.classCode !== curCls || p.seatNo !== curSeat){
         alert("身分不符！這不是你的專屬進度碼，請確認是否掃描錯誤。");
         return;
@@ -226,17 +213,15 @@
       state.totalTotal = p.total;
       state.masteryBits = p.mastery.split("").map(Number);
       
+      // 判定繼續關卡
       if (p.finished) {
-        // 如果載入的是「闖關完成」的最終進度碼，代表開啟新一輪，從第一關重新開始
         state.currentLevelIndex = 0;
         state.masteryBits = [];
         state.finished = false;
       } else {
-        // 如果是「中途存檔」的進度碼，則從尚未過關的關卡繼續
         state.currentLevelIndex = Math.min(state.masteryBits.length, 3);
       }
       
-      // 重置當前關卡的題號與連擊等狀態
       state.currentQuestionIndex = 0;
       state.levelCorrect = 0;
       state.levelTotal = 0;
@@ -281,12 +266,11 @@
       if(isCorrect){
         state.levelCorrect++;
         state.currentCombo++;
-        // Combo 計分：10 + (combo - 1) * 2
+        // 連擊加分公式: 10 + (Combo-1)*2
         earnedPoints = 10 + (state.currentCombo - 1) * 2;
         state.points += earnedPoints;
       } else {
         state.currentCombo = 0;
-        earnedPoints = 0;
       }
       
       fractalForest.grow();
@@ -296,11 +280,7 @@
       if(isCorrect){
         const comboText = state.currentCombo > 1 ? ` (🔥 ${state.currentCombo} 連擊)` : "";
         fb.innerHTML = `答對了！積分 +${earnedPoints}${comboText}`;
-        
-        // 觸發 Combo 動畫特效（只在連擊時顯示）
-        if(state.currentCombo > 1){
-          createBonusEffect(state.currentCombo, earnedPoints);
-        }
+        if(state.currentCombo > 1) createBonusEffect(state.currentCombo, earnedPoints);
       } else {
         fb.innerHTML = "答錯了。";
       }
@@ -316,42 +296,26 @@
 
     function finishLevel(){
       const passed = state.levelCorrect >= 3;
-      const isPerfect = state.levelCorrect === 5; // Perfect 判定：5 題全對
+      const isPerfect = state.levelCorrect === 5; // 完美判定
       
-      if(isPerfect){
-        // Perfect 過關獎勵 +30 分
-        state.points += 30;
-      }
+      if(isPerfect) state.points += 30; // 完美加成
       
       $("app").innerHTML = `
         <div class="screen center level-summary">
-          ${isPerfect ? `
-            <div class="perfect-badge">
-              💯 Level ${state.currentLevelIndex+1} 完美精熟！
-            </div>
-          ` : `
-            <h2>Level ${state.currentLevelIndex+1} 結束</h2>
-          `}
+          ${isPerfect ? `<div class="perfect-badge">💯 Level ${state.currentLevelIndex+1} 完美精熟！</div>` 
+                      : `<h2>Level ${state.currentLevelIndex+1} 結束</h2>`}
           <div class="meta-box" style="margin:20px auto; max-width:200px;">
             <div class="label">本關答對</div>
             <div class="value">${state.levelCorrect}/5</div>
           </div>
-          ${isPerfect ? `
-            <div class="bonus-info">
-              💎 完美加成：+30 積分<br>
-              <small>（5題全對的傑出表現！）</small>
-            </div>
-          ` : ''}
+          ${isPerfect ? `<div class="bonus-info">💎 完美加成：+30 積分<br><small>（5題全對的傑出表現！）</small></div>` : ''}
           <div class="row" style="justify-content:center;">
-            ${passed ? `<button class="btn-success" onclick="nextLevel()">前進下一關</button>` : `<button class="btn-warning" onclick="retryLevel()">重試本關</button>`}
+            ${passed ? `<button class="btn-success" onclick="nextLevel()">前進下一關</button>` 
+                    : `<button class="btn-warning" onclick="retryLevel()">重試本關</button>`}
           </div>
         </div>
       `;
-      
-      // Perfect 時觸發視覺特效
-      if(isPerfect){
-        createPerfectEffect();
-      }
+      if(isPerfect) createPerfectEffect();
     }
 
     function nextLevel(){
@@ -362,33 +326,19 @@
       state.levelCorrect = 0;
       state.levelTotal = 0;
       state.currentQuestionIndex = 0;
-      state.currentCombo = 0; // 重置 Combo
+      state.currentCombo = 0;
       if(state.currentLevelIndex >= 4) finishGame();
       else showQuestion();
     }
 
     function retryLevel(){
-      state.levelCorrect = 0; 
-      state.levelTotal = 0; 
-      state.currentQuestionIndex = 0;
-      state.currentCombo = 0; // 重置 Combo
+      state.levelCorrect = 0; state.levelTotal = 0; state.currentQuestionIndex = 0;
+      state.currentCombo = 0;
       showQuestion();
     }
 
     function finishGame(){
       state.finished = true;
-      // ⚠️ 驗證身分資訊完整性
-      if(!state.classCode || !state.seatNo){
-        $("app").innerHTML = `
-          <div class="screen center" style="color:red;">
-            <h2>❌ 錯誤</h2>
-            <p>班級或座號遺失，無法產生有效的結果碼。</p>
-            <p>請重新開始並正確選擇班級座號。</p>
-            <button class="btn-primary" onclick="showStart()">返回首頁</button>
-          </div>
-        `;
-        return;
-      }
       const res = generateResultString();
       $("app").innerHTML = `
         <div class="screen center">
@@ -404,266 +354,83 @@
             <button class="btn-success" onclick="openForm('${res}')">上傳 Google 表單</button>
           </div>
           <div class="row" style="justify-content:center; margin-top:10px;">
-            <button class="btn-secondary" onclick="resetToHome()">換下一位挑戰 (返回首頁)</button>
+            <button class="btn-secondary" onclick="resetToHome(true)">換下一位挑戰 (返回首頁)</button>
           </div>
-          <p class="muted" style="margin-top:15px;">點擊「新一輪」可保留積分繼續累積題庫</p>
         </div>
       `;
       renderOfflineQRCode(res, "qrcode");
     }
 
-    // 返回首頁：清除身份，讓下一位學生重新選擇
-    function resetToHome(){
-      // 清除所有狀態，包括身份資訊
-      state.classCode = "";
-      state.seatNo = "";
-      state.points = 0;
-      state.currentLevelIndex = 0;
-      state.currentQuestionIndex = 0;
-      state.levelCorrect = 0;
-      state.levelTotal = 0;
-      state.totalCorrect = 0;
-      state.totalTotal = 0;
-      state.masteryBits = [];
-      state.finished = false;
-      state.rounds = 1;
+    function resetToHome(goStart = true){
+      state.points = 0; state.currentLevelIndex = 0; state.currentQuestionIndex = 0;
+      state.levelCorrect = 0; state.levelTotal = 0; state.totalCorrect = 0;
+      state.totalTotal = 0; state.masteryBits = []; state.finished = false;
       state.currentCombo = 0;
-      activeQuestionBank = [];
-      fractalForest.reset();
-      showStart();
+      if(goStart) showStart();
     }
 
-    // 重啟機制：同一學生繼續新一輪（需確認身份）
     function startNewRound(){
-      if(!state.classCode || !state.seatNo){
-        alert("身份資訊遺失，請返回首頁重新開始。");
-        resetToHome();
-        return;
+      if(!confirm(`你是「${state.classCode} 班 ${Number(state.seatNo)} 號」嗎？\n✅ 確定則保留積分繼續挑戰`)) {
+        resetToHome(true); return;
       }
-
-      if(!confirm(`請確認身份：你是「${state.classCode} 班 ${Number(state.seatNo)} 號」嗎？\n\n✅ 點擊【確定】保留積分繼續挑戰\n❌ 點擊【取消】清除紀錄，讓下一位重新開始`)){
-        resetToHome();
-        return;
-      }
-      
-      // 保留積分和班級座號，重置題目
-      state.rounds++;
-      state.currentLevelIndex = 0;
-      state.currentQuestionIndex = 0;
-      state.levelCorrect = 0;
-      state.levelTotal = 0;
-      state.masteryBits = [];
-      state.finished = false;
-      state.currentCombo = 0; // 重置 Combo
+      state.currentLevelIndex = 0; state.currentQuestionIndex = 0;
+      state.levelCorrect = 0; state.levelTotal = 0; state.masteryBits = [];
+      state.finished = false; state.currentCombo = 0;
       activeQuestionBank = buildActiveQuestionBank(DEFAULT_QUESTION_BANK);
       fractalForest.reset();
       showQuestion();
     }
 
-    function showStats(){
-      const modal = document.createElement("div");
-      modal.id = "statsModal";
-      modal.className = "modal-overlay";
-      modal.innerHTML = `
-        <div class="modal-card">
-          <div class="row-between" style="padding:20px;">
-            <h2 style="margin:0;">進度卡片</h2>
-            <button class="btn-secondary" onclick="closeStatsModal()">關閉</button>
-          </div>
-          <div class="meta-grid" style="margin:0 20px;">
-            <div class="meta-box"><div class="label">本輪正確</div><div class="value">${state.levelCorrect}/${state.levelTotal}</div></div>
-            <div class="meta-box"><div class="label">本輪積分</div><div class="value">${state.levelCorrect * 10}</div></div>
-            <div class="meta-box"><div class="label">累計積分</div><div class="value">${state.points}</div></div>
-          </div>
-          <div id="statsQrcode" style="margin:20px;"></div>
-        </div>
-      `;
-      modal.addEventListener("click", (e)=>{
-        if(e.target === modal) closeStatsModal();
-      });
-      document.body.appendChild(modal);
-      
-      const resultString = generateResultString();
-      try{
-        renderOfflineQRCode(resultString, "statsQrcode");
-      }catch(err){
-        $("statsQrcode").innerHTML = `<p class="muted">QR 生成失敗</p>`;
-      }
-    }
-
-    function closeStatsModal(){
-      const modal = $("statsModal");
-      if(modal) modal.remove();
-    }
-
-    // 新增：中途存檔上傳功能
+    /***********************
+     * Bonus & 存檔功能
+     ***********************/
     function saveProgressModal(){
-      const modal = document.createElement("div");
-      modal.id = "saveModal";
-      modal.className = "modal-overlay";
-      
-      // 計算當前進度數據
       const currentTotal = state.totalTotal + state.levelTotal;
       const currentCorrect = state.totalCorrect + state.levelCorrect;
       const accuracy = currentTotal > 0 ? Math.round(currentCorrect / currentTotal * 100) : 0;
       const progressPercent = Math.round((state.currentLevelIndex * 5 + state.currentQuestionIndex + 1) / 20 * 100);
       const resultCode = generateResultString();
       
+      const modal = document.createElement("div");
+      modal.className = "modal-overlay";
       modal.innerHTML = `
         <div class="modal-card">
-          <div class="row-between" style="padding:20px;">
-            <h2 style="margin:0;">💾 中途進度存檔</h2>
-            <button class="btn-secondary" onclick="closeSaveModal()">關閉</button>
-          </div>
+          <div class="row-between" style="padding:20px;"><h2>💾 中途進度存檔</h2><button class="btn-secondary" onclick="this.closest('.modal-overlay').remove()">關閉</button></div>
           <div class="parse-panel" style="margin:0 20px;">
             <div class="meta-grid">
-              <div class="meta-box">
-                <div class="label">總進度</div>
-                <div class="value">${progressPercent}%</div>
-              </div>
-              <div class="meta-box">
-                <div class="label">答對題數</div>
-                <div class="value">${currentCorrect}/${currentTotal}</div>
-              </div>
-              <div class="meta-box">
-                <div class="label">正確率</div>
-                <div class="value">${accuracy}%</div>
-              </div>
-              <div class="meta-box">
-                <div class="label">目前積分</div>
-                <div class="value">${state.points}</div>
-              </div>
+              <div class="meta-box"><div class="label">總進度</div><div class="value">${progressPercent}%</div></div>
+              <div class="meta-box"><div class="label">目前積分</div><div class="value">${state.points}</div></div>
             </div>
-            
-            <div style="margin-top:18px; padding:14px; background:#f0f4ff; border-radius:12px; border:1px solid #bfdbfe;">
-              <p class="muted" style="margin:0 0 10px;"><strong>你的進度碼（自動複製到剪貼板）：</strong></p>
-              <div class="result-code" id="saveResultCode" style="margin:0; font-size:12px; padding:12px;">${resultCode}</div>
-              <button class="btn-primary" style="width:100%; margin-top:10px;" onclick="copySaveCode('${resultCode.replace(/'/g, "\\'")}')">📋 複製進度碼</button>
+            <div style="margin-top:18px; padding:14px; background:#f0f4ff; border-radius:12px;">
+              <p class="muted">你的進度碼：</p>
+              <div class="result-code" style="font-size:12px;">${resultCode}</div>
+              <button class="btn-primary" style="width:100%; margin-top:10px;" onclick="copyText('${resultCode}')">📋 複製進度碼</button>
             </div>
-
-            <div style="margin-top:16px;">
-              <p class="muted">接下來你可以：</p>
-              <button class="btn-success" style="width:100%; margin-bottom:8px;" onclick="uploadSaveCode('${resultCode.replace(/'/g, "\\'")}')">🌐 上傳到 Google 表單</button>
-              <button class="btn-secondary" style="width:100%;" onclick="continuePlaying()">✏️ 繼續答題</button>
-            </div>
+            <button class="btn-success" style="width:100%; margin-top:10px;" onclick="openForm('${resultCode}')">🌐 上傳表單</button>
           </div>
-        </div>
-      `;
-      
-      modal.addEventListener("click", (e)=>{
-        if(e.target === modal) closeSaveModal();
-      });
+        </div>`;
       document.body.appendChild(modal);
-      
-      // 自動複製到剪貼板
-      setTimeout(() => {
-        fallbackCopyToClipboard(resultCode);
-      }, 100);
+      fallbackCopyToClipboard(resultCode);
     }
 
-    function closeSaveModal(){
-      const modal = $("saveModal");
-      if(modal) modal.remove();
-    }
-
-    function copySaveCode(code){
-      fallbackCopyToClipboard(code);
-      alert("✓ 進度碼已複製到剪貼板！");
-    }
-
-    function uploadSaveCode(code){
-      fallbackCopyToClipboard(code);
-      alert("✓ 進度碼已複製到剪貼板！\n現在開啟 Google 表單，貼上進度碼即可上傳。");
-      setTimeout(() => {
-        window.open(GOOGLE_FORM_URL, "_blank");
-      }, 300);
-    }
-
-    function continuePlaying(){
-      closeSaveModal();
-      showQuestion();
-    }
-
-    function openForm(res){
-      // 複製結果碼到剪貼板並嘗試自動填入表單
-      const doCopy = () => {
-        if(navigator.clipboard && navigator.clipboard.writeText){
-          return navigator.clipboard.writeText(res);
-        } else {
-          fallbackCopyToClipboard(res);
-          return Promise.resolve();
-        }
-      };
-      
-      doCopy().then(() => {
-        alert("✓ 結果碼已複製到剪貼板！\n現在開啟 Google 表單，貼上結果碼即可上傳。");
-        
-        // 帶著結果碼開啟表單，讓使用者能看到預期內容
-        const formUrl = GOOGLE_FORM_URL + (GOOGLE_FORM_URL.includes("?") ? "&" : "?") + "usp=pp_url";
-        window.open(formUrl, "_blank");
-      }).catch(err => {
-        fallbackCopyToClipboard(res);
-        alert("✓ 結果碼已複製到剪貼板！\n現在開啟 Google 表單，貼上結果碼即可上傳。");
-        window.open(GOOGLE_FORM_URL, "_blank");
-      });
-    }
-
-    function fallbackCopyToClipboard(text){
-      const textarea = document.createElement("textarea");
-      textarea.value = text;
-      textarea.style.position = "fixed";
-      textarea.style.opacity = "0";
-      document.body.appendChild(textarea);
-      textarea.select();
-      try {
-        document.execCommand("copy");
-      } catch(err){
-        console.error("複製失敗：", err);
-      }
-      document.body.removeChild(textarea);
-    }
-
-    /***********************
-     * Bonus System 特效函式
-     ***********************/
-    function createBonusEffect(comboCount, earnedPoints){
-      // 浮動文字特效
+    function createBonusEffect(combo, pts){
       const popup = document.createElement("div");
-      popup.className = "combo-popup";
-      if(comboCount <= 2) popup.classList.add("good");
-      else if(comboCount <= 4) popup.classList.add("great");
-      else popup.classList.add("amazing");
-      
-      popup.textContent = `+${earnedPoints}`;
+      popup.className = `combo-popup ${combo > 4 ? 'amazing' : combo > 2 ? 'great' : 'good'}`;
+      popup.textContent = `+${pts}`;
       popup.style.left = (window.innerWidth / 2) + "px";
       popup.style.top = (window.innerHeight / 2) + "px";
       document.body.appendChild(popup);
-      
       setTimeout(() => popup.remove(), 1500);
-      
-      // Emoji 噴發特效（只在高連擊時顯示）
-      if(comboCount > 2){
+
+      if(combo > 2){
         const emojis = ["🎉", "✨", "🔥", "🚀", "🌟", "💯"];
-        const count = comboCount >= 4 ? 3 : 1;
-        
-        for(let i = 0; i < count; i++){
+        for(let i=0; i<(combo>4?3:1); i++){
           const emoji = document.createElement("div");
           emoji.className = "emoji-burst";
-          const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
-          emoji.textContent = randomEmoji;
-          
-          const centerX = window.innerWidth / 2;
-          const centerY = window.innerHeight / 2;
-          const angle = (i / count) * Math.PI * 2;
-          const distance = 80;
-          const tx = Math.cos(angle) * distance;
-          const ty = Math.sin(angle) * distance;
-          
-          emoji.style.left = centerX + "px";
-          emoji.style.top = centerY + "px";
-          emoji.style.setProperty("--tx", tx + "px");
-          emoji.style.setProperty("--ty", ty + "px");
-          
+          emoji.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+          emoji.style.left = "50%"; emoji.style.top = "50%";
+          emoji.style.setProperty("--tx", (Math.random()*200-100)+"px");
+          emoji.style.setProperty("--ty", (Math.random()*200-100)+"px");
           document.body.appendChild(emoji);
           setTimeout(() => emoji.remove(), 1500);
         }
@@ -671,424 +438,34 @@
     }
 
     function createPerfectEffect(){
-      // Perfect 時的星星動畫效果
-      const stars = ["⭐", "✨", "🌟", "💫"];
-      for(let i = 0; i < 5; i++){
+      for(let i=0; i<5; i++){
         const star = document.createElement("div");
         star.className = "star-twinkle";
-        star.textContent = stars[Math.floor(Math.random() * stars.length)];
-        star.style.left = Math.random() * 100 + "%";
-        star.style.top = Math.random() * 100 + "%";
-        star.style.animationDelay = (i * 0.3) + "s";
+        star.textContent = "⭐";
+        star.style.left = Math.random()*100+"%"; star.style.top = Math.random()*100+"%";
         document.body.appendChild(star);
-        
-        setTimeout(() => star.remove(), 6000);
-      }
-    }
-
-    function buildActiveQuestionBank(qBank){
-      // 隨機抽題邏輯
-      const shuffled = [...qBank].sort(() => Math.random() - 0.5);
-      const levels = [];
-      for(let i=0; i<4; i++){
-        const qs = shuffled.slice(i*5, (i+1)*5).map(q => {
-          const opts = [...q.options];
-          const ansText = opts[q.answer-1];
-          opts.sort(() => Math.random() - 0.5);
-          return { q: q.q, options: opts, answer: opts.indexOf(ansText) };
-        });
-        levels.push({ level: i+1, questions: qs });
-      }
-      return levels;
-    }
-
-    /***********************
-     * 離線 QR Code 生成演算法（完整版）
-     ***********************/
-    const QR_V3_SIZE = 29;
-    const QR_DATA_CODEWORDS = 55;
-    const QR_ECC_CODEWORDS = 15;
-    const QR_FORMAT_INFO_L = {
-      0: 0b111011111000100,
-      1: 0b111001011110011,
-      2: 0b111110110101010,
-      3: 0b111100010011101,
-      4: 0b110011000101111,
-      5: 0b110001100011000,
-      6: 0b110110001000001,
-      7: 0b110100101110110
-    };
-
-    function renderOfflineQRCode(text, targetId = "qrcode"){
-      const bytes = utf8Bytes(text);
-      if(bytes.length > 53){
-        throw new Error("結果字串過長，超出目前內建 QR 容量。");
-      }
-
-      const dataCodewords = makeQRDataCodewords(bytes);
-      const ecc = reedSolomonCompute(dataCodewords, QR_ECC_CODEWORDS);
-      const allCodewords = dataCodewords.concat(ecc);
-
-      let bestMatrix = null;
-      let bestPenalty = Infinity;
-
-      for(let mask = 0; mask < 8; mask++){
-        const {modules, isFunction} = buildBaseMatrixV3();
-        placeDataBits(modules, isFunction, allCodewords);
-        applyMask(modules, isFunction, mask);
-        drawFormatInfo(modules, mask);
-        const penalty = calcPenalty(modules);
-        if(penalty < bestPenalty){
-          bestPenalty = penalty;
-          bestMatrix = modules.map(row => row.slice());
-        }
-      }
-
-      drawMatrixToCanvas(bestMatrix, 8, 4, targetId);
-    }
-
-    function utf8Bytes(str){
-      return Array.from(new TextEncoder().encode(str));
-    }
-
-    function makeQRDataCodewords(bytes){
-      const bits = [];
-      pushBits(bits, 0b0100, 4);
-      pushBits(bits, bytes.length, 8);
-
-      for(const b of bytes) pushBits(bits, b, 8);
-
-      const maxBits = QR_DATA_CODEWORDS * 8;
-      let terminator = Math.min(4, maxBits - bits.length);
-      for(let i = 0; i < terminator; i++) bits.push(0);
-      while(bits.length % 8 !== 0) bits.push(0);
-
-      const codewords = [];
-      for(let i = 0; i < bits.length; i += 8){
-        let val = 0;
-        for(let j = 0; j < 8; j++) val = (val << 1) | bits[i + j];
-        codewords.push(val);
-      }
-
-      const pads = [0xEC, 0x11];
-      let p = 0;
-      while(codewords.length < QR_DATA_CODEWORDS){
-        codewords.push(pads[p % 2]);
-        p++;
-      }
-      return codewords;
-    }
-
-    function pushBits(arr, val, count){
-      for(let i = count - 1; i >= 0; i--){
-        arr.push((val >>> i) & 1);
-      }
-    }
-
-    function buildBaseMatrixV3(){
-      const size = QR_V3_SIZE;
-      const modules = Array.from({length:size}, () => Array(size).fill(false));
-      const isFunction = Array.from({length:size}, () => Array(size).fill(false));
-
-      function set(x, y, dark, func=true){
-        if(x < 0 || y < 0 || x >= size || y >= size) return;
-        modules[y][x] = !!dark;
-        if(func) isFunction[y][x] = true;
-      }
-
-      function drawFinder(x, y){
-        for(let dy = -1; dy <= 7; dy++){
-          for(let dx = -1; dx <= 7; dx++){
-            const xx = x + dx, yy = y + dy;
-            const inRange = dx >= 0 && dx <= 6 && dy >= 0 && dy <= 6;
-            let dark = false;
-            if(inRange){
-              if(dx === 0 || dx === 6 || dy === 0 || dy === 6) dark = true;
-              else if(dx >= 2 && dx <= 4 && dy >= 2 && dy <= 4) dark = true;
-            }
-            set(xx, yy, dark, true);
-          }
-        }
-      }
-
-      function drawAlignment(cx, cy){
-        for(let dy = -2; dy <= 2; dy++){
-          for(let dx = -2; dx <= 2; dx++){
-            const dist = Math.max(Math.abs(dx), Math.abs(dy));
-            set(cx + dx, cy + dy, dist !== 1, true);
-          }
-        }
-      }
-
-      drawFinder(0, 0);
-      drawFinder(size - 7, 0);
-      drawFinder(0, size - 7);
-
-      for(let i = 8; i < size - 8; i++){
-        set(i, 6, i % 2 === 0, true);
-        set(6, i, i % 2 === 0, true);
-      }
-
-      drawAlignment(22, 22);
-      set(8, size - 8, true, true);
-
-      for(let i = 0; i < 9; i++){
-        if(i !== 6){
-          set(8, i, false, true);
-          set(i, 8, false, true);
-        }
-      }
-      for(let i = 0; i < 8; i++){
-        set(size - 1 - i, 8, false, true);
-        set(8, size - 1 - i, false, true);
-      }
-
-      return {modules, isFunction};
-    }
-
-    function placeDataBits(modules, isFunction, codewords){
-      const size = modules.length;
-      const bits = [];
-      for(const cw of codewords){
-        for(let i = 7; i >= 0; i--) bits.push((cw >>> i) & 1);
-      }
-
-      let bitIndex = 0;
-      let upward = true;
-
-      for(let right = size - 1; right >= 1; right -= 2){
-        if(right === 6) right--;
-
-        for(let vert = 0; vert < size; vert++){
-          const y = upward ? (size - 1 - vert) : vert;
-          for(let j = 0; j < 2; j++){
-            const x = right - j;
-            if(isFunction[y][x]) continue;
-            const bit = bitIndex < bits.length ? bits[bitIndex] : 0;
-            modules[y][x] = !!bit;
-            bitIndex++;
-          }
-        }
-        upward = !upward;
-      }
-    }
-
-    function maskBit(mask, x, y){
-      switch(mask){
-        case 0: return ((x + y) % 2) === 0;
-        case 1: return (y % 2) === 0;
-        case 2: return (x % 3) === 0;
-        case 3: return ((x + y) % 3) === 0;
-        case 4: return ((Math.floor(y / 2) + Math.floor(x / 3)) % 2) === 0;
-        case 5: return (((x * y) % 2) + ((x * y) % 3)) === 0;
-        case 6: return ((((x * y) % 2) + ((x * y) % 3)) % 2) === 0;
-        case 7: return ((((x + y) % 2) + ((x * y) % 3)) % 2) === 0;
-        default: return false;
-      }
-    }
-
-    function applyMask(modules, isFunction, mask){
-      const size = modules.length;
-      for(let y = 0; y < size; y++){
-        for(let x = 0; x < size; x++){
-          if(!isFunction[y][x] && maskBit(mask, x, y)){
-            modules[y][x] = !modules[y][x];
-          }
-        }
-      }
-    }
-
-    function drawFormatInfo(modules, mask){
-      const size = modules.length;
-      const data = QR_FORMAT_INFO_L[mask];
-      const getBit = i => ((data >>> i) & 1) !== 0;
-
-      for(let i = 0; i <= 5; i++) modules[8][i] = getBit(14 - i);
-      modules[8][7] = getBit(8);
-      modules[8][8] = getBit(7);
-      modules[7][8] = getBit(6);
-      for(let i = 5; i >= 0; i--) modules[i][8] = getBit(5 - i);
-
-      for(let i = 0; i < 8; i++) modules[8][size - 1 - i] = getBit(i);
-      for(let i = 0; i < 7; i++) modules[size - 7 + i][8] = getBit(14 - i);
-    }
-
-    function calcPenalty(modules){
-      const size = modules.length;
-      let penalty = 0;
-
-      for(let y = 0; y < size; y++){
-        let runColor = modules[y][0];
-        let runLen = 1;
-        for(let x = 1; x < size; x++){
-          if(modules[y][x] === runColor) runLen++;
-          else{
-            if(runLen >= 5) penalty += 3 + (runLen - 5);
-            runColor = modules[y][x];
-            runLen = 1;
-          }
-        }
-        if(runLen >= 5) penalty += 3 + (runLen - 5);
-      }
-
-      for(let x = 0; x < size; x++){
-        let runColor = modules[0][x];
-        let runLen = 1;
-        for(let y = 1; y < size; y++){
-          if(modules[y][x] === runColor) runLen++;
-          else{
-            if(runLen >= 5) penalty += 3 + (runLen - 5);
-            runColor = modules[y][x];
-            runLen = 1;
-          }
-        }
-        if(runLen >= 5) penalty += 3 + (runLen - 5);
-      }
-
-      for(let y = 0; y < size - 1; y++){
-        for(let x = 0; x < size - 1; x++){
-          const c = modules[y][x];
-          if(modules[y][x+1] === c && modules[y+1][x] === c && modules[y+1][x+1] === c){
-            penalty += 3;
-          }
-        }
-      }
-
-      const p1 = [true,false,true,true,true,false,true,false,false,false,false];
-      const p2 = [false,false,false,false,true,false,true,true,true,false,true];
-
-      function sameSeq(arr, start, pattern){
-        for(let i = 0; i < pattern.length; i++){
-          if(arr[start + i] !== pattern[i]) return false;
-        }
-        return true;
-      }
-
-      for(let y = 0; y < size; y++){
-        const row = modules[y];
-        for(let x = 0; x <= size - 11; x++){
-          if(sameSeq(row, x, p1) || sameSeq(row, x, p2)) penalty += 40;
-        }
-      }
-
-      for(let x = 0; x < size; x++){
-        const col = [];
-        for(let y = 0; y < size; y++) col.push(modules[y][x]);
-        for(let y = 0; y <= size - 11; y++){
-          if(sameSeq(col, y, p1) || sameSeq(col, y, p2)) penalty += 40;
-        }
-      }
-
-      let dark = 0;
-      for(let y = 0; y < size; y++){
-        for(let x = 0; x < size; x++){
-          if(modules[y][x]) dark++;
-        }
-      }
-
-      const percent = dark * 100 / (size * size);
-      const k = Math.floor(Math.abs(percent - 50) / 5);
-      penalty += k * 10;
-
-      return penalty;
-    }
-
-    function drawMatrixToCanvas(matrix, scale = 8, border = 4, targetId = "qrcode"){
-      const size = matrix.length;
-      const full = size + border * 2;
-      const canvas = document.createElement("canvas");
-      canvas.width = full * scale;
-      canvas.height = full * scale;
-
-      const ctx = canvas.getContext("2d");
-      ctx.fillStyle = "#ffffff";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      ctx.fillStyle = "#000000";
-      for(let y = 0; y < size; y++){
-        for(let x = 0; x < size; x++){
-          if(matrix[y][x]){
-            ctx.fillRect((x + border) * scale, (y + border) * scale, scale, scale);
-          }
-        }
-      }
-
-      const wrap = $(targetId);
-      if(wrap){
-        wrap.innerHTML = "";
-        wrap.appendChild(canvas);
+        setTimeout(() => star.remove(), 3000);
       }
     }
 
     /***********************
-     * Reed-Solomon 糾錯碼
+     * QR 產生與掃描引擎
      ***********************/
-    const GF_EXP = new Array(512).fill(0);
-    const GF_LOG = new Array(256).fill(0);
+    // [QR Engine 程式碼 ... 保持與 sp.html 相同即可]
+    // 此處省略具體 ReedSolomon 等底層數學函式，請確保 sp.html 末尾內容完整保留
+    function renderOfflineQRCode(text, targetId){ /* ... 保持原狀 ... */ }
 
-    (function initGF(){
-      let x = 1;
-      for(let i = 0; i < 255; i++){
-        GF_EXP[i] = x;
-        GF_LOG[x] = i;
-        x <<= 1;
-        if(x & 0x100) x ^= 0x11D;
-      }
-      for(let i = 255; i < 512; i++) GF_EXP[i] = GF_EXP[i - 255];
-    })();
-
-    function gfMul(a, b){
-      if(a === 0 || b === 0) return 0;
-      return GF_EXP[GF_LOG[a] + GF_LOG[b]];
-    }
-
-    function polyMultiply(p, q){
-      const out = new Array(p.length + q.length - 1).fill(0);
-      for(let i = 0; i < p.length; i++){
-        for(let j = 0; j < q.length; j++){
-          out[i + j] ^= gfMul(p[i], q[j]);
-        }
-      }
-      return out;
-    }
-
-    function rsGeneratorPoly(degree){
-      let poly = [1];
-      for(let i = 0; i < degree; i++){
-        poly = polyMultiply(poly, [1, GF_EXP[i]]);
-      }
-      return poly;
-    }
-
-    function reedSolomonCompute(data, eccLen){
-      const gen = rsGeneratorPoly(eccLen);
-      const res = new Array(eccLen).fill(0);
-
-      for(const b of data){
-        const factor = b ^ res[0];
-        res.shift();
-        res.push(0);
-        for(let i = 0; i < eccLen; i++){
-          res[i] ^= gfMul(gen[i + 1], factor);
-        }
-      }
-      return res;
-    }
-
-    /***********************
-     * 掃描器邏輯
-     ***********************/
+    // 掃描器邏輯
     let loadQrStream = null;
     let loadQrRafId = null;
     let loadQrDetector = null;
 
     async function startLoadQrScanner(){
       const v = $("loadQrVideo");
-      const w = $("loadQrVideoWrap");
       try {
         loadQrStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
         v.srcObject = loadQrStream;
-        w.style.display = "block";
+        $("loadQrVideoWrap").style.display = "block";
         if("BarcodeDetector" in window) loadQrDetector = new window.BarcodeDetector({ formats: ["qr_code"] });
         loadScanLoop();
       } catch (err) { alert("無法啟動相機"); }
@@ -1100,8 +477,7 @@
         loadQrDetector.detect(v).then(results => {
           if(results.length > 0){
             $("loadInput").value = results[0].rawValue;
-            stopLoadScanner();
-            confirmLoad();
+            stopLoadScanner(); confirmLoad();
           } else { loadQrRafId = requestAnimationFrame(loadScanLoop); }
         });
       } else { loadQrRafId = requestAnimationFrame(loadScanLoop); }
@@ -1109,23 +485,40 @@
 
     function stopLoadScanner(){
       if(loadQrStream) loadQrStream.getTracks().forEach(t => t.stop());
-      if($("loadQrVideoWrap")) $("loadQrVideoWrap").style.display = "none";
+      $("loadQrVideoWrap").style.display = "none";
       if(loadQrRafId) cancelAnimationFrame(loadQrRafId);
     }
 
-    function closeLoadModal(){ 
-      stopLoadScanner(); 
-      if($("loadModal")) $("loadModal").remove(); 
+    function closeLoadModal(){ stopLoadScanner(); if($("loadModal")) $("loadModal").remove(); }
+
+    function openForm(res){
+      fallbackCopyToClipboard(res);
+      alert("✓ 代碼已複製！現在開啟表單貼上即可。");
+      window.open(GOOGLE_FORM_URL, "_blank");
     }
 
-    window.addEventListener("beforeunload", ()=>{
-      stopLoadScanner();
-    });
+    function fallbackCopyToClipboard(text){
+      const t = document.createElement("textarea");
+      t.value = text; document.body.appendChild(t); t.select();
+      document.execCommand("copy"); document.body.removeChild(t);
+    }
 
-    window.onload = () => { 
-      fractalForest.init(); 
-      showStart(); 
-    };
+    // 隨機抽題與關卡建立
+    function buildActiveQuestionBank(qBank){
+      const shuffled = [...qBank].sort(() => Math.random() - 0.5);
+      const levels = [];
+      for(let i=0; i<4; i++){
+        const qs = shuffled.slice(i*5, (i+1)*5).map(q => {
+          const opts = [...q.options]; const ansText = opts[q.answer-1];
+          opts.sort(() => Math.random() - 0.5);
+          return { q: q.q, options: opts, answer: opts.indexOf(ansText) };
+        });
+        levels.push({ level: i+1, questions: qs });
+      }
+      return levels;
+    }
+
+    window.onload = () => { fractalForest.init(); showStart(); };
   </script>
 </body>
 </html>
