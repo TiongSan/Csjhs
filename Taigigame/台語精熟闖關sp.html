@@ -366,20 +366,38 @@
 
     function verifyTimeKey(code){
       const parts = code.split("|");
-      if(parts.length !== 3 || parts[0] !== "TG_KEY") return;
+      if(parts.length !== 3 || parts[0] !== "TG_KEY"){
+        alert("格式不符，請確認掃描的是老師的鑰匙！");
+        return;
+      }
       
+      // 1. 修正 Bug：比對校驗碼時，補上 "V" 前綴
       const payload = `TG_KEY|${parts[1]}`;
-      if(parts[2] !== calculateVCode(payload)){ alert("無效的時間鑰匙！"); return; }
+      if(parts[2] !== "V" + calculateVCode(payload)){ 
+        alert("無效的時間鑰匙！(防竄改驗證失敗)"); 
+        return; 
+      }
 
-      const keyTimeStr = parts[1]; 
+      // 2. 修正 Bug：將字串轉回真實的 Date 物件，才能正確計算跨小時的時間差
+      const keyTimeStr = parts[1]; // 格式: YYMMDDHHmm
+      const ky = 2000 + parseInt(keyTimeStr.slice(0, 2));
+      const km = parseInt(keyTimeStr.slice(2, 4)) - 1; // 月份從 0 開始
+      const kd = parseInt(keyTimeStr.slice(4, 6));
+      const kh = parseInt(keyTimeStr.slice(6, 8));
+      const kmin = parseInt(keyTimeStr.slice(8, 10));
+      
+      const keyDate = new Date(ky, km, kd, kh, kmin);
       const now = new Date();
-      const nowStr = `${String(now.getFullYear()).slice(-2)}${pad2(now.getMonth()+1)}${pad2(now.getDate())}${pad2(now.getHours())}${pad2(now.getMinutes())}`;
+      
+      // 計算相差的分鐘數
+      const diffMinutes = Math.abs(now - keyDate) / (1000 * 60);
 
-      if(Math.abs(parseInt(keyTimeStr) - parseInt(nowStr)) <= 2){
+      // 容許 2 分鐘內的誤差
+      if(diffMinutes <= 2){
         stopScanner();
         showExchangeInterface();
       } else {
-        alert("鑰匙已過期，請掃描螢幕上最新的 QR Code！");
+        alert("鑰匙已過期，請掃描老師螢幕上最新的 QR Code！");
       }
     }
 
