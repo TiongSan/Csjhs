@@ -339,6 +339,58 @@
     }
 
     /***********************
+     * 載入進度功能與專屬掃描器
+     ***********************/
+    function showLoadProgressModal(){
+      const modal = document.createElement("div");
+      modal.id = "loadModal";
+      modal.className = "modal-overlay";
+      modal.innerHTML = `
+        <div class="modal-card">
+          <div class="row-between" style="padding:20px;">
+            <h2 style="margin:0;">載入進度</h2><button class="btn-secondary" onclick="closeLoadModal()">關閉</button>
+          </div>
+          <div class="parse-panel" style="margin:0 20px 20px;">
+            <p class="muted">1. 請先在首頁選好班級與座號</p>
+            <button class="btn-success" style="width:100%; margin-bottom:10px;" onclick="$('loadQrVideoWrap').style.display='block'; startLoadScanner()">開啟相機掃描 QR</button>
+            <div id="loadQrVideoWrap" class="scanner-video-wrap" style="display:none;">
+              <video id="loadQrVideo" autoplay playsinline muted style="width:100%; border-radius:16px; background:#000;"></video>
+            </div>
+            <textarea id="loadInput" placeholder="或在此貼上結果碼..."></textarea>
+            <button class="btn-primary" style="width:100%; margin-top:10px;" onclick="confirmLoad()">確定載入</button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(modal);
+    }
+
+    function confirmLoad(){
+      const raw = $("loadInput").value.trim();
+      const curCls = $("studentClass").value;
+      const curSeat = $("studentSeat").value;
+      if(!curCls || !curSeat){ alert("載入前請先選擇班級與座號！"); return; }
+
+      const p = parseResultString(raw);
+      if(!p || p.error){ alert(p ? p.error : "格式錯誤！"); return; }
+      if(p.classCode !== curCls || p.seatNo !== curSeat){ alert("身分不符！這不是你的專屬進度碼。"); return; }
+
+      state.classCode = p.classCode; state.seatNo = p.seatNo; state.points = p.points;
+      state.totalCorrect = p.correct; state.totalTotal = p.total;
+      state.masteryBits = p.mastery.split("").map(Number);
+      state.inventory = p.inventory;
+      
+      if (p.finished) { state.currentLevelIndex = 0; state.masteryBits = []; state.finished = false; } 
+      else { state.currentLevelIndex = Math.min(state.masteryBits.length, 3); }
+      
+      state.currentQuestionIndex = 0; state.levelCorrect = 0; state.levelTotal = 0; state.currentCombo = 0;
+      activeQuestionBank = buildActiveQuestionBank(DEFAULT_QUESTION_BANK);
+      closeLoadModal(); alert(`載入成功！目前累積積分：${state.points}`); showQuestion();
+    }
+    
+    function closeLoadModal(){ stopLoadScanner(); if($("loadModal")) $("loadModal").remove(); }
+
+
+    /***********************
      * 寶物交換系統
      ***********************/
     function showExchangeGateway(){
@@ -361,40 +413,28 @@
         </div>
       `;
       document.body.appendChild(modal);
-      startScanner("exchangeVideo", (code) => { verifyTimeKey(code); });
+      startKeyScanner();
     }
 
     function verifyTimeKey(code){
       const parts = code.split("|");
-      if(parts.length !== 3 || parts[0] !== "TG_KEY"){
-        alert("格式不符，請確認掃描的是老師的鑰匙！");
-        return;
-      }
+      if(parts.length !== 3 || parts[0] !== "TG_KEY"){ return; } // 不是鑰匙就忽略
       
-      // 1. 修正 Bug：比對校驗碼時，補上 "V" 前綴
       const payload = `TG_KEY|${parts[1]}`;
-      if(parts[2] !== "V" + calculateVCode(payload)){ 
-        alert("無效的時間鑰匙！(防竄改驗證失敗)"); 
-        return; 
-      }
+      if(parts[2] !== "V" + calculateVCode(payload)){ return; }
 
-      // 2. 修正 Bug：將字串轉回真實的 Date 物件，才能正確計算跨小時的時間差
-      const keyTimeStr = parts[1]; // 格式: YYMMDDHHmm
+      const keyTimeStr = parts[1]; 
       const ky = 2000 + parseInt(keyTimeStr.slice(0, 2));
-      const km = parseInt(keyTimeStr.slice(2, 4)) - 1; // 月份從 0 開始
+      const km = parseInt(keyTimeStr.slice(2, 4)) - 1;
       const kd = parseInt(keyTimeStr.slice(4, 6));
       const kh = parseInt(keyTimeStr.slice(6, 8));
       const kmin = parseInt(keyTimeStr.slice(8, 10));
-      
       const keyDate = new Date(ky, km, kd, kh, kmin);
       const now = new Date();
-      
-      // 計算相差的分鐘數
       const diffMinutes = Math.abs(now - keyDate) / (1000 * 60);
 
-      // 容許 2 分鐘內的誤差
       if(diffMinutes <= 2){
-        stopScanner();
+        stopKeyScanner();
         showExchangeInterface();
       } else {
         alert("鑰匙已過期，請掃描老師螢幕上最新的 QR Code！");
@@ -438,8 +478,11 @@
            </div>
         </div>
       `;
-      startScanner("receiveVideo", (code) => { receiveGift(code); });
-      setTimeout(() => { if($("exchangeModal")) { alert("交換時間結束！"); closeExchange(); } }, 180000);
+      startGiftScanner();
+      
+      setTimeout(() => { 
+        if($("exchangeModal")) { alert("交換時間結束！"); closeExchange(); } 
+      }, 180000);
     }
 
     function prepGift(typeIdx){
@@ -464,7 +507,7 @@
       if(parts.length !== 4 || parts[0] !== "TG_GIFT") return;
       
       const payload = `TG_GIFT|${parts[1]}|${parts[2]}`;
-      if(parts[3] !== calculateVCode(payload)) return;
+      if(parts[3] !== "V" + calculateVCode(payload)) return;
 
       if(state.scannedGifts.includes(parts[2])){
         alert("這個禮物你已經領過了喔！"); return;
@@ -478,103 +521,85 @@
     }
 
     function closeExchange(){
-      stopScanner();
+      stopKeyScanner(); stopGiftScanner();
       if($("exchangeModal")) $("exchangeModal").remove();
       showQuestion();
     }
 
+
     /***********************
-     * jsQR 相機掃描引擎
+     * jsQR 相機掃描引擎 (三獨立引擎)
      ***********************/
-    let activeStream = null;
-    let qrRafId = null;
     const qrCanvas = document.createElement("canvas");
     const qrCtx = qrCanvas.getContext("2d", { willReadFrequently: true });
 
-    async function startScanner(videoId, onScan){
-      const v = $(videoId);
-      if(!v) return;
+    // 1. 載入進度專用掃描器
+    let loadStream = null, loadRafId = null;
+    async function startLoadScanner(){
       try {
-        activeStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
-        v.srcObject = activeStream;
-        v.setAttribute("playsinline", true);
-        v.play();
-        qrRafId = requestAnimationFrame(() => scanLoop(v, onScan));
-      } catch (err) { 
-        alert("相機啟動失敗，請確認已授權網頁使用相機！"); 
-      }
+        loadStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
+        $("loadQrVideo").srcObject = loadStream; $("loadQrVideo").setAttribute("playsinline", true); $("loadQrVideo").play();
+        loadRafId = requestAnimationFrame(loadScanLoop);
+      } catch (err) { alert("相機啟動失敗！"); }
     }
-
-    function scanLoop(v, onScan){
-      if(v.readyState === v.HAVE_ENOUGH_DATA){
-        qrCanvas.width = v.videoWidth;
-        qrCanvas.height = v.videoHeight;
+    function loadScanLoop(){
+      const v = $("loadQrVideo");
+      if(v && v.readyState === v.HAVE_ENOUGH_DATA){
+        qrCanvas.width = v.videoWidth; qrCanvas.height = v.videoHeight;
         qrCtx.drawImage(v, 0, 0, qrCanvas.width, qrCanvas.height);
-        const imgData = qrCtx.getImageData(0, 0, qrCanvas.width, qrCanvas.height);
-        const code = jsQR(imgData.data, imgData.width, imgData.height, { inversionAttempts: "dontInvert" });
-        if(code && code.data){
-          onScan(code.data);
-        }
+        const code = jsQR(qrCtx.getImageData(0,0,qrCanvas.width,qrCanvas.height).data, qrCanvas.width, qrCanvas.height, { inversionAttempts: "dontInvert" });
+        if(code && code.data){ $("loadInput").value = code.data; stopLoadScanner(); confirmLoad(); return; }
       }
-      qrRafId = requestAnimationFrame(() => scanLoop(v, onScan));
+      loadRafId = requestAnimationFrame(loadScanLoop);
     }
+    function stopLoadScanner(){ if(loadStream) loadStream.getTracks().forEach(t => t.stop()); if(loadRafId) cancelAnimationFrame(loadRafId); }
 
-    function stopScanner(){
-      if(activeStream) activeStream.getTracks().forEach(t => t.stop());
-      if(qrRafId) cancelAnimationFrame(qrRafId);
+    // 2. 交換閘門專用掃描器 (掃老師)
+    let keyStream = null, keyRafId = null;
+    async function startKeyScanner(){
+      try {
+        keyStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
+        $("exchangeVideo").srcObject = keyStream; $("exchangeVideo").setAttribute("playsinline", true); $("exchangeVideo").play();
+        keyRafId = requestAnimationFrame(keyScanLoop);
+      } catch (err) { alert("相機啟動失敗！"); }
     }
+    function keyScanLoop(){
+      const v = $("exchangeVideo");
+      if(v && v.readyState === v.HAVE_ENOUGH_DATA){
+        qrCanvas.width = v.videoWidth; qrCanvas.height = v.videoHeight;
+        qrCtx.drawImage(v, 0, 0, qrCanvas.width, qrCanvas.height);
+        const code = jsQR(qrCtx.getImageData(0,0,qrCanvas.width,qrCanvas.height).data, qrCanvas.width, qrCanvas.height, { inversionAttempts: "dontInvert" });
+        if(code && code.data){ verifyTimeKey(code.data); }
+      }
+      keyRafId = requestAnimationFrame(keyScanLoop);
+    }
+    function stopKeyScanner(){ if(keyStream) keyStream.getTracks().forEach(t => t.stop()); if(keyRafId) cancelAnimationFrame(keyRafId); }
+
+    // 3. 接收中心專用掃描器 (掃同學)
+    let giftStream = null, giftRafId = null;
+    async function startGiftScanner(){
+      try {
+        giftStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
+        $("receiveVideo").srcObject = giftStream; $("receiveVideo").setAttribute("playsinline", true); $("receiveVideo").play();
+        giftRafId = requestAnimationFrame(giftScanLoop);
+      } catch (err) { console.error("相機啟動失敗！"); }
+    }
+    function giftScanLoop(){
+      const v = $("receiveVideo");
+      if(v && v.readyState === v.HAVE_ENOUGH_DATA){
+        qrCanvas.width = v.videoWidth; qrCanvas.height = v.videoHeight;
+        qrCtx.drawImage(v, 0, 0, qrCanvas.width, qrCanvas.height);
+        const code = jsQR(qrCtx.getImageData(0,0,qrCanvas.width,qrCanvas.height).data, qrCanvas.width, qrCanvas.height, { inversionAttempts: "dontInvert" });
+        if(code && code.data){ receiveGift(code.data); }
+      }
+      giftRafId = requestAnimationFrame(giftScanLoop);
+    }
+    function stopGiftScanner(){ if(giftStream) giftStream.getTracks().forEach(t => t.stop()); if(giftRafId) cancelAnimationFrame(giftRafId); }
+
 
     /***********************
-     * 載入進度與統計卡片 (Modal)
+     * 基礎工具函式 (存檔、統計)
      ***********************/
-    function showLoadProgressModal(){
-      const modal = document.createElement("div");
-      modal.id = "loadModal";
-      modal.className = "modal-overlay";
-      modal.innerHTML = `
-        <div class="modal-card">
-          <div class="row-between" style="padding:20px;">
-            <h2 style="margin:0;">載入進度</h2><button class="btn-secondary" onclick="closeLoadModal()">關閉</button>
-          </div>
-          <div class="parse-panel" style="margin:0 20px 20px;">
-            <p class="muted">1. 請先在首頁選好班級與座號</p>
-            <button class="btn-success" style="width:100%; margin-bottom:10px;" onclick="$('loadQrVideoWrap').style.display='block'; startScanner('loadQrVideo', (code) => { $('loadInput').value=code; stopScanner(); confirmLoad(); })">開啟相機掃描 QR</button>
-            <div id="loadQrVideoWrap" class="scanner-video-wrap" style="display:none;">
-              <video id="loadQrVideo" autoplay playsinline muted style="width:100%; border-radius:16px; background:#000;"></video>
-            </div>
-            <textarea id="loadInput" placeholder="或在此貼上結果碼..."></textarea>
-            <button class="btn-primary" style="width:100%; margin-top:10px;" onclick="confirmLoad()">確定載入</button>
-          </div>
-        </div>
-      `;
-      document.body.appendChild(modal);
-    }
-
-    function confirmLoad(){
-      const raw = $("loadInput").value.trim();
-      const curCls = $("studentClass").value;
-      const curSeat = $("studentSeat").value;
-      if(!curCls || !curSeat){ alert("載入前請先選擇班級與座號！"); return; }
-
-      const p = parseResultString(raw);
-      if(!p || p.error){ alert(p ? p.error : "格式錯誤！"); return; }
-      if(p.classCode !== curCls || p.seatNo !== curSeat){ alert("身分不符！這不是你的專屬進度碼。"); return; }
-
-      state.classCode = p.classCode; state.seatNo = p.seatNo; state.points = p.points;
-      state.totalCorrect = p.correct; state.totalTotal = p.total;
-      state.masteryBits = p.mastery.split("").map(Number);
-      state.inventory = p.inventory;
-      
-      if (p.finished) { state.currentLevelIndex = 0; state.masteryBits = []; state.finished = false; } 
-      else { state.currentLevelIndex = Math.min(state.masteryBits.length, 3); }
-      
-      state.currentQuestionIndex = 0; state.levelCorrect = 0; state.levelTotal = 0; state.currentCombo = 0;
-      activeQuestionBank = buildActiveQuestionBank(DEFAULT_QUESTION_BANK);
-      closeLoadModal(); alert(`載入成功！目前累積積分：${state.points}`); showQuestion();
-    }
-    
-    function closeLoadModal(){ stopScanner(); if($("loadModal")) $("loadModal").remove(); }
-
     function saveProgressModal(){
       const prog = Math.round((state.currentLevelIndex * 5 + state.currentQuestionIndex + 1) / 20 * 100);
       const res = generateResultString();
@@ -654,7 +679,7 @@
     }
 
     /***********************
-     * QR Code 離線生成演算法 (完整無刪減)
+     * QR Code 離線生成演算法 (V3 核心)
      ***********************/
     const QR_V3_SIZE = 29; const QR_DATA_CODEWORDS = 55; const QR_ECC_CODEWORDS = 15;
     const QR_FORMAT_INFO_L = { 0:0b111011111000100, 1:0b111001011110011, 2:0b111110110101010, 3:0b111100010011101, 4:0b110011000101111, 5:0b110001100011000, 6:0b110110001000001, 7:0b110100101110110 };
