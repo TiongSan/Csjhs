@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>台語精熟闖關-積分累積版</title>
+  <title>台語精熟闖關-寶物交換版</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Huninn&family=Iansui&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
+  <script src="jsQR.js"></script>
   <script src="questions.js"></script>
   <script src="fractal.js"></script>
-  <script src="jsQR.js"></script>    
-  </head>
+</head>
 <body>
   <div class="wrap">
     <div class="title">
       <h1>台語精熟闖關</h1>
-      <p>iPad 友善版｜積分累積與身分鎖定系統</p>
+      <p>iPad 友善版｜積分、連擊與寶物交換系統</p>
     </div>
     <div id="app" class="card"></div>
   </div>
@@ -29,12 +29,11 @@
 
   <script>
     /***********************
-     * 核心設定
+     * 核心設定與狀態
      ***********************/
-    const SECRET_SALT = "TAIGI_MASTER"; // 校驗碼密鑰
+    const SECRET_SALT = "TAIGI_MASTER";
     const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLScDInn5Vn1UwxYqzeuMhcdZAFE20ErqPURU8zurg_lRsWwbUg/viewform?usp=sharing";
 
-    // 遊戲狀態管理
     const state = {
       classCode: "",
       seatNo: "",
@@ -47,25 +46,32 @@
       totalTotal: 0,
       masteryBits: [],
       finished: false,
-      rounds: 1,      // 挑戰輪數
-      currentCombo: 0 // Combo 連擊計數
+      currentCombo: 0,
+      // 寶物背包：[金星, 鑽石, 皇冠]
+      inventory: [0, 0, 0], 
+      // 已領取的禮物代碼，防止重複掃描同一張圖
+      scannedGifts: [] 
     };
+
+    const TREASURE_TYPES = [
+      { name: "金星", icon: "🌟", rate: 0.4 },
+      { name: "鑽石", icon: "💎", rate: 0.3 },
+      { name: "皇冠", icon: "👑", rate: 0.1 }
+    ];
 
     let activeQuestionBank = [];
 
     /***********************
-     * 工具與結果碼處理邏輯
+     * 工具與結果碼處理 (含 B 標籤)
      ***********************/
     function $(id){ return document.getElementById(id); }
     function pad2(n){ return String(n).padStart(2, "0"); }
 
-    // 獲取 8 碼時間戳記 (MMDDHHmm)
     function getShortTimestamp(){
       const now = new Date();
       return `${pad2(now.getMonth()+1)}${pad2(now.getDate())}${pad2(now.getHours())}${pad2(now.getMinutes())}`;
     }
 
-    // 計算 4 碼防竄改校驗位
     function calculateVCode(payload){
       let hash = 0;
       const str = payload + SECRET_SALT;
@@ -76,9 +82,10 @@
       return Math.abs(hash).toString(36).toUpperCase().slice(-4);
     }
 
-    // 產生結果字串
     function generateResultString(){
       const mastery = activeQuestionBank.map((_, idx) => state.masteryBits[idx] ? "1" : "0").join("");
+      // 寶物狀態壓縮成 B102 格式
+      const invStr = state.inventory.join("");
       const payload = [
         "TG",
         `G${state.classCode}`,
@@ -87,13 +94,13 @@
         `T${state.totalTotal + state.levelTotal}`,
         `C${state.totalCorrect + state.levelCorrect}`,
         `M${mastery}`,
+        `B${invStr}`, // 新增寶物標籤
         `D${getShortTimestamp()}`,
         `F${state.finished ? 1 : 0}`
       ].join("|");
       return `${payload}|V${calculateVCode(payload)}`;
     }
 
-    // 解析結果碼
     function parseResultString(str){
       const raw = String(str || "").trim();
       const parts = raw.split("|");
@@ -107,7 +114,6 @@
         if(key !== "V") payloadParts.push(p);
       }
 
-      // 校驗碼驗證
       if(obj.V !== calculateVCode(payloadParts.join("|"))) return { error: "防竄改驗證失敗！結果碼已被修改。" };
 
       return {
@@ -117,13 +123,14 @@
         total: Number(obj.T),
         correct: Number(obj.C),
         mastery: obj.M,
+        inventory: obj.B ? obj.B.split("").map(Number) : [0, 0, 0],
         timestamp: obj.D,
         finished: obj.F === "1"
       };
     }
 
     /***********************
-     * UI 與遊戲流程
+     * 畫面邏輯
      ***********************/
     function showStart(){
       $("app").innerHTML = `
@@ -158,101 +165,53 @@
       const seat = $("studentSeat").value;
       if(!cls || !seat){ alert("請選擇班級與座號"); return; }
       
-      resetToHome(false); // 重置數據但不回首頁
+      // 初始化
       state.classCode = cls;
       state.seatNo = seat;
+      state.points = 0;
+      state.inventory = [0, 0, 0];
+      state.currentLevelIndex = 0;
+      state.currentQuestionIndex = 0;
+      state.levelCorrect = 0;
+      state.levelTotal = 0;
+      state.totalCorrect = 0;
+      state.totalTotal = 0;
+      state.masteryBits = [];
+      state.finished = false;
+      state.currentCombo = 0;
+      
       activeQuestionBank = buildActiveQuestionBank(DEFAULT_QUESTION_BANK);
       fractalForest.reset();
       showQuestion();
     }
 
-    // 載入進度視窗
-    function showLoadProgressModal(){
-      const modal = document.createElement("div");
-      modal.id = "loadModal";
-      modal.className = "modal-overlay";
-      modal.innerHTML = `
-        <div class="modal-card">
-          <div class="row-between" style="padding:20px;">
-            <h2 style="margin:0;">載入進度</h2>
-            <button class="btn-secondary" onclick="closeLoadModal()">關閉</button>
-          </div>
-          <div class="parse-panel" style="margin:0 20px 20px;">
-            <p class="muted">1. 請先在首頁選好班級與座號</p>
-            <button class="btn-success" style="width:100%;" onclick="startLoadQrScanner()">開啟相機掃描 QR</button>
-            <div id="loadQrVideoWrap" class="scanner-video-wrap">
-              <video id="loadQrVideo" autoplay playsinline muted></video>
-            </div>
-            <textarea id="loadInput" placeholder="或在此貼上結果碼..." style="margin-top:10px;"></textarea>
-            <button class="btn-primary" style="width:100%;margin-top:10px;" onclick="confirmLoad()">確定載入</button>
-          </div>
-        </div>
-      `;
-      document.body.appendChild(modal);
-    }
-
-    function confirmLoad(){
-      const raw = $("loadInput").value.trim();
-      const curCls = $("studentClass").value;
-      const curSeat = $("studentSeat").value;
-      if(!curCls || !curSeat){ alert("載入前請先選擇班級與座號！"); return; }
-
-      const p = parseResultString(raw);
-      if(!p){ alert("格式錯誤！"); return; }
-      if(p.error){ alert(p.error); return; }
-
-      // 身分鎖定保護 (不洩漏個資)
-      if(p.classCode !== curCls || p.seatNo !== curSeat){
-        alert("身分不符！這不是你的專屬進度碼，請確認是否掃描錯誤。");
-        return;
-      }
-
-      state.classCode = p.classCode;
-      state.seatNo = p.seatNo;
-      state.points = p.points;
-      state.totalCorrect = p.correct;
-      state.totalTotal = p.total;
-      state.masteryBits = p.mastery.split("").map(Number);
-      
-      // 判定繼續關卡
-      if (p.finished) {
-        state.currentLevelIndex = 0;
-        state.masteryBits = [];
-        state.finished = false;
-      } else {
-        state.currentLevelIndex = Math.min(state.masteryBits.length, 3);
-      }
-      
-      state.currentQuestionIndex = 0;
-      state.levelCorrect = 0;
-      state.levelTotal = 0;
-      state.currentCombo = 0;
-      
-      activeQuestionBank = buildActiveQuestionBank(DEFAULT_QUESTION_BANK);
-      closeLoadModal();
-      alert(`載入成功！目前累積積分：${state.points}`);
-      showQuestion();
-    }
-
     function showQuestion(){
-      const q = activeQuestionBank[state.currentLevelIndex].questions[state.currentQuestionIndex];
       $("app").innerHTML = `
         <div class="screen">
           <div class="row-between">
             <div class="pill">Level ${state.currentLevelIndex + 1} | Q ${state.currentQuestionIndex + 1}/5</div>
             <div class="pill" style="color:#d97706; background:#fffbeb;">積分：${state.points}</div>
           </div>
-          <div class="student-badge">${state.classCode} 班 ${Number(state.seatNo)} 號</div>
+          
+          <div class="row-between" style="margin-top:10px;">
+             <div class="student-badge">${state.classCode} 班 ${Number(state.seatNo)} 號</div>
+             <div class="inventory-bar">
+               ${TREASURE_TYPES.map((t, i) => `<span>${t.icon} ${state.inventory[i]}</span>`).join(" ")}
+             </div>
+          </div>
+
           <div class="question-box">
-            <p class="question-title">${q.q}</p>
+            <p class="question-title">${activeQuestionBank[state.currentLevelIndex].questions[state.currentQuestionIndex].q}</p>
             <div class="options">
-              ${q.options.map((opt, i) => `<button class="option-btn" onclick="checkAnswer(${i})">${opt}</button>`).join("")}
+              ${activeQuestionBank[state.currentLevelIndex].questions[state.currentQuestionIndex].options.map((opt, i) => `<button class="option-btn" onclick="checkAnswer(${i})">${opt}</button>`).join("")}
             </div>
             <div id="feedback" class="feedback"></div>
           </div>
+          
           <div class="row" style="justify-content:center; gap:10px; margin-top:16px;">
-            <button class="btn-secondary" onclick="showStats()">查看統計卡片</button>
-            <button class="btn-warning" onclick="saveProgressModal()">💾 中途存檔上傳</button>
+            <button class="btn-primary" style="background:#4f46e5" onclick="showExchangeGateway()">🤝 寶物交換區</button>
+            <button class="btn-secondary" onclick="showStats()">統計卡片</button>
+            <button class="btn-warning" onclick="saveProgressModal()">💾 中途存檔</button>
           </div>
         </div>
       `;
@@ -263,13 +222,12 @@
       const isCorrect = idx === q.answer;
       state.levelTotal++;
       
-      let earnedPoints = 0;
+      let earned = 0;
       if(isCorrect){
         state.levelCorrect++;
         state.currentCombo++;
-        // 連擊加分公式: 10 + (Combo-1)*2
-        earnedPoints = 10 + (state.currentCombo - 1) * 2;
-        state.points += earnedPoints;
+        earned = 10 + (state.currentCombo - 1) * 2;
+        state.points += earned;
       } else {
         state.currentCombo = 0;
       }
@@ -277,16 +235,11 @@
       fractalForest.grow();
       const fb = $("feedback");
       fb.className = isCorrect ? "feedback success" : "feedback error";
-      
-      if(isCorrect){
-        const comboText = state.currentCombo > 1 ? ` (🔥 ${state.currentCombo} 連擊)` : "";
-        fb.innerHTML = `答對了！積分 +${earnedPoints}${comboText}`;
-        if(state.currentCombo > 1) createBonusEffect(state.currentCombo, earnedPoints);
-      } else {
-        fb.innerHTML = "答錯了。";
-      }
+      fb.innerHTML = isCorrect ? `答對了！積分 +${earned}${state.currentCombo>1?` (🔥${state.currentCombo}連擊)` : ""}` : "答錯了。";
       fb.style.display = "block";
       
+      if(isCorrect && state.currentCombo > 1) createBonusEffect(state.currentCombo, earned);
+
       document.querySelectorAll(".option-btn").forEach(b => b.disabled = true);
       setTimeout(() => {
         state.currentQuestionIndex++;
@@ -296,23 +249,36 @@
     }
 
     function finishLevel(){
-      const passed = state.levelCorrect >= 3;
-      const isPerfect = state.levelCorrect === 5; // 完美判定
-      
-      if(isPerfect) state.points += 30; // 完美加成
-      
+      const isPerfect = state.levelCorrect === 5;
+      if(isPerfect) state.points += 30;
+
+      // 嘗試掉落寶物
+      let dropped = null;
+      const roll = Math.random();
+      if(roll < 0.1) dropped = 2; // 皇冠 10%
+      else if(roll < 0.4) dropped = 1; // 鑽石 30%
+      else if(roll < 0.8) dropped = 0; // 金星 40%
+
+      if(dropped !== null) state.inventory[dropped]++;
+
       $("app").innerHTML = `
-        <div class="screen center level-summary">
-          ${isPerfect ? `<div class="perfect-badge">💯 Level ${state.currentLevelIndex+1} 完美精熟！</div>` 
-                      : `<h2>Level ${state.currentLevelIndex+1} 結束</h2>`}
-          <div class="meta-box" style="margin:20px auto; max-width:200px;">
-            <div class="label">本關答對</div>
+        <div class="screen center">
+          ${isPerfect ? `<div class="perfect-badge">💯 完美過關！+30 積分</div>` : `<h2>Level ${state.currentLevelIndex+1} 結束</h2>`}
+          
+          <div class="meta-box" style="margin:20px auto; max-width:240px;">
+            <div class="label">本關得分</div>
             <div class="value">${state.levelCorrect}/5</div>
           </div>
-          ${isPerfect ? `<div class="bonus-info">💎 完美加成：+30 積分<br><small>（5題全對的傑出表現！）</small></div>` : ''}
-          <div class="row" style="justify-content:center;">
-            ${passed ? `<button class="btn-success" onclick="nextLevel()">前進下一關</button>` 
-                    : `<button class="btn-warning" onclick="retryLevel()">重試本關</button>`}
+
+          ${dropped !== null ? `
+            <div class="treasure-drop-anim">
+              <div style="font-size:50px;">🎁</div>
+              <p>驚喜！你獲得了 ${TREASURE_TYPES[dropped].icon} ${TREASURE_TYPES[dropped].name}</p>
+            </div>
+          ` : ""}
+
+          <div class="row" style="justify-content:center; margin-top:20px;">
+            ${state.levelCorrect >= 3 ? `<button class="btn-success" onclick="nextLevel()">前進下一關</button>` : `<button class="btn-warning" onclick="retryLevel()">重試本關</button>`}
           </div>
         </div>
       `;
@@ -324,235 +290,242 @@
       state.totalCorrect += state.levelCorrect;
       state.totalTotal += state.levelTotal;
       state.currentLevelIndex++;
-      state.levelCorrect = 0;
-      state.levelTotal = 0;
-      state.currentQuestionIndex = 0;
-      state.currentCombo = 0;
+      state.levelCorrect = 0; state.levelTotal = 0; state.currentQuestionIndex = 0; state.currentCombo = 0;
       if(state.currentLevelIndex >= 4) finishGame();
       else showQuestion();
     }
 
     function retryLevel(){
-      state.levelCorrect = 0; state.levelTotal = 0; state.currentQuestionIndex = 0;
-      state.currentCombo = 0;
-      showQuestion();
-    }
-
-    function finishGame(){
-      state.finished = true;
-      const res = generateResultString();
-      $("app").innerHTML = `
-        <div class="screen center">
-          <h2>闖關完成！</h2>
-          <div class="meta-grid">
-            <div class="meta-box"><div class="label">總積分</div><div class="value">${state.points}</div></div>
-            <div class="meta-box"><div class="label">正確率</div><div class="value">${Math.round(state.totalCorrect/state.totalTotal*100)}%</div></div>
-          </div>
-          <div class="result-code" id="resCode">${res}</div>
-          <div id="qrcode"></div>
-          <div class="row" style="justify-content:center; margin-top:20px;">
-            <button class="btn-primary" onclick="startNewRound()">開啟新一輪挑戰</button>
-            <button class="btn-success" onclick="openForm('${res}')">上傳 Google 表單</button>
-          </div>
-          <div class="row" style="justify-content:center; margin-top:10px;">
-            <button class="btn-secondary" onclick="resetToHome(true)">換下一位挑戰 (返回首頁)</button>
-          </div>
-        </div>
-      `;
-      renderOfflineQRCode(res, "qrcode");
-    }
-
-    function resetToHome(goStart = true){
-      state.points = 0; state.currentLevelIndex = 0; state.currentQuestionIndex = 0;
-      state.levelCorrect = 0; state.levelTotal = 0; state.totalCorrect = 0;
-      state.totalTotal = 0; state.masteryBits = []; state.finished = false;
-      state.currentCombo = 0;
-      if(goStart) showStart();
-    }
-
-    function startNewRound(){
-      if(!confirm(`你是「${state.classCode} 班 ${Number(state.seatNo)} 號」嗎？\n✅ 確定則保留積分繼續挑戰`)) {
-        resetToHome(true); return;
-      }
-      state.currentLevelIndex = 0; state.currentQuestionIndex = 0;
-      state.levelCorrect = 0; state.levelTotal = 0; state.masteryBits = [];
-      state.finished = false; state.currentCombo = 0;
-      activeQuestionBank = buildActiveQuestionBank(DEFAULT_QUESTION_BANK);
-      fractalForest.reset();
+      state.levelCorrect = 0; state.levelTotal = 0; state.currentQuestionIndex = 0; state.currentCombo = 0;
       showQuestion();
     }
 
     /***********************
-     * Bonus & 存檔功能
+     * 寶物交換系統 (重點新增)
      ***********************/
-    function saveProgressModal(){
-      const currentTotal = state.totalTotal + state.levelTotal;
-      const currentCorrect = state.totalCorrect + state.levelCorrect;
-      const accuracy = currentTotal > 0 ? Math.round(currentCorrect / currentTotal * 100) : 0;
-      const progressPercent = Math.round((state.currentLevelIndex * 5 + state.currentQuestionIndex + 1) / 20 * 100);
-      const resultCode = generateResultString();
-      
+    function showExchangeGateway(){
       const modal = document.createElement("div");
+      modal.id = "exchangeModal";
       modal.className = "modal-overlay";
       modal.innerHTML = `
         <div class="modal-card">
-          <div class="row-between" style="padding:20px;"><h2>💾 中途進度存檔</h2><button class="btn-secondary" onclick="this.closest('.modal-overlay').remove()">關閉</button></div>
-          <div class="parse-panel" style="margin:0 20px;">
-            <div class="meta-grid">
-              <div class="meta-box"><div class="label">總進度</div><div class="value">${progressPercent}%</div></div>
-              <div class="meta-box"><div class="label">目前積分</div><div class="value">${state.points}</div></div>
-            </div>
-            <div style="margin-top:18px; padding:14px; background:#f0f4ff; border-radius:12px;">
-              <p class="muted">你的進度碼：</p>
-              <div class="result-code" style="font-size:12px;">${resultCode}</div>
-              <button class="btn-primary" style="width:100%; margin-top:10px;" onclick="copyText('${resultCode}')">📋 複製進度碼</button>
-            </div>
-            <button class="btn-success" style="width:100%; margin-top:10px;" onclick="openForm('${resultCode}')">🌐 上傳表單</button>
+          <div class="row-between" style="padding:20px;">
+            <h2 style="margin:0;">🤝 寶物交換閘門</h2>
+            <button class="btn-secondary" onclick="closeExchange()">關閉</button>
           </div>
-        </div>`;
+          <div class="center" style="padding:0 20px 20px;">
+            <p>請掃描老師投影幕上的【時間鑰匙】以開啟權限</p>
+            <div id="exchangeScannerWrap" class="scanner-video-wrap" style="display:block;">
+              <video id="exchangeVideo" autoplay playsinline muted style="width:100%; border-radius:16px;"></video>
+            </div>
+            <p class="muted" style="margin-top:10px;">密鑰每分鐘更換一次，請確保雙方時間正確</p>
+          </div>
+        </div>
+      `;
       document.body.appendChild(modal);
-      fallbackCopyToClipboard(resultCode);
+      startScanner("exchangeVideo", (code) => {
+        verifyTimeKey(code);
+      });
     }
 
-    function createBonusEffect(combo, pts){
-      const popup = document.createElement("div");
-      popup.className = `combo-popup ${combo > 4 ? 'amazing' : combo > 2 ? 'great' : 'good'}`;
-      popup.textContent = `+${pts}`;
-      popup.style.left = (window.innerWidth / 2) + "px";
-      popup.style.top = (window.innerHeight / 2) + "px";
-      document.body.appendChild(popup);
-      setTimeout(() => popup.remove(), 1500);
+    function verifyTimeKey(code){
+      // 代碼格式: TG_KEY|YYMMDDHHmm|VXXXX
+      const parts = code.split("|");
+      if(parts.length !== 3 || parts[0] !== "TG_KEY") return;
+      
+      // 校驗碼驗證
+      const payload = `TG_KEY|${parts[1]}`;
+      if(parts[2] !== calculateVCode(payload)){
+        alert("無效的時間鑰匙！");
+        return;
+      }
 
-      if(combo > 2){
-        const emojis = ["🎉", "✨", "🔥", "🚀", "🌟", "💯"];
-        for(let i=0; i<(combo>4?3:1); i++){
-          const emoji = document.createElement("div");
-          emoji.className = "emoji-burst";
-          emoji.textContent = emojis[Math.floor(Math.random()*emojis.length)];
-          emoji.style.left = "50%"; emoji.style.top = "50%";
-          emoji.style.setProperty("--tx", (Math.random()*200-100)+"px");
-          emoji.style.setProperty("--ty", (Math.random()*200-100)+"px");
-          document.body.appendChild(emoji);
-          setTimeout(() => emoji.remove(), 1500);
+      // 時間有效性驗證 (容許 ±2 分鐘誤差)
+      const keyTimeStr = parts[1]; // YYMMDDHHmm
+      const now = new Date();
+      const yy = String(now.getFullYear()).slice(-2);
+      const mm = pad2(now.getMonth()+1);
+      const dd = pad2(now.getDate());
+      const hh = pad2(now.getHours());
+      const mi = pad2(now.getMinutes());
+      const nowStr = `${yy}${mm}${dd}${hh}${mi}`;
+
+      // 簡單的時間差比對
+      const kVal = parseInt(keyTimeStr);
+      const nVal = parseInt(nowStr);
+      
+      if(Math.abs(kVal - nVal) <= 2){
+        stopScanner();
+        showExchangeInterface();
+      } else {
+        alert("鑰匙已過期，請掃描老師螢幕上最新的 QR Code！");
+      }
+    }
+
+    function showExchangeInterface(){
+      const wrap = $("exchangeModal").querySelector(".modal-card");
+      wrap.innerHTML = `
+        <div class="row-between" style="padding:20px;">
+          <h2 style="margin:0;">🤝 寶物交換中心</h2>
+          <button class="btn-secondary" onclick="closeExchange()">結束交換</button>
+        </div>
+        <div style="padding:0 20px 20px;">
+           <div class="pill" style="width:100%; text-align:center; margin-bottom:15px; background:#fef2f2; color:#dc2626;">
+             ⏳ 交換功能將在 3 分鐘後自動關閉
+           </div>
+           
+           <div class="meta-grid">
+             <div class="meta-box" onclick="prepGift(0)">
+               <div class="label">🌟 金星</div>
+               <div class="value">${state.inventory[0]}</div>
+               <button class="btn-primary" style="font-size:12px; margin-top:8px;">送出</button>
+             </div>
+             <div class="meta-box" onclick="prepGift(1)">
+               <div class="label">💎 鑽石</div>
+               <div class="value">${state.inventory[1]}</div>
+               <button class="btn-primary" style="font-size:12px; margin-top:8px;">送出</button>
+             </div>
+             <div class="meta-box" onclick="prepGift(2)">
+               <div class="label">👑 皇冠</div>
+               <div class="value">${state.inventory[2]}</div>
+               <button class="btn-primary" style="font-size:12px; margin-top:8px;">送出</button>
+             </div>
+           </div>
+
+           <div class="center" style="margin-top:20px; border-top:1px solid #eee; pt:20px;">
+             <h3>接收同學的寶物</h3>
+             <div id="receiveScannerWrap" style="width:100%; height:200px; background:#000; border-radius:16px; overflow:hidden;">
+               <video id="receiveVideo" autoplay playsinline muted style="width:100%; height:100%; object-fit:cover;"></video>
+             </div>
+           </div>
+
+           <div id="giftDisplay" class="center hidden" style="margin-top:20px; padding:20px; background:#fffbeb; border-radius:20px;">
+             <p id="giftHint" style="font-weight:bold; color:#b45309;"></p>
+             <div id="giftQr"></div>
+             <p class="muted">⚠️ 產生條碼後已自動扣除寶物<br>請讓同學掃描，關閉視窗後無法取回</p>
+           </div>
+        </div>
+      `;
+
+      startScanner("receiveVideo", (code) => {
+        receiveGift(code);
+      });
+
+      // 3 分鐘後自動關閉
+      setTimeout(() => {
+        if($("exchangeModal")) {
+          alert("交換時間結束！");
+          closeExchange();
         }
-      }
+      }, 180000);
     }
 
-    function createPerfectEffect(){
-      for(let i=0; i<5; i++){
-        const star = document.createElement("div");
-        star.className = "star-twinkle";
-        star.textContent = "⭐";
-        star.style.left = Math.random()*100+"%"; star.style.top = Math.random()*100+"%";
-        document.body.appendChild(star);
-        setTimeout(() => star.remove(), 3000);
+    function prepGift(typeIdx){
+      if(state.inventory[typeIdx] <= 0){
+        alert("你沒有這個寶物可以送人喔！");
+        return;
       }
+      if(!confirm(`確定要送出一個 ${TREASURE_TYPES[typeIdx].name} 嗎？\n⚠️ 送出後將無法取消與退還！`)) return;
+
+      // 扣除寶物
+      state.inventory[typeIdx]--;
+      showExchangeInterface(); // 刷新顯示
+
+      // 顯示禮物碼
+      const giftBox = $("giftDisplay");
+      giftBox.classList.remove("hidden");
+      $("giftHint").textContent = `🎁 你的禮物：${TREASURE_TYPES[typeIdx].icon} ${TREASURE_TYPES[typeIdx].name}`;
+      
+      // 禮物碼格式: TG_GIFT|類型索引|隨機碼|校驗碼
+      const rand = Math.random().toString(36).slice(-4).toUpperCase();
+      const payload = `TG_GIFT|${typeIdx}|${rand}`;
+      const fullGiftCode = `${payload}|V${calculateVCode(payload)}`;
+      
+      renderOfflineQRCode(fullGiftCode, "giftQr");
+      giftBox.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function receiveGift(code){
+      const parts = code.split("|");
+      if(parts.length !== 4 || parts[0] !== "TG_GIFT") return;
+      
+      // 校驗
+      const payload = `TG_GIFT|${parts[1]}|${parts[2]}`;
+      if(parts[3] !== calculateVCode(payload)) return;
+
+      // 重複性驗證
+      if(state.scannedGifts.includes(parts[2])){
+        alert("這個禮物你已經領過了喔！");
+        return;
+      }
+
+      const typeIdx = parseInt(parts[1]);
+      state.inventory[typeIdx]++;
+      state.scannedGifts.push(parts[2]);
+      
+      alert(`🎉 恭喜！收到同學送的 ${TREASURE_TYPES[typeIdx].icon} ${TREASURE_TYPES[typeIdx].name}`);
+      showExchangeInterface(); // 刷新介面
+    }
+
+    function closeExchange(){
+      stopScanner();
+      if($("exchangeModal")) $("exchangeModal").remove();
+      showQuestion(); // 回到題目頁刷新寶物條
     }
 
     /***********************
-     * QR 產生與掃描引擎
+     * jsQR 掃描器引擎
      ***********************/
-    // [QR Engine 程式碼 ... 保持與 sp.html 相同即可]
-    // 此處省略具體 ReedSolomon 等底層數學函式，請確保 sp.html 末尾內容完整保留
-    function renderOfflineQRCode(text, targetId){ /* ... 保持原狀 ... */ }
-
-/***********************
-     * QR 掃描引擎 (改用跨平台 jsQR)
-     ***********************/
-    let loadQrStream = null;
-    let loadQrRafId = null;
-    
-    // 建立一個隱藏的畫布，用來擷取影片畫面給 jsQR 分析
+    let activeStream = null;
+    let qrRafId = null;
     const qrCanvas = document.createElement("canvas");
     const qrCtx = qrCanvas.getContext("2d", { willReadFrequently: true });
 
-    async function startLoadQrScanner(){
-      const v = $("loadQrVideo");
+    async function startScanner(videoId, onScan){
+      const v = $(videoId);
       try {
-        // 請求後置鏡頭
-        loadQrStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
-        v.srcObject = loadQrStream;
-        
-        // ⚠️ 這是 iPad/iOS Safari 必須要加的關鍵屬性，否則影片會全螢幕卡住
-        v.setAttribute("playsinline", true); 
+        activeStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
+        v.srcObject = activeStream;
+        v.setAttribute("playsinline", true);
         v.play();
-        
-        $("loadQrVideoWrap").style.display = "block";
-        requestAnimationFrame(loadScanLoop);
-      } catch (err) { 
-        alert("無法啟動相機，請確認您是否有允許網頁使用相機權限！\n詳細錯誤：" + err.message); 
-      }
+        qrRafId = requestAnimationFrame(() => scanLoop(v, onScan));
+      } catch (err) { alert("相機啟動失敗"); }
     }
 
-    function loadScanLoop(){
-      const v = $("loadQrVideo");
-      // 確認影片已經開始播放且有畫面
+    function scanLoop(v, onScan){
       if(v.readyState === v.HAVE_ENOUGH_DATA){
         qrCanvas.width = v.videoWidth;
         qrCanvas.height = v.videoHeight;
-        
-        // 將目前的影片畫面畫到隱藏的 canvas 上
         qrCtx.drawImage(v, 0, 0, qrCanvas.width, qrCanvas.height);
-        const imageData = qrCtx.getImageData(0, 0, qrCanvas.width, qrCanvas.height);
-        
-        // 將畫面像素交給 jsQR 解析
-        const code = jsQR(imageData.data, imageData.width, imageData.height, {
-          inversionAttempts: "dontInvert",
-        });
-
-        // 如果成功掃描到文字
-        if(code){
-          $("loadInput").value = code.data;
-          stopLoadScanner(); 
-          confirmLoad();
-          return; // 成功就跳出迴圈
+        const imgData = qrCtx.getImageData(0, 0, qrCanvas.width, qrCanvas.height);
+        const code = jsQR(imgData.data, imgData.width, imgData.height);
+        if(code && code.data){
+          onScan(code.data);
+          // 為了讓連續掃描順暢，這裡不自動停止，由邏輯決定何時 stopScanner
         }
       }
-      // 如果沒掃到，就繼續下一格畫面
-      loadQrRafId = requestAnimationFrame(loadScanLoop);
+      qrRafId = requestAnimationFrame(() => scanLoop(v, onScan));
     }
 
-    function stopLoadScanner(){
-      if(loadQrStream) loadQrStream.getTracks().forEach(t => t.stop());
-      const wrap = $("loadQrVideoWrap");
-      if(wrap) wrap.style.display = "none";
-      if(loadQrRafId) cancelAnimationFrame(loadQrRafId);
+    function stopScanner(){
+      if(activeStream) activeStream.getTracks().forEach(t => t.stop());
+      if(qrRafId) cancelAnimationFrame(qrRafId);
     }
 
-    function closeLoadModal(){ 
-      stopLoadScanner(); 
-      const modal = $("loadModal");
-      if(modal) modal.remove(); 
-    }
+    /***********************
+     * 基礎工具函式 (存檔、統計、QR 生成)
+     ***********************/
+    // 這裡請保留您原本 index.html 中的其他函式：
+    // confirmLoad, showLoadProgressModal, showStats, finishGame, openForm, 
+    // 以及最底下的 QR 生成核心 (renderOfflineQRCode, utf8Bytes, reedSolomonCompute 等)
+    // 確保 SECRET_SALT 設為 "TAIGI_MASTER" 以配對 teacher.html
+    
+    // ... 原有程式碼省略 ...
 
-    function openForm(res){
-      fallbackCopyToClipboard(res);
-      alert("✓ 代碼已複製！現在開啟表單貼上即可。");
-      window.open(GOOGLE_FORM_URL, "_blank");
-    }
-
-    function fallbackCopyToClipboard(text){
-      const t = document.createElement("textarea");
-      t.value = text; document.body.appendChild(t); t.select();
-      document.execCommand("copy"); document.body.removeChild(t);
-    }
-
-    // 隨機抽題與關卡建立
-    function buildActiveQuestionBank(qBank){
-      const shuffled = [...qBank].sort(() => Math.random() - 0.5);
-      const levels = [];
-      for(let i=0; i<4; i++){
-        const qs = shuffled.slice(i*5, (i+1)*5).map(q => {
-          const opts = [...q.options]; const ansText = opts[q.answer-1];
-          opts.sort(() => Math.random() - 0.5);
-          return { q: q.q, options: opts, answer: opts.indexOf(ansText) };
-        });
-        levels.push({ level: i+1, questions: qs });
-      }
-      return levels;
-    }
-
-    window.onload = () => { fractalForest.init(); showStart(); };
+    window.onload = () => { 
+      if(typeof fractalForest !== 'undefined') fractalForest.init(); 
+      showStart(); 
+    };
   </script>
 </body>
 </html>
