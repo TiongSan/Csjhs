@@ -56,30 +56,43 @@
             /* 雙畫布的排列容器 */
             #boards-wrapper {
                 display: flex;
-                gap: 20px;
+                gap: 0;
                 justify-content: center;
                 z-index: 10;
+                border: 8px solid #666;
+                border-radius: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+                overflow: hidden;
+                background-color: white;
+                width: fit-content;
+                margin: 0 auto;
             }
 
-            /* 單一畫布的外框與狀態樣式 */
+            /* 單一畫布的狀態樣式 */
             .canvas-wrap {
                 position: relative;
                 background-color: white;
-                border: 3px solid #666;
-                border-radius: 10px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                transition: all 0.3s ease; /* 狀態切換的漸變動畫 */
+                transition: all 0.3s ease;
             }
-            /* 鎖定狀態：半透明、灰色框 */
-            .canvas-wrap.locked {
-                opacity: 0.4;
-                border-color: #ccc;
-                pointer-events: none; /* 徹底阻擋滑鼠與觸控事件 */
+
+            /* 狀態 A：state-active (進行中 / 焦點) */
+            .canvas-wrap.state-active {
+                background-color: #ffffff;
+                opacity: 1;
             }
-            /* 啟動狀態：綠色框提示 */
-            .canvas-wrap.active-board {
-                border-color: #4caf50;
-                box-shadow: 0 0 15px rgba(76, 175, 80, 0.4);
+
+            /* 狀態 B：state-locked (待命 / 鎖定) */
+            .canvas-wrap.state-locked {
+                background-color: #e0e0e0;
+                opacity: 0.45;
+                pointer-events: none;
+            }
+
+            /* 狀態 C：state-completed (已完成) */
+            .canvas-wrap.state-completed {
+                background-color: #ffffff;
+                opacity: 1;
+                pointer-events: none;
             }
 
             canvas {
@@ -440,15 +453,19 @@
             // 更新畫布的外觀狀態 (綠框、鎖定變淡)
             function updateCanvasVisuals() {
                 if (activeCanvasIndex === 0) {
-                    wrap0.className = "canvas-wrap active-board";
-                    wrap1.className = "canvas-wrap locked";
+                    wrap0.className = "canvas-wrap state-active";
+                    if (currentDigits.length === 2) {
+                        wrap1.className = "canvas-wrap state-locked";
+                    }
                 } else if (activeCanvasIndex === 1) {
-                    wrap0.className = "canvas-wrap"; // 左邊寫完，回歸正常外框
-                    wrap1.className = "canvas-wrap active-board"; // 右邊啟動綠框
+                    wrap0.className = "canvas-wrap state-completed";
+                    wrap1.className = "canvas-wrap state-active";
                 } else {
                     // 全部寫完
-                    wrap0.className = "canvas-wrap";
-                    wrap1.className = "canvas-wrap";
+                    wrap0.className = "canvas-wrap state-completed";
+                    if (currentDigits.length === 2) {
+                        wrap1.className = "canvas-wrap state-completed";
+                    }
                 }
             }
 
