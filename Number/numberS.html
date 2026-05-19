@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>數字描寫練習 (無提示點、車車反彈版)</title>
+        <title>數字描寫練習 (車輛狀態優化版)</title>
         <style>
             body {
                 font-family: "Microsoft JhengHei", sans-serif;
@@ -81,7 +81,6 @@
                 background-color: #9c27b0;
             }
 
-            /* 🎈 氣球樣式 */
             .balloon {
                 position: fixed;
                 bottom: -100px;
@@ -124,7 +123,6 @@
                 display: none;
             }
 
-            /* 🚗 車子樣式 (移除了 CSS 動畫，改由 JS 控制) */
             .car {
                 position: fixed;
                 font-size: 50px;
@@ -165,6 +163,10 @@
 
             let audioCtx;
             let isSoundEnabled = false;
+
+            // 【新增：全域車輛管理變數】
+            let activeCars = []; // 儲存目前畫面上的車輛資料
+            let carAnimationId = null; // 儲存動畫 ID 以便隨時停止
 
             const checkpointsData = {
                 0: [
@@ -239,7 +241,6 @@
                 ],
             };
 
-            // --- 音效區 ---
             function playPopSound() {
                 if (!audioCtx || !isSoundEnabled) return;
                 const osc = audioCtx.createOscillator();
@@ -309,7 +310,23 @@
                 }
             });
 
-            // --- 核心邏輯區 ---
+            // 【新增：清除所有車輛的專用函數】
+            function clearCars() {
+                // 停止動畫迴圈
+                if (carAnimationId) {
+                    cancelAnimationFrame(carAnimationId);
+                    carAnimationId = null;
+                }
+                // 刪除畫面上的車輛元素
+                activeCars.forEach((car) => {
+                    if (car.el && document.body.contains(car.el)) {
+                        car.el.remove();
+                    }
+                });
+                // 清空陣列
+                activeCars = [];
+            }
+
             function init() {
                 for (let i = 0; i <= 9; i++) {
                     const btn = document.createElement("button");
@@ -324,7 +341,7 @@
                             .forEach((b) => b.classList.remove("active"));
                         btn.classList.add("active");
                         currentNumber = i.toString();
-                        resetGame();
+                        resetGame(); // 點擊切換數字時，會呼叫 resetGame
                     });
                     numberSelector.appendChild(btn);
                 }
@@ -335,6 +352,10 @@
             function resetGame() {
                 currentCheckpointIndex = 0;
                 isFinished = false;
+
+                // 【關鍵修改：重置遊戲時，強制清除舊車輛】
+                clearCars();
+
                 if (isSoundEnabled) {
                     messageEl.innerText = "請憑記憶寫出正確的筆順！";
                 } else {
@@ -362,17 +383,6 @@
                 ctx.textAlign = "center";
                 ctx.textBaseline = "middle";
                 ctx.fillText(currentNumber, 150, 165);
-
-                // ⛔ 這裡註解掉了畫藍色與橘色點點的程式碼
-                /*
-            const points = checkpointsData[currentNumber];
-            points.forEach((p, index) => {
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, 8, 0, Math.PI * 2);
-                ctx.fillStyle = (index === 0) ? '#ff5722' : '#2196F3';
-                ctx.fill();
-            });
-            */
             }
 
             function getCoordinates(event) {
@@ -444,7 +454,6 @@
                 }
             }
 
-            // 🎈 氣球特效
             function showBalloons() {
                 const colors = [
                     "#F44336",
@@ -504,8 +513,10 @@
                 }
             }
 
-            // 🚗 底部車子物理碰撞動畫特效
             function showCars() {
+                // 發車前先確保把場上的舊車清乾淨
+                clearCars();
+
                 const carEmojis = [
                     "🚗",
                     "🚕",
@@ -517,7 +528,6 @@
                     "🛵",
                 ];
                 const numCars = 6;
-                const cars = [];
 
                 for (let i = 0; i < numCars; i++) {
                     const carEl = document.createElement("div");
@@ -525,12 +535,10 @@
                     carEl.innerText =
                         carEmojis[Math.floor(Math.random() * carEmojis.length)];
 
-                    // 隨機決定起始方向與速度
                     let isMovingRight = Math.random() > 0.5;
-                    let speed = 2 + Math.random() * 3; // 每幀移動像素
+                    let speed = 2 + Math.random() * 3;
                     let vx = isMovingRight ? speed : -speed;
 
-                    // 隨機初始位置 (確保在螢幕內)
                     let x = Math.random() * (window.innerWidth - 60);
                     let bottomPos = 10 + Math.random() * 40;
 
@@ -540,63 +548,51 @@
 
                     document.body.appendChild(carEl);
 
-                    // 將車子的狀態存入陣列，供迴圈使用
-                    cars.push({ el: carEl, x: x, vx: vx, width: 50 });
+                    // 把車子推入全域的 activeCars 陣列
+                    activeCars.push({ el: carEl, x: x, vx: vx, width: 50 });
                 }
 
-                let animationId;
                 let startTime = Date.now();
-                const bounceDuration = 8000; // 在畫面內來回反彈 8 秒
+                // 【關鍵修改：將反彈時間縮短為 4 秒】
+                const bounceDuration = 4000;
 
-                // 動畫迴圈函數
                 function animateCars() {
                     const now = Date.now();
                     const isBouncing = now - startTime < bounceDuration;
-                    let allOffScreen = true; // 預設所有車都開走了
+                    let allOffScreen = true;
 
-                    cars.forEach((car) => {
-                        // 更新位置
+                    activeCars.forEach((car) => {
                         car.x += car.vx;
 
                         if (isBouncing) {
-                            // 【來回反彈模式】
                             if (car.x <= 0) {
                                 car.x = 0;
-                                car.vx = Math.abs(car.vx); // 改向右開
+                                car.vx = Math.abs(car.vx);
                                 car.el.style.transform = "scaleX(-1)";
                             } else if (car.x >= window.innerWidth - car.width) {
                                 car.x = window.innerWidth - car.width;
-                                car.vx = -Math.abs(car.vx); // 改向左開
+                                car.vx = -Math.abs(car.vx);
                                 car.el.style.transform = "scaleX(1)";
                             }
-                            allOffScreen = false; // 車子還在畫面上
+                            allOffScreen = false;
                         } else {
-                            // 【時間到，放行模式】讓車子順勢開出螢幕
                             if (
                                 car.x > -100 &&
                                 car.x < window.innerWidth + 100
                             ) {
-                                allOffScreen = false; // 還沒完全開出畫面
+                                allOffScreen = false;
                             }
                         }
-
-                        // 將計算好的位置套用到畫面上
                         car.el.style.left = car.x + "px";
                     });
 
-                    // 判斷是否結束動畫
                     if (allOffScreen) {
-                        cars.forEach((car) => {
-                            if (document.body.contains(car.el)) car.el.remove();
-                        });
-                        cancelAnimationFrame(animationId);
+                        clearCars(); // 動畫順利播完後也呼叫清除函數
                     } else {
-                        // 呼叫下一幀
-                        animationId = requestAnimationFrame(animateCars);
+                        carAnimationId = requestAnimationFrame(animateCars);
                     }
                 }
 
-                // 啟動迴圈
                 animateCars();
             }
 
@@ -612,6 +608,7 @@
                 canvas.addEventListener("touchend", endPosition);
                 canvas.addEventListener("touchmove", draw, { passive: false });
 
+                // 點擊「清除重寫」時，會呼叫 resetGame
                 clearBtn.addEventListener("click", resetGame);
             }
 
