@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-TW">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>數字描寫練習 (1-20 雙位數闖關版)</title>
+        <link rel="stylesheet" href="style.css" />
+        <script src="script.js" defer></script>
+    </head>
+    <body>
+        <h1>數字練習板</h1>
+        <div id="message">請點擊紫色按鈕開啟音效！</div>
+
+        <!-- 自動產生 0-20 的按鈕 -->
+        <div class="controls" id="number-selector"></div>
+
+        <!-- 雙畫布容器 -->
+        <div id="boards-wrapper">
+            <div class="canvas-wrap" id="wrap0">
+                <canvas id="board0" width="300" height="300"></canvas>
+            </div>
+            <div class="canvas-wrap" id="wrap1">
+                <canvas id="board1" width="300" height="300"></canvas>
+            </div>
+        </div>
+
+        <div class="btn-group">
+            <button class="action-btn" id="clearBtn">清除重寫</button>
+            <button class="action-btn" id="soundToggle">🔇 開啟音效</button>
+        </div>
+    </body>
+</html>

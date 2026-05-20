@@ -1,0 +1,566 @@
+// DOM 元素綁定
+const wrap0 = document.getElementById("wrap0");
+const board0 = document.getElementById("board0");
+const ctx0 = board0.getContext("2d");
+
+const wrap1 = document.getElementById("wrap1");
+const board1 = document.getElementById("board1");
+const ctx1 = board1.getContext("2d");
+
+const clearBtn = document.getElementById("clearBtn");
+const numberSelector = document.getElementById("number-selector");
+const messageEl = document.getElementById("message");
+const soundToggle = document.getElementById("soundToggle");
+
+// 核心狀態管理
+let currentNumber = "1";
+let currentDigits = ["1"];
+let activeCanvasIndex = 0;
+let currentCheckpointIndex = 0;
+let isDrawing = false;
+let isFinished = false;
+
+let activeCars = [];
+let carAnimationId = null;
+
+let audioCtx;
+let isSoundEnabled = false;
+
+// 0-9 的檢查點座標
+const checkpointsData = {
+  0: [
+    { x: 150, y: 70 },
+    { x: 80, y: 150 },
+    { x: 150, y: 250 },
+    { x: 220, y: 150 },
+    { x: 150, y: 70 },
+  ],
+  1: [
+    { x: 150, y: 70 },
+    { x: 150, y: 250 },
+  ],
+  2: [
+    { x: 90, y: 90 },
+    { x: 150, y: 70 },
+    { x: 200, y: 100 },
+    { x: 90, y: 240 },
+    { x: 210, y: 240 },
+  ],
+  3: [
+    { x: 100, y: 80 },
+    { x: 200, y: 80 },
+    { x: 150, y: 145 },
+    { x: 210, y: 210 },
+    { x: 100, y: 240 },
+  ],
+  4: [
+    { x: 180, y: 70 },
+    { x: 80, y: 180 },
+    { x: 220, y: 180 },
+    { x: 180, y: 100 },
+    { x: 180, y: 250 },
+  ],
+  5: [
+    { x: 200, y: 70 },
+    { x: 100, y: 70 },
+    { x: 100, y: 140 },
+    { x: 210, y: 180 },
+    { x: 100, y: 240 },
+  ],
+  6: [
+    { x: 180, y: 70 },
+    { x: 110, y: 160 },
+    { x: 130, y: 250 },
+    { x: 190, y: 200 },
+    { x: 130, y: 160 },
+  ],
+  7: [
+    { x: 90, y: 80 },
+    { x: 210, y: 80 },
+    { x: 150, y: 240 },
+  ],
+  8: [
+    { x: 150, y: 70 },
+    { x: 100, y: 110 },
+    { x: 150, y: 160 },
+    { x: 190, y: 210 },
+    { x: 150, y: 250 },
+    { x: 100, y: 210 },
+    { x: 150, y: 160 },
+    { x: 190, y: 110 },
+    { x: 150, y: 70 },
+  ],
+  9: [
+    { x: 180, y: 100 },
+    { x: 150, y: 70 },
+    { x: 110, y: 120 },
+    { x: 150, y: 160 },
+    { x: 180, y: 100 },
+    { x: 180, y: 240 },
+  ],
+};
+
+// 音效區
+function playDingSound() {
+  if (!audioCtx || !isSoundEnabled) return;
+
+  const osc = audioCtx.createOscillator();
+  const gainNode = audioCtx.createGain();
+
+  osc.connect(gainNode);
+  gainNode.connect(audioCtx.destination);
+
+  osc.type = "sine";
+  osc.frequency.setValueAtTime(880, audioCtx.currentTime);
+
+  gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
+  gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.15);
+
+  osc.start();
+  osc.stop(audioCtx.currentTime + 0.15);
+}
+
+function playPopSound() {
+  if (!audioCtx || !isSoundEnabled) return;
+
+  const osc = audioCtx.createOscillator();
+  const gainNode = audioCtx.createGain();
+
+  osc.connect(gainNode);
+  gainNode.connect(audioCtx.destination);
+
+  osc.type = "sine";
+  osc.frequency.setValueAtTime(400, audioCtx.currentTime);
+  osc.frequency.exponentialRampToValueAtTime(40, audioCtx.currentTime + 0.1);
+
+  gainNode.gain.setValueAtTime(1, audioCtx.currentTime);
+  gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+
+  osc.start();
+  osc.stop(audioCtx.currentTime + 0.1);
+}
+
+function playSuccessSound() {
+  if (!audioCtx || !isSoundEnabled) return;
+
+  const osc = audioCtx.createOscillator();
+  const gainNode = audioCtx.createGain();
+
+  osc.connect(gainNode);
+  gainNode.connect(audioCtx.destination);
+
+  osc.type = "triangle";
+  osc.frequency.setValueAtTime(440, audioCtx.currentTime);
+  osc.frequency.setValueAtTime(554.37, audioCtx.currentTime + 0.15);
+  osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.3);
+
+  gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+  gainNode.gain.linearRampToValueAtTime(0.5, audioCtx.currentTime + 0.05);
+  gainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.6);
+
+  osc.start();
+  osc.stop(audioCtx.currentTime + 0.6);
+}
+
+soundToggle.addEventListener("click", () => {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+
+  if (audioCtx.state === "suspended") {
+    audioCtx.resume();
+  }
+
+  isSoundEnabled = !isSoundEnabled;
+
+  if (isSoundEnabled) {
+    soundToggle.innerText = "🔊 關閉音效";
+    messageEl.innerText = "音效已啟動，開始練習吧！";
+  } else {
+    soundToggle.innerText = "🔇 開啟音效";
+    messageEl.innerText = "音效已關閉，可以開始練習！";
+  }
+});
+
+// 核心邏輯區
+function clearCars() {
+  if (carAnimationId) {
+    cancelAnimationFrame(carAnimationId);
+    carAnimationId = null;
+  }
+
+  activeCars.forEach((car) => {
+    if (car.el && document.body.contains(car.el)) {
+      car.el.remove();
+    }
+  });
+
+  activeCars = [];
+}
+
+function init() {
+  // 產生 0 到 20 的按鈕
+  for (let i = 0; i <= 20; i++) {
+    const btn = document.createElement("button");
+
+    btn.className = "num-btn";
+    btn.innerText = i;
+
+    if (i.toString() === currentNumber) {
+      btn.classList.add("active");
+    }
+
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".num-btn").forEach((b) => {
+        b.classList.remove("active");
+      });
+
+      btn.classList.add("active");
+      currentNumber = i.toString();
+      resetGame();
+    });
+
+    numberSelector.appendChild(btn);
+  }
+
+  resetGame();
+  setupEvents();
+}
+
+function resetGame() {
+  currentDigits = currentNumber.split("");
+  activeCanvasIndex = 0;
+  currentCheckpointIndex = 0;
+  isFinished = false;
+
+  clearCars();
+
+  if (isSoundEnabled) {
+    messageEl.innerText = "請憑記憶寫出正確的筆順！";
+  } else {
+    messageEl.innerText = "請點擊紫色按鈕開啟音效！";
+  }
+
+  messageEl.style.color = "#ff9800";
+
+  if (currentDigits.length === 1) {
+    wrap1.style.display = "none";
+  } else {
+    wrap1.style.display = "block";
+  }
+
+  updateCanvasVisuals();
+
+  drawBackground(ctx0, currentDigits[0]);
+
+  if (currentDigits.length === 2) {
+    drawBackground(ctx1, currentDigits[1]);
+  }
+}
+
+function updateCanvasVisuals() {
+  if (activeCanvasIndex === 0) {
+    wrap0.className = "canvas-wrap state-active";
+
+    if (currentDigits.length === 2) {
+      wrap1.className = "canvas-wrap state-locked";
+    }
+  } else if (activeCanvasIndex === 1) {
+    wrap0.className = "canvas-wrap state-completed";
+    wrap1.className = "canvas-wrap state-active";
+  } else {
+    wrap0.className = "canvas-wrap state-completed";
+
+    if (currentDigits.length === 2) {
+      wrap1.className = "canvas-wrap state-completed";
+    }
+  }
+}
+
+function drawBackground(ctx, digitText) {
+  ctx.clearRect(0, 0, 300, 300);
+
+  ctx.strokeStyle = "#e0e0e0";
+  ctx.lineWidth = 2;
+  ctx.setLineDash([10, 10]);
+
+  ctx.beginPath();
+  ctx.moveTo(150, 0);
+  ctx.lineTo(150, 300);
+  ctx.moveTo(0, 150);
+  ctx.lineTo(300, 150);
+  ctx.stroke();
+
+  ctx.setLineDash([]);
+
+  ctx.font = "bold 220px Arial";
+  ctx.fillStyle = "#f0f0f0";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText(digitText === "1" ? "l" : digitText, 150, 165);
+}
+
+function getCoordinates(event, canvasElement) {
+  const rect = canvasElement.getBoundingClientRect();
+  let x;
+  let y;
+
+  if (event.touches && event.touches.length > 0) {
+    x = event.touches[0].clientX - rect.left;
+    y = event.touches[0].clientY - rect.top;
+  } else {
+    x = event.clientX - rect.left;
+    y = event.clientY - rect.top;
+  }
+
+  return { x, y };
+}
+
+function startPosition(e) {
+  const targetCanvas = e.target;
+  const targetIndex = targetCanvas.id === "board0" ? 0 : 1;
+
+  if (targetIndex !== activeCanvasIndex || isFinished) return;
+
+  isDrawing = true;
+
+  const ctx = activeCanvasIndex === 0 ? ctx0 : ctx1;
+  const { x, y } = getCoordinates(e, targetCanvas);
+
+  ctx.beginPath();
+  ctx.moveTo(x, y);
+
+  draw(e, targetCanvas, ctx);
+}
+
+function endPosition() {
+  isDrawing = false;
+}
+
+function draw(e, targetCanvas, ctx) {
+  if (!isDrawing || isFinished) return;
+
+  e.preventDefault();
+
+  if (targetCanvas === undefined) {
+    targetCanvas = e.target;
+    ctx = targetCanvas.id === "board0" ? ctx0 : ctx1;
+
+    const targetIndex = targetCanvas.id === "board0" ? 0 : 1;
+
+    if (targetIndex !== activeCanvasIndex) return;
+  }
+
+  const { x, y } = getCoordinates(e, targetCanvas);
+
+  ctx.lineWidth = 15;
+  ctx.lineCap = "round";
+  ctx.lineJoin = "round";
+  ctx.strokeStyle = "#333";
+
+  ctx.lineTo(x, y);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(x, y);
+
+  checkProgress(x, y);
+}
+
+function checkProgress(x, y) {
+  const currentDigitStr = currentDigits[activeCanvasIndex];
+  const points = checkpointsData[currentDigitStr];
+
+  if (currentCheckpointIndex >= points.length) return;
+
+  const target = points[currentCheckpointIndex];
+  const distance = Math.hypot(x - target.x, y - target.y);
+
+  if (distance < 40) {
+    currentCheckpointIndex++;
+
+    if (currentCheckpointIndex === points.length) {
+      if (activeCanvasIndex === 0 && currentDigits.length === 2) {
+        playDingSound();
+
+        activeCanvasIndex = 1;
+        currentCheckpointIndex = 0;
+
+        updateCanvasVisuals();
+      } else {
+        isFinished = true;
+        activeCanvasIndex = -1;
+
+        updateCanvasVisuals();
+
+        messageEl.innerText = "🎉 太棒了！方向全對！";
+        messageEl.style.color = "#4CAF50";
+
+        playSuccessSound();
+        showBalloons();
+        showCars();
+      }
+    }
+  }
+}
+
+// 特效與事件綁定區
+function showBalloons() {
+  const colors = [
+    "#F44336",
+    "#E91E63",
+    "#9C27B0",
+    "#673AB7",
+    "#3F51B5",
+    "#2196F3",
+    "#03A9F4",
+    "#00BCD4",
+    "#009688",
+    "#4CAF50",
+    "#8BC34A",
+    "#CDDC39",
+    "#FFEB3B",
+    "#FFC107",
+    "#FF9800",
+    "#FF5722",
+  ];
+
+  for (let i = 0; i < 20; i++) {
+    setTimeout(() => {
+      const balloon = document.createElement("div");
+      balloon.className = "balloon";
+
+      const color = colors[Math.floor(Math.random() * colors.length)];
+
+      balloon.style.backgroundColor = color;
+      balloon.style.color = color;
+      balloon.style.left = Math.random() * 80 + 10 + "vw";
+
+      const duration = 3 + Math.random() * 3;
+      balloon.style.animationDuration = duration + "s";
+
+      const pop = (e) => {
+        e.preventDefault();
+
+        if (balloon.classList.contains("popped")) return;
+
+        balloon.classList.add("popped");
+        balloon.innerText = "💥";
+        balloon.style.backgroundColor = "transparent";
+        balloon.style.boxShadow = "none";
+
+        playPopSound();
+
+        setTimeout(() => balloon.remove(), 300);
+      };
+
+      balloon.addEventListener("mousedown", pop);
+      balloon.addEventListener("touchstart", pop, {
+        passive: false,
+      });
+
+      document.body.appendChild(balloon);
+
+      setTimeout(() => {
+        if (document.body.contains(balloon)) {
+          balloon.remove();
+        }
+      }, duration * 1000);
+    }, Math.random() * 2000);
+  }
+}
+
+function showCars() {
+  clearCars();
+
+  const carEmojis = ["🚗", "🚕", "🚙", "🚓", "🚒", "🚑", "🚜", "🛵"];
+  const numCars = 6;
+
+  for (let i = 0; i < numCars; i++) {
+    const carEl = document.createElement("div");
+    carEl.className = "car";
+    carEl.innerText = carEmojis[Math.floor(Math.random() * carEmojis.length)];
+
+    const isMovingRight = Math.random() > 0.5;
+    const speed = 2 + Math.random() * 3;
+    const vx = isMovingRight ? speed : -speed;
+    const x = Math.random() * (window.innerWidth - 60);
+    const bottomPos = 10 + Math.random() * 40;
+
+    carEl.style.left = x + "px";
+    carEl.style.bottom = bottomPos + "px";
+    carEl.style.transform = vx > 0 ? "scaleX(-1)" : "scaleX(1)";
+
+    document.body.appendChild(carEl);
+
+    activeCars.push({
+      el: carEl,
+      x,
+      vx,
+      width: 50,
+    });
+  }
+
+  const startTime = Date.now();
+  const bounceDuration = 4000;
+
+  function animateCars() {
+    const now = Date.now();
+    const isBouncing = now - startTime < bounceDuration;
+    let allOffScreen = true;
+
+    activeCars.forEach((car) => {
+      car.x += car.vx;
+
+      if (isBouncing) {
+        if (car.x <= 0) {
+          car.x = 0;
+          car.vx = Math.abs(car.vx);
+          car.el.style.transform = "scaleX(-1)";
+        } else if (car.x >= window.innerWidth - car.width) {
+          car.x = window.innerWidth - car.width;
+          car.vx = -Math.abs(car.vx);
+          car.el.style.transform = "scaleX(1)";
+        }
+
+        allOffScreen = false;
+      } else {
+        if (car.x > -100 && car.x < window.innerWidth + 100) {
+          allOffScreen = false;
+        }
+      }
+
+      car.el.style.left = car.x + "px";
+    });
+
+    if (allOffScreen) {
+      clearCars();
+    } else {
+      carAnimationId = requestAnimationFrame(animateCars);
+    }
+  }
+
+  animateCars();
+}
+
+function setupEvents() {
+  [board0, board1].forEach((board) => {
+    board.addEventListener("mousedown", startPosition);
+    board.addEventListener("mouseup", endPosition);
+    board.addEventListener("mousemove", draw);
+    board.addEventListener("mouseout", endPosition);
+
+    board.addEventListener("touchstart", startPosition, {
+      passive: false,
+    });
+
+    board.addEventListener("touchend", endPosition);
+
+    board.addEventListener("touchmove", draw, {
+      passive: false,
+    });
+  });
+
+  clearBtn.addEventListener("click", resetGame);
+}
+
+init();
