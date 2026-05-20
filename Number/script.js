@@ -293,7 +293,8 @@ function drawBackground(ctx, digitText) {
 
   ctx.setLineDash([]);
 
-  ctx.font = "bold 220px Arial";
+  ctx.font =
+    digitText === "7" ? "bold 220px 'Cambria Math'" : "bold 220px Arial";
   ctx.fillStyle = "#f0f0f0";
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
