@@ -95,11 +95,15 @@ function loadCharacter(index) {
   clearUserCanvas();
 }
 
-// ====== 3. 繪畫互動控制 ======
+// ====== 防呆加強版：繪畫互動控制 ======
+
 function getCoords(e) {
   const rect = userCanvas.getBoundingClientRect();
-  const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-  const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+  // 嚴謹判斷是「觸控」還是「滑鼠」
+  let clientX =
+    e.touches && e.touches.length > 0 ? e.touches[0].clientX : e.clientX;
+  let clientY =
+    e.touches && e.touches.length > 0 ? e.touches[0].clientY : e.clientY;
   return { x: clientX - rect.left, y: clientY - rect.top };
 }
 
@@ -109,23 +113,27 @@ function startDrawing(e) {
   clearTimeout(checkTimeout);
   const { x, y } = getCoords(e);
 
-  userCtx.beginPath();
-  userCtx.moveTo(x, y);
+  console.log("✏️ 偵測到下筆！座標：", x, y); // 偵錯雷達
 
-  // 加上這兩行！讓學生只要「輕點一下」也能畫出圓點
-  userCtx.lineTo(x, y);
-  userCtx.stroke();
-
+  // 💡 關鍵修正：必須先設定「畫筆顏色與粗細」，再開始畫，否則會變成透明或 1px 的黑線
   userCtx.lineWidth = 26;
   userCtx.lineCap = "round";
   userCtx.lineJoin = "round";
-  userCtx.strokeStyle = "#4CAF50";
+  // 故意改成半透明的亮綠色，這樣畫上去就能清楚看到有沒有蓋在灰字上
+  userCtx.strokeStyle = "rgba(76, 175, 80, 0.8)";
+
+  userCtx.beginPath();
+  userCtx.moveTo(x, y);
+  // 讓使用者就算只有「輕輕點一下」不拖曳，也能畫出一個圓點
+  userCtx.lineTo(x, y + 0.1);
+  userCtx.stroke();
 }
 
 function draw(e) {
   if (!isDrawing) return;
   e.preventDefault();
   const { x, y } = getCoords(e);
+
   userCtx.lineTo(x, y);
   userCtx.stroke();
 }
@@ -133,6 +141,8 @@ function draw(e) {
 function stopDrawing() {
   if (!isDrawing) return;
   isDrawing = false;
+  console.log("🛑 偵測到停筆，準備批改..."); // 偵錯雷達
+
   // 停筆後等待 600ms 進行批改
   checkTimeout = setTimeout(validateDrawing, 600);
 }

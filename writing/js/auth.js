@@ -72,3 +72,21 @@ function showQRCodeModal(completedCount, totalScore) {
 function closeQRCodeModal() {
   document.getElementById("qrcode-modal").style.display = "none";
 }
+
+// 3. 一鍵上傳到 Google 表單
+function submitToGoogleForm() {
+  // 取得畫面上剛剛產生的紀錄碼
+  const code = document.getElementById("save-code-text").innerText;
+
+  // ⚠️ 請替換成你自己的 Google 表單網址與 entry 代號
+  // 注意網址結尾是 viewform
+  const formBaseUrl =
+    "https://docs.google.com/forms/d/e/1FAIpQLScDInn5Vn1UwxYqzeuMhcdZAFE20ErqPURU8zurg_lRsWwbUg/viewform?usp=sharing";
+  const entryId = "entry.487437124"; // 替換成你的題目代碼
+
+  // 將網址與代碼組合起來
+  const finalUrl = `${formBaseUrl}?usp=pp_url&${entryId}=${encodeURIComponent(code)}`;
+
+  // 開啟新分頁，讓學生直接點擊「提交」
+  window.open(finalUrl, "_blank");
+}
