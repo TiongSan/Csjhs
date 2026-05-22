@@ -1,121 +1,111 @@
-/* ====== 基礎與版面設定 ====== */
-body {
-    font-family: "Microsoft JhengHei", "Source Han Sans TC", sans-serif;
-    background-color: #1e1e2f;
-    color: #eee;
-    margin: 0;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-h1 { margin-top: 0; color: #4CAF50; }
-
-.dashboard {
-    display: flex;
-    gap: 30px;
-    margin-bottom: 20px;
-    font-size: 20px;
-    font-weight: bold;
-    background: #2a2a40;
-    padding: 10px 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-}
-
-.score { color: #ffeb3b; }
-.combo { color: #ff5722; display: none; }
-.combo.active { display: inline-block; animation: pop 0.3s ease-out; }
-
-@keyframes pop {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.3); }
-    100% { transform: scale(1); }
-}
-
-/* ====== 主視覺區塊 ====== */
-.main-container {
-    display: flex;
-    gap: 40px;
-    max-width: 900px;
-    width: 100%;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-/* 左側：課文導覽區 */
-.article-panel {
-    flex: 1;
-    min-width: 300px;
-    background: #2a2a40;
-    padding: 25px;
-    border-radius: 12px;
-    font-size: 24px;
-    line-height: 1.8;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-}
-
-.char { color: #bbb; transition: all 0.2s; }
-.char.punctuation { color: #666; }
-.char.done { color: #4CAF50; font-weight: bold; }
-.char.active {
-    background-color: #4CAF50;
-    color: white;
-    padding: 2px 4px;
-    border-radius: 6px;
-    font-weight: bold;
-    box-shadow: 0 0 10px rgba(76, 175, 80, 0.6);
-}
-
-/* 右側：畫布區 */
-.canvas-panel {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.canvas-wrapper {
-    position: relative;
-    width: 300px;
-    height: 300px;
-    background-color: #fdfdfd;
-    border-radius: 16px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
-    border: 4px solid #444;
-    overflow: hidden;
-    margin-bottom: 20px;
-}
-
-canvas {
-    position: absolute;
+/* ====== 彈出視窗 (Modal) ====== */
+.modal-overlay {
+    position: fixed;
     top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85); /* 半透明黑色背景 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* 確保它蓋在最上層 */
+}
+
+.modal-content {
+    background: #2a2a40;
+    padding: 40px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    max-width: 400px;
+    width: 90%;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: #4caf50;
+}
+.modal-content p {
+    font-size: 18px;
+    color: #ccc;
+}
+
+.modal-content input {
     display: block;
-    cursor: crosshair;
-    touch-action: none;
-}
-
-/* 按鈕區 */
-.controls { display: flex; gap: 15px; }
-button {
-    padding: 10px 20px;
-    font-size: 18px;
-    font-weight: bold;
-    border: none;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
     border-radius: 8px;
-    cursor: pointer;
-    transition: 0.2s;
-}
-.btn-clear { background: #e91e63; color: white; }
-.btn-skip { background: #607d8b; color: white; }
-button:hover { filter: brightness(1.1); transform: translateY(-2px); }
-button:active { transform: translateY(0); }
-
-#feedback-msg {
-    margin-top: 15px;
-    height: 24px;
+    border: 1px solid #555;
+    background: #1e1e2f;
+    color: #fff;
     font-size: 18px;
-    font-weight: bold;
-    color: #ff5722;
+    box-sizing: border-box;
+}
+
+.btn-start {
+    width: 100%;
+    background: #4caf50;
+    color: white;
+    font-size: 20px;
+    padding: 12px;
+    margin-top: 10px;
+}
+
+.btn-close {
+    background: #e91e63;
+    color: white;
+    margin-top: 20px;
+}
+
+.btn-save {
+    background: #ff9800; /* 橘色儲存按鈕 */
+    color: white;
+}
+
+.qrcode-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    background: #fff; /* QR code 必須是白底黑字手機才好掃 */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* 顯示紀錄碼的區塊，允許學生一鍵全選複製 */
+.save-code {
+    font-family: monospace;
+    background: #1e1e2f;
+    padding: 10px;
+    border-radius: 6px;
+    display: block;
+    word-break: break-all;
+    color: #ffeb3b;
+    user-select: all;
+}
+
+/* 解決無法畫上去的圖層打架問題 */
+#bgCanvas {
+    z-index: 1;
+    pointer-events: none; /* 讓背景畫布徹底變成幽靈，不會阻擋滑鼠 */
+}
+
+#userCanvas {
+    z-index: 10; /* 確保使用者畫布在最上層 */
+}
+
+/* 美化下拉選單 */
+.modal-content select {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #555;
+    background: #1e1e2f;
+    color: #fff;
+    font-size: 18px;
+    box-sizing: border-box;
+    cursor: pointer;
 }
