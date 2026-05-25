@@ -3,7 +3,7 @@ let traceableChars = [];
 let charElements = [];
 let currentIndex = 0;
 // 🌟 新增這兩個變數：畫筆粗細與安全鎖
-let currentBrushSize = 14;
+let currentBrushSize = 20;
 let isTransitioning = false;
 // Canvas 畫布設定
 const bgCtx = document
@@ -21,30 +21,43 @@ let isDrawing = false;
 let checkTimeout = null;
 
 // ====== 1. 系統初始化 ======
+// 💡 app.js 中全新升級的系統初始化函數
 function initApp() {
   const articleDiv = document.getElementById("article-display");
   articleDiv.innerHTML = "";
 
-  // 讀取 data.js 中的第一篇文章
-  const textToPractice = articleData[0].content;
+  // 重置核心陣列，確保每次登入都乾淨
+  traceableChars = [];
+  charElements = [];
+  currentIndex = 0;
   let traceIndex = 0;
 
-  for (let char of textToPractice) {
-    const span = document.createElement("span");
-    span.innerText = char;
-    span.className = "char";
+  // 讀取 data.js 中的多個段落
+  const paragraphs = articleData[0].paragraphs;
 
-    // 使用 data.js 定義的正規表達式過濾
-    if (ignoreRegex.test(char)) {
-      span.classList.add("punctuation");
-    } else {
-      span.dataset.index = traceIndex;
-      traceableChars.push(char);
-      charElements.push(span);
-      traceIndex++;
+  // 雙重迴圈：第一層跑「段落」，第二層跑段落裡的「字」
+  paragraphs.forEach((pText) => {
+    // 為每一個段落建立一個獨立的 <p> 標籤
+    const pElement = document.createElement("p");
+    pElement.style.marginBottom = "24px"; // 讓段落與段落之間有漂亮的空隙
+
+    for (let char of pText) {
+      const span = document.createElement("span");
+      span.innerText = char;
+      span.className = "char";
+
+      if (ignoreRegex.test(char)) {
+        span.classList.add("punctuation");
+      } else {
+        span.dataset.index = traceIndex;
+        traceableChars.push(char);
+        charElements.push(span);
+        traceIndex++;
+      }
+      pElement.appendChild(span); // 把字塞進段落
     }
-    articleDiv.appendChild(span);
-  }
+    articleDiv.appendChild(pElement); // 把段落塞進大面板
+  });
 
   document.getElementById("progress-text").innerText =
     `0 / ${traceableChars.length}`;
