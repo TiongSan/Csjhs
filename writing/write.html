@@ -69,6 +69,28 @@
                     <canvas id="userCanvas" width="300" height="300"></canvas>
                 </div>
 
+                <!-- 🌟 新增這段：畫筆粗細調整拉桿 -->
+                <div class="brush-control">
+                    <label for="brush-width"
+                        >🖌️ 畫筆粗細：<span id="brush-width-val"
+                            >14</span
+                        ></label
+                    >
+                    <!-- min=5 最細, max=40 最粗, value=14 預設值 -->
+                    <input
+                        type="range"
+                        id="brush-width"
+                        min="5"
+                        max="40"
+                        value="14"
+                        oninput="
+                            document.getElementById(
+                                'brush-width-val',
+                            ).innerText = this.value
+                        "
+                    />
+                </div>
+
                 <div class="controls">
                     <button class="btn-clear" id="btn-clear">清除重寫</button>
                     <button class="btn-skip" id="btn-skip">跳過此字</button>
