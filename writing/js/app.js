@@ -2,7 +2,9 @@
 let traceableChars = [];
 let charElements = [];
 let currentIndex = 0;
-
+// 🌟 新增這兩個變數：畫筆粗細與安全鎖
+let currentBrushSize = 14;
+let isTransitioning = false;
 // Canvas 畫布設定
 const bgCtx = document
   .getElementById("bgCanvas")
@@ -108,43 +110,40 @@ function getCoords(e) {
 }
 
 function startDrawing(e) {
+  if (isTransitioning) return; // 🔒 安全鎖：如果在切換字體中，禁止下筆
   e.preventDefault();
   isDrawing = true;
   clearTimeout(checkTimeout);
   const { x, y } = getCoords(e);
 
-  console.log("✏️ 偵測到下筆！座標：", x, y); // 偵錯雷達
+  // 💡 直接讀取滑桿的最新數字
+  const sliderVal = document.getElementById("brush-width").value;
+  currentBrushSize = parseInt(sliderVal);
 
-  // 💡 關鍵修正：必須先設定「畫筆顏色與粗細」，再開始畫，否則會變成透明或 1px 的黑線
-  userCtx.lineWidth = 26;
+  userCtx.lineWidth = currentBrushSize;
   userCtx.lineCap = "round";
   userCtx.lineJoin = "round";
-  // 故意改成半透明的亮綠色，這樣畫上去就能清楚看到有沒有蓋在灰字上
   userCtx.strokeStyle = "rgba(76, 175, 80, 0.8)";
 
   userCtx.beginPath();
   userCtx.moveTo(x, y);
-  // 讓使用者就算只有「輕輕點一下」不拖曳，也能畫出一個圓點
   userCtx.lineTo(x, y + 0.1);
   userCtx.stroke();
 }
 
 function draw(e) {
-  if (!isDrawing) return;
+  if (!isDrawing || isTransitioning) return; // 🔒 安全鎖
   e.preventDefault();
   const { x, y } = getCoords(e);
-
   userCtx.lineTo(x, y);
   userCtx.stroke();
 }
 
 function stopDrawing() {
-  if (!isDrawing) return;
+  if (!isDrawing || isTransitioning) return;
   isDrawing = false;
-  console.log("🛑 偵測到停筆，準備批改..."); // 偵錯雷達
-
-  // 停筆後等待 600ms 進行批改
-  checkTimeout = setTimeout(validateDrawing, 600);
+  // ⏳ 學生停筆後，等待 0.8 秒 (原本 0.6) 再批改，避免連筆太快被中斷
+  checkTimeout = setTimeout(validateDrawing, 800);
 }
 
 function clearUserCanvas() {
@@ -154,6 +153,8 @@ function clearUserCanvas() {
 
 // ====== 4. 像素檢核核心 ======
 function validateDrawing() {
+  if (isTransitioning) return; // 🔒 安全鎖
+
   const userData = userCtx.getImageData(0, 0, 300, 300).data;
   let userTotalPixels = 0;
   let maskCovered = 0;
@@ -171,19 +172,32 @@ function validateDrawing() {
   const scribbleRatio = userTotalPixels / maskTotalPixels;
   const msgEl = document.getElementById("feedback-msg");
 
-  if (coverageRate > 0.55 && scribbleRatio < 2.3) {
-    // 過關！
+  // 🌟 難度調整：覆蓋率需大於 80% (0.8)，亂塗倍率放寬到 3.0 倍
+  if (coverageRate > 0.8 && scribbleRatio < 3.0) {
+    // 過關！啟動安全鎖
+    isTransitioning = true;
+
     charElements[currentIndex].classList.remove("active");
     charElements[currentIndex].classList.add("done");
-    addScoreAndCombo(); // 呼叫 rewards.js 的功能
 
-    setTimeout(() => loadCharacter(currentIndex + 1), 300);
-  } else if (scribbleRatio >= 2.3) {
+    if (typeof addScoreAndCombo === "function") addScoreAndCombo();
+
+    msgEl.innerText = "✨ 寫得好！準備下一字...";
+    msgEl.style.color = "#4CAF50";
+
+    // ⏳ 等待 1.2 秒再切換，這段時間學生亂畫也不會跑到下一題
+    setTimeout(() => {
+      isTransitioning = false; // 解除安全鎖
+      loadCharacter(currentIndex + 1);
+    }, 1200);
+  } else if (scribbleRatio >= 3.0) {
     msgEl.innerText = "畫出界太多了！請跟著灰字寫喔！";
     msgEl.style.color = "#e91e63";
-    breakCombo(); // 呼叫 rewards.js 的功能
+    if (typeof breakCombo === "function") breakCombo();
   } else {
-    msgEl.innerText = "筆畫還沒寫完喔，繼續補滿！";
+    // 💡 貼心功能：顯示目前完成百分比
+    let percent = Math.floor(coverageRate * 100);
+    msgEl.innerText = `筆畫還沒寫完喔 (目前 ${percent}% / 目標 80%)`;
     msgEl.style.color = "#ff9800";
   }
 }
