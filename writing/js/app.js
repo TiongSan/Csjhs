@@ -1,4 +1,15 @@
 // ====== 核心變數 ======
+// 🌟 學校課表白名單 (僅在此時段內可解鎖畫布)
+const classSchedule = [
+    { start: "08:20", end: "09:00" }, // 第一節
+    { start: "09:15", end: "09:55" }, // 第二節
+    { start: "10:15", end: "10:55" }, // 第三節
+    { start: "11:10", end: "11:50" }, // 第四節
+    { start: "13:15", end: "13:55" }, // 第五節
+    { start: "14:10", end: "14:50" }, // 第六節
+    { start: "15:20", end: "16:00" }  // 第七節
+];
+
 let traceableChars = [];
 let charElements = [];
 let currentIndex = 0;
@@ -63,6 +74,10 @@ function initApp() {
     `0 / ${traceableChars.length}`;
   loadCharacter(0);
   setupEvents();
+
+  // 初始載入檢查與背景輪詢
+  enforceTimeLimit(); 
+  setInterval(enforceTimeLimit, 10000); 
 }
 
 // ====== 2. 載入單一字體 ======
@@ -242,4 +257,38 @@ function setupEvents() {
     charElements[currentIndex].style.color = "#888";
     loadCharacter(currentIndex + 1);
   });
+}
+
+// ====== 6. 課表白名單與自動鎖定機制 ======
+function isPlayableTime() {
+    const now = new Date();
+    const currentHours = now.getHours().toString().padStart(2, '0');
+    const currentMinutes = now.getMinutes().toString().padStart(2, '0');
+    const currentTime = `${currentHours}:${currentMinutes}`;
+
+    return classSchedule.some(period => 
+        currentTime >= period.start && currentTime <= period.end
+    );
+}
+
+function enforceTimeLimit() {
+    const canvasWrapper = document.querySelector('.canvas-wrapper');
+    const msgEl = document.getElementById('feedback-msg');
+    
+    if (!canvasWrapper || !msgEl) return;
+
+    if (!isPlayableTime()) {
+        // 鎖定畫布
+        canvasWrapper.style.pointerEvents = 'none';
+        canvasWrapper.style.opacity = '0.3';
+        msgEl.innerText = "🛑 現在是下課時間，請儲存進度並上傳成績！";
+        msgEl.style.color = "#e91e63";
+    } else {
+        // 解鎖畫布
+        canvasWrapper.style.pointerEvents = 'auto';
+        canvasWrapper.style.opacity = '1';
+        if (msgEl.innerText.includes("下課時間")) {
+            msgEl.innerText = ""; 
+        }
+    }
 }
