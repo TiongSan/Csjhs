@@ -103,7 +103,7 @@ function loadCharacter(index) {
   const imgData = maskCtx.getImageData(0, 0, 300, 300).data;
   maskTotalPixels = 0;
   for (let i = 3; i < imgData.length; i += 4) {
-    if (imgData[i] > 128) maskTotalPixels++;
+    if (imgData[i] > 50) maskTotalPixels++;
   }
   maskData = imgData;
 
@@ -171,22 +171,28 @@ function validateDrawing() {
   const userData = userCtx.getImageData(0, 0, 300, 300).data;
   let userTotalPixels = 0;
   let maskCovered = 0;
+  let outOfBoundsPixels = 0;
 
   for (let i = 3; i < userData.length; i += 4) {
     if (userData[i] > 50) {
       userTotalPixels++;
-      if (maskData[i] > 50) maskCovered++;
+      if (maskData[i] > 50) {
+        maskCovered++;
+      } else {
+        outOfBoundsPixels++;
+      }
     }
   }
 
   if (userTotalPixels === 0) return;
 
   const coverageRate = maskCovered / maskTotalPixels;
+  const outOfBoundsRatio = outOfBoundsPixels / maskTotalPixels;
   const scribbleRatio = userTotalPixels / maskTotalPixels;
   const msgEl = document.getElementById("feedback-msg");
 
-  // 🌟 難度調整：覆蓋率需大於 80% (0.8)，亂塗倍率放寬到 3.0 倍
-  if (coverageRate > 0.8 && scribbleRatio < 3.0) {
+  // 嚴格過關判定
+  if (coverageRate > 0.80 && outOfBoundsRatio < 0.30 && scribbleRatio < 2.5) {
     // 過關！啟動安全鎖
     isTransitioning = true;
 
@@ -203,12 +209,13 @@ function validateDrawing() {
       isTransitioning = false; // 解除安全鎖
       loadCharacter(currentIndex + 1);
     }, 1200);
-  } else if (scribbleRatio >= 3.0) {
+  } else if (outOfBoundsRatio >= 0.30 || scribbleRatio >= 2.5) {
+    // 亂塗警告
     msgEl.innerText = "畫出界太多了！請跟著灰字寫喔！";
     msgEl.style.color = "#e91e63";
     if (typeof breakCombo === "function") breakCombo();
   } else {
-    // 💡 貼心功能：顯示目前完成百分比
+    // 未完成提示
     let percent = Math.floor(coverageRate * 100);
     msgEl.innerText = `筆畫還沒寫完喔 (目前 ${percent}% / 目標 80%)`;
     msgEl.style.color = "#ff9800";
