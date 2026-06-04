@@ -13,4 +13,4 @@ const articleData = [
 ];
 
 // 加上 \n \r 確保換行字元不會被誤算成要描寫的生字
-const ignoreRegex = /[，。「」1a-zA-Z\n\r]/;
+const ignoreRegex = /[『』、；，。「」1a-zA-Z\n\r\s]/;
