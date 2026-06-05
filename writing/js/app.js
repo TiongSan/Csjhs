@@ -33,7 +33,7 @@ let checkTimeout = null;
 
 // ====== 1. 系統初始化 ======
 // 💡 app.js 中全新升級的系統初始化函數
-function initApp() {
+function initApp(loadData = null) {
   const articleDiv = document.getElementById("article-display");
   articleDiv.innerHTML = "";
 
@@ -42,9 +42,6 @@ function initApp() {
   charElements = [];
   currentIndex = 0;
   let traceIndex = 0;
-
-  // 💡 呼叫剛剛寫好的網址攔截函數
-  const loadData = typeof checkUrlForSaveData === "function" ? checkUrlForSaveData() : null;
 
   // 讀取 data.js 中的多個段落
   const paragraphs = articleData[0].paragraphs;

@@ -1,5 +1,7 @@
 // ====== auth.js：帳號與進度管理模組 ======
 
+let pendingSaveData = null; // 暫存解析後的存檔資料，等待身分驗證
+
 // 儲存學生基本資料 (移除姓名)
 let userInfo = {
   className: "",
@@ -32,16 +34,40 @@ function login() {
     return;
   }
 
-  // 存入變數中
-  userInfo.className = classInput;
-  userInfo.studentNumber = numberInput;
-
-  // 隱藏登入遮罩
-  document.getElementById("login-modal").style.display = "none";
-
-  // 啟動主程式 (app.js 裡的函數)
-  if (typeof initApp === "function") {
-    initApp();
+  if (pendingSaveData) {
+    // 🛡️ 執行防弊驗證：比對選擇的班級座號是否與存檔一致
+    if (classInput === pendingSaveData.className && numberInput === pendingSaveData.studentNumber) {
+      // ✅ 驗證成功：放行並載入進度
+      userInfo = { className: classInput, studentNumber: numberInput };
+      document.getElementById("user-info-display").innerText = `目前身分：${userInfo.className} 班 ${userInfo.studentNumber} 號`;
+      document.getElementById("login-modal").style.display = "none";
+      
+      if (typeof initApp === "function") {
+        initApp(pendingSaveData); // 將存檔資料傳給主程式
+      }
+      pendingSaveData = null;   // 清空暫存
+    } else {
+      // ❌ 驗證失敗：觸發防弊懲罰
+      alert("🛑 身分驗證失敗！這不是你的存檔喔！");
+      pendingSaveData = null; 
+      
+      // 清除網址列的 ?save 參數，強制重頭開始
+      const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+      window.history.replaceState({}, document.title, cleanUrl);
+      
+      // 介面恢復為「正常登入模式」
+      document.querySelector("#login-modal h2").innerText = "📝 歡迎來到台語生字簿";
+      document.querySelector("#login-modal .btn-start").innerText = "開始練習";
+    }
+  } else {
+    // 正常新遊戲流程 (無存檔)
+    userInfo = { className: classInput, studentNumber: numberInput };
+    document.getElementById("user-info-display").innerText = `目前身分：${userInfo.className} 班 ${userInfo.studentNumber} 號`;
+    document.getElementById("login-modal").style.display = "none";
+    
+    if (typeof initApp === "function") {
+      initApp(null); 
+    }
   }
 }
 
@@ -117,30 +143,26 @@ function parseSaveCode(code) {
 function checkUrlForSaveData() {
   const urlParams = new URLSearchParams(window.location.search);
   const saveCode = urlParams.get("save");
+  
+  const titleEl = document.querySelector("#login-modal h2");
+  const btnEl = document.querySelector("#login-modal .btn-start");
 
   if (saveCode) {
-    const parsedData = parseSaveCode(saveCode);
-
-    if (parsedData) {
-      userInfo = {
-        className: parsedData.className,
-        studentNumber: parsedData.studentNumber,
-      };
-
-      const userInfoDisplay = document.getElementById("user-info-display");
-      if (userInfoDisplay) {
-        userInfoDisplay.innerText = `目前身分：${userInfo.className} 班 ${userInfo.studentNumber} 號`;
-      }
-
-      const loginModal = document.getElementById("login-modal");
-      if (loginModal) {
-        loginModal.style.display = "none";
-      }
-
-      return parsedData;
+    pendingSaveData = parseSaveCode(saveCode);
+    if (pendingSaveData) {
+      // 🌟 進入「解鎖模式」：修改畫面提示，但不關閉視窗
+      if (titleEl) titleEl.innerText = "🔒 偵測到存檔紀錄！請選擇班級座號以解鎖";
+      if (btnEl) btnEl.innerText = "解鎖進度";
+      return; // 停留在這裡，等待使用者按下按鈕
     } else {
       alert("⚠️ 讀檔失敗：紀錄碼格式不正確，請手動登入。");
     }
   }
-  return null;
+  
+  // 如果沒有存檔，或解析失敗，確保顯示「正常登入模式」
+  if (titleEl) titleEl.innerText = "📝 歡迎來到台語生字簿";
+  if (btnEl) btnEl.innerText = "開始練習";
 }
+
+// 網頁載入時呼叫
+window.addEventListener("DOMContentLoaded", checkUrlForSaveData);
