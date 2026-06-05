@@ -14,7 +14,14 @@ body {
 
 h1 {
     margin-top: 0;
+    margin-bottom: 5px;
     color: #4caf50;
+}
+
+.user-info {
+    font-size: 18px;
+    color: #bbb;
+    margin-bottom: 15px;
 }
 
 /* =========================================

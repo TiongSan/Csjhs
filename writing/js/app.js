@@ -43,6 +43,9 @@ function initApp() {
   currentIndex = 0;
   let traceIndex = 0;
 
+  // 💡 呼叫剛剛寫好的網址攔截函數
+  const loadData = typeof checkUrlForSaveData === "function" ? checkUrlForSaveData() : null;
+
   // 讀取 data.js 中的多個段落
   const paragraphs = articleData[0].paragraphs;
 
@@ -70,9 +73,33 @@ function initApp() {
     articleDiv.appendChild(pElement); // 把段落塞進大面板
   });
 
+  if (loadData) {
+    // 🌟 魔法讀檔成功！執行還原邏輯
+    currentIndex = loadData.completedCount;
+
+    // 還原分數
+    if (typeof currentScore !== "undefined") {
+      currentScore = loadData.totalScore;
+      document.getElementById("score-text").innerText = currentScore;
+    }
+
+    // 將已經寫過的字標記為綠色完成狀態
+    for (let i = 0; i < currentIndex; i++) {
+      if (charElements[i]) {
+        charElements[i].classList.add("done");
+      }
+    }
+  }
+
+  // 防呆：如果讀檔的字數已經大於等於文章總字數，代表他早就寫完了
+  if (currentIndex >= traceableChars.length && traceableChars.length > 0) {
+    alert("這份紀錄碼已經完成所有生字囉！");
+    currentIndex = traceableChars.length - 1;
+  }
+
   document.getElementById("progress-text").innerText =
-    `0 / ${traceableChars.length}`;
-  loadCharacter(0);
+    `${currentIndex} / ${traceableChars.length}`;
+  loadCharacter(currentIndex);
   setupEvents();
 
   // 初始載入檢查與背景輪詢

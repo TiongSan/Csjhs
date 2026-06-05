@@ -90,3 +90,57 @@ function submitToGoogleForm() {
   // 開啟新分頁，讓學生直接點擊「提交」
   window.open(finalUrl, "_blank");
 }
+
+// 4. 解析紀錄碼
+function parseSaveCode(code) {
+  try {
+    const classMatch = code.match(/G(\d+)/);
+    const numberMatch = code.match(/N(\d+)/);
+    const countMatch = code.match(/C(\d+)/);
+    const scoreMatch = code.match(/S(\d+)/);
+
+    if (classMatch && numberMatch && countMatch && scoreMatch) {
+      return {
+        className: classMatch[1],
+        studentNumber: numberMatch[1],
+        completedCount: parseInt(countMatch[1], 10),
+        totalScore: parseInt(scoreMatch[1], 10),
+      };
+    }
+    return null;
+  } catch (e) {
+    return null;
+  }
+}
+
+// 5. 網址攔截與狀態還原
+function checkUrlForSaveData() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const saveCode = urlParams.get("save");
+
+  if (saveCode) {
+    const parsedData = parseSaveCode(saveCode);
+
+    if (parsedData) {
+      userInfo = {
+        className: parsedData.className,
+        studentNumber: parsedData.studentNumber,
+      };
+
+      const userInfoDisplay = document.getElementById("user-info-display");
+      if (userInfoDisplay) {
+        userInfoDisplay.innerText = `目前身分：${userInfo.className} 班 ${userInfo.studentNumber} 號`;
+      }
+
+      const loginModal = document.getElementById("login-modal");
+      if (loginModal) {
+        loginModal.style.display = "none";
+      }
+
+      return parsedData;
+    } else {
+      alert("⚠️ 讀檔失敗：紀錄碼格式不正確，請手動登入。");
+    }
+  }
+  return null;
+}
