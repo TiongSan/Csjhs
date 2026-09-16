@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EV3 傳送工具</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+<style>
+:root{
+  --brick:#dfe0dc;      /* EV3 主機外殼淺灰 */
+  --shell:#f7f7f4;
+  --slate:#34383c;      /* 主機深灰邊框 */
+  --ink:#1d2024;
+  --muted:#5f656b;
+  --red:#c8201f;        /* 中間鍵紅 */
+  --lcd:#bcc6a8;        /* EV3 螢幕 */
+  --lcd-ink:#1f2a17;
+  --lcd-dim:#58664a;
+  --ok:#2f7d32;
+  --warn:#9a6200;
+  --line:#c9cbc5;
+  --radius-body:14px;
+  --radius-small:6px;
+  font-family:"Noto Sans TC","Noto Sans CJK TC","Microsoft JhengHei","PingFang TC",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--brick);color:var(--ink);font-size:16px;line-height:1.6}
+main{max-width:760px;margin:0 auto;padding:24px 16px 64px}
+h1{font-size:1.5rem;margin:0;line-height:1.3;font-weight:700;letter-spacing:.02em}
+h2{font-size:1.05rem;margin:0 0 8px}
+p{margin:0 0 8px}
+button{font:inherit;cursor:pointer;border-radius:var(--radius-small);border:2px solid var(--slate);background:var(--shell);color:var(--ink);padding:8px 16px;font-weight:600}
+button:hover{background:#fff}
+button:disabled{opacity:.45;cursor:not-allowed}
+button.primary{background:var(--red);border-color:var(--red);color:#fff}
+button.primary:hover{background:#a91a19}
+button.small{padding:3px 10px;font-size:.88rem;border-width:1px}
+:focus-visible{outline:3px solid #1e5bd8;outline-offset:2px}
+
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+header .sub{color:var(--muted);font-size:.9rem;margin:0}
+
+/* 主機造型：深灰外框包住 LCD */
+.brick{background:var(--slate);border-radius:var(--radius-body);padding:14px 14px 18px}
+.lcd{background:var(--lcd);color:var(--lcd-ink);border-radius:4px;padding:14px 16px;min-height:150px;
+  font-family:"Noto Sans Mono CJK TC","Noto Sans TC",ui-monospace,monospace;box-shadow:inset 0 2px 6px rgba(0,0,0,.25)}
+.lcd .row{display:flex;justify-content:space-between;gap:12px;font-size:.9rem;color:var(--lcd-dim)}
+.lcd .row b{color:var(--lcd-ink);font-weight:600}
+.lcd .big{font-size:1.35rem;font-weight:700;margin:10px 0 4px;line-height:1.35}
+.lcd .detail{font-size:.9rem;min-height:1.5em}
+.bar{height:12px;border:2px solid var(--lcd-ink);margin-top:10px;padding:1px}
+.bar i{display:block;height:100%;width:0;background:var(--lcd-ink);transition:width .15s linear}
+.buttons{display:flex;justify-content:center;gap:10px;margin-top:14px}
+.buttons span{width:34px;height:10px;border-radius:3px;background:#5a5f64}
+.buttons span.c{background:var(--red);width:22px}
+.brick.busy .buttons span.c{animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{background:#5a5f64}}
+
+.drop{margin-top:16px;border:3px dashed var(--muted);border-radius:var(--radius-body);background:var(--shell);
+  padding:28px 16px;text-align:center}
+.drop.over{border-color:var(--red);background:#fff}
+.drop p{color:var(--muted)}
+.drop strong{display:block;font-size:1.15rem;color:var(--ink);margin-bottom:4px}
+.drop .actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:12px}
+
+.panel{margin-top:16px;background:var(--shell);border-radius:var(--radius-small);border:1px solid var(--line)}
+.panel summary{padding:12px 16px;font-weight:600;cursor:pointer}
+.panel .body{padding:0 16px 16px}
+.watchline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 16px}
+.watchline p{margin:0;color:var(--muted);font-size:.92rem}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:#999;margin-right:6px;vertical-align:middle}
+.dot.on{background:var(--ok)}
+
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+.tablewrap{overflow-x:auto}
+.good{color:var(--ok)} .bad{color:var(--red)} .warn{color:var(--warn)}
+.notes{margin:10px 0 0;padding-left:1.2em}
+.notes li{margin-bottom:4px}
+
+.howto{margin:0;padding-left:1.4em}
+.howto li{margin-bottom:4px}
+.log{font-family:ui-monospace,"Noto Sans Mono CJK TC",monospace;font-size:.82rem;background:#26292c;color:#d8dccf;
+  border-radius:4px;padding:10px;max-height:260px;overflow:auto;white-space:pre-wrap;margin:0}
+.hidden{display:none!important}
+.nohid{background:#fff3f2;border:2px solid var(--red);border-radius:var(--radius-small);padding:12px 16px;margin-bottom:16px}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}.brick.busy .buttons span.c{animation:none}}
+@media (max-width:520px){h1{font-size:1.25rem}.lcd .big{font-size:1.1rem}}
+</style>
+</head>
+<body>
+<main>
+  <div id="nohid" class="nohid hidden">
+    <h2>這個瀏覽器不能連 USB 裝置</h2>
+    <p id="nohidText">請用 Chrome 或 Edge 開啟這個頁面。</p>
+  </div>
+
+  <header>
+    <div>
+      <h1>EV3 傳送工具</h1>
+      <p class="sub">把 MakeCode 的 .uf2 經 USB 送進 EV3（韌體 1.09 可用）<br><span id="envLine">Windows 與 Chromebook 通用，請用 Chrome 或 Edge</span></p>
+    </div>
+    <div>
+      <button id="btnConnect" class="primary">連線 EV3</button>
+      <button id="btnDisconnect" class="hidden">中斷連線</button>
+    </div>
+  </header>
+
+  <section class="brick" id="brick" aria-live="polite">
+    <div class="lcd">
+      <div class="row"><span>主機 <b id="lcdName">—</b></span><span>韌體 <b id="lcdFw">—</b></span><span>電量 <b id="lcdBat">—</b></span></div>
+      <div class="big" id="lcdBig">尚未連線</div>
+      <div class="detail" id="lcdDetail">EV3 開機，USB 線插在主機左上角標示 PC 的孔，再按「連線 EV3」。</div>
+      <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+    </div>
+    <div class="buttons" aria-hidden="true"><span></span><span class="c"></span><span></span></div>
+  </section>
+
+  <section class="drop" id="drop">
+    <strong>把 .uf2 拖到這裡</strong>
+    <p>放開後會自動檢查檔案，已連線就直接傳送。</p>
+    <div class="actions">
+      <button id="btnPick">選擇 .uf2 檔案</button>
+      <button id="btnResend" class="hidden">再傳一次</button>
+    </div>
+    <input type="file" id="fileInput" accept=".uf2" class="hidden">
+  </section>
+
+  <section class="panel">
+    <div class="watchline">
+      <div>
+        <strong><span class="dot" id="watchDot"></span>監看模式</strong>
+        <p id="watchText">選一個資料夾，裡面出現新的 .uf2 就自動傳送。</p>
+      </div>
+      <div>
+        <button id="btnWatch">選擇資料夾並開始</button>
+        <button id="btnWatchResume" class="hidden">繼續監看上次的資料夾</button>
+        <button id="btnWatchStop" class="hidden">停止監看</button>
+      </div>
+    </div>
+  </section>
+
+  <details class="panel" id="inspectPanel">
+    <summary>檔案檢查結果</summary>
+    <div class="body" id="inspectBody"><p>還沒有載入 .uf2。</p></div>
+  </details>
+
+  <details class="panel" id="brickPanel">
+    <summary>EV3 上的程式（BrkProg_SAVE）</summary>
+    <div class="body">
+      <p><button id="btnList" class="small">重新讀取</button></p>
+      <div id="brickList"><p>連線後按「重新讀取」。</p></div>
+    </div>
+  </details>
+
+  <details class="panel">
+    <summary>在 EV3 上執行程式</summary>
+    <div class="body">
+      <ol class="howto">
+        <li>按返回鍵回到主畫面。</li>
+        <li>往右切到最右邊的資料夾圖示。</li>
+        <li>往下捲動，找到並進入 <b>BrkProg_SAVE</b>。</li>
+        <li>選你的程式（名稱結尾是 .rbf 的那個），按中間鍵執行。</li>
+      </ol>
+      <p style="margin-top:8px;color:var(--muted)">清單沒有更新時，把主機關機再開機。</p>
+    </div>
+  </details>
+
+  <details class="panel">
+    <summary>紀錄</summary>
+    <div class="body">
+      <p><button id="btnCopyLog" class="small">複製紀錄</button></p>
+      <pre class="log" id="log"></pre>
+    </div>
+  </details>
+</main>
+
+<script>
+"use strict";
+/* =====================================================================
+   EV3 傳送工具（Windows / Chromebook 通用）   版本 web-3
+   協定：LEGO EV3 Communication Developer Kit 系統命令 / 直接命令
+   ===================================================================== */
+const TOOL_VERSION = "web-3";
+
+/* ---- 平台偵測 ---- */
+const UA = navigator.userAgent;
+const OS = /CrOS/.test(UA) ? "chromeos" : /Windows/.test(UA) ? "windows" : /Mac OS X/.test(UA) ? "mac" : /Linux/.test(UA) ? "linux" : "other";
+const BROWSER = /Edg\//.test(UA) ? "Edge" : /OPR\//.test(UA) ? "Opera" : /Firefox\//.test(UA) ? "Firefox" : (/Safari\//.test(UA) && !/Chrome\//.test(UA)) ? "Safari" : /Chrome\//.test(UA) ? "Chrome" : "其他瀏覽器";
+const OS_NAME = { chromeos:"Chromebook", windows:"Windows", mac:"Mac", linux:"Linux", other:"未知系統" }[OS];
+const HINT = {
+  busy: OS === "windows"
+    ? "裝置被占用。關掉 EV3 Software、EV3 Classroom、EV3 Device Manager 和其他開著這個工具的分頁，拔插 USB 線後再試。"
+    : "裝置被占用。關掉其他開著這個工具的分頁，拔插 USB 線後再試。",
+  folder: OS === "windows"
+    ? "瀏覽器不允許直接監看這個資料夾。請在「下載」裡建一個子資料夾（例如 EV3），並到瀏覽器設定把下載位置改到那裡。"
+    : "Chrome 不允許直接監看這個資料夾。請在「我的檔案 › 下載」裡建一個子資料夾（例如 EV3），並把 Chrome 的下載位置改到那裡。",
+  nohid: (BROWSER === "Firefox" || BROWSER === "Safari")
+    ? `${BROWSER} 不支援連接 USB 裝置。請改用 Chrome 或 Edge 開啟這個頁面。`
+    : OS === "chromeos"
+      ? "這台 Chromebook 的 USB 裝置存取（WebHID）被管理員關閉，請洽學校資訊組。"
+      : "瀏覽器的 USB 裝置存取（WebHID）被關閉。請更新 Chrome 或 Edge；若是學校統一管理的電腦，請洽資訊組。",
+  noDevice: OS === "windows"
+    ? "確認 USB 線插在 EV3 的 PC 孔、主機已開機，並關掉 EV3 Software、EV3 Classroom。"
+    : "確認 USB 線插在 EV3 的 PC 孔、主機已開機，換一條 USB 線試試。"
+};
+const EV3_VID = 0x0694, EV3_PID = 0x0005;
+const DEFAULT_DIR = "../prjs/BrkProg_SAVE/";   // 相對於 /home/root/lms2012/sys/
+const CHUNK = 1000;
+
+/*PARSER_START*/
+const SYS_STATUS = {
+  0x00:"SUCCESS",0x01:"UNKNOWN_HANDLE",0x02:"HANDLE_NOT_READY",0x03:"CORRUPT_FILE",
+  0x04:"NO_HANDLES_AVAILABLE",0x05:"NO_PERMISSION",0x06:"ILLEGAL_PATH",0x07:"FILE_EXISTS",
+  0x08:"END_OF_FILE",0x09:"SIZE_ERROR",0x0A:"UNKNOWN_ERROR",0x0B:"ILLEGAL_FILENAME",0x0C:"ILLEGAL_CONNECTION"
+};
+
+function u32(b, o){ return (b[o] | (b[o+1]<<8) | (b[o+2]<<16) | (b[o+3]<<24)) >>> 0; }
+function bytesEq(b, o, arr){ for(let i=0;i<arr.length;i++) if(b[o+i]!==arr[i]) return false; return true; }
+
+// 直接比對位元組，避免數值正負號問題
+const MAGIC0 = [0x55,0x46,0x32,0x0A];   // "UF2\n"
+const MAGIC1 = [0x57,0x51,0x5D,0x9E];
+const MAGIC_END = [0x30,0x6F,0xB1,0x0A];
+const FLAG_NOFLASH = 0x00000001, FLAG_FILE = 0x00001000;
+
+function parseUF2(buf){
+  const b = new Uint8Array(buf);
+  const r = { totalBytes:b.length, blockCount:0, badMagic:0, notFile:0, files:[], warnings:[], errors:[] };
+  if (b.length === 0 || b.length % 512 !== 0) {
+    r.errors.push(`檔案大小 ${b.length} 位元組，不是 512 的整數倍，這不是完整的 .uf2。`);
+    if (b.length < 512) return r;
+  }
+  const n = Math.floor(b.length/512);
+  r.blockCount = n;
+  const groups = new Map();
+  for (let i=0;i<n;i++){
+    const o = i*512;
+    if (!bytesEq(b,o,MAGIC0) || !bytesEq(b,o+4,MAGIC1) || !bytesEq(b,o+508,MAGIC_END)) { r.badMagic++; continue; }
+    const flags = u32(b,o+8), addr = u32(b,o+12), psize = u32(b,o+16), fsize = u32(b,o+28);
+    if (!(flags & FLAG_FILE)) { r.notFile++; continue; }
+    if (psize > 476) { r.badMagic++; continue; }
+    let name = "";
+    for (let k=o+32+psize; k<o+508 && b[k]!==0; k++) name += String.fromCharCode(b[k]);
+    if (!groups.has(name)) groups.set(name, { name, size:fsize, blocks:[] });
+    const g = groups.get(name);
+    if (g.size !== fsize) r.warnings.push(`${name} 的區塊記錄了不同的檔案大小（${g.size} / ${fsize}）。`);
+    g.blocks.push({ addr, psize, o });
+  }
+  if (r.badMagic) r.errors.push(`${r.badMagic} 個區塊的 magic 不正確。`);
+  if (r.notFile) r.warnings.push(`${r.notFile} 個區塊不是檔案容器格式（可能不是 EV3 的 .uf2）。`);
+
+  for (const g of groups.values()){
+    // targetAddr 可能是整個容器連續編址，所以以該檔案最小的位址為起點
+    const base = Math.min(...g.blocks.map(x=>x.addr));
+    // .rbf 要補齊到 256 位元組（MakeCode 的區塊本身就是 256，檔案大小欄位記的是實際長度）
+    const isRbf = /\.rbf$/i.test(g.name);
+    const outLen = isRbf ? Math.max(g.size, 256) : g.size;
+    const data = new Uint8Array(outLen);
+    const covered = new Uint8Array(g.size);
+    let overflow = false;
+    for (const blk of g.blocks){
+      const off = blk.addr - base;
+      if (off > g.size) { overflow = true; continue; }       // 區塊起點在檔案之外才算錯
+      for (let k=0;k<blk.psize;k++){
+        const p = off+k;
+        if (p >= outLen) break;                              // 最後一個區塊的補白，丟掉
+        data[p] = b[blk.o+32+k];
+        if (p < g.size) covered[p] = 1;
+      }
+    }
+    let missing = 0; for (const c of covered) if(!c) missing++;
+    // 內部檔名可能帶資料夾（例如 Projects/09152.elf），寫入 EV3 只用檔名本身
+    const base_name = g.name.split(/[\/\\]/).pop();
+    const f = { name:base_name, innerName:g.name, size:outLen, rawSize:g.size, blockCount:g.blocks.length, base, data, missing, overflow, checks:[] };
+    const lower = g.name.toLowerCase();
+    if (lower.endsWith(".elf")) {
+      f.kind = "elf";
+      f.checks.push(bytesEq(data,0,[0x7F,0x45,0x4C,0x46]) ? ["good","開頭是 ELF 標記"] : ["bad","開頭不是 ELF 標記"]);
+    } else if (lower.endsWith(".rbf")) {
+      f.kind = "rbf";
+      f.checks.push(bytesEq(data,0,[0x4C,0x45,0x47,0x4F]) ? ["good","開頭是 LEGO 標記"] : ["bad","開頭不是 LEGO（解包失敗或檔案損毀）"]);
+      const strs = asciiStrings(data, 6);
+      const p = strs.find(s => /\.elf$/i.test(s));
+      f.elfPath = p || null;
+      f.checks.push(p ? ["good",`內含路徑 ${p}`] : ["warn","找不到內含的 .elf 路徑"]);
+    } else {
+      f.kind = "other";
+    }
+    if (missing) f.checks.push(["bad",`有 ${missing} 位元組沒有資料`]);
+    if (overflow) f.checks.push(["bad","區塊位址超出檔案大小"]);
+    if (isRbf && outLen > g.size) f.checks.push(["good",`已補齊為 ${outLen} 位元組（原始 ${g.size}）`]);
+    if (/[^\x20-\x7E]/.test(base_name)) f.checks.push(["warn","檔名含非英數字元，EV3 可能無法顯示"]);
+    r.files.push(f);
+  }
+  r.files.sort((a,b)=> (a.kind==="rbf") - (b.kind==="rbf"));  // .elf 先傳，.rbf 最後
+
+  const elfs = r.files.filter(f=>f.kind==="elf"), rbfs = r.files.filter(f=>f.kind==="rbf");
+  if (!r.errors.length && (!elfs.length || !rbfs.length))
+    r.errors.push(`應該有一個 .elf 和一個 .rbf，實際找到 ${elfs.length} 個 .elf、${rbfs.length} 個 .rbf。`);
+
+  r.targetDir = DEFAULT_DIR;
+  const rbf = rbfs[0];
+  if (rbf && rbf.elfPath){
+    const m = rbf.elfPath.match(/\/prjs\/([^\/]+)\/([^\/]+)$/);
+    if (m){
+      r.targetDir = `../prjs/${m[1]}/`;
+      if (!elfs.some(e=>e.name === m[2]))
+        r.errors.push(`.rbf 要啟動 ${m[2]}，但檔案內的 .elf 名稱不同，程式會啟動失敗。`);
+    } else {
+      r.warnings.push("無法從 .rbf 判斷資料夾，改用預設的 BrkProg_SAVE。");
+    }
+  }
+  r.ok = r.errors.length === 0;
+  return r;
+}
+
+function asciiStrings(data, minLen){
+  const out = []; let s = "";
+  for (const c of data){
+    if (c>=0x20 && c<0x7F) s += String.fromCharCode(c);
+    else { if (s.length>=minLen) out.push(s); s=""; }
+  }
+  if (s.length>=minLen) out.push(s);
+  return out;
+}
+
+function parseListing(text){
+  const dirs = [], files = [];
+  for (const line of text.split("\n")){
+    if (!line) continue;
+    if (line.endsWith("/")) { dirs.push(line.slice(0,-1)); continue; }
+    const m = line.match(/^([0-9A-Fa-f]{32}) ([0-9A-Fa-f]{8}) (.+)$/);
+    if (m) files.push({ md5:m[1], size:parseInt(m[2],16), name:m[3] });
+  }
+  return { dirs, files };
+}
+/*PARSER_END*/
+
+/* ---------------- 畫面 ---------------- */
+const $ = id => document.getElementById(id);
+const logEl = $("log");
+function log(msg){
+  const t = new Date().toLocaleTimeString("zh-TW",{hour12:false});
+  logEl.textContent += `[${t}] ${msg}\n`;
+  logEl.scrollTop = logEl.scrollHeight;
+}
+function lcd(big, detail, pct){
+  $("lcdBig").textContent = big;
+  if (detail !== undefined) $("lcdDetail").textContent = detail;
+  $("bar").style.width = (pct==null ? 0 : Math.max(0,Math.min(100,pct))) + "%";
+}
+function busy(on){ $("brick").classList.toggle("busy", on); }
+function esc(s){ return String(s).replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function fmtBytes(n){ return n < 1024 ? `${n} B` : `${(n/1024).toFixed(1)} KB`; }
+
+/* ---------------- USB HID ---------------- */
+let device = null, outLen = 1024, counter = 1, working = false;
+const pending = new Map();
+
+function reportSize(dev, kind){
+  try{
+    for (const c of dev.collections){
+      const reps = kind==="out" ? c.outputReports : c.inputReports;
+      if (reps && reps.length){
+        let bits = 0;
+        for (const it of reps[0].items) bits += it.reportSize * it.reportCount;
+        if (bits) return bits/8;
+      }
+    }
+  }catch(e){}
+  return 1024;
+}
+
+function onInputReport(e){
+  const dv = e.data;
+  const all = new Uint8Array(dv.buffer, dv.byteOffset, dv.byteLength);
+  if (all.length < 5) return;
+  const len = all[0] | (all[1]<<8);
+  const cnt = all[2] | (all[3]<<8);
+  const bytes = all.slice(0, Math.min(all.length, len+2));
+  const p = pending.get(cnt);
+  if (p){ pending.delete(cnt); clearTimeout(p.timer); p.resolve({ type:bytes[4], bytes }); }
+}
+
+function nextCounter(){ const c = counter; counter = counter >= 0xFFFF ? 1 : counter+1; return c; }
+
+async function transmit(type, payload, wantReply, timeoutMs=4000){
+  if (!device || !device.opened) throw new Error("EV3 沒有連線。");
+  const cnt = nextCounter();
+  const bodyLen = 3 + payload.length;               // 計數器 2 + 類型 1 + 內容
+  if (bodyLen + 2 > outLen) throw new Error("封包太長");
+  const pkt = new Uint8Array(outLen);
+  pkt[0] = bodyLen & 0xFF; pkt[1] = bodyLen >> 8;
+  pkt[2] = cnt & 0xFF;     pkt[3] = cnt >> 8;
+  pkt[4] = type;
+  pkt.set(payload, 5);
+  let promise = null;
+  if (wantReply){
+    promise = new Promise((resolve, reject)=>{
+      const timer = setTimeout(()=>{ pending.delete(cnt); reject(new Error("EV3 沒有回應（逾時）。")); }, timeoutMs);
+      pending.set(cnt, { resolve, reject, timer });
+    });
+  }
+  await device.sendReport(0, pkt);
+  return promise;
+}
+
+const enc = new TextEncoder();
+function cstr(s){ const e = enc.encode(s); const a = new Uint8Array(e.length+1); a.set(e); return a; }
+function cat(...parts){
+  const len = parts.reduce((n,p)=>n+p.length,0), a = new Uint8Array(len); let o=0;
+  for (const p of parts){ a.set(p,o); o+=p.length; } return a;
+}
+function le32(n){ return new Uint8Array([n&255,(n>>8)&255,(n>>16)&255,(n>>>24)&255]); }
+
+async function sysCmd(cmd, payload){
+  const r = await transmit(0x01, cat(new Uint8Array([cmd]), payload), true);
+  if (r.type !== 0x03 && r.type !== 0x05) throw new Error(`回覆類型不正確（0x${r.type.toString(16)}）`);
+  return { status:r.bytes[6], bytes:r.bytes, isError:r.type===0x05 };
+}
+function statusName(s){ return SYS_STATUS[s] || `0x${s.toString(16)}`; }
+
+async function readBrickInfo(){
+  // UI_READ GET_FW_VERS → GV0(0)；COM_GET GET_BRICKNAME → GV0(16)；UI_READ GET_LBATT → GV1(32)
+  const code = new Uint8Array([0x21,0x00, 0x81,0x0A,0x10,0x60, 0xD3,0x0D,0x10,0x70, 0x81,0x12,0xE1,0x20]);
+  const r = await transmit(0x00, code, true);
+  if (r.type !== 0x02) throw new Error("讀取主機資訊失敗");
+  const g = r.bytes.slice(5);
+  const str = (o,l)=>{ let s=""; for(let i=o;i<o+l && g[i];i++) s+=String.fromCharCode(g[i]); return s.trim(); };
+  return { fw:str(0,16), name:str(16,16), battery:g[32] };
+}
+
+function beep(){
+  // SOUND TONE 音量 2、1000Hz、150ms，不需回覆
+  transmit(0x80, new Uint8Array([0x00,0x00, 0x94,0x01,0x02, 0x82,0xE8,0x03, 0x82,0x96,0x00]), false).catch(()=>{});
+}
+
+async function uploadFile(path, data, onChunk){
+  let r = await sysCmd(0x92, cat(le32(data.length), cstr(path)));
+  if (r.status !== 0x00) throw new Error(`BEGIN_DOWNLOAD 失敗：${statusName(r.status)}（${path}）`);
+  let handle = r.bytes[7];
+  let sent = 0;
+  while (sent < data.length){
+    const part = data.subarray(sent, Math.min(sent+CHUNK, data.length));
+    r = await sysCmd(0x93, cat(new Uint8Array([handle]), part));
+    sent += part.length;
+    const last = sent >= data.length;
+    if (!(r.status === 0x00 || (last && r.status === 0x08)))
+      throw new Error(`CONTINUE_DOWNLOAD 失敗：${statusName(r.status)}（${path}，已送 ${sent}）`);
+    handle = r.bytes[7] ?? handle;
+    onChunk && onChunk(part.length);
+  }
+}
+
+async function listFiles(path){
+  const max = 900;
+  let r = await sysCmd(0x99, cat(new Uint8Array([max&255, max>>8]), cstr(path)));
+  if (r.status !== 0x00 && r.status !== 0x08) throw new Error(`LIST_FILES 失敗：${statusName(r.status)}`);
+  const total = u32(r.bytes, 7);
+  let handle = r.bytes[11];
+  const chunks = [r.bytes.slice(12)];
+  let got = chunks[0].length, guard = 0;
+  while (got < total && r.status === 0x00 && guard++ < 64){
+    r = await sysCmd(0x9A, new Uint8Array([handle, max&255, max>>8]));
+    if (r.status !== 0x00 && r.status !== 0x08) break;
+    handle = r.bytes[7];
+    const c = r.bytes.slice(8); chunks.push(c); got += c.length;
+  }
+  return parseListing(new TextDecoder().decode(cat(...chunks)));
+}
+
+async function connectDevice(dev){
+  if (!dev.opened) await dev.open();
+  device = dev;
+  outLen = reportSize(dev, "out");
+  dev.addEventListener("inputreport", onInputReport);
+  log(`已開啟 ${dev.productName || "EV3"}，報表長度 in=${reportSize(dev,"in")} / out=${outLen}`);
+  $("btnConnect").classList.add("hidden");
+  $("btnDisconnect").classList.remove("hidden");
+  try{
+    const info = await readBrickInfo();
+    $("lcdName").textContent = info.name || "EV3";
+    $("lcdFw").textContent = info.fw || "?";
+    $("lcdBat").textContent = (info.battery!=null) ? `${info.battery}%` : "—";
+    log(`主機名稱 ${info.name}，韌體 ${info.fw}，電量 ${info.battery}%`);
+    lcd("已連線", pendingParsed ? "按「再傳一次」可傳送剛才的檔案。" : "把 .uf2 拖到下面的框裡。", 0);
+    beep();
+  }catch(e){
+    log(`讀取主機資訊失敗：${e.message}`);
+    lcd("已連線，但主機沒有回應", "把 EV3 關機再開機，然後重新按「連線 EV3」。", 0);
+  }
+  refreshButtons();
+}
+
+async function disconnectDevice(silent){
+  const dev = device; device = null;
+  for (const p of pending.values()){ clearTimeout(p.timer); p.reject(new Error("連線中斷")); }
+  pending.clear();
+  if (dev){ try{ dev.removeEventListener("inputreport", onInputReport); if (dev.opened) await dev.close(); }catch(e){} }
+  $("lcdName").textContent = "—"; $("lcdFw").textContent = "—"; $("lcdBat").textContent = "—";
+  $("btnConnect").classList.remove("hidden");
+  $("btnDisconnect").classList.add("hidden");
+  if (!silent) lcd("尚未連線", "按「連線 EV3」重新連線。", 0);
+  refreshButtons();
+}
+
+/* ---------------- 傳送流程 ---------------- */
+let pendingParsed = null, pendingName = "";
+
+function renderInspect(name, r){
+  let h = `<p><b>${esc(name)}</b>：${fmtBytes(r.totalBytes)}，${r.blockCount} 個區塊，`;
+  h += r.badMagic ? `<span class="bad">${r.badMagic} 個 magic 錯誤</span>` : `<span class="good">magic 全部正確</span>`;
+  h += `</p><div class="tablewrap"><table><thead><tr><th>內部檔名</th><th>大小</th><th>區塊</th><th>檢查</th></tr></thead><tbody>`;
+  for (const f of r.files){
+    h += `<tr><td>${esc(f.innerName)}${f.innerName!==f.name?`<br><small>寫入為 ${esc(f.name)}</small>`:""}</td><td class="num">${f.size}</td><td class="num">${f.blockCount}</td><td>`;
+    h += f.checks.map(([c,t])=>`<div class="${c}">${esc(t)}</div>`).join("") || "—";
+    h += `</td></tr>`;
+  }
+  h += `</tbody></table></div><p style="margin-top:8px">目的地：<b>${esc(r.targetDir.replace("../",""))}</b></p>`;
+  const notes = [...r.errors.map(e=>["bad",e]), ...r.warnings.map(w=>["warn",w])];
+  if (notes.length) h += `<ul class="notes">${notes.map(([c,t])=>`<li class="${c}">${esc(t)}</li>`).join("")}</ul>`;
+  $("inspectBody").innerHTML = h;
+}
+
+async function handleFile(file){
+  if (!/\.uf2$/i.test(file.name)){
+    lcd("這不是 .uf2 檔案", `收到「${file.name}」。請在 MakeCode 按 Download 取得 .uf2。`, 0);
+    return false;
+  }
+  const buf = await file.arrayBuffer();
+  const r = parseUF2(buf);
+  renderInspect(file.name, r);
+  log(`載入 ${file.name}（${buf.byteLength} 位元組）：${r.files.map(f=>`${f.name}=${f.size}`).join("，") || "沒有內部檔案"}`);
+  r.errors.forEach(e=>log("錯誤：" + e)); r.warnings.forEach(w=>log("注意：" + w));
+  if (!r.ok){
+    $("inspectPanel").open = true;
+    lcd("檔案有問題，沒有傳送", r.errors[0], 0);
+    pendingParsed = null; refreshButtons();
+    return false;
+  }
+  pendingParsed = r; pendingName = file.name;
+  refreshButtons();
+  if (!device){
+    lcd("檔案正常，等待連線", `已載入 ${file.name}。按「連線 EV3」後再按「再傳一次」。`, 0);
+    return false;
+  }
+  return deploy(r, file.name);
+}
+
+async function deploy(r, displayName){
+  if (working){ log("上一個傳送還沒結束，略過。"); return false; }
+  working = true; busy(true); refreshButtons();
+  const total = r.files.reduce((n,f)=>n+f.size,0);
+  let done = 0;
+  const prog = n => { done += n; lcd("傳送中…", `${displayName}　${fmtBytes(done)} / ${fmtBytes(total)}`, done/total*100); };
+  try{
+    lcd("傳送中…", displayName, 0);
+    const dir = r.targetDir.replace(/\/$/,"");
+    try{
+      const c = await sysCmd(0x9B, cstr(dir));
+      log(`建立資料夾 ${dir}：${statusName(c.status)}`);
+    }catch(e){ log(`建立資料夾時沒有回應，繼續傳送：${e.message}`); }
+
+    for (const f of r.files){
+      const path = r.targetDir + f.name;
+      log(`寫入 ${path}（${f.size} 位元組）`);
+      await uploadFile(path, f.data, prog);
+    }
+
+    // 驗證：列出資料夾，比對大小
+    let verified = "";
+    try{
+      const listing = await listFiles(r.targetDir);
+      const bad = r.files.filter(f => !listing.files.some(x => x.name===f.name && x.size===f.size));
+      verified = bad.length ? `，但 ${bad.map(f=>f.name).join("、")} 大小不符` : "，主機上的檔案大小已核對";
+      renderBrickList(listing);
+      if (bad.length) log("驗證失敗：" + bad.map(f=>f.name).join(", "));
+    }catch(e){ log(`驗證時讀取清單失敗：${e.message}`); }
+
+    const prog_name = (r.files.find(f=>f.kind==="rbf")||r.files[0]).name;
+    lcd("完成", `到 EV3 的 BrkProg_SAVE 資料夾執行 ${prog_name}${verified}。`, 100);
+    log(`完成 ${displayName}${verified}`);
+    beep();
+    return true;
+  }catch(e){
+    log("傳送失敗：" + e.message);
+    lcd("傳送失敗", explain(e.message), 0);
+    return false;
+  }finally{
+    working = false; busy(false); refreshButtons();
+  }
+}
+
+function explain(msg){
+  if (/逾時|沒有連線|連線中斷/.test(msg)) return "EV3 沒有回應。檢查 USB 線、主機是否開機，再重新連線。";
+  if (/NO_PERMISSION|ILLEGAL_PATH/.test(msg)) return "主機拒絕寫入這個位置。把 EV3 關機再開機後重試。";
+  if (/SIZE_ERROR/.test(msg)) return "主機空間不足。在下方「EV3 上的程式」刪掉舊程式後重試。";
+  if (/NO_HANDLES/.test(msg)) return "主機忙碌中。把 EV3 關機再開機後重試。";
+  return msg;
+}
+
+function renderBrickList(listing){
+  const map = new Map();
+  for (const f of listing.files){
+    const base = f.name.replace(/\.[^.]+$/,"");
+    if (!map.has(base)) map.set(base, []);
+    map.get(base).push(f);
+  }
+  if (!map.size){ $("brickList").innerHTML = "<p>資料夾是空的。</p>"; return; }
+  let h = `<div class="tablewrap"><table><thead><tr><th>程式</th><th>檔案</th><th></th></tr></thead><tbody>`;
+  for (const [base, files] of [...map.entries()].sort()){
+    h += `<tr><td>${esc(base)}</td><td>${files.map(f=>`${esc(f.name)}（${fmtBytes(f.size)}）`).join("<br>")}</td>`;
+    h += `<td><button class="small" data-del="${esc(files.map(f=>f.name).join("|"))}">刪除</button></td></tr>`;
+  }
+  h += `</tbody></table></div>`;
+  $("brickList").innerHTML = h;
+}
+
+async function refreshBrickList(){
+  if (!device || working) return;
+  try{ renderBrickList(await listFiles(DEFAULT_DIR)); }
+  catch(e){ $("brickList").innerHTML = `<p class="warn">讀不到清單：${esc(e.message)}（資料夾可能還不存在）</p>`; }
+}
+
+$("brickList").addEventListener("click", async ev=>{
+  const btn = ev.target.closest("button[data-del]");
+  if (!btn || !device || working) return;
+  const names = btn.dataset.del.split("|");
+  if (!confirm(`從 EV3 刪除 ${names.join("、")}？`)) return;
+  working = true; refreshButtons();
+  try{
+    for (const n of names){
+      const r = await sysCmd(0x9C, cstr(DEFAULT_DIR + n));
+      log(`刪除 ${n}：${statusName(r.status)}`);
+    }
+  }catch(e){ log("刪除失敗：" + e.message); }
+  working = false; refreshButtons();
+  refreshBrickList();
+});
+
+/* ---------------- 監看模式 ---------------- */
+let watchDir = null, watchTimer = null, watchSeen = new Map(), watchBusy = false;
+
+function idb(){
+  return new Promise((res,rej)=>{
+    const q = indexedDB.open("ev3-deploy", 1);
+    q.onupgradeneeded = ()=> q.result.createObjectStore("kv");
+    q.onsuccess = ()=> res(q.result); q.onerror = ()=> rej(q.error);
+  });
+}
+async function kvSet(k,v){ try{ const db=await idb(); db.transaction("kv","readwrite").objectStore("kv").put(v,k); }catch(e){} }
+async function kvGet(k){
+  try{ const db=await idb(); return await new Promise(res=>{ const q=db.transaction("kv").objectStore("kv").get(k); q.onsuccess=()=>res(q.result); q.onerror=()=>res(null); }); }
+  catch(e){ return null; }
+}
+
+async function scanDir(initial){
+  const found = [];
+  for await (const h of watchDir.values()){
+    if (h.kind !== "file" || !/\.uf2$/i.test(h.name)) continue;
+    const f = await h.getFile();
+    found.push(f);
+  }
+  const fresh = [];
+  for (const f of found){
+    const key = f.name, sig = `${f.size}:${f.lastModified}`;
+    const prev = watchSeen.get(key);
+    if (initial){ watchSeen.set(key, { sig, sent:true }); continue; }
+    if (!prev){ watchSeen.set(key, { sig, sent:false, stable:0 }); continue; }
+    if (prev.sig !== sig){ prev.sig = sig; prev.sent = false; prev.stable = 0; continue; }
+    if (!prev.sent && ++prev.stable >= 1) fresh.push({ f, rec:prev });   // 連續兩次大小相同才傳，避免下載到一半
+  }
+  fresh.sort((a,b)=>b.f.lastModified - a.f.lastModified);
+  return fresh;
+}
+
+async function watchTick(){
+  if (watchBusy || !watchDir) return;
+  watchBusy = true;
+  try{
+    const fresh = await scanDir(false);
+    if (fresh.length){
+      const { f, rec } = fresh[0];
+      fresh.slice(1).forEach(x=>{ x.rec.sent = true; });   // 同時出現多個，只傳最新的
+      if (!device){
+        $("watchText").textContent = `偵測到 ${f.name}，但 EV3 沒有連線。連線後會自動傳送。`;
+      } else if (!working){
+        rec.sent = true;
+        log(`監看：偵測到新檔案 ${f.name}`);
+        await handleFile(f);
+      }
+    }
+  }catch(e){
+    log("監看錯誤：" + e.message);
+    stopWatch("資料夾讀取失敗，監看已停止。重新開始監看即可。");
+  }finally{ watchBusy = false; }
+}
+
+async function startWatch(handle){
+  const perm = await handle.requestPermission({ mode:"read" });
+  if (perm !== "granted"){ $("watchText").textContent = "沒有取得資料夾讀取權限。"; return; }
+  watchDir = handle; watchSeen.clear();
+  await scanDir(true);
+  watchTimer = setInterval(watchTick, 2000);
+  await kvSet("watchDir", handle);
+  $("watchDot").classList.add("on");
+  $("watchText").textContent = `監看中：${handle.name}。資料夾裡原本的檔案不會傳送，只傳新出現的。`;
+  log(`開始監看資料夾 ${handle.name}`);
+  refreshButtons();
+}
+function stopWatch(msg){
+  clearInterval(watchTimer); watchTimer = null; watchDir = null;
+  $("watchDot").classList.remove("on");
+  $("watchText").textContent = msg || "選一個資料夾，裡面出現新的 .uf2 就自動傳送。";
+  refreshButtons();
+}
+
+/* ---------------- 按鈕與事件 ---------------- */
+function refreshButtons(){
+  $("btnResend").classList.toggle("hidden", !pendingParsed);
+  $("btnResend").disabled = !device || working;
+  $("btnList").disabled = !device || working;
+  const watching = !!watchDir;
+  $("btnWatch").classList.toggle("hidden", watching);
+  $("btnWatchStop").classList.toggle("hidden", !watching);
+  if (watching) $("btnWatchResume").classList.add("hidden");
+}
+
+$("btnConnect").addEventListener("click", async ()=>{
+  try{
+    const list = await navigator.hid.requestDevice({ filters:[{ vendorId:EV3_VID, productId:EV3_PID }] });
+    if (!list.length){ lcd("沒有選擇裝置", "在跳出的視窗中選擇 EV3，再按「連線」。清單裡沒有 EV3 時：" + HINT.noDevice, 0); return; }
+    await connectDevice(list[0]);
+  }catch(e){
+    log("連線失敗：" + e.message);
+    if (/open/i.test(e.message) || e.name==="NotAllowedError")
+      lcd("無法開啟 EV3", HINT.busy, 0);
+    else lcd("連線失敗", e.message, 0);
+  }
+});
+$("btnDisconnect").addEventListener("click", ()=>disconnectDevice(false));
+$("btnPick").addEventListener("click", ()=>$("fileInput").click());
+$("fileInput").addEventListener("change", e=>{ const f=e.target.files[0]; if (f) handleFile(f); e.target.value=""; });
+$("btnResend").addEventListener("click", ()=>{ if (pendingParsed) deploy(pendingParsed, pendingName); });
+$("btnList").addEventListener("click", refreshBrickList);
+$("btnCopyLog").addEventListener("click", ()=>{ navigator.clipboard.writeText(logEl.textContent).then(()=>log("紀錄已複製")); });
+
+$("btnWatch").addEventListener("click", async ()=>{
+  if (!window.showDirectoryPicker){ $("watchText").textContent = "這個瀏覽器不支援監看資料夾，請改用拖放。"; return; }
+  try{
+    const h = await window.showDirectoryPicker({ id:"ev3uf2", mode:"read" });
+    await startWatch(h);
+  }catch(e){
+    if (e.name === "AbortError") return;
+    log("選擇資料夾失敗：" + e.message);
+    $("watchText").textContent = HINT.folder;
+  }
+});
+$("btnWatchResume").addEventListener("click", async ()=>{
+  const h = await kvGet("watchDir");
+  if (h) { try{ await startWatch(h); }catch(e){ log("無法繼續監看：" + e.message); $("btnWatchResume").classList.add("hidden"); } }
+});
+$("btnWatchStop").addEventListener("click", ()=>{ log("停止監看"); stopWatch(); });
+
+const drop = $("drop");
+["dragenter","dragover"].forEach(t=>document.addEventListener(t, e=>{ e.preventDefault(); drop.classList.add("over"); }));
+["dragleave","drop"].forEach(t=>document.addEventListener(t, e=>{
+  e.preventDefault();
+  if (t==="dragleave" && e.relatedTarget) return;
+  drop.classList.remove("over");
+}));
+document.addEventListener("drop", e=>{
+  const f = e.dataTransfer && e.dataTransfer.files[0];
+  if (f) handleFile(f);
+});
+
+/* ---------------- 啟動 ---------------- */
+(async function init(){
+  log(`EV3 傳送工具 ${TOOL_VERSION} 啟動，${OS_NAME} / ${BROWSER}，來源 ${location.protocol === "file:" ? "本機檔案" : location.host}`);
+  $("envLine").textContent = `目前使用：${OS_NAME}　${BROWSER}` + ((BROWSER==="Chrome"||BROWSER==="Edge") ? "" : "（建議改用 Chrome 或 Edge）");
+  if (!("hid" in navigator)){
+    $("nohid").classList.remove("hidden");
+    $("nohidText").textContent = window.isSecureContext ? HINT.nohid : "這個頁面必須從本機檔案或 https 網址開啟。";
+    $("btnConnect").disabled = true;
+    lcd("無法使用 USB", "見上方說明。", 0);
+    log("navigator.hid 不存在");
+    return;
+  }
+  navigator.hid.addEventListener("disconnect", e=>{
+    if (device && e.device === device){ log("EV3 已拔除或關機"); disconnectDevice(true); lcd("連線中斷", "EV3 已拔除或關機。重新插上後按「連線 EV3」。", 0); }
+  });
+  navigator.hid.addEventListener("connect", async e=>{
+    if (!device && e.device.vendorId===EV3_VID && e.device.productId===EV3_PID){
+      log("偵測到先前授權過的 EV3，自動連線");
+      try{ await connectDevice(e.device); }catch(err){ log("自動連線失敗：" + err.message); }
+    }
+  });
+  try{
+    const known = (await navigator.hid.getDevices()).filter(d=>d.vendorId===EV3_VID && d.productId===EV3_PID);
+    if (known.length){ log("找到先前授權過的 EV3，自動連線"); await connectDevice(known[0]); }
+  }catch(e){ log("自動連線失敗：" + e.message); }
+  if (await kvGet("watchDir")) $("btnWatchResume").classList.remove("hidden");
+  refreshButtons();
+})();
+</script>
+</body>
+</html>
