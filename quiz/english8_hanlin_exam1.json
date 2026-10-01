@@ -1,0 +1,1105 @@
+{
+  "metadata": {
+    "title": "國中八上英文 第一次段考（翰林版）",
+    "version": "1.0-reviewed",
+    "language": "zh-TW",
+    "question_type": "single_choice",
+    "options_per_question": 4,
+    "questions_per_skill": 3,
+    "storage_key": "english8_hanlin_exam1_progress",
+    "theme_color": "#0f766e",
+    "icons": [
+      "🌦️",
+      "🎮"
+    ],
+    "scope_note": "翰林八上 Book 3 第一次段考預設範圍：Unit 1 How Was the Weather in Australia? + Unit 2 You Can Learn About Game Design After You Join the Club + Review 1。核心包含天氣表達、rain/snow詞性、授與動詞、所有格代名詞、過去式、when/before/after時間從屬連接詞、單字片語、克漏字與閱讀理解。",
+    "total_skills": 20,
+    "total_questions": 60,
+    "audit": {
+      "status": "reviewed_v1",
+      "total_skills": 20,
+      "total_questions": 60,
+      "checks": [
+        "第一次段考範圍採翰林Book 3 Unit 1 + Unit 2 + Review 1",
+        "U1核心：天氣問答、天氣詞性、授與動詞、to/for、所有格代名詞",
+        "U2核心：過去式、when/before/after、時間子句、事件順序、社團情境",
+        "每細目3題，easy/medium/hard各1題",
+        "每題四選一且唯一最佳答案",
+        "A/B/C/D原始答案各15題",
+        "question_id與skill_id唯一",
+        "每題含explanation與remediation",
+        "題目為原創，不直接重製課文段落"
+      ]
+    }
+  },
+  "chapters": [
+    {
+      "chapter_id": "U1",
+      "chapter_name": "Unit 1 How Was the Weather in Australia?",
+      "sections": [
+        {
+          "section_id": "U1-A",
+          "section_name": "Weather & Vocabulary",
+          "skills": [
+            {
+              "skill_id": "U1-1",
+              "skill_name": "能使用 How / What 詢問天氣",
+              "questions": [
+                {
+                  "question_id": "U1-1-Q1",
+                  "difficulty": "easy",
+                  "question": "選出最適合的句子：『臺北今天的天氣如何？』",
+                  "options": [
+                    "What does the weather in Taipei today?",
+                    "How weather is in Taipei today?",
+                    "How does the weather in Taipei today?",
+                    "How is the weather in Taipei today?"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "詢問天氣可用 How is the weather...?",
+                  "remediation": "熟記 How is the weather...? 與 What is the weather like...?"
+                },
+                {
+                  "question_id": "U1-1-Q2",
+                  "difficulty": "medium",
+                  "question": "A: _____ in Sydney in winter?\nB: It is cool and dry.",
+                  "options": [
+                    "How does the weather like",
+                    "How is weather like",
+                    "What does the weather",
+                    "What is the weather like"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "What is the weather like...? 是正確的天氣問句。",
+                  "remediation": "What 問天氣時要搭配 like；How 問法則不用 like。"
+                },
+                {
+                  "question_id": "U1-1-Q3",
+                  "difficulty": "hard",
+                  "question": "下列哪一句文法正確且意思是『高雄夏天天氣如何？』？",
+                  "options": [
+                    "What is the weather in Kaohsiung in summer?",
+                    "How is the weather in Kaohsiung in summer?",
+                    "What does the weather like in Kaohsiung in summer?",
+                    "How is the weather like in Kaohsiung in summer?"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "How is the weather...? 可直接詢問天氣；若用 What，需加 like。",
+                  "remediation": "分清 How is the weather...? 與 What is the weather like...?。"
+                }
+              ]
+            },
+            {
+              "skill_id": "U1-2",
+              "skill_name": "能正確使用天氣形容詞",
+              "questions": [
+                {
+                  "question_id": "U1-2-Q1",
+                  "difficulty": "easy",
+                  "question": "The sun is shining, and there are no clouds. It is _____.",
+                  "options": [
+                    "rainy",
+                    "snowy",
+                    "foggy",
+                    "sunny"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "有陽光、無雲的天氣可用 sunny 描述。",
+                  "remediation": "複習 sunny, cloudy, rainy, snowy, windy, foggy 等天氣形容詞。"
+                },
+                {
+                  "question_id": "U1-2-Q2",
+                  "difficulty": "medium",
+                  "question": "It is very _____ today. Hold your hat, or it may fly away.",
+                  "options": [
+                    "wet",
+                    "dry",
+                    "windy",
+                    "snowy"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "帽子可能被風吹走，表示天氣有風，使用 windy。",
+                  "remediation": "依上下文判斷天氣形容詞。"
+                },
+                {
+                  "question_id": "U1-2-Q3",
+                  "difficulty": "hard",
+                  "question": "A driver cannot see the road clearly because of thick mist. Which word best describes the weather?",
+                  "options": [
+                    "warm",
+                    "cloudy",
+                    "dry",
+                    "foggy"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "濃霧使能見度降低，天氣可描述為 foggy。",
+                  "remediation": "利用情境區分 foggy 與 cloudy 等相近天氣詞。"
+                }
+              ]
+            },
+            {
+              "skill_id": "U1-3",
+              "skill_name": "能分辨 rain / snow 作名詞、動詞與形容詞",
+              "questions": [
+                {
+                  "question_id": "U1-3-Q1",
+                  "difficulty": "easy",
+                  "question": "It _____ a lot yesterday, so the streets are still wet.",
+                  "options": [
+                    "raining",
+                    "rainy",
+                    "rained",
+                    "rain"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "句中需要過去式動詞，yesterday 提示使用 rained。",
+                  "remediation": "分辨 rain 的名詞、動詞與 rainy 形容詞。"
+                },
+                {
+                  "question_id": "U1-3-Q2",
+                  "difficulty": "medium",
+                  "question": "There was a lot of _____ in the mountains last night.",
+                  "options": [
+                    "snow",
+                    "snows",
+                    "snowy",
+                    "snowed"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "a lot of 後接名詞，因此用 snow。",
+                  "remediation": "注意 a lot of + 名詞；be + 形容詞；主詞 + 動詞。"
+                },
+                {
+                  "question_id": "U1-3-Q3",
+                  "difficulty": "hard",
+                  "question": "下列哪一句正確？",
+                  "options": [
+                    "It is snowy today, and it may snow again tonight.",
+                    "There is snowy today, and it may snowing tonight.",
+                    "It snows yesterday, and there was snowy.",
+                    "It is snow today, and it may snowy tonight."
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "snowy 是形容詞；snow 可作動詞。第一句的詞性與時態皆正確。",
+                  "remediation": "同時判斷 snow / snowy 的詞性與時態。"
+                }
+              ]
+            },
+            {
+              "skill_id": "U1-4",
+              "skill_name": "能依過去時間使用適當的 be 動詞與天氣表達",
+              "questions": [
+                {
+                  "question_id": "U1-4-Q1",
+                  "difficulty": "easy",
+                  "question": "How _____ the weather in Tainan yesterday?",
+                  "options": [
+                    "is",
+                    "were",
+                    "was",
+                    "did"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "yesterday 是過去時間，weather 為單數，因此用 was。",
+                  "remediation": "天氣問句遇到過去時間要把 is 改為 was。"
+                },
+                {
+                  "question_id": "U1-4-Q2",
+                  "difficulty": "medium",
+                  "question": "The weather _____ cold and windy last night.",
+                  "options": [
+                    "is",
+                    "were",
+                    "was",
+                    "does"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "主詞 the weather 為單數，last night 為過去時間，所以用 was。",
+                  "remediation": "辨認時間副詞與 be 動詞時態。"
+                },
+                {
+                  "question_id": "U1-4-Q3",
+                  "difficulty": "hard",
+                  "question": "A: What _____ the weather like when you were in Australia?\nB: It _____ warm and sunny.",
+                  "options": [
+                    "did; was",
+                    "was; were",
+                    "was; was",
+                    "is; is"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "兩句都描述過去，weather 與 it 都是單數，所以皆用 was。",
+                  "remediation": "過去天氣對話要一致使用 was。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_id": "U1-B",
+          "section_name": "Grammar & Usage",
+          "skills": [
+            {
+              "skill_id": "U1-5",
+              "skill_name": "能使用授與動詞的雙受詞句型",
+              "questions": [
+                {
+                  "question_id": "U1-5-Q1",
+                  "difficulty": "easy",
+                  "question": "My aunt gave _____ a postcard.",
+                  "options": [
+                    "my",
+                    "I",
+                    "me",
+                    "mine"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "give + 人 + 物；此處人稱代名詞作受詞，要用 me。",
+                  "remediation": "熟悉 give/show/send/write + 人 + 物。"
+                },
+                {
+                  "question_id": "U1-5-Q2",
+                  "difficulty": "medium",
+                  "question": "Which sentence is correct?",
+                  "options": [
+                    "Dad bought me a new umbrella.",
+                    "Dad bought a new umbrella to me.",
+                    "Dad bought to me a new umbrella.",
+                    "Dad bought I a new umbrella."
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "buy 可使用 buy + 人 + 物。若物先出現，通常用 for + 人。",
+                  "remediation": "區分授與動詞雙受詞與介系詞改寫。"
+                },
+                {
+                  "question_id": "U1-5-Q3",
+                  "difficulty": "hard",
+                  "question": "Leo wrote his friend an email. Which sentence has the same meaning?",
+                  "options": [
+                    "Leo wrote his friend to an email.",
+                    "Leo wrote an email to his friend.",
+                    "Leo wrote to an email his friend.",
+                    "Leo wrote an email for his friend."
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "write + 人 + 物 可改為 write + 物 + to + 人。",
+                  "remediation": "熟記不同授與動詞改寫時使用 to 或 for。"
+                }
+              ]
+            },
+            {
+              "skill_id": "U1-6",
+              "skill_name": "能判斷授與動詞改寫時使用 to 或 for",
+              "questions": [
+                {
+                  "question_id": "U1-6-Q1",
+                  "difficulty": "easy",
+                  "question": "Mom bought a jacket _____ me.",
+                  "options": [
+                    "for",
+                    "at",
+                    "of",
+                    "to"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "buy + 物 + for + 人。",
+                  "remediation": "buy / make / cook 等常搭配 for；give / send / show / write 等常搭配 to。"
+                },
+                {
+                  "question_id": "U1-6-Q2",
+                  "difficulty": "medium",
+                  "question": "Please send the photo _____ Amy.",
+                  "options": [
+                    "from",
+                    "to",
+                    "with",
+                    "for"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "send + 物 + to + 人。",
+                  "remediation": "整理常見授與動詞的介系詞搭配。"
+                },
+                {
+                  "question_id": "U1-6-Q3",
+                  "difficulty": "hard",
+                  "question": "Which sentence is NOT correct?",
+                  "options": [
+                    "Kevin gave his sister a birthday card.",
+                    "Kevin bought a birthday card for his sister.",
+                    "Kevin bought his sister a birthday card.",
+                    "Kevin bought a birthday card to his sister."
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "buy 在『物 + 介系詞 + 人』句型通常搭配 for，不是 to。",
+                  "remediation": "特別比較 buy ... for ... 與 give ... to ...。"
+                }
+              ]
+            },
+            {
+              "skill_id": "U1-7",
+              "skill_name": "能正確使用所有格與所有格代名詞",
+              "questions": [
+                {
+                  "question_id": "U1-7-Q1",
+                  "difficulty": "easy",
+                  "question": "This is my umbrella. That one is _____.",
+                  "options": [
+                    "your",
+                    "yourself",
+                    "yours",
+                    "you"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "所有格代名詞 yours 可獨立使用，等於 your umbrella。",
+                  "remediation": "所有格後要有名詞；所有格代名詞可單獨使用。"
+                },
+                {
+                  "question_id": "U1-7-Q2",
+                  "difficulty": "medium",
+                  "question": "Their house is large, but _____ is small.",
+                  "options": [
+                    "we",
+                    "our",
+                    "ours",
+                    "us"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "句中需要代替 our house，因此用所有格代名詞 ours。",
+                  "remediation": "複習 my/mine, your/yours, our/ours, their/theirs, her/hers。"
+                },
+                {
+                  "question_id": "U1-7-Q3",
+                  "difficulty": "hard",
+                  "question": "Which sentence is correct?",
+                  "options": [
+                    "The blue bags are theirs, and the red ones are ours.",
+                    "The blue bags are their, and the red ones are our.",
+                    "The blue bags are their's, and the red ones are our's.",
+                    "The blue bags are them, and the red ones are us."
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "theirs 與 ours 都是所有格代名詞，不加 apostrophe。",
+                  "remediation": "避免把 theirs / ours 寫成 their's / our's。"
+                }
+              ]
+            },
+            {
+              "skill_id": "U1-8",
+              "skill_name": "能使用 Whose 與所有關係回答問題",
+              "questions": [
+                {
+                  "question_id": "U1-8-Q1",
+                  "difficulty": "easy",
+                  "question": "_____ gloves are these?\nThey are Tina's.",
+                  "options": [
+                    "Who",
+                    "Whose",
+                    "Which",
+                    "Who's"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "詢問『誰的』使用 Whose。",
+                  "remediation": "分辨 whose（誰的）與 who's（who is）。"
+                },
+                {
+                  "question_id": "U1-8-Q2",
+                  "difficulty": "medium",
+                  "question": "A: Whose notebook is this?\nB: It is _____.",
+                  "options": [
+                    "mine",
+                    "my",
+                    "me",
+                    "I"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "回答所有關係且後面沒有名詞，要用所有格代名詞 mine。",
+                  "remediation": "Whose 問句常搭配所有格代名詞回答。"
+                },
+                {
+                  "question_id": "U1-8-Q3",
+                  "difficulty": "hard",
+                  "question": "A: Are these your parents' umbrellas?\nB: No. _____ are black, but these are blue.",
+                  "options": [
+                    "Them",
+                    "Their",
+                    "Theirs",
+                    "They"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "此處 Theirs = their umbrellas，可單獨作主詞。",
+                  "remediation": "練習所有格代名詞取代已知名詞。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_id": "U1-C",
+          "section_name": "Context & Reading",
+          "skills": [
+            {
+              "skill_id": "U1-9",
+              "skill_name": "能理解 U1 主題字彙與情境語意",
+              "questions": [
+                {
+                  "question_id": "U1-9-Q1",
+                  "difficulty": "easy",
+                  "question": "We went to Australia during our summer _____.",
+                  "options": [
+                    "club",
+                    "vacation",
+                    "subject",
+                    "lesson"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "summer vacation 表示暑假。",
+                  "remediation": "複習 U1 旅遊、天氣與明信片情境常用字。"
+                },
+                {
+                  "question_id": "U1-9-Q2",
+                  "difficulty": "medium",
+                  "question": "I want to know tomorrow's weather, so I will check the weather _____.",
+                  "options": [
+                    "festival",
+                    "engineer",
+                    "choice",
+                    "forecast"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "weather forecast 表示天氣預報。",
+                  "remediation": "用搭配詞與情境判斷單字。"
+                },
+                {
+                  "question_id": "U1-9-Q3",
+                  "difficulty": "hard",
+                  "question": "Mia is traveling overseas. She writes a short message on a card with a picture and mails it home. What is she most likely sending?",
+                  "options": [
+                    "a menu",
+                    "a textbook",
+                    "a postcard",
+                    "a ticket"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "旅行時有圖片、可書寫並寄回家的卡片是 postcard。",
+                  "remediation": "透過描述推論單字，而非只背中譯。"
+                }
+              ]
+            },
+            {
+              "skill_id": "U1-10",
+              "skill_name": "能整合 U1 文法進行短文理解",
+              "questions": [
+                {
+                  "question_id": "U1-10-Q1",
+                  "difficulty": "easy",
+                  "question": "Eric wrote: 'It was cold yesterday, but today it is warm and sunny.' Which is true?",
+                  "options": [
+                    "It is colder today.",
+                    "It snowed today.",
+                    "The weather changed today.",
+                    "Yesterday was warm."
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "昨天冷、今天溫暖晴朗，因此天氣改變了。",
+                  "remediation": "閱讀時抓取時間詞與天氣形容詞。"
+                },
+                {
+                  "question_id": "U1-10-Q2",
+                  "difficulty": "medium",
+                  "question": "Nina says, 'My camera is old, but my sister's is new.' What does 'my sister's' mean?",
+                  "options": [
+                    "my sister's bag",
+                    "my sister's camera",
+                    "my sister is",
+                    "my camera"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "my sister's 在上下文省略了已知名詞 camera。",
+                  "remediation": "理解所有格在語境中可省略重複名詞。"
+                },
+                {
+                  "question_id": "U1-10-Q3",
+                  "difficulty": "hard",
+                  "question": "Ben sent Amy a postcard from Japan. It said, 'There was heavy snow yesterday, but it is sunny today.' Which sentence is correct?",
+                  "options": [
+                    "Ben sent a postcard to Amy, and today's weather is sunny.",
+                    "Ben bought a postcard for Amy, and yesterday was sunny.",
+                    "Amy sent a postcard to Ben, and today is snowy.",
+                    "Ben sent Amy snow from Japan."
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "sent Amy a postcard = sent a postcard to Amy；內容說今天 sunny。",
+                  "remediation": "整合授與動詞、過去／現在天氣與閱讀訊息。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "U2",
+      "chapter_name": "Unit 2 You Can Learn About Game Design After You Join the Club",
+      "sections": [
+        {
+          "section_id": "U2-A",
+          "section_name": "Past Tense & Time Clauses",
+          "skills": [
+            {
+              "skill_id": "U2-1",
+              "skill_name": "能辨認常見規則與不規則動詞過去式",
+              "questions": [
+                {
+                  "question_id": "U2-1-Q1",
+                  "difficulty": "easy",
+                  "question": "Yesterday I _____ my English teacher after class.",
+                  "options": [
+                    "called",
+                    "call",
+                    "calling",
+                    "calls"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "yesterday 提示過去式，call 的過去式為 called。",
+                  "remediation": "辨認時間副詞並使用動詞過去式。"
+                },
+                {
+                  "question_id": "U2-1-Q2",
+                  "difficulty": "medium",
+                  "question": "Which pair is correct?",
+                  "options": [
+                    "go → goed",
+                    "teach → teached",
+                    "make → maked",
+                    "hear → heard"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "hear 的不規則過去式是 heard。",
+                  "remediation": "整理常見不規則動詞過去式。"
+                },
+                {
+                  "question_id": "U2-1-Q3",
+                  "difficulty": "hard",
+                  "question": "After Leo _____ the poster, he _____ up his mind to join the club.",
+                  "options": [
+                    "read; made",
+                    "reads; makes",
+                    "readed; maked",
+                    "reading; making"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "句子描述過去事件，read 過去式拼法仍是 read，make 過去式為 made。",
+                  "remediation": "特別注意拼字不變但讀音改變的 read，以及不規則過去式。"
+                }
+              ]
+            },
+            {
+              "skill_id": "U2-2",
+              "skill_name": "能理解 when 表示同時或時間關係",
+              "questions": [
+                {
+                  "question_id": "U2-2-Q1",
+                  "difficulty": "easy",
+                  "question": "_____ I got home, I called my friend.",
+                  "options": [
+                    "During",
+                    "Although of",
+                    "Because of",
+                    "When"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "When 可連接時間子句，表示『當……時』。",
+                  "remediation": "熟記 when 的基本功能。"
+                },
+                {
+                  "question_id": "U2-2-Q2",
+                  "difficulty": "medium",
+                  "question": "Which sentence is correct?",
+                  "options": [
+                    "When the class end, we went yesterday.",
+                    "When the class ended, we went to the club fair.",
+                    "When did the class ended, we went to the club fair.",
+                    "When ending the class, we were go to the fair."
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "描述過去先後事件時，兩個子句可使用適當過去式。",
+                  "remediation": "when 後接完整子句，注意時態與動詞形式。"
+                },
+                {
+                  "question_id": "U2-2-Q3",
+                  "difficulty": "hard",
+                  "question": "Mia was nervous when the teacher called her name. What happened at the time the teacher called her name?",
+                  "options": [
+                    "Mia joined a club the next day.",
+                    "Mia was nervous.",
+                    "The teacher left school.",
+                    "Mia finished dinner."
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "when 連接兩個在時間上相關的事件；此句表示老師叫她名字時，她很緊張。",
+                  "remediation": "從 when 子句理解事件的時間關係。"
+                }
+              ]
+            },
+            {
+              "skill_id": "U2-3",
+              "skill_name": "能使用 before 判斷事件先後",
+              "questions": [
+                {
+                  "question_id": "U2-3-Q1",
+                  "difficulty": "easy",
+                  "question": "I did my homework _____ I played video games.",
+                  "options": [
+                    "because",
+                    "but",
+                    "before",
+                    "after"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "before 表示前一動作發生在後一子句事件之前。",
+                  "remediation": "熟記 before = 在……之前。"
+                },
+                {
+                  "question_id": "U2-3-Q2",
+                  "difficulty": "medium",
+                  "question": "'Amy checked the schedule before she signed up.' Which happened first?",
+                  "options": [
+                    "Amy checked the schedule.",
+                    "The sentence does not tell us.",
+                    "Both happened at exactly the same time.",
+                    "Amy signed up."
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "before 前的主要事件 checked the schedule 先發生。",
+                  "remediation": "畫時間線判斷 before 的事件順序。"
+                },
+                {
+                  "question_id": "U2-3-Q3",
+                  "difficulty": "hard",
+                  "question": "Which sentence means 'Ken先問媽媽，之後才加入社團'?",
+                  "options": [
+                    "Before Ken asked his mom, he joined the club.",
+                    "Ken joined the club when he never asked his mom.",
+                    "Ken joined the club before he asked his mom.",
+                    "Ken asked his mom before he joined the club."
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "asked his mom before joined the club 表示詢問先、加入後。",
+                  "remediation": "不要只看 before 的位置，要比較兩個動作的先後。"
+                }
+              ]
+            },
+            {
+              "skill_id": "U2-4",
+              "skill_name": "能使用 after 判斷事件先後",
+              "questions": [
+                {
+                  "question_id": "U2-4-Q1",
+                  "difficulty": "easy",
+                  "question": "We went home _____ the festival ended.",
+                  "options": [
+                    "or",
+                    "after",
+                    "before",
+                    "so"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "after 表示在某事件發生之後。",
+                  "remediation": "熟記 after = 在……之後。"
+                },
+                {
+                  "question_id": "U2-4-Q2",
+                  "difficulty": "medium",
+                  "question": "'After Jason finished the lesson, he designed a game.' Which happened first?",
+                  "options": [
+                    "We cannot know.",
+                    "Both were future events.",
+                    "Jason finished the lesson.",
+                    "Jason designed a game."
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "after 子句描述的 finished the lesson 先發生，再 designed a game。",
+                  "remediation": "利用 after 建立事件時間線。"
+                },
+                {
+                  "question_id": "U2-4-Q3",
+                  "difficulty": "hard",
+                  "question": "Which two sentences have the same meaning?",
+                  "options": [
+                    "After I ate dinner, I called Mia. / I called Mia after I ate dinner.",
+                    "I ate dinner when I never called Mia. / I called Mia before dinner.",
+                    "I called Mia before I ate dinner. / I ate dinner after I called Mia.",
+                    "After I called Mia, I ate dinner. / I ate dinner before I called Mia."
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "時間子句可放句首或句尾，事件關係不變。",
+                  "remediation": "練習時間子句移位而不改變語意。"
+                }
+              ]
+            },
+            {
+              "skill_id": "U2-5",
+              "skill_name": "能正確處理時間子句放句首時的標點",
+              "questions": [
+                {
+                  "question_id": "U2-5-Q1",
+                  "difficulty": "easy",
+                  "question": "Which sentence uses punctuation correctly?",
+                  "options": [
+                    "After I got home, I took a shower.",
+                    "After, I got home I took a shower.",
+                    "After I got home I, took a shower.",
+                    "After I, got home, I took a shower."
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "時間從屬子句置於句首時，通常以逗點和主要子句隔開。",
+                  "remediation": "記住 When/Before/After + 子句置前時的逗點。"
+                },
+                {
+                  "question_id": "U2-5-Q2",
+                  "difficulty": "medium",
+                  "question": "Choose the best sentence.",
+                  "options": [
+                    "When the bell, rang the students left, the room.",
+                    "When the bell rang, the students left the room.",
+                    "When, the bell rang the students left the room.",
+                    "The students, left the room when the bell rang."
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "句首時間子句結束後加逗點。",
+                  "remediation": "不要在連接詞後或主詞動詞之間亂加逗點。"
+                },
+                {
+                  "question_id": "U2-5-Q3",
+                  "difficulty": "hard",
+                  "question": "Which rewrite is best for 'I called Jenny after I finished my homework.'?",
+                  "options": [
+                    "After, I finished my homework I called Jenny.",
+                    "After I finished my homework, I called Jenny.",
+                    "After I called Jenny, I finished my homework.",
+                    "I finished my homework, after I called Jenny."
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "將 after 子句移到句首後加逗點，且事件順序不變。",
+                  "remediation": "同時檢查標點與語意順序。"
+                }
+              ]
+            },
+            {
+              "skill_id": "U2-6",
+              "skill_name": "能依時間關係選擇過去式並保持時態合理",
+              "questions": [
+                {
+                  "question_id": "U2-6-Q1",
+                  "difficulty": "easy",
+                  "question": "After I _____ dinner, I watched TV last night.",
+                  "options": [
+                    "finishes",
+                    "finished",
+                    "finish",
+                    "finishing"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "last night 表示過去，時間子句使用過去式 finished。",
+                  "remediation": "描述已發生的過去事件時使用過去式。"
+                },
+                {
+                  "question_id": "U2-6-Q2",
+                  "difficulty": "medium",
+                  "question": "When Dad _____ home yesterday, we _____ dinner.",
+                  "options": [
+                    "came; starts",
+                    "come; starting",
+                    "comes; start",
+                    "came; started"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "yesterday 表示兩個動作均發生於過去，因此用 came 與 started。",
+                  "remediation": "注意同一過去情境中兩個子句的時態。"
+                },
+                {
+                  "question_id": "U2-6-Q3",
+                  "difficulty": "hard",
+                  "question": "Before Kevin _____ the club, he _____ its teacher and schedule.",
+                  "options": [
+                    "joins; checked",
+                    "joined; checked",
+                    "joined; checks",
+                    "joining; check"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "語境描述已完成的過去事件，兩個動詞皆用過去式。",
+                  "remediation": "不要因 before/after/when 而忽略整句時間背景。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_id": "U2-B",
+          "section_name": "Vocabulary & Sequence",
+          "skills": [
+            {
+              "skill_id": "U2-7",
+              "skill_name": "能理解社團與學校活動相關字彙",
+              "questions": [
+                {
+                  "question_id": "U2-7-Q1",
+                  "difficulty": "easy",
+                  "question": "If you want to become a member of the basketball club, you need to _____ it.",
+                  "options": [
+                    "snow",
+                    "forecast",
+                    "mail",
+                    "join"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "join a club 表示加入社團。",
+                  "remediation": "複習 club, join, sign up, lesson, subject, festival 等字詞。"
+                },
+                {
+                  "question_id": "U2-7-Q2",
+                  "difficulty": "medium",
+                  "question": "Students can visit different club booths during the school _____.",
+                  "options": [
+                    "weather",
+                    "vacation card",
+                    "forecast",
+                    "festival"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "school festival 可有社團攤位與活動。",
+                  "remediation": "用校園活動情境判斷單字。"
+                },
+                {
+                  "question_id": "U2-7-Q3",
+                  "difficulty": "hard",
+                  "question": "Nora looked at three clubs for a long time. Finally, she decided to join the science club. Which phrase best describes what she did?",
+                  "options": [
+                    "sent a postcard",
+                    "held on the phone",
+                    "made up her mind",
+                    "checked the weather"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "make up one's mind 表示下定決心。",
+                  "remediation": "學習片語時要能從情境推回語意。"
+                }
+              ]
+            },
+            {
+              "skill_id": "U2-8",
+              "skill_name": "能使用 call / tell / hear 等動詞理解對話情境",
+              "questions": [
+                {
+                  "question_id": "U2-8-Q1",
+                  "difficulty": "easy",
+                  "question": "Please _____ me which club you chose.",
+                  "options": [
+                    "hear",
+                    "weather",
+                    "tell",
+                    "join to"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "tell + 人 + 內容，表示告訴某人。",
+                  "remediation": "分辨 tell, call, hear 等常見動詞。"
+                },
+                {
+                  "question_id": "U2-8-Q2",
+                  "difficulty": "medium",
+                  "question": "I _____ the phone ring, so I answered it.",
+                  "options": [
+                    "designed",
+                    "joined",
+                    "told",
+                    "heard"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "聽見電話響要用 hear 的過去式 heard。",
+                  "remediation": "依受詞與情境選擇動詞。"
+                },
+                {
+                  "question_id": "U2-8-Q3",
+                  "difficulty": "hard",
+                  "question": "A: Hello. May I speak to Leo?\nB: He's checking the club schedule. Please _____.",
+                  "options": [
+                    "hold on",
+                    "make up",
+                    "sign off",
+                    "snow"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "電話中請對方稍等可說 hold on。",
+                  "remediation": "熟悉電話對話常用片語。"
+                }
+              ]
+            },
+            {
+              "skill_id": "U2-9",
+              "skill_name": "能依 before / after / when 重建事件順序",
+              "questions": [
+                {
+                  "question_id": "U2-9-Q1",
+                  "difficulty": "easy",
+                  "question": "'Before Sue joined the art club, she talked to the teacher.' What happened first?",
+                  "options": [
+                    "Sue left school.",
+                    "Sue joined the club.",
+                    "The club ended.",
+                    "Sue talked to the teacher."
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "before 表示 talked to the teacher 發生在 joined 之前。",
+                  "remediation": "用時間軸整理兩個事件。"
+                },
+                {
+                  "question_id": "U2-9-Q2",
+                  "difficulty": "medium",
+                  "question": "Tom signed up after he visited the club booth. Which order is correct?",
+                  "options": [
+                    "the order is unknown",
+                    "signed up → visited the booth",
+                    "signed up and never visited",
+                    "visited the booth → signed up"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "after 表示先 visited，再 signed up。",
+                  "remediation": "把 after 句轉成箭頭順序。"
+                },
+                {
+                  "question_id": "U2-9-Q3",
+                  "difficulty": "hard",
+                  "question": "Amy read the club poster before she called Mia. After she called Mia, she signed up online. Which order is correct?",
+                  "options": [
+                    "read poster → called Mia → signed up",
+                    "read poster → signed up → called Mia",
+                    "signed up → called Mia → read poster",
+                    "called Mia → read poster → signed up"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "第一句確定 read 在 call 之前；第二句確定 sign up 在 call 之後。",
+                  "remediation": "遇到多事件時逐句建立時間線再合併。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_id": "U2-C",
+          "section_name": "Review 1 Integration",
+          "skills": [
+            {
+              "skill_id": "U2-10",
+              "skill_name": "能整合 U1-U2 文法完成克漏與閱讀",
+              "questions": [
+                {
+                  "question_id": "U2-10-Q1",
+                  "difficulty": "easy",
+                  "question": "A: How was the weather yesterday?\nB: It _____ rainy, so I stayed home and checked the club website.",
+                  "options": [
+                    "is",
+                    "was",
+                    "does",
+                    "were"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "yesterday 與 how was 都提示過去，主詞 it 用 was。",
+                  "remediation": "整合 U1 過去天氣句型。"
+                },
+                {
+                  "question_id": "U2-10-Q2",
+                  "difficulty": "medium",
+                  "question": "Mina wanted to join a club. _____ she made up her mind, she talked to two teachers and read the club schedules.",
+                  "options": [
+                    "Before",
+                    "After",
+                    "But",
+                    "Because of"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "她先詢問與閱讀，再下決定，因此應用 Before she made up her mind。",
+                  "remediation": "依上下文判斷 before/after，而非只看單句。"
+                },
+                {
+                  "question_id": "U2-10-Q3",
+                  "difficulty": "hard",
+                  "question": "Read: 'It rained heavily on Friday, so the outdoor club meeting was canceled. On Saturday, the weather was sunny. After Eric checked the new schedule, he joined the meeting.' Which statement is true?",
+                  "options": [
+                    "Saturday was rainy and cold.",
+                    "Eric attended after he checked the changed schedule.",
+                    "Eric checked the schedule after the meeting ended.",
+                    "The meeting happened outdoors on rainy Friday."
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "週五因大雨取消；週六晴天，Eric 查看新時程後才參加。",
+                  "remediation": "綜合天氣、過去式與 after 進行閱讀推論。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

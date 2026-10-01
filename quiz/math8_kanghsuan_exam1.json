@@ -1,0 +1,990 @@
+{
+  "metadata": {
+    "title": "國中八上數學 第一次段考（康軒版）",
+    "version": "1.0-reviewed",
+    "language": "zh-TW",
+    "question_type": "single_choice",
+    "options_per_question": 4,
+    "questions_per_skill": 3,
+    "storage_key": "math8_kanghsuan_exam1_progress",
+    "theme_color": "#7c3aed",
+    "icons": [
+      "✖️",
+      "➗",
+      "√"
+    ],
+    "scope_note": "暫定範圍採康軒八上常見第一次段考進度1-1～2-1：乘法公式、多項式與其加減運算、多項式的乘除運算、平方根與近似值。若學校實際只考到1-3，可直接移除2-1整節。",
+    "total_skills": 18,
+    "total_questions": 54,
+    "audit": {
+      "status": "reviewed_v1",
+      "total_skills": 18,
+      "total_questions": 54,
+      "checks": [
+        "暫定第一次段考範圍採康軒1-1至2-1",
+        "每個細目3題，easy/medium/hard各1題",
+        "每題四選一且唯一最佳答案",
+        "答案位置A/B/C/D近乎平均",
+        "question_id與skill_id唯一",
+        "每題含explanation與remediation",
+        "若校方範圍只到1-3，可直接刪除CH2"
+      ]
+    }
+  },
+  "chapters": [
+    {
+      "chapter_id": "CH1",
+      "chapter_name": "Ch1 乘法公式與多項式",
+      "sections": [
+        {
+          "section_id": "1-1",
+          "section_name": "乘法公式",
+          "skills": [
+            {
+              "skill_id": "1-1-1",
+              "skill_name": "能正確使用分配律展開代數式",
+              "questions": [
+                {
+                  "question_id": "1-1-1-Q1",
+                  "difficulty": "easy",
+                  "question": "化簡 3(x＋5) 的結果為何？",
+                  "options": [
+                    "3x＋15",
+                    "3x＋5",
+                    "15x",
+                    "8x"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "3(x＋5)=3x＋15。",
+                  "remediation": "複習分配律。"
+                },
+                {
+                  "question_id": "1-1-1-Q2",
+                  "difficulty": "medium",
+                  "question": "化簡 −2(3x−4) 的結果為何？",
+                  "options": [
+                    "−6x＋8",
+                    "6x−8",
+                    "−5x＋4",
+                    "−6x−8"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "−2×3x=−6x，−2×(−4)=＋8。",
+                  "remediation": "負數乘進括號時注意符號。"
+                },
+                {
+                  "question_id": "1-1-1-Q3",
+                  "difficulty": "hard",
+                  "question": "若 5(2x−3)−2(x＋4)=ax＋b，則 a＋b 的值為何？",
+                  "options": [
+                    "−6",
+                    "15",
+                    "−15",
+                    "8"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "原式=10x−15−2x−8=8x−23，所以a=8、b=−23，a＋b=−15。",
+                  "remediation": "先展開括號，再合併同類項。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-1-2",
+              "skill_name": "能使用和的平方公式",
+              "questions": [
+                {
+                  "question_id": "1-1-2-Q1",
+                  "difficulty": "easy",
+                  "question": "(x＋5)^2 展開後為何？",
+                  "options": [
+                    "x^2＋5x＋25",
+                    "x^2−10x＋25",
+                    "x^2＋10x＋25",
+                    "x^2＋25"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "(a＋b)^2=a^2＋2ab＋b^2。",
+                  "remediation": "熟記和的平方公式。"
+                },
+                {
+                  "question_id": "1-1-2-Q2",
+                  "difficulty": "medium",
+                  "question": "(2x＋3)^2 展開後，x 的一次項係數為何？",
+                  "options": [
+                    "12",
+                    "6",
+                    "4",
+                    "9"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "(2x＋3)^2=4x^2＋12x＋9。",
+                  "remediation": "中間項是2ab。"
+                },
+                {
+                  "question_id": "1-1-2-Q3",
+                  "difficulty": "hard",
+                  "question": "若 (x＋a)^2=x^2＋12x＋36，且 a＞0，則 a 為何？",
+                  "options": [
+                    "6",
+                    "18",
+                    "12",
+                    "36"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "2a=12，所以a=6。",
+                  "remediation": "比較展開式係數。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-1-3",
+              "skill_name": "能使用差的平方公式",
+              "questions": [
+                {
+                  "question_id": "1-1-3-Q1",
+                  "difficulty": "easy",
+                  "question": "(x−4)^2 展開後為何？",
+                  "options": [
+                    "x^2−8x＋16",
+                    "x^2−16",
+                    "x^2＋8x＋16",
+                    "x^2−4x＋16"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "(a−b)^2=a^2−2ab＋b^2。",
+                  "remediation": "熟記差的平方公式。"
+                },
+                {
+                  "question_id": "1-1-3-Q2",
+                  "difficulty": "medium",
+                  "question": "(3x−2)^2 展開後為何？",
+                  "options": [
+                    "6x^2−12x＋4",
+                    "9x^2−12x＋4",
+                    "9x^2−6x＋4",
+                    "9x^2−4"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "=9x^2−12x＋4。",
+                  "remediation": "平方與中間項係數都要正確。"
+                },
+                {
+                  "question_id": "1-1-3-Q3",
+                  "difficulty": "hard",
+                  "question": "若 (2x−a)^2=4x^2−20x＋25，且 a＞0，則 a 為何？",
+                  "options": [
+                    "25",
+                    "10",
+                    "20",
+                    "5"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "−4a=−20，所以a=5。",
+                  "remediation": "比較一次項係數。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-1-4",
+              "skill_name": "能使用平方差公式並進行簡便計算",
+              "questions": [
+                {
+                  "question_id": "1-1-4-Q1",
+                  "difficulty": "easy",
+                  "question": "(x＋7)(x−7) 的結果為何？",
+                  "options": [
+                    "x^2＋14x＋49",
+                    "x^2＋49",
+                    "x^2−49",
+                    "x^2−14x＋49"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "(a＋b)(a−b)=a^2−b^2。",
+                  "remediation": "熟記平方差公式。"
+                },
+                {
+                  "question_id": "1-1-4-Q2",
+                  "difficulty": "medium",
+                  "question": "利用乘法公式計算 103×97，結果為何？",
+                  "options": [
+                    "10009",
+                    "9999",
+                    "9910",
+                    "9991"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "=(100＋3)(100−3)=10000−9=9991。",
+                  "remediation": "利用平方差簡算。"
+                },
+                {
+                  "question_id": "1-1-4-Q3",
+                  "difficulty": "hard",
+                  "question": "若 a＋b=10、a−b=4，則 a^2−b^2 的值為何？",
+                  "options": [
+                    "40",
+                    "100",
+                    "24",
+                    "14"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "a^2−b^2=(a＋b)(a−b)=40。",
+                  "remediation": "先辨認平方差。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_id": "1-2",
+          "section_name": "多項式與其加減運算",
+          "skills": [
+            {
+              "skill_id": "1-2-1",
+              "skill_name": "能辨認單項式、多項式及多項式次數",
+              "questions": [
+                {
+                  "question_id": "1-2-1-Q1",
+                  "difficulty": "easy",
+                  "question": "多項式 3x^2−5x＋7 的次數為何？",
+                  "options": [
+                    "1",
+                    "2",
+                    "7",
+                    "3"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "最高次項是3x^2。",
+                  "remediation": "多項式次數看最高指數。"
+                },
+                {
+                  "question_id": "1-2-1-Q2",
+                  "difficulty": "medium",
+                  "question": "下列何者是 x 的多項式？",
+                  "options": [
+                    "3/x＋2",
+                    "2x^3−x＋1",
+                    "√x＋1",
+                    "x^−2＋5"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "多項式中變數指數須為非負整數。",
+                  "remediation": "注意分母、根號與負指數。"
+                },
+                {
+                  "question_id": "1-2-1-Q3",
+                  "difficulty": "hard",
+                  "question": "若 P(x)=ax^3＋2x^2−5，且 P(x) 是二次多項式，則 a 必須為何？",
+                  "options": [
+                    "0",
+                    "1",
+                    "−5",
+                    "2"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "三次項必須消失，所以a=0。",
+                  "remediation": "最高次項係數若為0，次數會下降。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-2-2",
+              "skill_name": "能合併同類項並按降冪排列",
+              "questions": [
+                {
+                  "question_id": "1-2-2-Q1",
+                  "difficulty": "easy",
+                  "question": "化簡 3x^2＋2x−5＋4x^2−x 的結果為何？",
+                  "options": [
+                    "7x^2＋3x−5",
+                    "12x^2＋x",
+                    "7x^2＋x−5",
+                    "7x^4＋x−5"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "同類項合併得7x^2＋x−5。",
+                  "remediation": "只合併變數及指數相同的項。"
+                },
+                {
+                  "question_id": "1-2-2-Q2",
+                  "difficulty": "medium",
+                  "question": "將 5−3x^3＋2x−x^2 按 x 的降冪排列，何者正確？",
+                  "options": [
+                    "5＋2x−x^2−3x^3",
+                    "−3x^3−x^2＋2x＋5",
+                    "3x^3＋x^2−2x−5",
+                    "−3x^3＋2x−x^2＋5"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "依3、2、1、0次排列。",
+                  "remediation": "排列時保留每項原符號。"
+                },
+                {
+                  "question_id": "1-2-2-Q3",
+                  "difficulty": "hard",
+                  "question": "若 2x^2＋ax−3＋5x^2−4x＋1 化簡後沒有 x 的一次項，則 a 為何？",
+                  "options": [
+                    "0",
+                    "−4",
+                    "4",
+                    "7"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "一次項係數a−4=0，因此a=4。",
+                  "remediation": "由指定項消失建立方程。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-2-3",
+              "skill_name": "能進行多項式加法",
+              "questions": [
+                {
+                  "question_id": "1-2-3-Q1",
+                  "difficulty": "easy",
+                  "question": "(3x^2＋2x−1)＋(2x^2−5x＋4) 等於多少？",
+                  "options": [
+                    "6x^4−10x^2−4",
+                    "x^2−3x＋5",
+                    "5x^2＋7x＋3",
+                    "5x^2−3x＋3"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "同類項相加。",
+                  "remediation": "對齊同次項。"
+                },
+                {
+                  "question_id": "1-2-3-Q2",
+                  "difficulty": "medium",
+                  "question": "若 A=2x^2−3x＋5，B=−x^2＋4x−2，則 A＋B 為何？",
+                  "options": [
+                    "−3x^2＋x−7",
+                    "x^2−7x＋3",
+                    "3x^2−7x＋7",
+                    "x^2＋x＋3"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "逐項相加得x^2＋x＋3。",
+                  "remediation": "逐次比較係數。"
+                },
+                {
+                  "question_id": "1-2-3-Q3",
+                  "difficulty": "hard",
+                  "question": "若 P＋(2x^2−x＋3)=5x^2＋4x−1，則 P 為何？",
+                  "options": [
+                    "7x^2＋3x＋2",
+                    "3x^2＋3x＋2",
+                    "3x^2＋5x−4",
+                    "−3x^2−5x＋4"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "P=總和−已知加數=3x^2＋5x−4。",
+                  "remediation": "未知加數=總和−已知加數。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-2-4",
+              "skill_name": "能進行多項式減法與混合運算",
+              "questions": [
+                {
+                  "question_id": "1-2-4-Q1",
+                  "difficulty": "easy",
+                  "question": "(5x^2−2x＋3)−(2x^2＋x−4) 等於多少？",
+                  "options": [
+                    "7x^2−x−1",
+                    "3x^2−3x−1",
+                    "3x^2−3x＋7",
+                    "3x^2−x−1"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "第二括號變號後合併。",
+                  "remediation": "相減時注意整個括號變號。"
+                },
+                {
+                  "question_id": "1-2-4-Q2",
+                  "difficulty": "medium",
+                  "question": "若 A=4x^2＋x−6，B=x^2−3x＋2，則 2A−B 為何？",
+                  "options": [
+                    "7x^2−x−10",
+                    "7x^2＋5x−14",
+                    "9x^2−x−10",
+                    "3x^2＋4x−8"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "2A−B=7x^2＋5x−14。",
+                  "remediation": "先做倍數，再處理減法。"
+                },
+                {
+                  "question_id": "1-2-4-Q3",
+                  "difficulty": "hard",
+                  "question": "若 A−B=2x^2−5x＋1，且 A=5x^2＋x−3，則 B 為何？",
+                  "options": [
+                    "7x^2−4x−2",
+                    "−3x^2−6x＋4",
+                    "3x^2＋6x−4",
+                    "3x^2−4x−2"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "B=A−(A−B)=3x^2＋6x−4。",
+                  "remediation": "整理未知多項式。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_id": "1-3",
+          "section_name": "多項式的乘除運算",
+          "skills": [
+            {
+              "skill_id": "1-3-1",
+              "skill_name": "能進行單項式與多項式的乘法",
+              "questions": [
+                {
+                  "question_id": "1-3-1-Q1",
+                  "difficulty": "easy",
+                  "question": "3x(2x−5) 的結果為何？",
+                  "options": [
+                    "6x^2−15x",
+                    "5x^2−15x",
+                    "6x−15",
+                    "6x^2−5"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "逐項相乘。",
+                  "remediation": "係數相乘、同底數指數相加。"
+                },
+                {
+                  "question_id": "1-3-1-Q2",
+                  "difficulty": "medium",
+                  "question": "−2x^2(3x^2−x＋4) 的結果為何？",
+                  "options": [
+                    "−6x^4−2x^3−8x^2",
+                    "−6x^4＋2x^2−8",
+                    "−6x^4＋2x^3−8x^2",
+                    "−5x^4＋2x^3−6x^2"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "逐項相乘得−6x^4＋2x^3−8x^2。",
+                  "remediation": "注意負號與指數。"
+                },
+                {
+                  "question_id": "1-3-1-Q3",
+                  "difficulty": "hard",
+                  "question": "若 ax(2x−3)=8x^2−12x，則 a 為何？",
+                  "options": [
+                    "8",
+                    "2",
+                    "4",
+                    "−4"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "2a=8，所以a=4。",
+                  "remediation": "比較對應項係數。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-3-2",
+              "skill_name": "能進行多項式乘法",
+              "questions": [
+                {
+                  "question_id": "1-3-2-Q1",
+                  "difficulty": "easy",
+                  "question": "(x＋2)(x＋3) 展開後為何？",
+                  "options": [
+                    "x^2＋5",
+                    "x^2＋6x＋5",
+                    "x^2−5x＋6",
+                    "x^2＋5x＋6"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "展開得x^2＋5x＋6。",
+                  "remediation": "每一項都要互乘。"
+                },
+                {
+                  "question_id": "1-3-2-Q2",
+                  "difficulty": "medium",
+                  "question": "(2x−1)(x＋4) 展開後為何？",
+                  "options": [
+                    "2x^2−7x−4",
+                    "2x^2＋3x−4",
+                    "2x^2＋8x−1",
+                    "2x^2＋7x−4"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "=2x^2＋8x−x−4。",
+                  "remediation": "展開後再合併同類項。"
+                },
+                {
+                  "question_id": "1-3-2-Q3",
+                  "difficulty": "hard",
+                  "question": "若 (x＋a)(x＋2)=x^2＋7x＋10，則 a 為何？",
+                  "options": [
+                    "2",
+                    "5",
+                    "10",
+                    "7"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "a＋2=7，且2a=10，所以a=5。",
+                  "remediation": "比較展開式係數。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-3-3",
+              "skill_name": "能理解多項式除法中的商與餘式",
+              "questions": [
+                {
+                  "question_id": "1-3-3-Q1",
+                  "difficulty": "easy",
+                  "question": "(6x^2＋9x)÷3x 的結果為何？",
+                  "options": [
+                    "2x＋9",
+                    "2x^2＋3",
+                    "3x＋2",
+                    "2x＋3"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "逐項除以3x。",
+                  "remediation": "係數相除、同底數指數相減。"
+                },
+                {
+                  "question_id": "1-3-3-Q2",
+                  "difficulty": "medium",
+                  "question": "若 P(x) 除以 x−2 的商為 x＋3，餘式為5，則 P(x) 為何？",
+                  "options": [
+                    "x^2＋5x−1",
+                    "x^2＋x−1",
+                    "x^2−x−1",
+                    "x^2＋x＋6"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "P=(x−2)(x＋3)+5=x^2+x−1。",
+                  "remediation": "被除式=除式×商式＋餘式。"
+                },
+                {
+                  "question_id": "1-3-3-Q3",
+                  "difficulty": "hard",
+                  "question": "多項式 P(x) 除以二次多項式 D(x) 後的餘式 R(x)，其次數必須符合哪一條件？",
+                  "options": [
+                    "R的次數一定比P高",
+                    "R的次數一定等於D的次數",
+                    "R的次數小於D的次數",
+                    "R一定是0"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "餘式次數必須小於除式次數。",
+                  "remediation": "掌握除法停止條件。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-3-4",
+              "skill_name": "能進行一次式除法並求商式與餘式",
+              "questions": [
+                {
+                  "question_id": "1-3-4-Q1",
+                  "difficulty": "easy",
+                  "question": "(x^2＋5x＋6)÷(x＋2) 的商式為何？",
+                  "options": [
+                    "x＋3",
+                    "x^2＋3",
+                    "x−3",
+                    "x＋2"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "x^2＋5x＋6=(x＋2)(x＋3)。",
+                  "remediation": "可用乘法反推。"
+                },
+                {
+                  "question_id": "1-3-4-Q2",
+                  "difficulty": "medium",
+                  "question": "(2x^2＋7x−4)÷(x＋4) 的商式為何？",
+                  "options": [
+                    "2x＋4",
+                    "2x−1",
+                    "2x＋1",
+                    "x−1"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "=(x＋4)(2x−1)。",
+                  "remediation": "直式除法後可乘回驗算。"
+                },
+                {
+                  "question_id": "1-3-4-Q3",
+                  "difficulty": "hard",
+                  "question": "x^2＋3x＋5 除以 x＋1，商式與餘式分別為何？",
+                  "options": [
+                    "x＋2，餘2",
+                    "x＋2，餘3",
+                    "x−2，餘3",
+                    "x＋3，餘2"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "x^2＋3x＋5=(x＋1)(x＋2)+3。",
+                  "remediation": "用除式×商＋餘式驗算。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-3-5",
+              "skill_name": "能運用多項式乘除關係解決未知式問題",
+              "questions": [
+                {
+                  "question_id": "1-3-5-Q1",
+                  "difficulty": "easy",
+                  "question": "若 (x＋2)Q=x^2＋5x＋6，則 Q 為何？",
+                  "options": [
+                    "x−3",
+                    "x^2＋3",
+                    "x＋3",
+                    "x＋2"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "Q=x＋3。",
+                  "remediation": "把未知多項式視為商式。"
+                },
+                {
+                  "question_id": "1-3-5-Q2",
+                  "difficulty": "medium",
+                  "question": "若 P=(x−1)(2x＋3)+4，則 P 展開後為何？",
+                  "options": [
+                    "2x^2＋x＋1",
+                    "2x^2＋x−7",
+                    "2x^2＋5x＋1",
+                    "2x^2−x＋1"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "展開後為2x^2+x+1。",
+                  "remediation": "先展開乘積，再加餘式。"
+                },
+                {
+                  "question_id": "1-3-5-Q3",
+                  "difficulty": "hard",
+                  "question": "若 P(x) 除以 x＋2 的商為 3x−1、餘式為 r，且 P(−2)=7，則 r 為何？",
+                  "options": [
+                    "7",
+                    "0",
+                    "−7",
+                    "5"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "代x=−2後除式為0，所以P(−2)=r=7。",
+                  "remediation": "利用被除式=除式×商＋餘式。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "CH2",
+      "chapter_name": "Ch2 平方根與畢氏定理",
+      "sections": [
+        {
+          "section_id": "2-1",
+          "section_name": "平方根與近似值",
+          "skills": [
+            {
+              "skill_id": "2-1-1",
+              "skill_name": "能理解平方根的意義",
+              "questions": [
+                {
+                  "question_id": "2-1-1-Q1",
+                  "difficulty": "easy",
+                  "question": "下列哪兩個數都是 49 的平方根？",
+                  "options": [
+                    "49 與 −49",
+                    "7 與 −7",
+                    "7 與 0",
+                    "√7 與 −√7"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "7^2和(−7)^2都等於49。",
+                  "remediation": "平方根是平方後等於原數的數。"
+                },
+                {
+                  "question_id": "2-1-1-Q2",
+                  "difficulty": "medium",
+                  "question": "若 a^2=81，則 a 可能為何？",
+                  "options": [
+                    "只有9",
+                    "9 或 −9",
+                    "只有−9",
+                    "81 或−81"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "a=±9。",
+                  "remediation": "正數有兩個相反數平方根。"
+                },
+                {
+                  "question_id": "2-1-1-Q3",
+                  "difficulty": "hard",
+                  "question": "下列敘述何者正確？",
+                  "options": [
+                    "1的平方根只有1",
+                    "0 的平方根只有0",
+                    "−9有兩個實數平方根",
+                    "25的平方根只有5"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "0只有一個平方根0；負數無實數平方根。",
+                  "remediation": "分清正數、0、負數的平方根個數。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-1-2",
+              "skill_name": "能分辨平方根與算術平方根符號",
+              "questions": [
+                {
+                  "question_id": "2-1-2-Q1",
+                  "difficulty": "easy",
+                  "question": "√64 的值為何？",
+                  "options": [
+                    "±8",
+                    "64",
+                    "−8",
+                    "8"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "√64表示非負平方根8。",
+                  "remediation": "根號符號不等於±。"
+                },
+                {
+                  "question_id": "2-1-2-Q2",
+                  "difficulty": "medium",
+                  "question": "「36 的平方根」與「√36」分別為何？",
+                  "options": [
+                    "6；6",
+                    "±36；36",
+                    "6；±6",
+                    "±6；6"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "36的平方根為±6，√36=6。",
+                  "remediation": "區分平方根與算術平方根。"
+                },
+                {
+                  "question_id": "2-1-2-Q3",
+                  "difficulty": "hard",
+                  "question": "若 √(x^2)=5，則下列何者必定正確？",
+                  "options": [
+                    "x一定等於5",
+                    "x=25",
+                    "x一定等於−5",
+                    "x=5 或 x=−5"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "√(x^2)=|x|，所以x=±5。",
+                  "remediation": "理解√(x^2)=|x|。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-1-3",
+              "skill_name": "能辨認完全平方數並求平方根",
+              "questions": [
+                {
+                  "question_id": "2-1-3-Q1",
+                  "difficulty": "easy",
+                  "question": "下列哪一個數是完全平方數？",
+                  "options": [
+                    "180",
+                    "150",
+                    "200",
+                    "144"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "144=12^2。",
+                  "remediation": "熟悉常見整數平方。"
+                },
+                {
+                  "question_id": "2-1-3-Q2",
+                  "difficulty": "medium",
+                  "question": "√225 的值為何？",
+                  "options": [
+                    "±15",
+                    "25",
+                    "15",
+                    "12"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "15^2=225。",
+                  "remediation": "√a取非負平方根。"
+                },
+                {
+                  "question_id": "2-1-3-Q3",
+                  "difficulty": "hard",
+                  "question": "介於 100 與 200 之間共有幾個完全平方數？",
+                  "options": [
+                    "4",
+                    "5",
+                    "3",
+                    "6"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "121、144、169、196，共4個。",
+                  "remediation": "列出相鄰整數平方。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-1-4",
+              "skill_name": "能利用相鄰完全平方數估計平方根範圍",
+              "questions": [
+                {
+                  "question_id": "2-1-4-Q1",
+                  "difficulty": "easy",
+                  "question": "因 25＜30＜36，所以 √30 介於哪兩個整數之間？",
+                  "options": [
+                    "4與5",
+                    "6與7",
+                    "25與36",
+                    "5與6"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "5<√30<6。",
+                  "remediation": "利用相鄰完全平方數夾範圍。"
+                },
+                {
+                  "question_id": "2-1-4-Q2",
+                  "difficulty": "medium",
+                  "question": "√70 最接近下列哪個整數？",
+                  "options": [
+                    "10",
+                    "9",
+                    "7",
+                    "8"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "√70約8.37，最接近8。",
+                  "remediation": "先判斷8^2與9^2。"
+                },
+                {
+                  "question_id": "2-1-4-Q3",
+                  "difficulty": "hard",
+                  "question": "若 n 為正整數，且 n＜√90＜n＋1，則 n 為何？",
+                  "options": [
+                    "9",
+                    "8",
+                    "89",
+                    "10"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "81<90<100，所以n=9。",
+                  "remediation": "將根號比較轉成平方比較。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-1-5",
+              "skill_name": "能判斷平方根的近似值",
+              "questions": [
+                {
+                  "question_id": "2-1-5-Q1",
+                  "difficulty": "easy",
+                  "question": "下列哪一個最接近 √2？",
+                  "options": [
+                    "2.0",
+                    "1.4",
+                    "1.1",
+                    "1.8"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "1.4^2=1.96，最接近2。",
+                  "remediation": "比較候選值平方。"
+                },
+                {
+                  "question_id": "2-1-5-Q2",
+                  "difficulty": "medium",
+                  "question": "若取到小數第一位，√50 約為多少？",
+                  "options": [
+                    "7.1",
+                    "7.5",
+                    "8.1",
+                    "7.0"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "√50約7.071，所以取到小數第一位為7.1。",
+                  "remediation": "先確定整數範圍，再估小數。"
+                },
+                {
+                  "question_id": "2-1-5-Q3",
+                  "difficulty": "hard",
+                  "question": "已知 8.3^2=68.89、8.4^2=70.56，則 √70 取到小數第一位約為多少？",
+                  "options": [
+                    "8.3",
+                    "8.4",
+                    "8.5",
+                    "8.35"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "√70約8.366，四捨五入為8.4。",
+                  "remediation": "注意指定小數位與四捨五入。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

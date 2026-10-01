@@ -1,0 +1,1247 @@
+{
+  "metadata": {
+    "title": "國中八上地理 Ch1～Ch2",
+    "version": "2.0-reviewed",
+    "language": "zh-TW",
+    "question_type": "single_choice",
+    "options_per_question": 4,
+    "questions_per_skill": 3,
+    "storage_key": "geo8_ch1ch2_progress",
+    "theme_color": "#0f766e",
+    "icons": [
+      "🗺️",
+      "🌦️"
+    ],
+    "scope_note": "章節與節次依114學年度翰林八上地理：Ch1中國的地形（1-1地形特徵、1-2地形的區域差異）；Ch2中國的氣候（2-1氣候特徵、2-2氣候類型）。題目聚焦中國地形與氣候核心概念。",
+    "total_skills": 23,
+    "total_questions": 69,
+    "audit": {
+      "status": "reviewed_v2",
+      "total_skills": 23,
+      "total_questions": 69,
+      "checks": [
+        "每個細目皆3題",
+        "每題皆為四選一",
+        "answer_index皆介於0~3",
+        "answer_label與answer_index一致",
+        "question_id與skill_id唯一",
+        "原始答案位置A/B/C/D近乎平均分布",
+        "章節結構調整為114學年度翰林八上Ch1與Ch2",
+        "加強部分干擾選項與情境題鑑別度",
+        "含explanation與remediation",
+        "不依賴圖片即可作答"
+      ]
+    }
+  },
+  "chapters": [
+    {
+      "chapter_id": "CH1",
+      "chapter_name": "Ch1 中國的地形",
+      "sections": [
+        {
+          "section_id": "1-1",
+          "section_name": "地形特徵",
+          "skills": [
+            {
+              "skill_id": "1-1-1",
+              "skill_name": "能辨認中國地形種類多樣且山地、高原面積廣大的特徵",
+              "questions": [
+                {
+                  "question_id": "1-1-1-Q1",
+                  "difficulty": "easy",
+                  "question": "關於中國地形的敘述，下列何者最符合實際？",
+                  "options": [
+                    "地形種類多樣，山地與高原面積廣",
+                    "以平原為主，山地面積很少",
+                    "主要地形只有高原與盆地",
+                    "地勢由東向西逐漸降低"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "中國有山地、高原、盆地、平原、丘陵等多種地形。",
+                  "remediation": "複習中國地形種類與主要特徵。"
+                },
+                {
+                  "question_id": "1-1-1-Q2",
+                  "difficulty": "medium",
+                  "question": "中國西部常見面積廣大的哪兩類地形？",
+                  "options": [
+                    "潟湖與沙嘴",
+                    "高原與山地",
+                    "珊瑚礁與三角洲",
+                    "平原與沙洲"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "中國西部高原、山地分布廣，地勢較高。",
+                  "remediation": "掌握中國西部主要地形型態。"
+                },
+                {
+                  "question_id": "1-1-1-Q3",
+                  "difficulty": "hard",
+                  "question": "若某區海拔高、起伏大，且周圍多高大山脈，最可能位於中國哪一部分？",
+                  "options": [
+                    "東部沿海低地",
+                    "珠江三角洲",
+                    "西部",
+                    "長江三角洲"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "中國地勢大致西高東低，西部多高原與山地。",
+                  "remediation": "用地勢特徵判斷中國東西部差異。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-1-2",
+              "skill_name": "能說明中國地勢西高東低、呈階梯狀下降的特色",
+              "questions": [
+                {
+                  "question_id": "1-1-2-Q1",
+                  "difficulty": "easy",
+                  "question": "中國整體地勢的主要特徵為何？",
+                  "options": [
+                    "南高北低且無例外",
+                    "四周高中間低",
+                    "東高西低",
+                    "西高東低"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "中國地勢大致西高東低。",
+                  "remediation": "熟記中國地勢的大方向。"
+                },
+                {
+                  "question_id": "1-1-2-Q2",
+                  "difficulty": "medium",
+                  "question": "中國地勢由西向東大致呈現何種變化？",
+                  "options": [
+                    "階梯狀升高",
+                    "階梯狀降低",
+                    "先降後升且高度相同",
+                    "完全平坦"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "中國地勢由西部高原向東部平原、沿海逐級降低。",
+                  "remediation": "理解三級階梯地勢概念。"
+                },
+                {
+                  "question_id": "1-1-2-Q3",
+                  "difficulty": "hard",
+                  "question": "若沿約 30°N 從中國西部向東部移動，最可能觀察到哪一種整體變化？",
+                  "options": [
+                    "海拔大致呈階梯狀降低",
+                    "海拔幾乎沒有變化",
+                    "海拔大致呈階梯狀升高",
+                    "由低地進入最高的青藏高原"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "中國地勢西高東低，從西向東平均海拔大致下降。",
+                  "remediation": "把地勢西高東低套用到剖面判讀。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-1-3",
+              "skill_name": "能辨認第一級階梯以青藏高原為核心且海拔最高",
+              "questions": [
+                {
+                  "question_id": "1-1-3-Q1",
+                  "difficulty": "easy",
+                  "question": "中國地勢第一級階梯的代表性地形為何？",
+                  "options": [
+                    "華北平原",
+                    "東南丘陵",
+                    "長江中下游平原",
+                    "青藏高原"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "第一級階梯以青藏高原為核心，平均海拔最高。",
+                  "remediation": "複習三級階梯與代表地形。"
+                },
+                {
+                  "question_id": "1-1-3-Q2",
+                  "difficulty": "medium",
+                  "question": "青藏高原在中國三級階梯地勢中位於哪一級？",
+                  "options": [
+                    "不屬於任何一級",
+                    "第一級",
+                    "第二級",
+                    "第三級"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "青藏高原位於第一級階梯。",
+                  "remediation": "熟記第一級階梯的位置與高度。"
+                },
+                {
+                  "question_id": "1-1-3-Q3",
+                  "difficulty": "medium",
+                  "question": "下列哪個敘述最能描述中國第一級階梯？",
+                  "options": [
+                    "大部分低於海平面",
+                    "海拔最低，以平原丘陵為主",
+                    "主要位於東部沿海",
+                    "海拔最高，以高原、山地為主"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "第一級階梯位於西南部，海拔最高，以青藏高原及高大山脈為主。",
+                  "remediation": "比較第一、二、三級階梯的高度與地形。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-1-4",
+              "skill_name": "能辨認第二級階梯常見高原與盆地",
+              "questions": [
+                {
+                  "question_id": "1-1-4-Q1",
+                  "difficulty": "easy",
+                  "question": "中國第二級階梯較常見的地形組合為何？",
+                  "options": [
+                    "冰原與峽灣",
+                    "平原與三角洲",
+                    "高原與盆地",
+                    "珊瑚礁與海岸平原"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "第二級階梯多分布高原與盆地。",
+                  "remediation": "複習第二級階梯的主要地形。"
+                },
+                {
+                  "question_id": "1-1-4-Q2",
+                  "difficulty": "medium",
+                  "question": "下列哪一組地形皆常被歸在中國第二級階梯？",
+                  "options": [
+                    "青藏高原、長江三角洲",
+                    "內蒙古高原、塔里木盆地",
+                    "華北平原、東南丘陵",
+                    "珠江三角洲、長江中下游平原"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "內蒙古高原與塔里木盆地都是第二級階梯常見地形。",
+                  "remediation": "建立第二級階梯的代表地形位置感。"
+                },
+                {
+                  "question_id": "1-1-4-Q3",
+                  "difficulty": "medium",
+                  "question": "從青藏高原向東進入四川盆地，整體上代表由哪一級階梯移向哪一級階梯？",
+                  "options": [
+                    "第三級到第二級",
+                    "第三級到第一級",
+                    "第一級到第二級",
+                    "第二級到第一級"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "青藏高原屬第一級，四川盆地屬第二級。",
+                  "remediation": "用代表地形判斷階梯位置。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-1-5",
+              "skill_name": "能辨認第三級階梯以平原、丘陵為主且接近東部沿海",
+              "questions": [
+                {
+                  "question_id": "1-1-5-Q1",
+                  "difficulty": "easy",
+                  "question": "中國第三級階梯主要分布在哪一側？",
+                  "options": [
+                    "西部",
+                    "帕米爾高原",
+                    "東部",
+                    "青藏高原核心"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "第三級階梯主要位於中國東部。",
+                  "remediation": "複習三級階梯的東西位置。"
+                },
+                {
+                  "question_id": "1-1-5-Q2",
+                  "difficulty": "medium",
+                  "question": "下列哪一種地形最常見於中國第三級階梯？",
+                  "options": [
+                    "高海拔冰原",
+                    "平原",
+                    "封閉高原盆地為主",
+                    "高大高原"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "第三級階梯海拔較低，平原、丘陵分布廣。",
+                  "remediation": "掌握第三級階梯的主要地形。"
+                },
+                {
+                  "question_id": "1-1-5-Q3",
+                  "difficulty": "medium",
+                  "question": "華北平原與長江中下游平原共同的地勢特色為何？",
+                  "options": [
+                    "位於較低的第三級階梯",
+                    "都位於西北乾燥內陸",
+                    "都屬青藏高原的一部分",
+                    "都位於最高的第一級階梯"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "兩者都是東部低地的重要平原，屬第三級階梯。",
+                  "remediation": "用代表平原連結第三級階梯。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-1-6",
+              "skill_name": "能說明西高東低地勢對河川流向的影響",
+              "questions": [
+                {
+                  "question_id": "1-1-6-Q1",
+                  "difficulty": "easy",
+                  "question": "中國許多大河整體向東流，主要與哪一項自然條件最有關？",
+                  "options": [
+                    "冬季南北溫差大",
+                    "沿海都市較多",
+                    "地勢西高東低",
+                    "人口東多西少"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "河水由高處往低處流，中國地勢西高東低，因此許多河川向東流。",
+                  "remediation": "連結地勢與河流流向。"
+                },
+                {
+                  "question_id": "1-1-6-Q2",
+                  "difficulty": "medium",
+                  "question": "若一條河流發源於中國西部高原，最後注入東部海洋，這最能反映哪項自然條件？",
+                  "options": [
+                    "東部降水一定少於西部",
+                    "地勢西高東低",
+                    "中國河流皆為外流河",
+                    "西部海拔普遍低於東部"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "河流由西部高地流向東部低地，反映西高東低的地勢。",
+                  "remediation": "利用水系方向判讀地勢。"
+                },
+                {
+                  "question_id": "1-1-6-Q3",
+                  "difficulty": "hard",
+                  "question": "下列哪一項最可能是中國西高東低地勢帶來的結果？",
+                  "options": [
+                    "東部河川全部向內陸流",
+                    "所有河川都沒有落差",
+                    "西部形成大片海岸平原",
+                    "多條主要河川由西向東流"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "地勢由西向東降低，使多數主要河川向東流。",
+                  "remediation": "理解地勢對水系的基本影響。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-1-7",
+              "skill_name": "能說明階梯交界處落差大、水力資源較豐富",
+              "questions": [
+                {
+                  "question_id": "1-1-7-Q1",
+                  "difficulty": "easy",
+                  "question": "中國地勢階梯交界處因高度落差大，較有利於發展哪一種能源？",
+                  "options": [
+                    "潮汐發電",
+                    "核融合發電",
+                    "地熱發電",
+                    "水力發電"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "河川流經地勢落差大的區域，水流急，水能較豐富。",
+                  "remediation": "複習地形落差與水力資源的關係。"
+                },
+                {
+                  "question_id": "1-1-7-Q2",
+                  "difficulty": "medium",
+                  "question": "下列哪一種地點最有利於利用河川落差發展水力發電？",
+                  "options": [
+                    "封閉沙漠盆地且缺乏河流的地區",
+                    "山地與平原交界、河流落差大的地區",
+                    "河口三角洲且地勢低平的地區",
+                    "寬廣平原且河流流速緩慢的地區"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "水力發電需要足夠水量與落差，階梯交界常具較大落差。",
+                  "remediation": "理解水力發電的地形條件。"
+                },
+                {
+                  "question_id": "1-1-7-Q3",
+                  "difficulty": "medium",
+                  "question": "中國三級階梯交界附近常成為水力資源集中區，主要原因為何？",
+                  "options": [
+                    "地勢落差明顯",
+                    "距海一定最近",
+                    "全年完全無雨",
+                    "人口一定最多"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "階梯交界處高差大，可增加河水位能。",
+                  "remediation": "掌握「落差大→水能豐富」的因果。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_id": "1-2",
+          "section_name": "地形的區域差異",
+          "skills": [
+            {
+              "skill_id": "1-2-1",
+              "skill_name": "能判斷中國位於亞洲東部、太平洋西岸的相對位置",
+              "questions": [
+                {
+                  "question_id": "1-2-1-Q1",
+                  "difficulty": "easy",
+                  "question": "從世界區域位置來看，中國主要位於哪一洲？",
+                  "options": [
+                    "非洲",
+                    "南美洲",
+                    "亞洲",
+                    "歐洲"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "中國位於亞洲東部。",
+                  "remediation": "複習中國在世界地圖上的洲別與相對位置。"
+                },
+                {
+                  "question_id": "1-2-1-Q2",
+                  "difficulty": "medium",
+                  "question": "中國東側臨近的主要大洋為何？",
+                  "options": [
+                    "大西洋",
+                    "印度洋",
+                    "太平洋",
+                    "北冰洋"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "中國位於亞洲東部，東側臨太平洋。",
+                  "remediation": "建立「亞洲東部、太平洋西岸」的空間概念。"
+                },
+                {
+                  "question_id": "1-2-1-Q3",
+                  "difficulty": "medium",
+                  "question": "「亞洲東部、太平洋西岸」是在描述中國的哪一種位置？",
+                  "options": [
+                    "海拔高度",
+                    "氣候類型",
+                    "地形剖面",
+                    "相對位置"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "以洲、海洋或鄰近地區來描述所在地，屬於相對位置。",
+                  "remediation": "分辨絕對位置與相對位置。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-2-2",
+              "skill_name": "能利用經緯度判斷中國大致位於北半球與東半球",
+              "questions": [
+                {
+                  "question_id": "1-2-2-Q1",
+                  "difficulty": "easy",
+                  "question": "中國大部分領土位於哪一個半球？",
+                  "options": [
+                    "北半球",
+                    "南半球",
+                    "西半球",
+                    "南極圈內"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "中國位於赤道以北，因此位於北半球。",
+                  "remediation": "複習赤道與南、北半球的判斷。"
+                },
+                {
+                  "question_id": "1-2-2-Q2",
+                  "difficulty": "medium",
+                  "question": "中國大部分地區的經度約在東經 73°～135°之間，因此主要位於哪一半球？",
+                  "options": [
+                    "西半球",
+                    "北極圈內",
+                    "東半球",
+                    "南半球"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "中國的主要經度屬東經，位於東半球。",
+                  "remediation": "複習東經、西經與東西半球的基本判讀。"
+                },
+                {
+                  "question_id": "1-2-2-Q3",
+                  "difficulty": "hard",
+                  "question": "某地座標為 35°N、110°E，依經緯度判斷，此地位於哪兩個半球？",
+                  "options": [
+                    "南半球、東半球",
+                    "北半球、東半球",
+                    "北半球、西半球",
+                    "南半球、西半球"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "35°N 表示北半球，110°E 表示東半球。",
+                  "remediation": "練習由 N/S、E/W 判斷半球位置。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-2-3",
+              "skill_name": "能說明中國南北與東西跨度大所造成的自然環境差異",
+              "questions": [
+                {
+                  "question_id": "1-2-3-Q1",
+                  "difficulty": "easy",
+                  "question": "中國南北緯度跨度大，最容易造成下列哪一項差異？",
+                  "options": [
+                    "氣溫差異",
+                    "各地降水完全一致",
+                    "河流全部向西流",
+                    "海拔完全相同"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "南北緯度跨度大，使各地接受太陽輻射的角度不同，造成氣溫差異。",
+                  "remediation": "連結緯度位置與氣溫差異。"
+                },
+                {
+                  "question_id": "1-2-3-Q2",
+                  "difficulty": "medium",
+                  "question": "中國東西距離很長，內陸地區距海較遠，常造成哪一種現象？",
+                  "options": [
+                    "降水由沿海向內陸減少",
+                    "所有地區都受海洋影響相同",
+                    "西部一定比東部低",
+                    "各地全年同溫"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "距海愈遠，海洋水氣愈不容易到達，內陸通常較乾燥。",
+                  "remediation": "理解海陸位置與降水的關係。"
+                },
+                {
+                  "question_id": "1-2-3-Q3",
+                  "difficulty": "hard",
+                  "question": "若從中國東南沿海一路向西北內陸旅行，最可能觀察到哪一種整體趨勢？",
+                  "options": [
+                    "海拔一定持續降低",
+                    "年雨量一定持續增加",
+                    "環境由較濕潤逐漸轉為較乾燥",
+                    "冬季南北溫差逐漸消失"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "中國降水大致由東南沿海向西北內陸遞減。",
+                  "remediation": "掌握中國自然環境東南濕、西北乾的大方向。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-2-4",
+              "skill_name": "能判斷平原、盆地與山地對交通與聚落發展的影響",
+              "questions": [
+                {
+                  "question_id": "1-2-4-Q1",
+                  "difficulty": "easy",
+                  "question": "一般而言，下列哪種地形最有利於大型聚落與交通網發展？",
+                  "options": [
+                    "陡峭峽谷",
+                    "冰原",
+                    "高山",
+                    "平原"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "平原地勢平坦，較容易建設道路、農田與大型聚落。",
+                  "remediation": "比較不同地形對人類活動的影響。"
+                },
+                {
+                  "question_id": "1-2-4-Q2",
+                  "difficulty": "medium",
+                  "question": "某地四周高山環繞、中間較低平，且人口集中於盆地底部。這最可能是哪一種地形？",
+                  "options": [
+                    "盆地",
+                    "高原",
+                    "三角洲",
+                    "海溝"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "盆地是四周較高、中間較低的地形，人口常集中於較平坦的盆底。",
+                  "remediation": "辨認盆地的地形特徵與聚落分布。"
+                },
+                {
+                  "question_id": "1-2-4-Q3",
+                  "difficulty": "medium",
+                  "question": "在其他條件相近時，山地交通建設通常比平原困難，主要原因為何？",
+                  "options": [
+                    "山區人口一定比平原多",
+                    "山區降水一定少於平原",
+                    "地勢起伏大、坡度較陡",
+                    "山區河川一定較少"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "山地坡度大、起伏明顯，施工成本與難度通常較高。",
+                  "remediation": "理解地形起伏對交通建設的影響。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "CH2",
+      "chapter_name": "Ch2 中國的氣候",
+      "sections": [
+        {
+          "section_id": "2-1",
+          "section_name": "氣候特徵",
+          "skills": [
+            {
+              "skill_id": "2-1-1",
+              "skill_name": "能說明中國夏季除高地外大多普遍高溫",
+              "questions": [
+                {
+                  "question_id": "2-1-1-Q1",
+                  "difficulty": "easy",
+                  "question": "中國夏季氣溫分布的主要特徵為何？",
+                  "options": [
+                    "除高地外大多普遍高溫",
+                    "全國都低於 0°C",
+                    "南北溫差極大且北方最熱",
+                    "西北一定比東南寒冷 30°C"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "夏季太陽直射點在北半球，南北各地普遍獲得較多熱量；高海拔地區則較涼。",
+                  "remediation": "掌握中國夏季氣溫分布特徵。"
+                },
+                {
+                  "question_id": "2-1-1-Q2",
+                  "difficulty": "medium",
+                  "question": "夏季若拉薩氣溫明顯低於同緯度許多地區，主要原因為何？",
+                  "options": [
+                    "海拔較高",
+                    "更靠近赤道",
+                    "位於海平面以下",
+                    "受暖流影響最強"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "拉薩位於青藏高原，海拔高使氣溫較低。",
+                  "remediation": "理解海拔對氣溫的影響。"
+                },
+                {
+                  "question_id": "2-1-1-Q3",
+                  "difficulty": "medium",
+                  "question": "下列哪個因素最能解釋中國夏季多數地區氣溫差異相對縮小？",
+                  "options": [
+                    "北方白晝較長，南北都能獲得較多太陽能",
+                    "所有地區海拔相同",
+                    "北方完全沒有太陽",
+                    "南方進入極夜"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "夏季北方白晝時間較長，可補償部分太陽高度差異，因此多數地區普遍高溫。",
+                  "remediation": "連結季節、緯度與日照時間。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-1-2",
+              "skill_name": "能說明中國冬季南北溫差大的原因",
+              "questions": [
+                {
+                  "question_id": "2-1-2-Q1",
+                  "difficulty": "easy",
+                  "question": "中國冬季氣溫分布最明顯的特徵為何？",
+                  "options": [
+                    "北方普遍比南方暖",
+                    "南北溫差大",
+                    "東西完全沒有差異",
+                    "全國同溫"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "冬季北方緯度高、日照弱，南方緯度低，因此南北溫差大。",
+                  "remediation": "掌握中國冬季氣溫特徵。"
+                },
+                {
+                  "question_id": "2-1-2-Q2",
+                  "difficulty": "medium",
+                  "question": "冬季黑龍江比廣東寒冷很多，最主要的因素為何？",
+                  "options": [
+                    "緯度差異",
+                    "黑龍江更接近赤道",
+                    "廣東海拔一定最高",
+                    "兩地經度完全相同"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "黑龍江緯度較高，冬季太陽高度較低、白晝較短，因此較冷。",
+                  "remediation": "理解緯度對冬季氣溫的影響。"
+                },
+                {
+                  "question_id": "2-1-2-Q3",
+                  "difficulty": "hard",
+                  "question": "若一月從廣州一路向北京、哈爾濱移動，氣溫通常會如何變化？",
+                  "options": [
+                    "大致升高",
+                    "先升到極高再降回原值",
+                    "完全不變",
+                    "大致降低"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "由南向北緯度增加，冬季氣溫大致下降。",
+                  "remediation": "練習由緯度方向判斷冬季氣溫。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-1-3",
+              "skill_name": "能利用秦嶺—淮河理解中國東部重要氣候分界",
+              "questions": [
+                {
+                  "question_id": "2-1-3-Q1",
+                  "difficulty": "easy",
+                  "question": "在中國東部地區，常被視為重要南北氣候分界的地理線為何？",
+                  "options": [
+                    "阿爾卑斯山—萊茵河",
+                    "喜馬拉雅山—恆河",
+                    "秦嶺—淮河",
+                    "落磯山脈—密西西比河"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "秦嶺—淮河是中國東部重要的自然地理分界。",
+                  "remediation": "熟記秦嶺—淮河的位置與分界意義。"
+                },
+                {
+                  "question_id": "2-1-3-Q2",
+                  "difficulty": "medium",
+                  "question": "秦嶺—淮河一線附近常與哪一項氣候差異有關？",
+                  "options": [
+                    "全年無雨界線",
+                    "冬季 0°C 等溫線附近",
+                    "赤道位置",
+                    "極晝極夜分界"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "秦嶺—淮河附近大致對應一月 0°C 等溫線。",
+                  "remediation": "連結秦嶺—淮河與冬季氣溫分界。"
+                },
+                {
+                  "question_id": "2-1-3-Q3",
+                  "difficulty": "medium",
+                  "question": "下列哪一項最適合用來理解秦嶺—淮河南北兩側的自然差異？",
+                  "options": [
+                    "南側完全沒有季風",
+                    "北側一定比南側海拔高 3000 公尺",
+                    "北側全年皆為沙漠",
+                    "北側冬季較冷，南側較暖"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "秦嶺—淮河南北兩側的冬季氣溫與降水條件有明顯差異。",
+                  "remediation": "掌握中國東部南北自然環境差異。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-1-4",
+              "skill_name": "能說明中國東部降水受季風影響而集中於暖季",
+              "questions": [
+                {
+                  "question_id": "2-1-4-Q1",
+                  "difficulty": "easy",
+                  "question": "中國東部季風區的降水通常集中在哪個季節？",
+                  "options": [
+                    "冬季",
+                    "夏季",
+                    "全年完全平均",
+                    "只在秋末一天"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "夏季季風可從海洋帶來較多水氣，因此東部降水多集中於暖季。",
+                  "remediation": "理解夏季季風與降水季節分布。"
+                },
+                {
+                  "question_id": "2-1-4-Q2",
+                  "difficulty": "medium",
+                  "question": "夏季來自海洋的暖濕氣流進入中國東部，最可能造成哪一種天氣特徵？",
+                  "options": [
+                    "全年無雲",
+                    "降水增加",
+                    "氣溫降至極低且無雨",
+                    "完全乾燥"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "海洋氣流含水氣多，夏季季風可帶來豐沛降水。",
+                  "remediation": "連結風向、水氣來源與降水。"
+                },
+                {
+                  "question_id": "2-1-4-Q3",
+                  "difficulty": "hard",
+                  "question": "若某地夏季多雨、冬季較乾，最可能受到哪一種氣候機制影響？",
+                  "options": [
+                    "極地冰蓋",
+                    "火山活動週期",
+                    "季風環流",
+                    "洋流完全停止"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "季風造成冬夏風向與水氣來源差異，形成夏雨冬乾。",
+                  "remediation": "辨認季風氣候的季節性。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-1-5",
+              "skill_name": "能判斷中國年降水量大致由東南沿海向西北內陸遞減",
+              "questions": [
+                {
+                  "question_id": "2-1-5-Q1",
+                  "difficulty": "easy",
+                  "question": "中國年降水量的整體空間分布大致為何？",
+                  "options": [
+                    "各地完全平均",
+                    "由西北向東南遞減",
+                    "由北向南完全相同",
+                    "由東南向西北遞減"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "水氣主要由東南方海洋進入，因此降水大致由東南沿海向西北內陸減少。",
+                  "remediation": "熟記中國降水的空間分布趨勢。"
+                },
+                {
+                  "question_id": "2-1-5-Q2",
+                  "difficulty": "medium",
+                  "question": "造成中國西北內陸較乾燥的重要原因之一為何？",
+                  "options": [
+                    "距海遠，海洋水氣不易到達",
+                    "緯度最低",
+                    "四周皆為海洋",
+                    "全年受颱風直接影響"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "西北內陸遠離海洋，且水氣沿途逐漸減少，因此較乾燥。",
+                  "remediation": "理解海陸位置與降水量關係。"
+                },
+                {
+                  "question_id": "2-1-5-Q3",
+                  "difficulty": "hard",
+                  "question": "若比較廣州與烏魯木齊的年降水量，一般而言哪一地較多？",
+                  "options": [
+                    "廣州",
+                    "烏魯木齊",
+                    "無法有任何大致趨勢",
+                    "一定完全相同"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "廣州靠近東南沿海，受海洋水氣影響較強；烏魯木齊深居內陸。",
+                  "remediation": "運用東南濕西北乾的降水規律。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-1-6",
+              "skill_name": "能說明地形阻擋水氣會影響中國內陸降水",
+              "questions": [
+                {
+                  "question_id": "2-1-6-Q1",
+                  "difficulty": "easy",
+                  "question": "濕潤氣流遇到高山後，迎風坡通常比背風坡多雨，主要原因為何？",
+                  "options": [
+                    "高山會自行產生水氣",
+                    "氣流抬升冷卻，水氣凝結",
+                    "背風坡海拔一定較低",
+                    "迎風坡距海一定較近"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "濕潤空氣被地形抬升後冷卻，水氣凝結形成地形雨。",
+                  "remediation": "複習迎風坡與地形雨。"
+                },
+                {
+                  "question_id": "2-1-6-Q2",
+                  "difficulty": "medium",
+                  "question": "中國某內陸盆地四周高山環繞，海洋水氣不易進入，最可能呈現哪種環境？",
+                  "options": [
+                    "每天都有颱風",
+                    "較乾燥",
+                    "完全沒有日夜溫差",
+                    "全年極度濕潤"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "山脈可阻擋外來水氣，使內陸盆地更乾燥。",
+                  "remediation": "理解山脈屏障對降水的影響。"
+                },
+                {
+                  "question_id": "2-1-6-Q3",
+                  "difficulty": "medium",
+                  "question": "中國西北部分地區除了距海遠之外，還因高山阻擋水氣而乾燥。這說明降水也受到哪一因素影響？",
+                  "options": [
+                    "行政區面積",
+                    "語言種類",
+                    "地形",
+                    "人口密度"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "地形能抬升或阻擋氣流，因此會影響降水。",
+                  "remediation": "把海陸位置與地形因素一起考量。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-1-7",
+              "skill_name": "能說明季風強弱與降水變動可能帶來旱澇災害",
+              "questions": [
+                {
+                  "question_id": "2-1-7-Q1",
+                  "difficulty": "easy",
+                  "question": "若夏季季風帶來的降雨明顯少於正常年份，較可能發生哪一種災害？",
+                  "options": [
+                    "海嘯",
+                    "冰河崩解",
+                    "火山爆發",
+                    "乾旱"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "季風降雨不足會造成水源不足，提高乾旱風險。",
+                  "remediation": "連結季風降水變化與旱災。"
+                },
+                {
+                  "question_id": "2-1-7-Q2",
+                  "difficulty": "medium",
+                  "question": "若短時間內降雨量過大，使河川水位快速上升，最可能造成哪一種災害？",
+                  "options": [
+                    "洪水",
+                    "沙塵暴",
+                    "寒害",
+                    "旱災"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "過量降雨可能使河川超過負荷，造成洪水。",
+                  "remediation": "連結豪雨與洪水風險。"
+                },
+                {
+                  "question_id": "2-1-7-Q3",
+                  "difficulty": "hard",
+                  "question": "東亞季風年際變化明顯，對農業最可能造成哪一項影響？",
+                  "options": [
+                    "氣溫與降水永遠固定",
+                    "水分供應不穩定，可能出現旱澇",
+                    "所有地區都不需灌溉",
+                    "每年收成完全相同"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "季風強弱與進退時間變化會影響降雨量與分配，造成旱澇風險。",
+                  "remediation": "理解季風不穩定性對農業的影響。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_id": "2-2",
+          "section_name": "氣候類型",
+          "skills": [
+            {
+              "skill_id": "2-2-1",
+              "skill_name": "能辨認中國東部以季風氣候為主",
+              "questions": [
+                {
+                  "question_id": "2-2-1-Q1",
+                  "difficulty": "easy",
+                  "question": "中國東部地區最具代表性的氣候特色為何？",
+                  "options": [
+                    "終年嚴寒",
+                    "全年完全無雨",
+                    "全年吹同一方向的風且無季節變化",
+                    "季風影響明顯"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "中國東部受東亞季風影響明顯，冬夏季風性質不同。",
+                  "remediation": "複習中國東部季風氣候。"
+                },
+                {
+                  "question_id": "2-2-1-Q2",
+                  "difficulty": "medium",
+                  "question": "某地位於中國東部，夏季高溫多雨、冬季較乾冷。這最符合哪一種氣候特徵？",
+                  "options": [
+                    "高地氣候",
+                    "極地氣候",
+                    "季風氣候",
+                    "乾燥氣候"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "夏季海洋季風帶來水氣、冬季大陸氣流較乾冷，是季風氣候典型特色。",
+                  "remediation": "辨認季風氣候的季節變化。"
+                },
+                {
+                  "question_id": "2-2-1-Q3",
+                  "difficulty": "medium",
+                  "question": "季風區較適合發展密集農業的重要自然原因之一為何？",
+                  "options": [
+                    "土地全部為冰原",
+                    "全年完全沒有降雨",
+                    "暖季水熱條件較充足",
+                    "所有河流都乾涸"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "暖季高溫且降水較多，有利多種作物生長。",
+                  "remediation": "連結季風氣候與農業活動。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-2-2",
+              "skill_name": "能辨認中國西北內陸以乾燥氣候為主",
+              "questions": [
+                {
+                  "question_id": "2-2-2-Q1",
+                  "difficulty": "easy",
+                  "question": "中國西北內陸最常見的氣候環境為何？",
+                  "options": [
+                    "乾燥少雨",
+                    "全年濕熱多雨",
+                    "終年受海洋調節強烈",
+                    "全年無日照"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "西北內陸距海遠，水氣少，氣候乾燥。",
+                  "remediation": "掌握中國西北乾燥氣候。"
+                },
+                {
+                  "question_id": "2-2-2-Q2",
+                  "difficulty": "medium",
+                  "question": "草原與沙漠景觀在中國哪一地區較常見？",
+                  "options": [
+                    "珠江口沿岸",
+                    "長江三角洲核心",
+                    "東南沿海",
+                    "西北內陸"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "西北內陸降水較少，常見草原、荒漠與沙漠景觀。",
+                  "remediation": "連結乾燥程度與自然景觀。"
+                },
+                {
+                  "question_id": "2-2-2-Q3",
+                  "difficulty": "hard",
+                  "question": "某地年雨量少、晴天多，且日夜溫差較大。這最可能反映哪一種環境特徵？",
+                  "options": [
+                    "受海洋調節強、氣候濕潤",
+                    "終年受赤道低壓控制",
+                    "深居內陸、氣候乾燥",
+                    "位於高緯度沿海地區"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "乾燥地區雲量少，白天升溫快、夜晚散熱快，因此日夜溫差常較大。",
+                  "remediation": "理解乾燥氣候的溫差特徵。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-2-3",
+              "skill_name": "能辨認青藏高原的高地氣候及垂直變化",
+              "questions": [
+                {
+                  "question_id": "2-2-3-Q1",
+                  "difficulty": "easy",
+                  "question": "青藏高原氣溫較同緯度低，最主要的原因為何？",
+                  "options": [
+                    "距赤道最近",
+                    "海拔高",
+                    "緯度最低",
+                    "全年受暖流影響"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "海拔愈高，氣溫通常愈低。",
+                  "remediation": "複習海拔與氣溫的關係。"
+                },
+                {
+                  "question_id": "2-2-3-Q2",
+                  "difficulty": "medium",
+                  "question": "高山從山麓到山頂可能出現不同植被帶，這種現象稱為什麼？",
+                  "options": [
+                    "海岸侵蝕",
+                    "都市化",
+                    "水平分帶",
+                    "垂直分帶"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "海拔升高造成氣溫與水分條件改變，植物因此呈垂直分帶。",
+                  "remediation": "理解高地氣候的垂直變化。"
+                },
+                {
+                  "question_id": "2-2-3-Q3",
+                  "difficulty": "hard",
+                  "question": "若同一天在青藏高原低谷與高山頂測量氣溫，通常哪裡較低？",
+                  "options": [
+                    "高山頂",
+                    "只由經度決定",
+                    "一定完全相同",
+                    "低谷"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "在其他條件相近時，海拔較高處氣溫較低。",
+                  "remediation": "運用氣溫隨高度遞減的概念。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-2-4",
+              "skill_name": "能依氣溫與降水判讀中國主要氣候區的基本差異",
+              "questions": [
+                {
+                  "question_id": "2-2-4-Q1",
+                  "difficulty": "easy",
+                  "question": "判斷一地氣候類型時，最常使用哪兩項長期統計資料？",
+                  "options": [
+                    "道路與港口",
+                    "人口與面積",
+                    "氣溫與降水",
+                    "語言與宗教"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "氣候類型主要依長期氣溫、降水及其季節分配判斷。",
+                  "remediation": "練習讀氣候圖的兩大要素。"
+                },
+                {
+                  "question_id": "2-2-4-Q2",
+                  "difficulty": "medium",
+                  "question": "某地夏季高溫多雨、冬季寒冷乾燥，年溫差明顯，最可能位於中國哪個區域？",
+                  "options": [
+                    "東部較北的季風區",
+                    "青藏高原最高處",
+                    "西北沙漠中心",
+                    "熱帶雨林核心"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "中國東部北方季風區夏季暖濕、冬季受大陸冷氣團影響而寒冷乾燥。",
+                  "remediation": "由氣溫與降水季節變化判讀季風區。"
+                },
+                {
+                  "question_id": "2-2-4-Q3",
+                  "difficulty": "hard",
+                  "question": "甲地年雨量少、年溫差大；乙地夏季多雨、冬季較乾。下列判斷何者較合理？",
+                  "options": [
+                    "甲乙都只能由海拔高低判斷",
+                    "甲乙都較可能位於東南沿海",
+                    "甲較可能位於東部季風區，乙較可能位於西北內陸",
+                    "甲較可能位於西北內陸，乙較可能位於東部季風區"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "少雨且年溫差大符合內陸乾燥環境；夏雨冬乾符合季風氣候。",
+                  "remediation": "綜合氣溫、降水與海陸位置判讀氣候。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-2-5",
+              "skill_name": "能說明氣候差異會影響農業與作物分布",
+              "questions": [
+                {
+                  "question_id": "2-2-5-Q1",
+                  "difficulty": "easy",
+                  "question": "氣溫與降水差異最直接影響下列哪一項人類活動？",
+                  "options": [
+                    "經緯線位置",
+                    "農作物種類與耕作制度",
+                    "國家名稱",
+                    "地球自轉方向"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "作物生長需要適當的熱量與水分，因此農業深受氣候影響。",
+                  "remediation": "理解氣候與農業的關聯。"
+                },
+                {
+                  "question_id": "2-2-5-Q2",
+                  "difficulty": "medium",
+                  "question": "中國東南部較溫暖濕潤，與北方相比通常較有利於哪一種情況？",
+                  "options": [
+                    "降水一定為零",
+                    "永久凍土面積最大",
+                    "全年無法耕作",
+                    "較長的作物生長期"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "較高溫且水分較充足，通常使作物生長期較長。",
+                  "remediation": "把氣候條件連結到農業生產。"
+                },
+                {
+                  "question_id": "2-2-5-Q3",
+                  "difficulty": "hard",
+                  "question": "西北乾燥地區若要穩定發展農業，最需要優先考量哪項自然條件？",
+                  "options": [
+                    "全年降水是否集中於冬季",
+                    "是否鄰近暖流",
+                    "是否位於低緯沿海",
+                    "灌溉水源是否充足"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "乾燥區降水少，灌溉水源常是農業發展的重要限制。",
+                  "remediation": "理解乾燥氣候對農業的限制。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

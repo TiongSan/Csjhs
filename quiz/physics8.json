@@ -1,0 +1,5335 @@
+{
+  "metadata": {
+    "title": "國中八上理化 Ch1～Ch2 題庫",
+    "version": "1.1-corrected",
+    "language": "zh-TW",
+    "question_type": "single_choice",
+    "options_per_question": 4,
+    "questions_per_skill": 3,
+    "answer_index_base": 0,
+    "total_skills": 108,
+    "total_questions": 324,
+    "notes": "answer_index 使用 0~3，分別代表 A~D；skill_id 可作為錯題診斷與補救教學主鍵。",
+    "audit": {
+      "status": "content_reviewed",
+      "total_skills": 108,
+      "total_questions": 324,
+      "checks": [
+        "每題皆為四選一",
+        "answer_index 皆介於 0~3",
+        "answer_label 與 answer_index 一致",
+        "數值計算題重新核算",
+        "修正最小刻度與估讀位題目",
+        "補足析晶計算所需的水量條件",
+        "修正可能有多重解讀的氣體辨識題",
+        "補強質量－體積圖的座標軸條件"
+      ]
+    }
+  },
+  "chapters": [
+    {
+      "chapter_id": "CH1",
+      "chapter_name": "Ch1 基本測量",
+      "sections": [
+        {
+          "section_id": "1-1",
+          "section_name": "實驗室安全與基本器材",
+          "skills": [
+            {
+              "skill_id": "1-1-1",
+              "skill_name": "能判斷實驗室中的安全行為",
+              "questions": [
+                {
+                  "question_id": "1-1-1-Q1",
+                  "difficulty": "easy",
+                  "question": "在理化實驗室中，下列哪一項行為最適當？",
+                  "options": [
+                    "將剩餘藥品倒回原試劑瓶",
+                    "一邊做實驗一邊吃零食",
+                    "發生藥品打翻時立即告知老師",
+                    "為了確認藥品種類而直接品嘗"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "複習實驗室安全規則與事故處理原則。"
+                },
+                {
+                  "question_id": "1-1-1-Q2",
+                  "difficulty": "easy",
+                  "question": "做實驗時，不小心讓少量藥品濺到桌面上，最適當的處理方式為何？",
+                  "options": [
+                    "用手直接擦掉",
+                    "立即告知老師並依指示處理",
+                    "假裝沒看到",
+                    "用嘴吹乾"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "複習實驗室安全規則與事故處理原則。"
+                },
+                {
+                  "question_id": "1-1-1-Q3",
+                  "difficulty": "medium",
+                  "question": "下列哪一項最符合實驗室安全守則？",
+                  "options": [
+                    "未經允許自行混合藥品",
+                    "離開座位時奔跑",
+                    "操作前先聽清楚實驗步驟",
+                    "聞藥品時把鼻子貼近瓶口"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "複習實驗室安全規則與事故處理原則。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-1-2",
+              "skill_name": "能選用滴管取用少量液體",
+              "questions": [
+                {
+                  "question_id": "1-1-2-Q1",
+                  "difficulty": "easy",
+                  "question": "想取少量液體藥品時，最適合使用下列哪一種器材？",
+                  "options": [
+                    "滴管",
+                    "漏斗",
+                    "蒸發皿",
+                    "溫度計"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "辨認常見實驗器材及其用途。"
+                },
+                {
+                  "question_id": "1-1-2-Q2",
+                  "difficulty": "easy",
+                  "question": "要把少量指示劑一滴一滴加入試管中，應使用哪一種器材？",
+                  "options": [
+                    "滴管",
+                    "量筒",
+                    "燒杯",
+                    "漏斗"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "辨認常見實驗器材及其用途。"
+                },
+                {
+                  "question_id": "1-1-2-Q3",
+                  "difficulty": "medium",
+                  "question": "下列哪種情況最適合使用滴管？",
+                  "options": [
+                    "量取50 mL水",
+                    "取2～3滴液體試劑",
+                    "加熱液體",
+                    "過濾泥水"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "辨認常見實驗器材及其用途。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-1-3",
+              "skill_name": "能判斷試管加熱的安全操作",
+              "questions": [
+                {
+                  "question_id": "1-1-3-Q1",
+                  "difficulty": "easy",
+                  "question": "加熱試管時，下列哪一種做法正確？",
+                  "options": [
+                    "試管口朝向自己",
+                    "試管口朝向同學",
+                    "試管裝滿液體再加熱",
+                    "試管口不可朝向人"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "remediation": "複習試管加熱時的管口方向與裝液量安全原則。"
+                },
+                {
+                  "question_id": "1-1-3-Q2",
+                  "difficulty": "easy",
+                  "question": "加熱裝有少量液體的試管時，試管口應朝向何處？",
+                  "options": [
+                    "自己",
+                    "旁邊同學",
+                    "沒有人的方向",
+                    "桌面正下方"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "複習試管加熱時的管口方向與裝液量安全原則。"
+                },
+                {
+                  "question_id": "1-1-3-Q3",
+                  "difficulty": "medium",
+                  "question": "下列哪一項試管加熱操作最安全？",
+                  "options": [
+                    "將試管裝滿再加熱",
+                    "固定加熱試管同一點很久",
+                    "試管口避免朝向任何人",
+                    "加熱後立即用手摸試管"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "複習試管加熱時的管口方向與裝液量安全原則。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-1-4",
+              "skill_name": "能選用量筒量取液體體積",
+              "questions": [
+                {
+                  "question_id": "1-1-4-Q1",
+                  "difficulty": "easy",
+                  "question": "下列哪一種器材最適合用來量取液體體積？",
+                  "options": [
+                    "燒杯",
+                    "量筒",
+                    "試管",
+                    "滴管"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "比較燒杯、量筒、試管、滴管的用途。"
+                },
+                {
+                  "question_id": "1-1-4-Q2",
+                  "difficulty": "easy",
+                  "question": "想較準確地量取 35 mL 的水，最適合使用哪一種器材？",
+                  "options": [
+                    "燒杯",
+                    "量筒",
+                    "試管",
+                    "蒸發皿"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "比較燒杯、量筒、試管、滴管的用途。"
+                },
+                {
+                  "question_id": "1-1-4-Q3",
+                  "difficulty": "medium",
+                  "question": "下列哪一項器材最適合直接讀取液體體積？",
+                  "options": [
+                    "量筒",
+                    "天平",
+                    "溫度計",
+                    "直尺"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "比較燒杯、量筒、試管、滴管的用途。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_id": "1-2",
+          "section_name": "測量的基本概念",
+          "skills": [
+            {
+              "skill_id": "1-2-1",
+              "skill_name": "知道完整測量結果應包含數值與單位",
+              "questions": [
+                {
+                  "question_id": "1-2-1-Q1",
+                  "difficulty": "easy",
+                  "question": "一個完整的測量結果通常應包含什麼？",
+                  "options": [
+                    "數值與單位",
+                    "單位與顏色",
+                    "數值與名稱",
+                    "名稱與形狀"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "複習測量值的基本表示方式。"
+                },
+                {
+                  "question_id": "1-2-1-Q2",
+                  "difficulty": "easy",
+                  "question": "小明記錄桌長為「120」，這項測量紀錄主要缺少什麼？",
+                  "options": [
+                    "顏色",
+                    "單位",
+                    "形狀",
+                    "名稱"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "複習測量值的基本表示方式。"
+                },
+                {
+                  "question_id": "1-2-1-Q3",
+                  "difficulty": "medium",
+                  "question": "下列哪一項可視為完整的長度測量結果？",
+                  "options": [
+                    "25",
+                    "25 cm",
+                    "cm",
+                    "一把尺"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "複習測量值的基本表示方式。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-2-2",
+              "skill_name": "能依待測物選擇適當測量工具",
+              "questions": [
+                {
+                  "question_id": "1-2-2-Q1",
+                  "difficulty": "easy",
+                  "question": "測量一枝鉛筆的長度，最適合使用下列哪一種工具？",
+                  "options": [
+                    "天平",
+                    "量筒",
+                    "直尺",
+                    "溫度計"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "將物理量與對應測量工具配對。"
+                },
+                {
+                  "question_id": "1-2-2-Q2",
+                  "difficulty": "easy",
+                  "question": "想測量一瓶水的質量，應優先選用哪一種工具？",
+                  "options": [
+                    "直尺",
+                    "量筒",
+                    "天平",
+                    "溫度計"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "將物理量與對應測量工具配對。"
+                },
+                {
+                  "question_id": "1-2-2-Q3",
+                  "difficulty": "medium",
+                  "question": "要測量教室溫度，最適合使用哪一種工具？",
+                  "options": [
+                    "天平",
+                    "溫度計",
+                    "量筒",
+                    "直尺"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "將物理量與對應測量工具配對。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-2-3",
+              "skill_name": "能依最小刻度判斷合理測量紀錄",
+              "questions": [
+                {
+                  "question_id": "1-2-3-Q1",
+                  "difficulty": "easy",
+                  "question": "某直尺最小刻度為 1 mm（0.1 cm）。若依一般估讀原則再估讀一位，下列哪一個紀錄最合理？",
+                  "options": [
+                    "12 cm",
+                    "12.3 cm",
+                    "12.34 cm",
+                    "12.34567 cm"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "類比式刻度測量通常記錄到最小刻度的下一位估讀值；1 mm＝0.1 cm，因此以 cm 記錄時可到 0.01 cm。"
+                },
+                {
+                  "question_id": "1-2-3-Q2",
+                  "difficulty": "easy",
+                  "question": "某直尺最小刻度為 0.1 cm。若依一般估讀原則再估讀一位，下列哪一筆紀錄最合理？",
+                  "options": [
+                    "8 cm",
+                    "8.4 cm",
+                    "8.43 cm",
+                    "8.456789 cm"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "最小刻度為 0.1 cm 時，通常再估讀一位，記錄到 0.01 cm。"
+                },
+                {
+                  "question_id": "1-2-3-Q3",
+                  "difficulty": "medium",
+                  "question": "用最小刻度為 1 mm 的直尺測量橡皮擦長度，若依一般估讀原則再估讀一位，下列何者最合理？",
+                  "options": [
+                    "4 cm",
+                    "4.2 cm",
+                    "4.23 cm",
+                    "4.23456 cm"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "1 mm＝0.1 cm；使用類比直尺時通常再估讀一位，因此以 cm 表示可記到小數點後兩位。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-2-4",
+              "skill_name": "知道所有測量都可能存在誤差",
+              "questions": [
+                {
+                  "question_id": "1-2-4-Q1",
+                  "difficulty": "easy",
+                  "question": "關於測量誤差，下列敘述何者正確？",
+                  "options": [
+                    "只要認真測量，就完全沒有誤差",
+                    "所有測量都可能存在誤差",
+                    "電子儀器一定沒有誤差",
+                    "測量一次一定比多次測量準確"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "建立測量不可能完全無誤差的觀念。"
+                },
+                {
+                  "question_id": "1-2-4-Q2",
+                  "difficulty": "easy",
+                  "question": "下列關於測量的敘述，何者正確？",
+                  "options": [
+                    "只要使用電子儀器就沒有誤差",
+                    "測量結果可能受到儀器與讀值方式影響",
+                    "同一物體每次測量必須完全相同",
+                    "有誤差就代表實驗一定失敗"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "建立測量不可能完全無誤差的觀念。"
+                },
+                {
+                  "question_id": "1-2-4-Q3",
+                  "difficulty": "medium",
+                  "question": "兩位同學測量同一枝鉛筆得到些微不同的結果，最合理的解釋是什麼？",
+                  "options": [
+                    "鉛筆一直改變長度",
+                    "測量可能存在誤差",
+                    "其中一人一定作弊",
+                    "直尺沒有刻度"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "建立測量不可能完全無誤差的觀念。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-2-5",
+              "skill_name": "知道多次測量取平均值可降低部分隨機誤差",
+              "questions": [
+                {
+                  "question_id": "1-2-5-Q1",
+                  "difficulty": "easy",
+                  "question": "同一物體重複測量多次後取平均值，主要目的為何？",
+                  "options": [
+                    "讓數值一定變大",
+                    "讓單位消失",
+                    "減少部分隨機誤差的影響",
+                    "改變物體的性質"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "複習重複測量與平均值的目的。"
+                },
+                {
+                  "question_id": "1-2-5-Q2",
+                  "difficulty": "easy",
+                  "question": "測量同一段長度五次後取平均值，主要可以達到什麼目的？",
+                  "options": [
+                    "讓結果必定等於真值",
+                    "降低部分偶然差異的影響",
+                    "消除所有系統誤差",
+                    "讓單位改變"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "複習重複測量與平均值的目的。"
+                },
+                {
+                  "question_id": "1-2-5-Q3",
+                  "difficulty": "medium",
+                  "question": "某同學測量桌長三次為 119.8、120.1、120.0 cm，取平均值的主要理由為何？",
+                  "options": [
+                    "使數值一定較大",
+                    "減少單次測量偶然偏差的影響",
+                    "讓桌子變長",
+                    "省略單位"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "複習重複測量與平均值的目的。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_id": "1-3",
+          "section_name": "長度測量",
+          "skills": [
+            {
+              "skill_id": "1-3-1",
+              "skill_name": "能用正確視線讀取直尺刻度",
+              "questions": [
+                {
+                  "question_id": "1-3-1-Q1",
+                  "difficulty": "easy",
+                  "question": "使用直尺測量物體長度時，為了減少視差，眼睛應如何觀察？",
+                  "options": [
+                    "從斜上方看",
+                    "從斜下方看",
+                    "視線與刻度面垂直",
+                    "距離越遠越好"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "複習視差與正確讀值姿勢。"
+                },
+                {
+                  "question_id": "1-3-1-Q2",
+                  "difficulty": "easy",
+                  "question": "讀取直尺刻度時，若眼睛從斜上方看，最可能造成什麼問題？",
+                  "options": [
+                    "視差",
+                    "密度改變",
+                    "質量增加",
+                    "單位消失"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "複習視差與正確讀值姿勢。"
+                },
+                {
+                  "question_id": "1-3-1-Q3",
+                  "difficulty": "medium",
+                  "question": "為了正確讀取直尺刻度，視線應如何？",
+                  "options": [
+                    "與刻度面垂直",
+                    "與尺平行",
+                    "越斜越清楚",
+                    "閉一隻眼即可，角度不限"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "複習視差與正確讀值姿勢。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-3-2",
+              "skill_name": "能用末刻度減初刻度求物體長度",
+              "questions": [
+                {
+                  "question_id": "1-3-2-Q1",
+                  "difficulty": "easy",
+                  "question": "某物體的一端對準直尺的 2.0 cm，另一端對準 8.5 cm，則物體長度為多少？",
+                  "options": [
+                    "6.5 cm",
+                    "8.5 cm",
+                    "10.5 cm",
+                    "17.0 cm"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "練習長度＝末刻度－初刻度。"
+                },
+                {
+                  "question_id": "1-3-2-Q2",
+                  "difficulty": "easy",
+                  "question": "物體左端在 1.5 cm，右端在 7.9 cm，物體長度為多少？",
+                  "options": [
+                    "6.4 cm",
+                    "7.9 cm",
+                    "9.4 cm",
+                    "5.4 cm"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "練習長度＝末刻度－初刻度。"
+                },
+                {
+                  "question_id": "1-3-2-Q3",
+                  "difficulty": "medium",
+                  "question": "一枝筆的一端位於 4.2 cm，另一端位於 13.0 cm，長度是多少？",
+                  "options": [
+                    "8.8 cm",
+                    "9.2 cm",
+                    "13.0 cm",
+                    "17.2 cm"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "練習長度＝末刻度－初刻度。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-3-3",
+              "skill_name": "能在零刻度損壞時用差值測長",
+              "questions": [
+                {
+                  "question_id": "1-3-3-Q1",
+                  "difficulty": "easy",
+                  "question": "一把直尺的零刻度已磨損，測量物體時可將物體一端對準 3.0 cm，另一端為 11.2 cm。物體長度為多少？",
+                  "options": [
+                    "3.0 cm",
+                    "8.2 cm",
+                    "11.2 cm",
+                    "14.2 cm"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "複習非零起點測量法。"
+                },
+                {
+                  "question_id": "1-3-3-Q2",
+                  "difficulty": "easy",
+                  "question": "直尺零刻度破損。物體一端對準 5.0 cm，另一端對準 14.3 cm，長度是多少？",
+                  "options": [
+                    "5.0 cm",
+                    "9.3 cm",
+                    "14.3 cm",
+                    "19.3 cm"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "複習非零起點測量法。"
+                },
+                {
+                  "question_id": "1-3-3-Q3",
+                  "difficulty": "medium",
+                  "question": "使用非零起點測量時，起點為 2.5 cm、終點為 9.8 cm，物體長度為何？",
+                  "options": [
+                    "7.3 cm",
+                    "9.8 cm",
+                    "12.3 cm",
+                    "2.5 cm"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "複習非零起點測量法。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-3-4",
+              "skill_name": "能進行 cm 與 m 的單位換算",
+              "questions": [
+                {
+                  "question_id": "1-3-4-Q1",
+                  "difficulty": "easy",
+                  "question": "250 cm 等於多少公尺？",
+                  "options": [
+                    "0.25 m",
+                    "2.5 m",
+                    "25 m",
+                    "2500 m"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "複習 100 cm＝1 m。"
+                },
+                {
+                  "question_id": "1-3-4-Q2",
+                  "difficulty": "easy",
+                  "question": "3.6 m 等於多少 cm？",
+                  "options": [
+                    "36 cm",
+                    "360 cm",
+                    "3600 cm",
+                    "0.36 cm"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "複習 100 cm＝1 m。"
+                },
+                {
+                  "question_id": "1-3-4-Q3",
+                  "difficulty": "medium",
+                  "question": "85 cm 等於多少 m？",
+                  "options": [
+                    "0.085 m",
+                    "0.85 m",
+                    "8.5 m",
+                    "85 m"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "複習 100 cm＝1 m。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-3-5",
+              "skill_name": "能用累積法估測極小長度",
+              "questions": [
+                {
+                  "question_id": "1-3-5-Q1",
+                  "difficulty": "easy",
+                  "question": "想估計一張紙的厚度，下列哪一種方法較適合？",
+                  "options": [
+                    "直接量一張紙",
+                    "將很多張紙疊起來測量總厚度，再除以張數",
+                    "量紙張的長度",
+                    "量紙張的質量"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "理解累積放大後再平均的測量策略。"
+                },
+                {
+                  "question_id": "1-3-5-Q2",
+                  "difficulty": "easy",
+                  "question": "想測量一枚硬幣的厚度，但直尺不夠精細，哪種方法較適合？",
+                  "options": [
+                    "把20枚硬幣疊起來量總厚度，再除以20",
+                    "只量一枚並猜測",
+                    "量硬幣直徑",
+                    "量硬幣質量"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "理解累積放大後再平均的測量策略。"
+                },
+                {
+                  "question_id": "1-3-5-Q3",
+                  "difficulty": "medium",
+                  "question": "要估計細鐵絲直徑，可將鐵絲緊密繞在鉛筆上20圈，量出總寬後再怎麼做？",
+                  "options": [
+                    "乘以20",
+                    "除以20",
+                    "加20",
+                    "不需計算"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "理解累積放大後再平均的測量策略。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_id": "1-4",
+          "section_name": "體積測量",
+          "skills": [
+            {
+              "skill_id": "1-4-1",
+              "skill_name": "知道體積表示物體所占空間大小",
+              "questions": [
+                {
+                  "question_id": "1-4-1-Q1",
+                  "difficulty": "easy",
+                  "question": "下列哪一項最能描述「體積」？",
+                  "options": [
+                    "物體所含物質的多少",
+                    "物體所占空間的大小",
+                    "物體受到地球吸引的程度",
+                    "物體運動的快慢"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "區分體積與質量的意義。"
+                },
+                {
+                  "question_id": "1-4-1-Q2",
+                  "difficulty": "easy",
+                  "question": "一個盒子占據桌面上方一部分空間，這個「所占空間大小」稱為什麼？",
+                  "options": [
+                    "質量",
+                    "體積",
+                    "密度",
+                    "溫度"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "區分體積與質量的意義。"
+                },
+                {
+                  "question_id": "1-4-1-Q3",
+                  "difficulty": "medium",
+                  "question": "下列哪一項是在描述物體的體積？",
+                  "options": [
+                    "重50 g",
+                    "占有200 cm³的空間",
+                    "溫度25°C",
+                    "長10 cm"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "區分體積與質量的意義。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-4-2",
+              "skill_name": "知道 1 mL＝1 cm³",
+              "questions": [
+                {
+                  "question_id": "1-4-2-Q1",
+                  "difficulty": "easy",
+                  "question": "下列哪一個換算正確？",
+                  "options": [
+                    "1 mL＝1 cm³",
+                    "1 mL＝10 cm³",
+                    "1 L＝1 mL",
+                    "1 cm³＝100 mL"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "熟記 mL 與 cm³ 的對應關係。"
+                },
+                {
+                  "question_id": "1-4-2-Q2",
+                  "difficulty": "easy",
+                  "question": "250 mL 等於多少 cm³？",
+                  "options": [
+                    "25 cm³",
+                    "250 cm³",
+                    "2500 cm³",
+                    "0.25 cm³"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "熟記 mL 與 cm³ 的對應關係。"
+                },
+                {
+                  "question_id": "1-4-2-Q3",
+                  "difficulty": "medium",
+                  "question": "下列何者正確？",
+                  "options": [
+                    "500 cm³＝500 mL",
+                    "1 cm³＝10 mL",
+                    "100 mL＝1 cm³",
+                    "1 L＝1 cm³"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "熟記 mL 與 cm³ 的對應關係。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-4-3",
+              "skill_name": "能進行 L 與 mL 的單位換算",
+              "questions": [
+                {
+                  "question_id": "1-4-3-Q1",
+                  "difficulty": "easy",
+                  "question": "2 L 等於多少 mL？",
+                  "options": [
+                    "20 mL",
+                    "200 mL",
+                    "2000 mL",
+                    "20000 mL"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "複習 1 L＝1000 mL。"
+                },
+                {
+                  "question_id": "1-4-3-Q2",
+                  "difficulty": "easy",
+                  "question": "0.75 L 等於多少 mL？",
+                  "options": [
+                    "75 mL",
+                    "750 mL",
+                    "7500 mL",
+                    "0.075 mL"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "複習 1 L＝1000 mL。"
+                },
+                {
+                  "question_id": "1-4-3-Q3",
+                  "difficulty": "medium",
+                  "question": "1250 mL 等於多少 L？",
+                  "options": [
+                    "0.125 L",
+                    "1.25 L",
+                    "12.5 L",
+                    "125 L"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "複習 1 L＝1000 mL。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-4-4",
+              "skill_name": "能計算長方體體積",
+              "questions": [
+                {
+                  "question_id": "1-4-4-Q1",
+                  "difficulty": "easy",
+                  "question": "一個長方體長 5 cm、寬 4 cm、高 3 cm，其體積為多少？",
+                  "options": [
+                    "12 cm³",
+                    "20 cm³",
+                    "47 cm³",
+                    "60 cm³"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "remediation": "複習長方體體積＝長×寬×高。"
+                },
+                {
+                  "question_id": "1-4-4-Q2",
+                  "difficulty": "easy",
+                  "question": "一長方體長 8 cm、寬 2 cm、高 5 cm，體積是多少？",
+                  "options": [
+                    "15 cm³",
+                    "40 cm³",
+                    "80 cm³",
+                    "16 cm³"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "複習長方體體積＝長×寬×高。"
+                },
+                {
+                  "question_id": "1-4-4-Q3",
+                  "difficulty": "medium",
+                  "question": "一盒子的長、寬、高分別為 6 cm、3 cm、4 cm，其體積為多少？",
+                  "options": [
+                    "13 cm³",
+                    "24 cm³",
+                    "72 cm³",
+                    "36 cm³"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "複習長方體體積＝長×寬×高。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-4-5",
+              "skill_name": "能判斷量筒的正確放置方式",
+              "questions": [
+                {
+                  "question_id": "1-4-5-Q1",
+                  "difficulty": "easy",
+                  "question": "使用量筒量液體體積時，量筒應如何放置？",
+                  "options": [
+                    "平放在桌面",
+                    "放在水平桌面直立",
+                    "拿在手中傾斜",
+                    "靠在牆上"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "複習量筒需直立於水平桌面。"
+                },
+                {
+                  "question_id": "1-4-5-Q2",
+                  "difficulty": "easy",
+                  "question": "量筒讀值前，應先把量筒放在哪裡？",
+                  "options": [
+                    "水平桌面上直立",
+                    "手掌上傾斜",
+                    "桌邊懸空",
+                    "橫放桌面"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "複習量筒需直立於水平桌面。"
+                },
+                {
+                  "question_id": "1-4-5-Q3",
+                  "difficulty": "medium",
+                  "question": "下列哪種量筒使用方式較正確？",
+                  "options": [
+                    "讀值時拿在手中晃動",
+                    "直立在水平桌面再讀值",
+                    "倒放讀值",
+                    "斜靠牆面讀值"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "複習量筒需直立於水平桌面。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-4-6",
+              "skill_name": "能用正確視線讀取量筒液面",
+              "questions": [
+                {
+                  "question_id": "1-4-6-Q1",
+                  "difficulty": "easy",
+                  "question": "讀取量筒中的液體體積時，眼睛的位置應如何？",
+                  "options": [
+                    "與液面同高",
+                    "高於液面越多越好",
+                    "低於液面越多越好",
+                    "從任何角度看都一樣"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "複習視線與液面同高以避免視差。"
+                },
+                {
+                  "question_id": "1-4-6-Q2",
+                  "difficulty": "easy",
+                  "question": "讀取量筒內水的體積時，眼睛應位於何處？",
+                  "options": [
+                    "液面上方",
+                    "液面下方",
+                    "與液面同高",
+                    "任何位置皆可"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "複習視線與液面同高以避免視差。"
+                },
+                {
+                  "question_id": "1-4-6-Q3",
+                  "difficulty": "medium",
+                  "question": "讀取量筒中水的體積時，除了視線要與液面同高，通常應讀取水面哪個位置的刻度？",
+                  "options": [
+                    "凹液面的最低處",
+                    "凹液面的最高處",
+                    "量筒最上端",
+                    "任意位置都相同"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "讀取水等形成凹液面的液體時，視線與液面同高，讀凹液面最低處所對應的刻度。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-4-7",
+              "skill_name": "能利用排水法計算不規則固體體積",
+              "questions": [
+                {
+                  "question_id": "1-4-7-Q1",
+                  "difficulty": "easy",
+                  "question": "原本量筒中的水為 35 mL，放入一顆完全浸沒且不吸水的石頭後，液面升到 52 mL，石頭體積為多少？",
+                  "options": [
+                    "17 cm³",
+                    "35 cm³",
+                    "52 cm³",
+                    "87 cm³"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "練習固體體積＝放入後－放入前。"
+                },
+                {
+                  "question_id": "1-4-7-Q2",
+                  "difficulty": "easy",
+                  "question": "量筒原有 48 mL 水，放入石頭後變成 63 mL，石頭體積是多少？",
+                  "options": [
+                    "15 cm³",
+                    "48 cm³",
+                    "63 cm³",
+                    "111 cm³"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "練習固體體積＝放入後－放入前。"
+                },
+                {
+                  "question_id": "1-4-7-Q3",
+                  "difficulty": "medium",
+                  "question": "量筒中原有 25 mL 水，金屬塊完全浸沒後液面為 41 mL，金屬塊體積為何？",
+                  "options": [
+                    "16 cm³",
+                    "25 cm³",
+                    "41 cm³",
+                    "66 cm³"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "練習固體體積＝放入後－放入前。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-4-8",
+              "skill_name": "能判斷排水法適用的物體",
+              "questions": [
+                {
+                  "question_id": "1-4-8-Q1",
+                  "difficulty": "easy",
+                  "question": "下列哪一種物體最適合利用排水法測量體積？",
+                  "options": [
+                    "方形木塊",
+                    "食鹽",
+                    "不規則的小石頭",
+                    "海綿"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "排水法適用於不溶水、不吸水且可完全浸沒的物體。"
+                },
+                {
+                  "question_id": "1-4-8-Q2",
+                  "difficulty": "easy",
+                  "question": "下列哪個物體最適合直接用排水法測體積？",
+                  "options": [
+                    "會溶於水的方糖",
+                    "吸水海綿",
+                    "不規則玻璃珠",
+                    "漂浮且無法壓入水中的保麗龍"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "排水法適用於不溶水、不吸水且可完全浸沒的物體。"
+                },
+                {
+                  "question_id": "1-4-8-Q3",
+                  "difficulty": "medium",
+                  "question": "排水法最適合測量哪一種物體？",
+                  "options": [
+                    "不溶水且不吸水的不規則固體",
+                    "會快速溶於水的固體",
+                    "會大量吸水的物體",
+                    "液體本身"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "排水法適用於不溶水、不吸水且可完全浸沒的物體。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_id": "1-5",
+          "section_name": "質量測量",
+          "skills": [
+            {
+              "skill_id": "1-5-1",
+              "skill_name": "知道質量表示物體所含物質的多少",
+              "questions": [
+                {
+                  "question_id": "1-5-1-Q1",
+                  "difficulty": "easy",
+                  "question": "「質量」主要表示什麼？",
+                  "options": [
+                    "物體所占空間大小",
+                    "物體所含物質的多少",
+                    "物體的溫度",
+                    "物體的長度"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "區分質量與體積。"
+                },
+                {
+                  "question_id": "1-5-1-Q2",
+                  "difficulty": "easy",
+                  "question": "下列哪個敘述是在描述「質量」？",
+                  "options": [
+                    "一顆球占 100 cm³",
+                    "一個蘋果含有約150 g的物質",
+                    "水溫30°C",
+                    "桌長120 cm"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "區分質量與體積。"
+                },
+                {
+                  "question_id": "1-5-1-Q3",
+                  "difficulty": "medium",
+                  "question": "物體所含物質的多少稱為什麼？",
+                  "options": [
+                    "質量",
+                    "體積",
+                    "長度",
+                    "溫度"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "區分質量與體積。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-5-2",
+              "skill_name": "能進行 kg 與 g 的單位換算",
+              "questions": [
+                {
+                  "question_id": "1-5-2-Q1",
+                  "difficulty": "easy",
+                  "question": "3 kg 等於多少 g？",
+                  "options": [
+                    "30 g",
+                    "300 g",
+                    "3000 g",
+                    "30000 g"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "複習 1 kg＝1000 g。"
+                },
+                {
+                  "question_id": "1-5-2-Q2",
+                  "difficulty": "easy",
+                  "question": "0.45 kg 等於多少 g？",
+                  "options": [
+                    "45 g",
+                    "450 g",
+                    "4500 g",
+                    "0.45 g"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "複習 1 kg＝1000 g。"
+                },
+                {
+                  "question_id": "1-5-2-Q3",
+                  "difficulty": "medium",
+                  "question": "2500 g 等於多少 kg？",
+                  "options": [
+                    "0.25 kg",
+                    "2.5 kg",
+                    "25 kg",
+                    "250 kg"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "複習 1 kg＝1000 g。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-5-3",
+              "skill_name": "知道天平使用前應先歸零",
+              "questions": [
+                {
+                  "question_id": "1-5-3-Q1",
+                  "difficulty": "easy",
+                  "question": "使用天平測量前，通常應先做哪一件事？",
+                  "options": [
+                    "將物體泡水",
+                    "確認天平歸零",
+                    "將秤盤加熱",
+                    "把天平傾斜"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "複習天平使用前的檢查步驟。"
+                },
+                {
+                  "question_id": "1-5-3-Q2",
+                  "difficulty": "easy",
+                  "question": "使用電子天平量物體前，螢幕不是顯示 0，應先怎麼做？",
+                  "options": [
+                    "直接測量",
+                    "先歸零",
+                    "把物體加熱",
+                    "換成量筒"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "複習天平使用前的檢查步驟。"
+                },
+                {
+                  "question_id": "1-5-3-Q3",
+                  "difficulty": "medium",
+                  "question": "為了得到較可靠的質量測量值，天平使用前應確認什麼？",
+                  "options": [
+                    "秤盤是否歸零",
+                    "桌面顏色",
+                    "物體形狀",
+                    "量筒刻度"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "複習天平使用前的檢查步驟。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-5-4",
+              "skill_name": "能判斷粉末藥品的正確秤量方式",
+              "questions": [
+                {
+                  "question_id": "1-5-4-Q1",
+                  "difficulty": "easy",
+                  "question": "測量粉末狀化學藥品的質量時，較適當的方法是什麼？",
+                  "options": [
+                    "直接倒在天平秤盤上",
+                    "先放秤量紙或容器再測量",
+                    "用量筒測量",
+                    "用直尺測量"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "避免化學藥品直接接觸秤盤。"
+                },
+                {
+                  "question_id": "1-5-4-Q2",
+                  "difficulty": "easy",
+                  "question": "要秤量少量食鹽粉末，最適當的做法是？",
+                  "options": [
+                    "直接倒在秤盤",
+                    "放在秤量紙或容器中再測量",
+                    "先加水後測",
+                    "用直尺量"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "避免化學藥品直接接觸秤盤。"
+                },
+                {
+                  "question_id": "1-5-4-Q3",
+                  "difficulty": "medium",
+                  "question": "為何粉末狀藥品通常不直接放在天平秤盤上？",
+                  "options": [
+                    "避免污染或腐蝕秤盤",
+                    "因為天平不能量固體",
+                    "因為粉末沒有質量",
+                    "因為只能用量筒"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "避免化學藥品直接接觸秤盤。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_id": "1-6",
+          "section_name": "密度",
+          "skills": [
+            {
+              "skill_id": "1-6-1",
+              "skill_name": "知道密度是單位體積所含的質量",
+              "questions": [
+                {
+                  "question_id": "1-6-1-Q1",
+                  "difficulty": "easy",
+                  "question": "密度的定義為何？",
+                  "options": [
+                    "單位質量所占的體積",
+                    "單位體積所含的質量",
+                    "質量加上體積",
+                    "質量乘以體積"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "先理解密度的物理意義，再背公式。"
+                },
+                {
+                  "question_id": "1-6-1-Q2",
+                  "difficulty": "easy",
+                  "question": "若某物質每 1 cm³ 的質量為 2.5 g，這是在描述它的什麼性質？",
+                  "options": [
+                    "體積",
+                    "密度",
+                    "長度",
+                    "溫度"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "先理解密度的物理意義，再背公式。"
+                },
+                {
+                  "question_id": "1-6-1-Q3",
+                  "difficulty": "medium",
+                  "question": "「每單位體積含有多少質量」是在說明哪一個物理量？",
+                  "options": [
+                    "質量",
+                    "密度",
+                    "速度",
+                    "壓力"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "先理解密度的物理意義，再背公式。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-6-2",
+              "skill_name": "能寫出密度公式",
+              "questions": [
+                {
+                  "question_id": "1-6-2-Q1",
+                  "difficulty": "easy",
+                  "question": "密度的計算公式為何？",
+                  "options": [
+                    "密度＝質量÷體積",
+                    "密度＝體積÷質量",
+                    "密度＝質量＋體積",
+                    "密度＝質量×體積"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "熟記 D＝M÷V。"
+                },
+                {
+                  "question_id": "1-6-2-Q2",
+                  "difficulty": "easy",
+                  "question": "已知質量 M、體積 V，密度 D 應如何計算？",
+                  "options": [
+                    "D=M×V",
+                    "D=M÷V",
+                    "D=V÷M",
+                    "D=M+V"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "熟記 D＝M÷V。"
+                },
+                {
+                  "question_id": "1-6-2-Q3",
+                  "difficulty": "medium",
+                  "question": "某物體密度的計算式應選哪一個？",
+                  "options": [
+                    "質量／體積",
+                    "體積／質量",
+                    "質量＋體積",
+                    "質量－體積"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "熟記 D＝M÷V。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-6-3",
+              "skill_name": "能由質量與體積計算密度",
+              "questions": [
+                {
+                  "question_id": "1-6-3-Q1",
+                  "difficulty": "easy",
+                  "question": "一物體質量為 60 g，體積為 20 cm³，其密度為多少？",
+                  "options": [
+                    "0.33 g/cm³",
+                    "3 g/cm³",
+                    "40 g/cm³",
+                    "80 g/cm³"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "練習 D＝M÷V。"
+                },
+                {
+                  "question_id": "1-6-3-Q2",
+                  "difficulty": "easy",
+                  "question": "一物體質量 84 g、體積 28 cm³，密度為多少？",
+                  "options": [
+                    "2 g/cm³",
+                    "3 g/cm³",
+                    "4 g/cm³",
+                    "112 g/cm³"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "練習 D＝M÷V。"
+                },
+                {
+                  "question_id": "1-6-3-Q3",
+                  "difficulty": "medium",
+                  "question": "一金屬塊質量 96 g、體積 32 cm³，密度為何？",
+                  "options": [
+                    "0.33 g/cm³",
+                    "3 g/cm³",
+                    "64 g/cm³",
+                    "128 g/cm³"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "練習 D＝M÷V。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-6-4",
+              "skill_name": "能由密度與體積計算質量",
+              "questions": [
+                {
+                  "question_id": "1-6-4-Q1",
+                  "difficulty": "easy",
+                  "question": "某金屬密度為 4 g/cm³，體積為 5 cm³，其質量為多少？",
+                  "options": [
+                    "0.8 g",
+                    "9 g",
+                    "20 g",
+                    "25 g"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "練習 M＝D×V。"
+                },
+                {
+                  "question_id": "1-6-4-Q2",
+                  "difficulty": "easy",
+                  "question": "某物質密度 2.5 g/cm³，體積 8 cm³，質量是多少？",
+                  "options": [
+                    "3.2 g",
+                    "10.5 g",
+                    "20 g",
+                    "25 g"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "練習 M＝D×V。"
+                },
+                {
+                  "question_id": "1-6-4-Q3",
+                  "difficulty": "medium",
+                  "question": "密度為 7 g/cm³ 的金屬，體積為 6 cm³，質量為何？",
+                  "options": [
+                    "1.17 g",
+                    "13 g",
+                    "42 g",
+                    "49 g"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "練習 M＝D×V。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-6-5",
+              "skill_name": "能由質量與密度計算體積",
+              "questions": [
+                {
+                  "question_id": "1-6-5-Q1",
+                  "difficulty": "easy",
+                  "question": "某物體質量為 45 g，密度為 3 g/cm³，其體積為多少？",
+                  "options": [
+                    "15 cm³",
+                    "42 cm³",
+                    "48 cm³",
+                    "135 cm³"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "練習 V＝M÷D。"
+                },
+                {
+                  "question_id": "1-6-5-Q2",
+                  "difficulty": "easy",
+                  "question": "某物體質量 72 g、密度 4 g/cm³，其體積為多少？",
+                  "options": [
+                    "18 cm³",
+                    "68 cm³",
+                    "76 cm³",
+                    "288 cm³"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "練習 V＝M÷D。"
+                },
+                {
+                  "question_id": "1-6-5-Q3",
+                  "difficulty": "medium",
+                  "question": "質量 50 g、密度 2.5 g/cm³ 的物體，體積是多少？",
+                  "options": [
+                    "20 cm³",
+                    "47.5 cm³",
+                    "52.5 cm³",
+                    "125 cm³"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "練習 V＝M÷D。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-6-6",
+              "skill_name": "知道同一純物質在相同條件下密度不因大小改變",
+              "questions": [
+                {
+                  "question_id": "1-6-6-Q1",
+                  "difficulty": "easy",
+                  "question": "某純物質切成大小不同的兩塊，在相同條件下兩塊的密度如何？",
+                  "options": [
+                    "大塊密度較大",
+                    "小塊密度較大",
+                    "兩塊密度相同",
+                    "無法比較"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "建立密度是物質特性的概念。"
+                },
+                {
+                  "question_id": "1-6-6-Q2",
+                  "difficulty": "easy",
+                  "question": "同一塊純銅切成兩小塊，在相同溫度下，兩塊的密度如何？",
+                  "options": [
+                    "大塊較大",
+                    "小塊較大",
+                    "相同",
+                    "一定變成一半"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "建立密度是物質特性的概念。"
+                },
+                {
+                  "question_id": "1-6-6-Q3",
+                  "difficulty": "medium",
+                  "question": "把一塊均勻純物質切掉一半後，剩下部分的密度會如何？",
+                  "options": [
+                    "變成一半",
+                    "變成兩倍",
+                    "保持相同",
+                    "無法判斷"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "建立密度是物質特性的概念。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-6-7",
+              "skill_name": "知道密度可作為辨識物質的依據之一",
+              "questions": [
+                {
+                  "question_id": "1-6-7-Q1",
+                  "difficulty": "easy",
+                  "question": "下列哪一個物理量最適合用來協助辨別不同種類的純物質？",
+                  "options": [
+                    "密度",
+                    "體積",
+                    "形狀",
+                    "數量"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "複習物質特性與密度。"
+                },
+                {
+                  "question_id": "1-6-7-Q2",
+                  "difficulty": "easy",
+                  "question": "若要用一項物理性質協助判斷未知金屬種類，下列何者較合適？",
+                  "options": [
+                    "密度",
+                    "外形大小",
+                    "物體數量",
+                    "擺放方向"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "複習物質特性與密度。"
+                },
+                {
+                  "question_id": "1-6-7-Q3",
+                  "difficulty": "medium",
+                  "question": "同體積的不同純物質可能具有不同質量，主要可用哪個性質來區分？",
+                  "options": [
+                    "密度",
+                    "時間",
+                    "面積",
+                    "顏色深淺一定相同"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "複習物質特性與密度。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-6-8",
+              "skill_name": "能由相同體積比較不同密度物質的質量",
+              "questions": [
+                {
+                  "question_id": "1-6-8-Q1",
+                  "difficulty": "easy",
+                  "question": "甲物質密度為 2 g/cm³，乙物質密度為 5 g/cm³，若兩者體積相同，則下列何者正確？",
+                  "options": [
+                    "甲的質量較大",
+                    "乙的質量較大",
+                    "兩者質量相同",
+                    "無法比較"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "相同體積下，密度越大，質量越大。"
+                },
+                {
+                  "question_id": "1-6-8-Q2",
+                  "difficulty": "easy",
+                  "question": "甲、乙體積都為 10 cm³，甲密度 3 g/cm³，乙密度 6 g/cm³，何者質量較大？",
+                  "options": [
+                    "甲",
+                    "乙",
+                    "相同",
+                    "無法判斷"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "相同體積下，密度越大，質量越大。"
+                },
+                {
+                  "question_id": "1-6-8-Q3",
+                  "difficulty": "medium",
+                  "question": "兩物體體積相同，A 的密度為 1.5 g/cm³，B 為 4 g/cm³。下列何者正確？",
+                  "options": [
+                    "A質量較大",
+                    "B質量較大",
+                    "質量必相等",
+                    "兩者都沒有質量"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "相同體積下，密度越大，質量越大。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-6-9",
+              "skill_name": "能由物體與液體密度比較判斷浮沉趨勢",
+              "questions": [
+                {
+                  "question_id": "1-6-9-Q1",
+                  "difficulty": "easy",
+                  "question": "某物體密度為 0.8 g/cm³，水的密度約為 1.0 g/cm³。將此物體輕放入水中，最可能出現什麼情況？",
+                  "options": [
+                    "浮在水面附近",
+                    "一定沉到底部",
+                    "立即消失",
+                    "變成氣體"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "比較物體密度與液體密度。"
+                },
+                {
+                  "question_id": "1-6-9-Q2",
+                  "difficulty": "easy",
+                  "question": "某塑膠塊密度 0.6 g/cm³，放入密度 1.0 g/cm³ 的水中，最可能如何？",
+                  "options": [
+                    "浮起",
+                    "沉底",
+                    "消失",
+                    "變成液體"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "比較物體密度與液體密度。"
+                },
+                {
+                  "question_id": "1-6-9-Q3",
+                  "difficulty": "medium",
+                  "question": "某固體密度 1.3 g/cm³，水密度約 1.0 g/cm³。若固體不溶於水，最可能如何？",
+                  "options": [
+                    "浮在水面",
+                    "下沉",
+                    "變成氣體",
+                    "質量變零"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "比較物體密度與液體密度。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-6-10",
+              "skill_name": "知道測量密度需取得質量與體積",
+              "questions": [
+                {
+                  "question_id": "1-6-10-Q1",
+                  "difficulty": "easy",
+                  "question": "要測量一顆不規則金屬塊的密度，最需要測得哪兩個物理量？",
+                  "options": [
+                    "長度與時間",
+                    "質量與體積",
+                    "溫度與長度",
+                    "面積與時間"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "密度計算需要質量與體積。"
+                },
+                {
+                  "question_id": "1-6-10-Q2",
+                  "difficulty": "easy",
+                  "question": "要算出一顆小石頭的密度，至少需要知道哪兩項資料？",
+                  "options": [
+                    "質量、體積",
+                    "長度、溫度",
+                    "時間、面積",
+                    "顏色、形狀"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "密度計算需要質量與體積。"
+                },
+                {
+                  "question_id": "1-6-10-Q3",
+                  "difficulty": "medium",
+                  "question": "已知未知金屬塊的哪兩項數據後，可以計算密度？",
+                  "options": [
+                    "質量與體積",
+                    "體積與溫度",
+                    "質量與時間",
+                    "長度與時間"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "密度計算需要質量與體積。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-6-11",
+              "skill_name": "能結合排水法資料計算不規則固體密度",
+              "questions": [
+                {
+                  "question_id": "1-6-11-Q1",
+                  "difficulty": "easy",
+                  "question": "某同學測得石塊質量為 54 g，排水測得體積為 20 cm³，則石塊密度為多少？",
+                  "options": [
+                    "0.37 g/cm³",
+                    "2.7 g/cm³",
+                    "34 g/cm³",
+                    "74 g/cm³"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "先確認體積，再套用 D＝M÷V。"
+                },
+                {
+                  "question_id": "1-6-11-Q2",
+                  "difficulty": "easy",
+                  "question": "某不規則金屬質量 75 g，排水法測得體積 25 cm³，密度是多少？",
+                  "options": [
+                    "2 g/cm³",
+                    "3 g/cm³",
+                    "50 g/cm³",
+                    "100 g/cm³"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "先確認體積，再套用 D＝M÷V。"
+                },
+                {
+                  "question_id": "1-6-11-Q3",
+                  "difficulty": "medium",
+                  "question": "一石塊質量 66 g，放入量筒使水位由 20 mL 升到 42 mL，石塊密度約多少？",
+                  "options": [
+                    "1.5 g/cm³",
+                    "3 g/cm³",
+                    "22 g/cm³",
+                    "44 g/cm³"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "先確認體積，再套用 D＝M÷V。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-6-12",
+              "skill_name": "知道質量－體積圖的斜率代表密度",
+              "questions": [
+                {
+                  "question_id": "1-6-12-Q1",
+                  "difficulty": "easy",
+                  "question": "將同一物質做成不同大小的物體，畫出「縱軸為質量、橫軸為體積」的圖，直線斜率代表下列哪一項？",
+                  "options": [
+                    "溫度",
+                    "密度",
+                    "時間",
+                    "長度"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "理解質量＝密度×體積，因此斜率為密度。"
+                },
+                {
+                  "question_id": "1-6-12-Q2",
+                  "difficulty": "easy",
+                  "question": "某物質的質量－體積圖為一直線，若縱軸是質量、橫軸是體積，直線斜率表示什麼？",
+                  "options": [
+                    "密度",
+                    "溫度",
+                    "長度",
+                    "時間"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "理解質量＝密度×體積，因此斜率為密度。"
+                },
+                {
+                  "question_id": "1-6-12-Q3",
+                  "difficulty": "medium",
+                  "question": "質量 M 與體積 V 的關係為 M=D×V，因此 M-V 圖的斜率 D 代表什麼？",
+                  "options": [
+                    "密度",
+                    "重量百分濃度",
+                    "溶解度",
+                    "速度"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "理解質量＝密度×體積，因此斜率為密度。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-6-13",
+              "skill_name": "能從質量－體積圖比較密度大小",
+              "questions": [
+                {
+                  "question_id": "1-6-13-Q1",
+                  "difficulty": "easy",
+                  "question": "在「縱軸為質量、橫軸為體積」的圖中，甲物質的直線比乙物質陡，則下列敘述何者正確？",
+                  "options": [
+                    "甲的密度較大",
+                    "乙的密度較大",
+                    "兩者密度一定相同",
+                    "無法比較"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "圖線越陡代表斜率越大，即密度越大。"
+                },
+                {
+                  "question_id": "1-6-13-Q2",
+                  "difficulty": "easy",
+                  "question": "在質量－體積圖上，A 線斜率為 5，B 線斜率為 2，哪一物質密度較大？",
+                  "options": [
+                    "A",
+                    "B",
+                    "相同",
+                    "無法判斷"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "圖線越陡代表斜率越大，即密度越大。"
+                },
+                {
+                  "question_id": "1-6-13-Q3",
+                  "difficulty": "medium",
+                  "question": "兩種物質的質量－體積圖皆通過原點，甲線比乙線平緩，則何者密度較大？",
+                  "options": [
+                    "甲",
+                    "乙",
+                    "一樣",
+                    "一定為0"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "圖線越陡代表斜率越大，即密度越大。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-6-14",
+              "skill_name": "能辨識密度實驗結果與標準值差異可能來自測量誤差",
+              "questions": [
+                {
+                  "question_id": "1-6-14-Q1",
+                  "difficulty": "easy",
+                  "question": "實驗測得的密度與課本標準值略有差異，最合理的原因為何？",
+                  "options": [
+                    "實驗測量可能存在誤差",
+                    "密度沒有固定意義",
+                    "標準值一定錯誤",
+                    "所有測量值都必須完全相同"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "連結測量誤差與實驗結果差異。"
+                },
+                {
+                  "question_id": "1-6-14-Q2",
+                  "difficulty": "easy",
+                  "question": "同一物體重複測密度得到 2.68、2.71、2.69 g/cm³，與參考值 2.70 略有差異，最合理的說法是？",
+                  "options": [
+                    "可能存在正常測量誤差",
+                    "參考值必定錯誤",
+                    "密度每天都任意改變",
+                    "所有數值都無效"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "連結測量誤差與實驗結果差異。"
+                },
+                {
+                  "question_id": "1-6-14-Q3",
+                  "difficulty": "medium",
+                  "question": "實驗值與標準值不完全相同時，第一步最適合做什麼？",
+                  "options": [
+                    "檢查量測與操作可能造成的誤差",
+                    "直接修改數據",
+                    "宣告標準值錯誤",
+                    "忽略所有結果"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "連結測量誤差與實驗結果差異。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "CH2",
+      "chapter_name": "Ch2 物質的世界",
+      "sections": [
+        {
+          "section_id": "2-1",
+          "section_name": "認識物質與物質性質",
+          "skills": [
+            {
+              "skill_id": "2-1-1",
+              "skill_name": "知道物質具有質量且占有空間",
+              "questions": [
+                {
+                  "question_id": "2-1-1-Q1",
+                  "difficulty": "easy",
+                  "question": "下列哪一項最符合「物質」的概念？",
+                  "options": [
+                    "具有質量且占有空間",
+                    "只有顏色但不占空間",
+                    "只有想法沒有質量",
+                    "完全不具有任何性質"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "複習物質的基本定義。"
+                },
+                {
+                  "question_id": "2-1-1-Q2",
+                  "difficulty": "easy",
+                  "question": "下列哪一個例子屬於物質？",
+                  "options": [
+                    "聲音",
+                    "陽光",
+                    "空氣",
+                    "想法"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "複習物質的基本定義。"
+                },
+                {
+                  "question_id": "2-1-1-Q3",
+                  "difficulty": "medium",
+                  "question": "判斷某事物是否屬於物質，主要可看它是否具有什麼特徵？",
+                  "options": [
+                    "有質量且占有空間",
+                    "一定能看見",
+                    "一定是固體",
+                    "一定有顏色"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "複習物質的基本定義。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-1-2",
+              "skill_name": "能辨識物理性質",
+              "questions": [
+                {
+                  "question_id": "2-1-2-Q1",
+                  "difficulty": "easy",
+                  "question": "下列何者屬於物理性質？",
+                  "options": [
+                    "木材容易燃燒",
+                    "鐵會生鏽",
+                    "酒精的沸點",
+                    "鎂帶可以燃燒"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "物理性質可在不產生新物質下觀察。"
+                },
+                {
+                  "question_id": "2-1-2-Q2",
+                  "difficulty": "easy",
+                  "question": "下列哪一項屬於物理性質？",
+                  "options": [
+                    "鐵會生鏽",
+                    "酒精容易燃燒",
+                    "水的沸點為100°C左右",
+                    "紙張燃燒"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "物理性質可在不產生新物質下觀察。"
+                },
+                {
+                  "question_id": "2-1-2-Q3",
+                  "difficulty": "medium",
+                  "question": "不需讓物質產生新物質，就能觀察到的性質稱為什麼？",
+                  "options": [
+                    "化學性質",
+                    "物理性質",
+                    "反應速率",
+                    "燃燒性"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "物理性質可在不產生新物質下觀察。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-1-3",
+              "skill_name": "能辨識化學性質",
+              "questions": [
+                {
+                  "question_id": "2-1-3-Q1",
+                  "difficulty": "easy",
+                  "question": "下列何者屬於化學性質？",
+                  "options": [
+                    "水是無色液體",
+                    "銅具有導電性",
+                    "酒精具有可燃性",
+                    "食鹽可溶於水"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "化學性質描述物質發生化學反應的能力。"
+                },
+                {
+                  "question_id": "2-1-3-Q2",
+                  "difficulty": "easy",
+                  "question": "下列哪一項是化學性質？",
+                  "options": [
+                    "鋁的密度",
+                    "水的顏色",
+                    "木材可燃",
+                    "銅的導電性"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "化學性質描述物質發生化學反應的能力。"
+                },
+                {
+                  "question_id": "2-1-3-Q3",
+                  "difficulty": "medium",
+                  "question": "物質是否容易與氧氣反應，屬於哪一類性質？",
+                  "options": [
+                    "物理性質",
+                    "化學性質",
+                    "幾何性質",
+                    "測量誤差"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "化學性質描述物質發生化學反應的能力。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-1-4",
+              "skill_name": "能區分密度與化學性質",
+              "questions": [
+                {
+                  "question_id": "2-1-4-Q1",
+                  "difficulty": "easy",
+                  "question": "下列哪一項屬於物理性質？",
+                  "options": [
+                    "密度",
+                    "可燃性",
+                    "與氧反應的能力",
+                    "腐蝕性"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "再次區分物理性質與化學性質。"
+                },
+                {
+                  "question_id": "2-1-4-Q2",
+                  "difficulty": "easy",
+                  "question": "下列何者不屬於化學性質？",
+                  "options": [
+                    "可燃性",
+                    "腐蝕性",
+                    "密度",
+                    "與酸反應的能力"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "再次區分物理性質與化學性質。"
+                },
+                {
+                  "question_id": "2-1-4-Q3",
+                  "difficulty": "medium",
+                  "question": "某物質的熔點、沸點、密度等資料，主要屬於哪一類性質？",
+                  "options": [
+                    "物理性質",
+                    "化學性質",
+                    "生物性質",
+                    "反應性"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "再次區分物理性質與化學性質。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_id": "2-2",
+          "section_name": "物理變化與化學變化",
+          "skills": [
+            {
+              "skill_id": "2-2-1",
+              "skill_name": "能辨識物理變化",
+              "questions": [
+                {
+                  "question_id": "2-2-1-Q1",
+                  "difficulty": "easy",
+                  "question": "下列哪一個過程屬於物理變化？",
+                  "options": [
+                    "木材燃燒",
+                    "鐵釘生鏽",
+                    "冰融化成水",
+                    "食物腐敗"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "判斷是否產生新物質。"
+                },
+                {
+                  "question_id": "2-2-1-Q2",
+                  "difficulty": "easy",
+                  "question": "下列哪一項屬於物理變化？",
+                  "options": [
+                    "蠟受熱熔化",
+                    "木頭燃燒",
+                    "鐵釘生鏽",
+                    "蛋煮熟"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "判斷是否產生新物質。"
+                },
+                {
+                  "question_id": "2-2-1-Q3",
+                  "difficulty": "medium",
+                  "question": "把一張紙剪成小片，此過程最適合歸類為什麼？",
+                  "options": [
+                    "化學變化",
+                    "物理變化",
+                    "一定同時兩者",
+                    "無法判斷"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "判斷是否產生新物質。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-2-2",
+              "skill_name": "能辨識化學變化",
+              "questions": [
+                {
+                  "question_id": "2-2-2-Q1",
+                  "difficulty": "easy",
+                  "question": "下列哪一個過程屬於化學變化？",
+                  "options": [
+                    "水結冰",
+                    "玻璃破碎",
+                    "食鹽溶於水",
+                    "紙張燃燒"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "remediation": "判斷是否有新物質生成。"
+                },
+                {
+                  "question_id": "2-2-2-Q2",
+                  "difficulty": "easy",
+                  "question": "下列何者屬於化學變化？",
+                  "options": [
+                    "冰塊融化",
+                    "水沸騰",
+                    "鐵絲生鏽",
+                    "玻璃打碎"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "判斷是否有新物質生成。"
+                },
+                {
+                  "question_id": "2-2-2-Q3",
+                  "difficulty": "medium",
+                  "question": "牛奶放久後變酸，最適合判斷為哪一類變化？",
+                  "options": [
+                    "物理變化",
+                    "化學變化",
+                    "只有形狀改變",
+                    "沒有任何變化"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "判斷是否有新物質生成。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-2-3",
+              "skill_name": "知道物理變化與化學變化的主要判準",
+              "questions": [
+                {
+                  "question_id": "2-2-3-Q1",
+                  "difficulty": "easy",
+                  "question": "判斷物理變化與化學變化最重要的依據為何？",
+                  "options": [
+                    "有沒有改變形狀",
+                    "有沒有產生新物質",
+                    "溫度有沒有改變",
+                    "體積有沒有變化"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "核心判準是是否生成新物質。"
+                },
+                {
+                  "question_id": "2-2-3-Q2",
+                  "difficulty": "easy",
+                  "question": "判斷某變化是否為化學變化，最關鍵的是觀察什麼？",
+                  "options": [
+                    "是否形成新的物質",
+                    "是否改變大小",
+                    "是否改變位置",
+                    "是否有聲音"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "核心判準是是否生成新物質。"
+                },
+                {
+                  "question_id": "2-2-3-Q3",
+                  "difficulty": "medium",
+                  "question": "某物質受熱後外形改變，但冷卻後仍是原物質。判斷是否為化學變化時，最重要的依據是？",
+                  "options": [
+                    "是否產生新物質",
+                    "是否變熱",
+                    "是否變小",
+                    "是否有液體"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "核心判準是是否生成新物質。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-2-4",
+              "skill_name": "知道現象只能作為化學變化線索，仍需進一步判斷",
+              "questions": [
+                {
+                  "question_id": "2-2-4-Q1",
+                  "difficulty": "easy",
+                  "question": "某實驗發生顏色改變並產生氣泡，最合理的判斷為何？",
+                  "options": [
+                    "一定不是化學變化",
+                    "可能發生化學變化，仍需進一步判斷",
+                    "一定只是物理變化",
+                    "只要有氣泡就一定是沸騰"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "避免把單一現象當成絕對判準。"
+                },
+                {
+                  "question_id": "2-2-4-Q2",
+                  "difficulty": "easy",
+                  "question": "某反應中出現沉澱，最合理的說法是？",
+                  "options": [
+                    "可能有新物質生成，但仍需綜合判斷",
+                    "一定只是物理變化",
+                    "只要沉澱就代表沸騰",
+                    "一定沒有化學反應"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "避免把單一現象當成絕對判準。"
+                },
+                {
+                  "question_id": "2-2-4-Q3",
+                  "difficulty": "medium",
+                  "question": "觀察到溫度改變與氣體產生時，應如何判斷？",
+                  "options": [
+                    "可視為化學變化的線索，但不能只靠單一現象下定論",
+                    "一定是物理變化",
+                    "一定是沸騰",
+                    "完全沒有參考價值"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "避免把單一現象當成絕對判準。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_id": "2-3",
+          "section_name": "物質三態",
+          "skills": [
+            {
+              "skill_id": "2-3-1",
+              "skill_name": "知道液體沒有固定形狀但通常有固定體積",
+              "questions": [
+                {
+                  "question_id": "2-3-1-Q1",
+                  "difficulty": "easy",
+                  "question": "下列哪一項是液體的特性？",
+                  "options": [
+                    "有固定形狀且有固定體積",
+                    "沒有固定形狀，但通常有固定體積",
+                    "沒有固定形狀，也沒有固定體積",
+                    "完全不占空間"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "比較固、液、氣三態特性。"
+                },
+                {
+                  "question_id": "2-3-1-Q2",
+                  "difficulty": "easy",
+                  "question": "氣體的形狀與體積通常有何特性？",
+                  "options": [
+                    "形狀固定、體積固定",
+                    "形狀不固定、體積不固定",
+                    "形狀固定、體積不固定",
+                    "形狀不固定、體積固定"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "比較固、液、氣三態特性。"
+                },
+                {
+                  "question_id": "2-3-1-Q3",
+                  "difficulty": "medium",
+                  "question": "下列何者最符合固體的特性？",
+                  "options": [
+                    "通常有固定形狀與固定體積",
+                    "沒有固定形狀但有固定體積",
+                    "形狀與體積都不固定",
+                    "一定可壓縮很多"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "比較固、液、氣三態特性。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-3-2",
+              "skill_name": "知道固態變液態稱為熔化",
+              "questions": [
+                {
+                  "question_id": "2-3-2-Q1",
+                  "difficulty": "easy",
+                  "question": "固態物質受熱變成液態，稱為什麼？",
+                  "options": [
+                    "凝固",
+                    "凝結",
+                    "熔化",
+                    "昇華"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "熟記三態變化名稱。"
+                },
+                {
+                  "question_id": "2-3-2-Q2",
+                  "difficulty": "easy",
+                  "question": "冰塊變成液態水，此三態變化稱為什麼？",
+                  "options": [
+                    "凝固",
+                    "熔化",
+                    "凝結",
+                    "凝華"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "熟記三態變化名稱。"
+                },
+                {
+                  "question_id": "2-3-2-Q3",
+                  "difficulty": "medium",
+                  "question": "蠟受熱由固態變成液態，稱為？",
+                  "options": [
+                    "汽化",
+                    "昇華",
+                    "熔化",
+                    "凝固"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "熟記三態變化名稱。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-3-3",
+              "skill_name": "知道液態變氣態稱為汽化",
+              "questions": [
+                {
+                  "question_id": "2-3-3-Q1",
+                  "difficulty": "easy",
+                  "question": "液態水變成水蒸氣的過程稱為什麼？",
+                  "options": [
+                    "汽化",
+                    "凝固",
+                    "凝華",
+                    "熔化"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "熟記液→氣為汽化。"
+                },
+                {
+                  "question_id": "2-3-3-Q2",
+                  "difficulty": "easy",
+                  "question": "濕衣服晾乾時，水由液態變成氣態，這個過程叫什麼？",
+                  "options": [
+                    "凝結",
+                    "汽化",
+                    "凝固",
+                    "凝華"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "熟記液→氣為汽化。"
+                },
+                {
+                  "question_id": "2-3-3-Q3",
+                  "difficulty": "medium",
+                  "question": "鍋中的水逐漸變成水蒸氣，屬於哪一種三態變化？",
+                  "options": [
+                    "汽化",
+                    "熔化",
+                    "凝固",
+                    "凝華"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "熟記液→氣為汽化。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-3-4",
+              "skill_name": "知道氣態變液態稱為凝結",
+              "questions": [
+                {
+                  "question_id": "2-3-4-Q1",
+                  "difficulty": "easy",
+                  "question": "水蒸氣變成小水滴的過程稱為什麼？",
+                  "options": [
+                    "汽化",
+                    "凝結",
+                    "昇華",
+                    "熔化"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "熟記氣→液為凝結。"
+                },
+                {
+                  "question_id": "2-3-4-Q2",
+                  "difficulty": "easy",
+                  "question": "冰飲杯外出現小水滴，空氣中的水蒸氣主要經過哪種變化？",
+                  "options": [
+                    "汽化",
+                    "凝結",
+                    "昇華",
+                    "熔化"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "熟記氣→液為凝結。"
+                },
+                {
+                  "question_id": "2-3-4-Q3",
+                  "difficulty": "medium",
+                  "question": "浴室鏡面上出現水珠，是水蒸氣發生什麼變化？",
+                  "options": [
+                    "凝結",
+                    "凝固",
+                    "汽化",
+                    "昇華"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "熟記氣→液為凝結。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-3-5",
+              "skill_name": "知道固態直接變氣態稱為昇華",
+              "questions": [
+                {
+                  "question_id": "2-3-5-Q1",
+                  "difficulty": "easy",
+                  "question": "乾冰直接由固態變成氣態，此過程稱為什麼？",
+                  "options": [
+                    "熔化",
+                    "凝固",
+                    "昇華",
+                    "凝結"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "熟記固→氣為昇華。"
+                },
+                {
+                  "question_id": "2-3-5-Q2",
+                  "difficulty": "easy",
+                  "question": "樟腦丸放久會逐漸變小，其中部分物質由固態直接變成氣態，稱為？",
+                  "options": [
+                    "凝華",
+                    "昇華",
+                    "汽化",
+                    "熔化"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "熟記固→氣為昇華。"
+                },
+                {
+                  "question_id": "2-3-5-Q3",
+                  "difficulty": "medium",
+                  "question": "固態二氧化碳不經液態直接變成氣體，稱為什麼？",
+                  "options": [
+                    "昇華",
+                    "凝結",
+                    "凝固",
+                    "汽化"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "熟記固→氣為昇華。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-3-6",
+              "skill_name": "知道氣態直接變固態稱為凝華",
+              "questions": [
+                {
+                  "question_id": "2-3-6-Q1",
+                  "difficulty": "easy",
+                  "question": "氣態物質直接變成固態，稱為什麼？",
+                  "options": [
+                    "凝華",
+                    "昇華",
+                    "汽化",
+                    "熔化"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "熟記氣→固為凝華。"
+                },
+                {
+                  "question_id": "2-3-6-Q2",
+                  "difficulty": "easy",
+                  "question": "寒冷環境中水蒸氣直接形成霜，這種氣態直接變固態的過程稱為？",
+                  "options": [
+                    "凝華",
+                    "凝結",
+                    "昇華",
+                    "熔化"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "熟記氣→固為凝華。"
+                },
+                {
+                  "question_id": "2-3-6-Q3",
+                  "difficulty": "medium",
+                  "question": "氣態碘直接形成固態碘晶體，屬於哪種變化？",
+                  "options": [
+                    "汽化",
+                    "凝華",
+                    "昇華",
+                    "凝固"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "熟記氣→固為凝華。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-3-7",
+              "skill_name": "知道三態變化通常屬於物理變化",
+              "questions": [
+                {
+                  "question_id": "2-3-7-Q1",
+                  "difficulty": "easy",
+                  "question": "下列哪一個過程通常屬於物理變化？",
+                  "options": [
+                    "酒精燃燒",
+                    "水蒸發",
+                    "鐵生鏽",
+                    "牛奶變酸"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "三態改變通常不生成新物質。"
+                },
+                {
+                  "question_id": "2-3-7-Q2",
+                  "difficulty": "easy",
+                  "question": "下列哪一項三態變化通常不產生新物質？",
+                  "options": [
+                    "水結冰",
+                    "木材燃燒",
+                    "鐵生鏽",
+                    "食物腐敗"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "三態改變通常不生成新物質。"
+                },
+                {
+                  "question_id": "2-3-7-Q3",
+                  "difficulty": "medium",
+                  "question": "乾冰昇華最適合歸類為什麼？",
+                  "options": [
+                    "物理變化",
+                    "化學變化",
+                    "核反應",
+                    "燃燒"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "三態改變通常不生成新物質。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_id": "2-4",
+          "section_name": "純物質與混合物",
+          "skills": [
+            {
+              "skill_id": "2-4-1",
+              "skill_name": "能辨識混合物",
+              "questions": [
+                {
+                  "question_id": "2-4-1-Q1",
+                  "difficulty": "easy",
+                  "question": "下列何者屬於混合物？",
+                  "options": [
+                    "蒸餾水",
+                    "氧氣",
+                    "空氣",
+                    "純金"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "混合物含兩種以上物質。"
+                },
+                {
+                  "question_id": "2-4-1-Q2",
+                  "difficulty": "easy",
+                  "question": "下列哪一項屬於混合物？",
+                  "options": [
+                    "純水",
+                    "空氣",
+                    "純氧",
+                    "純銅"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "混合物含兩種以上物質。"
+                },
+                {
+                  "question_id": "2-4-1-Q3",
+                  "difficulty": "medium",
+                  "question": "果汁含水、糖與其他成分，通常應歸類為？",
+                  "options": [
+                    "純物質",
+                    "混合物",
+                    "元素",
+                    "單一化合物"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "混合物含兩種以上物質。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-4-2",
+              "skill_name": "知道純物質在一定條件下具有較固定的性質",
+              "questions": [
+                {
+                  "question_id": "2-4-2-Q1",
+                  "difficulty": "easy",
+                  "question": "下列何者最符合純物質的特性？",
+                  "options": [
+                    "組成可以任意改變",
+                    "由許多物質隨意混合而成",
+                    "在一定條件下具有較固定的性質",
+                    "一定只能以固態存在"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "理解純物質的組成與性質較固定。"
+                },
+                {
+                  "question_id": "2-4-2-Q2",
+                  "difficulty": "easy",
+                  "question": "下列哪一項較符合純物質？",
+                  "options": [
+                    "組成通常較固定",
+                    "成分比例可任意改變",
+                    "一定含兩種以上物質",
+                    "一定是液體"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "理解純物質的組成與性質較固定。"
+                },
+                {
+                  "question_id": "2-4-2-Q3",
+                  "difficulty": "medium",
+                  "question": "在相同條件下，純物質常具有較固定的哪一項特性？",
+                  "options": [
+                    "性質與組成",
+                    "外形大小",
+                    "擺放位置",
+                    "容器形狀"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "理解純物質的組成與性質較固定。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-4-3",
+              "skill_name": "能由生活例子判斷混合物",
+              "questions": [
+                {
+                  "question_id": "2-4-3-Q1",
+                  "difficulty": "easy",
+                  "question": "下列哪一項是混合物？",
+                  "options": [
+                    "氮氣",
+                    "海水",
+                    "蒸餾水",
+                    "純氧氣"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "海水含水、鹽類等多種成分。"
+                },
+                {
+                  "question_id": "2-4-3-Q2",
+                  "difficulty": "easy",
+                  "question": "下列哪一項是混合物？",
+                  "options": [
+                    "純氮氣",
+                    "糖水",
+                    "蒸餾水",
+                    "純金"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "海水含水、鹽類等多種成分。"
+                },
+                {
+                  "question_id": "2-4-3-Q3",
+                  "difficulty": "medium",
+                  "question": "下列哪一個生活中的物質通常含有多種成分？",
+                  "options": [
+                    "海水",
+                    "純氧氣",
+                    "蒸餾水",
+                    "純銀"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "海水含水、鹽類等多種成分。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-4-4",
+              "skill_name": "知道分離混合物主要利用物理性質差異",
+              "questions": [
+                {
+                  "question_id": "2-4-4-Q1",
+                  "difficulty": "easy",
+                  "question": "分離混合物時，通常利用各成分的什麼差異？",
+                  "options": [
+                    "物理性質差異",
+                    "名稱差異",
+                    "價格差異",
+                    "使用時間差異"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "連結分離法與沸點、溶解度、磁性等差異。"
+                },
+                {
+                  "question_id": "2-4-4-Q2",
+                  "difficulty": "easy",
+                  "question": "將混合物分離時，通常要利用成分之間的什麼差異？",
+                  "options": [
+                    "沸點、溶解度、磁性等物理性質差異",
+                    "名稱差異",
+                    "售價差異",
+                    "顏色一定相同"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "連結分離法與沸點、溶解度、磁性等差異。"
+                },
+                {
+                  "question_id": "2-4-4-Q3",
+                  "difficulty": "medium",
+                  "question": "若兩成分的磁性不同，可利用哪一類差異進行分離？",
+                  "options": [
+                    "物理性質差異",
+                    "名稱差異",
+                    "時間差異",
+                    "化學式字數"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "連結分離法與沸點、溶解度、磁性等差異。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_id": "2-5",
+          "section_name": "混合物的分離",
+          "skills": [
+            {
+              "skill_id": "2-5-1",
+              "skill_name": "知道過濾可分離不溶性固體與液體",
+              "questions": [
+                {
+                  "question_id": "2-5-1-Q1",
+                  "difficulty": "easy",
+                  "question": "想將水中不溶解的泥沙與水分開，最適合使用哪一種方法？",
+                  "options": [
+                    "過濾",
+                    "蒸餾",
+                    "加熱燃燒",
+                    "凝固"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "辨識過濾法適用情境。"
+                },
+                {
+                  "question_id": "2-5-1-Q2",
+                  "difficulty": "easy",
+                  "question": "沙子不溶於水，要把沙子與水分開，最適合使用哪種方法？",
+                  "options": [
+                    "過濾",
+                    "蒸餾",
+                    "燃燒",
+                    "昇華"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "辨識過濾法適用情境。"
+                },
+                {
+                  "question_id": "2-5-1-Q3",
+                  "difficulty": "medium",
+                  "question": "下列哪一組混合物最適合用過濾法分離？",
+                  "options": [
+                    "泥沙與水",
+                    "食鹽水",
+                    "酒精與水",
+                    "糖水"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "辨識過濾法適用情境。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-5-2",
+              "skill_name": "知道濾紙在過濾中的功能",
+              "questions": [
+                {
+                  "question_id": "2-5-2-Q1",
+                  "difficulty": "easy",
+                  "question": "過濾實驗中，主要用來攔住不溶性固體的是什麼？",
+                  "options": [
+                    "溫度計",
+                    "濾紙",
+                    "酒精燈",
+                    "天平"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "認識過濾裝置各器材用途。"
+                },
+                {
+                  "question_id": "2-5-2-Q2",
+                  "difficulty": "easy",
+                  "question": "過濾時，泥沙主要會留在哪裡？",
+                  "options": [
+                    "濾紙上",
+                    "量筒底部一定消失",
+                    "冷凝管內",
+                    "天平秤盤"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "認識過濾裝置各器材用途。"
+                },
+                {
+                  "question_id": "2-5-2-Q3",
+                  "difficulty": "medium",
+                  "question": "濾紙在過濾實驗中的主要作用是什麼？",
+                  "options": [
+                    "讓液體全部蒸發",
+                    "攔截不溶性固體顆粒",
+                    "測量溫度",
+                    "增加溶解度"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "認識過濾裝置各器材用途。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-5-3",
+              "skill_name": "知道蒸發可由溶液中取得溶質",
+              "questions": [
+                {
+                  "question_id": "2-5-3-Q1",
+                  "difficulty": "easy",
+                  "question": "想從食鹽水中取得食鹽，最簡單適合的方法為何？",
+                  "options": [
+                    "過濾",
+                    "蒸發水分",
+                    "使用磁鐵",
+                    "冷凝空氣"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "溶質已溶解時，過濾無法分離。"
+                },
+                {
+                  "question_id": "2-5-3-Q2",
+                  "difficulty": "easy",
+                  "question": "要從糖水中取得糖晶體，較適合先利用哪種方法？",
+                  "options": [
+                    "蒸發部分水分",
+                    "磁鐵吸引",
+                    "過濾直接取得已溶糖",
+                    "用直尺測量"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "溶質已溶解時，過濾無法分離。"
+                },
+                {
+                  "question_id": "2-5-3-Q3",
+                  "difficulty": "medium",
+                  "question": "食鹽已完全溶於水，若想回收食鹽，哪種方式較合理？",
+                  "options": [
+                    "蒸發水分",
+                    "單純過濾",
+                    "磁鐵吸引",
+                    "加入更多水"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "溶質已溶解時，過濾無法分離。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-5-4",
+              "skill_name": "知道蒸餾主要利用沸點差異",
+              "questions": [
+                {
+                  "question_id": "2-5-4-Q1",
+                  "difficulty": "easy",
+                  "question": "蒸餾法主要利用不同物質哪一項性質的差異？",
+                  "options": [
+                    "顏色",
+                    "沸點",
+                    "質量",
+                    "形狀"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "將蒸餾法與沸點差異連結。"
+                },
+                {
+                  "question_id": "2-5-4-Q2",
+                  "difficulty": "easy",
+                  "question": "酒精與水的沸點不同，若要利用此差異分離，可採用哪種方法？",
+                  "options": [
+                    "蒸餾",
+                    "過濾",
+                    "磁選",
+                    "篩分"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "將蒸餾法與沸點差異連結。"
+                },
+                {
+                  "question_id": "2-5-4-Q3",
+                  "difficulty": "medium",
+                  "question": "蒸餾法能分離某些液體混合物，主要是因為它們的什麼不同？",
+                  "options": [
+                    "沸點",
+                    "質量一定不同",
+                    "顏色一定不同",
+                    "形狀"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "將蒸餾法與沸點差異連結。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-5-5",
+              "skill_name": "知道冷凝管可將蒸氣冷卻成液體",
+              "questions": [
+                {
+                  "question_id": "2-5-5-Q1",
+                  "difficulty": "easy",
+                  "question": "蒸餾裝置中的冷凝管主要功能為何？",
+                  "options": [
+                    "將蒸氣冷卻成液體",
+                    "增加液體沸點",
+                    "測量質量",
+                    "將液體直接變成固體"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "理解冷凝在蒸餾中的作用。"
+                },
+                {
+                  "question_id": "2-5-5-Q2",
+                  "difficulty": "easy",
+                  "question": "蒸餾時產生的蒸氣進入冷凝管後會發生什麼？",
+                  "options": [
+                    "被冷卻並變回液體",
+                    "立刻變成固體",
+                    "完全消失",
+                    "溫度一定上升"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "理解冷凝在蒸餾中的作用。"
+                },
+                {
+                  "question_id": "2-5-5-Q3",
+                  "difficulty": "medium",
+                  "question": "冷凝管中的冷卻水主要協助哪一個過程？",
+                  "options": [
+                    "凝結",
+                    "汽化",
+                    "燃燒",
+                    "溶解"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "理解冷凝在蒸餾中的作用。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-5-6",
+              "skill_name": "能利用磁性差異分離混合物",
+              "questions": [
+                {
+                  "question_id": "2-5-6-Q1",
+                  "difficulty": "easy",
+                  "question": "鐵粉與砂子的混合物，最適合用什麼方式分離？",
+                  "options": [
+                    "磁鐵吸引",
+                    "加水蒸餾",
+                    "加熱熔化",
+                    "使用量筒"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "判斷何時可利用磁性分離。"
+                },
+                {
+                  "question_id": "2-5-6-Q2",
+                  "difficulty": "easy",
+                  "question": "鐵屑混在木屑中，最適合先用什麼分離？",
+                  "options": [
+                    "磁鐵",
+                    "濾紙",
+                    "蒸發皿",
+                    "量筒"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "判斷何時可利用磁性分離。"
+                },
+                {
+                  "question_id": "2-5-6-Q3",
+                  "difficulty": "medium",
+                  "question": "下列哪組混合物可利用磁性差異分離？",
+                  "options": [
+                    "鐵粉與硫粉",
+                    "糖與水",
+                    "酒精與水",
+                    "鹽水"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "判斷何時可利用磁性分離。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_id": "2-6",
+          "section_name": "水溶液與濃度",
+          "skills": [
+            {
+              "skill_id": "2-6-1",
+              "skill_name": "能辨識溶質",
+              "questions": [
+                {
+                  "question_id": "2-6-1-Q1",
+                  "difficulty": "easy",
+                  "question": "食鹽完全溶於水形成食鹽水，其中食鹽稱為什麼？",
+                  "options": [
+                    "溶劑",
+                    "溶質",
+                    "沉澱",
+                    "濾液"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "複習溶質是被溶解的物質。"
+                },
+                {
+                  "question_id": "2-6-1-Q2",
+                  "difficulty": "easy",
+                  "question": "糖水中的糖屬於哪一種成分？",
+                  "options": [
+                    "溶質",
+                    "溶劑",
+                    "濾紙",
+                    "沉澱一定存在"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "複習溶質是被溶解的物質。"
+                },
+                {
+                  "question_id": "2-6-1-Q3",
+                  "difficulty": "medium",
+                  "question": "在硫酸銅水溶液中，若水是主要用來溶解硫酸銅的物質，硫酸銅稱為？",
+                  "options": [
+                    "溶質",
+                    "溶劑",
+                    "氣體",
+                    "濾液"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "複習溶質是被溶解的物質。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-6-2",
+              "skill_name": "能辨識溶劑",
+              "questions": [
+                {
+                  "question_id": "2-6-2-Q1",
+                  "difficulty": "easy",
+                  "question": "食鹽水中，水通常稱為什麼？",
+                  "options": [
+                    "溶質",
+                    "溶劑",
+                    "晶體",
+                    "沉澱"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "複習溶劑是用來溶解其他物質的成分。"
+                },
+                {
+                  "question_id": "2-6-2-Q2",
+                  "difficulty": "easy",
+                  "question": "糖水中的水通常扮演什麼角色？",
+                  "options": [
+                    "溶質",
+                    "溶劑",
+                    "沉澱",
+                    "晶體"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "複習溶劑是用來溶解其他物質的成分。"
+                },
+                {
+                  "question_id": "2-6-2-Q3",
+                  "difficulty": "medium",
+                  "question": "若少量食鹽溶於大量水中形成均勻溶液，水通常稱為？",
+                  "options": [
+                    "溶劑",
+                    "溶質",
+                    "溶解度",
+                    "濾渣"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "複習溶劑是用來溶解其他物質的成分。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-6-3",
+              "skill_name": "知道溶解不等於溶質消失",
+              "questions": [
+                {
+                  "question_id": "2-6-3-Q1",
+                  "difficulty": "easy",
+                  "question": "關於「溶解」，下列敘述何者正確？",
+                  "options": [
+                    "溶質完全消失，不再具有質量",
+                    "溶質只是均勻分散在溶劑中",
+                    "溶質一定變成氣體",
+                    "溶解一定是化學變化"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "建立溶質仍存在於溶液中的觀念。"
+                },
+                {
+                  "question_id": "2-6-3-Q2",
+                  "difficulty": "easy",
+                  "question": "糖溶於水後看不見糖晶體，最合理的解釋是？",
+                  "options": [
+                    "糖的質量消失了",
+                    "糖均勻分散在水中",
+                    "糖變成氧氣",
+                    "糖一定發生化學反應"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "建立溶質仍存在於溶液中的觀念。"
+                },
+                {
+                  "question_id": "2-6-3-Q3",
+                  "difficulty": "medium",
+                  "question": "下列關於食鹽溶於水的說法，何者正確？",
+                  "options": [
+                    "食鹽仍存在於溶液中",
+                    "食鹽完全失去質量",
+                    "一定生成新物質",
+                    "水會因此消失"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "建立溶質仍存在於溶液中的觀念。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-6-4",
+              "skill_name": "知道溶液質量＝溶質質量＋溶劑質量",
+              "questions": [
+                {
+                  "question_id": "2-6-4-Q1",
+                  "difficulty": "easy",
+                  "question": "一杯水加入 10 g 食鹽，食鹽全部溶解後，若水原本為 90 g，則食鹽水總質量為多少？",
+                  "options": [
+                    "10 g",
+                    "80 g",
+                    "90 g",
+                    "100 g"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "remediation": "練習溶液質量守恆概念。"
+                },
+                {
+                  "question_id": "2-6-4-Q2",
+                  "difficulty": "easy",
+                  "question": "把 15 g 糖完全溶於 85 g 水中，溶液總質量是多少？",
+                  "options": [
+                    "70 g",
+                    "85 g",
+                    "100 g",
+                    "115 g"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "練習溶液質量守恆概念。"
+                },
+                {
+                  "question_id": "2-6-4-Q3",
+                  "difficulty": "medium",
+                  "question": "30 g 食鹽完全溶於 120 g 水中，所得溶液質量為何？",
+                  "options": [
+                    "90 g",
+                    "120 g",
+                    "150 g",
+                    "3600 g"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "練習溶液質量守恆概念。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-6-5",
+              "skill_name": "能寫出重量百分濃度公式",
+              "questions": [
+                {
+                  "question_id": "2-6-5-Q1",
+                  "difficulty": "easy",
+                  "question": "重量百分濃度的公式為何？",
+                  "options": [
+                    "溶質質量÷溶液質量×100%",
+                    "溶液質量÷溶質質量×100%",
+                    "溶劑質量÷溶液質量×100%",
+                    "溶質質量×溶液質量"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "熟記重量百分濃度公式。"
+                },
+                {
+                  "question_id": "2-6-5-Q2",
+                  "difficulty": "easy",
+                  "question": "若溶質質量為 m、溶液總質量為 M，重量百分濃度應如何計算？",
+                  "options": [
+                    "m÷M×100%",
+                    "M÷m×100%",
+                    "m×M",
+                    "M－m"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "熟記重量百分濃度公式。"
+                },
+                {
+                  "question_id": "2-6-5-Q3",
+                  "difficulty": "medium",
+                  "question": "重量百分濃度的分母應使用哪一個量？",
+                  "options": [
+                    "溶液質量",
+                    "溶質質量",
+                    "溶劑體積",
+                    "容器質量"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "熟記重量百分濃度公式。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-6-6",
+              "skill_name": "能由溶質與溶劑質量計算重量百分濃度",
+              "questions": [
+                {
+                  "question_id": "2-6-6-Q1",
+                  "difficulty": "easy",
+                  "question": "20 g 食鹽加入 80 g 水中完全溶解，食鹽水的重量百分濃度為多少？",
+                  "options": [
+                    "20%",
+                    "25%",
+                    "40%",
+                    "80%"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "先求溶液總質量，再計算濃度。"
+                },
+                {
+                  "question_id": "2-6-6-Q2",
+                  "difficulty": "easy",
+                  "question": "15 g 食鹽加入 85 g 水中完全溶解，重量百分濃度是多少？",
+                  "options": [
+                    "15%",
+                    "17.6%",
+                    "85%",
+                    "100%"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "先求溶液總質量，再計算濃度。"
+                },
+                {
+                  "question_id": "2-6-6-Q3",
+                  "difficulty": "medium",
+                  "question": "30 g 糖加入 120 g 水中形成溶液，重量百分濃度是多少？",
+                  "options": [
+                    "20%",
+                    "25%",
+                    "30%",
+                    "80%"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "先求溶液總質量，再計算濃度。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-6-7",
+              "skill_name": "能由濃度與溶液質量求溶質質量",
+              "questions": [
+                {
+                  "question_id": "2-6-7-Q1",
+                  "difficulty": "easy",
+                  "question": "200 g 的 10% 食鹽水中，含有多少克食鹽？",
+                  "options": [
+                    "10 g",
+                    "20 g",
+                    "100 g",
+                    "180 g"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "溶質質量＝溶液質量×濃度。"
+                },
+                {
+                  "question_id": "2-6-7-Q2",
+                  "difficulty": "easy",
+                  "question": "300 g、濃度 5% 的食鹽水中含食鹽多少克？",
+                  "options": [
+                    "5 g",
+                    "15 g",
+                    "60 g",
+                    "295 g"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "溶質質量＝溶液質量×濃度。"
+                },
+                {
+                  "question_id": "2-6-7-Q3",
+                  "difficulty": "medium",
+                  "question": "250 g 的 12% 糖水含糖多少克？",
+                  "options": [
+                    "12 g",
+                    "25 g",
+                    "30 g",
+                    "220 g"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "溶質質量＝溶液質量×濃度。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-6-8",
+              "skill_name": "能由溶質與溶劑質量求溶液質量",
+              "questions": [
+                {
+                  "question_id": "2-6-8-Q1",
+                  "difficulty": "easy",
+                  "question": "50 g 食鹽加入 150 g 水中完全溶解，溶液總質量為多少？",
+                  "options": [
+                    "100 g",
+                    "150 g",
+                    "200 g",
+                    "250 g"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "溶液質量＝溶質＋溶劑。"
+                },
+                {
+                  "question_id": "2-6-8-Q2",
+                  "difficulty": "easy",
+                  "question": "25 g 糖完全溶於 175 g 水，溶液總質量為多少？",
+                  "options": [
+                    "150 g",
+                    "175 g",
+                    "200 g",
+                    "4375 g"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "溶液質量＝溶質＋溶劑。"
+                },
+                {
+                  "question_id": "2-6-8-Q3",
+                  "difficulty": "medium",
+                  "question": "40 g 食鹽與 160 g 水形成均勻溶液，總質量是多少？",
+                  "options": [
+                    "120 g",
+                    "160 g",
+                    "200 g",
+                    "6400 g"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "溶液質量＝溶質＋溶劑。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-6-9",
+              "skill_name": "知道加水稀釋時溶質質量不變且濃度下降",
+              "questions": [
+                {
+                  "question_id": "2-6-9-Q1",
+                  "difficulty": "easy",
+                  "question": "原本有一杯食鹽水，若只加入水且食鹽沒有損失，則下列何者正確？",
+                  "options": [
+                    "食鹽質量增加",
+                    "食鹽質量減少",
+                    "食鹽質量不變，濃度下降",
+                    "食鹽質量不變，濃度上升"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "抓住稀釋時『溶質不變、溶液變多』。"
+                },
+                {
+                  "question_id": "2-6-9-Q2",
+                  "difficulty": "easy",
+                  "question": "一杯糖水加入純水後，若糖沒有流失，下列何者正確？",
+                  "options": [
+                    "糖質量不變、濃度降低",
+                    "糖質量增加、濃度增加",
+                    "糖質量減少、濃度不變",
+                    "糖質量不變、濃度增加"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "抓住稀釋時『溶質不變、溶液變多』。"
+                },
+                {
+                  "question_id": "2-6-9-Q3",
+                  "difficulty": "medium",
+                  "question": "稀釋食鹽水時，若只加水且無溶液灑出，哪一項保持不變？",
+                  "options": [
+                    "溶質質量",
+                    "溶液總質量",
+                    "濃度",
+                    "溶劑質量"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "抓住稀釋時『溶質不變、溶液變多』。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-6-10",
+              "skill_name": "能處理基本加水稀釋濃度問題",
+              "questions": [
+                {
+                  "question_id": "2-6-10-Q1",
+                  "difficulty": "easy",
+                  "question": "一杯 100 g 的 20% 食鹽水，加入 100 g 水後，其濃度變為多少？",
+                  "options": [
+                    "5%",
+                    "10%",
+                    "20%",
+                    "40%"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "先算原溶質質量，再除以新溶液總質量。"
+                },
+                {
+                  "question_id": "2-6-10-Q2",
+                  "difficulty": "easy",
+                  "question": "200 g 的 15% 糖水加入 100 g 水後，新濃度為多少？",
+                  "options": [
+                    "5%",
+                    "10%",
+                    "15%",
+                    "30%"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "先算原溶質質量，再除以新溶液總質量。"
+                },
+                {
+                  "question_id": "2-6-10-Q3",
+                  "difficulty": "medium",
+                  "question": "100 g 的 30% 食鹽水加入 50 g 水後，新濃度是多少？",
+                  "options": [
+                    "10%",
+                    "20%",
+                    "30%",
+                    "45%"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "先算原溶質質量，再除以新溶液總質量。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-6-11",
+              "skill_name": "知道蒸發部分水分會使溶液濃度上升",
+              "questions": [
+                {
+                  "question_id": "2-6-11-Q1",
+                  "difficulty": "easy",
+                  "question": "一杯食鹽水若蒸發掉部分水分，且沒有食鹽析出或損失，則溶液濃度通常會如何變化？",
+                  "options": [
+                    "變大",
+                    "變小",
+                    "完全不變",
+                    "變成 0%"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "抓住『溶質不變、溶劑變少』。"
+                },
+                {
+                  "question_id": "2-6-11-Q2",
+                  "difficulty": "easy",
+                  "question": "一杯糖水加熱蒸發部分水，糖沒有析出也沒有損失，濃度會如何？",
+                  "options": [
+                    "上升",
+                    "下降",
+                    "不變",
+                    "變成0"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "抓住『溶質不變、溶劑變少』。"
+                },
+                {
+                  "question_id": "2-6-11-Q3",
+                  "difficulty": "medium",
+                  "question": "若食鹽水只失去部分水分而食鹽質量不變，重量百分濃度通常怎麼變？",
+                  "options": [
+                    "變大",
+                    "變小",
+                    "不變",
+                    "一定變成100%"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "抓住『溶質不變、溶劑變少』。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_id": "2-7",
+          "section_name": "溶解度與飽和溶液",
+          "skills": [
+            {
+              "skill_id": "2-7-1",
+              "skill_name": "知道溶解度是在一定條件下可溶解的最大量",
+              "questions": [
+                {
+                  "question_id": "2-7-1-Q1",
+                  "difficulty": "easy",
+                  "question": "「溶解度」主要描述什麼？",
+                  "options": [
+                    "物質溶解的快慢",
+                    "在一定條件下能溶解的最大量",
+                    "溶液的總體積",
+                    "溶質的顏色"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "區分溶解度與溶解速度。"
+                },
+                {
+                  "question_id": "2-7-1-Q2",
+                  "difficulty": "easy",
+                  "question": "在固定溫度下，100 g 水最多能溶解某物質 36 g，這個 36 g 描述的是什麼？",
+                  "options": [
+                    "溶解速度",
+                    "溶解度",
+                    "密度",
+                    "濃度一定值"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "區分溶解度與溶解速度。"
+                },
+                {
+                  "question_id": "2-7-1-Q3",
+                  "difficulty": "medium",
+                  "question": "溶解度與下列哪一項概念最直接相關？",
+                  "options": [
+                    "在特定條件下能溶解的最大量",
+                    "溶解所需秒數",
+                    "攪拌速度",
+                    "容器形狀"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "區分溶解度與溶解速度。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-7-2",
+              "skill_name": "知道攪拌會加快溶解速度但不一定改變溶解度",
+              "questions": [
+                {
+                  "question_id": "2-7-2-Q1",
+                  "difficulty": "easy",
+                  "question": "下列哪一項通常可以加快固體溶解，但不一定改變最後的溶解度？",
+                  "options": [
+                    "攪拌",
+                    "改變物質種類",
+                    "改變溶劑種類",
+                    "改變物質本身化學性質"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "複習影響溶解速率與溶解度的因素差異。"
+                },
+                {
+                  "question_id": "2-7-2-Q2",
+                  "difficulty": "easy",
+                  "question": "把食鹽水攪拌得更快，通常最直接影響什麼？",
+                  "options": [
+                    "溶解速度",
+                    "最終溶解度一定加倍",
+                    "食鹽質量",
+                    "水的密度一定變零"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "複習影響溶解速率與溶解度的因素差異。"
+                },
+                {
+                  "question_id": "2-7-2-Q3",
+                  "difficulty": "medium",
+                  "question": "在同溫度下，攪拌與不攪拌相比，通常會有何差異？",
+                  "options": [
+                    "攪拌可加快達到溶解平衡的速度",
+                    "攪拌一定增加最大可溶量",
+                    "不攪拌就永遠不會溶解",
+                    "攪拌會讓溶質消失"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "複習影響溶解速率與溶解度的因素差異。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-7-3",
+              "skill_name": "知道磨碎可加快溶解速度",
+              "questions": [
+                {
+                  "question_id": "2-7-3-Q1",
+                  "difficulty": "easy",
+                  "question": "將方糖磨成細小顆粒再加入水中，主要效果為何？",
+                  "options": [
+                    "一定使溶解度增加",
+                    "通常能使溶解速度加快",
+                    "一定使溶解度減少",
+                    "使水變成純物質"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "顆粒變小使接觸面積增加，通常加快溶解。"
+                },
+                {
+                  "question_id": "2-7-3-Q2",
+                  "difficulty": "easy",
+                  "question": "將大顆粒食鹽磨細後再加入水中，通常會怎樣？",
+                  "options": [
+                    "溶解較快",
+                    "溶解度一定變兩倍",
+                    "質量減半",
+                    "水量增加"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "顆粒變小使接觸面積增加，通常加快溶解。"
+                },
+                {
+                  "question_id": "2-7-3-Q3",
+                  "difficulty": "medium",
+                  "question": "顆粒越小通常溶解越快，主要與哪一項改變有關？",
+                  "options": [
+                    "與水接觸的表面積增加",
+                    "密度消失",
+                    "溫度一定下降",
+                    "質量一定變少"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "顆粒變小使接觸面積增加，通常加快溶解。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-7-4",
+              "skill_name": "知道多數固體溶解度通常隨溫度升高而增加",
+              "questions": [
+                {
+                  "question_id": "2-7-4-Q1",
+                  "difficulty": "easy",
+                  "question": "關於多數固體在水中的溶解度與溫度關係，下列敘述何者較常見？",
+                  "options": [
+                    "溫度升高，溶解度通常增加",
+                    "溫度升高，溶解度一定變成零",
+                    "溫度與溶解度完全無關",
+                    "溫度升高，所有物質溶解度都一定降低"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "掌握一般趨勢，但知道不是所有物質都完全相同。"
+                },
+                {
+                  "question_id": "2-7-4-Q2",
+                  "difficulty": "easy",
+                  "question": "某固體在 20°C 可溶 25 g，在 50°C 可溶 40 g，這組資料顯示什麼？",
+                  "options": [
+                    "此物質溶解度隨溫度升高而增加",
+                    "溫度越高溶解度越低",
+                    "溫度與溶解度無關",
+                    "溶解度永遠固定25 g"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "掌握一般趨勢，但知道不是所有物質都完全相同。"
+                },
+                {
+                  "question_id": "2-7-4-Q3",
+                  "difficulty": "medium",
+                  "question": "對多數固體而言，升高水溫常會使其溶解度如何變化？",
+                  "options": [
+                    "增加",
+                    "一定變成0",
+                    "完全不變",
+                    "一定減半"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "掌握一般趨勢，但知道不是所有物質都完全相同。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-7-5",
+              "skill_name": "能根據溶解度判斷未飽和溶液",
+              "questions": [
+                {
+                  "question_id": "2-7-5-Q1",
+                  "difficulty": "easy",
+                  "question": "某物質在 20°C 時，每 100 g 水最多可溶解 30 g。若加入 20 g 此物質於 100 g 水中並充分攪拌，則形成何種溶液？",
+                  "options": [
+                    "未飽和溶液",
+                    "飽和且有 20 g 沉澱",
+                    "一定無法溶解",
+                    "純物質"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "比較實際溶質量與最大可溶量。"
+                },
+                {
+                  "question_id": "2-7-5-Q2",
+                  "difficulty": "easy",
+                  "question": "某物質在 20°C 時，每 100 g 水最多溶解 40 g。若加入 25 g 並全部溶解，這杯溶液屬於？",
+                  "options": [
+                    "未飽和",
+                    "飽和且有沉澱",
+                    "一定過飽和",
+                    "純物質"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "比較實際溶質量與最大可溶量。"
+                },
+                {
+                  "question_id": "2-7-5-Q3",
+                  "difficulty": "medium",
+                  "question": "在 30°C 時每 100 g 水最多可溶解 50 g 某物質，若只加入 30 g 且完全溶解，最合理的判斷是？",
+                  "options": [
+                    "未飽和",
+                    "一定飽和",
+                    "一定有20 g沉澱",
+                    "沒有溶液"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "比較實際溶質量與最大可溶量。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-7-6",
+              "skill_name": "能計算超過溶解度時未溶解的溶質量",
+              "questions": [
+                {
+                  "question_id": "2-7-6-Q1",
+                  "difficulty": "easy",
+                  "question": "某物質在 20°C 時，每 100 g 水最多可溶解 30 g。若加入 40 g 此物質，充分攪拌後最多有多少克溶質無法溶解？",
+                  "options": [
+                    "10 g",
+                    "20 g",
+                    "30 g",
+                    "40 g"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "未溶解量＝加入量－最大可溶量。"
+                },
+                {
+                  "question_id": "2-7-6-Q2",
+                  "difficulty": "easy",
+                  "question": "某物質在 25°C 時每 100 g 水最多可溶 45 g，若加入 60 g，最多有多少克無法溶解？",
+                  "options": [
+                    "15 g",
+                    "25 g",
+                    "45 g",
+                    "60 g"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "未溶解量＝加入量－最大可溶量。"
+                },
+                {
+                  "question_id": "2-7-6-Q3",
+                  "difficulty": "medium",
+                  "question": "在某溫度下每 100 g 水最多溶解 32 g 溶質，若加入 50 g，充分攪拌後剩多少克未溶？",
+                  "options": [
+                    "18 g",
+                    "32 g",
+                    "50 g",
+                    "82 g"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "未溶解量＝加入量－最大可溶量。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-7-7",
+              "skill_name": "知道飽和溶液已達該條件下最大可溶量",
+              "questions": [
+                {
+                  "question_id": "2-7-7-Q1",
+                  "difficulty": "easy",
+                  "question": "「飽和溶液」是指在特定溫度下：",
+                  "options": [
+                    "完全沒有溶質的溶液",
+                    "已達到可溶解溶質的最大量",
+                    "一定是所有溶液中最濃的",
+                    "一定有一半是溶質"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "複習飽和的定義。"
+                },
+                {
+                  "question_id": "2-7-7-Q2",
+                  "difficulty": "easy",
+                  "question": "一杯溶液在某溫度下已不能再溶解更多同種溶質，這杯溶液稱為？",
+                  "options": [
+                    "未飽和溶液",
+                    "飽和溶液",
+                    "純水",
+                    "懸浮液"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "複習飽和的定義。"
+                },
+                {
+                  "question_id": "2-7-7-Q3",
+                  "difficulty": "medium",
+                  "question": "判斷一杯溶液是否飽和，最直接要看什麼？",
+                  "options": [
+                    "在該條件下是否已達最大可溶量",
+                    "顏色是否很深",
+                    "杯子是否裝滿",
+                    "溶液質量是否100 g"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "複習飽和的定義。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-7-8",
+              "skill_name": "知道不同物質的飽和濃度可能不同",
+              "questions": [
+                {
+                  "question_id": "2-7-8-Q1",
+                  "difficulty": "easy",
+                  "question": "關於飽和溶液，下列敘述何者正確？",
+                  "options": [
+                    "不同物質的飽和溶液濃度一定相同",
+                    "飽和溶液濃度與物質種類無關",
+                    "不同物質的溶解度不同，因此飽和濃度可能不同",
+                    "飽和溶液一定含有未溶解固體"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "避免把『飽和』誤解成固定濃度。"
+                },
+                {
+                  "question_id": "2-7-8-Q2",
+                  "difficulty": "easy",
+                  "question": "甲、乙兩種物質的溶解度不同，關於它們的飽和溶液，下列何者正確？",
+                  "options": [
+                    "濃度可能不同",
+                    "濃度一定相同",
+                    "一定都含50%溶質",
+                    "一定都有固體沉澱"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "避免把『飽和』誤解成固定濃度。"
+                },
+                {
+                  "question_id": "2-7-8-Q3",
+                  "difficulty": "medium",
+                  "question": "為什麼不能說所有飽和溶液都有相同濃度？",
+                  "options": [
+                    "因為不同物質的溶解度可能不同",
+                    "因為飽和溶液都沒有溶質",
+                    "因為飽和只與顏色有關",
+                    "因為所有物質都不溶於水"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "避免把『飽和』誤解成固定濃度。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-7-9",
+              "skill_name": "能計算降溫後可能析出的晶體質量",
+              "questions": [
+                {
+                  "question_id": "2-7-9-Q1",
+                  "difficulty": "easy",
+                  "question": "某物質在 60°C 時每 100 g 水可溶解 80 g，在 20°C 時只能溶解 30 g。若原本在 60°C 的 100 g 水中恰好溶有 80 g 溶質，降到 20°C，最多可能析出多少克晶體？",
+                  "options": [
+                    "30 g",
+                    "50 g",
+                    "80 g",
+                    "110 g"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "析出量＝高溫已溶量－低溫最大可溶量。"
+                },
+                {
+                  "question_id": "2-7-9-Q2",
+                  "difficulty": "easy",
+                  "question": "某物質在 70°C 時每 100 g 水最多可溶 90 g，在 20°C 時每 100 g 水最多可溶 35 g。若 100 g 水在 70°C 時恰好溶有 90 g 溶質，冷卻到 20°C，最多可析出多少克晶體？",
+                  "options": [
+                    "35 g",
+                    "55 g",
+                    "90 g",
+                    "125 g"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "析出量＝高溫已溶量－低溫最大可溶量。"
+                },
+                {
+                  "question_id": "2-7-9-Q3",
+                  "difficulty": "medium",
+                  "question": "某固體在 60°C 的溶解度為 70 g/100 g 水，在 20°C 為 25 g/100 g 水。若 100 g 水在 60°C 時恰好溶有 70 g 溶質，降到 20°C，最多可析出多少克晶體？",
+                  "options": [
+                    "25 g",
+                    "45 g",
+                    "70 g",
+                    "95 g"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "析出量＝高溫已溶量－低溫最大可溶量。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-7-10",
+              "skill_name": "能讀取溶解度－溫度圖比較溶解度",
+              "questions": [
+                {
+                  "question_id": "2-7-10-Q1",
+                  "difficulty": "easy",
+                  "question": "要從溶解度－溫度圖判斷同一溫度下哪一種物質溶解度較大，應比較什麼？",
+                  "options": [
+                    "曲線在該溫度所對應的溶解度數值",
+                    "物質名稱的字數",
+                    "曲線顏色",
+                    "圖形大小"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "練習先固定溫度，再讀取各物質的縱軸數值。"
+                },
+                {
+                  "question_id": "2-7-10-Q2",
+                  "difficulty": "easy",
+                  "question": "在溶解度－溫度圖上，同一溫度時甲曲線位置高於乙曲線，代表什麼？",
+                  "options": [
+                    "甲的溶解度較大",
+                    "乙的溶解度較大",
+                    "兩者一定相同",
+                    "無法由圖判斷"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "練習先固定溫度，再讀取各物質的縱軸數值。"
+                },
+                {
+                  "question_id": "2-7-10-Q3",
+                  "difficulty": "medium",
+                  "question": "閱讀溶解度曲線時，要比較 40°C 下各物質的溶解度，應先怎麼做？",
+                  "options": [
+                    "在橫軸找到40°C，再讀各曲線對應值",
+                    "只看曲線名稱",
+                    "看哪條線顏色深",
+                    "看圖紙大小"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "練習先固定溫度，再讀取各物質的縱軸數值。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_id": "2-8",
+          "section_name": "空氣的組成",
+          "skills": [
+            {
+              "skill_id": "2-8-1",
+              "skill_name": "知道空氣是混合物",
+              "questions": [
+                {
+                  "question_id": "2-8-1-Q1",
+                  "difficulty": "easy",
+                  "question": "空氣屬於下列哪一類物質？",
+                  "options": [
+                    "元素",
+                    "純物質",
+                    "混合物",
+                    "單一化合物"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "空氣含多種氣體。"
+                },
+                {
+                  "question_id": "2-8-1-Q2",
+                  "difficulty": "easy",
+                  "question": "空氣由多種氣體組成，因此空氣屬於什麼？",
+                  "options": [
+                    "純物質",
+                    "混合物",
+                    "單一元素",
+                    "單一化合物"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "空氣含多種氣體。"
+                },
+                {
+                  "question_id": "2-8-1-Q3",
+                  "difficulty": "medium",
+                  "question": "下列哪一項最能說明空氣是混合物？",
+                  "options": [
+                    "含有氮氣、氧氣等多種成分",
+                    "只有一種分子",
+                    "組成永遠只有氧氣",
+                    "沒有質量"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "空氣含多種氣體。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-8-2",
+              "skill_name": "知道空氣中含量最多的是氮氣",
+              "questions": [
+                {
+                  "question_id": "2-8-2-Q1",
+                  "difficulty": "easy",
+                  "question": "空氣中含量最多的氣體為何？",
+                  "options": [
+                    "氧氣",
+                    "氮氣",
+                    "二氧化碳",
+                    "水蒸氣"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "熟記空氣主要成分。"
+                },
+                {
+                  "question_id": "2-8-2-Q2",
+                  "difficulty": "easy",
+                  "question": "空氣中約占四分之三以上的氣體是哪一種？",
+                  "options": [
+                    "氧氣",
+                    "氮氣",
+                    "二氧化碳",
+                    "氫氣"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "熟記空氣主要成分。"
+                },
+                {
+                  "question_id": "2-8-2-Q3",
+                  "difficulty": "medium",
+                  "question": "若取 100 L 乾燥空氣，其中含量最多的成分最可能是？",
+                  "options": [
+                    "氮氣",
+                    "氧氣",
+                    "二氧化碳",
+                    "水蒸氣"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "熟記空氣主要成分。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-8-3",
+              "skill_name": "知道空氣中氮氣約占 78%",
+              "questions": [
+                {
+                  "question_id": "2-8-3-Q1",
+                  "difficulty": "easy",
+                  "question": "空氣中氮氣約占體積百分比多少？",
+                  "options": [
+                    "1%",
+                    "21%",
+                    "50%",
+                    "78%"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "remediation": "熟記氮氣約 78%。"
+                },
+                {
+                  "question_id": "2-8-3-Q2",
+                  "difficulty": "easy",
+                  "question": "100 L 空氣中，氮氣體積大約是多少？",
+                  "options": [
+                    "1 L",
+                    "21 L",
+                    "50 L",
+                    "78 L"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "remediation": "熟記氮氣約 78%。"
+                },
+                {
+                  "question_id": "2-8-3-Q3",
+                  "difficulty": "medium",
+                  "question": "若有 200 L 空氣，粗略估計其中氮氣約有多少公升？",
+                  "options": [
+                    "42 L",
+                    "78 L",
+                    "156 L",
+                    "200 L"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "熟記氮氣約 78%。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-8-4",
+              "skill_name": "知道空氣中氧氣約占 21%",
+              "questions": [
+                {
+                  "question_id": "2-8-4-Q1",
+                  "difficulty": "easy",
+                  "question": "空氣中氧氣約占體積百分比多少？",
+                  "options": [
+                    "1%",
+                    "21%",
+                    "50%",
+                    "78%"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "熟記氧氣約 21%。"
+                },
+                {
+                  "question_id": "2-8-4-Q2",
+                  "difficulty": "easy",
+                  "question": "100 L 空氣中，氧氣大約占多少公升？",
+                  "options": [
+                    "1 L",
+                    "21 L",
+                    "78 L",
+                    "100 L"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "熟記氧氣約 21%。"
+                },
+                {
+                  "question_id": "2-8-4-Q3",
+                  "difficulty": "medium",
+                  "question": "約 300 L 空氣中，氧氣約占多少？",
+                  "options": [
+                    "約 21 L",
+                    "約 63 L",
+                    "約 234 L",
+                    "約 300 L"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "熟記氧氣約 21%。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-8-5",
+              "skill_name": "知道空氣中還含有二氧化碳等其他氣體",
+              "questions": [
+                {
+                  "question_id": "2-8-5-Q1",
+                  "difficulty": "easy",
+                  "question": "下列哪一項也是空氣中的成分？",
+                  "options": [
+                    "二氧化碳",
+                    "食鹽",
+                    "砂糖",
+                    "鐵粉"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "認識空氣中除氮、氧外的其他成分。"
+                },
+                {
+                  "question_id": "2-8-5-Q2",
+                  "difficulty": "easy",
+                  "question": "除了氮氣和氧氣外，空氣中還含有少量哪種氣體？",
+                  "options": [
+                    "二氧化碳",
+                    "食鹽蒸氣",
+                    "鐵氣",
+                    "砂糖氣"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "認識空氣中除氮、氧外的其他成分。"
+                },
+                {
+                  "question_id": "2-8-5-Q3",
+                  "difficulty": "medium",
+                  "question": "下列哪一組都可作為空氣中的氣體成分？",
+                  "options": [
+                    "氮氣、氧氣、二氧化碳",
+                    "食鹽、氧氣、砂糖",
+                    "鐵粉、氮氣、水",
+                    "砂石、氧氣、糖"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "認識空氣中除氮、氧外的其他成分。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_id": "2-9",
+          "section_name": "氧氣",
+          "skills": [
+            {
+              "skill_id": "2-9-1",
+              "skill_name": "知道氧氣具有助燃性",
+              "questions": [
+                {
+                  "question_id": "2-9-1-Q1",
+                  "difficulty": "easy",
+                  "question": "關於氧氣的性質，下列敘述何者正確？",
+                  "options": [
+                    "氧氣本身容易燃燒",
+                    "氧氣具有助燃性",
+                    "氧氣不能幫助燃燒",
+                    "氧氣一定有明顯顏色"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "區分『可燃』與『助燃』。"
+                },
+                {
+                  "question_id": "2-9-1-Q2",
+                  "difficulty": "easy",
+                  "question": "燃燒中的木炭在氧氣較充足的環境中通常燃燒更旺，這說明氧氣具有什麼性質？",
+                  "options": [
+                    "可燃性",
+                    "助燃性",
+                    "酸性",
+                    "磁性"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "區分『可燃』與『助燃』。"
+                },
+                {
+                  "question_id": "2-9-1-Q3",
+                  "difficulty": "medium",
+                  "question": "下列哪一項對氧氣的描述正確？",
+                  "options": [
+                    "氧氣能幫助其他可燃物燃燒",
+                    "氧氣本身一定會燃燒",
+                    "氧氣會使所有火焰熄滅",
+                    "氧氣具有強磁性"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "區分『可燃』與『助燃』。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-9-2",
+              "skill_name": "能用帶火星木條判斷氧氣",
+              "questions": [
+                {
+                  "question_id": "2-9-2-Q1",
+                  "difficulty": "easy",
+                  "question": "將帶火星的木條伸入充滿氧氣的集氣瓶中，最典型的現象為何？",
+                  "options": [
+                    "木條復燃",
+                    "火星立即熄滅",
+                    "木條結冰",
+                    "石灰水變混濁"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "氧氣具有助燃性，帶火星木條在氧氣中可復燃。"
+                },
+                {
+                  "question_id": "2-9-2-Q2",
+                  "difficulty": "easy",
+                  "question": "要檢驗一瓶氣體是否為氧氣，可使用哪種方法？",
+                  "options": [
+                    "放入帶火星木條觀察是否復燃或燃燒更旺",
+                    "通入石灰水看是否混濁",
+                    "聞氣味",
+                    "加入食鹽"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "複習氧氣檢驗現象。"
+                },
+                {
+                  "question_id": "2-9-2-Q3",
+                  "difficulty": "medium",
+                  "question": "帶火星的木條伸入未知氣體後重新燃燒，最可能是哪一種氣體？",
+                  "options": [
+                    "氧氣",
+                    "二氧化碳",
+                    "氮氣",
+                    "水蒸氣"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "複習氧氣檢驗現象。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-9-3",
+              "skill_name": "能解釋助燃性的意義",
+              "questions": [
+                {
+                  "question_id": "2-9-3-Q1",
+                  "difficulty": "easy",
+                  "question": "氧氣具有助燃性，代表什麼？",
+                  "options": [
+                    "氧氣可以使其他物質更容易燃燒",
+                    "氧氣本身一定會自行燃燒",
+                    "氧氣可以使所有物質結冰",
+                    "氧氣可以使任何物質溶於水"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "釐清助燃性並非氧氣本身可燃。"
+                },
+                {
+                  "question_id": "2-9-3-Q2",
+                  "difficulty": "easy",
+                  "question": "「助燃」與「可燃」的差別中，氧氣屬於哪一種？",
+                  "options": [
+                    "助燃但不是一般所稱可燃物",
+                    "一定可燃且不助燃",
+                    "兩者都不是",
+                    "只在水中可燃"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "釐清助燃性並非氧氣本身可燃。"
+                },
+                {
+                  "question_id": "2-9-3-Q3",
+                  "difficulty": "medium",
+                  "question": "下列哪句話最能正確解釋氧氣的助燃性？",
+                  "options": [
+                    "氧氣能讓可燃物更容易持續燃燒",
+                    "氧氣自己會無條件燃燒",
+                    "氧氣能讓任何物質燃燒",
+                    "氧氣會阻止燃燒"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "釐清助燃性並非氧氣本身可燃。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-9-4",
+              "skill_name": "知道選擇氣體收集法需考慮溶解度與密度等性質",
+              "questions": [
+                {
+                  "question_id": "2-9-4-Q1",
+                  "difficulty": "easy",
+                  "question": "實驗室收集氣體時，選擇收集方法通常要考慮氣體的什麼性質？",
+                  "options": [
+                    "價格與名稱",
+                    "水中溶解度及密度等性質",
+                    "製造日期",
+                    "容器顏色"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "連結排水集氣法、向上或向下排空氣法與氣體性質。"
+                },
+                {
+                  "question_id": "2-9-4-Q2",
+                  "difficulty": "easy",
+                  "question": "若某氣體很難溶於水，實驗室常可優先考慮哪一種收集方式？",
+                  "options": [
+                    "排水集氣法",
+                    "用天平收集",
+                    "用濾紙過濾",
+                    "蒸發法"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "連結排水集氣法、向上或向下排空氣法與氣體性質。"
+                },
+                {
+                  "question_id": "2-9-4-Q3",
+                  "difficulty": "medium",
+                  "question": "選擇向上排空氣或向下排空氣法時，常需參考氣體的哪一項性質？",
+                  "options": [
+                    "與空氣的密度差異",
+                    "顏色深淺",
+                    "價格",
+                    "名稱長短"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "連結排水集氣法、向上或向下排空氣法與氣體性質。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_id": "2-10",
+          "section_name": "二氧化碳",
+          "skills": [
+            {
+              "skill_id": "2-10-1",
+              "skill_name": "知道二氧化碳通常不助燃",
+              "questions": [
+                {
+                  "question_id": "2-10-1-Q1",
+                  "difficulty": "easy",
+                  "question": "關於二氧化碳，下列敘述何者正確？",
+                  "options": [
+                    "能使燃燒更加旺盛",
+                    "本身通常不助燃",
+                    "是空氣中含量最多的氣體",
+                    "能使帶火星木條復燃"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "比較二氧化碳與氧氣對燃燒的影響。"
+                },
+                {
+                  "question_id": "2-10-1-Q2",
+                  "difficulty": "easy",
+                  "question": "下列哪一項最符合二氧化碳對燃燒的影響？",
+                  "options": [
+                    "通常不助燃",
+                    "能使帶火星木條復燃",
+                    "能讓火焰更旺",
+                    "本身非常容易燃燒"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "比較二氧化碳與氧氣對燃燒的影響。"
+                },
+                {
+                  "question_id": "2-10-1-Q3",
+                  "difficulty": "medium",
+                  "question": "某氣體能使燃燒中的木條熄滅，且通入澄清石灰水後會使石灰水變混濁。此氣體最可能是什麼？",
+                  "options": [
+                    "二氧化碳",
+                    "氧氣",
+                    "氮氣",
+                    "氫氣"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "二氧化碳通常不助燃，能使火焰熄滅；通入澄清石灰水會使其變混濁。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-10-2",
+              "skill_name": "能由燃燒現象判斷二氧化碳的性質",
+              "questions": [
+                {
+                  "question_id": "2-10-2-Q1",
+                  "difficulty": "easy",
+                  "question": "將燃燒中的蠟燭放入充滿二氧化碳的容器中，最可能發生什麼現象？",
+                  "options": [
+                    "燃燒更旺",
+                    "火焰逐漸熄滅",
+                    "蠟燭變成氧氣",
+                    "完全沒有變化"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "複習二氧化碳不助燃。"
+                },
+                {
+                  "question_id": "2-10-2-Q2",
+                  "difficulty": "easy",
+                  "question": "把點燃的小木條伸入二氧化碳中，通常會發生什麼？",
+                  "options": [
+                    "火焰熄滅",
+                    "燃燒更旺",
+                    "木條結冰",
+                    "沒有任何可能變化"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "複習二氧化碳不助燃。"
+                },
+                {
+                  "question_id": "2-10-2-Q3",
+                  "difficulty": "medium",
+                  "question": "利用二氧化碳滅火的性質，主要與下列哪一點有關？",
+                  "options": [
+                    "不助燃",
+                    "可燃性很強",
+                    "能使氧氣變多",
+                    "能提高火焰溫度"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "複習二氧化碳不助燃。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-10-3",
+              "skill_name": "知道可用澄清石灰水檢驗二氧化碳",
+              "questions": [
+                {
+                  "question_id": "2-10-3-Q1",
+                  "difficulty": "easy",
+                  "question": "檢驗二氧化碳時，常使用下列哪一種物質？",
+                  "options": [
+                    "澄清石灰水",
+                    "食鹽水",
+                    "酒精",
+                    "蒸餾水"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "熟記二氧化碳的典型檢驗方法。"
+                },
+                {
+                  "question_id": "2-10-3-Q2",
+                  "difficulty": "easy",
+                  "question": "要確認未知氣體是否可能是二氧化碳，常將氣體通入什麼？",
+                  "options": [
+                    "澄清石灰水",
+                    "純酒精",
+                    "食鹽水",
+                    "糖水"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "熟記二氧化碳的典型檢驗方法。"
+                },
+                {
+                  "question_id": "2-10-3-Q3",
+                  "difficulty": "medium",
+                  "question": "下列哪個檢驗方法最常用來辨認二氧化碳？",
+                  "options": [
+                    "通入澄清石灰水",
+                    "帶火星木條復燃",
+                    "用磁鐵吸引",
+                    "用天平歸零"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "熟記二氧化碳的典型檢驗方法。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-10-4",
+              "skill_name": "知道二氧化碳使澄清石灰水變混濁",
+              "questions": [
+                {
+                  "question_id": "2-10-4-Q1",
+                  "difficulty": "easy",
+                  "question": "將二氧化碳通入澄清石灰水中，常見的現象為何？",
+                  "options": [
+                    "石灰水變混濁",
+                    "石灰水立刻結冰",
+                    "石灰水完全蒸發",
+                    "產生強烈火焰"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "將檢驗試劑與觀察現象配對。"
+                },
+                {
+                  "question_id": "2-10-4-Q2",
+                  "difficulty": "easy",
+                  "question": "二氧化碳通入澄清石灰水後，通常會看到什麼？",
+                  "options": [
+                    "石灰水變混濁",
+                    "產生明亮火焰",
+                    "液體立刻結冰",
+                    "石灰水變成金屬"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "將檢驗試劑與觀察現象配對。"
+                },
+                {
+                  "question_id": "2-10-4-Q3",
+                  "difficulty": "medium",
+                  "question": "未知氣體通入石灰水後出現白色混濁，最可能支持哪一項判斷？",
+                  "options": [
+                    "氣體可能含二氧化碳",
+                    "氣體一定是氧氣",
+                    "氣體一定是氮氣",
+                    "沒有任何資訊"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "將檢驗試劑與觀察現象配對。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-10-5",
+              "skill_name": "能比較氧氣與二氧化碳對燃燒的影響",
+              "questions": [
+                {
+                  "question_id": "2-10-5-Q1",
+                  "difficulty": "easy",
+                  "question": "下列哪一項可以用來區分氧氣與二氧化碳？",
+                  "options": [
+                    "兩者都是氣體，所以完全無法區分",
+                    "比較它們對燃燒的影響",
+                    "只比較容器大小",
+                    "只比較氣體體積"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "氧氣助燃，二氧化碳通常不助燃。"
+                },
+                {
+                  "question_id": "2-10-5-Q2",
+                  "difficulty": "easy",
+                  "question": "有甲、乙兩瓶氣體，甲使帶火星木條燃燒更旺，乙使火焰熄滅。甲、乙最可能分別為？",
+                  "options": [
+                    "氧氣、二氧化碳",
+                    "二氧化碳、氧氣",
+                    "氮氣、氧氣",
+                    "水蒸氣、氧氣"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "氧氣助燃，二氧化碳通常不助燃。"
+                },
+                {
+                  "question_id": "2-10-5-Q3",
+                  "difficulty": "medium",
+                  "question": "要用燃燒反應區分氧氣與二氧化碳，下列觀察何者合理？",
+                  "options": [
+                    "氧氣助燃；二氧化碳通常不助燃",
+                    "兩者都使火焰更旺",
+                    "兩者都一定燃燒",
+                    "兩者對燃燒完全相同"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "氧氣助燃，二氧化碳通常不助燃。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "COMPREHENSIVE",
+      "chapter_name": "Ch1～Ch2 綜合能力",
+      "sections": [
+        {
+          "section_id": "C",
+          "section_name": "綜合能力",
+          "skills": [
+            {
+              "skill_id": "C-1",
+              "skill_name": "能整合質量與體積計算密度",
+              "questions": [
+                {
+                  "question_id": "C-1-Q1",
+                  "difficulty": "easy",
+                  "question": "某同學量得物體質量為 30 g、體積為 10 cm³，則下列何者正確？",
+                  "options": [
+                    "密度為 0.3 g/cm³",
+                    "密度為 3 g/cm³",
+                    "密度為 20 g/cm³",
+                    "密度為 300 g/cm³"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "整合密度公式與單位。"
+                },
+                {
+                  "question_id": "C-1-Q2",
+                  "difficulty": "easy",
+                  "question": "某物體質量 42 g、體積 14 cm³，密度是多少？",
+                  "options": [
+                    "2 g/cm³",
+                    "3 g/cm³",
+                    "28 g/cm³",
+                    "56 g/cm³"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "整合密度公式與單位。"
+                },
+                {
+                  "question_id": "C-1-Q3",
+                  "difficulty": "medium",
+                  "question": "一金屬塊質量 120 g、體積 40 cm³，其密度為多少？",
+                  "options": [
+                    "0.33 g/cm³",
+                    "3 g/cm³",
+                    "80 g/cm³",
+                    "160 g/cm³"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "整合密度公式與單位。"
+                }
+              ]
+            },
+            {
+              "skill_id": "C-2",
+              "skill_name": "能正確寫出密度單位",
+              "questions": [
+                {
+                  "question_id": "C-2-Q1",
+                  "difficulty": "easy",
+                  "question": "進行密度計算時，若質量單位為 g、體積單位為 cm³，密度單位最適合寫成什麼？",
+                  "options": [
+                    "g",
+                    "cm³",
+                    "g/cm³",
+                    "cm³/g²"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "remediation": "密度單位＝質量單位／體積單位。"
+                },
+                {
+                  "question_id": "C-2-Q2",
+                  "difficulty": "easy",
+                  "question": "若質量用 kg、體積用 m³，密度單位應為何？",
+                  "options": [
+                    "kg/m³",
+                    "m³/kg",
+                    "kg×m³",
+                    "kg"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "密度單位＝質量單位／體積單位。"
+                },
+                {
+                  "question_id": "C-2-Q3",
+                  "difficulty": "medium",
+                  "question": "密度是質量除以體積，因此若質量用 g、體積用 mL，密度單位為？",
+                  "options": [
+                    "g/mL",
+                    "mL/g",
+                    "g×mL",
+                    "mL"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "密度單位＝質量單位／體積單位。"
+                }
+              ]
+            },
+            {
+              "skill_id": "C-3",
+              "skill_name": "能辨認操縱變因",
+              "questions": [
+                {
+                  "question_id": "C-3-Q1",
+                  "difficulty": "easy",
+                  "question": "某實驗只改變水的溫度，觀察食鹽溶解速度的變化，則「水溫」屬於哪一種變因？",
+                  "options": [
+                    "操縱變因",
+                    "應變變因",
+                    "控制變因",
+                    "完全無關的變因"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "操縱變因是研究者主動改變的因素。"
+                },
+                {
+                  "question_id": "C-3-Q2",
+                  "difficulty": "easy",
+                  "question": "研究「光照時間是否影響植物生長」，研究者主動設定不同光照時間。光照時間屬於？",
+                  "options": [
+                    "操縱變因",
+                    "應變變因",
+                    "控制變因",
+                    "誤差"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "操縱變因是研究者主動改變的因素。"
+                },
+                {
+                  "question_id": "C-3-Q3",
+                  "difficulty": "medium",
+                  "question": "想研究水溫對砂糖溶解速度的影響，實驗中特意設定 20°C、40°C、60°C。水溫屬於？",
+                  "options": [
+                    "操縱變因",
+                    "應變變因",
+                    "控制變因",
+                    "常數"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "操縱變因是研究者主動改變的因素。"
+                }
+              ]
+            },
+            {
+              "skill_id": "C-4",
+              "skill_name": "能辨認應變變因",
+              "questions": [
+                {
+                  "question_id": "C-4-Q1",
+                  "difficulty": "easy",
+                  "question": "在上述實驗中，「食鹽溶解所需時間」屬於哪一種變因？",
+                  "options": [
+                    "操縱變因",
+                    "應變變因",
+                    "控制變因",
+                    "固定不變的條件"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "應變變因是被觀察或測量的結果。"
+                },
+                {
+                  "question_id": "C-4-Q2",
+                  "difficulty": "easy",
+                  "question": "研究水溫對糖溶解速度時，記錄「完全溶解所需秒數」。這個秒數屬於？",
+                  "options": [
+                    "操縱變因",
+                    "應變變因",
+                    "控制變因",
+                    "無關變因"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "應變變因是被觀察或測量的結果。"
+                },
+                {
+                  "question_id": "C-4-Q3",
+                  "difficulty": "medium",
+                  "question": "研究肥料量對植物高度的影響時，最後測得的植物高度屬於？",
+                  "options": [
+                    "操縱變因",
+                    "應變變因",
+                    "控制變因",
+                    "實驗器材"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "應變變因是被觀察或測量的結果。"
+                }
+              ]
+            },
+            {
+              "skill_id": "C-5",
+              "skill_name": "能辨認控制變因",
+              "questions": [
+                {
+                  "question_id": "C-5-Q1",
+                  "difficulty": "easy",
+                  "question": "比較不同水溫對食鹽溶解速度的影響時，下列哪一項應盡量保持相同？",
+                  "options": [
+                    "水溫",
+                    "食鹽顆粒大小",
+                    "實驗結果",
+                    "溶解時間"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "除操縱變因外，其餘可能影響結果者應盡量固定。"
+                },
+                {
+                  "question_id": "C-5-Q2",
+                  "difficulty": "easy",
+                  "question": "要公平比較熱水與冷水中的糖溶解速度，哪一項最好保持相同？",
+                  "options": [
+                    "糖的質量",
+                    "水溫",
+                    "溶解時間結果",
+                    "實驗結論"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "除操縱變因外，其餘可能影響結果者應盡量固定。"
+                },
+                {
+                  "question_id": "C-5-Q3",
+                  "difficulty": "medium",
+                  "question": "研究攪拌速度對溶解時間的影響時，下列何者適合當控制變因？",
+                  "options": [
+                    "水量",
+                    "攪拌速度",
+                    "溶解時間",
+                    "研究問題"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "除操縱變因外，其餘可能影響結果者應盡量固定。"
+                }
+              ]
+            },
+            {
+              "skill_id": "C-6",
+              "skill_name": "能判斷實驗設計是否公平",
+              "questions": [
+                {
+                  "question_id": "C-6-Q1",
+                  "difficulty": "easy",
+                  "question": "某實驗要比較攪拌是否影響溶解速度，一組有攪拌、一組沒有攪拌，但兩組使用的水量與食鹽量不同。此實驗主要有何問題？",
+                  "options": [
+                    "控制變因沒有保持一致",
+                    "沒有使用任何器材",
+                    "不能使用食鹽",
+                    "不能觀察時間"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "公平實驗需控制除操縱變因外的其他重要條件。"
+                },
+                {
+                  "question_id": "C-6-Q2",
+                  "difficulty": "easy",
+                  "question": "比較兩種紙巾吸水力時，甲用 10 mL 水、乙用 50 mL 水，這樣的主要問題是？",
+                  "options": [
+                    "控制條件不一致",
+                    "沒有操縱變因",
+                    "沒有任何測量",
+                    "紙巾不能做實驗"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "公平實驗需控制除操縱變因外的其他重要條件。"
+                },
+                {
+                  "question_id": "C-6-Q3",
+                  "difficulty": "medium",
+                  "question": "想比較不同溫度下的溶解速度，但各組使用不同量的水與不同量的糖，會造成什麼問題？",
+                  "options": [
+                    "無法公平比較溫度影響",
+                    "結果一定更準確",
+                    "可以消除所有誤差",
+                    "與實驗設計無關"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "公平實驗需控制除操縱變因外的其他重要條件。"
+                }
+              ]
+            },
+            {
+              "skill_id": "C-7",
+              "skill_name": "能正確讀取實驗圖表",
+              "questions": [
+                {
+                  "question_id": "C-7-Q1",
+                  "difficulty": "easy",
+                  "question": "讀取實驗圖表時，下列哪一項做法最適當？",
+                  "options": [
+                    "先確認橫軸、縱軸代表的物理量與單位",
+                    "只看線條顏色",
+                    "不必看單位",
+                    "只看最後一個數據"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "養成先讀座標軸名稱與單位的習慣。"
+                },
+                {
+                  "question_id": "C-7-Q2",
+                  "difficulty": "easy",
+                  "question": "看到一張「時間－溫度」圖時，第一步應做什麼？",
+                  "options": [
+                    "確認橫軸、縱軸與單位",
+                    "只看最高點",
+                    "先猜答案",
+                    "忽略圖例"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "養成先讀座標軸名稱與單位的習慣。"
+                },
+                {
+                  "question_id": "C-7-Q3",
+                  "difficulty": "medium",
+                  "question": "讀科學圖表時，若沒有先看座標軸單位，最可能造成什麼問題？",
+                  "options": [
+                    "誤解數據代表的物理量",
+                    "一定讓圖變小",
+                    "不影響任何判讀",
+                    "會改變實驗數據"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "養成先讀座標軸名稱與單位的習慣。"
+                }
+              ]
+            },
+            {
+              "skill_id": "C-8",
+              "skill_name": "能處理明顯異常的實驗數據",
+              "questions": [
+                {
+                  "question_id": "C-8-Q1",
+                  "difficulty": "easy",
+                  "question": "若某次實驗數據與其他多次測量結果差異很大，較適當的做法為何？",
+                  "options": [
+                    "直接刪除，不需思考原因",
+                    "檢查實驗操作與測量是否出現問題",
+                    "將所有其他數據改成一樣",
+                    "宣稱實驗一定成功"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "remediation": "遇到異常值先檢查操作、器材與紀錄，不可任意刪改。"
+                },
+                {
+                  "question_id": "C-8-Q2",
+                  "difficulty": "easy",
+                  "question": "同一實驗大多數測量值約為 20 cm，卻有一次記成 200 cm。最適當的處理方式是？",
+                  "options": [
+                    "先檢查是否讀值或紀錄錯誤",
+                    "直接把200改成20且不記錄原因",
+                    "刪除全部資料",
+                    "把其他值都改成200"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "遇到異常值先檢查操作、器材與紀錄，不可任意刪改。"
+                },
+                {
+                  "question_id": "C-8-Q3",
+                  "difficulty": "medium",
+                  "question": "發現一筆數據與其他結果差異特別大時，科學上較適當的做法是？",
+                  "options": [
+                    "重新檢查操作、儀器與紀錄",
+                    "一定保留且不檢查",
+                    "一定刪除且不說明",
+                    "任意改成平均值"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "remediation": "遇到異常值先檢查操作、器材與紀錄，不可任意刪改。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

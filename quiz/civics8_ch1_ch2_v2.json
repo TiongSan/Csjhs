@@ -1,0 +1,1100 @@
+{
+  "metadata": {
+    "title": "國中八上公民 Ch1～Ch2",
+    "version": "2.0-reviewed",
+    "language": "zh-TW",
+    "question_type": "single_choice",
+    "options_per_question": 4,
+    "questions_per_skill": 3,
+    "storage_key": "civics8_ch1ch2_progress",
+    "theme_color": "#1d4ed8",
+    "icons": [
+      "🏛️",
+      "⚖️"
+    ],
+    "scope_note": "依114學年度翰林八上公民：Ch1國家與民主政治（1-1國家是如何形成的？、1-2如何判斷國家與政府的差異？、1-3民主國家的政治特色）；Ch2憲法與人權保障（2-1憲法和法律位階、2-2為何憲法是人民權利的保障書？）。",
+    "total_skills": 20,
+    "total_questions": 60,
+    "audit": {
+      "status": "content_reviewed_v2",
+      "total_skills": 20,
+      "total_questions": 60,
+      "checks": [
+        "章名與節名依114學年度翰林八上公民重新校正",
+        "Ch1民主政治改以民意、法治、政黨、責任政治為核心",
+        "Ch2章名修正為憲法與人權保障",
+        "法律位階依憲法與中央法規標準法校正",
+        "基本權利依中華民國憲法第7至23條相關規定校正",
+        "每細目3題，easy/medium/hard各1題",
+        "每題四選一且設定唯一最佳答案",
+        "A/B/C/D原始答案各15題",
+        "question_id與skill_id唯一",
+        "每題含explanation與remediation"
+      ]
+    }
+  },
+  "chapters": [
+    {
+      "chapter_id": "CH1",
+      "chapter_name": "Ch1 國家與民主政治",
+      "sections": [
+        {
+          "section_id": "1-1",
+          "section_name": "國家是如何形成的？",
+          "skills": [
+            {
+              "skill_id": "1-1-1",
+              "skill_name": "能辨認國家的四項基本要素",
+              "questions": [
+                {
+                  "question_id": "1-1-1-Q1",
+                  "difficulty": "easy",
+                  "question": "下列哪一組最符合國家的四項基本要素？",
+                  "options": [
+                    "人口、都市、軍隊、政黨",
+                    "市場、企業、交通、學校",
+                    "文化、宗教、語言、貨幣",
+                    "人民、領土、政府、主權"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "國家的基本構成要素通常包括人民、領土、政府與主權。",
+                  "remediation": "熟記國家的四項基本要素。"
+                },
+                {
+                  "question_id": "1-1-1-Q2",
+                  "difficulty": "medium",
+                  "question": "某地有固定人口、明確疆域與政府機關，但重大內政外交皆由另一國決定。最可能缺少哪一項國家要素？",
+                  "options": [
+                    "政府組織",
+                    "領土",
+                    "人民",
+                    "完整的主權"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "能否自主處理對內、對外事務，是判斷主權的重要線索。",
+                  "remediation": "分辨主權與其他國家要素。"
+                },
+                {
+                  "question_id": "1-1-1-Q3",
+                  "difficulty": "hard",
+                  "question": "下列情境何者最能顯示「政府」是國家構成要素之一？",
+                  "options": [
+                    "居民共同使用相同語言",
+                    "設置行政機關處理公共事務並執行法律",
+                    "人民喜歡相同運動",
+                    "境內有高山與河川"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "政府是國家執行公共權力、處理公共事務的統治組織。",
+                  "remediation": "由情境辨認政府要素。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-1-2",
+              "skill_name": "能理解人民、國民與國籍的關係",
+              "questions": [
+                {
+                  "question_id": "1-1-2-Q1",
+                  "difficulty": "easy",
+                  "question": "依我國憲法規定，具有中華民國國籍者稱為什麼？",
+                  "options": [
+                    "所有使用中文者",
+                    "所有納稅者",
+                    "所有在臺居住者",
+                    "中華民國國民"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "憲法第3條規定，具有中華民國國籍者為中華民國國民。",
+                  "remediation": "掌握國籍與國民身分的關係。"
+                },
+                {
+                  "question_id": "1-1-2-Q2",
+                  "difficulty": "medium",
+                  "question": "一名外國學生長期在臺就學，但未取得中華民國國籍。就法律身分而言，下列何者最合理？",
+                  "options": [
+                    "只要住滿一年就是國民",
+                    "只要繳稅就必然取得國籍",
+                    "不能只因居住在臺就視為中華民國國民",
+                    "只要會說中文就是國民"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "國民身分以國籍為重要判準，不單以居住時間、語言或納稅判斷。",
+                  "remediation": "分辨居民與國民。"
+                },
+                {
+                  "question_id": "1-1-2-Q3",
+                  "difficulty": "hard",
+                  "question": "某人同時具有長期居住事實與納稅紀錄，但沒有本國國籍。下列推論何者最適當？",
+                  "options": [
+                    "一定具有所有本國公民參政權",
+                    "一定是本國國民",
+                    "只要居住即可自動取得國籍",
+                    "是否為本國國民仍應看國籍身分"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "居住與納稅不等同取得國籍。",
+                  "remediation": "練習以法律身分判斷國民概念。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-1-3",
+              "skill_name": "能理解領土與政府的功能",
+              "questions": [
+                {
+                  "question_id": "1-1-3-Q1",
+                  "difficulty": "easy",
+                  "question": "國家行使統治權所及的空間範圍，稱為什麼？",
+                  "options": [
+                    "市場",
+                    "文化圈",
+                    "領土",
+                    "社區"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "領土是國家統治權所及的重要空間範圍。",
+                  "remediation": "掌握領土概念。"
+                },
+                {
+                  "question_id": "1-1-3-Q2",
+                  "difficulty": "medium",
+                  "question": "政府在國家運作中的主要功能為何？",
+                  "options": [
+                    "執行公共權力並處理公共事務",
+                    "只處理商業交易",
+                    "決定每個人的私人興趣",
+                    "取代所有家庭功能"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "政府負責制定或執行公共政策、維持公共秩序與提供公共服務。",
+                  "remediation": "理解政府在國家中的功能。"
+                },
+                {
+                  "question_id": "1-1-3-Q3",
+                  "difficulty": "hard",
+                  "question": "大型災害發生時，政府跨區調度人力、物資並發布避難措施，最能顯示政府哪一特性？",
+                  "options": [
+                    "統籌處理公共事務",
+                    "與公共安全無關",
+                    "只能處理私人糾紛",
+                    "只代表特定企業利益"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "大型災害涉及全體公共利益，需要政府統籌公共資源與治理。",
+                  "remediation": "由生活情境理解政府功能。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-1-4",
+              "skill_name": "能理解主權的對內最高性與對外獨立性",
+              "questions": [
+                {
+                  "question_id": "1-1-4-Q1",
+                  "difficulty": "easy",
+                  "question": "國家主權「對內」主要強調什麼？",
+                  "options": [
+                    "人民不得批評政府",
+                    "一定比其他國家強大",
+                    "在其領域內具有最高統治權",
+                    "政府永遠不能被更換"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "主權對內強調國家在其領域內具有最高統治權。",
+                  "remediation": "理解主權對內意義。"
+                },
+                {
+                  "question_id": "1-1-4-Q2",
+                  "difficulty": "medium",
+                  "question": "國家能自行決定外交政策，不受其他國家任意支配，最能表現主權哪一面向？",
+                  "options": [
+                    "對內最高性",
+                    "領土固定性",
+                    "對外獨立性",
+                    "人口同質性"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "主權對外強調國家具有獨立自主性。",
+                  "remediation": "分辨主權對內與對外。"
+                },
+                {
+                  "question_id": "1-1-4-Q3",
+                  "difficulty": "hard",
+                  "question": "某國可依法治理境內人民，也能自主與他國締結關係。最能綜合說明什麼？",
+                  "options": [
+                    "人民必須有相同文化",
+                    "國家不需要領土",
+                    "主權兼具對內最高性與對外獨立性",
+                    "政府不需遵守法律"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "兩種情況分別反映主權對內與對外的意義。",
+                  "remediation": "綜合判斷主權概念。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_id": "1-2",
+          "section_name": "如何判斷國家與政府的差異？",
+          "skills": [
+            {
+              "skill_id": "1-2-1",
+              "skill_name": "能區分國家與政府的概念",
+              "questions": [
+                {
+                  "question_id": "1-2-1-Q1",
+                  "difficulty": "easy",
+                  "question": "下列關於國家與政府的敘述，何者正確？",
+                  "options": [
+                    "更換政府等於國家消失",
+                    "國家只包含政府機關",
+                    "政府是國家的構成要素之一",
+                    "政府與國家完全相同"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "國家包含人民、領土、政府、主權；政府是其中的統治組織。",
+                  "remediation": "分辨國家與政府。"
+                },
+                {
+                  "question_id": "1-2-1-Q2",
+                  "difficulty": "medium",
+                  "question": "民主國家選舉後執政團隊更替，通常代表什麼？",
+                  "options": [
+                    "政府可能更替，但國家仍持續存在",
+                    "國家必然消失",
+                    "領土必然重新劃分",
+                    "所有國民身分失效"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "政府可隨選舉更替，國家則具有較持續的存在。",
+                  "remediation": "理解政府更替與國家延續。"
+                },
+                {
+                  "question_id": "1-2-1-Q3",
+                  "difficulty": "hard",
+                  "question": "某人說：「我反對現任政府政策，所以這個國家已不存在。」這句話主要混淆了什麼？",
+                  "options": [
+                    "人民與領土完全相同",
+                    "政府與國家是不同層次的概念",
+                    "主權與文化相同",
+                    "國民與外國人相同"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "批評或更換政府不等於國家本身消失。",
+                  "remediation": "用情境辨認國家與政府差異。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-2-2",
+              "skill_name": "能比較國家與政府在穩定性及範圍上的差異",
+              "questions": [
+                {
+                  "question_id": "1-2-2-Q1",
+                  "difficulty": "easy",
+                  "question": "相較於政府，國家的概念通常如何？",
+                  "options": [
+                    "涵蓋範圍較廣",
+                    "範圍一定較小",
+                    "只存在於選舉期間",
+                    "只指行政機關"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "國家包含政府在內的多項構成要素，範圍較廣。",
+                  "remediation": "理解國家概念範圍。"
+                },
+                {
+                  "question_id": "1-2-2-Q2",
+                  "difficulty": "medium",
+                  "question": "政黨輪替後，最可能立即改變的是哪一項？",
+                  "options": [
+                    "國家四要素全部消失",
+                    "執政團隊與部分政策方向",
+                    "國家領土必然改變",
+                    "所有人民國籍自動改變"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "政黨輪替會改變政府領導與政策，但不等於國家本身改變。",
+                  "remediation": "比較政府與國家的穩定程度。"
+                },
+                {
+                  "question_id": "1-2-2-Q3",
+                  "difficulty": "hard",
+                  "question": "若要判斷某項變化屬於「政府改變」而非「國家改變」，下列哪個例子最適合？",
+                  "options": [
+                    "國家主權消失",
+                    "領土被重新劃定",
+                    "原有國家解體",
+                    "選舉後由另一政黨組成新執政團隊"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "執政團隊更換屬政府層次變化，不必然造成國家本身改變。",
+                  "remediation": "練習判斷國家與政府層次。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_id": "1-3",
+          "section_name": "民主國家的政治特色",
+          "skills": [
+            {
+              "skill_id": "1-3-1",
+              "skill_name": "能理解民意政治與主權在民",
+              "questions": [
+                {
+                  "question_id": "1-3-1-Q1",
+                  "difficulty": "easy",
+                  "question": "民主政治中「主權在民」主要表示什麼？",
+                  "options": [
+                    "少數人可永久統治",
+                    "人民不得參與公共事務",
+                    "國家權力的正當性來自人民",
+                    "政府權力不受限制"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "民主政治強調國家主權屬於人民。",
+                  "remediation": "掌握主權在民與民意政治。"
+                },
+                {
+                  "question_id": "1-3-1-Q2",
+                  "difficulty": "medium",
+                  "question": "政府在重大政策形成前蒐集民眾意見，最能體現哪一民主特色？",
+                  "options": [
+                    "世襲政治",
+                    "神權政治",
+                    "民意政治",
+                    "軍事統治"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "民意政治強調政府應回應人民意見與需求。",
+                  "remediation": "理解民意政治的表現。"
+                },
+                {
+                  "question_id": "1-3-1-Q3",
+                  "difficulty": "hard",
+                  "question": "人民可透過選舉、公投、陳情等方式表達公共意見，其共同意義最接近什麼？",
+                  "options": [
+                    "讓國家政策與權力運作受到民意影響",
+                    "使法律不再重要",
+                    "確保所有人意見完全一致",
+                    "取消政府決策責任"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "民主制度提供多種民意表達與參與管道。",
+                  "remediation": "由多種參與方式統整民意政治。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-3-2",
+              "skill_name": "能理解法治政治",
+              "questions": [
+                {
+                  "question_id": "1-3-2-Q1",
+                  "difficulty": "easy",
+                  "question": "民主國家的「法治政治」最重視下列哪一點？",
+                  "options": [
+                    "法律只約束人民",
+                    "政府與人民皆受法律規範",
+                    "政府可不受法律拘束",
+                    "執政者可隨意改變規則"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "法治政治強調公權力與人民都受法律規範。",
+                  "remediation": "掌握法治政治。"
+                },
+                {
+                  "question_id": "1-3-2-Q2",
+                  "difficulty": "medium",
+                  "question": "政府即使為追求政策目標，也必須依法行政。這最能表現哪種民主特色？",
+                  "options": [
+                    "法治政治",
+                    "世襲政治",
+                    "神權政治",
+                    "政黨政治"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "依法行政是法治政治的重要表現。",
+                  "remediation": "連結依法行政與法治政治。"
+                },
+                {
+                  "question_id": "1-3-2-Q3",
+                  "difficulty": "hard",
+                  "question": "某政府因不滿批評者，未依法律程序就任意處罰。最主要違反哪項民主特色？",
+                  "options": [
+                    "責任政治中的選舉競爭",
+                    "政黨政治",
+                    "法治政治",
+                    "民意政治"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "政府行使權力須有法律依據並遵守程序。",
+                  "remediation": "由反例判斷法治政治。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-3-3",
+              "skill_name": "能理解政黨政治",
+              "questions": [
+                {
+                  "question_id": "1-3-3-Q1",
+                  "difficulty": "easy",
+                  "question": "民主國家允許不同政黨公平競爭，主要體現哪一特色？",
+                  "options": [
+                    "軍事政治",
+                    "政黨政治",
+                    "封建政治",
+                    "世襲政治"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "政黨政治讓不同政黨提出主張並競爭人民支持。",
+                  "remediation": "掌握政黨政治。"
+                },
+                {
+                  "question_id": "1-3-3-Q2",
+                  "difficulty": "medium",
+                  "question": "在野黨監督執政黨、提出替代政策，主要有何民主功能？",
+                  "options": [
+                    "取消人民選擇",
+                    "使選舉失去作用",
+                    "確保單一政黨永久執政",
+                    "增加政治競爭與監督"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "政黨競爭可提供不同選擇，也形成對執政者的監督。",
+                  "remediation": "理解執政黨與在野黨。"
+                },
+                {
+                  "question_id": "1-3-3-Q3",
+                  "difficulty": "hard",
+                  "question": "政黨輪替之所以能成為民主政治的重要現象，主要因為什麼？",
+                  "options": [
+                    "選舉結果不影響政府組成",
+                    "所有政黨政策必須相同",
+                    "政治權力可透過制度和平更替",
+                    "在野黨不能批評政府"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "公平競爭與選舉讓執政權可以和平轉移。",
+                  "remediation": "理解政黨競爭與權力和平更替。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-3-4",
+              "skill_name": "能理解責任政治",
+              "questions": [
+                {
+                  "question_id": "1-3-4-Q1",
+                  "difficulty": "easy",
+                  "question": "民主政治中的「責任政治」主要要求政府什麼？",
+                  "options": [
+                    "只要有多數支持就不受法律限制",
+                    "政府官員永不下台",
+                    "對施政結果與行為負責",
+                    "不必向人民說明政策"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "責任政治強調掌權者必須對權力行使及施政結果承擔責任。",
+                  "remediation": "掌握責任政治。"
+                },
+                {
+                  "question_id": "1-3-4-Q2",
+                  "difficulty": "medium",
+                  "question": "政府官員違法失職而依法受到究責，最能體現哪一民主特色？",
+                  "options": [
+                    "封建政治",
+                    "責任政治",
+                    "世襲政治",
+                    "神權政治"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "權力伴隨責任，違法失職應接受法律或政治責任。",
+                  "remediation": "理解政治責任與法律責任。"
+                },
+                {
+                  "question_id": "1-3-4-Q3",
+                  "difficulty": "hard",
+                  "question": "選民可在下次選舉以選票評價執政者施政，這與責任政治有何關聯？",
+                  "options": [
+                    "執政者須接受人民定期檢驗",
+                    "執政者可永久免責",
+                    "選舉與政府責任無關",
+                    "人民只能服從政府"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "定期選舉讓執政者必須面對人民對施政的評價。",
+                  "remediation": "連結選舉與責任政治。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-3-5",
+              "skill_name": "能綜合判斷民主政治四項特色",
+              "questions": [
+                {
+                  "question_id": "1-3-5-Q1",
+                  "difficulty": "easy",
+                  "question": "下列哪一組最符合課本所說的民主政治特色？",
+                  "options": [
+                    "民意政治、法治政治、政黨政治、責任政治",
+                    "世襲政治、軍事政治、神權政治、封建政治",
+                    "外交政治、都市政治、地方政治、文化政治",
+                    "市場政治、宗教政治、家族政治、企業政治"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "翰林八上將民主國家的政治特色整理為民意、法治、政黨與責任政治。",
+                  "remediation": "熟記民主政治四項特色。"
+                },
+                {
+                  "question_id": "1-3-5-Q2",
+                  "difficulty": "medium",
+                  "question": "「在野黨批評政策、政府依法回應、人民在選舉中評價執政表現」同時涉及哪些民主特色？",
+                  "options": [
+                    "只有民意政治",
+                    "與民主政治無關",
+                    "只有世襲政治",
+                    "政黨政治、法治政治與責任政治"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "政黨競爭、依法行使權力、接受選民檢驗分別對應多項民主特色。",
+                  "remediation": "練習跨概念整合。"
+                },
+                {
+                  "question_id": "1-3-5-Q3",
+                  "difficulty": "hard",
+                  "question": "一國雖定期舉辦選舉，但禁止反對黨活動，政府也可不依法行事。若依課本四項特色判斷，哪個結論最合理？",
+                  "options": [
+                    "僅有選舉不足以代表民主政治各項特色皆具備",
+                    "政府不依法行事仍屬法治政治",
+                    "只要有選舉就完全符合民主政治",
+                    "禁止政黨競爭有助責任政治"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "民主政治不能只看是否投票，還要看法治、政黨競爭與責任機制。",
+                  "remediation": "用整體指標判斷民主政治。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "CH2",
+      "chapter_name": "Ch2 憲法與人權保障",
+      "sections": [
+        {
+          "section_id": "2-1",
+          "section_name": "憲法和法律位階",
+          "skills": [
+            {
+              "skill_id": "2-1-1",
+              "skill_name": "能辨認法律的特性與制定方式",
+              "questions": [
+                {
+                  "question_id": "2-1-1-Q1",
+                  "difficulty": "easy",
+                  "question": "依中央法規標準法，法律應經哪個機關通過，再由總統公布？",
+                  "options": [
+                    "司法院",
+                    "行政院",
+                    "考試院",
+                    "立法院"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "中央法規標準法規定，法律應經立法院通過，總統公布。",
+                  "remediation": "掌握法律的制定方式。"
+                },
+                {
+                  "question_id": "2-1-1-Q2",
+                  "difficulty": "medium",
+                  "question": "下列哪一名稱可能是中央法規標準法所稱的「法律」名稱？",
+                  "options": [
+                    "辦法",
+                    "條例",
+                    "準則",
+                    "細則"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "法律可定名為法、律、條例或通則；辦法、準則、細則通常屬命令名稱。",
+                  "remediation": "分辨法律與命令的名稱。"
+                },
+                {
+                  "question_id": "2-1-1-Q3",
+                  "difficulty": "hard",
+                  "question": "某規範名稱為「辦法」，由行政機關發布。若依一般法規分類，最可能屬於哪一層級？",
+                  "options": [
+                    "私人契約",
+                    "命令",
+                    "憲法",
+                    "法律"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "辦法是中央法規標準法列舉的命令名稱之一。",
+                  "remediation": "用名稱判斷法規類型。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-1-2",
+              "skill_name": "能理解憲法的最高法律位階與功能",
+              "questions": [
+                {
+                  "question_id": "2-1-2-Q1",
+                  "difficulty": "easy",
+                  "question": "我國法規範體系中，位階最高的是什麼？",
+                  "options": [
+                    "命令",
+                    "行政機關內規",
+                    "憲法",
+                    "法律"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "憲法是國家根本大法，具有最高法律位階。",
+                  "remediation": "掌握憲法最高性。"
+                },
+                {
+                  "question_id": "2-1-2-Q2",
+                  "difficulty": "medium",
+                  "question": "憲法除了保障人民基本權利，也規範什麼？",
+                  "options": [
+                    "國家基本制度與政府權力運作",
+                    "每個家庭的生活習慣",
+                    "個人每日作息",
+                    "所有私人買賣價格"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "憲法規範國家基本制度、政府權力並保障人民權利。",
+                  "remediation": "理解憲法的主要功能。"
+                },
+                {
+                  "question_id": "2-1-2-Q3",
+                  "difficulty": "hard",
+                  "question": "為何一般法律不得牴觸憲法？",
+                  "options": [
+                    "因法律位階高於憲法",
+                    "因所有法規位階相同",
+                    "因命令可修改憲法",
+                    "因憲法具有最高法規範地位"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "法律須受憲法拘束，與憲法牴觸者不具優先效力。",
+                  "remediation": "理解憲法優位。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-1-3",
+              "skill_name": "能理解憲法、法律、命令的位階關係",
+              "questions": [
+                {
+                  "question_id": "2-1-3-Q1",
+                  "difficulty": "easy",
+                  "question": "下列法規位階由高至低何者正確？",
+                  "options": [
+                    "命令→法律→憲法",
+                    "憲法→法律→命令",
+                    "法律→憲法→命令",
+                    "三者完全相同"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "基本位階為憲法高於法律，法律高於命令。",
+                  "remediation": "熟記法規位階。"
+                },
+                {
+                  "question_id": "2-1-3-Q2",
+                  "difficulty": "medium",
+                  "question": "行政命令內容若與法律牴觸，依位階原則何者較正確？",
+                  "options": [
+                    "兩者效力完全相同",
+                    "命令必然優先",
+                    "命令不得牴觸法律",
+                    "只看公布日期"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "中央法規標準法第11條明定命令不得牴觸憲法或法律。",
+                  "remediation": "理解下位規範不得牴觸上位規範。"
+                },
+                {
+                  "question_id": "2-1-3-Q3",
+                  "difficulty": "hard",
+                  "question": "某行政機關以命令增加法律未授權的重大人民義務，首先應檢查哪個問題？",
+                  "options": [
+                    "是否逾越上位法律的授權與限制",
+                    "發布機關辦公地點",
+                    "命令名稱是否好記",
+                    "社群網站支持人數"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "命令受法律與憲法拘束，不能任意逾越授權。",
+                  "remediation": "用位階與授權判斷情境。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-1-4",
+              "skill_name": "能應用法律位階處理法規衝突",
+              "questions": [
+                {
+                  "question_id": "2-1-4-Q1",
+                  "difficulty": "easy",
+                  "question": "下位規範與上位規範牴觸時，原則上應優先遵循哪一方？",
+                  "options": [
+                    "上位規範",
+                    "下位規範",
+                    "字數較多者",
+                    "較容易執行者"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "法規位階制度要求下位規範不得牴觸上位規範。",
+                  "remediation": "掌握法規衝突原則。"
+                },
+                {
+                  "question_id": "2-1-4-Q2",
+                  "difficulty": "medium",
+                  "question": "若法律與憲法牴觸，最符合我國法規位階精神的說法為何？",
+                  "options": [
+                    "行政命令可決定何者優先",
+                    "法律不得牴觸憲法",
+                    "憲法只供參考",
+                    "法律一定優先"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "法律受憲法拘束。",
+                  "remediation": "應用憲法優位原則。"
+                },
+                {
+                  "question_id": "2-1-4-Q3",
+                  "difficulty": "hard",
+                  "question": "設置法規位階最重要的意義之一為何？",
+                  "options": [
+                    "使行政機關可任意改變法律",
+                    "維持法規體系一致並限制較低位階規範",
+                    "避免任何法律被修改",
+                    "讓各規範互相矛盾"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "位階制度建立規範間的拘束關係，維持法秩序一致性。",
+                  "remediation": "理解法規位階的制度功能。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_id": "2-2",
+          "section_name": "為何憲法是人民權利的保障書？",
+          "skills": [
+            {
+              "skill_id": "2-2-1",
+              "skill_name": "能辨認平等權",
+              "questions": [
+                {
+                  "question_id": "2-2-1-Q1",
+                  "difficulty": "easy",
+                  "question": "憲法保障人民在法律上一律平等，主要屬於哪一類基本權利？",
+                  "options": [
+                    "受益權",
+                    "平等權",
+                    "自由權",
+                    "參政權"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "憲法第7條保障法律上的平等。",
+                  "remediation": "熟記平等權。"
+                },
+                {
+                  "question_id": "2-2-1-Q2",
+                  "difficulty": "medium",
+                  "question": "政府若只因性別而無正當理由給予人民不同法律待遇，最可能涉及哪項權利？",
+                  "options": [
+                    "訴訟權",
+                    "選舉權",
+                    "秘密通訊自由",
+                    "平等權"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "無正當理由的差別待遇可能涉及平等權問題。",
+                  "remediation": "用情境辨認平等權。"
+                },
+                {
+                  "question_id": "2-2-1-Q3",
+                  "difficulty": "hard",
+                  "question": "下列何者最能正確理解平等權？",
+                  "options": [
+                    "每個人的結果都必須完全一樣",
+                    "平等不代表所有人在任何情況都必須獲得完全相同待遇",
+                    "所有差別待遇一律違憲",
+                    "只有公務員享有平等權"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "平等權重點在避免欠缺正當理由的差別待遇。",
+                  "remediation": "理解平等不是機械式相同。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-2-2",
+              "skill_name": "能辨認自由權",
+              "questions": [
+                {
+                  "question_id": "2-2-2-Q1",
+                  "difficulty": "easy",
+                  "question": "人民公開表達對公共政策的意見，最直接涉及哪項基本權利？",
+                  "options": [
+                    "訴訟權",
+                    "選舉權",
+                    "工作權",
+                    "言論自由"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "憲法第11條保障言論、講學、著作及出版自由。",
+                  "remediation": "辨認言論自由。"
+                },
+                {
+                  "question_id": "2-2-2-Q2",
+                  "difficulty": "medium",
+                  "question": "未經合法依據任意拆閱他人私人信件，最直接涉及哪項權利？",
+                  "options": [
+                    "財產權",
+                    "受國民教育權",
+                    "參政權",
+                    "秘密通訊自由"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "憲法第12條保障秘密通訊自由。",
+                  "remediation": "辨認秘密通訊自由。"
+                },
+                {
+                  "question_id": "2-2-2-Q3",
+                  "difficulty": "hard",
+                  "question": "人民依法成立社團推動公共議題，最主要受到哪項自由保障？",
+                  "options": [
+                    "生存權",
+                    "訴願權",
+                    "結社自由",
+                    "應考試權"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "憲法第14條保障集會及結社自由。",
+                  "remediation": "由情境辨認自由權。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-2-3",
+              "skill_name": "能辨認受益權",
+              "questions": [
+                {
+                  "question_id": "2-2-3-Q1",
+                  "difficulty": "easy",
+                  "question": "人民依法向法院提起訴訟，依課本權利分類主要屬於哪一類？",
+                  "options": [
+                    "參政權",
+                    "平等權",
+                    "受益權",
+                    "言論自由"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "請願、訴願、訴訟等權利在國中公民教材常歸入受益權。",
+                  "remediation": "熟記受益權的重要例子。"
+                },
+                {
+                  "question_id": "2-2-3-Q2",
+                  "difficulty": "medium",
+                  "question": "人民不服行政處分，依法提起訴願或行政訴訟，主要是在行使什麼功能？",
+                  "options": [
+                    "行使秘密通訊自由",
+                    "改變國籍",
+                    "參與政黨競選",
+                    "透過國家制度尋求權利救濟"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "訴願與訴訟提供人民依法尋求救濟的管道。",
+                  "remediation": "理解受益權中的權利救濟。"
+                },
+                {
+                  "question_id": "2-2-3-Q3",
+                  "difficulty": "hard",
+                  "question": "自由權與受益權相比，受益權較常強調哪一點？",
+                  "options": [
+                    "人民可依法請求國家提供一定制度、服務或救濟",
+                    "只保障私人言論",
+                    "只與投票有關",
+                    "國家完全不得有任何作為"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "受益權通常涉及人民對國家的積極請求或制度保障。",
+                  "remediation": "比較自由權與受益權。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-2-4",
+              "skill_name": "能辨認參政權",
+              "questions": [
+                {
+                  "question_id": "2-2-4-Q1",
+                  "difficulty": "easy",
+                  "question": "人民依法投票選出公職人員，主要屬於哪類基本權利？",
+                  "options": [
+                    "平等權",
+                    "自由權",
+                    "受益權",
+                    "參政權"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "選舉權屬參政權。",
+                  "remediation": "熟記參政權。"
+                },
+                {
+                  "question_id": "2-2-4-Q2",
+                  "difficulty": "medium",
+                  "question": "憲法第17條所列的選舉、罷免、創制、複決，主要屬於哪一類權利？",
+                  "options": [
+                    "自由權",
+                    "財產權",
+                    "受益權",
+                    "參政權"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "選舉、罷免、創制、複決都是人民參與政治的重要權利。",
+                  "remediation": "掌握參政權內容。"
+                },
+                {
+                  "question_id": "2-2-4-Q3",
+                  "difficulty": "hard",
+                  "question": "人民依法參與全國性公民投票，最直接表現參政權的哪項功能？",
+                  "options": [
+                    "參與公共決策",
+                    "保障財產使用",
+                    "請求法院審判",
+                    "保護私人通訊"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "公民投票讓人民直接參與公共議題的決定。",
+                  "remediation": "理解參政權的政治參與功能。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-2-5",
+              "skill_name": "能理解未列舉權利及基本權利的限制",
+              "questions": [
+                {
+                  "question_id": "2-2-5-Q1",
+                  "difficulty": "easy",
+                  "question": "憲法沒有逐一寫出的自由與權利，是否可能仍受憲法保障？",
+                  "options": [
+                    "只有政府官員可主張",
+                    "可能，符合憲法第22條條件者仍可受保障",
+                    "不可能，未列舉就一定沒有保障",
+                    "只有選舉期間才受保障"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "憲法第22條保障其他不妨害社會秩序、公共利益的自由與權利。",
+                  "remediation": "理解未列舉權利。"
+                },
+                {
+                  "question_id": "2-2-5-Q2",
+                  "difficulty": "medium",
+                  "question": "憲法保障基本權利，是否代表所有權利在任何情況下都不能限制？",
+                  "options": [
+                    "不是，符合憲法條件時得以法律作必要限制",
+                    "只要多數人同意即可任意限制",
+                    "是，任何情況都絕對不能限制",
+                    "只有政府沒有權利"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "憲法第23條容許為特定目的且有必要時，以法律限制自由權利。",
+                  "remediation": "理解基本權利限制原則。"
+                },
+                {
+                  "question_id": "2-2-5-Q3",
+                  "difficulty": "hard",
+                  "question": "某規定以維護公共安全為目的限制集會，但限制範圍明顯遠超實際需要。最值得檢查哪一點？",
+                  "options": [
+                    "人民是否有國籍",
+                    "限制是否符合必要程度",
+                    "國家是否有領土",
+                    "政府是否有辦公大樓"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "權利限制除目的外，也須符合必要性要求，不能過度。",
+                  "remediation": "用必要性觀念判斷權利限制。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1094 @@
+{
+  "metadata": {
+    "title": "國中八上歷史 Ch1～Ch2",
+    "version": "2.0-reviewed",
+    "language": "zh-TW",
+    "question_type": "single_choice",
+    "options_per_question": 4,
+    "questions_per_skill": 3,
+    "storage_key": "history8_ch1ch2_progress",
+    "theme_color": "#92400e",
+    "icons": [
+      "🏺",
+      "🧭"
+    ],
+    "scope_note": "依114學年度翰林八上歷史：Ch1商周至隋唐的國家與社會（1-1從封建到郡縣、1-2政權維繫與選才制度）；Ch2商周至隋唐的民族與文化（2-1商周至隋唐的民族關係、2-2各民族文化的交流與影響）。",
+    "total_skills": 20,
+    "total_questions": 60,
+    "audit": {
+      "status": "content_reviewed_v2",
+      "total_skills": 20,
+      "total_questions": 60,
+      "checks": [
+        "對照114學年度翰林八上章節與節名",
+        "補足編戶賦役、經學太學、統治正當性",
+        "Ch2調整為民族關係與文化交流核心內容",
+        "加入胡漢生活文化、佛教、新羅/日本、造紙術西傳、吐蕃和親",
+        "每細目3題，easy/medium/hard各1題",
+        "每題四選一且唯一最佳答案",
+        "answer_index與answer_label一致",
+        "A/B/C/D原始答案各15題",
+        "question_id與skill_id唯一",
+        "每題含explanation與remediation"
+      ]
+    }
+  },
+  "chapters": [
+    {
+      "chapter_id": "CH1",
+      "chapter_name": "Ch1 商周至隋唐的國家與社會",
+      "sections": [
+        {
+          "section_id": "1-1",
+          "section_name": "從封建到郡縣",
+          "skills": [
+            {
+              "skill_id": "1-1-1",
+              "skill_name": "能說明西周封建、宗法與禮樂制度的關係",
+              "questions": [
+                {
+                  "question_id": "1-1-1-Q1",
+                  "difficulty": "easy",
+                  "question": "西周統治者將土地與人民分封給諸侯，主要是透過哪一制度治理廣大地區？",
+                  "options": [
+                    "郡縣制度",
+                    "行省制度",
+                    "科舉制度",
+                    "封建制度"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "西周以分封諸侯的方式建立封國，形成封建制度。",
+                  "remediation": "複習封建制度的分封與世襲特色。"
+                },
+                {
+                  "question_id": "1-1-1-Q2",
+                  "difficulty": "medium",
+                  "question": "西周宗法制度最重視下列哪一項關係？",
+                  "options": [
+                    "商業財富與城市規模",
+                    "軍功與土地買賣",
+                    "考試成績與官職高低",
+                    "血緣親疏與嫡長繼承"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "宗法制度以血緣親疏與嫡長子繼承為核心，用來維持貴族秩序。",
+                  "remediation": "掌握宗法制度與貴族身分的關係。"
+                },
+                {
+                  "question_id": "1-1-1-Q3",
+                  "difficulty": "hard",
+                  "question": "某貴族必須依其身分使用規定等級的禮器、服飾與儀式，不得逾越。這最能反映哪一制度？",
+                  "options": [
+                    "察舉制度",
+                    "禮樂制度",
+                    "科舉制度",
+                    "郡縣制度"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "禮樂制度以身分等級規範貴族的行為與儀式。",
+                  "remediation": "分辨封建、宗法與禮樂制度的功能。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-1-2",
+              "skill_name": "能理解東周封建秩序瓦解與百家爭鳴的背景",
+              "questions": [
+                {
+                  "question_id": "1-1-2-Q1",
+                  "difficulty": "easy",
+                  "question": "春秋戰國時期周天子權威衰落後，最明顯的政治現象為何？",
+                  "options": [
+                    "各國停止戰爭",
+                    "地方官全由中央任命",
+                    "皇帝直接統一全國",
+                    "諸侯爭霸與兼併"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "東周王室衰微後，諸侯勢力坐大，春秋爭霸、戰國兼併日益激烈。",
+                  "remediation": "掌握東周封建瓦解的政治現象。"
+                },
+                {
+                  "question_id": "1-1-2-Q2",
+                  "difficulty": "medium",
+                  "question": "春秋戰國時代出現百家爭鳴，與當時哪一背景關係最密切？",
+                  "options": [
+                    "天下已長期統一安定",
+                    "科舉制度競爭激烈",
+                    "政治社會秩序劇烈變動",
+                    "海上貿易完全取代農業"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "政治與社會秩序變動促使思想家提出不同的治國與社會主張。",
+                  "remediation": "連結時代變局與百家爭鳴。"
+                },
+                {
+                  "question_id": "1-1-2-Q3",
+                  "difficulty": "hard",
+                  "question": "某思想家主張以嚴格法令與賞罰強化國君權力。這類主張最可能受到哪個戰國需求重視？",
+                  "options": [
+                    "取消法律與行政制度",
+                    "恢復諸侯世襲而削弱國君",
+                    "以宗教儀式取代政治治理",
+                    "富國強兵與建立強力政權"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "戰國列國為競逐生存與統一，重視能強化國家控制與軍事能力的政策。",
+                  "remediation": "理解戰國變法與法家思想的時代背景。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-1-3",
+              "skill_name": "能說明秦朝郡縣制與統一措施",
+              "questions": [
+                {
+                  "question_id": "1-1-3-Q1",
+                  "difficulty": "easy",
+                  "question": "秦統一後，在地方行政上全面推行何種制度？",
+                  "options": [
+                    "封建制",
+                    "九品官人法",
+                    "郡縣制",
+                    "察舉制"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "秦將全國劃分郡縣，由中央任命地方官員。",
+                  "remediation": "熟記秦朝郡縣制。"
+                },
+                {
+                  "question_id": "1-1-3-Q2",
+                  "difficulty": "medium",
+                  "question": "郡縣制與西周封建制度最大的差異之一為何？",
+                  "options": [
+                    "郡縣官員由中央任免",
+                    "封建制度沒有任何地方統治者",
+                    "郡縣長官以家族世襲",
+                    "郡縣不受中央政府管理"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "郡縣長官由中央任免，封建諸侯則具有世襲封地與身分。",
+                  "remediation": "比較封建與郡縣。"
+                },
+                {
+                  "question_id": "1-1-3-Q3",
+                  "difficulty": "hard",
+                  "question": "秦統一文字、貨幣、度量衡，與推行郡縣制的共同效果為何？",
+                  "options": [
+                    "有助於加強國家整合與中央控制",
+                    "削弱跨區域交通與交易",
+                    "使各地制度差異擴大",
+                    "讓諸侯重新取得世襲封地"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "行政制度與各項標準統一，有助中央控制與全國整合。",
+                  "remediation": "理解秦代統一措施的整體目的。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-1-4",
+              "skill_name": "能理解編戶與賦役對帝國治理的重要性",
+              "questions": [
+                {
+                  "question_id": "1-1-4-Q1",
+                  "difficulty": "easy",
+                  "question": "秦漢政府將人民按戶籍登記，其重要目的之一為何？",
+                  "options": [
+                    "取消中央政府對地方的管理",
+                    "讓人民自行決定是否納稅",
+                    "掌握人口以徵收賦稅與徵發徭役",
+                    "恢復諸侯世襲制度"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "編戶可讓國家掌握人口與戶口，作為賦稅、徭役等治理基礎。",
+                  "remediation": "複習編戶、賦稅與徭役的關係。"
+                },
+                {
+                  "question_id": "1-1-4-Q2",
+                  "difficulty": "medium",
+                  "question": "相較於封建時代由貴族層層統治，編戶制度更能幫助帝國做到什麼？",
+                  "options": [
+                    "完全取消所有地方行政",
+                    "讓貴族永久免稅",
+                    "直接掌握一般人民與資源",
+                    "使人民不再受國家管理"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "編戶使中央集權國家能較直接掌握人民、稅收與勞役。",
+                  "remediation": "理解中央集權下國家與人民關係的改變。"
+                },
+                {
+                  "question_id": "1-1-4-Q3",
+                  "difficulty": "hard",
+                  "question": "若政府建立戶籍、統一徵稅標準並由地方官直接執行，這最能反映哪一趨勢？",
+                  "options": [
+                    "中央政府逐漸退出地方",
+                    "世襲貴族取代官僚",
+                    "國家對基層社會控制增強",
+                    "封建諸侯勢力擴張"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "戶籍、稅制與官僚行政讓帝國更直接控制地方社會。",
+                  "remediation": "從制度材料判斷中央集權趨勢。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-1-5",
+              "skill_name": "能綜合比較封建與郡縣兩種治理模式",
+              "questions": [
+                {
+                  "question_id": "1-1-5-Q1",
+                  "difficulty": "easy",
+                  "question": "下列哪一項最符合封建制度？",
+                  "options": [
+                    "地方長官一律由皇帝任免",
+                    "地方行政區稱為郡縣且無封國",
+                    "諸侯封國與爵位具有世襲性",
+                    "官員主要由科舉錄取"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "封建制度的重要特色是分封與世襲。",
+                  "remediation": "整理封建制度的核心特色。"
+                },
+                {
+                  "question_id": "1-1-5-Q2",
+                  "difficulty": "medium",
+                  "question": "下列哪一項最符合郡縣制度？",
+                  "options": [
+                    "中央可任免地方官員",
+                    "諸侯與天子以血緣維繫為主",
+                    "地方不需服從中央法令",
+                    "地方統治權固定由同一家族繼承"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "郡縣制中地方官員屬官僚，任免權掌握在中央。",
+                  "remediation": "整理郡縣制度的核心特色。"
+                },
+                {
+                  "question_id": "1-1-5-Q3",
+                  "difficulty": "hard",
+                  "question": "從西周封建到秦代郡縣的轉變，最適合用哪個方向概括？",
+                  "options": [
+                    "由郡縣制度走向部落聯盟",
+                    "由貴族世襲分權走向官僚中央集權",
+                    "由考試選官走向宗法分封",
+                    "由中央集權走向諸侯世襲分權"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "政治體制逐漸由世襲貴族分權轉向中央任命官僚的帝國治理。",
+                  "remediation": "建立封建到郡縣的長期政治變遷概念。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_id": "1-2",
+          "section_name": "政權維繫與選才制度",
+          "skills": [
+            {
+              "skill_id": "1-2-1",
+              "skill_name": "能說明漢代察舉與太學、經學的關係",
+              "questions": [
+                {
+                  "question_id": "1-2-1-Q1",
+                  "difficulty": "easy",
+                  "question": "漢代由地方官考察並推薦人才給中央任官，稱為什麼？",
+                  "options": [
+                    "察舉",
+                    "九品官人法",
+                    "封建",
+                    "科舉"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "察舉是漢代重要選官方式，由地方官推薦人才。",
+                  "remediation": "熟記察舉制度。"
+                },
+                {
+                  "question_id": "1-2-1-Q2",
+                  "difficulty": "medium",
+                  "question": "漢代設立太學並重視經學，對政治人才培養有何影響？",
+                  "options": [
+                    "官職從此完全由血緣世襲",
+                    "儒家經典學習與仕途的關聯更加密切",
+                    "所有官員只由軍功產生",
+                    "地方官不再參與人才推薦"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "漢代尊崇儒學、設太學，使經學教育與官僚人才培養關係加深。",
+                  "remediation": "理解太學、經學與官僚選拔。"
+                },
+                {
+                  "question_id": "1-2-1-Q3",
+                  "difficulty": "hard",
+                  "question": "某漢代家族世代研習經典，並有人因地方推薦進入官場。這最可能促成哪種社會現象？",
+                  "options": [
+                    "科舉士人立即取代所有舊家族",
+                    "官員來源與教育完全無關",
+                    "諸侯重新掌握全國選官權",
+                    "經學傳家並逐漸形成世族勢力"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "經學傳家、察舉任官與累世為官，可能使部分家族累積政治社會優勢。",
+                  "remediation": "理解漢代選才與世族形成的連結。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-2-2",
+              "skill_name": "能說明魏晉九品官人法與世族政治",
+              "questions": [
+                {
+                  "question_id": "1-2-2-Q1",
+                  "difficulty": "easy",
+                  "question": "魏晉時期重要的選官方式之一為何？",
+                  "options": [
+                    "科舉制",
+                    "行省制",
+                    "九品官人法",
+                    "封建制"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "魏晉時期以九品官人法作為重要選官方式。",
+                  "remediation": "熟記九品官人法的時代。"
+                },
+                {
+                  "question_id": "1-2-2-Q2",
+                  "difficulty": "medium",
+                  "question": "九品官人法後來受到門第影響，最可能造成什麼結果？",
+                  "options": [
+                    "所有寒門都能平等入仕",
+                    "地方貴族勢力立刻消失",
+                    "世族在政治上占有優勢",
+                    "官員完全由考試成績決定"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "品第評定日益受家世影響，使世族更容易取得高官。",
+                  "remediation": "理解九品官人法與世族政治。"
+                },
+                {
+                  "question_id": "1-2-2-Q3",
+                  "difficulty": "hard",
+                  "question": "「上品無寒門，下品無世族」主要在批評哪一問題？",
+                  "options": [
+                    "選官受到門第出身過度影響",
+                    "科舉錄取人數過多",
+                    "官員完全不重視家世",
+                    "政府取消所有品第制度"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "此語反映高品多出自世族、寒門難居上品的現象。",
+                  "remediation": "由史料判讀世族政治。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-2-3",
+              "skill_name": "能說明隋唐科舉制度及其影響",
+              "questions": [
+                {
+                  "question_id": "1-2-3-Q1",
+                  "difficulty": "easy",
+                  "question": "隋唐逐漸確立以考試選拔官員的制度，稱為什麼？",
+                  "options": [
+                    "封建制",
+                    "科舉制",
+                    "宗法制",
+                    "察舉制"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "科舉以考試作為重要選官方式，在隋唐逐步建立發展。",
+                  "remediation": "熟記科舉制度。"
+                },
+                {
+                  "question_id": "1-2-3-Q2",
+                  "difficulty": "medium",
+                  "question": "科舉制度相較於九品官人法，最重要的改變之一為何？",
+                  "options": [
+                    "個人可較多透過考試爭取官職",
+                    "只允許皇族參加",
+                    "完全取消讀書教育",
+                    "官職更加依賴家族世襲"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "科舉降低門第作為唯一關鍵的程度，增加讀書應試入仕的機會。",
+                  "remediation": "比較科舉與門第選官。"
+                },
+                {
+                  "question_id": "1-2-3-Q3",
+                  "difficulty": "hard",
+                  "question": "若社會上出現大量士人苦讀經典、赴京應試，希望進入官僚體系，最能反映哪項制度的影響？",
+                  "options": [
+                    "封建制度",
+                    "郡縣制度",
+                    "科舉制度",
+                    "宗法制度"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "科舉將教育、考試與仕途緊密連結。",
+                  "remediation": "由社會現象判斷科舉影響。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-2-4",
+              "skill_name": "能比較察舉、九品官人法與科舉制度",
+              "questions": [
+                {
+                  "question_id": "1-2-4-Q1",
+                  "difficulty": "easy",
+                  "question": "依時代先後排列，下列何者正確？",
+                  "options": [
+                    "九品官人法→察舉→科舉",
+                    "察舉→九品官人法→科舉",
+                    "科舉→九品官人法→察舉",
+                    "科舉→察舉→九品官人法"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "漢代察舉、魏晉九品官人法、隋唐科舉依序發展。",
+                  "remediation": "熟記選才制度時間順序。"
+                },
+                {
+                  "question_id": "1-2-4-Q2",
+                  "difficulty": "medium",
+                  "question": "下列配對何者正確？",
+                  "options": [
+                    "察舉—考試；九品官人法—軍功；科舉—世襲",
+                    "察舉—世襲；九品官人法—抽籤；科舉—推薦",
+                    "三者皆只依血緣決定官職",
+                    "察舉—地方推薦；九品官人法—中正品評；科舉—考試"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "三種制度的主要選官方式分別為推薦、品評與考試。",
+                  "remediation": "比較三種選才制度。"
+                },
+                {
+                  "question_id": "1-2-4-Q3",
+                  "difficulty": "hard",
+                  "question": "從察舉到九品官人法再到科舉，可看出帝國政府長期面對哪項治理需求？",
+                  "options": [
+                    "恢復諸侯封國世襲",
+                    "讓所有官職由地方家族自行決定",
+                    "建立穩定且可運作的官僚人才來源",
+                    "取消中央行政機構"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "帝國需要持續選拔官員，因此歷代調整人才選拔制度。",
+                  "remediation": "從長期制度演變理解國家治理。"
+                }
+              ]
+            },
+            {
+              "skill_id": "1-2-5",
+              "skill_name": "能理解統治者維繫政權正當性的方式",
+              "questions": [
+                {
+                  "question_id": "1-2-5-Q1",
+                  "difficulty": "easy",
+                  "question": "古代統治者強調自己取得天下符合「天命」，主要是在強調什麼？",
+                  "options": [
+                    "商業交易規則",
+                    "地方官選拔方式",
+                    "統治的正當性",
+                    "軍隊編制方式"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "天命等觀念可用來說明政權為何具有統治資格。",
+                  "remediation": "理解統治正當性的概念。"
+                },
+                {
+                  "question_id": "1-2-5-Q2",
+                  "difficulty": "medium",
+                  "question": "若王朝宣稱前朝失德、天命轉移，因此新王朝取而代之，這種說法的主要功能為何？",
+                  "options": [
+                    "解釋貨幣為何統一",
+                    "合理化政權更替與新王朝統治",
+                    "證明地方官必須世襲",
+                    "說明科舉如何閱卷"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "以德、天命等論述可為政權更替提供政治正當性。",
+                  "remediation": "理解政治思想如何服務政權維繫。"
+                },
+                {
+                  "question_id": "1-2-5-Q3",
+                  "difficulty": "hard",
+                  "question": "「選拔官僚」與「建構統治正當性」雖方式不同，但共同目的最接近下列何者？",
+                  "options": [
+                    "維持國家政權的有效運作與穩定",
+                    "取消人民對政府的一切義務",
+                    "恢復部落社會",
+                    "使地方完全脫離中央"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "人才治理與正當性論述都可協助政權持續運作。",
+                  "remediation": "統整政權維繫的不同面向。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "CH2",
+      "chapter_name": "Ch2 商周至隋唐的民族與文化",
+      "sections": [
+        {
+          "section_id": "2-1",
+          "section_name": "商周至隋唐的民族關係",
+          "skills": [
+            {
+              "skill_id": "2-1-1",
+              "skill_name": "能理解農耕民族與草原民族互動的基本背景",
+              "questions": [
+                {
+                  "question_id": "2-1-1-Q1",
+                  "difficulty": "easy",
+                  "question": "古代中原農耕民族與北方草原民族的生產生活方式不同，最主要與哪項條件有關？",
+                  "options": [
+                    "自然環境與生業方式",
+                    "是否建立城市",
+                    "是否使用文字",
+                    "是否信仰佛教"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "不同自然環境形成農耕、游牧等不同生業與生活方式。",
+                  "remediation": "理解環境、生業與民族互動背景。"
+                },
+                {
+                  "question_id": "2-1-1-Q2",
+                  "difficulty": "medium",
+                  "question": "農耕民族與草原民族之間除了戰爭外，也常出現哪種互動？",
+                  "options": [
+                    "永遠完全隔絕",
+                    "只能單向遷徙",
+                    "完全不存在婚姻外交",
+                    "貿易與物資交換"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "雙方常有戰爭，也有互市、交換、和親與文化交流。",
+                  "remediation": "避免只用衝突理解民族關係。"
+                },
+                {
+                  "question_id": "2-1-1-Q3",
+                  "difficulty": "hard",
+                  "question": "若草原民族需要穀物、布帛，而農耕地區需要馬匹，這最能說明什麼？",
+                  "options": [
+                    "不同生業區域具有交換需求",
+                    "生活方式不同必然無法交易",
+                    "兩地經濟完全自給自足",
+                    "戰爭會使所有交流停止"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "生產方式不同會產生互補需求，促進交換與互動。",
+                  "remediation": "理解民族互動的經濟因素。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-1-2",
+              "skill_name": "能說明秦漢與匈奴的互動",
+              "questions": [
+                {
+                  "question_id": "2-1-2-Q1",
+                  "difficulty": "easy",
+                  "question": "秦漢時期北方重要的草原民族勢力之一為何？",
+                  "options": [
+                    "女真",
+                    "蒙古帝國",
+                    "契丹",
+                    "匈奴"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "秦漢時期匈奴是北方重要草原勢力。",
+                  "remediation": "熟記秦漢與匈奴的關係。"
+                },
+                {
+                  "question_id": "2-1-2-Q2",
+                  "difficulty": "medium",
+                  "question": "漢朝與匈奴之間曾有戰爭、和親與互市，最能說明哪一點？",
+                  "options": [
+                    "有貿易就不可能有軍事衝突",
+                    "民族關係同時可能包含衝突與交流",
+                    "有和親就代表政治完全統一",
+                    "雙方只有戰爭"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "邊疆民族關係可能同時有軍事、外交與經濟互動。",
+                  "remediation": "理解民族互動形式的多樣性。"
+                },
+                {
+                  "question_id": "2-1-2-Q3",
+                  "difficulty": "hard",
+                  "question": "若同一段邊境史料同時記載騎兵交戰與市場交易，最合理的解讀為何？",
+                  "options": [
+                    "史料一定互相矛盾",
+                    "政治衝突與經濟交流可以並存",
+                    "戰爭表示雙方從未接觸",
+                    "市場交易證明雙方沒有敵對"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "不同層面的互動可同時存在，不應將民族關係簡化為單一形式。",
+                  "remediation": "培養多面向史料判讀。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-1-3",
+              "skill_name": "能說明漢代通西域與絲路的民族交流",
+              "questions": [
+                {
+                  "question_id": "2-1-3-Q1",
+                  "difficulty": "easy",
+                  "question": "漢武帝派張騫出使西域，後來有助於哪一交流路線發展？",
+                  "options": [
+                    "北極航道",
+                    "大西洋航線",
+                    "絲綢之路",
+                    "環非洲航線"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "張騫通西域增進對中亞的了解，促進陸上交通交流。",
+                  "remediation": "掌握張騫與絲路。"
+                },
+                {
+                  "question_id": "2-1-3-Q2",
+                  "difficulty": "medium",
+                  "question": "絲路往來最適合如何理解？",
+                  "options": [
+                    "人群、商品與文化跨區域流動",
+                    "只具有軍事用途",
+                    "只有絲綢由中國單向輸出",
+                    "所有旅程都由同一商人走完全程"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "絲路是一系列跨區域交通與交換網絡，包含商品、人口與文化交流。",
+                  "remediation": "理解絲路不是單一路線或單向輸出。"
+                },
+                {
+                  "question_id": "2-1-3-Q3",
+                  "difficulty": "hard",
+                  "question": "中國境內出土帶有中亞風格的器物，最能作為哪一現象的證據？",
+                  "options": [
+                    "科舉制度的形成",
+                    "郡縣制的建立",
+                    "封建制度的世襲",
+                    "跨區域交流與人口流動"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "外來風格物質文化可反映絲路等交流網絡的影響。",
+                  "remediation": "從考古材料判斷文化交流。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-1-4",
+              "skill_name": "能理解魏晉南北朝民族遷徙與胡漢互動",
+              "questions": [
+                {
+                  "question_id": "2-1-4-Q1",
+                  "difficulty": "easy",
+                  "question": "魏晉南北朝時期政局動盪，常見的重要社會現象為何？",
+                  "options": [
+                    "人口完全停止移動",
+                    "大規模人口與民族遷徙",
+                    "所有民族退回原居地",
+                    "南北交通完全消失"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "長期戰亂與政權變動造成大量人口遷徙與族群重新分布。",
+                  "remediation": "掌握魏晉南北朝的民族移動。"
+                },
+                {
+                  "question_id": "2-1-4-Q2",
+                  "difficulty": "medium",
+                  "question": "不同民族長期雜居、通婚並互相採用服飾、語言與制度，最可能造成什麼？",
+                  "options": [
+                    "只有軍事衝突而無生活交流",
+                    "彼此完全隔絕",
+                    "文化相互影響與融合",
+                    "所有文化立即相同"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "長期接觸會造成生活文化與制度互相影響。",
+                  "remediation": "理解胡漢互動與文化融合。"
+                },
+                {
+                  "question_id": "2-1-4-Q3",
+                  "difficulty": "hard",
+                  "question": "北魏統治者在中原採用漢姓、服飾與制度，最適合視為哪種歷史現象？",
+                  "options": [
+                    "民族互動下的文化調整與融合",
+                    "中原文化完全消失",
+                    "所有民族差異立刻消失",
+                    "草原民族停止政治活動"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "北魏改革反映不同民族在統治與生活上的文化互動與調整。",
+                  "remediation": "理解文化交流是漸進而非瞬間同化。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-1-5",
+              "skill_name": "能理解隋唐與突厥、吐蕃等族群的互動",
+              "questions": [
+                {
+                  "question_id": "2-1-5-Q1",
+                  "difficulty": "easy",
+                  "question": "隋唐時期與中原王朝互動密切的北方草原民族之一為何？",
+                  "options": [
+                    "突厥",
+                    "契丹建立元朝",
+                    "匈奴只存在於唐代",
+                    "女真"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "突厥是隋唐時期北方重要勢力之一。",
+                  "remediation": "認識隋唐時期主要周邊民族。"
+                },
+                {
+                  "question_id": "2-1-5-Q2",
+                  "difficulty": "medium",
+                  "question": "唐朝與吐蕃之間既有戰爭，也曾以和親維繫關係。這再次說明什麼？",
+                  "options": [
+                    "和親等同一方完全被另一方統治",
+                    "民族與政權關係具有多種形式",
+                    "外交與文化交流完全無關",
+                    "雙方從未發生衝突"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "隋唐周邊關係包含戰爭、結盟、和親與交流等多重形式。",
+                  "remediation": "理解隋唐民族關係的複雜性。"
+                },
+                {
+                  "question_id": "2-1-5-Q3",
+                  "difficulty": "hard",
+                  "question": "若以「商周至隋唐的民族關係」為題，下列哪一結論最合理？",
+                  "options": [
+                    "民族之間始終完全隔離",
+                    "不同民族之間長期存在衝突、交換、遷徙與融合",
+                    "隋唐以前沒有跨民族交流",
+                    "民族關係只有軍事征服"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "長時段觀察可見民族關係具有流動、互動與多樣性。",
+                  "remediation": "統整2-1民族關係。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_id": "2-2",
+          "section_name": "各民族文化的交流與影響",
+          "skills": [
+            {
+              "skill_id": "2-2-1",
+              "skill_name": "能說明佛教傳入中國及其文化影響",
+              "questions": [
+                {
+                  "question_id": "2-2-1-Q1",
+                  "difficulty": "easy",
+                  "question": "佛教最初發源於哪一地區？",
+                  "options": [
+                    "日本",
+                    "印度",
+                    "中國",
+                    "朝鮮半島"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "佛教起源於古代印度，之後經中亞等路線傳入中國。",
+                  "remediation": "熟記佛教起源與傳播方向。"
+                },
+                {
+                  "question_id": "2-2-1-Q2",
+                  "difficulty": "medium",
+                  "question": "佛教傳入中國後大量出現譯經、佛像與石窟，最能反映什麼？",
+                  "options": [
+                    "科舉制度因此出現",
+                    "封建制度重新建立",
+                    "郡縣制迅速瓦解",
+                    "外來宗教在中國傳播並產生文化影響"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "佛經翻譯與佛教藝術是佛教傳播及在地發展的重要證據。",
+                  "remediation": "由文化材料判斷佛教影響。"
+                },
+                {
+                  "question_id": "2-2-1-Q3",
+                  "difficulty": "hard",
+                  "question": "佛教傳入後與中國既有思想、習俗互動並形成具有本土特色的發展，最適合說明何種現象？",
+                  "options": [
+                    "外來文化一定取代本土文化",
+                    "外來文化的吸收與在地化",
+                    "文化傳播必然完全不變",
+                    "宗教只能透過戰爭傳播"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "文化傳播常伴隨翻譯、調整與在地化，不是原樣複製。",
+                  "remediation": "理解文化交流與在地化。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-2-2",
+              "skill_name": "能辨認民族交流對日常生活起居的影響",
+              "questions": [
+                {
+                  "question_id": "2-2-2-Q1",
+                  "difficulty": "easy",
+                  "question": "魏晉南北朝至隋唐民族交流頻繁，最可能影響下列哪一項？",
+                  "options": [
+                    "地球自轉方向",
+                    "黃河流向",
+                    "文字是否存在",
+                    "服飾、飲食與起居習慣"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "民族接觸會帶來飲食、服飾、樂舞與生活器具等交流。",
+                  "remediation": "理解文化交流會反映在日常生活。"
+                },
+                {
+                  "question_id": "2-2-2-Q2",
+                  "difficulty": "medium",
+                  "question": "中原社會逐漸出現胡服、胡樂、胡餅等現象，最能說明什麼？",
+                  "options": [
+                    "這些現象只與政治制度有關",
+                    "所有外來文化都被禁止",
+                    "中原與外族完全沒有往來",
+                    "周邊民族文化影響中原日常生活"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "服飾、音樂與飲食的變化反映民族文化交流。",
+                  "remediation": "從生活史角度理解文化互動。"
+                },
+                {
+                  "question_id": "2-2-2-Q3",
+                  "difficulty": "hard",
+                  "question": "若墓葬壁畫中人物穿不同民族風格服飾、使用外來器具，史家最適合用它研究哪個主題？",
+                  "options": [
+                    "郡縣地方行政區劃",
+                    "科舉考場規則",
+                    "民族交流對生活文化的影響",
+                    "秦代貨幣統一"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "服飾與器物是研究日常生活文化交流的重要物質證據。",
+                  "remediation": "練習由圖像／物質史料推論文化交流。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-2-3",
+              "skill_name": "能理解唐代與新羅、日本等東亞地區的文化交流",
+              "questions": [
+                {
+                  "question_id": "2-2-3-Q1",
+                  "difficulty": "easy",
+                  "question": "隋唐時期，日本曾派遣使節與留學生來華學習，常稱為什麼？",
+                  "options": [
+                    "中正官",
+                    "察舉",
+                    "遣唐使",
+                    "諸侯"
+                  ],
+                  "answer_index": 2,
+                  "answer_label": "C",
+                  "explanation": "日本派遣唐使、留學生與僧侶來華，吸收制度與文化。",
+                  "remediation": "熟記遣唐使與東亞交流。"
+                },
+                {
+                  "question_id": "2-2-3-Q2",
+                  "difficulty": "medium",
+                  "question": "新羅、日本吸收唐代制度、文字與佛教文化，最能反映什麼？",
+                  "options": [
+                    "各地文化完全沒有自身特色",
+                    "文化只能由西方向東方傳播",
+                    "唐朝直接統治整個東亞",
+                    "東亞各地文化交流密切"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "隋唐時期東亞各地透過使節、僧侶與留學生頻繁交流。",
+                  "remediation": "理解中國文化外傳與東亞交流。"
+                },
+                {
+                  "question_id": "2-2-3-Q3",
+                  "difficulty": "hard",
+                  "question": "若外來國家吸收唐代制度後又依自身需求調整，這最能說明哪一觀念？",
+                  "options": [
+                    "文化交流常包含選擇、吸收與在地改造",
+                    "制度傳播只靠軍事征服",
+                    "受影響的一方會失去全部文化",
+                    "文化交流一定是完整照搬"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "文化接受者會依自身條件選擇與改造外來文化。",
+                  "remediation": "理解文化傳播的雙向性與在地化。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-2-4",
+              "skill_name": "能說明中國技術與文化向西方傳播的例子",
+              "questions": [
+                {
+                  "question_id": "2-2-4-Q1",
+                  "difficulty": "easy",
+                  "question": "中國古代哪一項技術後來經中亞等地向西傳播，對書寫與知識傳播影響深遠？",
+                  "options": [
+                    "活塞引擎",
+                    "蒸汽機",
+                    "電報",
+                    "造紙術"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "造紙術由中國發展後逐漸向西傳播。",
+                  "remediation": "熟記造紙術西傳的文化交流意義。"
+                },
+                {
+                  "question_id": "2-2-4-Q2",
+                  "difficulty": "medium",
+                  "question": "造紙術向西傳播最能說明絲路等交流網絡具有哪種功能？",
+                  "options": [
+                    "只能進行軍事征服",
+                    "只能運送奢侈品",
+                    "完全不涉及文化交流",
+                    "除商品外也傳播技術與知識"
+                  ],
+                  "answer_index": 3,
+                  "answer_label": "D",
+                  "explanation": "跨區域網絡也促進技術、知識與文化傳播。",
+                  "remediation": "理解絲路的多元交流功能。"
+                },
+                {
+                  "question_id": "2-2-4-Q3",
+                  "difficulty": "hard",
+                  "question": "若某技術先在中國成熟，後出現在中亞與更西方地區，研究者還需要什麼證據才能更可靠判斷其傳播路徑？",
+                  "options": [
+                    "不同地區的年代、文獻與考古材料",
+                    "只看今日使用語言",
+                    "只看現代國界",
+                    "只比較人口多寡"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "判斷歷史技術傳播需綜合年代、文獻與物質證據。",
+                  "remediation": "培養歷史證據與傳播路徑的判讀。"
+                }
+              ]
+            },
+            {
+              "skill_id": "2-2-5",
+              "skill_name": "能理解和親等外交關係中的文化交流",
+              "questions": [
+                {
+                  "question_id": "2-2-5-Q1",
+                  "difficulty": "easy",
+                  "question": "唐代與吐蕃之間曾出現哪種外交互動？",
+                  "options": [
+                    "郡縣合併",
+                    "和親",
+                    "科舉合併",
+                    "宗法分封"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "唐與吐蕃曾透過和親等方式維繫政治關係。",
+                  "remediation": "掌握吐蕃與唐朝交流的基本例子。"
+                },
+                {
+                  "question_id": "2-2-5-Q2",
+                  "difficulty": "medium",
+                  "question": "和親除了政治外交目的外，也可能帶來哪種影響？",
+                  "options": [
+                    "人員往來與文化交流增加",
+                    "地方行政制度必然合併",
+                    "兩地從此完全沒有衝突",
+                    "所有文化立即變成相同"
+                  ],
+                  "answer_index": 0,
+                  "answer_label": "A",
+                  "explanation": "婚姻外交伴隨人員、物品與習俗往來，也可能促進文化交流。",
+                  "remediation": "理解政治互動與文化交流可能相互連結。"
+                },
+                {
+                  "question_id": "2-2-5-Q3",
+                  "difficulty": "hard",
+                  "question": "佛教傳入、胡漢生活文化互動、遣唐使來華、造紙術西傳與吐蕃和親，共同最能說明哪一主題？",
+                  "options": [
+                    "中國古代文化完全封閉",
+                    "商周至隋唐文化在跨民族、跨區域互動中持續交流與變化",
+                    "文化交流只由戰爭造成",
+                    "所有交流都是單向由中國輸出"
+                  ],
+                  "answer_index": 1,
+                  "answer_label": "B",
+                  "explanation": "不同案例都顯示文化交流具有跨區域、多方向與持續變化的特色。",
+                  "remediation": "統整2-2各民族文化交流與影響。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
