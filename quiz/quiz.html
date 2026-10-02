@@ -619,14 +619,15 @@ details.group>summary{cursor:pointer;list-style:none}
   function renderPicker() {
     const target = dataParam
       ? `<p>找不到 <code>${esc(dataParam)}</code>。請確認檔案放在 <code>index.html</code> 同一層或 <code>data/</code> 資料夾，且檔名大小寫一致。</p>`
-      : `<p>請在網址後加上題庫檔名， <a href="https://tiongsan.github.io/Csjhs/quiz/quiz.html?data=chinese8_kanghsuan_exam1_custom">國文</a>
-<a href="https://tiongsan.github.io/Csjhs/quiz/quiz.html?data=english8_hanlin_exam1">英文</a>  
-<a href="https://tiongsan.github.io/Csjhs/quiz/quiz.html?data=math8_kanghsuan_exam1 ">數學</a> 
-<a href="https://tiongsan.github.io/Csjhs/quiz/quiz.html?data=civics8_ch1_ch2_v2">公民</a>
-<a href="https://tiongsan.github.io/Csjhs/quiz/quiz.html?data=geo8_ch1_ch2_v2">地理</a> 
-<a href="https://tiongsan.github.io/Csjhs/quiz/quiz.html?data=history8_ch1_ch2_v2 ">歷史</a> 
-<a href="https://tiongsan.github.io/Csjhs/quiz/quiz.html?data=physics8 ">理化</a> 
-，例如 <code>index.html?data=geo8.json</code>；或把題庫命名為 <code>questions.json</code>，放在 <code>index.html</code> 同一層或 <code>data/</code> 資料夾。</p>`;
+      : `<p>請在網址後加上題庫檔名， <br>
+      <a href="https://tiongsan.github.io/Csjhs/quiz/quiz.html?data=chinese8_kanghsuan_exam1_custom">國文</a><br>
+<a href="https://tiongsan.github.io/Csjhs/quiz/quiz.html?data=english8_hanlin_exam1">英文</a>  <br>
+<a href="https://tiongsan.github.io/Csjhs/quiz/quiz.html?data=math8_kanghsuan_exam1 ">數學</a> <br>
+<a href="https://tiongsan.github.io/Csjhs/quiz/quiz.html?data=civics8_ch1_ch2_v2">公民</a><br>
+<a href="https://tiongsan.github.io/Csjhs/quiz/quiz.html?data=geo8_ch1_ch2_v2">地理</a> <br>
+<a href="https://tiongsan.github.io/Csjhs/quiz/quiz.html?data=history8_ch1_ch2_v2 ">歷史</a> <br>
+<a href="https://tiongsan.github.io/Csjhs/quiz/quiz.html?data=physics8 ">理化</a> <br>
+，例如 <code>index.html?data=geo8.json</code>；<br>或把題庫命名為 <code>questions.json</code>，放在 <code>index.html</code> 同一層或 <code>data/</code> 資料夾。</p>`;
     app.innerHTML = `<main class="wrap"><section class="card picker">
       <div class="big">📂</div>
       <h2>找不到題庫檔案</h2>
