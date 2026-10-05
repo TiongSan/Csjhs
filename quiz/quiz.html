@@ -207,6 +207,21 @@ details.group>summary{cursor:pointer;list-style:none}
 .fchip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
 .tools{display:flex;gap:10px;justify-content:center;margin-top:26px}
 
+/* ===== 難度模式 ===== */
+.diffcard{padding:14px}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:#f1efe9;padding:5px;border-radius:14px}
+.seg-btn{min-height:44px;padding:6px 4px;border-radius:11px;font-weight:800;font-size:15px;line-height:1.3;color:var(--muted);transition:background .2s,color .2s,box-shadow .2s}
+.seg-btn.on{background:#fff;color:var(--primary);box-shadow:0 2px 10px -4px rgba(20,20,50,.3)}
+@media (hover:hover){.seg-btn:not(.on):hover{color:var(--ink)}}
+.diff-desc{margin-top:10px;text-align:center}
+
+/* ===== 數學格式：上標、分數 ===== */
+sup{font-size:.68em;line-height:0;position:relative;vertical-align:baseline;top:-.55em;margin-left:.05em}
+.frac{display:inline-flex;flex-direction:column;align-items:stretch;vertical-align:middle;position:relative;text-align:center;font-size:.88em;line-height:1.25;margin:0 .12em}
+.frac>.fn{border-bottom:1.5px solid currentColor;padding:0 .22em .06em}
+.frac>.fd{padding:.06em .22em 0}
+.frac>.fs{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
 /* ===== Modal / Toast / Misc ===== */
 .modal-bg{position:fixed;inset:0;z-index:60;background:rgba(15,17,30,.45);display:flex;align-items:flex-end;justify-content:center;padding:16px;animation:fade .2s}
 @media (min-width:600px){.modal-bg{align-items:center}}
@@ -248,9 +263,17 @@ details.group>summary{cursor:pointer;list-style:none}
     storage_key  指定 localStorage key（例："physics8_progress"）
     theme_color  主題色（例："#0d9488"）
     icons        章節圖示陣列（例：["🗺️","🌏"]）
+    math_format  設為 false 時不轉換數學格式（x^2 上標、3/x 分數）
   題目可選填：
     explanation       答題後顯示「原因」
     shuffle_options   設為 false 時不打亂選項
+    difficulty        easy / medium / hard（或 簡單／中等／困難），供「難度模式」使用
+  難度模式（首頁切換，各科分開記憶）：
+    基礎 → easy＋medium　混合 → 全部（原本方式）　進階 → medium＋hard
+    可在下方 DIFF_MODES 調整；細目挑戰固定出全部題目，不受影響
+  數學格式（顯示時自動轉換，題庫不用改）：
+    x^2、x^−2、(x＋5)^2、x^{n+1}  → 上標
+    3/x、(x＋1)/2、√2/2、x^2/3     → 上下分數
 */
 (function () {
   'use strict';
@@ -264,6 +287,20 @@ details.group>summary{cursor:pointer;list-style:none}
   const ALL_TITLE = '全範圍綜合挑戰';
   const DEFAULT_ICONS = ['📘', '📗', '📙', '📕', '📒', '📓', '📔', '📚'];
 
+  // 難度模式：levels 為該模式會出的難度（例如想讓基礎只出簡單題，改成 ['easy']）
+  const DIFF_MODES = {
+    basic:    { label: '基礎', icon: '🌱', levels: ['easy', 'medium'],         desc: '以簡單、中等題為主，先把觀念打穩' },
+    all:      { label: '混合', icon: '🎲', levels: ['easy', 'medium', 'hard'], desc: '簡單、中等、困難題混合出題' },
+    advanced: { label: '進階', icon: '🚀', levels: ['medium', 'hard'],         desc: '以中等、困難題為主，挑戰更高分' }
+  };
+  const DIFF_ORDER = ['basic', 'all', 'advanced'];
+  const DEFAULT_DIFF = 'all';
+  const DIFF_ALIAS = {
+    easy: 'easy', basic: 'easy', '簡單': 'easy', '容易': 'easy', '基礎': 'easy', '易': 'easy',
+    medium: 'medium', normal: 'medium', '中等': 'medium', '普通': 'medium', '中': 'medium',
+    hard: 'hard', difficult: 'hard', '困難': 'hard', '進階': 'hard', '難': 'hard'
+  };
+
   // 程式判斷用英文值，中文只負責顯示
   const STATUS = {
     unseen:    { label: '尚未測驗', short: '未測驗', rank: -1 },
@@ -273,7 +310,7 @@ details.group>summary{cursor:pointer;list-style:none}
   };
 
   /* ================= 全域狀態 ================= */
-  const bank = { meta: {}, name: '', icons: DEFAULT_ICONS, chapters: [], skills: new Map(), order: [], idx: new Map() };
+  const bank = { meta: {}, name: '', icons: DEFAULT_ICONS, chapters: [], skills: new Map(), order: [], idx: new Map(), mathFmt: true, hasDiff: false };
   let progress = {};
   let quizState = null;
   let lastResult = null;
@@ -281,6 +318,7 @@ details.group>summary{cursor:pointer;list-style:none}
   let introSkill = null, introFrom = 'home';
   let weakFilter = 'ALL';
   let pickerError = '';
+  let diffMode = DEFAULT_DIFF;
   const app = document.getElementById('app');
 
   let dataParam = '';
@@ -302,6 +340,39 @@ details.group>summary{cursor:pointer;list-style:none}
   const orderIdx = id => bank.idx.has(id) ? bank.idx.get(id) : 9999;
   function countStatus(ids) { const c = { unseen: 0, weak: 0, reviewing: 0, mastered: 0 }; ids.forEach(id => c[statusOf(id)]++); return c; }
   const badge = st => `<span class="badge ${st}">${STATUS[st].label}</span>`;
+
+  /* ================= 數學格式（上標、分數） ================= */
+  // 分數的分子／分母：括號整組、數字（可帶一個字母，如 2x）、單一字母，可再接次方（如 x^2）
+  const FR_ATOM = '(?:[(（][^()（）/]{1,24}[)）]|√?[0-9]+(?:\\.[0-9]+)?[a-zA-Z]?|√?[a-zA-Z])(?:\\^(?:[−-]?[0-9]+|[a-zA-Z]))?';
+  // 前後不能緊接英數字或斜線，避免誤轉日期（2024/10/05）、網址、英文單字（he/she）等
+  const FRAC_RE = new RegExp('(^|[^0-9A-Za-z.^/)）\\]√_])(' + FR_ATOM + ')/(' + FR_ATOM + ')(?![0-9A-Za-z/(（√^_]|\\.[0-9])', 'g');
+  const unwrap = s => { const m = /^[(（]([^()（）]*)[)）]$/.exec(s); return m ? m[1] : s; };
+  const fracHTML = (a, b) => `<span class="frac"><span class="fn">${unwrap(a)}</span><span class="fs">/</span><span class="fd">${unwrap(b)}</span></span>`;
+  // 先跳脫 HTML，再轉換數學格式；題目、選項、解析、細目名稱都用這個顯示
+  function fmt(s) {
+    let h = esc(s);
+    if (!bank.mathFmt) return h;
+    h = h.replace(FRAC_RE, (m, pre, a, b) => pre + fracHTML(a, b));
+    h = h
+      .replace(/\^\{([^{}]{1,12})\}/g, '<sup>$1</sup>')
+      .replace(/\^[(（]([^()（）]{1,12})[)）]/g, '<sup>$1</sup>')
+      .replace(/\^([−-]?[0-9]+)/g, (m, e) => `<sup>${e.replace('-', '−')}</sup>`)
+      .replace(/\^([a-zA-Z])(?![a-zA-Z])/g, '<sup>$1</sup>');
+    return h;
+  }
+
+  /* ================= 難度模式 ================= */
+  const levelOf = q => DIFF_ALIAS[String((q && q.difficulty) || '').trim().toLowerCase()] || '';
+  // 依目前難度模式取出細目可用題目；沒標難度的題目各模式都會出；篩完沒題目時改用全部題目
+  function poolOf(sk) {
+    if (!bank.hasDiff || diffMode === 'all' || !DIFF_MODES[diffMode]) return sk.questions;
+    const lv = DIFF_MODES[diffMode].levels;
+    const qs = sk.questions.filter(q => { const l = levelOf(q); return !l || lv.indexOf(l) >= 0; });
+    return qs.length ? qs : sk.questions;
+  }
+  const poolCount = skills => skills.reduce((s, k) => s + poolOf(k).length, 0);
+  const diffTag = k => k && k !== 'all' && DIFF_MODES[k] ? `・${DIFF_MODES[k].label}模式` : '';
+  const settingsKey = () => Store.key + '_settings';
 
   /* ================= 儲存（LocalStorage） ================= */
   const Store = {
@@ -326,6 +397,21 @@ details.group>summary{cursor:pointer;list-style:none}
         if (this.backend === 'artifact') Promise.resolve(window.storage.set(this.key, raw, false)).catch(() => {});
         else if (this.backend === 'local') window.localStorage.setItem(this.key, raw);
       } catch (e) { /* 無法寫入時仍保留在記憶體 */ }
+    },
+    // 設定（難度模式）另存一個 key，清除學習紀錄時不受影響
+    async loadExtra(key) {
+      try {
+        if (this.backend === 'artifact') { const r = await window.storage.get(key, false); return r && r.value ? JSON.parse(r.value) : null; }
+        if (this.backend === 'local') { const raw = window.localStorage.getItem(key); return raw ? JSON.parse(raw) : null; }
+      } catch (e) {}
+      return null;
+    },
+    saveExtra(key, data) {
+      const raw = JSON.stringify(data);
+      try {
+        if (this.backend === 'artifact') Promise.resolve(window.storage.set(key, raw, false)).catch(() => {});
+        else if (this.backend === 'local') window.localStorage.setItem(key, raw);
+      } catch (e) {}
     }
   };
 
@@ -347,7 +433,7 @@ details.group>summary{cursor:pointer;list-style:none}
   function indexBank(data) {
     if (!data || !Array.isArray(data.chapters)) throw new Error('題庫格式不正確：找不到 chapters');
     bank.meta = data.metadata || {};
-    bank.chapters = []; bank.skills = new Map(); bank.order = []; bank.idx = new Map();
+    bank.chapters = []; bank.skills = new Map(); bank.order = []; bank.idx = new Map(); bank.hasDiff = false;
     data.chapters.forEach(ch => {
       const chapter = { id: ch.chapter_id, name: ch.chapter_name, skills: [] };
       (ch.sections || []).forEach(sec => {
@@ -370,6 +456,10 @@ details.group>summary{cursor:pointer;list-style:none}
       if (chapter.skills.length) bank.chapters.push(chapter);
     });
     if (!bank.skills.size) throw new Error('題庫中沒有可用的題目');
+    // 題庫中至少有兩種難度，才顯示「難度模式」
+    const levels = new Set();
+    bank.skills.forEach(sk => sk.questions.forEach(q => { const l = levelOf(q); if (l) levels.add(l); }));
+    bank.hasDiff = levels.size >= 2;
   }
 
   // 依 metadata 設定名稱、圖示、主題色
@@ -377,6 +467,12 @@ details.group>summary{cursor:pointer;list-style:none}
     const m = bank.meta;
     bank.name = String(m.title || '').replace(/\s*題庫\s*$/, '').trim() || '自我診斷測驗';
     bank.icons = Array.isArray(m.icons) && m.icons.length ? m.icons : DEFAULT_ICONS;
+    // 數學格式（上標、分數）預設只在數學科啟用：
+    // 題庫 metadata.math_format 明確設 true／false 時以設定為準；沒設定時，若 storage_key、標題或檔名含 math／數學 才啟用
+    const mf = m.math_format;
+    if (mf === true || mf === 'true') bank.mathFmt = true;
+    else if (mf === false || mf === 'false') bank.mathFmt = false;
+    else bank.mathFmt = /math|數學/i.test([m.storage_key, m.title, dataParam].join(' '));
     document.title = bank.name + '｜自我挑戰';
     applyTheme(m.theme_color);
   }
@@ -404,6 +500,8 @@ details.group>summary{cursor:pointer;list-style:none}
     applyMeta();
     const saved = await Store.load(storageKeyFor(bank.meta));
     progress = saved && typeof saved === 'object' && !Array.isArray(saved) ? saved : {};
+    const pref = await Store.loadExtra(settingsKey());
+    diffMode = pref && DIFF_MODES[pref.difficulty] ? pref.difficulty : DEFAULT_DIFF;
     pickerError = '';
     showView('home');
   }
@@ -430,21 +528,22 @@ details.group>summary{cursor:pointer;list-style:none}
   /* ================= 建立測驗 ================= */
   function newQuiz(mode, title, questions, meta) {
     return { mode, title, meta, questions, currentIndex: 0, answers: [], wrongSkills: {}, correctCount: 0,
-      selected: null, submitted: false, submittedAt: 0, streak: 0, _fresh: true };
+      selected: null, submitted: false, submittedAt: 0, streak: 0, _fresh: true,
+      diff: mode === 'skill' || !bank.hasDiff ? 'all' : diffMode };
   }
   const scopeSkills = chId => chId === 'ALL' ? bank.order.map(id => bank.skills.get(id)) : ((bank.chapters.find(c => c.id === chId) || { skills: [] }).skills);
   const scopeName = chId => chId === 'ALL' ? ALL_TITLE : ((bank.chapters.find(c => c.id === chId) || {}).name || '');
 
-  // 完整診斷：每個細目抽 1 題
+  // 完整診斷：每個細目抽 1 題（依難度模式）
   function createDiagnosticQuiz(chapterId) {
-    const qs = scopeSkills(chapterId).map(sk => makeInstance(pick(sk.questions), sk));
+    const qs = scopeSkills(chapterId).map(sk => makeInstance(pick(poolOf(sk)), sk));
     return newQuiz('diagnostic', `${scopeName(chapterId)}・完整診斷`, shuffle(qs), { kind: 'diagnostic', chapterId });
   }
 
-  // 章節挑戰：隨機抽題（盡量讓細目分散）
+  // 章節挑戰：隨機抽題（盡量讓細目分散，依難度模式）
   function createChapterQuiz(chapterId) {
     const size = chapterId === 'ALL' ? ALL_QUIZ_SIZE : CHAPTER_QUIZ_SIZE;
-    const pools = shuffle(scopeSkills(chapterId)).map(sk => ({ sk, qs: shuffle(sk.questions) }));
+    const pools = shuffle(scopeSkills(chapterId)).map(sk => ({ sk, qs: shuffle(poolOf(sk)) }));
     const totalQ = pools.reduce((s, p) => s + p.qs.length, 0);
     const n = Math.min(size, totalQ), out = [];
     for (let r = 0; out.length < n; r++) {
@@ -453,14 +552,14 @@ details.group>summary{cursor:pointer;list-style:none}
     return newQuiz('chapter', scopeName(chapterId), shuffle(out), { kind: 'chapter', chapterId });
   }
 
-  // 單一細目挑戰：出該細目全部題目
+  // 單一細目挑戰：出該細目全部題目（不受難度模式影響，才能判定是否掌握）
   function createSkillQuiz(skillId) {
     const sk = bank.skills.get(skillId);
     if (!sk) return null;
     return newQuiz('skill', `細目挑戰 ${sk.id}`, shuffle(sk.questions).map(q => makeInstance(q, sk)), { kind: 'skill', skillId });
   }
 
-  // 弱點綜合挑戰（weak 優先，其次 reviewing）
+  // 弱點綜合挑戰（weak 優先，其次 reviewing；依難度模式）
   function weakSkillIds(chapterId) {
     return bank.order.filter(id => {
       const st = statusOf(id);
@@ -471,7 +570,7 @@ details.group>summary{cursor:pointer;list-style:none}
   function createWeaknessQuiz(chapterId) {
     const ids = weakSkillIds(chapterId).slice(0, WEAKNESS_QUIZ_MAX);
     if (!ids.length) return null;
-    const qs = ids.map(id => { const sk = bank.skills.get(id); return makeInstance(pick(sk.questions), sk); });
+    const qs = ids.map(id => { const sk = bank.skills.get(id); return makeInstance(pick(poolOf(sk)), sk); });
     const title = !chapterId || chapterId === 'ALL' ? '弱點綜合挑戰' : `弱點綜合挑戰・${scopeName(chapterId)}`;
     return newQuiz('weakness', title, shuffle(qs), { kind: 'weakness', chapterId });
   }
@@ -490,6 +589,14 @@ details.group>summary{cursor:pointer;list-style:none}
     if (!q || !q.questions.length) { toast(emptyMsg || '沒有可出的題目'); return; }
     quizState = q;
     showView('quiz');
+  }
+
+  function setDiff(k) {
+    if (!DIFF_MODES[k] || k === diffMode) return;
+    diffMode = k;
+    Store.saveExtra(settingsKey(), { difficulty: k });
+    render();
+    toast(`已切換為「${DIFF_MODES[k].label}」模式`);
   }
 
   /* ================= 作答 ================= */
@@ -543,7 +650,7 @@ details.group>summary{cursor:pointer;list-style:none}
     lastResult = {
       mode: qs.mode, title: qs.title, meta: qs.meta, planned: qs.questions.length, total: answered,
       correct: qs.correctCount, wrongSkills: Object.assign({}, qs.wrongSkills),
-      answers: qs.answers.slice(), questions: qs.questions.slice(0, answered), changes, celebrate: true
+      answers: qs.answers.slice(), questions: qs.questions.slice(0, answered), changes, celebrate: true, diff: qs.diff
     };
     quizState = null;
     showView('result');
@@ -610,6 +717,15 @@ details.group>summary{cursor:pointer;list-style:none}
       <div class="tb-mid"><div class="tb-title">${esc(title)}</div></div>
     </div></header>`;
   }
+  function diffSelector() {
+    if (!bank.hasDiff) return '';
+    return `<h2 class="h2">難度模式</h2>
+      <section class="card diffcard">
+        <div class="seg" role="radiogroup" aria-label="難度模式">${DIFF_ORDER.map(k =>
+          `<button class="seg-btn${k === diffMode ? ' on' : ''}" role="radio" aria-checked="${k === diffMode}" data-action="diff" data-diff="${k}">${DIFF_MODES[k].icon} ${DIFF_MODES[k].label}</button>`).join('')}</div>
+        <p class="muted small diff-desc">${esc(DIFF_MODES[diffMode].desc)}</p>
+      </section>`;
+  }
 
   /* ================= Screen：載入 / 選檔 ================= */
   function renderLoading() {
@@ -674,11 +790,11 @@ details.group>summary{cursor:pointer;list-style:none}
       const cids = ch.skills.map(s => s.id);
       const qn = ch.skills.reduce((s, k) => s + k.questions.length, 0);
       return chapterCard(ch.name, `${cids.length} 個細目・${qn} 題`, countStatus(cids), cids.length, ch.id,
-        Math.min(CHAPTER_QUIZ_SIZE, qn), '完整診斷', bank.icons[i % bank.icons.length]);
+        Math.min(CHAPTER_QUIZ_SIZE, poolCount(ch.skills)), '完整診斷', bank.icons[i % bank.icons.length]);
     }).join('');
     const allCard = bank.chapters.length >= 2
       ? `<h2 class="h2">綜合挑戰</h2>` + chapterCard(ALL_TITLE, `全部 ${total} 個細目・${totalQ} 題`, c, total, 'ALL',
-          Math.min(ALL_QUIZ_SIZE, totalQ), '全面診斷', '🏆', 'allcard')
+          Math.min(ALL_QUIZ_SIZE, poolCount(scopeSkills('ALL'))), '全面診斷', '🏆', 'allcard')
       : '';
 
     const weakCard = `<section class="card weakcard">
@@ -709,6 +825,7 @@ details.group>summary{cursor:pointer;list-style:none}
       ${statsRow(c)}
       ${tip}
       ${tested ? weakCard : ''}
+      ${diffSelector()}
       <h2 class="h2">章節挑戰</h2>
       ${chCards}
       ${allCard}
@@ -733,7 +850,7 @@ details.group>summary{cursor:pointer;list-style:none}
         else cls += ' dim';
       } else if (i === qs.selected) cls += ' selected';
       return `<button class="${cls}" data-action="select" data-idx="${i}" aria-pressed="${i === qs.selected}" ${qs.submitted ? 'disabled' : ''}>
-        <span class="letter">${letter(i)}</span><span class="otext">${esc(o)}</span>${mark ? `<span class="omark">${mark}</span>` : ''}
+        <span class="letter">${letter(i)}</span><span class="otext">${fmt(o)}</span>${mark ? `<span class="omark">${mark}</span>` : ''}
       </button>`;
     }).join('');
 
@@ -743,15 +860,15 @@ details.group>summary{cursor:pointer;list-style:none}
       if (qs.selected === q.answerIndex) {
         fb = `<div class="fb ok">
           <div class="fb-h">✓ 答對了${qs.streak >= 3 ? `<span class="streak">🔥 連續答對 ${qs.streak} 題</span>` : ''}</div>
-          ${q.explanation ? `<p class="fb-p">${esc(q.explanation)}</p>` : ''}
-          ${q.remediation ? `<p class="fb-tip"><b>觀念重點</b>${esc(q.remediation)}</p>` : ''}
+          ${q.explanation ? `<p class="fb-p">${fmt(q.explanation)}</p>` : ''}
+          ${q.remediation ? `<p class="fb-tip"><b>觀念重點</b>${fmt(q.remediation)}</p>` : ''}
         </div>`;
       } else {
         fb = `<div class="fb bad">
           <div class="fb-h">✗ 再想一下</div>
-          <div class="fb-row"><span class="fb-k">正確答案</span><span><b>${letter(q.answerIndex)}.</b> ${esc(q.options[q.answerIndex])}</span></div>
-          ${q.explanation ? `<div class="fb-row"><span class="fb-k">原因</span><span>${esc(q.explanation)}</span></div>` : ''}
-          <div class="fb-row"><span class="fb-k">需要複習</span><span>${esc(skill ? skill.name : q.skillId)}${q.remediation ? `<small class="fb-sub">${esc(q.remediation)}</small>` : ''}</span></div>
+          <div class="fb-row"><span class="fb-k">正確答案</span><span><b>${letter(q.answerIndex)}.</b> ${fmt(q.options[q.answerIndex])}</span></div>
+          ${q.explanation ? `<div class="fb-row"><span class="fb-k">原因</span><span>${fmt(q.explanation)}</span></div>` : ''}
+          <div class="fb-row"><span class="fb-k">需要複習</span><span>${skill ? fmt(skill.name) : esc(q.skillId)}${q.remediation ? `<small class="fb-sub">${fmt(q.remediation)}</small>` : ''}</span></div>
         </div>`;
       }
     }
@@ -760,13 +877,13 @@ details.group>summary{cursor:pointer;list-style:none}
     app.innerHTML = `
     <header class="topbar"><div class="topbar-in">
       <button class="icon-btn" data-action="quit" aria-label="離開挑戰">✕</button>
-      <div class="tb-mid"><div class="tb-title">${esc(qs.title)}</div><div class="tb-sub">第 ${n} / ${total} 題</div></div>
+      <div class="tb-mid"><div class="tb-title">${esc(qs.title)}</div><div class="tb-sub">第 ${n} / ${total} 題${diffTag(qs.diff)}</div></div>
       <div class="tb-score">✓ ${qs.correctCount}</div>
     </div><div class="bar"><i style="width:${done / total * 100}%"></i></div></header>
     <main class="wrap quiz">
       <section class="qcard${anim}">
         <div class="qmeta"><span class="chip">【細目 ${esc(q.skillId)}】</span></div>
-        <p class="qtext">${esc(q.question)}</p>
+        <p class="qtext">${fmt(q.question)}</p>
       </section>
       <div class="opts${anim}">${opts}</div>
       ${fb}
@@ -821,14 +938,14 @@ details.group>summary{cursor:pointer;list-style:none}
       body = `<section class="card verdict v-${V.cls}">
         <div class="v-icon">${V.icon}</div>
         <div class="v-title">${V.title}</div>
-        <div class="v-skill"><span class="chip">細目 ${esc(id)}</span><span>${esc(sk ? sk.name : '')}</span></div>
+        <div class="v-skill"><span class="chip">細目 ${esc(id)}</span><span>${sk ? fmt(sk.name) : ''}</span></div>
         ${ch.from !== ch.to ? `<div class="v-change">${badge(ch.from)}<span class="arrow">→</span>${badge(ch.to)}</div>` : ''}
         <p>${V.msg}</p>
-        ${ch.to !== 'mastered' && sk && sk.remediation ? `<div class="remedy"><b>📘 複習重點</b><p>${esc(sk.remediation)}</p></div>` : ''}
+        ${ch.to !== 'mastered' && sk && sk.remediation ? `<div class="remedy"><b>📘 複習重點</b><p>${fmt(sk.remediation)}</p></div>` : ''}
       </section>`;
       const nextId = weakSkillIds('ALL').find(x => x !== id);
       actions = ch.to === 'mastered' && nextId
-        ? `<button class="btn block lg" data-action="skill-intro" data-skill="${esc(nextId)}">下一個弱點：${esc(nextId)}<small>${esc(bank.skills.get(nextId).name)}</small></button>
+        ? `<button class="btn block lg" data-action="skill-intro" data-skill="${esc(nextId)}">下一個弱點：${esc(nextId)}<small>${fmt(bank.skills.get(nextId).name)}</small></button>
            <button class="btn block ghost" data-action="retry">再次挑戰這個細目</button>`
         : `<button class="btn block lg" data-action="retry">再次挑戰</button>`;
     } else {
@@ -838,7 +955,7 @@ details.group>summary{cursor:pointer;list-style:none}
               const sk = bank.skills.get(id), ch = r.changes[id];
               return `<div class="srow st-${ch ? ch.to : statusOf(id)}">
                 <div class="srow-main"><div class="srow-top"><span class="chip">${esc(id)}</span><span class="wrongcount">錯 ${n} 題</span></div>
-                <div class="srow-name">${esc(sk ? sk.name : id)}</div></div>
+                <div class="srow-name">${sk ? fmt(sk.name) : esc(id)}</div></div>
                 <button class="btn sm" data-action="skill-intro" data-skill="${esc(id)}">再次挑戰</button>
               </div>`;
             }).join('')
@@ -850,7 +967,7 @@ details.group>summary{cursor:pointer;list-style:none}
     app.innerHTML = `${topbar(isSkill ? '細目挑戰結果' : '挑戰結果', 'home')}
     <main class="wrap">
       <section class="card result-head enter">
-        <div class="muted small">${esc(r.title)}</div>
+        <div class="muted small">${esc(r.title)}${diffTag(r.diff)}</div>
         <h2>${isSkill ? '本次結果' : '挑戰完成'}</h2>
         ${ring(pct, 'dark big ' + tone, r.correct + ' / ' + r.total, `正確率 ${pct}%`)}
         <div class="pills">
@@ -885,7 +1002,7 @@ details.group>summary{cursor:pointer;list-style:none}
       const c = r.changes[id];
       return `<div class="srow st-${c.to}"><div class="srow-main">
         <div class="srow-top"><span class="chip">${esc(id)}</span>${badge(c.from)}<span class="arrow">→</span>${badge(c.to)}</div>
-        <div class="srow-name">${esc(bank.skills.get(id).name)}</div></div>
+        <div class="srow-name">${fmt(bank.skills.get(id).name)}</div></div>
         ${c.to !== 'mastered' ? `<button class="btn sm" data-action="skill-intro" data-skill="${esc(id)}">再挑戰</button>` : '<span class="okmark">✓</span>'}
       </div>`;
     }).join('');
@@ -897,11 +1014,11 @@ details.group>summary{cursor:pointer;list-style:none}
     return `<details class="card fold"><summary>📝 檢視本次錯題（${items.length}）</summary><div class="fold-body">${items.map(({ q, a }) => `
       <div class="review-item">
         <span class="chip">細目 ${esc(q.skillId)}</span>
-        <p class="q">${esc(q.question)}</p>
-        <div class="ans your">✗ 你的答案：${letter(a.selected_answer)}. ${esc(q.options[a.selected_answer])}</div>
-        <div class="ans right">✓ 正確答案：${letter(q.answerIndex)}. ${esc(q.options[q.answerIndex])}</div>
-        ${q.explanation ? `<div class="ans note">💡 ${esc(q.explanation)}</div>` : ''}
-        ${q.remediation ? `<div class="ans note">📘 ${esc(q.remediation)}</div>` : ''}
+        <p class="q">${fmt(q.question)}</p>
+        <div class="ans your">✗ 你的答案：${letter(a.selected_answer)}. ${fmt(q.options[a.selected_answer])}</div>
+        <div class="ans right">✓ 正確答案：${letter(q.answerIndex)}. ${fmt(q.options[q.answerIndex])}</div>
+        ${q.explanation ? `<div class="ans note">💡 ${fmt(q.explanation)}</div>` : ''}
+        ${q.remediation ? `<div class="ans note">📘 ${fmt(q.remediation)}</div>` : ''}
       </div>`).join('')}</div></details>`;
   }
 
@@ -928,7 +1045,7 @@ details.group>summary{cursor:pointer;list-style:none}
         : `<button class="btn sm${kind === 'unseen' ? ' ghost' : ''}" data-action="skill-intro" data-skill="${esc(id)}">${kind === 'reviewing' ? '再挑戰' : '挑戰'}</button>`;
       return `<div class="srow st-${kind}"><div class="srow-main">
         <div class="srow-top"><span class="chip">${esc(id)}</span>${info ? `<span class="muted small">${info}</span>` : ''}</div>
-        <div class="srow-name">${esc(sk.name)}</div></div>${act}</div>`;
+        <div class="srow-name">${fmt(sk.name)}</div></div>${act}</div>`;
     };
     const group = (kind, title, list) => list.length
       ? `<h3 class="sec-h"><span class="dot d-${kind}"></span>${title}<span class="n">${list.length}</span></h3>${list.map(id => row(id, kind)).join('')}` : '';
@@ -968,13 +1085,14 @@ details.group>summary{cursor:pointer;list-style:none}
       <section class="card intro enter">
         <div class="intro-badge">🎯</div>
         <div class="muted small">${esc(sk.chapterName)}・${esc(sk.sectionId)} ${esc(sk.sectionName)}</div>
-        <h2>${esc(sk.name)}</h2>
+        <h2>${fmt(sk.name)}</h2>
         <div class="intro-meta"><span class="chip">細目 ${esc(sk.id)}</span>${badge(st)}${p && p.last_total ? `<span class="muted small">最近 ${p.last_score} / ${p.last_total}</span>` : ''}</div>
-        ${sk.remediation ? `<div class="remedy"><b>📘 挑戰前先複習</b><p>${esc(sk.remediation)}</p></div>` : '<div style="height:14px"></div>'}
+        ${sk.remediation ? `<div class="remedy"><b>📘 挑戰前先複習</b><p>${fmt(sk.remediation)}</p></div>` : '<div style="height:14px"></div>'}
         <ul class="rules">
           <li>共 ${n} 題，題目與選項順序隨機</li>
           <li>${n} / ${n} 全對 → 已掌握</li>
           ${n >= 2 ? `<li>${n - 1} / ${n} → 需要複習　${n >= 3 ? `0～${n - 2} / ${n}` : `0 / ${n}`} → 需要加強</li>` : ''}
+          ${bank.hasDiff && diffMode !== 'all' ? '<li>細目挑戰包含所有難度的題目，不受難度模式影響</li>' : ''}
         </ul>
         <button class="btn block lg" data-action="skill-start" data-skill="${esc(sk.id)}">開始挑戰（${n} 題）</button>
       </section>
@@ -1094,6 +1212,7 @@ details.group>summary{cursor:pointer;list-style:none}
       case 'quit': confirmQuit(); break;
       case 'retry': if (lastResult) startQuiz(rebuildQuiz(lastResult.meta), '太好了，目前沒有需要加強的細目 🎉'); break;
       case 'filter': weakFilter = d.filter; renderWeakSkills(); break;
+      case 'diff': setDiff(d.diff); break;
       case 'export': openExport(); break;
       case 'clear': confirmClear(); break;
     }
